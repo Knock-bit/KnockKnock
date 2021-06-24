@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="contextPath" value ="${pageContext.request.contextPath }"/>
+<c:set var="cp" value ="${pageContext.request.contextPath }"/>
   <!-- ======= Header ======= -->
   <meta charset=utf-8>
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo me-auto"><a href="index.html"><img src="logo.png" id=:logo></a></h1>
+      <h1 class="logo me-auto"><a href="index.html"><img src="{logo.png" id=:logo></a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
