@@ -15,6 +15,7 @@
 	<!-- 별칭 생성, mapper에서 별칭을 사용할 수 잆다. -->
 	<typeAliases>
 		<!-- <typeAlias type="com.bc.mybatis.GuestbookVO" alias="guestbookVO" /> -->
+		<typeAlias alias="user" type="com.knockknock.user.UserVO"/>
 		<typeAlias alias="board" type="com.knockknock.board.BoardVO"/>
 	</typeAliases>
 	
