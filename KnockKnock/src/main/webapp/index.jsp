@@ -7,9 +7,6 @@
 <title>시작페이지</title>
 
 </head>
-
-
-
 <body>
 
 </body>
