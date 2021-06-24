@@ -19,7 +19,6 @@
 		<typeAlias alias="board" type="com.knockknock.board.BoardVO"/>
 	</typeAliases>
 	
-	
 
 	<!-- mappers는 여러개 등록 가능하다. -->
 	<mappers>
