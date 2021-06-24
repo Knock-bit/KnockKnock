@@ -3,7 +3,7 @@ package com.knockknock.mypage.serviceimpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.knockknock.mypage.service.MypageService;
+import com.knockknock.mypage.MypageService;
 import com.knockknock.user.UserVO;
 
 @Service("userService")
