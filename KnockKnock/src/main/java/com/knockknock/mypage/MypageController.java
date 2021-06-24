@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.knockknock.user.UserVO;
@@ -13,6 +15,15 @@ import com.knockknock.user.UserVO;
 public class MypageController {
 	@Autowired
 	private MypageService mypageService;
+	
+	//@GetMapping("/myp.do")
+	@RequestMapping(value="/myp.do", method=RequestMethod.GET)
+	public String moveMypage() {
+		System.out.println("이동완료");
+		
+		return null;
+	}
+	
 	
 	// 내 정보 수정으로 이동(임시)
 	@GetMapping("/mypage.do")
