@@ -34,8 +34,6 @@
 		<!-- 회원 -->
 		<typeAlias alias="users" type="com.knockknock.user.UsersVO"/>
 		
-		
-		
 	</typeAliases>
 	
 	
