@@ -8,7 +8,7 @@
   "use strict";
 
   /**
-   * Easy selector helper function
+   * Easy selector helper function can i commit?
    */
   const select = (el, all = false) => {
     el = el.trim()
