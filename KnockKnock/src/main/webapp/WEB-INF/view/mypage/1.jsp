@@ -4,9 +4,21 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>mypage 임시 메인</title>
 </head>
 <body>
+<div class="main-content">
+		<div class="temp-page">
+			<h1>임시페이지</h1>
+				
+			<p><a href="mypage.do">내정보수정 이동</a></p>	
+			
+		
+		</div>
+
+
+
+	</div>
 
 </body>
 </html>
