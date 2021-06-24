@@ -17,22 +17,22 @@
 		<!-- <typeAlias type="com.bc.mybatis.GuestbookVO" alias="guestbookVO" /> -->
 		
 		<!-- 관리자 -->
-		<typeAlias alias="user" type="com.knockknock.admin.AdminVO"/>
+		<typeAlias alias="admin" type="com.knockknock.admin.AdminVO"/>
 		<!-- 게시판 -->
-		<typeAlias alias="user" type="com.knockknock.board.BoardVO"/>
-		<typeAlias alias="user" type="com.knockknock.board.DeactivationVO"/>
-		<typeAlias alias="user" type="com.knockknock.board.BoardCategoryVO"/>
-		<typeAlias alias="user" type="com.knockknock.board.subtitleVO"/>
-		<typeAlias alias="user" type="com.knockknock.board.CommentsVO"/>
+		<typeAlias alias="board" type="com.knockknock.board.BoardVO"/>
+		<typeAlias alias="deactivation" type="com.knockknock.board.DeactivationVO"/>
+		<typeAlias alias="boardCategory" type="com.knockknock.board.BoardCategoryVO"/>
+		<typeAlias alias="subtitle" type="com.knockknock.board.subtitleVO"/>
+		<typeAlias alias="comments" type="com.knockknock.board.CommentsVO"/>
 		<!-- 캠페인 -->
-		<typeAlias alias="user" type="com.knockknock.campaign.CampaignVO"/>
-		<typeAlias alias="user" type="com.knockknock.campaign.CampaignUserVO"/>
-		<typeAlias alias="user" type="com.knockknock.campaign.CampaignNomVO"/>
-		<typeAlias alias="user" type="com.knockknock.campaign.CampaignNomUserVO"/>
-		<typeAlias alias="user" type="com.knockknock.campaign.KeywordVO"/>
-		<typeAlias alias="user" type="com.knockknock.campaign.ProposalVO"/>
+		<typeAlias alias="campaign" type="com.knockknock.campaign.CampaignVO"/>
+		<typeAlias alias="campaignUser" type="com.knockknock.campaign.CampaignUserVO"/>
+		<typeAlias alias="campaignNom" type="com.knockknock.campaign.CampaignNomVO"/>
+		<typeAlias alias="campaignNomUser" type="com.knockknock.campaign.CampaignNomUserVO"/>
+		<typeAlias alias="keyword" type="com.knockknock.campaign.KeywordVO"/>
+		<typeAlias alias="proposal" type="com.knockknock.campaign.ProposalVO"/>
 		<!-- 회원 -->
-		<typeAlias alias="user" type="com.knockknock.user.UsersVO"/>
+		<typeAlias alias="users" type="com.knockknock.user.UsersVO"/>
 		
 		
 		
