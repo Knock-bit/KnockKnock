@@ -12,10 +12,30 @@
 
 	</settings>
 
-	<!-- 별칭 생성, mapper에서 별칭을 사용할 수 잆다. -->
+	<!-- 별칭 생성, mapper에서 별칭을 사용할 수 있다. -->
 	<typeAliases>
 		<!-- <typeAlias type="com.bc.mybatis.GuestbookVO" alias="guestbookVO" /> -->
-		<typeAlias alias="user" type="com.knockknock.user.UserVO"/>
+		
+		<!-- 관리자 -->
+		<typeAlias alias="user" type="com.knockknock.admin.AdminVO"/>
+		<!-- 게시판 -->
+		<typeAlias alias="user" type="com.knockknock.board.BoardVO"/>
+		<typeAlias alias="user" type="com.knockknock.board.DeactivationVO"/>
+		<typeAlias alias="user" type="com.knockknock.board.BoardCategoryVO"/>
+		<typeAlias alias="user" type="com.knockknock.board.subtitleVO"/>
+		<typeAlias alias="user" type="com.knockknock.board.CommentsVO"/>
+		<!-- 캠페인 -->
+		<typeAlias alias="user" type="com.knockknock.campaign.CampaignVO"/>
+		<typeAlias alias="user" type="com.knockknock.campaign.CampaignUserVO"/>
+		<typeAlias alias="user" type="com.knockknock.campaign.CampaignNomVO"/>
+		<typeAlias alias="user" type="com.knockknock.campaign.CampaignNomUserVO"/>
+		<typeAlias alias="user" type="com.knockknock.campaign.KeywordVO"/>
+		<typeAlias alias="user" type="com.knockknock.campaign.ProposalVO"/>
+		<!-- 회원 -->
+		<typeAlias alias="user" type="com.knockknock.user.UsersVO"/>
+		
+		
+		
 	</typeAliases>
 	
 	
