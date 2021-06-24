@@ -1,4 +1,4 @@
-package com.knockknock.mypage.service;
+package com.knockknock.mypage;
 
 import com.knockknock.user.UserVO;
 
