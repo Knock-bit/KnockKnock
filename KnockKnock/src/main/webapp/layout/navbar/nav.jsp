@@ -22,10 +22,10 @@
           </li>
           <li class="dropdown"><a href="#"><span>Campaign</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="campaigning.jsp">진행중인 캠페인</a></li>
-              <li><a href="funding.jsp">캠페인 펀딩하기</a></li>
-              <li><a href="campaigned.jsp">지난 캠페인</a></li>
-              <li><a href="proposal.jsp">캠페인 제안하기</a></li>
+              <li><a href="${cp }/layout/campaign/campaigning.jsp">진행중인 캠페인</a></li>
+              <li><a href="${cp }/layout/campaign/funding.jsp">캠페인 펀딩하기</a></li>
+              <li><a href="${cp }/layout/campaign/campaigned.jsp">지난 캠페인</a></li>
+              <li><a href="${cp }/layout/campaign/proposal.jsp">캠페인 제안하기</a></li>
             </ul>
           </li>
 
