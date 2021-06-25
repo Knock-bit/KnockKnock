@@ -35,15 +35,21 @@ public class MypageController {
    }
    
    // 내 정보 수정 정보 받아오기
-   @PostMapping("updateMyInfoBtn.do")
+   @PostMapping("/updateMyInfoBtn.do")
    public String updateMyInfo(@ModelAttribute("users") UserVO vo) {
 	  System.out.println("내 정보 업데이트");
 	  System.out.println("vo: " + vo);
 	  mypageService.updateMyInfo(vo);
 	   
 	   
-	  return "updateMyInfo.do";
+	  return "/mypage/mypageList/updateMyInfo";
    }
  
 
+   // 비밀번호 변경 페이지로 이동
+   @GetMapping("/updatePwd.do")
+   public String updatePwd(@ModelAttribute("users") UserVO vo) {
+	   
+	  return "/mypage/mypageList/updatePwd";
+   }
 }
