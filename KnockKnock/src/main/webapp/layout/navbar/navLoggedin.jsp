@@ -35,7 +35,7 @@
           <li><a href="courses.html">Shop</a></li>
           <li><a href="trainers.html">Contact</a></li>
 
-          <li class="dropdown"><a href="#"><span class="get-started-btn">~~님</span> <i
+          <li class="dropdown"><a href="#"><span class="get-started-btn">${users.uName }님</span> <i
                 class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="updateMyInfo.do">정보수정</a></li>
