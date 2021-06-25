@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.knockknock.user.UserVO;
@@ -52,4 +53,24 @@ public class MypageController {
 	   
 	  return "/mypage/mypageList/updatePwd";
    }
+   
+   // 비밀번호 변경
+   @PostMapping("/updateMyPwd.do")
+   @ResponseBody
+   public String updateMyPwd(@ModelAttribute("users") UserVO vo) {
+	   System.out.println("비밀번호 변경");
+
+	   mypageService.updateMyPwd(vo);
+	   
+	   return "users";
+   }
+   
+   
+   
+   
+   
+   
+   
+   
+   
 }

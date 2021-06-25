@@ -8,5 +8,7 @@ public interface MypageService {
 	UserVO selectOneUser(int uIdx);
 	// 유저 정보 수정(업데이트)
 	void updateMyInfo(UserVO vo);
+	// 비밀번호 수정
+	void updateMyPwd(UserVO vo);
 
 }

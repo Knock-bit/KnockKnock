@@ -34,23 +34,67 @@
 	  // 현재 비밀번호 일치하지 않으면 비활성화
 	  $("#chPwd1").focus(function(){
 		  var nowPwd = $("#nowPwd").val();
-		  var uPwd = ${users.uPwd};
+		  var uPwd = "${users.uPwd}";
 		  if(nowPwd!=uPwd){
 			  $("#nowPwd").focus();
 			  $("#nowPwd").css("outline-color","red");
 			  alert("비밀번호가 일치하지 않습니다.");
-		  }
-		  
-		  
+		  } 
+	  });
+	  
+	  // 변경할 비밀번호 입력받기 
+	  $("#chPwd2").focus(function(){
+		 var chPwd1 = $("#chPwd1").val();
+		 var pwdPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+		 
+		 if(pwdPattern.test(chPwd1)==false){
+			 $("#chPwd1").focus();
+			 $("#chPwd1").css("outline-color","red");
+			 alert("비밀번호는 최소 8자 이상, 숫자 1개는 반드시 포함되어야 합니다.");
+		 } 
 		  
 	  });
 	  
-	  
-	  
+	  // 비밀번호 일치여부 확인
+	   $("#chPwd2").keyup(function(){
+		   var chPwd1 = $("#chPwd1").val();
+			 var chPwd2 = $("#chPwd2").val();
+			 if(chPwd1==chPwd2){
+				 $("#matchPwd").css("display","block");
+				 $("#updatePwdBtn").attr("disabled",false);
+			 } else {
+				 $("#updatePwdBtn").attr("disabled",true);
+				 $("#matchPwd").css("display","none");
+
+			 }
+	   });
 	 
 	  
   });
-  
+  // ajax 사용해서 비밀번호 변경하기
+  function PwdBtn(frm){
+	 var uPwd = $("#chPwd1").val();
+	 alert("PwdBtn 실행!");
+	 $.ajax("updateMyPwd.do",{
+		 type:"post",
+		 data:"uPwd="+uPwd,
+		 dataType:"json",
+		 success : function(data){
+			  let html = "";
+			  html += "<p> 비밀번호 변경이 완료되었습니다.</p>";
+			  html += "<p> 새로운 비밀번호로 다시 로그인 해주세요 </p>";
+			  html += "<a href='myPage.do'>(임시화면으로 이동)</a>";
+			  
+			  $(".updatePwd").html(html);	  
+		 },
+		 error: function(){
+			 alert("에러가 발생했습니다. 다시 시도해주세요.");
+		 }
+
+	 });
+	 
+  }
+
   </script>
   
   <style>
@@ -67,6 +111,12 @@
    		text-align:center;
    		position:relative;
    }
+   #matchPwd{
+   		display:none;
+   		color:blue;
+   }
+   
+
   </style>
 </head>
 <body>
@@ -85,13 +135,13 @@
 				<hr>
 				<label>변경할  비밀번호</label>
 				<input type="password" id="chPwd1" name="uPwd"><br>
-				<p>비밀번호는 특수문자를 포함하여 어쩌구 </p>
+				<p>비밀번호는 최소 8자 이상, 숫자 1개는 반드시 포함되어야 합니다. </p>
 				<hr>
 				<label>새 비밀번호 확인</label>
-				<input type="password" id="chPwd2">
+				<input type="password" id="chPwd2"><span id="matchPwd">*일치</span>
 			</div>
 			<div>
-				<input type="submit" value="변경하기">
+				<input id="updatePwdBtn" type="button" value="변경하기" disabled="disabled" onclick="PwdBtn(this.form)">
 				<input type="button" value="다음에 변경하기" onclick="location.href='updateMyInfo.do'">
 			</div>
 		

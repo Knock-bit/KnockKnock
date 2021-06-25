@@ -16,10 +16,16 @@ public class MypageDAO {
 		
 		return mybatis.selectOne("UserVO.selectOneUser", uIdx);
 	}
-	
+	// 내 정보 수정(업데이트)
 	public int updateMyInfo(UserVO vo) {
 		
 		return mybatis.update("UserVO.updateMyInfo", vo);
+	}
+	
+	// 비밀번호 수정
+	public int updateMyPwd(UserVO vo) {
+		
+		return mybatis.update("UserVO.updateMyPwd", vo);
 	}
 
 }
