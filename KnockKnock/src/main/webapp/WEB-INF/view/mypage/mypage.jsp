@@ -26,11 +26,22 @@
   <!-- Import BootStrap -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
   
+  <style>
+  .main-content{
+        flex: 1;
+        min-height:100vh;
+        margin-top:100px;
+        
+    }
+  </style>
 </head>
 <body>
   <!-- ======= Header ======= -->
-   <%@ include file= "../layout/navbar/navLoggedin.jsp" %>
+   <%@ include file= "/layout/navbar/navLoggedin.jsp" %>
   <!-- ======= Header 끝  === -->
+<div class="main-content">
+
+	<h1>임시페이지</h1>
 
 
 
@@ -38,10 +49,9 @@
 
 
 
-
-
+</div>	
 <!-- ======= Footer ======= -->
-   <%@ include file= "../layout/footer.jsp" %>
+   <%@ include file= "/layout/footer.jsp" %>
  
  <!-- End Footer -->
 </body>

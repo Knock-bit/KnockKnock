@@ -4,15 +4,16 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
-	<settings>
-		<!-- 자동으로 카멜케이스 규칙으로 변환 -->
-		<setting name="mapUnderscoreToCamelCase" value="true" />
+   <settings>
+      <!-- 자동으로 카멜케이스 규칙으로 변환 -->
+      <setting name="mapUnderscoreToCamelCase" value="true" />
 
-		<setting name="jdbcTypeForNull" value="NULL" />
+      <setting name="jdbcTypeForNull" value="NULL" />
 
-	</settings>
+   </settings>
 
-	<!-- 별칭 생성, mapper에서 별칭을 사용할 수 있다. -->
+   <!-- 별칭 생성, mapper에서 별칭을 사용할 수 있다. -->
+
    <typeAliases>
       <!-- <typeAlias type="com.bc.mybatis.GuestbookVO" alias="guestbookVO" /> -->
       
@@ -35,10 +36,10 @@
       <typeAlias alias="userVO" type="com.knockknock.user.UserVO"/>
       
    </typeAliases>
-	
 
-	<!-- mappers는 여러개 등록 가능하다. -->
-	<mappers>
-		<!--  <mapper resource="mappings/BoardMapper.xml" /> -->
-	</mappers>
+   <!-- mappers는 여러개 등록 가능하다. -->
+   <mappers>
+      <!-- <mapper resource="mappings/BoardMapper.xml" /> -->
+   </mappers>
+
 </configuration>

@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="cp" value ="${pageContext.request.contextPath }"/>
+
   <!-- ======= Header ======= -->
   <meta charset=utf-8>
   <header id="header" class="fixed-top">
@@ -15,30 +16,44 @@
         <ul>
           <li><a class="active" href="index.html">Home</a></li>
           <li class="dropdown"><a href="#"><span>About</span> <i class="bi bi-chevron-down"></i></a>
-          <ul>
+              <ul>
               <li><a href="#">녹녹은</a></li>
               <li><a href="#">녹녹 사용법</a></li>
             </ul>
           </li>
           <li class="dropdown"><a href="#"><span>Campaign</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="${cp }/layout/campaign/campaigning.jsp">진행중인 캠페인</a></li>
-              <li><a href="${cp }/layout/campaign/funding.jsp">캠페인 펀딩하기</a></li>
-              <li><a href="${cp }/layout/campaign/campaigned.jsp">지난 캠페인</a></li>
-              <li><a href="${cp }/layout/campaign/proposal.jsp">캠페인 제안하기</a></li>
+              <li><a href="#">진행중인 캠페인</a></li>
+              <li><a href="#">캠페인 펀딩하기</a></li>
+              <li><a href="#">지난 캠페인</a></li>
+              <li><a href="#">캠페인 제안하기</a></li>
             </ul>
           </li>
+
 
 
           <li><a href="courses.html">Shop</a></li>
           <li><a href="trainers.html">Contact</a></li>
 
+          <li class="dropdown"><a href="#"><span class="get-started-btn">~~님</span> <i
+                class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="updateMyInfo.do">정보수정</a></li>
+              <li><a href="#">포인트 현황</a></li>
+              <li><a href="#">참여중인 캠페인</a></li>
+              <li><a href="#">내 캠페인 목록</a></li>
+              <li><a href="#">나의 문의내역</a></li>
+
+            </ul>
+          </li>
+
+
+
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
-      <a href="courses.html" class="get-started-btn">로그인</a>
-      <a href="courses.html" class="get-started-btn2">회원가입</a>
+
 
     </div>
   </header><!-- End Header -->
