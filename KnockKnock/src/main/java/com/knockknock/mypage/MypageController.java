@@ -13,6 +13,7 @@ import com.knockknock.user.UserVO;
 @Controller
 @SessionAttributes("users")
 public class MypageController {
+  
    @Autowired
    private MypageService mypageService;
    
@@ -43,5 +44,6 @@ public class MypageController {
 	   
 	  return "updateMyInfo.do";
    }
+ 
 
 }

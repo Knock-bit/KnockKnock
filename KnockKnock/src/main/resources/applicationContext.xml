@@ -46,5 +46,6 @@
 	<!-- 데이터베이스 연결관력 커넥션 사용, 매퍼 사용, sqlSessionTemplat객체를 사용해서 프로그래밍 하면 된다. -->
 	<bean class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sqlSessionFactory"></constructor-arg>
-	</bean>
+	</bean>	
+	
 </beans>

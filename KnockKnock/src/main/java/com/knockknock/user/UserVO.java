@@ -69,6 +69,13 @@ public class UserVO {
 		this.uImg = uImg;
 		this.uPoint = uPoint;
 	}
+	
+	//로그인용 생성자
+	public UserVO(String uId, String uPwd) {
+		super();
+		this.uId = uId;
+		this.uPwd = uPwd;
+	}
 
 	//=======================[ getter, setter ] =========================
 	

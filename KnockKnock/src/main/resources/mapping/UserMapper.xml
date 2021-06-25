@@ -4,13 +4,6 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- 참고파일 나중에 삭제 -->
 <mapper namespace="UserVO">
-	<insert id="joinMember" parameterType="UserVO">
-		INSERT INTO BOARD (SEQ,
-		TITLE, WRITER, CONTENT)
-		VALUES ((SELECT NVL(MAX(SEQ),0)+1 FROM BOARD),
-		#{title}, #{writer},
-		#{content})
-	</insert>
 	
 	<!-- 마이페이지 이동 -->
 	<select id="selectOneUser" parameterType="int" resultType="UserVO">
