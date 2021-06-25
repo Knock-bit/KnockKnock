@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-Campaign 임시 메인페이지
+
 </body>
 </html>
