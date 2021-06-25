@@ -1,0 +1,98 @@
+package com.knockknock.campaign;
+
+import java.sql.Date;
+
+public class ProposalVO {
+	private int cpIdx;
+	private String cpContent;
+	private String cpGoal;
+	private String cpTitle;
+	private Date cpRegdate;
+	private int cpGoalpoint;
+	private String cpFile;
+	private int uIdx;
+	private String cpKeyword;
+	
+	public ProposalVO() {	}
+	
+	
+	
+	public ProposalVO(int cpIdx, String cpContent, String cpGoal, String cpTitle, Date cpRegdate, int cpGoalpoint,
+			String cpFile, int uIdx, String cpKeyword) {
+		super();
+		this.cpIdx = cpIdx;
+		this.cpContent = cpContent;
+		this.cpGoal = cpGoal;
+		this.cpTitle = cpTitle;
+		this.cpRegdate = cpRegdate;
+		this.cpGoalpoint = cpGoalpoint;
+		this.cpFile = cpFile;
+		this.uIdx = uIdx;
+		this.cpKeyword = cpKeyword;
+	}
+
+
+
+	public int getCpIdx() {
+		return cpIdx;
+	}
+	public void setCpIdx(int cpIdx) {
+		this.cpIdx = cpIdx;
+	}
+	public String getCpContent() {
+		return cpContent;
+	}
+	public void setCpContent(String cpContent) {
+		this.cpContent = cpContent;
+	}
+	public String getCpGoal() {
+		return cpGoal;
+	}
+	public void setCpGoal(String cpGoal) {
+		this.cpGoal = cpGoal;
+	}
+	public String getCpTitle() {
+		return cpTitle;
+	}
+	public void setCpTitle(String cpTitle) {
+		this.cpTitle = cpTitle;
+	}
+	public Date getCpRegdate() {
+		return cpRegdate;
+	}
+	public void setCpRegdate(Date cpRegdate) {
+		this.cpRegdate = cpRegdate;
+	}
+	public int getCpGoalpoint() {
+		return cpGoalpoint;
+	}
+	public void setCpGoalpoint(int cpGoalpoint) {
+		this.cpGoalpoint = cpGoalpoint;
+	}
+	public String getCpFile() {
+		return cpFile;
+	}
+	public void setCpFile(String cpFile) {
+		this.cpFile = cpFile;
+	}
+	public int getuIdx() {
+		return uIdx;
+	}
+	public void setuIdx(int uIdx) {
+		this.uIdx = uIdx;
+	}
+	public String getCpKeyword() {
+		return cpKeyword;
+	}
+	public void setCpKeyword(String cpKeyword) {
+		this.cpKeyword = cpKeyword;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+}
