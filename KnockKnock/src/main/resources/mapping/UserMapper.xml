@@ -17,4 +17,12 @@
 		WHERE U_IDX=#{uIdx}
 	
 	</update>
+	
+	<!-- 마이페이지 비밀번호 변경 -->
+	<update id="updateMyPwd">
+		UPDATE USERS SET 
+		U_PWD = #{uPwd}
+		WHERE U_IDX=#{uIdx}
+	
+	</update>
 </mapper>

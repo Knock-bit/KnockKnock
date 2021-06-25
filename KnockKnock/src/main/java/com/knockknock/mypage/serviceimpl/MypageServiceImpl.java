@@ -24,5 +24,13 @@ public class MypageServiceImpl implements MypageService {
 		
 		mypageDAO.updateMyInfo(vo);
 	}
+	
+	
+	// 비밀번호 수정
+	@Override
+	public void updateMyPwd(UserVO vo) {
+		
+		mypageDAO.updateMyPwd(vo);
+	}
 
 }
