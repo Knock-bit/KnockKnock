@@ -15,5 +15,10 @@ public class MypageDAO {
 	public UserVO selectOneUser(int uIdx) {
 		return mybatis.selectOne("UserVO.selectOneUser", uIdx);
 	}
+	
+	public int updateMyInfo(UserVO vo) {
+		
+		return mybatis.update("UserVO.updateMyInfo", vo);
+	}
 
 }
