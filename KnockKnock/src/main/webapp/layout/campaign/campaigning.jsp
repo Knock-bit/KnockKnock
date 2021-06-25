@@ -69,7 +69,7 @@
                   <p class="price">$169</p>
                 </div>
 
-                <h3><a href="course-details.html">캠페인 제목</a></h3>
+                <h3><a href="campaignView.jsp">캠페인 제목</a></h3>
                 <p>캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. </p>
                 <div class="trainer d-flex justify-content-between align-items-center">
                   <div class="trainer-profile d-flex align-items-center">

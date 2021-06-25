@@ -1,0 +1,87 @@
+@charset "UTF-8";
+
+#campaign-title{
+  width: 100%;
+  height: 30vh;
+  background: url("../img/hero-bg.jpeg") top center;
+  background-size: cover;
+  position: relative;
+  color: white;
+  vertical-align: middle;
+  text-align: center;
+}
+
+
+
+
+/*--------------------------------------------------------------
+# Campaign Details
+--------------------------------------------------------------*/
+.campaign-details h3 {
+  font-size: 24px;
+  margin: 30px 0 15px 0;
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.campaign-details h3:before {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: #eef0ef;
+  bottom: 0;
+  left: 0;
+}
+
+.campaign-details h3:after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 60px;
+  height: 1px;
+  background: #5fcf80;
+  bottom: 0;
+  left: 0;
+}
+
+.campaign-details .campaign-info {
+  background: #f6f7f6;
+  padding: 10px 15px;
+  margin-bottom: 15px;
+}
+
+.campaign-details .campaign-info h5 {
+  font-weight: 400;
+  font-size: 16px;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+.campaign-details .campaign-info p {
+  margin: 0;
+  font-weight: 600;
+}
+
+.campaign-details .campaign-info a {
+  color: #657a6d;
+}
+
+
+.btn-funding {
+  width:100%;
+  height:10vh;
+  background-color: #0a3a18;
+  border: none;
+  color:#fff;
+  padding: 0 15;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.5em;
+  margin: 4px;
+  cursor: pointer;
+
+}
