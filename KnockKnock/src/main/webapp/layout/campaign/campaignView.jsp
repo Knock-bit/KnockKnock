@@ -30,10 +30,11 @@
 
   <!-- Main CSS File -->
   <link href="${cp}/resource/css/main.css" rel="stylesheet">
+  <link href="${cp}/resource/css/campaign.css" rel="stylesheet">
 
   <!-- Import BootStrap -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-  
+
 </head>
 <body>
 
@@ -45,12 +46,15 @@
   <main id="main">
 
     <!-- ======= Breadcrumbs ======= -->
-    <div class="breadcrumbs" data-aos="fade-in">
-      <div class="container">
-        <h2>Course Details</h2>
-        <p>Est dolorum ut non facere possimus quibusdam eligendi voluptatem. Quia id aut similique quia voluptas sit quaerat debitis. Rerum omnis ipsam aperiam consequatur laboriosam nemo harum praesentium. </p>
-      </div>
-    </div><!-- End Breadcrumbs -->
+    
+    <section id="campaign-detail" class="d-flex justify-content-center align-items-center">
+    <div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
+    <br><br>
+      <h1>캠페인제목</h1>
+      <h2>We are team of talented designers making websites with Bootstrap</h2>
+    </div>
+  </section><!-- End Hero -->
+
 
     <!-- ======= Cource Details Section ======= -->
     <section id="course-details" class="course-details">
