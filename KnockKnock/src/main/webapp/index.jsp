@@ -27,7 +27,7 @@
 		frm.submit();
 	}
 	function mypage_connect(frm){
-		frm.action="mypage/mypage";
+		frm.action="myPage.do";
 		frm.submit();
 	}
 	function user_connect(frm){
