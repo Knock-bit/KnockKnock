@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+#campaign-detail{
+  width: 100%;
+  height: 30vh;
+  background: url("../img/hero-bg.jpeg") top center;
+  background-size: cover;
+  position: relative;
+  color: white;
+  vertical-align: middle;
+  text-align: center;
+}
