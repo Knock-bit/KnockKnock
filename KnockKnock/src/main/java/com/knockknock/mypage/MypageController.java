@@ -11,29 +11,28 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.knockknock.user.UserVO;
 
 @Controller
-@SessionAttributes("user")
+@SessionAttributes("users")
 public class MypageController {
 	@Autowired
 	private MypageService mypageService;
 	
-	//@GetMapping("/myp.do")
-	@RequestMapping(value="/myp.do", method=RequestMethod.GET)
+	// 마이페이지 임시 메인으로 이동
+	@GetMapping("/myPage.do")
 	public String moveMypage() {
-		System.out.println("이동완료");
 		
-		return null;
+		return "/mypage/mypage";
 	}
 	
 	
-	// 내 정보 수정으로 이동(임시)
-	@GetMapping("/mypage.do")
+	// 내 정보 수정으로 이동
+	@GetMapping("/updateMyInfo.do")
 	public String updateMypage(UserVO vo, Model model) {
 		
 		String id = "test";
 		UserVO user = mypageService.selelctOneUser(id);
 		model.addAttribute("user", user);
 		
-		return "updateMyInfo";
+		return "/mypage/updateMyInfo";
 		
 	}
 

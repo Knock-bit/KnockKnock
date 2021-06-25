@@ -7,9 +7,8 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
-	
       <context:component-scan
-      base-package="com.knocknock.board" />
+      base-package="com.knocknock" />
 
 	<!-- @GetMapping, @PostMapping 사용시 추가 설정 -->
 	<mvc:annotation-driven />
@@ -36,10 +35,3 @@
 		common/illegalArgError.jsp </prop> <prop key="java.lang.NullPointerException"> 
 		common/nullPointerError.jsp </prop> </props> </property> </bean> -->
 </beans>
-
-
-
-
-
-
-
