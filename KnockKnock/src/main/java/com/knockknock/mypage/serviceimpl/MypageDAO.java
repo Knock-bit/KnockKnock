@@ -13,6 +13,7 @@ public class MypageDAO {
 	
 	// 정보 가져오기(임시)
 	public UserVO selectOneUser(int uIdx) {
+		
 		return mybatis.selectOne("UserVO.selectOneUser", uIdx);
 	}
 

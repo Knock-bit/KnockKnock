@@ -7,8 +7,8 @@ import com.knockknock.user.UserVO;
 public class UserDAO {
 	private SqlSessionTemplate mybatis;
 	
-	public int joinMember(UserVO vo) {
+	public int selectlogin(String uId) {
 		
-		return mybatis.insert("UserDAO.joinMember", vo);
+		return mybatis.selectOne("UserVO.selectOneUser", uId);
 	}
 }

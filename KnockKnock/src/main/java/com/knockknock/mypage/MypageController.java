@@ -29,8 +29,8 @@ public class MypageController {
 	public String updateMypage(UserVO vo, Model model) {
 		
 		String id = "test";
-		UserVO user = mypageService.selelctOneUser(id);
-		model.addAttribute("user", user);
+		//UserVO user = mypageService.selectOneUser(id);
+		//model.addAttribute("user", user);
 		
 		return "/mypage/updateMyInfo";
 		
