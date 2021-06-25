@@ -72,6 +72,16 @@
             </p>
           </div>
           <div class="col-lg-4">
+          
+          <div class="campaign-info align-items-center">
+              <div>
+              펀딩 진행도
+              <p class="funding-pg">
+    			<progress value="50" max="100"></progress>
+  				</p>
+              
+              </div>
+            </div>
 
             <div class="campaign-info align-items-center">
               <div class="btn-wrap funding">
@@ -79,10 +89,6 @@
               </div>
             </div>
 
-            <div class="campaign-info d-flex justify-content-between align-items-center">
-              <h5>Course Fee</h5>
-              <p>$165</p>
-            </div>
 
             <div class="campaign-info d-flex justify-content-between align-items-center">
               <h5>Available Seats</h5>
