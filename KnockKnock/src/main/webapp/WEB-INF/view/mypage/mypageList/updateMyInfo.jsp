@@ -28,6 +28,26 @@
   <!-- Import BootStrap -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
   
+  <!--  -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  
+  <script>
+  
+  function updatePwd(){
+	  location.href="updatePwd.do";
+
+  }
+  function readURL(input) {
+      if (input.files && input.files[0]) {
+         var reader = new FileReader();
+         reader.onload = function(e) {
+            $('#preview').attr('src', e.target.result);
+         }
+         reader.readAsDataURL(input.files[0]);
+      }
+   }
+  
+  </script>
   <style>
   .main-content{
   		width:100%;
@@ -96,6 +116,7 @@
    		
    		outline:none;
    }
+   
   </style>
 </head>
 <body>
@@ -146,15 +167,13 @@
 			</div>
 			<div class="myPhoto">
 				<div class="photo">            
-                   <img id="preview" src="../resources/honggildong.png" width=180 height=200><br>
-                   <input type="file" name="imageFileName" onchange="readURL(this);" >
+                   <img id="preview" src="${users.uImg }" width=180 height=200><br>
+                   <input type="file" name="uImg" onchange="readURL(this);" >
                	</div>
 			</div>
 			<div class="btn">
 				<input id="updateBtn" type="submit" value="내 정보 수정">
-				<input id="updatePasswordBtn" type="button" value="비밀번호 변경하기">
-			
-			
+				<input id="updatePasswordBtn" type="button" value="비밀번호 변경하기" onclick="updatePwd()">
 			</div>
 		</form>
 
