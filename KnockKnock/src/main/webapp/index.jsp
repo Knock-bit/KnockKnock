@@ -23,7 +23,7 @@
 		frm.submit();
 	}
 	function campaign_connect(frm){
-		frm.action="campaign/campaign";
+		frm.action="campaign/tempIndex.do";
 		frm.submit();
 	}
 	function mypage_connect(frm){
@@ -50,5 +50,6 @@
 		<input type="button" value="mypage" onclick="mypage_connect(this.form)">
 		<input type="button" value="user" onclick="user_connect(this.form)">
 	</form>
+	
 </body>
 </html>
