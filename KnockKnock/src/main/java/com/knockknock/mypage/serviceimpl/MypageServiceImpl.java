@@ -18,19 +18,22 @@ public class MypageServiceImpl implements MypageService {
 		return mypageDAO.selectOneUser(uIdx);
 	}
 	
+	
 	// 유저 정보 수정(업데이트)
 	@Override
-	public void updateMyInfo(UserVO vo) {
-		
-		mypageDAO.updateMyInfo(vo);
+	public int updateMyInfo(UserVO vo) {
+
+		return mypageDAO.updateMyInfo(vo);
 	}
+	
+	
 	
 	
 	// 비밀번호 수정
 	@Override
-	public void updateMyPwd(UserVO vo) {
+	public int updateMyPwd(UserVO vo) {
 		
-		mypageDAO.updateMyPwd(vo);
+		return mypageDAO.updateMyPwd(vo);
 	}
 
 }
