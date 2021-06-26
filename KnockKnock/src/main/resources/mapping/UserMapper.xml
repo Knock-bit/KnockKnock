@@ -4,6 +4,11 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- 참고파일 나중에 삭제 -->
 <mapper namespace="UserVO">
+	<!-- 로그인 -->
+	<select id="selectlogin" parameterType="UserVO" resultType="userVO">
+		SELECT NAME FROM USERS WHERE U_ID=#{uId}
+	</select>
+	
 	
 	<!-- 마이페이지 이동 -->
 	<select id="selectOneUser" parameterType="int" resultType="UserVO">
