@@ -127,7 +127,7 @@
 
 	<h1>내 정보 수정 페이지</h1>
 	<div class="updateMyInfoForm">
-		<form action="updateMyInfoBtn.do" method="post">
+		<form action="updateMyInfoBtn.do" method="post" enctype="multipart/form-data">
 			<div class="myInfo">
 				<div>
 					<span>&nbsp;&nbsp;</span><label>아이디  </label>

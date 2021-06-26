@@ -78,18 +78,21 @@
 	 $.ajax("updateMyPwd.do",{
 		 type:"post",
 		 data:"uPwd="+uPwd,
-		 dataType:"json",
-		 success : function(data){
-			  let html = "";
-			  html += "<p> 비밀번호 변경이 완료되었습니다.</p>";
-			  html += "<p> 새로운 비밀번호로 다시 로그인 해주세요 </p>";
-			  html += "<a href='myPage.do'>(임시화면으로 이동)</a>";
+		 dataType:"text",
+		 success : function(result){
+			  let dhtml = "";
+			  dhtml += "<p> 비밀번호 변경이 완료되었습니다.</p>";
+			  dhtml += "<p> 새로운 비밀번호로 다시 로그인 해주세요 </p>";
+			  dhtml += "<a href='myPage.do'>(임시화면으로 이동)</a>";
 			  
-			  $(".updatePwd").html(html);	  
+			  $(".updatePwd").html(dhtml);	  
 		 },
-		 error: function(){
-			 alert("에러가 발생했습니다. 다시 시도해주세요.");
-		 }
+		 error: function fnAjaxError(jqXHR, textStatus, errorThrown){
+		   alert("Ajax 처리 실패 : \n"
+			         + "jqXHR.readyState : " + jqXHR.readyState + "\n"
+			         + "textStatus : " + textStatus + "\n"
+			         + "errorThrown : " + errorThrown);
+			}
 
 	 });
 	 
