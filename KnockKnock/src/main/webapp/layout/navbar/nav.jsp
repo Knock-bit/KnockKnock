@@ -3,6 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="cp" value ="${pageContext.request.contextPath }"/>
   <!-- ======= Header ======= -->
+     <link href="${cp}/resource/css/nav.css" rel="stylesheet">
+  
   <meta charset=utf-8>
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">

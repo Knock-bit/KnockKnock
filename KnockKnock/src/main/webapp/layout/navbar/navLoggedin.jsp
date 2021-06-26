@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="cp" value ="${pageContext.request.contextPath }"/>
+   <link href="${cp}/resource/css/nav.css" rel="stylesheet">
 
   <!-- ======= Header ======= -->
   <meta charset=utf-8>

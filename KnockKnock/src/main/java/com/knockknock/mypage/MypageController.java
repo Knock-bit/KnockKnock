@@ -2,6 +2,7 @@ package com.knockknock.mypage;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -69,10 +70,11 @@ public class MypageController {
 			String onlyFileName = fileName.substring(0, fileName.indexOf(".")); // img자르기
 			String extention = fileName.substring(fileName.indexOf(".")); // .png 자르기
 			String filePath = null;
-
+			int count = 0;
+			
 			// 중복 파일명 확인
 			while (true) {
-				int count = 0;
+				
 
 				if (count == 0) {
 					filePath = onlyFileName + extention;
@@ -85,13 +87,7 @@ public class MypageController {
 				if (!checkFile.exists()) {
 					break;
 				}
-				// 파일 복사
-		  try {
-			  file.transferTo(checkFile);
-		  }catch (Exception e) {
-			  
-			  
-		  }
+
 				count++;
 			}
 
@@ -101,15 +97,17 @@ public class MypageController {
 			System.out.println("fileName : " + fileName);
 			System.out.println("filePath : " + filePath);
 
+			// 파일 서버내 폴더로 복사
 			try {
 				// 스트림 생성
-				FileOutputStream fos = new FileOutputStream(new File(savePath + filePath)); // 경로 + 파일명
+				FileOutputStream fos = new FileOutputStream(savePath + filePath); // 경로 + 파일명
 				// 속도개선 보조 스트림
 				BufferedOutputStream bos = new BufferedOutputStream(fos);
 				// bos -> byte타입 변환
 				byte[] bytes = file.getBytes(); // try/catch 추가 설정
 				bos.write(bytes);
 				bos.close();
+				System.out.println("완료");
 
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
