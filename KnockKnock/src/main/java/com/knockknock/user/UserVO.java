@@ -1,5 +1,6 @@
 package com.knockknock.user;
 
+import java.io.File;
 import java.util.Date;
 
 public class UserVO {
@@ -18,7 +19,7 @@ public class UserVO {
 	private String uGender;
 	private String uAddress;
 	private Date uJoindate;
-	private String uImg;
+	private File uImg;
 	private int uPoint;
 	
 	
@@ -29,7 +30,7 @@ public class UserVO {
 	//전체 생성자
 	public UserVO(int uIdx, String uId, String uName, String uPwd, String uNickname, String uEmail, String uPhone,
 			Date uBirth, int uTotPoint, String uAdmin, String uActive, Date uLastlogin, String uGender, String uAddress,
-			Date uJoindate, String uImg, int uPoint) {
+			Date uJoindate, File uImg, int uPoint) {
 		super();
 		this.uIdx = uIdx;
 		this.uId = uId;
@@ -52,7 +53,7 @@ public class UserVO {
 
 	// 마이페이지용 생성자
 	public UserVO(int uIdx, String uId, String uName, String uPwd, String uNickname, String uEmail, String uPhone,
-			Date uBirth, int uTotPoint, String uGender, String uAddress, Date uJoindate, String uImg, int uPoint) {
+			Date uBirth, int uTotPoint, String uGender, String uAddress, Date uJoindate, File uImg, int uPoint) {
 		super();
 		this.uIdx = uIdx;
 		this.uId = uId;
@@ -199,11 +200,11 @@ public class UserVO {
 		this.uJoindate = uJoindate;
 	}
 
-	public String getuImg() {
+	public File getuImg() {
 		return uImg;
 	}
 
-	public void setuImg(String uImg) {
+	public void setuImg(File uImg) {
 		this.uImg = uImg;
 	}
 

@@ -1,13 +1,18 @@
 package com.knockknock.mypage;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.knockknock.user.UserVO;
 
@@ -37,7 +42,7 @@ public class MypageController {
    
    // 내 정보 수정 정보 받아오기
    @PostMapping("/updateMyInfoBtn.do")
-   public String updateMyInfo(@ModelAttribute("users") UserVO vo) {
+   public String updateMyInfo(@ModelAttribute("users") UserVO vo, MultipartFile uImg) {
 	  System.out.println("내 정보 업데이트");
 	  System.out.println("vo: " + vo);
 	  mypageService.updateMyInfo(vo);
@@ -55,9 +60,10 @@ public class MypageController {
    }
    
    // 비밀번호 변경
+   //@RequestMapping(value ="/updateMyPwd.do", method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
    @PostMapping("/updateMyPwd.do")
    @ResponseBody
-   public String updateMyPwd(@ModelAttribute("users") UserVO vo) {
+   public String updateMyPwd(UserVO vo) {
 	   System.out.println("비밀번호 변경");
 
 	   mypageService.updateMyPwd(vo);

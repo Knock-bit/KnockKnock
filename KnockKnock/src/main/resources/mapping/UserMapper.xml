@@ -19,7 +19,7 @@
 	</update>
 	
 	<!-- 마이페이지 비밀번호 변경 -->
-	<update id="updateMyPwd">
+	<update id="updateMyPwd" parameterType="UserVO">
 		UPDATE USERS SET 
 		U_PWD = #{uPwd}
 		WHERE U_IDX=#{uIdx}

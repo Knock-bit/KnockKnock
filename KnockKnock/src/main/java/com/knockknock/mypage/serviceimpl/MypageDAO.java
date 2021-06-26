@@ -24,8 +24,12 @@ public class MypageDAO {
 	
 	// 비밀번호 수정
 	public int updateMyPwd(UserVO vo) {
+		System.out.println("uPwd: " + vo.getuPwd());
 		
-		return mybatis.update("UserVO.updateMyPwd", vo);
+		int result = mybatis.update("UserVO.updateMyPwd", vo);
+		System.out.println("dao result:" + result);
+		
+		return result;
 	}
 
 }
