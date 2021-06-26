@@ -1,4 +1,4 @@
-package com.knockknock.campaign;
+package com.knockknock.campaign.proposal;
 
 import java.sql.Date;
 
