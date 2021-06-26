@@ -22,7 +22,7 @@ public class CampaignController {
 	
 	@GetMapping("/campaign/ing/detail.do")
 	public String detail() {
-		System.out.println(">>> 진행중 캠페인 상세페이지로 이동합니다.");
+		System.out.println(">>> 진행중 캠페인 상세페이지로 이동..");
 		return "/campaign/ing/detail";
 	}
 	
