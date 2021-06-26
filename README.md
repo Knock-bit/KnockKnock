@@ -53,4 +53,4 @@ User<br/>| Campaign<br/>|Admin<br/>|Board<br/>|Mypage<br/>|
 
 `최기영` 👉🏻
 
-`홍혜민` 👉🏻
+`홍혜민` 👉🏻 <https://github.com/honghyemin>

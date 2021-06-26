@@ -1,4 +1,4 @@
-package com.knockknock.user;
+package com.knockknock.admin;
 
 import java.util.Date;
 
@@ -19,7 +19,6 @@ public class UserVO {
 	private String uAddress;
 	private Date uJoindate;
 	private String uImg;
-	private String uImgPath;
 	private int uPoint;
 	
 	
@@ -30,7 +29,7 @@ public class UserVO {
 	//전체 생성자
 	public UserVO(int uIdx, String uId, String uName, String uPwd, String uNickname, String uEmail, String uPhone,
 			Date uBirth, int uTotPoint, String uAdmin, String uActive, Date uLastlogin, String uGender, String uAddress,
-			Date uJoindate, String uImg,String uImgPath, int uPoint) {
+			Date uJoindate, String uImg, int uPoint) {
 		super();
 		this.uIdx = uIdx;
 		this.uId = uId;
@@ -48,13 +47,12 @@ public class UserVO {
 		this.uAddress = uAddress;
 		this.uJoindate = uJoindate;
 		this.uImg = uImg;
-		this.uImgPath = uImgPath;
 		this.uPoint = uPoint;
 	}
 
 	// 마이페이지용 생성자
 	public UserVO(int uIdx, String uId, String uName, String uPwd, String uNickname, String uEmail, String uPhone,
-			Date uBirth, int uTotPoint, String uGender, String uAddress, Date uJoindate, String uImg,String uImgPath, int uPoint) {
+			Date uBirth, int uTotPoint, String uGender, String uAddress, Date uJoindate, String uImg, int uPoint) {
 		super();
 		this.uIdx = uIdx;
 		this.uId = uId;
@@ -69,15 +67,7 @@ public class UserVO {
 		this.uAddress = uAddress;
 		this.uJoindate = uJoindate;
 		this.uImg = uImg;
-		this.uImgPath = uImgPath;
 		this.uPoint = uPoint;
-	}
-	
-	//로그인용 생성자
-	public UserVO(String uId, String uPwd) {
-		super();
-		this.uId = uId;
-		this.uPwd = uPwd;
 	}
 
 	//=======================[ getter, setter ] =========================
@@ -219,26 +209,16 @@ public class UserVO {
 	}
 
 	
-	public String getuImgPath() {
-		return uImgPath;
-	}
-
-	public void setuImgPath(String uImgPath) {
-		this.uImgPath = uImgPath;
-	}
-
-	
-
 	// ================== [ toString ] ====================
-	
 	@Override
 	public String toString() {
 		return "UserVO [uIdx=" + uIdx + ", uId=" + uId + ", uName=" + uName + ", uPwd=" + uPwd + ", uNickname="
 				+ uNickname + ", uEmail=" + uEmail + ", uPhone=" + uPhone + ", uBirth=" + uBirth + ", uTotPoint="
 				+ uTotPoint + ", uAdmin=" + uAdmin + ", uActive=" + uActive + ", uLastlogin=" + uLastlogin
 				+ ", uGender=" + uGender + ", uAddress=" + uAddress + ", uJoindate=" + uJoindate + ", uImg=" + uImg
-				+ ", uImgPath=" + uImgPath + ", uPoint=" + uPoint + "]";
+				+ ", uPoint=" + uPoint + "]";
 	}
+	
 	
 	
 	

@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="cp" value ="${pageContext.request.contextPath }"/>
+   <link href="${cp}/resource/css/nav.css" rel="stylesheet">
 
   <!-- ======= Header ======= -->
   <meta charset=utf-8>
@@ -35,7 +36,7 @@
           <li><a href="courses.html">Shop</a></li>
           <li><a href="trainers.html">Contact</a></li>
 
-          <li class="dropdown"><a href="#"><span class="get-started-btn">~~님</span> <i
+          <li class="dropdown"><a href="#"><span class="get-started-btn">${users.uName }님</span> <i
                 class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="updateMyInfo.do">정보수정</a></li>

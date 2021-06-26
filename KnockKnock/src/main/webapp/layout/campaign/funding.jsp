@@ -30,6 +30,7 @@
 
   <!-- Main CSS File -->
   <link href="${cp}/resource/css/main.css" rel="stylesheet">
+  <link href="${cp}/resource/css/nav.css" rel="stylesheet">
   <link href="${cp}/resource/css/campaign.css" rel="stylesheet">
 
   <!-- Import BootStrap -->
@@ -61,7 +62,7 @@
       <div class="container" data-aos="fade-up">
 
         <div class="row">
-          <div class="col-lg-8">
+          <div class="col-lg-7">
             <img src="../resource/img/campaign/ex1.jpg" class="img-fluid" alt="">
             <div>펀딩하기</div>
             <h2>Et enim incidunt fuga tempora</h3>
@@ -71,7 +72,17 @@
               Eum quasi saepe aperiam qui delectus quaerat in. Vitae mollitia ipsa quam. Ipsa aut qui numquam eum iste est dolorum. Rem voluptas ut sit ut.
             </p>
           </div>
-          <div class="col-lg-4">
+          <div class="col-lg-5">
+          
+          <div class="campaign-info align-items-center">
+              <div>
+              펀딩 진행도
+              <p class="funding-pg">
+    			<progress value="50" max="100"></progress>
+  				</p>
+              
+              </div>
+            </div>
 
             <div class="campaign-info align-items-center">
               <div class="btn-wrap funding">
@@ -79,10 +90,6 @@
               </div>
             </div>
 
-            <div class="campaign-info d-flex justify-content-between align-items-center">
-              <h5>Course Fee</h5>
-              <p>$165</p>
-            </div>
 
             <div class="campaign-info d-flex justify-content-between align-items-center">
               <h5>Available Seats</h5>

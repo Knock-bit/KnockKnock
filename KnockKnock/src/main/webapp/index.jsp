@@ -31,7 +31,7 @@
 		frm.submit();
 	}
 	function user_connect(frm){
-		frm.action="user/user";
+		frm.action="user/login.do";
 		frm.submit();
 	}
 	

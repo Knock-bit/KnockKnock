@@ -30,6 +30,7 @@
 
   <!-- Main CSS File -->
   <link href="${cp}/resource/css/main.css" rel="stylesheet">
+   <link href="${cp}/resource/css/nav.css" rel="stylesheet">
   <link href="${cp}/resource/css/campaign.css" rel="stylesheet">
 
   <!-- Import BootStrap -->
@@ -61,7 +62,7 @@
       <div class="container" data-aos="fade-up">
 
         <div class="row">
-          <div class="col-lg-8">
+          <div class="col-lg-7">
             <img src="../resource/img/campaign/ex1.jpg" class="img-fluid" alt="">
             <h2>Et enim incidunt fuga tempora</h3>
             <p>
@@ -70,7 +71,7 @@
               Eum quasi saepe aperiam qui delectus quaerat in. Vitae mollitia ipsa quam. Ipsa aut qui numquam eum iste est dolorum. Rem voluptas ut sit ut.
             </p>
           </div>
-          <div class="col-lg-4">
+          <div class="col-lg-5">
 
             <div class="campaign-info align-items-center">
               <h5>dfdfdfdfdfdf</h5>
