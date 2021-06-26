@@ -14,8 +14,6 @@
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 
-	<link rel="stylesheet" href="${cp }/resource/css/owl.carousel.min.css">
-	<link rel="stylesheet" href="${cp }/resource/css/owl.theme.default.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/4.5.6/css/ionicons.min.css">
 	<link rel="stylesheet" href="${cp }/resource/css/whatisknock.css">
 </head>
@@ -58,7 +56,7 @@
 						<div class="item">
 							<div class="work-wrap d-md-flex">
 								<div class="img order-md-last"
-									style="background-image: url(images/deforestation.jfif);"></div>
+									style="background-image: url(${cp }/resource/img/about/deforestation.jfif);"></div>
 								<div class="text text-left text-lg-right p-4 px-xl-5 d-flex align-items-center">
 									<div class="py-md-5">
 										<h3 class="mb-4">KNOCK!<br>KNOCK!</h3>
