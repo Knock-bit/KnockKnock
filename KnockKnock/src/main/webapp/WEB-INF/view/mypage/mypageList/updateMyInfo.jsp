@@ -167,8 +167,8 @@
 			</div>
 			<div class="myPhoto">
 				<div class="photo">            
-                   <img id="preview" src="${users.uImg }" width=180 height=200><br>
-                   <input type="file" name="uImg" onchange="readURL(this);" >
+                   <img id="preview" src="/resource/img/upload/${users.uImg }" width=180 height=200><br>
+                   <input type="file" name="file" onchange="readURL(this);" >
                	</div>
 			</div>
 			<div class="btn">

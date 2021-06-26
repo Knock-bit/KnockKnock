@@ -13,7 +13,7 @@
 	<!-- 마이페이지 내 정보 수정(업데이트) -->
 	<update id="updateMyInfo" parameterType="UserVO">
 		UPDATE USERS SET 
-		U_NICKNAME = #{uNickname}, U_ADDRESS=#{uAddress}, U_EMAIL=#{uEmail}, U_PHONE=#{uPhone}, U_IMG=#{uImg}
+		U_NICKNAME = #{uNickname}, U_ADDRESS=#{uAddress}, U_EMAIL=#{uEmail}, U_PHONE=#{uPhone}, U_IMG=#{uImg}, U_IMGPATH = #{uImgPath}
 		WHERE U_IDX=#{uIdx}
 	
 	</update>
