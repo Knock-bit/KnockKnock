@@ -7,8 +7,10 @@ import com.knockknock.user.UserVO;
 public class UserDAO {
 	private SqlSessionTemplate mybatis;
 	
-	public int selectlogin(String uId) {
+	public UserVO selectlogin(UserVO vo) {
+		System.out.println("BoardDAO mybatis() 생성");
 		
-		return mybatis.selectOne("UserVO.selectOneUser", uId);
+		return mybatis.selectOne("UserVO.selectOneUser", vo);
+		
 	}
 }

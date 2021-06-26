@@ -11,8 +11,8 @@ public class UserServiceImpl implements UserService{
  
 
 	@Override
-	public UserVO selectOneMember(UserVO vo) {
-		//selectOneMember작성하기.
-		return null;
+	public UserVO selectlogin(UserVO vo) {
+		System.out.println("selectlogin 시작()");
+		return userDAO.selectlogin(vo);
 	}
 }
