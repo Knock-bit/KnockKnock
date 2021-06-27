@@ -2,7 +2,7 @@ package com.knockknock.admin;
 
 import java.util.Date;
 
-public class UserVO {
+public class AdminUserVO {
 	private int uIdx;
 	private String uId;
 	private String uName;
@@ -23,11 +23,11 @@ public class UserVO {
 	
 	
 	// ===================== [ 생성자 ] =======================
-	public UserVO() {
+	public AdminUserVO() {
 	}
 
 	//전체 생성자
-	public UserVO(int uIdx, String uId, String uName, String uPwd, String uNickname, String uEmail, String uPhone,
+	public AdminUserVO(int uIdx, String uId, String uName, String uPwd, String uNickname, String uEmail, String uPhone,
 			Date uBirth, int uTotPoint, String uAdmin, String uActive, Date uLastlogin, String uGender, String uAddress,
 			Date uJoindate, String uImg, int uPoint) {
 		super();
@@ -51,7 +51,7 @@ public class UserVO {
 	}
 
 	// 마이페이지용 생성자
-	public UserVO(int uIdx, String uId, String uName, String uPwd, String uNickname, String uEmail, String uPhone,
+	public AdminUserVO(int uIdx, String uId, String uName, String uPwd, String uNickname, String uEmail, String uPhone,
 			Date uBirth, int uTotPoint, String uGender, String uAddress, Date uJoindate, String uImg, int uPoint) {
 		super();
 		this.uIdx = uIdx;

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 참고파일 나중에 삭제 -->
+<mapper namespace="Util">
+	<!-- 총 유저 수 출력 -->
+	<select id="countUser" resultType="int">
+		SELECT COUNT(*) FROM USERS
+	</select>
+
+	<!-- 페이징 처리 후 유저 조회 -->
+	<select id="getUserList" resultType="adminUserVO">
+				SELECT * FROM(
+		    SELECT ROWNUM RN, A.* FROM (
+		        SELECT * FROM USERS ORDER BY U_NAME DESC) A
+		) WHERE RN BETWEEN #{start} AND #{end}
+
+
+	</select>
+</mapper>

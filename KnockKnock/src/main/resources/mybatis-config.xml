@@ -4,44 +4,52 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
-   <settings>
-      <!-- 자동으로 카멜케이스 규칙으로 변환 -->
-      <setting name="mapUnderscoreToCamelCase" value="true" />
+	<settings>
+		<!-- 자동으로 카멜케이스 규칙으로 변환 -->
+		<setting name="mapUnderscoreToCamelCase" value="true" />
 
-      <setting name="jdbcTypeForNull" value="NULL" />
+		<setting name="jdbcTypeForNull" value="NULL" />
 
-   </settings>
+	</settings>
 
-   <!-- 별칭 생성, mapper에서 별칭을 사용할 수 있다. -->
+	<!-- 별칭 생성, mapper에서 별칭을 사용할 수 있다. -->
 
-   <typeAliases>
-      <!-- <typeAlias type="com.bc.mybatis.GuestbookVO" alias="guestbookVO" /> -->
-      
-      <!-- 관리자 -->
-      <!-- <typeAlias alias="admin" type="com.knockknock.admin.AdminVO"/> -->
-      <!-- 게시판 -->
-      <typeAlias alias="board" type="com.knockknock.board.BoardVO"/>
-      <!-- <typeAlias alias="deactivation" type="com.knockknock.board.DeactivationVO"/> -->
-      <typeAlias alias="boardCategory" type="com.knockknock.board.BoardCategoryVO"/>
-      <!-- <typeAlias alias="subtitle" type="com.knockknock.board.subtitleVO"/> -->
-      <typeAlias alias="comments" type="com.knockknock.board.CommentsVO"/>
-      <!-- 캠페인 -->
-      <typeAlias alias="campaignVO" type="com.knockknock.campaign.CampaignVO"/>
-      <typeAlias alias="campaignUserVO" type="com.knockknock.campaign.CampaignUserVO"/>
-    <!--  <typeAlias alias="campaignNom" type="com.knockknock.campaign.CampaignNomVO"/>
-      <typeAlias alias="campaignNomUser" type="com.knockknock.campaign.CampaignNomUserVO"/>
-      <typeAlias alias="keyword" type="com.knockknock.campaign.KeywordVO"/>
-      <typeAlias alias="proposal" type="com.knockknock.campaign.ProposalVO"/> -->
-      <!-- 회원 -->
-      <typeAlias alias="userVO" type="com.knockknock.user.UserVO"/>
-      
-   </typeAliases>
+	<typeAliases>
+		<!-- <typeAlias type="com.bc.mybatis.GuestbookVO" alias="guestbookVO" /> -->
 
-   <!-- mappers는 여러개 등록 가능하다. -->
-   <mappers>
-      <!-- <mapper resource="mappings/BoardMapper.xml" /> -->
-      <mapper resource="mapping/UserMapper.xml"/>
-      <mapper resource="mapping/CampaignMapper.xml"/>
-   </mappers>
+		<!-- 관리자 -->
+		<typeAlias alias="adminUserVO"
+			type="com.knockknock.admin.AdminUserVO" />
+		<!-- 게시판 -->
+		<typeAlias alias="board" type="com.knockknock.board.BoardVO" />
+		<!-- <typeAlias alias="deactivation" type="com.knockknock.board.DeactivationVO"/> -->
+		<typeAlias alias="boardCategory"
+			type="com.knockknock.board.BoardCategoryVO" />
+		<!-- <typeAlias alias="subtitle" type="com.knockknock.board.subtitleVO"/> -->
+		<typeAlias alias="comments"
+			type="com.knockknock.board.CommentsVO" />
+		<!-- 캠페인 -->
+		<typeAlias alias="campaignVO"
+			type="com.knockknock.campaign.CampaignVO" />
+		<typeAlias alias="campaignUserVO"
+			type="com.knockknock.campaign.CampaignUserVO" />
+		<!-- <typeAlias alias="campaignNom" type="com.knockknock.campaign.CampaignNomVO"/> 
+			<typeAlias alias="campaignNomUser" type="com.knockknock.campaign.CampaignNomUserVO"/> 
+			<typeAlias alias="keyword" type="com.knockknock.campaign.KeywordVO"/> <typeAlias 
+			alias="proposal" type="com.knockknock.campaign.ProposalVO"/> -->
+		<!-- 회원 -->
+		<typeAlias alias="userVO" type="com.knockknock.user.UserVO" />
+
+	</typeAliases>
+
+	<!-- mappers는 여러개 등록 가능하다. -->
+	<mappers>
+		<!-- <mapper resource="mappings/BoardMapper.xml" /> -->
+		<mapper resource="mapping/UserMapper.xml" />
+		<mapper resource="mapping/CampaignMapper.xml" />
+		<mapper resource="mapping/AdminMapper.xml" />
+		<mapper resource="mapping/UtilMapper.xml" />
+	</mappers>
+
 
 </configuration>

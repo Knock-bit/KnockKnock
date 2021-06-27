@@ -15,7 +15,7 @@
 		frm.submit();
 	}
 	function admin_connect(frm){
-		frm.action="admin/admin";
+		frm.action="adminUserList.do";
 		frm.submit();
 	}
 	function board_connect(frm){

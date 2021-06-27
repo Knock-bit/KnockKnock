@@ -4,7 +4,22 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- 참고파일 나중에 삭제 -->
 <mapper namespace="AdminDAO">
-	<select id="getUserList" parameterType="UserVO">
-		SELECT * FROM USER
+	<select id="getUserList" parameterType="adminUserVO"
+		resultType="AdminUserVO">
+		SELECT * FROM USERS
 	</select>
+
+	<select id="getUser" parameterType="adminUserVO"
+		resultType="AdminUserVO">
+		SELECT * FROM USERS WHERE U_IDX=#{uIdx}
+	</select>
+
+	<update id="updateUserActive" parameterType="adminUserVO">
+		UPDATE USERS
+		<trim prefix="SET">
+			<if test="uActive == 1">U_ACTIVE = 0</if>
+			<if test="uActive == 0">U_ACTIVE = 1</if>
+		</trim>
+		WHERE U_IDX=#{uIdx}
+	</update>
 </mapper>
