@@ -13,18 +13,20 @@
 		SELECT * FROM CAMPAIGN_ING WHERE CI_STATUS = 1
 	</select>
 	
-	<!-- 기간이 만료됐는지 확인하여 만료 시 상태를 0으로 바꾼다 -->
+	<!-- 기간이 만료됐는지 확인하여 만료 시 캠페인 상태를 0으로 바꾼다 -->
 	<update id="updateExpiredCampaign">
 		UPDATE CAMPAIGN_ING
 		   SET STATUS = 0
 		  WHERE SYSDATE > END_DATE
 	</update>
 	
+	<!-- 기간이 만료됐는지 확인하여 만료 시 펀딩 상태를 0으로 바꾼다 -->
+	<update id="updateExpiredFunding">
+		UPDATE CAMPAIGN_NOMINEE
+		   SET STATUS = 0
+		  WHERE SYSDATE > END_DATE
+	</update>
 	
-	<!-- 마이페이지 이동 -->
-	<select id="selectOneUser" parameterType="int" resultType="CampaignUserVO">
-		SELECT * FROM USERS WHERE U_IDX = #{uIdx}
-	</select>
 	
 	
 	
