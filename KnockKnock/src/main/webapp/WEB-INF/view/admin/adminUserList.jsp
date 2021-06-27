@@ -28,6 +28,11 @@ request.setCharacterEncoding("UTF-8");
 		frm.action = "adminActive.do";
 		frm.submit();
 	}
+	function selChange() {
+		var sel = document.getElementById('cntPerPage').value;
+		location.href = "adminUserList.do?nowPage=${paging.nowPage}&cntPerPage="
+				+ sel;
+	}
 </script>
 <title>관리자 - 회원관리</title>
 </head>
@@ -37,6 +42,22 @@ request.setCharacterEncoding("UTF-8");
 		<div class="row">
 			<div class="col-md-12">
 				<h3 class="text-center">회원관리창</h3>
+				<div style="float: right;">
+					<select id="cntPerPage" name="sel" onchange="selChange()">
+						<option value="5"
+							<c:if test="${paging.cntPerPage == 5}">selected</c:if>>5줄
+							보기</option>
+						<option value="10"
+							<c:if test="${paging.cntPerPage == 10}">selected</c:if>>10줄
+							보기</option>
+						<option value="15"
+							<c:if test="${paging.cntPerPage == 15}">selected</c:if>>15줄
+							보기</option>
+						<option value="20"
+							<c:if test="${paging.cntPerPage == 20}">selected</c:if>>20줄
+							보기</option>
+					</select>
+				</div>
 				<form>
 					<table class="table table-bordered table-striped">
 						<thead>
@@ -52,13 +73,13 @@ request.setCharacterEncoding("UTF-8");
 							</tr>
 						</thead>
 						<tbody>
-							<c:if test="${empty userList }">
+							<c:if test="${empty viewAll }">
 								<tr>
 									<td>가입한 회원이 없습니다.</td>
 								</tr>
 							</c:if>
-							<c:if test="${!empty userList }">
-								<c:forEach var="user" items="${userList }">
+							<c:if test="${!empty viewAll }">
+								<c:forEach var="user" items="${viewAll }">
 									<input type="hidden" name="uIdx" value="${user.uIdx }" />
 									<tr>
 										<td>${user.uIdx }</td>
@@ -84,14 +105,31 @@ request.setCharacterEncoding("UTF-8");
 						</tbody>
 					</table>
 				</form>
-				<ul class="pagination">
-					<li class="page-item"><a class="page-link" href="#">이전</a></li>
-					<li class="page-item"><a class="page-link" href="#">1</a></li>
-					<li class="page-item"><a class="page-link" href="#">다음</a></li>
-				</ul>
+				<div style="display: block; text-align: center;">
+					<c:if test="${paging.startPage != 1 }">
+						<a
+							href="/adminUserList.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
+					</c:if>
+					<c:forEach begin="${paging.startPage }" end="${paging.endPage }"
+						var="p">
+						<c:choose>
+							<c:when test="${p == paging.nowPage }">
+								<b>${p }</b>
+							</c:when>
+							<c:when test="${p != paging.nowPage }">
+								<a
+									href="/adminUserList.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
+							</c:when>
+						</c:choose>
+					</c:forEach>
+					<c:if test="${paging.endPage != paging.lastPage}">
+						<a
+							href="/adminUserList.do?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
+					</c:if>
+				</div>
 			</div>
+
 		</div>
 	</div>
-
 </body>
 </html>
