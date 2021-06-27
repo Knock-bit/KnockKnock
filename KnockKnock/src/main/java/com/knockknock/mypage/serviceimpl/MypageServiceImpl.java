@@ -1,5 +1,7 @@
 package com.knockknock.mypage.serviceimpl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,9 +27,12 @@ public class MypageServiceImpl implements MypageService {
 
 		return mypageDAO.updateMyInfo(vo);
 	}
-	
-	
-	
+	// 이메일 목록 가져오기
+	@Override
+	public List<UserVO> selectAllEmail(){
+		
+		return mypageDAO.selectAllEmail();
+	}
 	
 	// 비밀번호 수정
 	@Override

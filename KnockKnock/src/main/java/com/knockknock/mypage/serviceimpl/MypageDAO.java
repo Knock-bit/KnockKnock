@@ -1,5 +1,7 @@
 package com.knockknock.mypage.serviceimpl;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -21,10 +23,17 @@ public class MypageDAO {
 		
 		return mybatis.update("UserVO.updateMyInfo", vo);
 	}
+	// 이메일 목록 가져오기
+	public List<UserVO> selectAllEmail(){
+	
+		List<UserVO> list = mybatis.selectList("UserVO.getAllUser");
+		System.out.println("list : " + list);
+		return list;
+	}
+	
 	
 	// 비밀번호 수정
 	public int updateMyPwd(UserVO vo) {
-		System.out.println("uPwd: " + vo.getuPwd());
 		
 		int result = mybatis.update("UserVO.updateMyPwd", vo);
 		System.out.println("dao result:" + result);
