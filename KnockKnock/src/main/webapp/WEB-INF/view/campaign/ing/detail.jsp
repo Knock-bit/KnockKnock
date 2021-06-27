@@ -50,7 +50,7 @@
     <section id="campaign-title" class="d-flex justify-content-center align-items-center">
     <div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
     <br><br>
-      <h1>캠페인제목</h1>
+      <h1>${campaign.ciTitle}</h1>
       <h2>We are team of talented designers making websites with Bootstrap</h2>
     </div>
   </section><!-- End Hero -->
@@ -63,7 +63,7 @@
         <div class="row">
           <div class="col-lg-8">
             <img src="/resource/img/campaign/ex1.jpg" class="img-fluid" alt="">
-            <h2>Et enim incidunt fuga tempora</h3>
+            <h2>${campaign.ciTitle }</h3>
             <p>
               Qui et explicabo voluptatem et ab qui vero et voluptas. Sint voluptates temporibus quam autem. Atque nostrum voluptatum laudantium a doloremque enim et ut dicta. Nostrum ducimus est iure minima totam doloribus nisi ullam deserunt. Corporis aut officiis sit nihil est. Labore aut sapiente aperiam.
               Qui voluptas qui vero ipsum ea voluptatem. Omnis et est. Voluptatem officia voluptatem adipisci et iusto provident doloremque consequatur. Quia et porro est. Et qui corrupti laudantium ipsa.

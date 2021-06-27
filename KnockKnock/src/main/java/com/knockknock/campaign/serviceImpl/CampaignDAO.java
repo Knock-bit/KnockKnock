@@ -14,11 +14,12 @@ public class CampaignDAO {
 	@Autowired
 	private SqlSessionTemplate mybatis;
 
-	public CampaignVO selectOneCampaign(int cIdx) {
-		return mybatis.selectOne("campaign.selectOneCampaign", cIdx);
+	public CampaignVO selectOneCampaign(CampaignVO campaign) {
+		return mybatis.selectOne("campaign.selectOneCampaign", campaign.getcIdx());
 	}
 	
 	public List<CampaignVO> selectAllCampaign() {
+		System.out.println("CampaignDAO - selectAllCampaign 실행 >> ");
 		return mybatis.selectList("campaign.selectAllCampaign");
 	}
 	
