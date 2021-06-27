@@ -48,11 +48,11 @@ public class MypageController {
 	@GetMapping("/updateMyInfo.do")
 	public String updateMypage(UserVO vo, Model model) {
 
-		// 저장된 이메일(전체 유저 정보) 목록가져오기
-		List<UserVO> emailList = mypageService.selectAllEmail();
-		System.out.println("emailList: " + emailList);
-		model.addAttribute(emailList);
-		
+		/* => 아작스로 처리하기
+		 * // 저장된 이메일(전체 유저 정보) 목록가져오기 List<String> emailList =
+		 * mypageService.selectAllEmail(); System.out.println("emailList: " +
+		 * emailList); model.addAttribute(emailList);
+		 */
 		model.addAttribute("users");
 		return "/mypage/mypageList/updateMyInfo";
 	}

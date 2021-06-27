@@ -30,7 +30,7 @@ public class MypageServiceImpl implements MypageService {
 	}
 	// 이메일 목록 가져오기
 	@Override
-	public List<UserVO> selectAllEmail(){
+	public List<String> selectAllEmail(){
 		
 		return mypageDAO.selectAllEmail();
 	}

@@ -66,21 +66,37 @@
 	 $("#ePoint").css("width",ePoint+"%");
 	 
 	 //엠블럼 활성화 상태
-	 
-	 //var es = $(".emblemStatus").text();
-	 var ei = $(".eimg");
-	 $(".emblemStatus").each(function(i, ei){
-		 if(i==0){
-			 $(".eimg").each(function(i){
-				 $(this).css("opacity","0.2");
-			 });
-			 /* $(".eimg").css("opacity","0.2"); */
+	 $(".exitem").each(function(i){
+		 if($(this).children('span').text()==0){
+			 $(this).children('img').css("opacity","0.1");
 		 }
+	 });
+	 //=======================
+	  
+	 
+	 $(".exitem").each(function(i){
+		 var imgName = $(this).children('p').text();
+		 var onlyName = imgName.substring(0, imgName.indexOf("."));
+		 console.log(onlyName);
+		 
+		 if($(this).children('span').text()==0){
+
+			 $(".eitem > img[src*='think-green']").each(function(i){
+				
+				 $(this).css("opacity","0.1");
+
+				
+			 });
+			 
+		 }
+		 
+		 
 	 });
 	 
 
 	  
   	});
+  // 포인트 , 함수
   function numberWithCommas(x){
 	  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",");
   }
@@ -129,7 +145,7 @@
    		height:10vh;
    }
    #allPoint{
-   		font-size:28px;
+   		font-size:2rem;
    }
    
    /*포인트 그래프*/
@@ -194,12 +210,15 @@
    		justify-content: center;
 
 	}
+	.exitem{
+		display:none;
+	}
 	.eitem{
 		border-radius: 50%;
 		overflow: hidden;
       	align-items: center;
       	justify-content: center;
-      	border : solid 3px black;
+      	border : solid 2px black;
       
       	
 	}
@@ -262,16 +281,18 @@
 			<c:forEach var="emblem" items="${emblemList }">
 				<%-- <span>${emblem.CI_EMBLEM }</span> --%>
 				
-				<div class="eitem">
+				<div class="exitem">
 					<!-- 획득한 엠블럼이 아니라 모든 엠블럼이 나와야함. -->
+					<!-- status=1이면 활성화시키기 -->
 					<img class="eimg" src="/resource/img/upload/${emblem.CI_EMBLEM }">
+					<p class="eeimg">${emblem.CI_EMBLEM }</p>
 					<span class="emblemStatus" style="display:none;">${emblem.CI_EMBLEM_ST }</span>
 				</div>
 				
 			</c:forEach>
 			
-				<!-- <div class="eitem">
-					<img id="eimg" src="/resource/img/upload/think-green.png">
+				<div class="eitem">
+					<img src="/resource/img/upload/think-green.png">
 				</div>
 				<div class="eitem">
 					<img src="/resource/img/upload/exercise.png">
@@ -305,7 +326,7 @@
 				</div>
 				<div class="eitem">
 					<img src="/resource/img/upload/think-green.png">
-				</div> -->
+				</div> 
 				
 			</div>
 

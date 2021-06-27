@@ -25,9 +25,9 @@ public class MypageDAO {
 		return mybatis.update("UserVO.updateMyInfo", vo);
 	}
 	// 이메일 목록 가져오기
-	public List<UserVO> selectAllEmail(){
+	public List<String> selectAllEmail(){
 	
-		List<UserVO> list = mybatis.selectList("UserVO.getAllUser");
+		List<String> list = mybatis.selectList("UserVO.getEamilList");
 		System.out.println("list : " + list);
 		return list;
 	}
