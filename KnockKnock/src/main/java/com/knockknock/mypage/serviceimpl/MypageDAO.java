@@ -1,6 +1,7 @@
 package com.knockknock.mypage.serviceimpl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +43,7 @@ public class MypageDAO {
 	}
 	
 	// 유저의 엠블럼 목록 가져오기
-	public List<String> emblemList(UserVO vo){
+	public List<Map<String, Object>> emblemList(UserVO vo){
 		
 		return mybatis.selectList("UserVO.userEmblemList",vo);
 	}

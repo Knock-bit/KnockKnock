@@ -32,6 +32,17 @@
   
   <script>
   $(function(){
+	  
+	  // 포인트 or 엠블럼 버튼 클릭
+	  $("#pointBtn").on("click",function(){
+		  $(".emblemZone").hide();
+		  $(".pointZone").show();
+	  });
+	  $("#emblemBtn").on("click",function(){
+		  $(".emblemZone").show();
+		  $(".pointZone").hide();
+	  });
+	  
 	  // 누적 포인트 
 	 var allPoint = "${users.uTotPoint}";
 	 
@@ -53,9 +64,23 @@
 
 	 $("#uPoint").css("width",uPoint+"%");
 	 $("#ePoint").css("width",ePoint+"%");
+	 
+	 //엠블럼 활성화 상태
+	 
+	 //var es = $(".emblemStatus").text();
+	 var ei = $(".eimg");
+	 $(".emblemStatus").each(function(i, ei){
+		 if(i==0){
+			 $(".eimg").each(function(i){
+				 $(this).css("opacity","0.2");
+			 });
+			 /* $(".eimg").css("opacity","0.2"); */
+		 }
+	 });
+	 
+
 	  
-	  
-  });
+  	});
   function numberWithCommas(x){
 	  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",");
   }
@@ -78,6 +103,7 @@
    		text-align:center;
    		position:relative;
    }
+
    .pointZone, .emblemZone {
    		width:100%;
    }
@@ -86,7 +112,7 @@
    		grid-template-columns: 30% 60%;
    		grid-template-rows: 30vh 50vh;
    		border : 1px solid gray;
-   		
+   		grid-gap:10px;
    		justify-content: center;
 
    }
@@ -151,6 +177,38 @@
 	.graph.stack2 span {background: rgb(248, 192, 120); animation: stack2 2s 1;}
 	.graph.stack3 span {background: rgb(203, 248, 120); animation: stack3 2s 1;}
 	  
+	  
+	/*emblem 영역*/ 
+	.emblemZone{
+		border:1px solid gray;
+		display:none;
+	}
+	.getEmblem{
+		display : grid;
+		grid-template-columns: repeat(4, 24%);
+    	grid-template-rows: repeat(6, 1fr);
+    	grid-gap:40px;
+    	margin:10px;
+   		border : 1px solid gray;
+   		padding:10%;
+   		justify-content: center;
+
+	}
+	.eitem{
+		border-radius: 50%;
+		overflow: hidden;
+      	align-items: center;
+      	justify-content: center;
+      	border : solid 3px black;
+      
+      	
+	}
+	.eitem img {
+   	object-fit:cover;
+   	width:100%;
+   
+   }
+  
   </style>
 </head>
 <body>
@@ -160,7 +218,9 @@
 	<div class="main-content">
 	<h3>포인트현황 페이지</h3>
 	<hr>
+		
 		<div class="myPoint">
+		<button id="pointBtn">POINT</button><button id="emblemBtn">EMBLEM</button>
 			<!-- 포인트 영역 -->
 			<div class="pointZone">
 				<div class="item1">
@@ -193,15 +253,61 @@
 				
 				
 				</div>
-			
-			
-			
-			
-			
 			</div>
 			<!-- 엠블럼 영역 -->
 			<div class="emblemZone">
-
+			<p>나의 엠블럼은?</p>
+			<div class="getEmblem">
+			
+			<c:forEach var="emblem" items="${emblemList }">
+				<%-- <span>${emblem.CI_EMBLEM }</span> --%>
+				
+				<div class="eitem">
+					<!-- 획득한 엠블럼이 아니라 모든 엠블럼이 나와야함. -->
+					<img class="eimg" src="/resource/img/upload/${emblem.CI_EMBLEM }">
+					<span class="emblemStatus" style="display:none;">${emblem.CI_EMBLEM_ST }</span>
+				</div>
+				
+			</c:forEach>
+			
+				<!-- <div class="eitem">
+					<img id="eimg" src="/resource/img/upload/think-green.png">
+				</div>
+				<div class="eitem">
+					<img src="/resource/img/upload/exercise.png">
+				</div>
+				<div class="eitem">
+					<img src="/resource/img/upload/planet-earth.png">
+				</div>
+				<div class="eitem">
+					<img src="/resource/img/upload/cruelty-free.png">
+				</div>
+				<div class="eitem">
+					<img src="/resource/img/upload/think-green.png">
+				</div>
+				<div class="eitem">
+					<img src="/resource/img/upload/city.png">
+				</div>
+				<div class="eitem">
+					<img src="/resource/img/upload/heart.png">
+				</div>
+				<div class="eitem">
+					<img src="/resource/img/upload/moon.png">
+				</div>
+				<div class="eitem">
+					<img src="/resource/img/upload/pentacle.png">
+				</div>
+				<div class="eitem">
+					<img src="/resource/img/upload/planet-earth2.png">
+				</div>
+				<div class="eitem">
+					<img src="/resource/img/upload/rubbish.png">
+				</div>
+				<div class="eitem">
+					<img src="/resource/img/upload/think-green.png">
+				</div> -->
+				
+			</div>
 
 
 

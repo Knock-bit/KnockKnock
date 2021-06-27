@@ -38,8 +38,11 @@
 	</update>
 	
 	<!-- 엠블럼 리스트 -->
-	<select id="userEmblemList" parameterType="UserVO" resultType="string">
-		SELECT CI_EMBLEM FROM CAMPAIGN_ING WHERE U_IDX=#{uIdx}
+	<select id="userEmblemList" parameterType="UserVO" resultType="map">
+		SELECT C.C_IDX,C.CI_EMBLEM, U.U_IDX, U.CI_EMBLEM_ST
+		FROM CAMPAIGN_ING C, CAMPAIGN_ING_USER U
+		WHERE U.C_IDX=C.C_IDX
+		AND U.U_IDX=#{uIdx}
 	
 	</select>
 </mapper>

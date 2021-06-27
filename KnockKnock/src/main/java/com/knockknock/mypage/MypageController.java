@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -157,10 +158,11 @@ public class MypageController {
 	public String myPointPage(@ModelAttribute("users")UserVO vo, Model model) {
 		
 		// 현재 보유하고 있는 엠블럼 
-		List<String> emblemList = mypageService.emblemList(vo);
+		List<Map<String, Object>> emblemList = mypageService.emblemList(vo);
+		System.out.println("emblemList : " + emblemList);
 
 		
-		model.addAttribute(emblemList);
+		model.addAttribute("emblemList",emblemList);
 		return "/mypage/mypageList/myPointPage";
 	}
 
