@@ -21,9 +21,9 @@ public class CampaignServiceimpl implements CampaignService {
 	}
 
 	@Override
-	public CampaignVO selectOneCampaign(int cIdx) {
-		// TODO Auto-generated method stub
-		return null;
+	public CampaignVO selectOneCampaign(CampaignVO campaign) {
+		System.out.println("serviceImpl>> selectOneCampaign실행");
+		return campaignDAO.selectOneCampaign(campaign);
 	}
 
 	@Override

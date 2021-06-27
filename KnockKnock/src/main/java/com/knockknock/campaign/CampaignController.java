@@ -22,16 +22,19 @@ public class CampaignController {
 	@GetMapping("/campaign/ing/list.do")
 	public String list(Model model) {
 		List<CampaignVO> campaignList = campaignService.selectCampaignList();
+		System.out.println("campaignList 출력:" + campaignList);
 		if(campaignList !=null) {
-			model.addAllAttributes(campaignList);			
+			model.addAttribute("list", campaignList);
 		}
 		System.out.println(">>> 진행중인 캠페인으로 이동");
 		return "/campaign/ing/list";
 	}
 	
 	@GetMapping("/campaign/ing/detail.do")
-	public String detail() {
+	public String detail(CampaignVO campaignVO, Model model) {
 		System.out.println(">>> 진행중 캠페인 상세페이지로 이동!");
+		CampaignVO campaign = campaignService.selectOneCampaign(campaignVO);
+		model.addAttribute("campaign", campaign);
 		return "/campaign/ing/detail";
 	}
 	
