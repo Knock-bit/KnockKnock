@@ -1,8 +1,8 @@
-package com.knockknock.campaign;
+package com.knockknock.campaign.funding;
 
 import java.sql.Date;
 
-public class CampaignNomineeVO {
+public class FundingVO {
 	private int cIdx;
 	private String cGoal;
 	private String cnTitle;
@@ -16,10 +16,10 @@ public class CampaignNomineeVO {
 	private String cnGoal;
 	private int cpIdx;
 	
-	public CampaignNomineeVO() {
+	public FundingVO() {
 	}
 	
-	public CampaignNomineeVO(int cIdx, String cGoal, String cnTitle, String cnContent, Date cnEndtime, Date cnStarttime,
+	public FundingVO(int cIdx, String cGoal, String cnTitle, String cnContent, Date cnEndtime, Date cnStarttime,
 			int cnCollected, String cStatus, String cnFile, String cnCategory, String cnGoal, int cpIdx) {
 		super();
 		this.cIdx = cIdx;

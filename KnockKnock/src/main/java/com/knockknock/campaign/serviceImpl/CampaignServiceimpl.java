@@ -28,8 +28,13 @@ public class CampaignServiceimpl implements CampaignService {
 
 	@Override
 	public CampaignUserVO selectCampaignUserList(int cIdx) {
-		// TODO Auto-generated method stub
+
 		return null;
+	}
+
+	@Override
+	public void updateExpiredCampaign() {
+		campaignDAO.updateExpiredCampaign();
 	}
 
 }

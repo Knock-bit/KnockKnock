@@ -26,4 +26,8 @@ public class CampaignDAO {
 	public List<CampaignUserVO> selectAllUsers(){
 		return mybatis.selectList("campaign.selectAllusers");
 	}
+	
+	public int updateExpiredCampaign() {
+		return mybatis.update("campaign.updateExpiredCampaign");
+	}
 }
