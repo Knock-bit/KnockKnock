@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Mypage</title>
+<title>캠페인 제안하기</title>
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
@@ -23,6 +23,7 @@
   <!-- Main CSS File -->
   <link href="${cp}/resource/css/main.css" rel="stylesheet">
    <link href="${cp}/resource/css/nav.css" rel="stylesheet">
+   <link href="${cp}/resource/css/proposal.css" rel="stylesheet">
 
   <!-- Import BootStrap -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
@@ -39,8 +40,9 @@
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs" data-aos="fade-in">
       <div class="container">
-        <h2>캠페인 제안하기</h2>
-        <p>Est dolorum ut non facere possimus quibusdam eligendi voluptatem. Quia id aut similique quia voluptas sit quaerat debitis. Rerum omnis ipsam aperiam consequatur laboriosam nemo harum praesentium. </p>
+        <h2>캠페인 아이디어</h2>
+        <p>KNOCK!KNOCK!의 캠페인 아이디어는 모두에게 열려 있습니다.<br>다음 회차에 진행될 캠페인 아이디어를 제안해주세요.
+               제안된 아이디어는 검토 후에 회원들의 펀딩 참여여부에 따라 다음회차 캠페인으로 선정됩니다.</p>
       </div>
     </div><!-- End Breadcrumbs -->
 
@@ -57,6 +59,21 @@
 
             <form action="forms/contact.php" method="post" role="form" class="php-email-form">
               <div class="row">
+              <div class="form-group mt-3">
+              <span class="form-subtitle">캠페인 이름</span><span class="form-notice">*</span>
+                <input type="text" class="form-control" name="subject" id="subject" style="height:60px;" required>
+              </div>
+              
+              <div class="form-group mt-3">
+              <span class="form-subtitle">캠페인 목표</span>
+                <input type="text" class="form-control" name="subject" id="subject" style="height:60px;" required>
+              </div>
+              
+              <div class="form-group mt-3">
+              <span class="form-subtitle">캠페인 취지</span>
+                <textarea class="form-control" name="subject" id="contents" rows="10" placeholder= "" required></textarea>
+              </div>
+              
                 <div class="col-md-6 form-group">
                   <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
                 </div>
@@ -64,12 +81,8 @@
                   <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
                 </div>
               </div>
-              <div class="form-group mt-3">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
-              </div>
-              <div class="form-group mt-3">
-                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
-              </div>
+              
+              키워드 넣는자리
               <div class="my-3">
                 <div class="loading">Loading</div>
                 <div class="error-message"></div>

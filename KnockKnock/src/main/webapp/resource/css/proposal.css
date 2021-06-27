@@ -1,0 +1,9 @@
+@charset "UTF-8";
+.form-subtitle{
+	float:left;
+	font-size:1.5em;
+}
+.form-notice{
+	color:red;
+	float:left;
+}
