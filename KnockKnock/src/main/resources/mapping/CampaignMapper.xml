@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 참고파일 나중에 삭제 -->
+<mapper namespace="campaign">
+	<!-- 로그인 -->
+	<select id="selectOneCampaign" parameterType="int" resultType="CampaignVO">
+		SELECT * FROM CAMPAIGN_ING WHERE C_IDX=#{cIdx}
+	</select>
+	
+	<select id="selectAllCampaign" resultType="CampaignVO">
+		SELECT * FROM CAMPAIGN_ING
+	</select>
+	
+	
+	<!-- 마이페이지 이동 -->
+	<select id="selectOneUser" parameterType="int" resultType="CampaignUserVO">
+		SELECT * FROM USERS WHERE U_IDX = #{uIdx}
+	</select>
+	
+	<!-- 마이페이지 내 정보 수정(업데이트) -->
+	<update id="updateMyInfo" parameterType="UserVO">
+		UPDATE USERS SET 
+		U_NICKNAME = #{uNickname}, U_ADDRESS=#{uAddress}, U_EMAIL=#{uEmail}, U_PHONE=#{uPhone}, U_IMG=#{uImg}, U_IMGPATH = #{uImgPath}
+		WHERE U_IDX=#{uIdx}
+	
+	</update>
+	
+	<!-- 마이페이지 비밀번호 변경 -->
+	<update id="updateMyPwd" parameterType="UserVO">
+		UPDATE USERS SET 
+		U_PWD = #{uPwd}
+		WHERE U_IDX=#{uIdx}
+	
+	</update>
+</mapper>
