@@ -99,7 +99,7 @@
   }
 
   </script>
-  
+  <!-- 페이지 css -->
   <style>
   .main-content{
   		width:100%;

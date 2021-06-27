@@ -150,5 +150,18 @@ public class MypageController {
 
 		return "users";
 	}
+	
+	
+	// 포인트현황 페이지로 이동
+	@GetMapping("/myPoint.do")
+	public String myPointPage(@ModelAttribute("users")UserVO vo, Model model) {
+		
+		// 현재 보유하고 있는 엠블럼 
+		List<String> emblemList = mypageService.emblemList(vo);
+
+		
+		model.addAttribute(emblemList);
+		return "/mypage/mypageList/myPointPage";
+	}
 
 }

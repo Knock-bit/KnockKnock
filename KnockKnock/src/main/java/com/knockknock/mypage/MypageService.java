@@ -14,5 +14,7 @@ public interface MypageService {
 	List<UserVO> selectAllEmail();
 	// 비밀번호 수정
 	int updateMyPwd(UserVO vo);
+	// 유저의 엠블럼 목록 가져오기
+	List<String> emblemList(UserVO vo);
 
 }
