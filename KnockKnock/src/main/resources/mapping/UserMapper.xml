@@ -28,6 +28,12 @@
 		WHERE U_IDX=#{uIdx}
 	
 	</update>
+	
+	<!-- 마이페이지 이메일 목록 가져오기(중복확인) -->
+	<select id="getEamilList" resultType="string">
+		SELECT U_EMAIL FROM USERS 
+	
+	</select>
 
 	<!-- 마이페이지 비밀번호 변경 -->
 	<update id="updateMyPwd" parameterType="UserVO">

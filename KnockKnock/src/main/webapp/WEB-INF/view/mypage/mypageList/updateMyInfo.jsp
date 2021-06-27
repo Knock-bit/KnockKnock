@@ -42,11 +42,18 @@
 			 $("#email").focus();
 			 $("#email").css("outline-color","red");
 			 alert("올바른 이메일 형식으로 작성해주세요");
-		 } 
+		 } else {
+			 if('uEamil:contains()
+			 
+			 
+		 }
 		  
 	  }); 
 	  
 	// 이메일 중복 검사
+	
+	
+	
 	
 	// 휴대폰 수정 시 정규표현식 확인
 	 $("#phone").blur(function(){
