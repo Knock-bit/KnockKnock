@@ -26,9 +26,9 @@
       <!-- <typeAlias alias="subtitle" type="com.knockknock.board.subtitleVO"/> -->
       <typeAlias alias="comments" type="com.knockknock.board.CommentsVO"/>
       <!-- 캠페인 -->
-      <!-- <typeAlias alias="campaign" type="com.knockknock.campaign.CampaignVO"/>
-      <typeAlias alias="campaignUser" type="com.knockknock.campaign.CampaignUserVO"/>
-      <typeAlias alias="campaignNom" type="com.knockknock.campaign.CampaignNomVO"/>
+      <typeAlias alias="campaignVO" type="com.knockknock.campaign.CampaignVO"/>
+      <typeAlias alias="campaignUserVO" type="com.knockknock.campaign.CampaignUserVO"/>
+    <!--  <typeAlias alias="campaignNom" type="com.knockknock.campaign.CampaignNomVO"/>
       <typeAlias alias="campaignNomUser" type="com.knockknock.campaign.CampaignNomUserVO"/>
       <typeAlias alias="keyword" type="com.knockknock.campaign.KeywordVO"/>
       <typeAlias alias="proposal" type="com.knockknock.campaign.ProposalVO"/> -->
@@ -41,6 +41,7 @@
    <mappers>
       <!-- <mapper resource="mappings/BoardMapper.xml" /> -->
       <mapper resource="mapping/UserMapper.xml"/>
+      <mapper resource="mapping/CampaignMapper.xml"/>
    </mappers>
 
 </configuration>
