@@ -2,11 +2,16 @@ package com.knockknock.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
  
 @Controller
 
 public class UserController {
+	
+	private UserService userService;
+	UserVO user = new UserVO();
 	
 	@Autowired
 	public UserController() {
@@ -18,6 +23,33 @@ public class UserController {
 	public String moveLogin() {
 		
 		return "/user/login";
+	}
+	
+	@GetMapping("/user/signup.do")
+	public String moveSignup() {
+		
+		return "/user/signup";
+	}
+	
+	@PostMapping("/user/signup.do")
+	public String loginUser(UserVO vo, Model model) {
+		System.out.println(">>로그인처리 login() 시작");
+		System.out.println("받은 VO: " +vo);
+		String uId = vo.getuId();
+		String uPwd = vo.getuPwd();
+		
+		UserVO loginUser = userService.selectlogin(uId, uPwd);
+		System.out.println("loginUser: "+loginUser);
+		
+		if(loginUser != null) {
+			System.out.println(">>로그인 성공한 경우");
+			model.addAttribute("loginUser", loginUser);
+			return "index";
+		}else {
+			System.out.println(">>로그인 실패한 경우");
+			return "/user/loginFail";
+		}
+		
 	}
 	
 	

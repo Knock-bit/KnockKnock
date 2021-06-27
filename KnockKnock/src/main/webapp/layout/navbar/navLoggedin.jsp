@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="cp" value ="${pageContext.request.contextPath }"/>
+   <link href="${cp}/resource/css/nav.css" rel="stylesheet">
 
   <!-- ======= Header ======= -->
   <meta charset=utf-8>
@@ -39,7 +40,7 @@
                 class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="updateMyInfo.do">정보수정</a></li>
-              <li><a href="#">포인트 현황</a></li>
+              <li><a href="myPoint.do">포인트 현황</a></li>
               <li><a href="#">참여중인 캠페인</a></li>
               <li><a href="#">내 캠페인 목록</a></li>
               <li><a href="#">나의 문의내역</a></li>

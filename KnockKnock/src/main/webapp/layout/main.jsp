@@ -39,7 +39,7 @@
 <body>
 
   <!-- ======= Header ======= -->
-   <%@ include file= "../layout/navbar/nav.jsp" %>
+   <%@ include file= "/layout/navbar/nav.jsp" %>
 
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex justify-content-center align-items-center">
@@ -411,7 +411,7 @@
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
-   <%@ include file= "../layout/footer.jsp" %>
+   <%@ include file= "/layout/footer.jsp" %>
  
  <!-- End Footer -->
 

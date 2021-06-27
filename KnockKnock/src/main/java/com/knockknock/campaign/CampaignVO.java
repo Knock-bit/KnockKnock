@@ -145,6 +145,11 @@ public class CampaignVO {
 		this.c_keyword3 = c_keyword3;
 	}
 	
+	@Override
+	public String toString() {
+		return "campaign Title : " + ciTitle;
+	}
+	
 	
 	
 	

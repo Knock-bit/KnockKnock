@@ -1,5 +1,8 @@
 package com.knockknock.mypage.serviceimpl;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,19 +21,32 @@ public class MypageServiceImpl implements MypageService {
 		return mypageDAO.selectOneUser(uIdx);
 	}
 	
+	
 	// 유저 정보 수정(업데이트)
 	@Override
-	public void updateMyInfo(UserVO vo) {
-		
-		mypageDAO.updateMyInfo(vo);
+	public int updateMyInfo(UserVO vo) {
+
+		return mypageDAO.updateMyInfo(vo);
 	}
-	
+	// 이메일 목록 가져오기
+	@Override
+	public List<String> selectAllEmail(){
+		
+		return mypageDAO.selectAllEmail();
+	}
 	
 	// 비밀번호 수정
 	@Override
-	public void updateMyPwd(UserVO vo) {
+	public int updateMyPwd(UserVO vo) {
 		
-		mypageDAO.updateMyPwd(vo);
+		return mypageDAO.updateMyPwd(vo);
+	}
+	
+	// 유저의 엠블럼 목록 가져오기
+	@Override
+	public List<Map<String, Object>> emblemList(UserVO vo){
+		
+		return mypageDAO.emblemList(vo);
 	}
 
 }

@@ -4,25 +4,51 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- 참고파일 나중에 삭제 -->
 <mapper namespace="UserVO">
+	<!-- 로그인 -->
+	<select id="selectlogin" parameterType="UserVO" resultType="userVO">
+		SELECT NAME FROM USERS WHERE U_ID=#{uId} and U_PWD=#{uPwd}
+	</select>
+	
 	
 	<!-- 마이페이지 이동 -->
 	<select id="selectOneUser" parameterType="int" resultType="UserVO">
 		SELECT * FROM USERS WHERE U_IDX = #{uIdx}
 	</select>
 	
+	<!-- 유저 전체목록 -->
+	<select id="getAllUser" resultType="UserVO">
+		SELECT * FROM USERS
+	
+	</select>
+	
 	<!-- 마이페이지 내 정보 수정(업데이트) -->
 	<update id="updateMyInfo" parameterType="UserVO">
 		UPDATE USERS SET 
-		U_NICKNAME = #{uNickname}, U_ADDRESS=#{uAddress}, U_EMAIL=#{uEmail}, U_PHONE=#{uPhone}, U_IMG=#{uImg}
+		U_NICKNAME = #{uNickname}, U_ADDRESS=#{uAddress}, U_EMAIL=#{uEmail}, U_PHONE=#{uPhone}, U_IMG=#{uImg}, U_IMGPATH = #{uImgPath}
 		WHERE U_IDX=#{uIdx}
 	
 	</update>
 	
+	<!-- 마이페이지 이메일 목록 가져오기(중복확인) -->
+	<select id="getEamilList" resultType="string">
+		SELECT U_EMAIL FROM USERS 
+	
+	</select>
+
 	<!-- 마이페이지 비밀번호 변경 -->
-	<update id="updateMyPwd">
+	<update id="updateMyPwd" parameterType="UserVO">
 		UPDATE USERS SET 
 		U_PWD = #{uPwd}
 		WHERE U_IDX=#{uIdx}
 	
 	</update>
+	
+	<!-- 엠블럼 리스트 -->
+	<select id="userEmblemList" parameterType="UserVO" resultType="map">
+		SELECT C.C_IDX,C.CI_EMBLEM, U.U_IDX, U.CI_EMBLEM_ST
+		FROM CAMPAIGN_ING C, CAMPAIGN_ING_USER U
+		WHERE U.C_IDX=C.C_IDX
+		AND U.U_IDX=#{uIdx}
+	
+	</select>
 </mapper>
