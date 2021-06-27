@@ -9,7 +9,8 @@ public interface CampaignService {
 	CampaignVO selectOneCampaign(CampaignVO campaign);
 	// 캠페인 참여자 리스트 불러오기
 	CampaignUserVO selectCampaignUserList(int cIdx);
-	
+	// 종료시간 지난 캠페인 만료처리
+	void updateExpiredCampaign();
 	
 	
 }
