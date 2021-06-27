@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -46,6 +47,11 @@ public class MypageController {
 	@GetMapping("/updateMyInfo.do")
 	public String updateMypage(UserVO vo, Model model) {
 
+		// 저장된 이메일(전체 유저 정보) 목록가져오기
+		List<UserVO> emailList = mypageService.selectAllEmail();
+		System.out.println("emailList: " + emailList);
+		model.addAttribute(emailList);
+		
 		model.addAttribute("users");
 		return "/mypage/mypageList/updateMyInfo";
 	}
@@ -55,6 +61,8 @@ public class MypageController {
 	public String updateMyInfo(@ModelAttribute("users") UserVO vo, MultipartFile file, HttpServletRequest request) {
 		System.out.println("내 정보 업데이트");
 		System.out.println("vo: " + vo);
+		
+		
 
 		// 파일처리
 		if (file.isEmpty()) {
@@ -135,7 +143,7 @@ public class MypageController {
 	// = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@PostMapping("/updateMyPwd.do")
 	@ResponseBody
-	public String updateMyPwd(UserVO vo) {
+	public String updateMyPwd(@ModelAttribute("users") UserVO vo) {
 		System.out.println("비밀번호 변경");
 
 		mypageService.updateMyPwd(vo);

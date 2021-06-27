@@ -15,6 +15,12 @@
 		SELECT * FROM USERS WHERE U_IDX = #{uIdx}
 	</select>
 	
+	<!-- 유저 전체목록 -->
+	<select id="getAllUser" resultType="UserVO">
+		SELECT * FROM USERS
+	
+	</select>
+	
 	<!-- 마이페이지 내 정보 수정(업데이트) -->
 	<update id="updateMyInfo" parameterType="UserVO">
 		UPDATE USERS SET 
@@ -22,6 +28,9 @@
 		WHERE U_IDX=#{uIdx}
 	
 	</update>
+	
+	
+	
 	
 	<!-- 마이페이지 비밀번호 변경 -->
 	<update id="updateMyPwd" parameterType="UserVO">
