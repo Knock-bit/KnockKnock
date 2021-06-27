@@ -1,6 +1,7 @@
 package com.knockknock.mypage;
 
 import java.util.List;
+import java.util.Map;
 
 import com.knockknock.user.UserVO;
 
@@ -15,6 +16,6 @@ public interface MypageService {
 	// 비밀번호 수정
 	int updateMyPwd(UserVO vo);
 	// 유저의 엠블럼 목록 가져오기
-	List<String> emblemList(UserVO vo);
+	List<Map<String, Object>> emblemList(UserVO vo);
 
 }
