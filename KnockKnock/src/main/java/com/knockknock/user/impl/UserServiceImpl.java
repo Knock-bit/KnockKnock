@@ -11,8 +11,8 @@ public class UserServiceImpl implements UserService{
  
 
 	@Override
-	public UserVO selectlogin(UserVO vo) {
+	public UserVO selectlogin(String uId, String uPwd) {
 		System.out.println("selectlogin 시작()");
-		return userDAO.selectlogin(vo);
+		return userDAO.selectlogin(uId, uPwd);
 	}
 }

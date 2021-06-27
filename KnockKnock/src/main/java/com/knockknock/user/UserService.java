@@ -2,5 +2,5 @@ package com.knockknock.user;
 
 public interface UserService {
 
-	public UserVO selectlogin(UserVO vo);
+	public UserVO selectlogin(String uId, String uPwd);
 }
