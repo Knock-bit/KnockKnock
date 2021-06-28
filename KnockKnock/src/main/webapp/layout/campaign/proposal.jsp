@@ -1,123 +1,87 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="cp" value ="${pageContext.request.contextPath }"/>
+<% String cp = request.getContextPath(); %>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-<meta charset="UTF-8">
-<title>캠페인 제안하기</title>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up for Knock!Knock!</title>
 
- 
-  <!-- Vendor CSS Files -->
-  <link href="${cp}/resource/vendor/animate.css/animate.min.css" rel="stylesheet">
-  <link href="${cp}/resource/vendor/aos/aos.css" rel="stylesheet">
-  <link href="${cp}/resource/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="${cp}/resource/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="${cp}/resource/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="${cp}/resource/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="${cp}/resource/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
- 
-  <!-- Main CSS File -->
-  <link href="${cp}/resource/css/main.css" rel="stylesheet">
-   <link href="${cp}/resource/css/nav.css" rel="stylesheet">
-   <link href="${cp}/resource/css/proposal.css" rel="stylesheet">
-
-  <!-- Import BootStrap -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-  
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
+    <!-- css -->
+   	<link href="${cp}/resource/css/signup.css" rel="stylesheet">
+   	<link href="${cp}/resource/css/proposal.css" rel="stylesheet">
+    <!-- js -->
+    <link href="${cp}/resource/js/signup.js">
+  	<!-- jQuery -->
+	<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 </head>
+
 <body>
-  <!-- ======= Header ======= -->
-   <%@ include file= "../navbar/navLoggedin.jsp" %>
-  <!-- ======= Header 끝  === -->
+     <div class="main">
+        <div class="container">
+            <div class="proposal-content">
+
+                <div class="proposal-form">
+                    <form method="POST" class="register-form" id="register-form">
+                        <h2>캠페인 제안하기</h2>
+                        <p>KNOCK!KNOCK!의 캠페인 아이디어는 모두에게 열려 있습니다.<br>다음 회차에 진행될 캠페인 아이디어를 제안해주세요.
+            		   제안된 아이디어는 검토 후에 회원들의 펀딩 참여여부에 따라 다음회차 캠페인으로 선정됩니다.</p>
+     				 
+                        <div class="form-row1">
+                            <div class="form-group">
+                                <label for="cpTitle">캠페인 이름</label>
+                                <input type="text" name="cpTitle" id="name" required/>
+                            </div>
+                            <div class="form-group">
+                                <label for="cpGoal">캠페인 목표</label>
+                                <input type="text" name="cpGoal" id="id" required/>
+                            </div>
+                             <div class="form-group" >
+                                <label for="cpContent">캠페인 취지</label>
+                                 <textarea name="cpContent" id="cpContent" rows="5" required></textarea>
+                            </div>
+                        </div>
+                        <div class="form-row1">
+                           <div class="form-group">
+                                <label for="cpTitle">목표포인트</label>
+                                <input type="number" name="cpTitle" id="cpGoalPoint" min="2500" required/>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="keyword1">키워드1</label>
+                                <input type="text" name="keyword" id="pKeyword1" />
+                            </div>
+                            <div class="form-group">
+                                <label for="keyword2">키워드2</label>
+                                <input type="text" name="keyword" id="pKeyword2" />
+                            </div>
+                            <div class="form-group">
+                                <label for="keyword3">키워드3</label>
+                                <input type="text" name="keyword" id="pKeyword3" />
+                            </div>
+                        </div>
 
 
-<main id="main">
-
-    <!-- ======= Breadcrumbs ======= -->
-    <div class="breadcrumbs" data-aos="fade-in">
-      <div class="container">
-        <h2>캠페인 아이디어</h2>
-        <p>KNOCK!KNOCK!의 캠페인 아이디어는 모두에게 열려 있습니다.<br>다음 회차에 진행될 캠페인 아이디어를 제안해주세요.
-               제안된 아이디어는 검토 후에 회원들의 펀딩 참여여부에 따라 다음회차 캠페인으로 선정됩니다.</p>
-      </div>
-    </div><!-- End Breadcrumbs -->
-
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
-
-      <div class="container">
-
-        <div class="row mt-5"><center>
-
-  
-
-          <div class="col-lg-8 mt-5 mt-lg-0">
-
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-              <div class="row">
-              <div class="form-group mt-3">
-              <span class="form-subtitle">캠페인 이름</span><span class="form-notice">*</span>
-                <input type="text" class="form-control" name="subject" id="subject" style="height:60px;" required>
-              </div>
-              
-              <div class="form-group mt-3">
-              <span class="form-subtitle">캠페인 목표</span>
-                <input type="text" class="form-control" name="subject" id="subject" style="height:60px;" required>
-              </div>
-              
-              <div class="form-group mt-3">
-              <span class="form-subtitle">캠페인 취지</span>
-                <textarea class="form-control" name="subject" id="contents" rows="10" placeholder= "" required></textarea>
-              </div>
-              
-                <div class="col-md-6 form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                        <div class="form-submit">
+                            <input type="submit" value="취소" class="submit" name="reset" id="reset" />
+                            <input type="submit" value="제출" class="submit" name="submit" id="submit" />
+                        </div>
+                    </form>
                 </div>
-                <div class="col-md-6 form-group mt-3 mt-md-0">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
-                </div>
-              </div>
-              
-              키워드 넣는자리
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
-            </form>
-
-          </div>
-
+            </div>
         </div>
 
-      </div>
-    </section><!-- End Contact Section -->
+    </div>
 
-  </main><!-- End #main -->
-
-
-
-
-
-
-<!-- ======= Footer ======= -->
-   <%@ include file= "../footer.jsp" %>
-<!-- Vendor JS Files -->
-  <script src="${cp}/resource/vendor/aos/aos.js"></script>
-  <script src="${cp}/resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="${cp}/resource/vendor/php-email-form/validate.js"></script>
-  <script src="${cp}/resource/vendor/purecounter/purecounter.js"></script>
-  <script src="${cp}/resource/vendor/swiper/swiper-bundle.min.js"></script>
-
-  <!-- Template Main JS File -->
-  <script src="${cp}/resource/js/main.js"></script>
- <!-- End Footer -->
 </body>
-
 
 </html>
