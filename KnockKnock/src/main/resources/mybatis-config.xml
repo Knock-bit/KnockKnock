@@ -37,9 +37,9 @@
 			type="com.knockknock.campaign.ing.CampaignUserVO" />
 		<typeAlias alias="fundingVO" 
 			type="com.knockknock.campaign.funding.FundingVO"/> 
-<!--  	<typeAlias alias="campaignNomUser" 
-			type="com.knockknock.campaign.CampaignNomUserVO"/> 
-		<typeAlias alias="keyword" 
+	  	<typeAlias alias="fundingUserVO" 
+			type="com.knockknock.campaign.funding.FundingUserVO"/> 
+<!--	<typeAlias alias="keyword" 
 			type="com.knockknock.campaign.KeywordVO"/> -->
 		
   		<typeAlias alias="proposalVO" 

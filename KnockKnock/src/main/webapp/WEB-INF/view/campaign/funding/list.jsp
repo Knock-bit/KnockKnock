@@ -71,7 +71,7 @@
 		                  <p class="price">$169</p>
 		                </div>
 		
-		                <h3><a href="${cp }/campaign/ing/detail.do?cfIdx=${funding.cfIdx }">${funding.cfTitle }</a></h3>
+		                <h3><a href="${cp }/campaign/funding/detail.do?cfIdx=${funding.cfIdx }">${funding.cfTitle }</a></h3>
 		                <p>캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. </p>
 		                펀딩 진행도
               <p class="funding-pg">
@@ -80,7 +80,7 @@
 		                <div class="trainer d-flex justify-content-between align-items-center">
 		                  <div class="trainer-profile d-flex align-items-center">
 		                    <img src="assets/img/trainers/trainer-1.jpg" class="img-fluid" alt="">
-		                    <span>Antonio</span>
+		                    <span>suggested by ${funding.hostNickname }</span>
 		                  </div>
 		                  <div class="trainer-rank d-flex align-items-center">
 		                    <i class="bx bx-user"></i>&nbsp;50
