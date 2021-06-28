@@ -2,6 +2,8 @@ package com.knockknock.board;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class BoardVO {
 	
 	private int bIdx;
@@ -15,6 +17,11 @@ public class BoardVO {
 	private String bFile;
 	private int ciIdx;
 	private int sbIdx;
+	
+	//검색조건용, 파일업로드
+	private String searchCondition;
+	private String searchKeyword;
+	private MultipartFile uploadFile;
 	
 	public BoardVO() {}
 	
@@ -105,6 +112,26 @@ public class BoardVO {
 	public String toString() {
 		return "BoardVO [bIdx=" + bIdx + ", bSubject=" + bSubject + ", bContent=" + bContent + ", uIdx=" + uIdx
 				+ ", bRegdate=" + bRegdate + ", bHit=" + bHit + ", bViews=" + bViews + ", bCategory=" + bCategory
-				+ ", bFile=" + bFile + ", ciIdx=" + ciIdx + ", sbIdx=" + sbIdx + "]";
+				+ ", bFile=" + bFile + ", ciIdx=" + ciIdx + ", sbIdx=" + sbIdx + ", searchCondition=" + searchCondition
+				+ ", searchKeyword=" + searchKeyword + ", uploadFile=" + uploadFile + "]";
+	}
+
+	public String getSearchCondition() {
+		return searchCondition;
+	}
+	public void setSearchCondition(String searchCondition) {
+		this.searchCondition = searchCondition;
+	}
+	public String getSearchKeyword() {
+		return searchKeyword;
+	}
+	public void setSearchKeyword(String searchKeyword) {
+		this.searchKeyword = searchKeyword;
+	}
+	public MultipartFile getUploadFile() {
+		return uploadFile;
+	}
+	public void setUploadFile(MultipartFile uploadFile) {
+		this.uploadFile = uploadFile;
 	}
 }
