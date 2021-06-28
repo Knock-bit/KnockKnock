@@ -17,7 +17,7 @@
     <!-- css -->
    	<link href="${cp}/resource/css/signup.css" rel="stylesheet">
     <!-- js -->
-    <script src="${cp}/resource/js/signup.js"></script>
+    <link href="${cp}/resource/js/signup.js">
   	<!-- jQuery -->
 	<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <!--다음 카카오 주소값-->

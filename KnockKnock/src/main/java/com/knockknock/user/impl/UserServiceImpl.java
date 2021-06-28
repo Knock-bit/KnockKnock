@@ -16,4 +16,11 @@ public class UserServiceImpl implements UserService{
 		System.out.println("selectlogin 시작()");
 		return userDAO.selectlogin(vo);
 	}
+
+//	@Override
+//	public int IdCheck(String uId) {
+//		System.out.println("idCheck() 시작");
+//		
+//		return userDAO.idCheck(uId);
+//	}
 }

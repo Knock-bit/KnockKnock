@@ -9,6 +9,9 @@
 		SELECT U_NAME FROM USERS WHERE U_ID=#{uId} and U_PWD=#{uPwd}
 	</select>
 	
+	<select id="idCheck" parameterType="UserVO" resultType="UserVO">
+		SELECT U_NAME FROM USERS WHERE U_ID=#{uId}
+	</select> 
 	
 	<!-- 마이페이지 이동 -->
 	<select id="selectOneUser" parameterType="int" resultType="UserVO">
