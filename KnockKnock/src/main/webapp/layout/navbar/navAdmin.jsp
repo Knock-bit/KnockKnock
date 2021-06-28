@@ -42,6 +42,7 @@
               <li><a href="#">키워드 관리</a></li>
               <li><a href="#">게시판 관리</a></li>
               <li><a href="#">회원 관리</a></li>
+              <li><a href="#">문의내역 확인</a></li>
             </ul>
           </li>
 

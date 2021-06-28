@@ -46,7 +46,10 @@
                type="com.knockknock.campaign.proposal.ProposalVO"/>
 		<!-- 회원 -->
 		<typeAlias alias="userVO" type="com.knockknock.user.UserVO" />
-
+		
+		<!-- contact -->
+		<typeAlias alias="contactVO" type="com.knockknock.contact.ContactVO" />
+		
 	</typeAliases>
 
 	<!-- mappers는 여러개 등록 가능하다. -->
@@ -56,6 +59,8 @@
 		<mapper resource="mapping/CampaignMapper.xml" />
 		<mapper resource="mapping/AdminMapper.xml" />
 		<mapper resource="mapping/UtilMapper.xml" />
+		<mapper resource="mapping/ContactMapper.xml" />
+		
 	</mappers>
 
 

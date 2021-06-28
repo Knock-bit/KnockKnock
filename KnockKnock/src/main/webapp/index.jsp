@@ -35,7 +35,10 @@
 		frm.submit();
 	}
 	
-	
+	function contact_connect(frm){
+		frm.action="contact/contact.do";
+		frm.submit();
+	}
 	
 </script>
 </head>
@@ -49,6 +52,8 @@
 		<input type="button" value="campagin" onclick="campaign_connect(this.form)">
 		<input type="button" value="mypage" onclick="mypage_connect(this.form)">
 		<input type="button" value="user" onclick="user_connect(this.form)">
+		<input type="button" value="contact" onclick="contact_connect(this.form)">
+		
 	</form>
 	
 </body>
