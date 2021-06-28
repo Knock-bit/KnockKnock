@@ -1,5 +1,7 @@
 package com.knockknock.user;
 
+import java.io.PrintWriter;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,13 +9,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
  
 @Controller
-
 public class UserController {
-	
+	@Autowired
 	private UserService userService;
 	UserVO user = new UserVO();
 	
-	@Autowired
 	public UserController() {
 		System.out.println("UserController생성자");
 	}
@@ -27,27 +27,26 @@ public class UserController {
 	
 	@GetMapping("/user/signup.do")
 	public String moveSignup() {
-		
+		System.out.println("signup.do");
 		return "/user/signup";
 	}
 	
-	@PostMapping("/user/signup.do")
+	@PostMapping("/user/loginUser.do")
 	public String loginUser(UserVO vo, Model model) {
-		System.out.println(">>로그인처리 login() 시작");
+		System.out.println(">>로그인처리 loginUser() 시작");
 		System.out.println("받은 VO: " +vo);
-		String uId = vo.getuId();
-		String uPwd = vo.getuPwd();
 		
-		UserVO loginUser = userService.selectlogin(uId, uPwd);
+		UserVO loginUser = userService.selectlogin(vo);
 		System.out.println("loginUser: "+loginUser);
 		
 		if(loginUser != null) {
 			System.out.println(">>로그인 성공한 경우");
 			model.addAttribute("loginUser", loginUser);
-			return "index";
+			return "/main/main";
 		}else {
 			System.out.println(">>로그인 실패한 경우");
-			return "/user/loginFail";
+			
+			return "/user/login";
 		}
 		
 	}

@@ -15,17 +15,7 @@
 	<link href="${cp}/resource/css/login.css" rel="stylesheet">
 
     <script>
-        const signUpButton = document.getElementById('signUp');
-        const signInButton = document.getElementById('signIn');
-        const container = document.getElementById('container');
 
-        signUpButton.addEventListener('click', () => {
-            container.classList.add("right-panel-active");
-        });
-
-        signInButton.addEventListener('click', () => {
-            container.classList.remove("right-panel-active");
-        });
         function signup_connect(frm){
     		frm.action="user/signup.do";
     		frm.submit();
@@ -39,7 +29,7 @@
     <div class="container" id="container">
 
         <div class="form-container sign-in-container">
-            <form action="signup.do" method="post">
+            <form action="loginUser.do" method="post">
                 <h1>Sign in</h1>
                 <div class="social-container">
                     <span>소셜계정 이용하기</span><br>
@@ -59,7 +49,7 @@
                 <div class="overlay-panel overlay-right">
                     <h1>Knock!Knock!</h1>
                     <p>아직 회원이 아니신가요?<br>지금 바로 가입하세요.</p>
-                    <button class="ghost" id="signUp" onclick="signup_connect(this.form)">회원가입</button>
+                    <button class="ghost" id="signUp" onclick="location.href='/user/signup.do'">회원가입</button>
                 </div>
             </div>
         </div>

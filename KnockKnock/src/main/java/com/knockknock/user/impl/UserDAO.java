@@ -1,25 +1,20 @@
 package com.knockknock.user.impl;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.knockknock.user.UserVO;
 
+@Repository
 public class UserDAO {
+	@Autowired
 	private SqlSessionTemplate mybatis;
 	
-	public UserVO selectlogin(String uId, String uPwd) {
+	public UserVO selectlogin(UserVO vo) {
 		System.out.println("BoardDAO mybatis() 생성");
-		
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("uId", uId);
-		map.put("uPwd", uPwd);
-		
-		System.out.println("map: "+map);
-		
-		return mybatis.selectOne("UserVO.selectOneUser", map);
-		
+		vo = mybatis.selectOne("UserVO.selectlogin", vo);
+		System.out.println(vo);
+		return vo;		
 	}
 }
