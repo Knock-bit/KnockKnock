@@ -21,23 +21,23 @@ public class UserController {
 		System.out.println("UserController생성자");
 	}
 
-	//로그인하기
+	//로그인하기로 이동
 	@GetMapping("/user/login.do")
 	public String moveLogin() {
 		
 		return "/user/login";
 	}
-	
+	//회원가입창으로 이동
 	@GetMapping("/user/signup.do")
 	public String moveSignup() {
 		return "/user/signup";
 	}
-
+	//회원가입 전 tnc로 이동
 	@GetMapping("/user/tnc.do")
 	public String tnc() {
 		return "/user/tnc";
 	}
-	
+	//id중복체크
 	@RequestMapping("/user/idCheck.do")
 	@ResponseBody
 	public int idCheck(String id) {
@@ -49,7 +49,7 @@ public class UserController {
 		return result;
 		
 	}
-	
+	//email중복체크
 	@RequestMapping("/user/emailCheck.do")
 	@ResponseBody
 	public int emailCheck(String email) {
@@ -61,6 +61,7 @@ public class UserController {
 		return result;
 		
 	}
+	//로그인
 	@PostMapping("/user/loginUser.do")
 	public String loginUser(UserVO vo, Model model) {
 		
@@ -76,7 +77,7 @@ public class UserController {
 		}
 		
 	}
-	
+	//로그아웃
 	@PostMapping("/user/join.do")
 	public String join(UserVO vo) {
 		System.out.println("회원가입 controller join()");
