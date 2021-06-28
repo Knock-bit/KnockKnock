@@ -20,6 +20,8 @@
 		<!-- 관리자 -->
 		<typeAlias alias="adminUserVO"
 			type="com.knockknock.admin.AdminUserVO" />
+			<typeAlias alias="adminKeywordVO"
+			type="com.knockknock.admin.AdminKeywordVO" />
 		<!-- 게시판 -->
 		<typeAlias alias="board" type="com.knockknock.board.BoardVO" />
 		<!-- <typeAlias alias="deactivation" type="com.knockknock.board.DeactivationVO"/> -->

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,6 +32,11 @@ public class AdminController {
 //		return "/admin/adminUser";
 //	}
 
+	@GetMapping("/adminMain.do")
+	public String moveAdminMain() {
+		return "/admin/adminMain";
+	}
+
 	@GetMapping("/adminActive.do")
 	public String updateUserActive(AdminUserVO vo) {
 		System.out.println("유저 활성 상태 변경");
@@ -49,17 +55,37 @@ public class AdminController {
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = "1";
 			cntPerPage = "3";
-		} else if(nowPage == null) {
-			nowPage ="1";
-		} else if(cntPerPage ==null) {
+		} else if (nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) {
+			cntPerPage = "3";
+		}
+		pvo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		model.addAttribute("paging", pvo);
+		model.addAttribute("viewAll", adminService.getUserList(pvo));
+		System.out.println(adminService.getUserList(pvo));
+		System.out.println(pvo);
+		return "/admin/adminUserList";
+	}
+
+	@GetMapping("/adminKeywordList.do")
+	public String getKeywordList(PagingVO pvo, Model model,
+			@RequestParam(value = "nowPage", required = false) String nowPage,
+			@RequestParam(value = "cntPerPage", required = false) String cntPerPage) {
+		
+		int total = adminService.countKeyword();
+		if (nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "3";
+		} else if (nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) {
 			cntPerPage = "3";
 		}
 		pvo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
 		model.addAttribute("paging",pvo);
-		model.addAttribute("viewAll",adminService.getUserList(pvo));
-		System.out.println(adminService.getUserList(pvo));
-		System.out.println(pvo);
-		return "/admin/adminUserList";
+		model.addAttribute("viewAll", adminService.getKeywordList(pvo));
+		return "/admin/adminKeywordList";
 	}
 
 }

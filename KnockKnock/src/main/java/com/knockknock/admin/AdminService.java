@@ -11,8 +11,8 @@ public interface AdminService {
 	void getUserList(AdminUserVO vo);  
 	AdminUserVO getUser(AdminUserVO vo);
 	void updateUserActive(AdminUserVO vo);
-	// user count 가져오기
-	public int countUser();
-	// 페이징 처리 user조회
-	public List<AdminUserVO> getUserList(PagingVO pvo);
+	public int countUser();  	// user count 가져오기
+	public List<AdminUserVO> getUserList(PagingVO pvo); 	// 페이징 처리 user조회
+	public int countKeyword();  // keyword count 가져오기 
+	public List<AdminKeywordVO> getKeywordList(PagingVO pvo);	// 페이징 처리 keyword 조회
 }
