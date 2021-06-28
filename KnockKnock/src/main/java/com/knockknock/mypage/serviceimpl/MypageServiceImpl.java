@@ -51,9 +51,16 @@ public class MypageServiceImpl implements MypageService {
 	}
 	
 	// 유저의 진행중 캠페인 리스트 가져오기
+	@Override
 	public List<CampaignVO> campaigningList(UserVO vo){
 		
 		return mypageDAO.campaigningList(vo);
 	}
 
+	// 유저의 종료된 캠페인 리스트 가져오기
+	@Override
+	public List<CampaignVO> endCampaignList(UserVO vo){
+		
+		return mypageDAO.endCampaignList(vo);
+	}
 }

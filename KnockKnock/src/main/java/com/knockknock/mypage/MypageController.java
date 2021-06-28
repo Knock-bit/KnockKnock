@@ -168,7 +168,18 @@ public class MypageController {
 		
 		
 		model.addAttribute("clist",clist);
-		return "/mypage/mypageList/myCampaigning";
+		return "/mypage/mypageList/mycaming";
+	}
+	
+	// 종료된 캠페인 리스트
+	@GetMapping("myCampaignList.do")
+	public String myEndCampaignList(@ModelAttribute("users")UserVO vo, Model model) {
+		// 유저의 종료된 캠페인 리스트 가져오기
+		List<CampaignVO> endlist = mypageService.endCampaignList(vo);
+		System.out.println("endList:" + endlist);
+		
+		model.addAttribute("endlist",endlist);
+		return "/mypage/mypageList/myCampaignList";
 	}
 
 }
