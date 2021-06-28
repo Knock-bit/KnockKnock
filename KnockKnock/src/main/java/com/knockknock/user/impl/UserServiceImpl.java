@@ -13,14 +13,21 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public UserVO selectlogin(UserVO vo) {
-		System.out.println("selectlogin 시작()");
 		return userDAO.selectlogin(vo);
 	}
 
-//	@Override
-//	public int IdCheck(String uId) {
-//		System.out.println("idCheck() 시작");
-//		
-//		return userDAO.idCheck(uId);
-//	}
+	@Override
+	public int idCheck(String id) {
+		return userDAO.idCheck(id);
+	}
+
+	@Override
+	public int emailCheck(String email) {
+		return userDAO.emailCheck(email);
+	}
+
+	@Override
+	public void join(UserVO vo) {
+		userDAO.join(vo);
+	}
 }

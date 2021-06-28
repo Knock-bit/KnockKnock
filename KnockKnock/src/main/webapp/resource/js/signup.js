@@ -1,3 +1,4 @@
+
 (function ($) {
 
   $('#reset').on('click', function () {
@@ -8,9 +9,52 @@
 
 
 $(document).ready(function () {
+  //아이디
+  var id = $("#id").val();
+
+  $('#id').on('blur', function () {
+    $.ajax("idCheck.do", {
+      type: "get",
+      dataType: "text",
+      data: { "id": $("#id").val() },
+      success: function (data) {
+        console.log(data);
+        if (data == 1) {
+          console.log("사용가능");
+        } else {
+          alert("중복된 아이디입니다. 다시 입력해주세요.");
+          $("#id").val(null);
+        }
+      },
+      error: function () {
+        console.log("ajax오류");
+      }
+
+    })
+
+  });
 
 
-
+  //이메일
+  $('#email').on('blur', function () {
+    var email = $('#email').val();
+    console.log(email);
+    $.ajax("emailCheck.do", {
+      type: "get",
+      dataType: "text",
+      data: { "email": $("#email").val() },
+      success: function (data) {
+        if (data == 1) {
+          console.log("ok");
+        } else {
+          alert("중복된 이메일 주소입니다.\n다시 확인해주세요.");
+        }
+      },
+      error: function () {
+        alert("실패");
+      }
+    })
+  });
 
   //이름
   $('#name').on('blur', function () {
@@ -178,3 +222,4 @@ $(document).ready(function () {
   });
 
 });
+
