@@ -6,6 +6,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -24,6 +26,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.knockknock.campaign.CampaignVO;
 import com.knockknock.user.UserVO;
 
 @Controller
@@ -46,6 +49,11 @@ public class MypageController {
 	@GetMapping("/updateMyInfo.do")
 	public String updateMypage(UserVO vo, Model model) {
 
+		/* => 아작스로 처리하기
+		 * // 저장된 이메일(전체 유저 정보) 목록가져오기 List<String> emailList =
+		 * mypageService.selectAllEmail(); System.out.println("emailList: " +
+		 * emailList); model.addAttribute(emailList);
+		 */
 		model.addAttribute("users");
 		return "/mypage/mypageList/updateMyInfo";
 	}
@@ -55,6 +63,8 @@ public class MypageController {
 	public String updateMyInfo(@ModelAttribute("users") UserVO vo, MultipartFile file, HttpServletRequest request) {
 		System.out.println("내 정보 업데이트");
 		System.out.println("vo: " + vo);
+		
+		
 
 		// 파일처리
 		if (file.isEmpty()) {
@@ -135,12 +145,37 @@ public class MypageController {
 	// = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@PostMapping("/updateMyPwd.do")
 	@ResponseBody
-	public String updateMyPwd(UserVO vo) {
+	public String updateMyPwd(@ModelAttribute("users") UserVO vo) {
 		System.out.println("비밀번호 변경");
 
 		mypageService.updateMyPwd(vo);
 
 		return "users";
+	}
+	
+	
+	// 포인트현황 페이지로 이동
+	@GetMapping("/myPoint.do")
+	public String myPointPage(@ModelAttribute("users")UserVO vo, Model model) {
+		
+		// 해당 유저의 STATUS가 1인 엠블럼 이미지 가져오기
+		List<String> emImgList = mypageService.emblemList(vo);
+		System.out.println("emImgList:" + emImgList);
+		model.addAttribute("emImgList", emImgList);
+		return "/mypage/mypageList/myPointPage";
+	}
+	
+	
+	// 현재 참여중인 캠페인으로 이동
+	@GetMapping("/myCampaignPage.do")
+	public String myCampainging(@ModelAttribute("users")UserVO vo, Model model) {
+		// 유저의 캠페인 리스트 가져오기
+		List<CampaignVO> clist = mypageService.campaigningList(vo);
+		System.out.println("clist:" + clist);
+		
+		
+		model.addAttribute("clist",clist);
+		return "/mypage/mypageList/myCampaigning";
 	}
 
 }

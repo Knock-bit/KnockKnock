@@ -12,7 +12,7 @@
     <!--jQuery import방식 2(CDN방식)-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-	<link href="${cp}/resource/css/main.css" rel="stylesheet">
+	<link href="${cp}/resource/css/login.css" rel="stylesheet">
 
     <script>
         const signUpButton = document.getElementById('signUp');
@@ -26,6 +26,11 @@
         signInButton.addEventListener('click', () => {
             container.classList.remove("right-panel-active");
         });
+        function signup_connect(frm){
+    		frm.action="user/signup.do";
+    		frm.submit();
+    	}
+        
     </script>
 </head>
 
@@ -42,8 +47,8 @@
                     <a href="#" class="social">Google<i class="fab fa-google-plus-g"></i></a>
                     <a href="#" class="social">Kakao<i class="fab fa-linkedin-in"></i></a>
                 </div>
-                <input type="text" placeholder="아이디" id="uid" value="${user.uId}" }/>
-                <input type="password" placeholder="비밀번호" />
+                <input type="text" placeholder="아이디" name="uId" value="${user.uId}" }/>
+                <input type="password" placeholder="비밀번호" name="uPwd" value="${user.uPwd }"/>
                 <a href="#">비밀번호를 잊으셨나요?</a>
                 <button>Log In</button>
             </form>
@@ -52,9 +57,9 @@
         <div class="overlay-container">
             <div class="overlay">
                 <div class="overlay-panel overlay-right">
-                    <h1>Knock!Kncok!</h1>
+                    <h1>Knock!Knock!</h1>
                     <p>아직 회원이 아니신가요?<br>지금 바로 가입하세요.</p>
-                    <button class="ghost" id="signUp"><a href="${cp}/user/reg">회원가입</a></button>
+                    <button class="ghost" id="signUp" onclick="signup_connect(this.form)">회원가입</button>
                 </div>
             </div>
         </div>

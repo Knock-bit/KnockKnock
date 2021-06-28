@@ -6,13 +6,19 @@
 <mapper namespace="UserVO">
 	<!-- 로그인 -->
 	<select id="selectlogin" parameterType="UserVO" resultType="userVO">
-		SELECT NAME FROM USERS WHERE U_ID=#{uId}
+		SELECT NAME FROM USERS WHERE U_ID=#{uId} and U_PWD=#{uPwd}
 	</select>
 	
 	
 	<!-- 마이페이지 이동 -->
 	<select id="selectOneUser" parameterType="int" resultType="UserVO">
 		SELECT * FROM USERS WHERE U_IDX = #{uIdx}
+	</select>
+	
+	<!-- 유저 전체목록 -->
+	<select id="getAllUser" resultType="UserVO">
+		SELECT * FROM USERS
+	
 	</select>
 	
 	<!-- 마이페이지 내 정보 수정(업데이트) -->
@@ -23,6 +29,12 @@
 	
 	</update>
 	
+	<!-- 마이페이지 이메일 목록 가져오기(중복확인) -->
+	<select id="getEamilList" resultType="string">
+		SELECT U_EMAIL FROM USERS 
+	
+	</select>
+
 	<!-- 마이페이지 비밀번호 변경 -->
 	<update id="updateMyPwd" parameterType="UserVO">
 		UPDATE USERS SET 
@@ -30,4 +42,24 @@
 		WHERE U_IDX=#{uIdx}
 	
 	</update>
+	
+	<!-- 엠블럼 리스트 -->
+	<select id="userEmblemList" parameterType="UserVO" resultType="map">
+		SELECT CI_EMBLEM
+		FROM (SELECT C.C_IDX,C.CI_EMBLEM, U.U_IDX, U.CI_EMBLEM_ST
+		FROM CAMPAIGN_ING C, CAMPAIGN_ING_USER U
+		WHERE U.C_IDX=C.C_IDX
+		AND U.U_IDX=#{uIdx}) 
+		WHERE CI_EMBLEM_ST=1
+	
+	</select>
+	
+	<!-- 진행중인 캐페인 리스트 -->
+	<select id="userCamingList" parameterType="UserVO" resultType="campaignVO" >
+		SELECT C.*
+		FROM CAMPAIGN_ING C, CAMPAIGN_ING_USER U
+		WHERE U.C_IDX=C.C_IDX 
+		AND C.CI_STATUS=1
+		AND U.U_IDX=#{uIdx}
+	</select>
 </mapper>

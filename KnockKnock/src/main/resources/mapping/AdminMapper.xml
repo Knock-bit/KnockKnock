@@ -4,7 +4,28 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- 참고파일 나중에 삭제 -->
 <mapper namespace="AdminDAO">
-	<select id="getUserList" parameterType="UserVO">
-		SELECT * FROM USER
+
+	<!-- 유저 리스트 전체 출력 -->
+	<select id="getUserList" parameterType="adminUserVO"
+		resultType="AdminUserVO">
+		SELECT * FROM USERS
+	</select>
+	<!-- 1명 유저 가져오기  -->
+	<select id="getUser" parameterType="adminUserVO"
+		resultType="AdminUserVO">
+		SELECT * FROM USERS WHERE U_IDX=#{uIdx}
+	</select>
+	<!-- 활성상태  -->
+	<update id="updateUserActive" parameterType="adminUserVO">
+		UPDATE USERS
+		<trim prefix="SET">
+			<if test="uActive == 1">U_ACTIVE = 0</if>
+			<if test="uActive == 0">U_ACTIVE = 1</if>
+		</trim>
+		WHERE U_IDX=#{uIdx}
+	</update>
+	<!-- 키워드 리스트 출력 -->
+	<select id="getKeywordList" resultType="adminKeywordVO">
+		SELECT * FROM KEYWORD ORDER BY K_CONTENT
 	</select>
 </mapper>

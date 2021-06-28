@@ -11,11 +11,11 @@
 		/WEB-INF/view/main/main.jsp로 이동될 예정
 	*/
 	function main_connect(frm){
-		frm.action="main/main";
+		frm.action="main.do";
 		frm.submit();
 	}
 	function admin_connect(frm){
-		frm.action="admin/admin";
+		frm.action="adminMain.do";
 		frm.submit();
 	}
 	function board_connect(frm){
