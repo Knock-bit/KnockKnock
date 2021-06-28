@@ -71,12 +71,12 @@
 		                  <p class="price">$169</p>
 		                </div>
 		
-		                <h3><a href="${cp }/campaign/ing/detail.do?cIdx=${campaign.cIdx }">${campaign.ciTitle }</a></h3>
+		                <h3><a href="${cp }/campaign/ing/detail.do?ciIdx=${campaign.ciIdx }">${campaign.ciTitle }</a></h3>
 		                <p>캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. </p>
 		                <div class="trainer d-flex justify-content-between align-items-center">
 		                  <div class="trainer-profile d-flex align-items-center">
 		                    <img src="assets/img/trainers/trainer-1.jpg" class="img-fluid" alt="">
-		                    <span>Antonio</span>
+		                    <span>${campaign.hostIdx }</span>
 		                  </div>
 		                  <div class="trainer-rank d-flex align-items-center">
 		                    <i class="bx bx-user"></i>&nbsp;50

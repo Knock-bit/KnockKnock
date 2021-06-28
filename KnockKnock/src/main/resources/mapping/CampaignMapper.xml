@@ -6,26 +6,43 @@
 <mapper namespace="campaign">
 	<!-- 캠페인 상세보기 -->
 	<select id="selectOneCampaign" parameterType="int" resultType="CampaignVO">
-		SELECT * FROM CAMPAIGN_ING WHERE C_IDX=#{cIdx}
+		SELECT * FROM CAMPAIGN WHERE CI_IDX=#{cIdx}
 	</select>
-	
+	<!-- 진행중인 캠페인 불러오기 -->
 	<select id="selectAllCampaign" resultType="CampaignVO">
-		SELECT * FROM CAMPAIGN_ING WHERE CI_STATUS = 1
+		SELECT * FROM CAMPAIGN WHERE CI_STATUS = 1
 	</select>
-	
+	<!-- 종료된 캠페인 불러오기 -->
+	<select id="selectAllendCampaign" resultType="CampaignVO">
+		SELECT * FROM CAMPAIGN WHERE CI_STATUS = 0
+	</select>
 	<!-- 기간이 만료됐는지 확인하여 만료 시 캠페인 상태를 0으로 바꾼다 -->
 	<update id="updateExpiredCampaign">
-		UPDATE CAMPAIGN_ING
+		UPDATE CAMPAIGN
+		   SET STATUS = 0
+		  WHERE SYSDATE > END_DATE
+	</update>
+	<!-- 기간이 만료됐는지 확인하여 만료 시 펀딩 상태를 0으로 바꾼다 -->
+	<update id="updateExpiredFunding">
+		UPDATE FUNDING
 		   SET STATUS = 0
 		  WHERE SYSDATE > END_DATE
 	</update>
 	
-	<!-- 기간이 만료됐는지 확인하여 만료 시 펀딩 상태를 0으로 바꾼다 -->
-	<update id="updateExpiredFunding">
-		UPDATE CAMPAIGN_NOMINEE
-		   SET STATUS = 0
-		  WHERE SYSDATE > END_DATE
-	</update>
+	
+	
+	
+	
+	
+	<!-- 제안서 제출 -->
+	<insert id="insertProposal" parameterType="ProposalVO">
+  		INSERT INTO PROPOSAL(PROPOSAL_IDX, GOAL, GOAL_POINT, 
+  							P_CONTENT, P_TITLE, USER_IDX,
+  							P_KEYWORD1, P_KEYWORD2, P_KEYWORD3)
+					VALUES (PROPOSAL_IDX_SEQ.nextval, #{goal}, #{goal_point},
+						   #{p_content}, #{p_title}, #{user_idx},
+						   #{p_keyword1}, #{p_keyword2}, #{p_keyword3})
+  	</insert>
 	
 	
 	

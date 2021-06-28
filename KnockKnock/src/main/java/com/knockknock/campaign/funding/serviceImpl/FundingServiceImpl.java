@@ -14,7 +14,7 @@ public class FundingServiceImpl implements FundingService{
 	private FundingDAO fundingDAO;
 
 	@Override
-	public List<FundingVO> selectFundingList() {
+	public List<FundingVO> selectAllFunding() {
 		// TODO Auto-generated method stub
 		return null;
 	}

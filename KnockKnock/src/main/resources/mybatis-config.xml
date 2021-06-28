@@ -39,6 +39,8 @@
 			<typeAlias alias="campaignNomUser" type="com.knockknock.campaign.CampaignNomUserVO"/> 
 			<typeAlias alias="keyword" type="com.knockknock.campaign.KeywordVO"/> <typeAlias 
 			alias="proposal" type="com.knockknock.campaign.ProposalVO"/> -->
+    <typeAlias alias="proposalVO" 
+               type="com.knockknock.campaign.proposal.ProposalVO"/>
 		<!-- 회원 -->
 		<typeAlias alias="userVO" type="com.knockknock.user.UserVO" />
 
