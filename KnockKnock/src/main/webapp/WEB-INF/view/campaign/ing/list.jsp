@@ -76,7 +76,7 @@
 		                <div class="trainer d-flex justify-content-between align-items-center">
 		                  <div class="trainer-profile d-flex align-items-center">
 		                    <img src="assets/img/trainers/trainer-1.jpg" class="img-fluid" alt="">
-		                    <span>${campaign.hostIdx }</span>
+		                    <span>suggested by ${campaign.hostNickname }</span>
 		                  </div>
 		                  <div class="trainer-rank d-flex align-items-center">
 		                    <i class="bx bx-user"></i>&nbsp;50

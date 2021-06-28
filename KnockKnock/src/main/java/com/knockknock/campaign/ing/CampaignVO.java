@@ -20,7 +20,12 @@ public class CampaignVO {
 	private String ciKeyword2;
 	private String ciKeyword3;
 	private int cfIdx;
+	private String hostNickname;
 	
+
+
+
+
 	public CampaignVO() {	}
 	
 	
@@ -28,7 +33,7 @@ public class CampaignVO {
 	
 	public CampaignVO(int ciIdx, String ciTitle, String ciContent, String ciGoal, Date ciEnddate, int ciBasepoint,
 			int ciEstimatedpoint, int ciStatus, String ciFile, String ciEmblem, int hostIdx, String ciCategory,
-			int ciTotpoint, String ciKeyword1, String ciKeyword2, String ciKeyword3, int cfIdx) {
+			int ciTotpoint, String ciKeyword1, String ciKeyword2, String ciKeyword3, int cfIdx, String hostNickname) {
 		super();
 		this.ciIdx = ciIdx;
 		this.ciTitle = ciTitle;
@@ -47,6 +52,7 @@ public class CampaignVO {
 		this.ciKeyword2 = ciKeyword2;
 		this.ciKeyword3 = ciKeyword3;
 		this.cfIdx = cfIdx;
+		this.hostNickname = hostNickname;
 	}
 
 
@@ -196,7 +202,17 @@ public class CampaignVO {
 		return "campaign Title : " + ciTitle;
 	}
 	
-	
+	public String getHostNickname() {
+		return hostNickname;
+	}
+
+
+
+
+	public void setHostNickname(String hostNickname) {
+		this.hostNickname = hostNickname;
+	}
+
 	
 	
 }

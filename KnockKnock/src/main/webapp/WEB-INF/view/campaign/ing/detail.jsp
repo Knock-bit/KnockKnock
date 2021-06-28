@@ -78,8 +78,14 @@
             </div>
 
             <div class="campaign-info d-flex justify-content-between align-items-center">
-              <h5>Course Fee</h5>
-              <p>$165</p>
+              <h5>참여중인 사람 목록</h5>
+              <p>
+           <%--    <c:if test="${!empty userList }">
+              <c:forEach var="user" items="${userList } ">
+              	${user.nickname }<br>
+              </c:forEach>
+              </c:if> --%>
+              </p>
             </div>
 
             <div class="campaign-info d-flex justify-content-between align-items-center">
