@@ -1,12 +1,12 @@
 package com.knockknock.mypage.serviceimpl;
 
-import java.util.List; 
+import java.util.List;  
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.knockknock.campaign.CampaignVO;
+import com.knockknock.campaign.ing.CampaignVO;
 import com.knockknock.mypage.MypageService;
 import com.knockknock.user.UserVO;
 

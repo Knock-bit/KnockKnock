@@ -2,7 +2,7 @@ package com.knockknock.mypage;
 
 import java.util.List;
 
-import com.knockknock.campaign.CampaignVO;
+import com.knockknock.campaign.ing.CampaignVO;
 import com.knockknock.user.UserVO;
 
 public interface MypageService {
