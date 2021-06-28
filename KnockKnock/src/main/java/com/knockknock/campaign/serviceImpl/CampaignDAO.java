@@ -15,7 +15,7 @@ public class CampaignDAO {
 	private SqlSessionTemplate mybatis;
 
 	public CampaignVO selectOneCampaign(CampaignVO campaign) {
-		return mybatis.selectOne("campaign.selectOneCampaign", campaign.getcIdx());
+		return mybatis.selectOne("campaign.selectOneCampaign", campaign.getCiIdx());
 	}
 	
 	public List<CampaignVO> selectAllCampaign() {

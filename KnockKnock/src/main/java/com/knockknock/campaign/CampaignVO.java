@@ -3,154 +3,200 @@ package com.knockknock.campaign;
 import java.sql.Date;
 
 public class CampaignVO {
-	private int cIdx;
-	private String ciTitle;
-	private String ciContent;
-	private String cGoal;
-	private Date ci_enddate;
-	private int ci_basepoint;
-	private int ci_estimatedpoint;
-	private char ci_status;
-	private String ci_file;
-	private String ci_emblem;
-	private int u_idx;
-	private String c_category;
-	private int c_totpoint;
-	private String c_keyword1;
-	private String c_keyword2;
-	private String c_keyword3;
-	
-	public CampaignVO() {	}
-	
-	
-	
-	public CampaignVO(int cIdx, String ciTitle, String ciContent, String cGoal, Date ci_enddate, int ci_basepoint,
-			int ci_estimatedpoint, char ci_status, String ci_file, String ci_emblem, int u_idx, String c_category,
-			int c_totpoint, String c_keyword1, String c_keyword2, String c_keyword3) {
-		super();
-		this.cIdx = cIdx;
-		this.ciTitle = ciTitle;
-		this.ciContent = ciContent;
-		this.cGoal = cGoal;
-		this.ci_enddate = ci_enddate;
-		this.ci_basepoint = ci_basepoint;
-		this.ci_estimatedpoint = ci_estimatedpoint;
-		this.ci_status = ci_status;
-		this.ci_file = ci_file;
-		this.ci_emblem = ci_emblem;
-		this.u_idx = u_idx;
-		this.c_category = c_category;
-		this.c_totpoint = c_totpoint;
-		this.c_keyword1 = c_keyword1;
-		this.c_keyword2 = c_keyword2;
-		this.c_keyword3 = c_keyword3;
-	}
+   private int ciIdx;
+   private String ciTitle;
+   private String ciContent;
+   private String ciGoal;
+   private Date ciEnddate;
+   private int ciBasepoint;
+   private int ciEstimatedpoint;
+   private int ciStatus;
+   private String ciFile;
+   private String ciEmblem;
+   private int hostIdx;
+   private String ciCategory;
+   private int ciTotpoint;
+   private String ciKeyword1;
+   private String ciKeyword2;
+   private String ciKeyword3;
+   private int cfIdx;
+   
+   public CampaignVO() {   }
+   
+   
+   
+   
+   public CampaignVO(int ciIdx, String ciTitle, String ciContent, String ciGoal, Date ciEnddate, int ciBasepoint,
+         int ciEstimatedpoint, int ciStatus, String ciFile, String ciEmblem, int hostIdx, String ciCategory,
+         int ciTotpoint, String ciKeyword1, String ciKeyword2, String ciKeyword3, int cfIdx) {
+      super();
+      this.ciIdx = ciIdx;
+      this.ciTitle = ciTitle;
+      this.ciContent = ciContent;
+      this.ciGoal = ciGoal;
+      this.ciEnddate = ciEnddate;
+      this.ciBasepoint = ciBasepoint;
+      this.ciEstimatedpoint = ciEstimatedpoint;
+      this.ciStatus = ciStatus;
+      this.ciFile = ciFile;
+      this.ciEmblem = ciEmblem;
+      this.hostIdx = hostIdx;
+      this.ciCategory = ciCategory;
+      this.ciTotpoint = ciTotpoint;
+      this.ciKeyword1 = ciKeyword1;
+      this.ciKeyword2 = ciKeyword2;
+      this.ciKeyword3 = ciKeyword3;
+      this.cfIdx = cfIdx;
+   }
 
 
 
-	public int getcIdx() {
-		return cIdx;
-	}
-	public void setcIdx(int cIdx) {
-		this.cIdx = cIdx;
-	}
-	public String getCiTitle() {
-		return ciTitle;
-	}
-	public void setCiTitle(String ciTitle) {
-		this.ciTitle = ciTitle;
-	}
-	public String getCiContent() {
-		return ciContent;
-	}
-	public void setCiContent(String ciContent) {
-		this.ciContent = ciContent;
-	}
-	public String getcGoal() {
-		return cGoal;
-	}
-	public void setcGoal(String cGoal) {
-		this.cGoal = cGoal;
-	}
-	public Date getCi_enddate() {
-		return ci_enddate;
-	}
-	public void setCi_enddate(Date ci_enddate) {
-		this.ci_enddate = ci_enddate;
-	}
-	public int getCi_basepoint() {
-		return ci_basepoint;
-	}
-	public void setCi_basepoint(int ci_basepoint) {
-		this.ci_basepoint = ci_basepoint;
-	}
-	public int getCi_estimatedpoint() {
-		return ci_estimatedpoint;
-	}
-	public void setCi_estimatedpoint(int ci_estimatedpoint) {
-		this.ci_estimatedpoint = ci_estimatedpoint;
-	}
-	public char getCi_status() {
-		return ci_status;
-	}
-	public void setCi_status(char ci_status) {
-		this.ci_status = ci_status;
-	}
-	public String getCi_file() {
-		return ci_file;
-	}
-	public void setCi_file(String ci_file) {
-		this.ci_file = ci_file;
-	}
-	public String getCi_emblem() {
-		return ci_emblem;
-	}
-	public void setCi_emblem(String ci_emblem) {
-		this.ci_emblem = ci_emblem;
-	}
-	public int getU_idx() {
-		return u_idx;
-	}
-	public void setU_idx(int u_idx) {
-		this.u_idx = u_idx;
-	}
-	public String getC_category() {
-		return c_category;
-	}
-	public void setC_category(String c_category) {
-		this.c_category = c_category;
-	}
-	public int getC_totpoint() {
-		return c_totpoint;
-	}
-	public void setC_totpoint(int c_totpoint) {
-		this.c_totpoint = c_totpoint;
-	}
-	public String getC_keyword1() {
-		return c_keyword1;
-	}
-	public void setC_keyword1(String c_keyword1) {
-		this.c_keyword1 = c_keyword1;
-	}
-	public String getC_keyword2() {
-		return c_keyword2;
-	}
-	public void setC_keyword2(String c_keyword2) {
-		this.c_keyword2 = c_keyword2;
-	}
-	public String getC_keyword3() {
-		return c_keyword3;
-	}
-	public void setC_keyword3(String c_keyword3) {
-		this.c_keyword3 = c_keyword3;
-	}
-	
-	@Override
-	public String toString() {
-		return "campaign Title : " + ciTitle;
-	}
-	
-	
-	
-	
+
+   public int getCiIdx() {
+      return ciIdx;
+   }
+
+
+
+
+   public void setCiIdx(int ciIdx) {
+      this.ciIdx = ciIdx;
+   }
+
+   public String getCiTitle() {
+      return ciTitle;
+   }
+
+   public void setCiTitle(String ciTitle) {
+      this.ciTitle = ciTitle;
+   }
+
+   public String getCiContent() {
+      return ciContent;
+   }
+
+   public void setCiContent(String ciContent) {
+      this.ciContent = ciContent;
+   }
+
+   public String getCiGoal() {
+      return ciGoal;
+   }
+
+   public void setCiGoal(String ciGoal) {
+      this.ciGoal = ciGoal;
+   }
+
+   public Date getCiEnddate() {
+      return ciEnddate;
+   }
+
+   public void setCiEnddate(Date ciEnddate) {
+      this.ciEnddate = ciEnddate;
+   }
+
+   public int getCiBasepoint() {
+      return ciBasepoint;
+   }
+
+   public void setCiBasepoint(int ciBasepoint) {
+      this.ciBasepoint = ciBasepoint;
+   }
+
+   public int getCiEstimatedpoint() {
+      return ciEstimatedpoint;
+   }
+
+   public void setCiEstimatedpoint(int ciEstimatedpoint) {
+      this.ciEstimatedpoint = ciEstimatedpoint;
+   }
+
+   public int getCiStatus() {
+      return ciStatus;
+   }
+
+   public void setCiStatus(int ciStatus) {
+      this.ciStatus = ciStatus;
+   }
+
+   public String getCiFile() {
+      return ciFile;
+   }
+
+   public void setCiFile(String ciFile) {
+      this.ciFile = ciFile;
+   }
+
+   public String getCiEmblem() {
+      return ciEmblem;
+   }
+
+   public void setCiEmblem(String ciEmblem) {
+      this.ciEmblem = ciEmblem;
+   }
+
+   public int getHostIdx() {
+      return hostIdx;
+   }
+
+   public void setHostIdx(int hostIdx) {
+      this.hostIdx = hostIdx;
+   }
+
+   public String getCiCategory() {
+      return ciCategory;
+   }
+
+   public void setCiCategory(String ciCategory) {
+      this.ciCategory = ciCategory;
+   }
+
+   public int getCiTotpoint() {
+      return ciTotpoint;
+   }
+
+   public void setCiTotpoint(int ciTotpoint) {
+      this.ciTotpoint = ciTotpoint;
+   }
+
+   public String getCiKeyword1() {
+      return ciKeyword1;
+   }
+
+   public void setCiKeyword1(String ciKeyword1) {
+      this.ciKeyword1 = ciKeyword1;
+   }
+
+   public String getCiKeyword2() {
+      return ciKeyword2;
+   }
+
+   public void setCiKeyword2(String ciKeyword2) {
+      this.ciKeyword2 = ciKeyword2;
+   }
+
+   public String getCiKeyword3() {
+      return ciKeyword3;
+   }
+
+   public void setCiKeyword3(String ciKeyword3) {
+      this.ciKeyword3 = ciKeyword3;
+   }
+
+   public int getCfIdx() {
+      return cfIdx;
+   }
+
+   public void setCfIdx(int cfIdx) {
+      this.cfIdx = cfIdx;
+   }
+
+   @Override
+   public String toString() {
+      return "campaign Title : " + ciTitle;
+   }
+   
+   
+   
+   
 }
