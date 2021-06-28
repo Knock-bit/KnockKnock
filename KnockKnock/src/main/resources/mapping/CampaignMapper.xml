@@ -4,14 +4,27 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- 참고파일 나중에 삭제 -->
 <mapper namespace="campaign">
+	
+	<!-- 진행중인 캠페인, 주최자 닉네임 불러오기 -->
+	<select id="selectAllCampaign" resultType="CampaignVO">
+		SELECT C.*, U.U_NICKNAME AS HOST_NICKNAME
+		FROM USERS U, CAMPAIGN C
+		WHERE CI_STATUS = 1
+		AND U.U_IDX = C.HOST_IDX
+	</select>
+	
 	<!-- 캠페인 상세보기 -->
 	<select id="selectOneCampaign" parameterType="int" resultType="CampaignVO">
 		SELECT * FROM CAMPAIGN WHERE CI_IDX=#{cIdx}
 	</select>
-	<!-- 진행중인 캠페인 불러오기 -->
-	<select id="selectAllCampaign" resultType="CampaignVO">
-		SELECT * FROM CAMPAIGN WHERE CI_STATUS = 1
+	
+	<!-- 캠페인 상세보기 - 참여자 닉네임 불러오기 -->
+	<select id="selectAllCampaignUsers" parameterType = "int" resultType ="CampaignUserVO">
+		SELECT U_NICKNAME NICKNAME FROM USERS
+  		 WHERE U_IDX IN (SELECT U_IDX FROM CAMPAIGN_USER
+		 WHERE CI_IDX = #{ciIdx})
 	</select>
+	
 	<!-- 종료된 캠페인 불러오기 -->
 	<select id="selectAllendCampaign" resultType="CampaignVO">
 		SELECT * FROM CAMPAIGN WHERE CI_STATUS = 0

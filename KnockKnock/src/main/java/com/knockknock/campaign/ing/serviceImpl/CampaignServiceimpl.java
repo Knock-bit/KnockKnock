@@ -13,6 +13,8 @@ import com.knockknock.campaign.ing.CampaignVO;
 public class CampaignServiceimpl implements CampaignService {
 	@Autowired
 	private CampaignDAO campaignDAO;
+	@Autowired
+	private CampaignUserDAO campaignUserDAO;
 	
 	@Override
 	public List<CampaignVO> selectCampaignList() {
@@ -27,9 +29,9 @@ public class CampaignServiceimpl implements CampaignService {
 	}
 
 	@Override
-	public CampaignUserVO selectCampaignUserList(int cIdx) {
-
-		return null;
+	public List<CampaignUserVO> selectAllCampaignUsers(int ciIdx) {
+		System.out.println("serviceImpl>> selectAllCampaignUsers실행");		
+		return campaignUserDAO.selectAllCampaignUsers(ciIdx);
 	}
 
 	@Override
