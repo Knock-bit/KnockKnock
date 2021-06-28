@@ -1,13 +1,12 @@
 package com.knockknock.mypage.serviceimpl;
 
 import java.util.List;
-import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.knockknock.campaign.CampaignVO;
+import com.knockknock.campaign.ing.CampaignVO;
 import com.knockknock.user.UserVO;
 
 @Repository
