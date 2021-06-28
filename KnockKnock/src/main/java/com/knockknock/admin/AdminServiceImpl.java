@@ -52,4 +52,14 @@ public class AdminServiceImpl implements AdminService{
 		return adminDAO.getUserList(pvo);
 	}
 
+	@Override
+	public int countKeyword() {
+		return adminDAO.countKeyword();
+	}
+
+	@Override
+	public List<AdminKeywordVO> getKeywordList(PagingVO pvo) {
+		return adminDAO.getKeywordList(pvo);
+	}
+
 }
