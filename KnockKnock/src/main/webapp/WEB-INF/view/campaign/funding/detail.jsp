@@ -8,7 +8,7 @@
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Mentor Bootstrap Template - Index</title>
+  <title>펀딩중인 캠페인</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -30,6 +30,7 @@
 
   <!-- Main CSS File -->
   <link href="${cp}/resource/css/main.css" rel="stylesheet">
+  <link href="${cp}/resource/css/nav.css" rel="stylesheet">
   <link href="${cp}/resource/css/campaign.css" rel="stylesheet">
 
   <!-- Import BootStrap -->
@@ -48,9 +49,9 @@
     <!-- ======= Breadcrumbs ======= -->
     
     <section id="campaign-title" class="d-flex justify-content-center align-items-center">
-    <div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
+    <div class="container position-relat.ive" data-aos="zoom-in" data-aos-delay="100">
     <br><br>
-      <h1>${campaign.ciTitle}</h1>
+      <h1>${funding }</h1>
       <h2>We are team of talented designers making websites with Bootstrap</h2>
     </div>
   </section><!-- End Hero -->
@@ -61,26 +62,34 @@
       <div class="container" data-aos="fade-up">
 
         <div class="row">
-          <div class="col-lg-8">
-            <img src="/resource/img/campaign/ex1.jpg" class="img-fluid" alt="">
-            <h2>${campaign.ciTitle }</h3>
+          <div class="col-lg-7">
+            <img src="../resource/img/campaign/ex1.jpg" class="img-fluid" alt="">
+            <div>펀딩하기</div>
+            <h2>Et enim incidunt fuga tempora</h3>
             <p>
               Qui et explicabo voluptatem et ab qui vero et voluptas. Sint voluptates temporibus quam autem. Atque nostrum voluptatum laudantium a doloremque enim et ut dicta. Nostrum ducimus est iure minima totam doloribus nisi ullam deserunt. Corporis aut officiis sit nihil est. Labore aut sapiente aperiam.
               Qui voluptas qui vero ipsum ea voluptatem. Omnis et est. Voluptatem officia voluptatem adipisci et iusto provident doloremque consequatur. Quia et porro est. Et qui corrupti laudantium ipsa.
               Eum quasi saepe aperiam qui delectus quaerat in. Vitae mollitia ipsa quam. Ipsa aut qui numquam eum iste est dolorum. Rem voluptas ut sit ut.
             </p>
           </div>
-          <div class="col-lg-4">
+          <div class="col-lg-5">
+          
+          <div class="campaign-info align-items-center">
+              <div>
+              펀딩 진행도
+              <p class="funding-pg">
+    			<progress value="50" max="100"></progress>
+  				</p>
+              
+              </div>
+            </div>
 
             <div class="campaign-info align-items-center">
-              <h5>${campaign.ciTitle }</h5>
-              <p><a href="#">Walter White</a></p>
+              <div class="btn-wrap funding">
+              <button onclick="funding()" class = "btn-funding"> 펀딩하기 </button>
+              </div>
             </div>
 
-            <div class="campaign-info d-flex justify-content-between align-items-center">
-              <h5>Course Fee</h5>
-              <p>$165</p>
-            </div>
 
             <div class="campaign-info d-flex justify-content-between align-items-center">
               <h5>Available Seats</h5>

@@ -26,12 +26,12 @@
       <!-- <typeAlias alias="subtitle" type="com.knockknock.board.subtitleVO"/> -->
       <typeAlias alias="comments" type="com.knockknock.board.CommentsVO"/>
       <!-- 캠페인 -->
-      <typeAlias alias="campaignVO" type="com.knockknock.campaign.CampaignVO"/>
-      <typeAlias alias="campaignUserVO" type="com.knockknock.campaign.CampaignUserVO"/>
+      <typeAlias alias="campaignVO" type="com.knockknock.campaign.ing.CampaignVO"/>
+      <typeAlias alias="campaignUserVO" type="com.knockknock.campaign.ing.CampaignUserVO"/>
     <!--  <typeAlias alias="campaignNom" type="com.knockknock.campaign.CampaignNomVO"/>
       <typeAlias alias="campaignNomUser" type="com.knockknock.campaign.CampaignNomUserVO"/>
-      <typeAlias alias="keyword" type="com.knockknock.campaign.KeywordVO"/>
-      <typeAlias alias="proposal" type="com.knockknock.campaign.ProposalVO"/> -->
+      <typeAlias alias="keyword" type="com.knockknock.campaign.KeywordVO"/>-->
+      <typeAlias alias="proposalVO" type="com.knockknock.campaign.proposal.ProposalVO"/>
       <!-- 회원 -->
       <typeAlias alias="userVO" type="com.knockknock.user.UserVO"/>
       

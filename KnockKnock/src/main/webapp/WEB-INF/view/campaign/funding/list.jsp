@@ -8,7 +8,7 @@
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>펀딩중인 캠페인</title>
+  <title>Mentor Bootstrap Template - Index</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -30,175 +30,77 @@
 
   <!-- Main CSS File -->
   <link href="${cp}/resource/css/main.css" rel="stylesheet">
-  <link href="${cp}/resource/css/nav.css" rel="stylesheet">
-  <link href="${cp}/resource/css/campaign.css" rel="stylesheet">
+   <link href="${cp}/resource/css/nav.css" rel="stylesheet">
 
   <!-- Import BootStrap -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
+  
 </head>
 <body>
 
-  
+
 
   <!-- ======= Header ======= -->
    <%@ include file= "/layout/navbar/nav.jsp" %>
 
+  <!-- End Header -->
+
   <main id="main">
 
     <!-- ======= Breadcrumbs ======= -->
-    
-    <section id="campaign-title" class="d-flex justify-content-center align-items-center">
-    <div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
-    <br><br>
-      <h1>캠페인제목</h1>
-      <h2>We are team of talented designers making websites with Bootstrap</h2>
-    </div>
-  </section><!-- End Hero -->
+    <div class="breadcrumbs">
+      <div class="container">
+        <h2>funding campaign</h2>
+        <p>펀딩중인 캠페인 리스트</p>
+      </div>
+    </div><!-- End Breadcrumbs -->
 
-
-    <!-- ======= Cource Details Section ======= -->
-    <section id="campaign-details" class="campaign-details">
+    <!-- ======= Courses Section ======= -->
+    <section id="courses" class="courses">
       <div class="container" data-aos="fade-up">
 
-        <div class="row">
-          <div class="col-lg-7">
-            <img src="../resource/img/campaign/ex1.jpg" class="img-fluid" alt="">
-            <div>펀딩하기</div>
-            <h2>Et enim incidunt fuga tempora</h3>
-            <p>
-              Qui et explicabo voluptatem et ab qui vero et voluptas. Sint voluptates temporibus quam autem. Atque nostrum voluptatum laudantium a doloremque enim et ut dicta. Nostrum ducimus est iure minima totam doloribus nisi ullam deserunt. Corporis aut officiis sit nihil est. Labore aut sapiente aperiam.
-              Qui voluptas qui vero ipsum ea voluptatem. Omnis et est. Voluptatem officia voluptatem adipisci et iusto provident doloremque consequatur. Quia et porro est. Et qui corrupti laudantium ipsa.
-              Eum quasi saepe aperiam qui delectus quaerat in. Vitae mollitia ipsa quam. Ipsa aut qui numquam eum iste est dolorum. Rem voluptas ut sit ut.
-            </p>
-          </div>
-          <div class="col-lg-5">
-          
-          <div class="campaign-info align-items-center">
-              <div>
-              펀딩 진행도
+        <div class="row" data-aos="zoom-in" data-aos-delay="100">
+        	<c:if test="${!empty fundingList  }">
+        	<c:forEach var="funding" items="${fundingList }">
+	        	 <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+		            <div class="course-item">
+		              <img src="assets/img/course-1.jpg" class="img-fluid" alt="...">
+		              <div class="course-content">
+		                <div class="d-flex justify-content-between align-items-center mb-3">
+		                  <h4>키워드?</h4>
+		                  <p class="price">$169</p>
+		                </div>
+		
+		                <h3><a href="${cp }/campaign/ing/detail.do?cfIdx=${funding.cfIdx }">${funding.cfTitle }</a></h3>
+		                <p>캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. </p>
+		                펀딩 진행도
               <p class="funding-pg">
     			<progress value="50" max="100"></progress>
   				</p>
-              
-              </div>
-            </div>
-
-            <div class="campaign-info align-items-center">
-              <div class="btn-wrap funding">
-              <button onclick="funding()" class = "btn-funding"> 펀딩하기 </button>
-              </div>
-            </div>
-
-
-            <div class="campaign-info d-flex justify-content-between align-items-center">
-              <h5>Available Seats</h5>
-              <p>30</p>
-            </div>
-
-            <div class="campaign-info d-flex justify-content-between align-items-center">
-              <h5>Schedule</h5>
-              <p>5.00 pm - 7.00 pm</p>
-            </div>
-
-          </div>
+		                <div class="trainer d-flex justify-content-between align-items-center">
+		                  <div class="trainer-profile d-flex align-items-center">
+		                    <img src="assets/img/trainers/trainer-1.jpg" class="img-fluid" alt="">
+		                    <span>Antonio</span>
+		                  </div>
+		                  <div class="trainer-rank d-flex align-items-center">
+		                    <i class="bx bx-user"></i>&nbsp;50
+		                    &nbsp;&nbsp;
+		                    <i class="bx bx-heart"></i>&nbsp;65
+		                  </div>
+		                </div>
+		              </div>
+		            </div>
+		          </div> <!-- End Campaign Item-->
+       		</c:forEach>
+        </c:if>
+        <c:if test="${empty fundingList }">
+        비었음
+        </c:if>
+        
         </div>
 
       </div>
-    </section><!-- End Cource Details Section -->
-
-    <!-- ======= Cource Details Tabs Section ======= -->
-    <section id="cource-details-tabs" class="cource-details-tabs">
-      <div class="container" data-aos="fade-up">
-
-        <div class="row">
-          <div class="col-lg-3">
-            <ul class="nav nav-tabs flex-column">
-              <li class="nav-item">
-                <a class="nav-link active show" data-toggle="tab" href="#tab-1">Modi sit est</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#tab-2">Unde praesentium sed</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#tab-3">Pariatur explicabo vel</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#tab-4">Nostrum qui quasi</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#tab-5">Iusto ut expedita aut</a>
-              </li>
-            </ul>
-          </div>
-          <div class="col-lg-9 mt-4 mt-lg-0">
-            <div class="tab-content">
-              <div class="tab-pane active show" id="tab-1">
-                <div class="row">
-                  <div class="col-lg-8 details order-2 order-lg-1">
-                    <h3>Architecto ut aperiam autem id</h3>
-                    <p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a videna mareta paulona marka</p>
-                    <p>Et nobis maiores eius. Voluptatibus ut enim blanditiis atque harum sint. Laborum eos ipsum ipsa odit magni. Incidunt hic ut molestiae aut qui. Est repellat minima eveniet eius et quis magni nihil. Consequatur dolorem quaerat quos qui similique accusamus nostrum rem vero</p>
-                  </div>
-                  <div class="col-lg-4 text-center order-1 order-lg-2">
-                    <img src="assets/img/campaign-details-tab-1.png" alt="" class="img-fluid">
-                  </div>
-                </div>
-              </div>
-              <div class="tab-pane" id="tab-2">
-                <div class="row">
-                  <div class="col-lg-8 details order-2 order-lg-1">
-                    <h3>Et blanditiis nemo veritatis excepturi</h3>
-                    <p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a videna mareta paulona marka</p>
-                    <p>Ea ipsum voluptatem consequatur quis est. Illum error ullam omnis quia et reiciendis sunt sunt est. Non aliquid repellendus itaque accusamus eius et velit ipsa voluptates. Optio nesciunt eaque beatae accusamus lerode pakto madirna desera vafle de nideran pal</p>
-                  </div>
-                  <div class="col-lg-4 text-center order-1 order-lg-2">
-                    <img src="assets/img/campaign-details-tab-2.png" alt="" class="img-fluid">
-                  </div>
-                </div>
-              </div>
-              <div class="tab-pane" id="tab-3">
-                <div class="row">
-                  <div class="col-lg-8 details order-2 order-lg-1">
-                    <h3>Impedit facilis occaecati odio neque aperiam sit</h3>
-                    <p class="fst-italic">Eos voluptatibus quo. Odio similique illum id quidem non enim fuga. Qui natus non sunt dicta dolor et. In asperiores velit quaerat perferendis aut</p>
-                    <p>Iure officiis odit rerum. Harum sequi eum illum corrupti culpa veritatis quisquam. Neque necessitatibus illo rerum eum ut. Commodi ipsam minima molestiae sed laboriosam a iste odio. Earum odit nesciunt fugiat sit ullam. Soluta et harum voluptatem optio quae</p>
-                  </div>
-                  <div class="col-lg-4 text-center order-1 order-lg-2">
-                    <img src="assets/img/campaign-details-tab-3.png" alt="" class="img-fluid">
-                  </div>
-                </div>
-              </div>
-              <div class="tab-pane" id="tab-4">
-                <div class="row">
-                  <div class="col-lg-8 details order-2 order-lg-1">
-                    <h3>Fuga dolores inventore laboriosam ut est accusamus laboriosam dolore</h3>
-                    <p class="fst-italic">Totam aperiam accusamus. Repellat consequuntur iure voluptas iure porro quis delectus</p>
-                    <p>Eaque consequuntur consequuntur libero expedita in voluptas. Nostrum ipsam necessitatibus aliquam fugiat debitis quis velit. Eum ex maxime error in consequatur corporis atque. Eligendi asperiores sed qui veritatis aperiam quia a laborum inventore</p>
-                  </div>
-                  <div class="col-lg-4 text-center order-1 order-lg-2">
-                    <img src="assets/img/campaign-details-tab-4.png" alt="" class="img-fluid">
-                  </div>
-                </div>
-              </div>
-              <div class="tab-pane" id="tab-5">
-                <div class="row">
-                  <div class="col-lg-8 details order-2 order-lg-1">
-                    <h3>Est eveniet ipsam sindera pad rone matrelat sando reda</h3>
-                    <p class="fst-italic">Omnis blanditiis saepe eos autem qui sunt debitis porro quia.</p>
-                    <p>Exercitationem nostrum omnis. Ut reiciendis repudiandae minus. Omnis recusandae ut non quam ut quod eius qui. Ipsum quia odit vero atque qui quibusdam amet. Occaecati sed est sint aut vitae molestiae voluptate vel</p>
-                  </div>
-                  <div class="col-lg-4 text-center order-1 order-lg-2">
-                    <img src="assets/img/campaign-details-tab-5.png" alt="" class="img-fluid">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section><!-- End Cource Details Tabs Section -->
+    </section><!-- End Courses Section -->
 
   </main><!-- End #main -->
 <!-- ======= Footer ======= -->
