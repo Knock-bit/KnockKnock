@@ -14,10 +14,11 @@ public class FundingDAO {
 	private SqlSessionTemplate mybatis;
 	
 	public FundingVO selectOneFunding(FundingVO funding) {
-		return mybatis.selectOne("campaign.selectOneFunding", funding);
+		return mybatis.selectOne("campaign.selectOneFunding", funding.getCfIdx());
 	}
 	
 	public List<FundingVO> selectAllFunding(){
+		System.out.println("select All funding() DAO ");
 		return mybatis.selectList("campaign.selectAllFunding");
 	}
 

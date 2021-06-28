@@ -15,9 +15,12 @@
 	
 	<!-- 캠페인 상세보기 -->
 	<select id="selectOneCampaign" parameterType="int" resultType="CampaignVO">
-		SELECT * FROM CAMPAIGN WHERE CI_IDX=#{cIdx}
+		SELECT C.*, U.U_NICKNAME AS HOST_NICKNAME
+		FROM USERS U, CAMPAIGN C
+		WHERE CI_STATUS = 1
+		AND U.U_IDX = C.HOST_IDX
+		AND C.CI_IDX = #{ciIdx}
 	</select>
-	
 	<!-- 캠페인 상세보기 - 참여자 닉네임 불러오기 -->
 	<select id="selectAllCampaignUsers" parameterType = "int" resultType ="CampaignUserVO">
 		SELECT U_NICKNAME NICKNAME FROM USERS
@@ -32,13 +35,42 @@
 	<!-- 기간이 만료됐는지 확인하여 만료 시 캠페인 상태를 0으로 바꾼다 -->
 	<update id="updateExpiredCampaign">
 		UPDATE CAMPAIGN
-		   SET STATUS = 0
+		   SET CI_STATUS = 0
 		  WHERE SYSDATE > END_DATE
 	</update>
+	
+	
+	
+	<!--  ============= funding ============= -->
+	<select id="selectAllFunding" resultType="FundingVO">
+		SELECT F.*, U.U_NICKNAME AS HOST_NICKNAME
+		FROM USERS U, FUNDING F
+		WHERE CF_STATUS = 1
+		AND U.U_IDX = F.HOST_IDX
+	</select>
+	
+	
+	<!-- 펀딩 상세보기 -->
+	<select id="selectOneFunding" parameterType="int" resultType="FundingVO">
+		SELECT F.*, U.U_NICKNAME AS HOST_NICKNAME
+		FROM USERS U, FUNDING F
+		WHERE CF_STATUS = 1
+		AND U.U_IDX = F.HOST_IDX
+		AND F.CF_IDX = #{cfIdx}
+	</select>
+	<!-- 펀딩 상세보기 - 참여자 닉네임 불러오기 -->
+	<select id="selectAllFundingUsers" parameterType = "int" resultType ="FundingUserVO">
+		SELECT U_NICKNAME NICKNAME FROM USERS
+  		 WHERE U_IDX IN (SELECT U_IDX FROM CAMPAIGN_USER
+		 WHERE CI_IDX = #{ciIdx})
+	</select>
+	
+	
+	
 	<!-- 기간이 만료됐는지 확인하여 만료 시 펀딩 상태를 0으로 바꾼다 -->
 	<update id="updateExpiredFunding">
 		UPDATE FUNDING
-		   SET STATUS = 0
+		   SET CF_STATUS = 0
 		  WHERE SYSDATE > END_DATE
 	</update>
 	

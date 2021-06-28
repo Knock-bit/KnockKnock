@@ -21,4 +21,16 @@ public class FundingController {
 	}
 	
 	
+	@GetMapping("campaign/funding/detail.do")
+	public String detail(FundingVO fundingVO, Model model) {
+		System.out.println(">>> 펀딩중 캠페인 상세페이지로 이동!");
+		int cfIdx = fundingVO.getCfIdx();
+		FundingVO funding = fundingService.selectOneFunding(fundingVO);
+		List<FundingVO> fundingList = fundingService.selectAllFunding();
+		List<FundingUserVO> userList = fundingService.selectAllFundingUsers(cfIdx);
+		System.out.println("fundingList 출력: " + fundingList);
+		model.addAttribute("fundingList", fundingList);
+		return "campaign/funding/detail";
+	}
+	
 }
