@@ -1,6 +1,6 @@
 package com.knockknock.mypage.serviceimpl;
 
-import java.util.List;
+import java.util.List; 
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +44,7 @@ public class MypageServiceImpl implements MypageService {
 	
 	// 유저의 엠블럼 목록 가져오기
 	@Override
-	public List<Map<String, Object>> emblemList(UserVO vo){
+	public List<String> emblemList(UserVO vo){
 		
 		return mypageDAO.emblemList(vo);
 	}

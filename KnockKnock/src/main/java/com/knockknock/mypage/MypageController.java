@@ -158,11 +158,17 @@ public class MypageController {
 	public String myPointPage(@ModelAttribute("users")UserVO vo, Model model) {
 		
 		// 현재 보유하고 있는 엠블럼 
-		List<Map<String, Object>> emblemList = mypageService.emblemList(vo);
-		System.out.println("emblemList : " + emblemList);
-
+//		List<Map<String, Object>> emblemList = mypageService.emblemList(vo);
+//		System.out.println("emblemList : " + emblemList);
+//
+//		
+//		model.addAttribute("emblemList",emblemList);
 		
-		model.addAttribute("emblemList",emblemList);
+		
+		// 해당 유저의 STATUS가 1인 엠블럼 이미지 가져오기
+		List<String> emImgList = mypageService.emblemList(vo);
+		System.out.println("emImgList:" + emImgList);
+		model.addAttribute("emImgList", emImgList);
 		return "/mypage/mypageList/myPointPage";
 	}
 

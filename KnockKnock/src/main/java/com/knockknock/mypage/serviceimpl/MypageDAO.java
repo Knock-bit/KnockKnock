@@ -43,7 +43,7 @@ public class MypageDAO {
 	}
 	
 	// 유저의 엠블럼 목록 가져오기
-	public List<Map<String, Object>> emblemList(UserVO vo){
+	public List<String> emblemList(UserVO vo){
 		
 		return mybatis.selectList("UserVO.userEmblemList",vo);
 	}
