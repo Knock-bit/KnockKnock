@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.knockknock.campaign.CampaignVO;
 import com.knockknock.mypage.MypageService;
 import com.knockknock.user.UserVO;
 
@@ -47,6 +48,12 @@ public class MypageServiceImpl implements MypageService {
 	public List<String> emblemList(UserVO vo){
 		
 		return mypageDAO.emblemList(vo);
+	}
+	
+	// 유저의 진행중 캠페인 리스트 가져오기
+	public List<CampaignVO> campaigningList(UserVO vo){
+		
+		return mypageDAO.campaigningList(vo);
 	}
 
 }
