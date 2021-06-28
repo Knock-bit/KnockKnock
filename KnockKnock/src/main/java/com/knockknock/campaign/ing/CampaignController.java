@@ -36,6 +36,9 @@ public class CampaignController {
 		int ciIdx = campaignVO.getCiIdx();
 		CampaignVO campaign = campaignService.selectOneCampaign(campaignVO);
 		List<CampaignUserVO> userList = campaignService.selectAllCampaignUsers(ciIdx);
+		for(CampaignUserVO user : userList) {
+			System.out.println("userNickName : " + user.getNickname());
+		}
 		model.addAttribute("campaign", campaign);
 		model.addAttribute("userList", userList);
 		return "/campaign/ing/detail";

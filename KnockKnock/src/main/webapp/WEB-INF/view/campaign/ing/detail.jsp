@@ -80,11 +80,14 @@
             <div class="campaign-info d-flex justify-content-between align-items-center">
               <h5>참여중인 사람 목록</h5>
               <p>
-           <%--    <c:if test="${!empty userList }">
-              <c:forEach var="user" items="${userList } ">
-              	${user.nickname }<br>
-              </c:forEach>
-              </c:if> --%>
+              <c:if test="${!empty userList }">
+	              <c:forEach var="user" items="${userList }">
+		              	${user.getNickname() }<br>
+		           </c:forEach>
+              </c:if>
+              <c:if test="${empty userList }">
+               먼저 참여해보세요!
+              </c:if>
               </p>
             </div>
 
