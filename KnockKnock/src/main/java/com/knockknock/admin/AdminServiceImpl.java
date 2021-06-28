@@ -62,4 +62,21 @@ public class AdminServiceImpl implements AdminService{
 		return adminDAO.getKeywordList(pvo);
 	}
 
+	@Override
+	public int insertKeyword(AdminKeywordVO kvo) {
+		return adminDAO.insertKeyword(kvo);
+	}
+
+	@Override
+	public int checkKeyword(AdminKeywordVO kvo) {
+		System.out.println(">> Impl : checkKeyword");
+
+		return adminDAO.checkKeyword(kvo);
+	}
+
+	@Override
+	public int deleteKeyword(List<String> content) {
+		return adminDAO.deleteKeyword(content);
+	}
+
 }

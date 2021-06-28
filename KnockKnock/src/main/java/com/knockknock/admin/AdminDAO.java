@@ -63,4 +63,21 @@ public class AdminDAO {
 		System.out.println("AdminDAO > getKeywordList()");
 		return mybatis.selectList("Util.getKeywordList",pvo);
 	}
+	
+	// 키워드 추가 
+	public int insertKeyword(AdminKeywordVO kvo) {
+		System.out.println("AdminDAO > insertKeyword()");
+		return mybatis.insert("AdminDAO.insertKeyword",kvo);
+	}
+	
+	// 키워드 중복 검색
+	public int checkKeyword(AdminKeywordVO kvo) {
+		System.out.println("AdminDAO > checkKeyword");
+		return mybatis.selectOne("AdminDAO.checkKeyword",kvo);
+	}
+	
+	// 키워드 삭제
+	public int deleteKeyword(List<String> content) {
+		return mybatis.delete("deleteKeyword", content);
+	}
 }

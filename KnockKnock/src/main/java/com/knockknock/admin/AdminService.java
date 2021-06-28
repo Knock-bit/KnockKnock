@@ -15,4 +15,7 @@ public interface AdminService {
 	public List<AdminUserVO> getUserList(PagingVO pvo); 	// 페이징 처리 user조회
 	public int countKeyword();  // keyword count 가져오기 
 	public List<AdminKeywordVO> getKeywordList(PagingVO pvo);	// 페이징 처리 keyword 조회
+	public int insertKeyword(AdminKeywordVO kvo);  // keyword 추가
+	public int checkKeyword(AdminKeywordVO kvo);
+	public int deleteKeyword(List<String> content);
 }
