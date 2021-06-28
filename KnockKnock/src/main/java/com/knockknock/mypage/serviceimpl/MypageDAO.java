@@ -55,5 +55,12 @@ public class MypageDAO {
 		
 		return mybatis.selectList("UserVO.userCamingList",vo);
 	}
+	
+	// 유저의 종료된 캠페인 리스트 가져오기
+	public List<CampaignVO> endCampaignList(UserVO vo) {
+		
+		
+		return mybatis.selectList("UserVO.endCampaignList",vo);
+	}
 
 }

@@ -19,5 +19,7 @@ public interface MypageService {
 	List<String> emblemList(UserVO vo);
 	// 유저의 진행중 캠페인 리스트 가져오기
 	List<CampaignVO> campaigningList(UserVO vo);
+	// 종료된 캠페인 리스트
+	List<CampaignVO> endCampaignList(UserVO vo);
 
 }
