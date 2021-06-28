@@ -1,6 +1,6 @@
 package com.knockknock.mypage;
 
-import java.io.BufferedOutputStream;
+import java.io.BufferedOutputStream; 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.knockknock.campaign.CampaignVO;
+import com.knockknock.campaign.ing.CampaignVO;
 import com.knockknock.user.UserVO;
 
 @Controller
