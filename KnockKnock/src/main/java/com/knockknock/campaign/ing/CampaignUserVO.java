@@ -44,6 +44,9 @@ public class CampaignUserVO {
 		this.nickname = nickname;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return this.nickname;
+	}
 	
 }
