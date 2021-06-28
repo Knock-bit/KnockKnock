@@ -12,9 +12,23 @@ public class UserDAO {
 	private SqlSessionTemplate mybatis;
 	
 	public UserVO selectlogin(UserVO vo) {
-		System.out.println("BoardDAO mybatis() 생성");
 		vo = mybatis.selectOne("UserVO.selectlogin", vo);
 		System.out.println(vo);
 		return vo;		
 	}
+	
+//	public int idCheck(String uId) {
+//		uId = mybatis.selectOne("vo.idCheck", uId);
+//		int result;
+//		if(uId==null) {
+//			result = 1;
+//			System.out.println("아이디 없음");
+//		}else {
+//			result = -1;
+//			System.out.println("아이디 있음->사용불가");
+//		}
+//		System.out.println("U");
+//		return result;
+//		
+//	}
 }

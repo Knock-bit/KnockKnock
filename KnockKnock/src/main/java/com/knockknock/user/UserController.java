@@ -7,6 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.knockknock.user.impl.UserDAO;
  
 @Controller
 public class UserController {
@@ -30,7 +33,18 @@ public class UserController {
 		System.out.println("signup.do");
 		return "/user/signup";
 	}
-	
+
+//	@RequestMapping("/user/idCheck.do")
+//	public String idCheck() {
+//		UserVO vo = null;
+//		String uId = vo.getuId();
+//		int result;
+//		
+//		UserDAO userDAO = new UserDAO();
+// 		
+//		return null;
+//		
+//	}
 	@PostMapping("/user/loginUser.do")
 	public String loginUser(UserVO vo, Model model) {
 		System.out.println(">>로그인처리 loginUser() 시작");

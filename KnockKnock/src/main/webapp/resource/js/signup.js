@@ -9,6 +9,9 @@
 
 $(document).ready(function () {
 
+
+
+
   //이름
   $('#name').on('blur', function () {
     var namePattern = /^[가-힣]+$/;
