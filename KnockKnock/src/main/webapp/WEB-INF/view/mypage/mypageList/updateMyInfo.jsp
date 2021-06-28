@@ -42,11 +42,7 @@
 			 $("#email").focus();
 			 $("#email").css("outline-color","red");
 			 alert("올바른 이메일 형식으로 작성해주세요");
-		 } else {
-			 if('uEamil:contains()
-			 
-			 
-		 }
+		 } 
 		  
 	  }); 
 	  

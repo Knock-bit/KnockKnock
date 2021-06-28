@@ -45,10 +45,12 @@
 	
 	<!-- 엠블럼 리스트 -->
 	<select id="userEmblemList" parameterType="UserVO" resultType="map">
-		SELECT C.C_IDX,C.CI_EMBLEM, U.U_IDX, U.CI_EMBLEM_ST
+		SELECT CI_EMBLEM
+		FROM (SELECT C.C_IDX,C.CI_EMBLEM, U.U_IDX, U.CI_EMBLEM_ST
 		FROM CAMPAIGN_ING C, CAMPAIGN_ING_USER U
 		WHERE U.C_IDX=C.C_IDX
-		AND U.U_IDX=#{uIdx}
+		AND U.U_IDX=#{uIdx}) 
+		WHERE CI_EMBLEM_ST=1
 	
 	</select>
 </mapper>

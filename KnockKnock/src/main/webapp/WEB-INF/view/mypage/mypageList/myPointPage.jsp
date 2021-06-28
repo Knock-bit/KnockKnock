@@ -82,6 +82,7 @@
 		 if($(this).children('span').text()==0){
 
 			 $(".eitem > img[src*='think-green']").each(function(i){
+				 
 				
 				 $(this).css("opacity","0.1");
 
@@ -201,7 +202,7 @@
 	}
 	.getEmblem{
 		display : grid;
-		grid-template-columns: repeat(4, 24%);
+		grid-template-columns: repeat(4, 20%);
     	grid-template-rows: repeat(6, 1fr);
     	grid-gap:40px;
     	margin:10px;
@@ -278,55 +279,24 @@
 			<p>나의 엠블럼은?</p>
 			<div class="getEmblem">
 			
-			<c:forEach var="emblem" items="${emblemList }">
+			<c:forEach var="emblem" items="${emImgList }">
 				<%-- <span>${emblem.CI_EMBLEM }</span> --%>
 				
-				<div class="exitem">
-					<!-- 획득한 엠블럼이 아니라 모든 엠블럼이 나와야함. -->
-					<!-- status=1이면 활성화시키기 -->
-					<img class="eimg" src="/resource/img/upload/${emblem.CI_EMBLEM }">
-					<p class="eeimg">${emblem.CI_EMBLEM }</p>
-					<span class="emblemStatus" style="display:none;">${emblem.CI_EMBLEM_ST }</span>
+			
+				<div class="eitem">
+					<img src="/resource/img/upload/${emblem.CI_EMBLEM }">
 				</div>
+			
+				<!-- 획득한 엠블럼이 아니라 모든 엠블럼이 나와야함. -->
+				<!-- status=1이면 활성화시키기 -->
+				<%-- <img class="eimg" src="/resource/img/upload/${emblem.CI_EMBLEM }">
+				<p class="eeimg">${emblem.CI_EMBLEM }</p>
+				<span class="emblemStatus" style="display:none;">${emblem.CI_EMBLEM_ST }</span> --%>
+				
 				
 			</c:forEach>
 			
-				<div class="eitem">
-					<img src="/resource/img/upload/think-green.png">
-				</div>
-				<div class="eitem">
-					<img src="/resource/img/upload/exercise.png">
-				</div>
-				<div class="eitem">
-					<img src="/resource/img/upload/planet-earth.png">
-				</div>
-				<div class="eitem">
-					<img src="/resource/img/upload/cruelty-free.png">
-				</div>
-				<div class="eitem">
-					<img src="/resource/img/upload/think-green.png">
-				</div>
-				<div class="eitem">
-					<img src="/resource/img/upload/city.png">
-				</div>
-				<div class="eitem">
-					<img src="/resource/img/upload/heart.png">
-				</div>
-				<div class="eitem">
-					<img src="/resource/img/upload/moon.png">
-				</div>
-				<div class="eitem">
-					<img src="/resource/img/upload/pentacle.png">
-				</div>
-				<div class="eitem">
-					<img src="/resource/img/upload/planet-earth2.png">
-				</div>
-				<div class="eitem">
-					<img src="/resource/img/upload/rubbish.png">
-				</div>
-				<div class="eitem">
-					<img src="/resource/img/upload/think-green.png">
-				</div> 
+				
 				
 			</div>
 
