@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 참고파일 나중에 삭제 -->
+<mapper namespace="contact">
+	<!-- 문의글 보내기 -->
+	<insert id="sendContact" parameterType="contactVO">
+		INSERT INTO CONTACT(CT_IDX, CT_TITLE, CT_CATEGORY, CT_CONTENT, U_IDX, CT_WRITEDATE, CT_RESP)
+		VALUES(CT_IDX_SEQ.NEXTVAL, #{ctTitle}, #{ctCategory}, #{ctContent}, 1, SYSDATE, 0)
+	</insert>
+	
+</mapper>
