@@ -1,8 +1,8 @@
 package com.knockknock.mypage;
 
-import java.util.List; 
+import java.util.List;
 
-
+import com.knockknock.campaign.CampaignVO;
 import com.knockknock.user.UserVO;
 
 public interface MypageService {
@@ -17,5 +17,7 @@ public interface MypageService {
 	int updateMyPwd(UserVO vo);
 	// 유저의 엠블럼 목록 가져오기
 	List<String> emblemList(UserVO vo);
+	// 유저의 진행중 캠페인 리스트 가져오기
+	List<CampaignVO> campaigningList(UserVO vo);
 
 }

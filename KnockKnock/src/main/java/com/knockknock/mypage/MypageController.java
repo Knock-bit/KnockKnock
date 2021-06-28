@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.knockknock.campaign.CampaignVO;
 import com.knockknock.user.UserVO;
 
 @Controller
@@ -157,19 +158,24 @@ public class MypageController {
 	@GetMapping("/myPoint.do")
 	public String myPointPage(@ModelAttribute("users")UserVO vo, Model model) {
 		
-		// 현재 보유하고 있는 엠블럼 
-//		List<Map<String, Object>> emblemList = mypageService.emblemList(vo);
-//		System.out.println("emblemList : " + emblemList);
-//
-//		
-//		model.addAttribute("emblemList",emblemList);
-		
-		
 		// 해당 유저의 STATUS가 1인 엠블럼 이미지 가져오기
 		List<String> emImgList = mypageService.emblemList(vo);
 		System.out.println("emImgList:" + emImgList);
 		model.addAttribute("emImgList", emImgList);
 		return "/mypage/mypageList/myPointPage";
+	}
+	
+	
+	// 현재 참여중인 캠페인으로 이동
+	@GetMapping("/myCampaignPage.do")
+	public String myCampainging(@ModelAttribute("users")UserVO vo, Model model) {
+		// 유저의 캠페인 리스트 가져오기
+		List<CampaignVO> clist = mypageService.campaigningList(vo);
+		System.out.println("clist:" + clist);
+		
+		
+		model.addAttribute("clist",clist);
+		return "/mypage/mypageList/myCampaigning";
 	}
 
 }

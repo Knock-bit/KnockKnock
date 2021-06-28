@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.knockknock.campaign.CampaignVO;
 import com.knockknock.user.UserVO;
 
 @Repository
@@ -46,6 +47,12 @@ public class MypageDAO {
 	public List<String> emblemList(UserVO vo){
 		
 		return mybatis.selectList("UserVO.userEmblemList",vo);
+	}
+	// 유저으 ㅣ진행중인 캠페인 리스트 가져오기
+	public List<CampaignVO> campaigningList(UserVO vo) {
+		
+		
+		return mybatis.selectList("UserVO.userCamingList",vo);
 	}
 
 }
