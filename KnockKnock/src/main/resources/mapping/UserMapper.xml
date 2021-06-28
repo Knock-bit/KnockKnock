@@ -8,10 +8,19 @@
 	<select id="selectlogin" parameterType="HashMap" resultType="UserVO">
 		SELECT U_NAME FROM USERS WHERE U_ID=#{uId} and U_PWD=#{uPwd}
 	</select>
-	
-	<select id="idCheck" parameterType="UserVO" resultType="UserVO">
-		SELECT U_NAME FROM USERS WHERE U_ID=#{uId}
+	<!-- ID중복체크 -->
+	<select id="idCheck" parameterType="String" resultType="String">
+		SELECT U_IDX FROM USERS WHERE U_ID=#{id}
 	</select> 
+	<!-- 이메일 중복체크 -->
+	<select id="emailCheck" parameterType="String" resultType="String">
+		SELECT U_NAME FROM USERS WHERE U_EMAIL=#{email}
+	</select>
+	<!-- 회원가입 -->
+	<insert id="join" parameterType="UserVO">
+		INSERT INTO USERS(U_IDX, U_ID, U_NAME, U_PWD, U_EMAIL, U_PHONE, U_GENDER, U_BIRTH, U_NICKNAME, U_ADDRESS,  U_JOINDATE)
+		VALUES(U_IDX_SEQ.NEXTVAL, #{uId}, #{uName}, #{uPwd}, #{uEmail}, #{uPhone}, #{uGender}, #{uBirth}, #{uNickname}, #{uAddress}, SYSDATE)
+	</insert>
 	
 	<!-- 마이페이지 이동 -->
 	<select id="selectOneUser" parameterType="int" resultType="UserVO">

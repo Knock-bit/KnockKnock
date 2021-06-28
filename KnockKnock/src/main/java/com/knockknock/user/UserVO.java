@@ -10,7 +10,7 @@ public class UserVO {
 	private String uNickname;
 	private String uEmail;
 	private String uPhone;
-	private Date uBirth;
+	private String uBirth;
 	private int uTotPoint;
 	private String uAdmin;
 	private String uActive;
@@ -21,16 +21,15 @@ public class UserVO {
 	private String uImg;
 	private String uImgPath;
 	private int uPoint;
-	
-	
+
 	// ===================== [ 생성자 ] =======================
 	public UserVO() {
 	}
 
-	//전체 생성자
+	// 전체 생성자
 	public UserVO(int uIdx, String uId, String uName, String uPwd, String uNickname, String uEmail, String uPhone,
-			Date uBirth, int uTotPoint, String uAdmin, String uActive, Date uLastlogin, String uGender, String uAddress,
-			Date uJoindate, String uImg,String uImgPath, int uPoint) {
+			String uBirth, int uTotPoint, String uAdmin, String uActive, Date uLastlogin, String uGender, String uAddress,
+			Date uJoindate, String uImg, String uImgPath, int uPoint) {
 		super();
 		this.uIdx = uIdx;
 		this.uId = uId;
@@ -54,7 +53,8 @@ public class UserVO {
 
 	// 마이페이지용 생성자
 	public UserVO(int uIdx, String uId, String uName, String uPwd, String uNickname, String uEmail, String uPhone,
-			Date uBirth, int uTotPoint, String uGender, String uAddress, Date uJoindate, String uImg,String uImgPath, int uPoint) {
+			String uBirth, int uTotPoint, String uGender, String uAddress, Date uJoindate, String uImg, String uImgPath,
+			int uPoint) {
 		super();
 		this.uIdx = uIdx;
 		this.uId = uId;
@@ -72,16 +72,37 @@ public class UserVO {
 		this.uImgPath = uImgPath;
 		this.uPoint = uPoint;
 	}
-	
-	//로그인용 생성자
+
+	// 로그인용 생성자
 	public UserVO(String uId, String uPwd) {
 		super();
 		this.uId = uId;
 		this.uPwd = uPwd;
 	}
 
-	//=======================[ getter, setter ] =========================
-	
+	// 아이디 체크용 생성자
+	public UserVO(String uId) {
+		super();
+		this.uId = uId;
+	}
+
+	// 회원가입용 생성자
+	public UserVO(String uId, String uName, String uPwd, String uNickname, String uEmail, String uPhone, String uBirth,
+			String uGender, String uAddress) {
+		super();
+		this.uId = uId;
+		this.uName = uName;
+		this.uPwd = uPwd;
+		this.uNickname = uNickname;
+		this.uEmail = uEmail;
+		this.uPhone = uPhone;
+		this.uBirth = uBirth;
+		this.uGender = uGender;
+		this.uAddress = uAddress;
+	}
+
+	// =======================[ getter, setter ] =========================
+
 	public int getuIdx() {
 		return uIdx;
 	}
@@ -138,11 +159,11 @@ public class UserVO {
 		this.uPhone = uPhone;
 	}
 
-	public Date getuBirth() {
+	public String getuBirth() {
 		return uBirth;
 	}
 
-	public void setuBirth(Date uBirth) {
+	public void setuBirth(String uBirth) {
 		this.uBirth = uBirth;
 	}
 
@@ -218,7 +239,6 @@ public class UserVO {
 		this.uPoint = uPoint;
 	}
 
-	
 	public String getuImgPath() {
 		return uImgPath;
 	}
@@ -227,10 +247,8 @@ public class UserVO {
 		this.uImgPath = uImgPath;
 	}
 
-	
-
 	// ================== [ toString ] ====================
-	
+
 	@Override
 	public String toString() {
 		return "UserVO [uIdx=" + uIdx + ", uId=" + uId + ", uName=" + uName + ", uPwd=" + uPwd + ", uNickname="
@@ -239,13 +257,5 @@ public class UserVO {
 				+ ", uGender=" + uGender + ", uAddress=" + uAddress + ", uJoindate=" + uJoindate + ", uImg=" + uImg
 				+ ", uImgPath=" + uImgPath + ", uPoint=" + uPoint + "]";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 
 }

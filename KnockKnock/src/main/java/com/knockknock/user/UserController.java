@@ -1,6 +1,6 @@
 package com.knockknock.user;
 
-import java.io.PrintWriter;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,8 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.knockknock.user.impl.UserDAO;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
  
 @Controller
 public class UserController {
@@ -30,31 +30,43 @@ public class UserController {
 	
 	@GetMapping("/user/signup.do")
 	public String moveSignup() {
-		System.out.println("signup.do");
 		return "/user/signup";
 	}
 
-//	@RequestMapping("/user/idCheck.do")
-//	public String idCheck() {
-//		UserVO vo = null;
-//		String uId = vo.getuId();
-//		int result;
-//		
-//		UserDAO userDAO = new UserDAO();
-// 		
-//		return null;
-//		
-//	}
+	@GetMapping("/user/tnc.do")
+	public String tnc() {
+		return "/user/tnc";
+	}
+	
+	@RequestMapping("/user/idCheck.do")
+	@ResponseBody
+	public int idCheck(String id) {
+		UserVO vo = new UserVO();
+	
+		int result;
+		
+ 		result = userService.idCheck(id); 		
+		return result;
+		
+	}
+	
+	@RequestMapping("/user/emailCheck.do")
+	@ResponseBody
+	public int emailCheck(String email) {
+		UserVO vo = new UserVO();
+	
+		int result;
+		
+ 		result = userService.emailCheck(email); 		
+		return result;
+		
+	}
 	@PostMapping("/user/loginUser.do")
 	public String loginUser(UserVO vo, Model model) {
-		System.out.println(">>로그인처리 loginUser() 시작");
-		System.out.println("받은 VO: " +vo);
 		
 		UserVO loginUser = userService.selectlogin(vo);
-		System.out.println("loginUser: "+loginUser);
 		
 		if(loginUser != null) {
-			System.out.println(">>로그인 성공한 경우");
 			model.addAttribute("loginUser", loginUser);
 			return "/main/main";
 		}else {
@@ -63,6 +75,22 @@ public class UserController {
 			return "/user/login";
 		}
 		
+	}
+	
+	@PostMapping("/user/join.do")
+	public String join(UserVO vo) {
+		System.out.println("회원가입 controller join()");
+		System.out.println("vo: "+vo);
+		userService.join(vo);
+		return "/main/main";
+	}
+	
+	@RequestMapping("/logout.do")
+	public ModelAndView logout(HttpSession session) {
+		session.invalidate();
+		ModelAndView mv = new ModelAndView("main/main");
+		
+		return mv;
 	}
 	
 	

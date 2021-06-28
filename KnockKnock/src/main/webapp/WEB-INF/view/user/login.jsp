@@ -49,7 +49,7 @@
                 <div class="overlay-panel overlay-right">
                     <h1>Knock!Knock!</h1>
                     <p>아직 회원이 아니신가요?<br>지금 바로 가입하세요.</p>
-                    <button class="ghost" id="signUp" onclick="location.href='/user/signup.do'">회원가입</button>
+                    <button class="ghost" id="signUp" onclick="location.href='/user/tnc.do'">회원가입</button>
                 </div>
             </div>
         </div>
