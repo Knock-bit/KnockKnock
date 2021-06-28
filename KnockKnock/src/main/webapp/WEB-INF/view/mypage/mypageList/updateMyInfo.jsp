@@ -63,8 +63,8 @@
 				</div>
 				<div class="it5">
 					<label>생년월일  </label>
-					 <fmt:formatDate var="uBirth" value="${users.uBirth }" pattern="yyyy.MM.dd"  />
-					<input type="text" name="uBirth" value="${uBirth }" disabled="disabled">
+					 <%-- <fmt:formatDate var="uBirth" value="${users.uBirth }" pattern="yyyy.MM.dd"  />
+					<input type="text" name="uBirth" value="${uBirth }" disabled="disabled"> --%>
 				</div>
 				<div class="it6">
 					<label><span>*&nbsp;</span>이메일  </label>
