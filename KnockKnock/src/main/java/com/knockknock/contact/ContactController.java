@@ -2,8 +2,11 @@ package com.knockknock.contact;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import com.knockknock.user.UserVO;
 
 @Controller
 public class ContactController {
@@ -19,9 +22,24 @@ public class ContactController {
 	}
 	
 	@PostMapping("/contact/sendContact.do")
-	public String sendContact(ContactVO contactVO) {
-		System.out.println("contactVO: "+contactVO);
+	public String sendContact(ContactVO contactVO, Model model) {
+		System.out.println("Controller contactVO: "+contactVO);
+		UserVO userVO = new UserVO();
+		model.addAttribute("UserVO", userVO);
+		
+		ContactCategoryVO categoryVO = new ContactCategoryVO();
+		model.addAttribute("ContactCategoryVO", categoryVO);
 		contactService.sendContact(contactVO);
-		return "mypage/myrequest";
+		return "contact/contactConfirm";
+	}
+	
+	@GetMapping("/main.do'")
+	public String backToMain() {
+		return "main/main";
+	}
+	
+	@GetMapping("/mypage/myrequest.do") 
+	public String seeMyRequest() {
+		return "/mypage/myrequest";
 	}
 }
