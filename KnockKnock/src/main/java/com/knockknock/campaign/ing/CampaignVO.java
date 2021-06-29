@@ -16,7 +16,7 @@ public class CampaignVO {
 	private String ciFile;
 	private String ciEmblem;
 	private int uIdx;
-	private String ccCategory;
+	private String ccIdx;
 	private int cTotpoint;
 	private String cKeyword1;
 	private String cKeyword2;
@@ -25,9 +25,6 @@ public class CampaignVO {
 
 
 	public CampaignVO() {	}
-
-
-
 
 	public CampaignVO(int ciIdx, String ciTitle, String ciContent, String ciGoal, Date ciStartdate, Date ciEnddate,
 			int ciBasepoint, int ciEstimatedpoint, int ciStatus, String ciFile, String ciEmblem, int uIdx,
@@ -45,7 +42,7 @@ public class CampaignVO {
 		this.ciFile = ciFile;
 		this.ciEmblem = ciEmblem;
 		this.uIdx = uIdx;
-		this.ccCategory = ccCategory;
+		this.ccIdx = ccIdx;
 		this.cTotpoint = cTotpoint;
 		this.cKeyword1 = cKeyword1;
 		this.cKeyword2 = cKeyword2;
@@ -186,14 +183,14 @@ public class CampaignVO {
 
 
 	public String getCcCategory() {
-		return ccCategory;
+		return ccIdx;
 	}
 
 
 
 
-	public void setCcCategory(String ccCategory) {
-		this.ccCategory = ccCategory;
+	public void setCcCategory(String ccIdx) {
+		this.ccIdx = ccIdx;
 	}
 
 
