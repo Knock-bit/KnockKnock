@@ -16,7 +16,7 @@ public class CampaignVO {
 	private String ciFile;
 	private String ciEmblem;
 	private int uIdx;
-	private String cCategory;
+	private String ccCategory;
 	private int cTotpoint;
 	private String cKeyword1;
 	private String cKeyword2;
@@ -31,7 +31,7 @@ public class CampaignVO {
 
 	public CampaignVO(int ciIdx, String ciTitle, String ciContent, String ciGoal, Date ciStartdate, Date ciEnddate,
 			int ciBasepoint, int ciEstimatedpoint, int ciStatus, String ciFile, String ciEmblem, int uIdx,
-			String cCategory, int cTotpoint, String cKeyword1, String cKeyword2, String cKeyword3, int cfIdx) {
+			String ccCategory, int cTotpoint, String cKeyword1, String cKeyword2, String cKeyword3, int cfIdx) {
 		super();
 		this.ciIdx = ciIdx;
 		this.ciTitle = ciTitle;
@@ -45,16 +45,13 @@ public class CampaignVO {
 		this.ciFile = ciFile;
 		this.ciEmblem = ciEmblem;
 		this.uIdx = uIdx;
-		this.cCategory = cCategory;
+		this.ccCategory = ccCategory;
 		this.cTotpoint = cTotpoint;
 		this.cKeyword1 = cKeyword1;
 		this.cKeyword2 = cKeyword2;
 		this.cKeyword3 = cKeyword3;
 		this.cfIdx = cfIdx;
 	}
-
-
-
 
 	public int getCiIdx() {
 		return ciIdx;
@@ -176,16 +173,6 @@ public class CampaignVO {
 	}
 
 
-	public String getcCategory() {
-		return cCategory;
-	}
-
-
-	public void setcCategory(String cCategory) {
-		this.cCategory = cCategory;
-	}
-
-
 	public int getcTotpoint() {
 		return cTotpoint;
 	}
@@ -196,9 +183,27 @@ public class CampaignVO {
 	}
 
 
+
+
+	public String getCcCategory() {
+		return ccCategory;
+	}
+
+
+
+
+	public void setCcCategory(String ccCategory) {
+		this.ccCategory = ccCategory;
+	}
+
+
+
+
 	public String getcKeyword1() {
 		return cKeyword1;
 	}
+
+
 
 
 	public void setcKeyword1(String cKeyword1) {
@@ -206,9 +211,13 @@ public class CampaignVO {
 	}
 
 
+
+
 	public String getcKeyword2() {
 		return cKeyword2;
 	}
+
+
 
 
 	public void setcKeyword2(String cKeyword2) {
@@ -216,14 +225,20 @@ public class CampaignVO {
 	}
 
 
+
+
 	public String getcKeyword3() {
 		return cKeyword3;
 	}
 
 
+
+
 	public void setcKeyword3(String cKeyword3) {
 		this.cKeyword3 = cKeyword3;
 	}
+
+
 
 
 	public int getCfIdx() {
