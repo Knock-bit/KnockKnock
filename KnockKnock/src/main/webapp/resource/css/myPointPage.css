@@ -81,12 +81,12 @@
    @keyframes stack1{
 		0% {width:0; color:rgba(255, 255, 255, 0);}
 		40% {color:rgba(255, 255, 255, 1);}
-		100%{width:${users.uPoint/users.uTotPoint*100}%; }
+		100%{width:${users.uUsedPoint/users.uTotPoint*100}%; }
 	}
 	@keyframes stack2{
 		0% {width:0; color:rgba(255, 255, 255, 0);}
 		40% {color:rgba(255, 255, 255, 1);}
-		100%{width:${100-(users.uPoint/users.uTotPoint*100)}%; }
+		100%{width:${100-(users.uUsedPoint/users.uTotPoint*100)}%; }
 	}
 	.graph {
 		height : 40px;	

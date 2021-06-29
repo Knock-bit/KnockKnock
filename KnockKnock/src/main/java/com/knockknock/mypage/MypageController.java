@@ -161,6 +161,7 @@ public class MypageController {
 		// 해당 유저의 STATUS가 1인 엠블럼 이미지 가져오기
 		List<String> emImgList = mypageService.emblemList(vo);
 		System.out.println("emImgList:" + emImgList);
+		System.out.println("userVO : " + vo);
 		model.addAttribute("emImgList", emImgList);
 		return "/mypage/mypageList/myPointPage";
 	}

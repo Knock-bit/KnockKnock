@@ -58,11 +58,11 @@
 	<!-- 엠블럼 리스트 -->
 	<select id="userEmblemList" parameterType="UserVO" resultType="map">
 		SELECT CI_EMBLEM
-		FROM (SELECT C.CI_IDX,C.CI_EMBLEM, U.U_IDX, U.CI_EMBLEM_ST
+		FROM (SELECT C.CI_IDX,C.CI_EMBLEM, U.U_IDX, U.CI_EMBLEM_STATUS
 		FROM CAMPAIGN C, CAMPAIGN_USER U
 		WHERE U.CI_IDX=C.CI_IDX
 		AND U.U_IDX=#{uIdx}) 
-		WHERE CI_EMBLEM_ST=1
+		WHERE CI_EMBLEM_STATUS=1
 	
 	</select>
 	
@@ -70,7 +70,7 @@
 	<select id="userCamingList" parameterType="UserVO" resultType="campaignVO" >
 		SELECT C.*
 		FROM CAMPAIGN C, CAMPAIGN_USER U
-		WHERE U.C_IDX=C.CI_IDX 
+		WHERE U.CI_IDX=C.CI_IDX 
 		AND C.CI_STATUS=1
 		AND U.U_IDX=#{uIdx}
 	</select>

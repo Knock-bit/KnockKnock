@@ -149,10 +149,10 @@ function CountDownTimer(dt, className){
 
 											</div>
 											<div class="itemEnddate">
-												<span class="it1">마감일 </span>
+												<span class="it1">D-DAY </span>
 												 <span class="enddate" style="display:none;">${campaign.ciEnddate }</span>
-												 <span class="countdown">남은기간</span><br>
-													<span style="font-size:11px;">이미지를 클릭하면 상세페이지로 이동합니다.</span>
+												 <div class="countdown"></div><br>
+													<span style="font-size:10px;">이미지를 클릭하면 상세페이지로 이동합니다.</span>
 
 
 											</div>
@@ -161,9 +161,10 @@ function CountDownTimer(dt, className){
 												<p>획득 가능한 포인트와 엠블럼</p>
 												<div class="apzone">
 													<div class="pt">
-														<div>
-															획득 가능 포인트
-															계속 바뀜(쿼리문으로 ? 아니면 계산해서 가져오기)
+														<div class="pt2">
+															<p>${campaign.cTotpoint }&nbsp;<span>P</span></p>
+															<p>를 획득하실 수 있습니다!</p>
+															
 														</div>
 													
 													</div>

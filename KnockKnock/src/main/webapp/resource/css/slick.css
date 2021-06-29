@@ -5,7 +5,7 @@
     .link:hover, .link:focus { color: #9fd6c2; }
     /* container - body */
     #container { margin: auto;  }
-    .slide_wrap { position: relative; width: 800px; height:60vh; margin:0 auto; padding-bottom: 30px; }
+    .slide_wrap { position: relative; width: 800px; height:60vh; margin:0 auto; padding-bottom: 50px; }
     .slide_box { width: 100%; margin: auto; overflow-x: hidden; }
     .slide_content { display: table; float: left; width: 800px; height: 400px; }
     .slide_content > p { display: table-cell; vertical-align: middle; text-align: center; font-size: 100px; font-weight: bold; color: #555; }
