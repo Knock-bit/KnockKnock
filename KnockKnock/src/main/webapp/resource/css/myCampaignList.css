@@ -1,0 +1,207 @@
+  /* 메인 css */
+  .main-content{
+  		width:100%;
+        flex: 1;
+        min-height:100vh;
+        margin-top:100px;
+        
+    }
+   .main {
+   		width:70%;
+   		margin: 0 auto;
+   		text-align:center;
+   		position:relative;
+   }
+   #ctext{
+	font-size:25px;
+	border-bottom:1px solid gray;
+	width:950px;
+	margin: 0 auto;
+	padding-top:3%;
+	font-weight:bold;
+
+}
+   .endList{
+   		display:grid;
+  		grid-template-columns: repeat(3, 25%);
+  		grid-template-rows: repeat(5, 50vh);
+  		grid-gap:8%;
+		padding:5px;
+  		justify-content: center;
+  		margin-top:5%;
+  		
+   }
+   .item{
+   		display:grid;
+  		grid-template-columns: repeat(1, 100%);
+  		grid-template-rows: 6fr 1fr;
+   }
+   /*캠페인 이미지*/
+   .itemImg{
+   		overflow: hidden;
+      	align-items: center;
+      	justify-content: center;
+      	
+      	
+   
+   }
+   .itemImg img{
+   		border-radius:5%;
+   		object-fit:cover;
+   		width:90%;
+   		height:100%;
+   		box-shadow: 0 8px 11px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+   }
+   .itemImg img:hover{
+   		opacity:0.6;
+   		cursor:pointer;
+   
+   }
+   
+   /*캠페인 제목*/
+   .imTitle{
+   		width:90%;
+   		height:6vh;
+   		font-style:normal;
+   		font-size:15px;
+   		background-color:#0e4b20;
+   		padding:10px;
+   		color:white;
+   		border-radius:5px;
+   		margin:0 auto;
+   }
+   
+   /*모달*/
+   .modal{
+	  display:none;
+	  position:fixed; 
+	  width:100%; height:100%;
+	  top:0; left:0; 
+	  background:rgba(0,0,0,0.7);
+	}
+	.madalDiv{
+	  position:fixed;
+	  top:50%; left:50%;
+	  transform: translate(-50%,-50%);
+	  max-width: 60%;
+	  min-height: 30%;
+	  background:#ebf9f2;
+	  width:60%;
+	  height:60vh;
+	  border-radius:8px;
+	  padding: 15px;
+	  
+	}
+	.madalDiv .con{
+		width:100%;
+	  font-size:15px; line-height:1.3;
+	  height:100%;
+	  display:grid;
+	  grid-template-columns: 40% 55%;
+  	  grid-template-rows: 1fr, 1fr, 0.8fr, 1fr, 1fr;
+	}
+	.madalDiv .close{
+	  display:block;
+	  position:absolute;
+	  width:25px; height:25px;
+	  text-align:center; line-height: 30px;
+	  text-decoration:none;
+	  color:#0e4b20; font-size:16px; font-weight: bold;
+	  right:10px; top:7px;
+	 
+	}
+	/*모달창 데이터*/
+	.con1{
+		grid-column : 1/2;
+  		grid-row:1/6;
+  		justify-content: center;
+  		overflow: hidden; 
+      	text-align:center
+	}
+	.con1 img{
+		border-radius:5%;
+   		object-fit:cover;
+   		width:80%;
+   		height:80%;
+	
+	}
+	.con2{
+		grid-column : 2/3;
+  		grid-row:1/2;
+  		justify-content: center;
+  		padding-left:5%;
+  		
+	}
+	.con3{
+		grid-column : 2/3;
+  		grid-row:2/3;
+  		justify-content: center;
+  		padding-left:5%;
+	}
+	.con4{
+		grid-column : 2/3;
+  		grid-row:3/4;
+  		justify-content: center;
+  		padding-left:5%;
+	}
+	.con5{
+		grid-column : 2/3;
+  		grid-row:4/5;
+  		justify-content: center;
+  		padding-left:5%;
+	}
+	.con6{
+		grid-column : 2/3;
+  		grid-row:5/6;
+  		justify-content: center;
+  		padding-left:5%;
+	}
+	
+	
+	
+	/*모달창 RANK, POINT*/
+	.c61, .c62 {
+		width:40%;
+		height:100%;
+		float:left;
+		margin:0 auto;
+	}
+	.c62 {
+		text-align:center;
+	}
+	.c63{
+		width:19%;
+		height:100%;
+		float:left;
+		margin:0 auto;
+	}
+	.c61 p:first-child, .c62 p:first-child, .c63 p:first-child {
+		background-color:#0e4b20;
+		color:white;
+		padding:3px;
+		text-align:center;
+	}
+	.con2 p:first-child, .con3 p:first-child, .con4 p:first-child, .con5 p:first-child{
+		font-size:15px; 
+		color:#0e4b20; 
+		font-weight:bold; 
+		border-bottom:1px solid #0e4b20;
+	}
+	.cp{
+		font-size:20px;
+		font-style:normal;
+		font-weight:bold;
+	}
+	.ce{
+		border-radius: 50%;
+		overflow: hidden;
+      	align-items: center;
+      	justify-content: center;
+      	border : dotted 2px black;
+      	background-color:white;
+      	padding:10px;
+	}
+	.ce img{
+		object-fit:cover;
+   		width:100%;
+	}

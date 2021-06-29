@@ -149,7 +149,7 @@ function CountDownTimer(dt, className){
 
 											</div>
 											<div class="itemEnddate">
-												<span class="it1">D-DAY </span>
+												<span class="it1">남은기간 </span>
 												 <span class="enddate" style="display:none;">${campaign.ciEnddate }</span>
 												 <div class="countdown"></div><br>
 													<span style="font-size:10px;">이미지를 클릭하면 상세페이지로 이동합니다.</span>
