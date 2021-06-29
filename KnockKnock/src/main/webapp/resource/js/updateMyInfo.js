@@ -1,6 +1,6 @@
  $(function(){
 	  // 이메일 수정 시 정규표현식 확인
-	  $("#email").blur(function(){
+	  $("#email").on("blur",function(){
 		 var uEmail = $("#email").val();
 		 var emPattern = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 		 
@@ -8,6 +8,7 @@
 			 $("#email").focus();
 			 $("#email").css("outline-color","red");
 			 alert("올바른 이메일 형식으로 작성해주세요");
+			 document.location.reload(true);
 		 } 
 		  
 	  }); 

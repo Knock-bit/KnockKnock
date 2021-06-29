@@ -10,13 +10,14 @@
    		margin: 0 auto;
    		text-align:center;
    		position:relative;
+   		
    }
    #ctext{
 	font-size:18px;
 	border-bottom:1px solid gray;
 	width:800px;
 	margin: 0 auto;
-	padding:5% 0 0 5%;
+	padding:2% 0 0 5%;
 	margin-bottom:2%;
 	font-style:normal;
 	font-weight:bold;
@@ -26,12 +27,15 @@
    
    /*그리드*/
    .myInfo {
-   		width:80%;
+   		width:90%;
    		display:grid;
    		grid-template-columns: 60% 39%;
     	grid-template-rows: repeat(10, 3vh);
     	grid-gap:30px;
     	margin:0 auto;
+    	
+    	padding:5% 0 5% 0;
+    	box-shadow: 0 8px 11px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
    
    }
 
@@ -53,6 +57,7 @@
    		width:89%;
    		text-align:left;
    		border-bottom:1px solid black;
+   		font-size:13px;
    }
    
    
