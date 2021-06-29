@@ -62,7 +62,7 @@ public class AdminController {
 	public String getKeywordList(PagingVO pvo, Model model,
 			@RequestParam(value = "nowPage", required = false) String nowPage,
 			@RequestParam(value = "cntPerPage", required = false) String cntPerPage) {
-		
+
 		int total = adminService.countKeyword();
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = "1";
@@ -73,10 +73,28 @@ public class AdminController {
 			cntPerPage = "5";
 		}
 		pvo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
-		model.addAttribute("paging",pvo);
+		model.addAttribute("paging", pvo);
 		model.addAttribute("viewAll", adminService.getKeywordList(pvo));
 		return "/admin/adminKeywordList";
 	}
-	
+
+	@GetMapping("/adminCampaignCategory.do")
+	public String getCampaignCategoryList(PagingVO pvo, Model model,
+			@RequestParam(value = "nowPage", required = false) String nowPage,
+			@RequestParam(value = "cntPerPage", required = false) String cntPerPage) {
+		int total = adminService.countKeyword();
+		if (nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "5";
+		} else if (nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) {
+			cntPerPage = "5";
+		}
+		pvo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		model.addAttribute("paging", pvo);
+		model.addAttribute("viewAll", adminService.getKeywordList(pvo));
+		return "/admin/adminKeywordList";
+	}
 
 }

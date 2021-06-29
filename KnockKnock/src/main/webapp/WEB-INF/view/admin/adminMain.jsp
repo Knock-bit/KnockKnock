@@ -18,7 +18,10 @@
 		frm.action="adminKeywordList.do";
 		frm.submit();
 	}
-	
+	function adminCampaignCategory(frm){
+		frm.action="adminCampaignCategory.do";
+		frm.submit();
+	}
 	
 	
 </script>
@@ -29,6 +32,7 @@
 	<form>
 		<input type="button" value="adminUser" onclick="adminUser(this.form)">
 		<input type="button" value="adminKeyword" onclick="adminKeyword(this.form)">
+		<input type="button" value="adminCampaignCategory" onclick="adminCampaignCategory(this.form)"/>
 	</form>
 	
 </body>
