@@ -22,6 +22,6 @@ public class ContactController {
 	public String sendContact(ContactVO contactVO) {
 		System.out.println("contactVO: "+contactVO);
 		contactService.sendContact(contactVO);
-		return "/contact/contactConfirm";
+		return "mypage/myrequest";
 	}
 }
