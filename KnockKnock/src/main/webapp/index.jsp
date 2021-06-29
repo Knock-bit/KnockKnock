@@ -19,7 +19,7 @@
 		frm.submit();
 	}
 	function board_connect(frm){
-		frm.action="board/board";
+		frm.action="board/getBoardList.do";
 		frm.submit();
 	}
 	function campaign_connect(frm){

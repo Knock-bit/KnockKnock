@@ -17,6 +17,7 @@ public class BoardVO {
 	private String bFile;
 	private int ciIdx;
 	private int sbIdx;
+	private String bActive;
 	
 	//검색조건용, 파일업로드
 	private String searchCondition;
@@ -26,7 +27,8 @@ public class BoardVO {
 	public BoardVO() {}
 	
 	public BoardVO(int bIdx, String bSubject, String bContent, int uIdx, Date bRegdate, int bHit, int bViews,
-			int bCategory, String bFile, int ciIdx, int sbIdx) {
+			int bCategory, String bFile, int ciIdx, int sbIdx, String bActive, String searchCondition,
+			String searchKeyword, MultipartFile uploadFile) {
 		super();
 		this.bIdx = bIdx;
 		this.bSubject = bSubject;
@@ -39,6 +41,10 @@ public class BoardVO {
 		this.bFile = bFile;
 		this.ciIdx = ciIdx;
 		this.sbIdx = sbIdx;
+		this.bActive = bActive;
+		this.searchCondition = searchCondition;
+		this.searchKeyword = searchKeyword;
+		this.uploadFile = uploadFile;
 	}
 
 	public int getbIdx() {
@@ -112,8 +118,9 @@ public class BoardVO {
 	public String toString() {
 		return "BoardVO [bIdx=" + bIdx + ", bSubject=" + bSubject + ", bContent=" + bContent + ", uIdx=" + uIdx
 				+ ", bRegdate=" + bRegdate + ", bHit=" + bHit + ", bViews=" + bViews + ", bCategory=" + bCategory
-				+ ", bFile=" + bFile + ", ciIdx=" + ciIdx + ", sbIdx=" + sbIdx + ", searchCondition=" + searchCondition
-				+ ", searchKeyword=" + searchKeyword + ", uploadFile=" + uploadFile + "]";
+				+ ", bFile=" + bFile + ", ciIdx=" + ciIdx + ", sbIdx=" + sbIdx + ", bActive=" + bActive
+				+ ", searchCondition=" + searchCondition + ", searchKeyword=" + searchKeyword + ", uploadFile="
+				+ uploadFile + "]";
 	}
 
 	public String getSearchCondition() {
@@ -133,5 +140,11 @@ public class BoardVO {
 	}
 	public void setUploadFile(MultipartFile uploadFile) {
 		this.uploadFile = uploadFile;
+	}
+	public String getbActive() {
+		return bActive;
+	}
+	public void setbActive(String bActive) {
+		this.bActive = bActive;
 	}
 }

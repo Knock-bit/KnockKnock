@@ -51,7 +51,7 @@
 	</form>
 	
 	<p>
-		<a href="insertBoard.jsp">글 등록</a>
+		<a href="insertBoard.do">글 등록</a>
 		<a href="deleteBoard.do?bIdx=${board.bIdx }">글 삭제</a>
 		<a href="getBoardList.do">글 목록으로..</a>
 	</p>

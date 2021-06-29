@@ -38,16 +38,13 @@ public class BoardDAO {
 		mybatis.delete("BoardDAO.deleteBoard", vo);
 	}
 	
-//	//조회수처리
-//	public int updateHit(BoardVO vo) {
-//		mybatis.upHit("BoardDAO.updateHit", vo);
-//	}
-	
+	//조회수처리
+	public void updateViews(int bIdx) {
+			mybatis.update("BoardDAO.updateViews", bIdx);
+	}
+			
 	//추천수처리
-	
-	//댓글목록보기
-	
-	//댓글 수정
-	
-	//댓글 삭제
+	public void updateHit(int bIdx) {
+		mybatis.update("BoardDAO.updateHit", bIdx);
+	}
 }
