@@ -58,7 +58,7 @@
 						<p class="onlyImg">${endlist.ciFile}</p>
 						<p class="imContent">${endlist.ciContent }</p>
 						<p class="imEndDate">${endlist.ciEnddate }</p>
-						<p class="imGoal">${endlist.ciGoal }</p>
+						<p class="imGoal">${endlist.cGoal }</p>
 						<p class="imEmblem">${endlist.ciEmblem }</p>
 					</div>
 					

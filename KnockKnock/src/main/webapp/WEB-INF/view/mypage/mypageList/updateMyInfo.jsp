@@ -32,7 +32,52 @@
   <!--  -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="${cp}/resource/js/updateMyInfo.js" type="text/javascript" charset="utf-8"></script>
+<script>
+$(function(){
+	  // 이메일 수정 시 정규표현식 확인
+	  $("#email").blur(function(){
+		 var uEmail = $("#email").val();
+		 var emPattern = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+		 
+		 if(emPattern.test(uEmail)==false){
+			 //$("#email").focus();
+			 $("#email").css("outline-color","red");
+			 alert("올바른 이메일 형식으로 작성해주세요");
+			 setTimeout(function(){
+				 $("#email").focus(); }, 10);
 
+		 } 
+		  
+	  }); 
+	  
+	// 이메일 중복 검사 => 아작스로
+	
+	
+	
+	
+	// 휴대폰 수정 시 정규표현식 확인
+	 $("#phone").blur(function(){
+		 var uPhone = $("#phone").val();
+		 var phonePattern = /^\d{3}-\d{3,4}-\d{4}$/; 
+		 
+		 if(phonePattern.test(uPhone)==false){
+			 $("#phone").focus();
+			 $("#phone").css("outline-color","red");
+			 alert("올바른  형식으로 입력해주세요\n['-'를 포함하여 작성해주세요]");
+		 } 
+		  
+	  }); 
+	  
+	  // 사진 업로드
+	  $("#btn-upload").click(function(e){
+	  		e.preventDefault();
+	  		$("#fileBtn").click();
+	  });
+	  
+});
+
+
+</script>
 
 </head>
 <body>
@@ -41,7 +86,7 @@
   <!-- ======= Header 끝  === -->
 <div class="main-content">
 
-	<p id="ctext">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;내 정보 수정</p>
+	<p id="ctext">My Infomation</p>
 	<div class="updateMyInfoForm">
 		<form action="updateMyInfoBtn.do" method="post" enctype="multipart/form-data">
 			<div class="myInfo">

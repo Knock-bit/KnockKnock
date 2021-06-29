@@ -136,7 +136,7 @@ public class MypageController {
 	// 비밀번호 변경 페이지로 이동
 	@GetMapping("/updatePwd.do")
 	public String updatePwd(@ModelAttribute("users") UserVO vo) {
-
+		System.out.println("vo :" + vo);
 		return "/mypage/mypageList/updatePwd";
 	}
 
@@ -147,7 +147,7 @@ public class MypageController {
 	@ResponseBody
 	public String updateMyPwd(@ModelAttribute("users") UserVO vo) {
 		System.out.println("비밀번호 변경");
-
+		
 		mypageService.updateMyPwd(vo);
 
 		return "users";

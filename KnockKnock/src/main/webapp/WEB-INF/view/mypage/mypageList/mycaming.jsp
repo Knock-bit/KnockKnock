@@ -145,7 +145,7 @@ function CountDownTimer(dt, className){
 											</div>
 											<div class="itemGoal ">
 												<p class="it1">GOAL</p> <p class="it2">
-													${campaign.ciGoal }</p>
+													${campaign.cGoal }</p>
 
 											</div>
 											<div class="itemEnddate">
