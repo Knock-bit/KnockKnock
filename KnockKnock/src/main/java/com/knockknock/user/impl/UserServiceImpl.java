@@ -7,7 +7,7 @@ import com.knockknock.user.UserService;
 import com.knockknock.user.UserVO;
 
 @Service("userService")
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserDAO userDAO;
 
@@ -22,6 +22,11 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
+	public int nickCheck(String nickname) {
+		return userDAO.nickCheck(nickname);
+	}
+
+	@Override
 	public int emailCheck(String email) {
 		return userDAO.emailCheck(email);
 	}
@@ -30,4 +35,5 @@ public class UserServiceImpl implements UserService{
 	public void join(UserVO vo) {
 		userDAO.join(vo);
 	}
+
 }

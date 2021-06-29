@@ -18,6 +18,7 @@ public class UserDAO {
 	//아이디 중복체크
 	public int idCheck(String id) {
 		String uId = mybatis.selectOne("UserVO.idCheck", id);
+
 		int result;
 		if(uId==null) {
 			result = 1; //아이디 사용가능
@@ -37,6 +38,18 @@ public class UserDAO {
 			result=0; //이메일 사용불가(중복)
 		}
 		return result;
+	}
+	//닉네임 중복체크
+	public int nickCheck(String nickname) {
+		String nickName = mybatis.selectOne("UserVO.nickCheck", nickname);
+		int result;
+		if(nickName==null) {
+			result=1;//닉네임 사용 가능
+		}else {
+			result=0;//닉네임 사용불가(중복)
+		}
+		return result;
+		
 	}
 	//회원가입
 	public void join(UserVO vo) {
