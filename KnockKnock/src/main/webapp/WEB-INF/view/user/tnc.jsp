@@ -1,170 +1,190 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <html lang="ko">
 
-<html>
-
-<head>
-    <meta charset="UTF-8">
-    <script src="https://code.jquery.com/jquery-3.6.0.js"
-        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
-    <script>
-
-        function cAll() {
-            if ($("#checkAll").is(':checked')) {
-                $("input[type=checkbox]").prop("checked", true);
-            } else {
-                $("input[type=checkbox]").prop("checked", false);
-            }
-        }
-
-        function chk2() {
-            if ($("#chk2").is(':checked') == false) {
-                $("#checkAll").prop("checked", false);
-            }
-        }
-
-        function chk1() {
-            if ($("#chk1").is(':checked') == false) {
-                $("#checkAll").prop("checked", false);
-            }
-        }
-
-    </script>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Noto Sans KR', sans-serif;
-        }
-
-
-        ul>li {
-            list-style: none
-        }
-
-
-        .clearfix::after {
-            content: "";
-            display: block;
-            clear: both;
-        }
-
-        footBtwrap {
-            text-align: center;
-        }
-
-        #joinForm {
-            width: 500px;
-            margin: 0 auto;
-            margin-top: 100px;
-
-        }
-
-        ul.join_box {
-            border: 1px solid #ddd;
-            background-color: #fff;
-        }
-
-        .checkBox,
-        .checkBox>ul {
-            position: relative;
-        }
-
-        .checkBox>ul>li {
-            float: left;
-        }
-
-        .checkBox>ul>li:first-child {
-            width: 85%;
-            padding: 15px;
-            font-weight: 600;
-            color: #888;
-        }
-
-        .checkBox>ul>li:nth-child(2) {
-            position: absolute;
-            top: 50%;
-            right: 30px;
-            margin-top: -12px;
-        }
-
-        .checkBox textarea {
-            width: 96%;
-            height: 130px;
-            margin: 0 2%;
-            background-color: #f7f7f7;
-            color: #888;
-            border: none;
-        }
-
-        .footBtwrap {
-            margin: auto 0;
-
-            margin-top: 20px;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-
-        #submit {
-            width: 30%;
-            display: inline;
-            background-color: #6BDF8F;
-            color: #fff
-        }
-
-        #reset {
-            width: 30%;
-            display: inline;
-            background-color: #fff;
-            color: #888
-        }
-
-
-        a {
-            position: relative;
-            left: 160px;
-        }
-
-        h1 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-    </style>
+    <html>
 
     <head>
-        <title>Terms and Condition</title>
         <meta charset="UTF-8">
-    </head>
+        <script src="https://code.jquery.com/jquery-3.6.0.js"
+            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 
-<body>
+        <script>
 
-    <div id="joinForm">
-        <h1>Knock!Knock! 이용약관</h1>
-        <ul class="join_box">
-            <li class="checkBox check01">
-                <ul class="clearfix">
-                    <li>
-                        <h3 text-align="center">이용약관, 개인정보 수집 및 이용,
-                            마케팅 정보 수신(선택)에 모두 동의합니다.</h3>
-                    </li>
-                    <li class="checkAllBtn">
-                        <input type="checkbox" name="chkAll" id="checkAll" class="chkAll" onclick="cAll()">
-                    </li>
-                </ul>
-            </li>
-            <li class=" checkBox check02">
-                <ul class="clearfix">
-                    <li>이용약관 동의(필수)</li>
-                    <li class="checkBtn">
-                        <input type="checkbox" name="chk" id="chk1" onclick="chk1()">
-                    </li>
-                </ul>
-                <textarea name="" id="">녹녹에 오신 여러분을 환영합니다.
+            function cAll() {
+                if ($("#checkAll").is(':checked')) {
+                    $("input[type=checkbox]").prop("checked", true);
+                } else {
+                    $("input[type=checkbox]").prop("checked", false);
+                }
+            }
+
+            function chk2() {
+                if ($("#chk2").is(':checked') == false) {
+                    $("#checkAll").prop("checked", false);
+                }
+            }
+
+            function chk1() {
+                if ($("#chk1").is(':checked') == false) {
+                    $("#checkAll").prop("checked", false);
+                }
+            }
+
+        </script>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: 'Noto Sans KR', sans-serif;
+                background: #f6f5f7;
+
+            }
+
+
+            ul>li {
+                list-style: none
+            }
+
+
+            h3,
+            ul,
+            li {
+                background-color: white;
+            }
+
+            .clearfix::after {
+                content: "";
+                display: block;
+                clear: both;
+            }
+
+            footBtwrap {
+                text-align: center;
+            }
+
+            #joinForm {
+                width: 500px;
+                margin: 0 auto;
+                margin-top: 100px;
+
+            }
+
+            ul.join_box {
+                border: 1px solid #ddd;
+                background-color: #fff;
+                position: relative;
+                z-index: 1;
+            }
+
+
+            .checkBox,
+            .checkBox>ul {
+                position: relative;
+            }
+
+            .checkBox>ul>li {
+                float: left;
+            }
+
+            .checkBox>ul>li:first-child {
+                width: 85%;
+                padding: 15px;
+                font-weight: 600;
+                color: #888;
+            }
+
+            .checkBox>ul>li:nth-child(2) {
+                position: absolute;
+                top: 50%;
+                right: 30px;
+                margin-top: -12px;
+            }
+
+            .checkBox textarea {
+                width: 96%;
+                height: 130px;
+                margin: 0 2%;
+                background-color: #f7f7f7;
+                color: #888;
+                border: none;
+            }
+
+            .footBtwrap {
+                margin: auto 0;
+                margin-top: 20px;
+                margin-bottom: 15px;
+                text-align: center;
+            }
+
+            #submit {
+                width: 30%;
+                display: inline;
+                background-color: #6BDF8F;
+                color: #fff
+            }
+
+            #reset {
+                width: 30%;
+                display: inline;
+                background-color: #fff;
+                color: #888
+            }
+
+
+            a {
+                position: relative;
+                left: 160px;
+            }
+
+            h1 {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            button {
+                width: 100px;
+                height: 30px;
+                border-radius: 20px;
+                border: 1px solid #0a3a18;
+                font-size: 12px;
+                font-weight: bold;
+                letter-spacing: 1px;
+            }
+        </style>
+
+        <head>
+            <title>Terms and Condition</title>
+            <meta charset="UTF-8">
+        </head>
+
+    <body>
+
+        <div id="joinForm">
+            <h1>Knock!Knock! 이용약관</h1>
+            <ul class="join_box">
+                <li class="checkBox check01">
+                    <ul class="clearfix">
+                        <li>
+                            <h3 text-align="center">이용약관, 개인정보 수집 및 이용,
+                                마케팅 정보 수신(선택)에 모두 동의합니다.</h3>
+                        </li>
+                        <li class="checkAllBtn">
+                            <input type="checkbox" name="chkAll" id="checkAll" class="chkAll" onclick="cAll()">
+                        </li>
+                    </ul>
+                </li>
+                <li class=" checkBox check02">
+                    <ul class="clearfix">
+                        <li>이용약관 동의(필수)</li>
+                        <li class="checkBtn">
+                            <input type="checkbox" name="chk" id="chk1" onclick="chk1()">
+                        </li>
+                    </ul>
+                    <textarea name="" id="">녹녹에 오신 여러분을 환영합니다.
 녹녹의 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다. 본 약관은 다양한 녹녹 서비스의 이용과 관련하여 녹녹 서비스를 제공하는 녹녹 주식회사(이하 ‘녹녹’)와 이를 이용하는 녹녹 서비스 회원(이하 ‘회원’) 또는 비회원과의 관계를 설명하며, 아울러 여러분의 녹녹 서비스 이용에 도움이 될 수 있는 유익한 정보를 포함하고 있습니다.
 
 녹녹 서비스를 이용하시거나 녹녹 서비스 회원으로 가입하실 경우 여러분은 본 약관 및 관련 운영 정책을 확인하거나 동의하게 되므로, 잠시 시간을 내시어 주의 깊게 살펴봐 주시기 바랍니다.
@@ -201,16 +221,16 @@
 적용 일자: 2021년 6월 15일
 녹녹 서비스와 관련하여 궁금하신 사항이 있으시면 고객센터(대표번호: 1234 – 1234/ 평일 09:00~18:00)로 문의 주시기 바랍니다.
 </textarea>
-            </li>
-            <li class="checkBox check03">
-                <ul class="clearfix">
-                    <li>개인정보 수집 및 이용에 대한 안내(필수)</li>
-                    <li class="checkBtn">
-                        <input type="checkbox" id="chk2" name="chk" onclick="chk2()">
-                    </li>
-                </ul>
+                </li>
+                <li class="checkBox check03">
+                    <ul class="clearfix">
+                        <li>개인정보 수집 및 이용에 대한 안내(필수)</li>
+                        <li class="checkBtn">
+                            <input type="checkbox" id="chk2" name="chk" onclick="chk2()">
+                        </li>
+                    </ul>
 
-                <textarea name="" id="">1. 수집하는 개인정보
+                    <textarea name="" id="">1. 수집하는 개인정보
 이용자는 회원가입을 하지 않아도 캠페인 내용, 홈페이지 소개 등 대부분의 녹녹 서비스를 회원과 동일하게 이용할 수 있습니다. 이용자가 캠페인 참여, 펀딩 공모 등과 같이 개인화 혹은 회원제 서비스를 이용하기 위해 회원가입을 할 경우, 녹녹는 서비스 이용을 위해 필요한 최소한의 개인정보를 수집합니다.
 
 회원가입 시점에 녹녹가 이용자로부터 수집하는 개인정보는 아래와 같습니다.
@@ -260,16 +280,17 @@ eXpert 서비스 및 eXpert 센터 가입 등록정보 : 신청일로부터 6개
 이용자는 개인정보의 수집 및 이용 동의를 거부할 권리가 있습니다. 회원가입 시 수집하는 최소한의 개인정보, 즉, 필수 항목에 대한 수집 및 이용 동의를 거부하실 경우, 회원가입이 어려울 수 있습니다.
 
    </textarea>
-                <ul class=" footBtwrap">
-                    <button id="next" onclick="location.href='/user/signup.do'">동의합니다</button>
+                    <ul class=" footBtwrap">
+                        <button class="btn btn-secondary" id="next"
+                            onclick="location.href='/user/signup.do'">동의합니다</button>
 
-                    <button onclick="history.back()">취소하기</button>
-                </ul>
-        </ul>
+                        <button class="btn btn-secondary" onclick="history.back()">취소하기</button>
+                    </ul>
+            </ul>
 
-    </div>
+        </div>
 
 
-</body>
+    </body>
 
-</html>
+    </html>
