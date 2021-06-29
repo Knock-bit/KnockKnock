@@ -1,18 +1,33 @@
 package com.knockknock.user.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.knockknock.user.UserService;
 import com.knockknock.user.UserVO;
 
+@Service("userService")
 public class UserServiceImpl implements UserService{
 	@Autowired
 	private UserDAO userDAO;
- 
 
 	@Override
-	public UserVO selectlogin(String uId, String uPwd) {
-		System.out.println("selectlogin 시작()");
-		return userDAO.selectlogin(uId, uPwd);
+	public UserVO selectlogin(UserVO vo) {
+		return userDAO.selectlogin(vo);
+	}
+
+	@Override
+	public int idCheck(String id) {
+		return userDAO.idCheck(id);
+	}
+
+	@Override
+	public int emailCheck(String email) {
+		return userDAO.emailCheck(email);
+	}
+
+	@Override
+	public void join(UserVO vo) {
+		userDAO.join(vo);
 	}
 }

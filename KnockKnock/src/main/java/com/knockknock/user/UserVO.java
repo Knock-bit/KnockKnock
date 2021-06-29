@@ -10,9 +10,9 @@ public class UserVO {
 	private String uNickname;
 	private String uEmail;
 	private String uPhone;
-	private Date uBirth;
+	private String uBirth;
 	private int uTotPoint;
-	private String uAdmin;
+	private String uType;
 	private String uActive;
 	private Date uLastlogin;
 	private String uGender;
@@ -20,17 +20,16 @@ public class UserVO {
 	private Date uJoindate;
 	private String uImg;
 	private String uImgPath;
-	private int uPoint;
-	
-	
+	private int uUsedPont;
+
 	// ===================== [ 생성자 ] =======================
 	public UserVO() {
 	}
 
-	//전체 생성자
+	// 전체 생성자
 	public UserVO(int uIdx, String uId, String uName, String uPwd, String uNickname, String uEmail, String uPhone,
-			Date uBirth, int uTotPoint, String uAdmin, String uActive, Date uLastlogin, String uGender, String uAddress,
-			Date uJoindate, String uImg,String uImgPath, int uPoint) {
+			String uBirth, int uTotPoint, String uType, String uActive, Date uLastlogin, String uGender, String uAddress,
+			Date uJoindate, String uImg, String uImgPath, int uUsedPont) {
 		super();
 		this.uIdx = uIdx;
 		this.uId = uId;
@@ -41,7 +40,7 @@ public class UserVO {
 		this.uPhone = uPhone;
 		this.uBirth = uBirth;
 		this.uTotPoint = uTotPoint;
-		this.uAdmin = uAdmin;
+		this.uType = uType;
 		this.uActive = uActive;
 		this.uLastlogin = uLastlogin;
 		this.uGender = uGender;
@@ -49,12 +48,13 @@ public class UserVO {
 		this.uJoindate = uJoindate;
 		this.uImg = uImg;
 		this.uImgPath = uImgPath;
-		this.uPoint = uPoint;
+		this.uUsedPont = uUsedPont;
 	}
 
 	// 마이페이지용 생성자
 	public UserVO(int uIdx, String uId, String uName, String uPwd, String uNickname, String uEmail, String uPhone,
-			Date uBirth, int uTotPoint, String uGender, String uAddress, Date uJoindate, String uImg,String uImgPath, int uPoint) {
+			String uBirth, int uTotPoint, String uGender, String uAddress, Date uJoindate, String uImg, String uImgPath,
+			int uUsedPont) {
 		super();
 		this.uIdx = uIdx;
 		this.uId = uId;
@@ -70,18 +70,39 @@ public class UserVO {
 		this.uJoindate = uJoindate;
 		this.uImg = uImg;
 		this.uImgPath = uImgPath;
-		this.uPoint = uPoint;
+		this.uUsedPont = uUsedPont;
 	}
-	
-	//로그인용 생성자
+
+	// 로그인용 생성자
 	public UserVO(String uId, String uPwd) {
 		super();
 		this.uId = uId;
 		this.uPwd = uPwd;
 	}
 
-	//=======================[ getter, setter ] =========================
-	
+	// 아이디 체크용 생성자
+	public UserVO(String uId) {
+		super();
+		this.uId = uId;
+	}
+
+	// 회원가입용 생성자
+	public UserVO(String uId, String uName, String uPwd, String uNickname, String uEmail, String uPhone, String uBirth,
+			String uGender, String uAddress) {
+		super();
+		this.uId = uId;
+		this.uName = uName;
+		this.uPwd = uPwd;
+		this.uNickname = uNickname;
+		this.uEmail = uEmail;
+		this.uPhone = uPhone;
+		this.uBirth = uBirth;
+		this.uGender = uGender;
+		this.uAddress = uAddress;
+	}
+
+	// =======================[ getter, setter ] =========================
+
 	public int getuIdx() {
 		return uIdx;
 	}
@@ -138,11 +159,11 @@ public class UserVO {
 		this.uPhone = uPhone;
 	}
 
-	public Date getuBirth() {
+	public String getuBirth() {
 		return uBirth;
 	}
 
-	public void setuBirth(Date uBirth) {
+	public void setuBirth(String uBirth) {
 		this.uBirth = uBirth;
 	}
 
@@ -154,12 +175,12 @@ public class UserVO {
 		this.uTotPoint = uTotPoint;
 	}
 
-	public String getuAdmin() {
-		return uAdmin;
+	public String getuType() {
+		return uType;
 	}
 
-	public void setuAdmin(String uAdmin) {
-		this.uAdmin = uAdmin;
+	public void setuType(String uType) {
+		this.uType = uType;
 	}
 
 	public String getuActive() {
@@ -210,15 +231,14 @@ public class UserVO {
 		this.uImg = uImg;
 	}
 
-	public int getuPoint() {
-		return uPoint;
+	public int getuUsedPont() {
+		return uUsedPont;
 	}
 
-	public void setuPoint(int uPoint) {
-		this.uPoint = uPoint;
+	public void setuUsedPont(int uUsedPont) {
+		this.uUsedPont = uUsedPont;
 	}
 
-	
 	public String getuImgPath() {
 		return uImgPath;
 	}
@@ -227,25 +247,15 @@ public class UserVO {
 		this.uImgPath = uImgPath;
 	}
 
-	
-
 	// ================== [ toString ] ====================
-	
+
 	@Override
 	public String toString() {
 		return "UserVO [uIdx=" + uIdx + ", uId=" + uId + ", uName=" + uName + ", uPwd=" + uPwd + ", uNickname="
 				+ uNickname + ", uEmail=" + uEmail + ", uPhone=" + uPhone + ", uBirth=" + uBirth + ", uTotPoint="
-				+ uTotPoint + ", uAdmin=" + uAdmin + ", uActive=" + uActive + ", uLastlogin=" + uLastlogin
+				+ uTotPoint + ", uType=" + uType + ", uActive=" + uActive + ", uLastlogin=" + uLastlogin
 				+ ", uGender=" + uGender + ", uAddress=" + uAddress + ", uJoindate=" + uJoindate + ", uImg=" + uImg
-				+ ", uImgPath=" + uImgPath + ", uPoint=" + uPoint + "]";
+				+ ", uImgPath=" + uImgPath + ", uUsedPont=" + uUsedPont + "]";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 
 }

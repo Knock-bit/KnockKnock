@@ -1,11 +1,12 @@
 package com.knockknock.mypage.serviceimpl;
 
-import java.util.List;
+import java.util.List;  
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.knockknock.campaign.ing.CampaignVO;
 import com.knockknock.mypage.MypageService;
 import com.knockknock.user.UserVO;
 
@@ -44,9 +45,22 @@ public class MypageServiceImpl implements MypageService {
 	
 	// 유저의 엠블럼 목록 가져오기
 	@Override
-	public List<Map<String, Object>> emblemList(UserVO vo){
+	public List<String> emblemList(UserVO vo){
 		
 		return mypageDAO.emblemList(vo);
 	}
+	
+	// 유저의 진행중 캠페인 리스트 가져오기
+	@Override
+	public List<CampaignVO> campaigningList(UserVO vo){
+		
+		return mypageDAO.campaigningList(vo);
+	}
 
+	// 유저의 종료된 캠페인 리스트 가져오기
+	@Override
+	public List<CampaignVO> endCampaignList(UserVO vo){
+		
+		return mypageDAO.endCampaignList(vo);
+	}
 }

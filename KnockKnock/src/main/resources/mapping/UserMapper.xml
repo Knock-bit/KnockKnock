@@ -5,10 +5,22 @@
 <!-- 참고파일 나중에 삭제 -->
 <mapper namespace="UserVO">
 	<!-- 로그인 -->
-	<select id="selectlogin" parameterType="UserVO" resultType="userVO">
-		SELECT NAME FROM USERS WHERE U_ID=#{uId} and U_PWD=#{uPwd}
+	<select id="selectlogin" parameterType="HashMap" resultType="UserVO">
+		SELECT U_NAME FROM USERS WHERE U_ID=#{uId} and U_PWD=#{uPwd}
 	</select>
-	
+	<!-- ID중복체크 -->
+	<select id="idCheck" parameterType="String" resultType="String">
+		SELECT U_IDX FROM USERS WHERE U_ID=#{id}
+	</select> 
+	<!-- 이메일 중복체크 -->
+	<select id="emailCheck" parameterType="String" resultType="String">
+		SELECT U_NAME FROM USERS WHERE U_EMAIL=#{email}
+	</select>
+	<!-- 회원가입 -->
+	<insert id="join" parameterType="UserVO">
+		INSERT INTO USERS(U_IDX, U_ID, U_NAME, U_PWD, U_EMAIL, U_PHONE, U_GENDER, U_BIRTH, U_NICKNAME, U_ADDRESS,  U_JOINDATE, U_ACTIVE, U_TOT_PINT, U_TYPE)
+		VALUES(U_IDX_SEQ.NEXTVAL, #{uId}, #{uName}, #{uPwd}, #{uEmail}, #{uPhone}, #{uGender}, #{uBirth}, #{uNickname}, #{uAddress}, SYSDATE, 1, 1000, 1)
+	</insert>
 	
 	<!-- 마이페이지 이동 -->
 	<select id="selectOneUser" parameterType="int" resultType="UserVO">
@@ -45,10 +57,33 @@
 	
 	<!-- 엠블럼 리스트 -->
 	<select id="userEmblemList" parameterType="UserVO" resultType="map">
-		SELECT C.C_IDX,C.CI_EMBLEM, U.U_IDX, U.CI_EMBLEM_ST
-		FROM CAMPAIGN_ING C, CAMPAIGN_ING_USER U
-		WHERE U.C_IDX=C.C_IDX
-		AND U.U_IDX=#{uIdx}
+		SELECT CI_EMBLEM
+		FROM (SELECT C.CI_IDX,C.CI_EMBLEM, U.U_IDX, U.CI_EMBLEM_ST
+		FROM CAMPAIGN C, CAMPAIGN_USER U
+		WHERE U.CI_IDX=C.CI_IDX
+		AND U.U_IDX=#{uIdx}) 
+		WHERE CI_EMBLEM_ST=1
 	
 	</select>
+	
+	<!-- 진행중인 캠페인 리스트 -->
+	<select id="userCamingList" parameterType="UserVO" resultType="campaignVO" >
+		SELECT C.*
+		FROM CAMPAIGN C, CAMPAIGN_USER U
+		WHERE U.C_IDX=C.CI_IDX 
+		AND C.CI_STATUS=1
+		AND U.U_IDX=#{uIdx}
+	</select>
+	
+	<!-- 종료된 캠페인 리스트 -->
+	<select id="endCampaignList" parameterType="UserVO" resultType="campaignVO" >
+		SELECT C.*
+		FROM CAMPAIGN C, CAMPAIGN_USER U
+		WHERE U.CI_IDX=C.CI_IDX 
+		AND C.CI_STATUS=0
+		AND U.U_IDX=#{uIdx}
+	</select>
+	
+	
+	
 </mapper>

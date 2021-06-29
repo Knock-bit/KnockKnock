@@ -34,7 +34,25 @@
 
   <!-- Import BootStrap -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<style>
+.profile-container{
+	width: 200px;}
+.profile-pic{
+	 border-radius: 50%;
+	 overflow: hidden;
+     align-items: center;
+     justify-content: center;
+     border : solid 1px black;
+     display: inline-block;
+	 width: 50px;
+	 height: 50px;
+	}
+.profile-pic img {
+   	width:100%;
+   	height:100%;
+   }
 
+</style>
 </head>
 <body>
 
@@ -51,7 +69,10 @@
     <div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
     <br><br>
       <h1>${campaign.ciTitle}</h1>
-      <h2>We are team of talented designers making websites with Bootstrap</h2>
+      <h2>
+               suggested by <br><div class=profile-pic>
+              <img src="/resource/img/profile/user_default.png">
+              </div> ${campaign.hostNickname }</h2>
     </div>
   </section><!-- End Hero -->
 
@@ -73,13 +94,29 @@
           <div class="col-lg-4">
 
             <div class="campaign-info align-items-center">
-              <h5>dfdfdfdfdfdf</h5>
+              <h5>${campaign.ciTitle }</h5>
               <p><a href="#">Walter White</a></p>
             </div>
 
             <div class="campaign-info d-flex justify-content-between align-items-center">
-              <h5>Course Fee</h5>
-              <p>$165</p>
+              <h5>참여중인 사람 목록</h5>
+              <p>
+              <!-- <div class=profile-container>
+              <div class=profile-pic-1>
+              <img src="/resource/img/profile/user_default.png">
+              </div>
+              <div class=profile-pic-2>
+              <img src="/resource/img/profile/user_default.png">
+              </div></div> -->
+              <c:if test="${!empty userList }">
+	              <c:forEach var="user" items="${userList }">
+		              	${user.getNickname() }<br>
+		           </c:forEach>
+              </c:if>
+              <c:if test="${empty userList }">
+               먼저 참여해보세요!
+              </c:if>
+              </p>
             </div>
 
             <div class="campaign-info d-flex justify-content-between align-items-center">

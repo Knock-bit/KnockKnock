@@ -1,12 +1,14 @@
 package com.knockknock.mypage.serviceimpl;
 
-import java.util.List;
+import java.util.List; 
 import java.util.Map;
+
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.knockknock.campaign.ing.CampaignVO;
 import com.knockknock.user.UserVO;
 
 @Repository
@@ -43,9 +45,22 @@ public class MypageDAO {
 	}
 	
 	// 유저의 엠블럼 목록 가져오기
-	public List<Map<String, Object>> emblemList(UserVO vo){
+	public List<String> emblemList(UserVO vo){
 		
 		return mybatis.selectList("UserVO.userEmblemList",vo);
+	}
+	// 유저으 ㅣ진행중인 캠페인 리스트 가져오기
+	public List<CampaignVO> campaigningList(UserVO vo) {
+		
+		
+		return mybatis.selectList("UserVO.userCamingList",vo);
+	}
+	
+	// 유저의 종료된 캠페인 리스트 가져오기
+	public List<CampaignVO> endCampaignList(UserVO vo) {
+		
+		
+		return mybatis.selectList("UserVO.endCampaignList",vo);
 	}
 
 }

@@ -1,31 +1,30 @@
 package com.knockknock.mypage;
 
-import java.io.BufferedOutputStream;
+import java.io.BufferedOutputStream; 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.knockknock.campaign.ing.CampaignVO;
 import com.knockknock.user.UserVO;
 
 @Controller
@@ -54,6 +53,8 @@ public class MypageController {
 		 * emailList); model.addAttribute(emailList);
 		 */
 		model.addAttribute("users");
+		
+		
 		return "/mypage/mypageList/updateMyInfo";
 	}
 
@@ -157,13 +158,35 @@ public class MypageController {
 	@GetMapping("/myPoint.do")
 	public String myPointPage(@ModelAttribute("users")UserVO vo, Model model) {
 		
-		// 현재 보유하고 있는 엠블럼 
-		List<Map<String, Object>> emblemList = mypageService.emblemList(vo);
-		System.out.println("emblemList : " + emblemList);
-
-		
-		model.addAttribute("emblemList",emblemList);
+		// 해당 유저의 STATUS가 1인 엠블럼 이미지 가져오기
+		List<String> emImgList = mypageService.emblemList(vo);
+		System.out.println("emImgList:" + emImgList);
+		model.addAttribute("emImgList", emImgList);
 		return "/mypage/mypageList/myPointPage";
+	}
+	
+	
+	// 현재 참여중인 캠페인으로 이동
+	@GetMapping("/myCampaignPage.do")
+	public String myCampainging(@ModelAttribute("users")UserVO vo, Model model) {
+		// 유저의 캠페인 리스트 가져오기
+		List<CampaignVO> clist = mypageService.campaigningList(vo);
+		System.out.println("clist:" + clist);
+		
+		
+		model.addAttribute("clist",clist);
+		return "/mypage/mypageList/mycaming";
+	}
+	
+	// 종료된 캠페인 리스트
+	@GetMapping("myCampaignList.do")
+	public String myEndCampaignList(@ModelAttribute("users")UserVO vo, Model model) {
+		// 유저의 종료된 캠페인 리스트 가져오기
+		List<CampaignVO> endlist = mypageService.endCampaignList(vo);
+		System.out.println("endList:" + endlist);
+		
+		model.addAttribute("endlist",endlist);
+		return "/mypage/mypageList/myCampaignList";
 	}
 
 }

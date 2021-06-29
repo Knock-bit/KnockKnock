@@ -11,11 +11,28 @@
 
 	<!-- 페이징 처리 후 유저 조회 -->
 	<select id="getUserList" resultType="adminUserVO">
-				SELECT * FROM(
-		    SELECT ROWNUM RN, A.* FROM (
-		        SELECT * FROM USERS ORDER BY U_NAME DESC) A
-		) WHERE RN BETWEEN #{start} AND #{end}
-
+		SELECT * FROM(
+		SELECT ROWNUM RN, A.* FROM (
+		SELECT * FROM USERS ORDER BY U_NAME DESC) A
+		) WHERE RN BETWEEN #{start} AND
+		#{end}
 
 	</select>
+
+	<!-- 총 키워드 수 출력 -->
+	<select id="countKeyword" resultType="int">
+		SELECT COUNT(*) FROM KEYWORD
+	</select>
+
+	<!-- 페이징 처리 후 키워드조회 -->
+	<select id="getKeywordList" resultType="adminKeywordVO">
+		SELECT * FROM(
+		SELECT ROWNUM RN, A.* FROM (
+		SELECT * FROM KEYWORD ORDER BY K_CONTENT) A
+		) WHERE RN BETWEEN #{start} AND
+		#{end}
+
+	</select>
+
+
 </mapper>

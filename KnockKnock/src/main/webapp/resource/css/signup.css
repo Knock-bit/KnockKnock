@@ -9,6 +9,17 @@ list-type-ulli {
   margin: 0;
   padding: 0; }
 
+  #btnAddr {
+    width: 60px;
+    height: 40px;
+    display: inline-block;
+    font-family: 'Poppins';
+    font-weight: 400;
+    font-size: 13px;
+    padding: 10px;
+    border: none;
+    cursor: pointer; }
+  
 a:focus, a:active {
   text-decoration: none;
   outline: none;
@@ -138,13 +149,14 @@ input, select {
 
 #addr{
   width:30%;
-  display: inline;
   margin-right: 5px;
   display: inline-block;
 }
 #btnAddr{
   width:10%;
   height: 30px;
+  display: inline-block;
+
 }
 
 label {

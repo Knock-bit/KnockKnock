@@ -1,4 +1,4 @@
-package com.knockknock.campaign.serviceImpl;
+package com.knockknock.campaign.ing.serviceImpl;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.knockknock.campaign.CampaignUserVO;
-import com.knockknock.campaign.CampaignVO;
+import com.knockknock.campaign.ing.CampaignUserVO;
+import com.knockknock.campaign.ing.CampaignVO;
 
 @Repository
 public class CampaignDAO {
@@ -15,7 +15,7 @@ public class CampaignDAO {
 	private SqlSessionTemplate mybatis;
 
 	public CampaignVO selectOneCampaign(CampaignVO campaign) {
-		return mybatis.selectOne("campaign.selectOneCampaign", campaign.getcIdx());
+		return mybatis.selectOne("campaign.selectOneCampaign", campaign.getCiIdx());
 	}
 	
 	public List<CampaignVO> selectAllCampaign() {

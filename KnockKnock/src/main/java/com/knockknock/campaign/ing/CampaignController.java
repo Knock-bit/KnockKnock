@@ -1,4 +1,4 @@
-package com.knockknock.campaign;
+package com.knockknock.campaign.ing;
 
 import java.util.List;
 
@@ -33,8 +33,14 @@ public class CampaignController {
 	@GetMapping("/campaign/ing/detail.do")
 	public String detail(CampaignVO campaignVO, Model model) {
 		System.out.println(">>> 진행중 캠페인 상세페이지로 이동!");
+		int ciIdx = campaignVO.getCiIdx();
 		CampaignVO campaign = campaignService.selectOneCampaign(campaignVO);
+		List<CampaignUserVO> userList = campaignService.selectAllCampaignUsers(ciIdx);
+		for(CampaignUserVO user : userList) {
+			System.out.println("userNickName : " + user.getNickname());
+		}
 		model.addAttribute("campaign", campaign);
+		model.addAttribute("userList", userList);
 		return "/campaign/ing/detail";
 	}
 	

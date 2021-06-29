@@ -1,0 +1,132 @@
+.main-content{
+  		width:100%;
+        flex: 1;
+        min-height:100vh;
+        margin-top:100px;
+        
+    }
+   .updateMyInfoForm {
+   		width:70%;
+   		margin: 0 auto;
+   		text-align:center;
+   		position:relative;
+   }
+   #ctext{
+	font-size:18px;
+	border-bottom:1px solid gray;
+	width:800px;
+	margin: 0 auto;
+	padding:5% 0 0 5%;
+	margin-bottom:2%;
+	font-style:normal;
+	font-weight:bold;
+
+}
+   /* 내 정보 수정 css */
+   
+   /*그리드*/
+   .myInfo {
+   		width:80%;
+   		display:grid;
+   		grid-template-columns: 60% 39%;
+    	grid-template-rows: repeat(10, 3vh);
+    	grid-gap:30px;
+    	margin:0 auto;
+   
+   }
+
+   .it1, .it2, .it3, .it4, .it5, .it6, .it7, .it8{
+   		grid-column:1/2;
+   		grid-row : 1/2, 2/3, 3/4, 4/5, 5/6, 6/7, 7/8, 8/9;
+   		text-align:right;
+   		
+   }
+   
+   .it1 label, .it2 label,.it3 label,.it4 label,.it5 label,.it6 label,.it7 label,.it8 label{
+   		float:left;
+   		width:10%;
+   		text-align:right;
+   }
+   
+    .it1 input, .it2 input,.it3 input,.it4 input,.it5 input,.it6 input,.it7 input,.it8 input{
+   		float:left;
+   		width:89%;
+   		text-align:left;
+   		border-bottom:1px solid black;
+   }
+   
+   
+    .it9 {
+    	grid-column:2/3;
+    	grid-row:1/4;
+    	width:100%;
+   }
+   .it9 > .photo {
+   		width:100%;
+   }
+   .it10 {
+    	grid-column:1/3;
+    	grid-row:9/10;
+   }
+   .myInfo label{
+   		padding-top:3%;
+   		margin-right:5%;
+   		width:25%;
+   		text-align:right;
+   		font-size:16px;
+   
+   }
+   .myInfo input{
+   		width:65%;
+   		text-align:left;
+   		margin: 5px;
+   		border:0;
+   		min-height:6vh;
+   		padding-left: 8%;
+   		background-color:rgba(200,200,200,0.3);
+
+   }
+   .myInfo input:focus {
+   		outline:none;
+   		background-color:rgba(200,200,200,0.3);
+   }
+   .myInfo input:disabled{
+   		background-color:white;
+   }
+   .myInfo span {
+   		color:blue;
+   }
+
+   .it10{
+  		width:100%;
+   }
+   .it10 input {
+   		width:40%;
+   		height:100%;
+   
+   }
+   /* 버튼 css */
+
+   #fileBtn{
+   		display:none;
+   
+   }
+   .btn-upload{
+   		border:0px;
+   		border-radius:5px;
+   		width:40%;
+   		background-color:#0e4b20;
+   		color:white;
+   
+   }
+   
+   .it10 input {
+   		border:0px;
+   		border-radius:5px;
+   		width:40%;
+   		background-color:#0e4b20;
+   		color:white;
+   		padding:0;
+   		text-align:center;
+   		margin-top:20px;
+    }

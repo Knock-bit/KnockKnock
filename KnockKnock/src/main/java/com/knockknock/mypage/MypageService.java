@@ -1,8 +1,8 @@
 package com.knockknock.mypage;
 
 import java.util.List;
-import java.util.Map;
 
+import com.knockknock.campaign.ing.CampaignVO;
 import com.knockknock.user.UserVO;
 
 public interface MypageService {
@@ -16,6 +16,10 @@ public interface MypageService {
 	// 비밀번호 수정
 	int updateMyPwd(UserVO vo);
 	// 유저의 엠블럼 목록 가져오기
-	List<Map<String, Object>> emblemList(UserVO vo);
+	List<String> emblemList(UserVO vo);
+	// 유저의 진행중 캠페인 리스트 가져오기
+	List<CampaignVO> campaigningList(UserVO vo);
+	// 종료된 캠페인 리스트
+	List<CampaignVO> endCampaignList(UserVO vo);
 
 }

@@ -20,6 +20,8 @@
 		<!-- 관리자 -->
 		<typeAlias alias="adminUserVO"
 			type="com.knockknock.admin.AdminUserVO" />
+			<typeAlias alias="adminKeywordVO"
+			type="com.knockknock.admin.AdminKeywordVO" />
 		<!-- 게시판 -->
 		<typeAlias alias="boardVO" type="com.knockknock.board.BoardVO" />
 		<!-- <typeAlias alias="commentsVO" type="com.knockknock.board.CommentsVO" />  -->
@@ -31,16 +33,24 @@
 			type="com.knockknock.board.CommentsVO" />
 		<!-- 캠페인 -->
 		<typeAlias alias="campaignVO"
-			type="com.knockknock.campaign.CampaignVO" />
+			type="com.knockknock.campaign.ing.CampaignVO" />
 		<typeAlias alias="campaignUserVO"
-			type="com.knockknock.campaign.CampaignUserVO" />
-		<!-- <typeAlias alias="campaignNom" type="com.knockknock.campaign.CampaignNomVO"/> 
-			<typeAlias alias="campaignNomUser" type="com.knockknock.campaign.CampaignNomUserVO"/> 
-			<typeAlias alias="keyword" type="com.knockknock.campaign.KeywordVO"/> <typeAlias 
-			alias="proposal" type="com.knockknock.campaign.ProposalVO"/> -->
+			type="com.knockknock.campaign.ing.CampaignUserVO" />
+		<typeAlias alias="fundingVO" 
+			type="com.knockknock.campaign.funding.FundingVO"/> 
+	  	<typeAlias alias="fundingUserVO" 
+			type="com.knockknock.campaign.funding.FundingUserVO"/> 
+<!--	<typeAlias alias="keyword" 
+			type="com.knockknock.campaign.KeywordVO"/> -->
+		
+  		<typeAlias alias="proposalVO" 
+               type="com.knockknock.campaign.proposal.ProposalVO"/>
 		<!-- 회원 -->
 		<typeAlias alias="userVO" type="com.knockknock.user.UserVO" />
-
+		
+		<!-- contact -->
+		<typeAlias alias="contactVO" type="com.knockknock.contact.ContactVO" />
+		
 	</typeAliases>
 
 	<!-- mappers는 여러개 등록 가능하다. -->
@@ -50,7 +60,10 @@
 		<mapper resource="mapping/UserMapper.xml" />
 		<mapper resource="mapping/CampaignMapper.xml" />
 		<mapper resource="mapping/AdminMapper.xml" />
-		<mapper resource="mapping/UtilMapper.xml" /> -->
+
+		<mapper resource="mapping/UtilMapper.xml" />
+		<mapper resource="mapping/ContactMapper.xml" />
+
 	</mappers>
 
 
