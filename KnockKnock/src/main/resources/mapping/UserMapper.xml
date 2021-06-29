@@ -18,8 +18,8 @@
 	</select>
 	<!-- 회원가입 -->
 	<insert id="join" parameterType="UserVO">
-		INSERT INTO USERS(U_IDX, U_ID, U_NAME, U_PWD, U_EMAIL, U_PHONE, U_GENDER, U_BIRTH, U_NICKNAME, U_ADDRESS,  U_JOINDATE)
-		VALUES(U_IDX_SEQ.NEXTVAL, #{uId}, #{uName}, #{uPwd}, #{uEmail}, #{uPhone}, #{uGender}, #{uBirth}, #{uNickname}, #{uAddress}, SYSDATE)
+		INSERT INTO USERS(U_IDX, U_ID, U_NAME, U_PWD, U_EMAIL, U_PHONE, U_GENDER, U_BIRTH, U_NICKNAME, U_ADDRESS,  U_JOINDATE, U_ACTIVE, U_TOT_PINT, U_TYPE)
+		VALUES(U_IDX_SEQ.NEXTVAL, #{uId}, #{uName}, #{uPwd}, #{uEmail}, #{uPhone}, #{uGender}, #{uBirth}, #{uNickname}, #{uAddress}, SYSDATE, 1, 1000, 1)
 	</insert>
 	
 	<!-- 마이페이지 이동 -->
