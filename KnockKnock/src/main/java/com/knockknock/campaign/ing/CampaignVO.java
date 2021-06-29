@@ -8,7 +8,7 @@ public class CampaignVO {
 	private int cfIdx;
 	private String ciTitle;
 	private String ciContent;
-	private String ciGoal;
+	private String cGoal;
 	private Date ciStartdate;
 	private Date ciEnddate;
 	private int ciBasepoint;
@@ -22,19 +22,19 @@ public class CampaignVO {
 	private String cKeyword1;
 	private String cKeyword2;
 	private String cKeyword3;
-	private String hostNickname;
+	private String hostNickname; // 주최자 닉네임 
 
 
 	public CampaignVO() {	}
 
-	public CampaignVO(int ciIdx, String ciTitle, String ciContent, String ciGoal, Date ciStartdate, Date ciEnddate,
+	public CampaignVO(int ciIdx, String ciTitle, String ciContent, String cGoal, Date ciStartdate, Date ciEnddate,
 			int ciBasepoint, int ciEstimatedpoint, int ciStatus, String ciFile, String ciEmblem, int uIdx,
 			String ccIdx, int cTotpoint, String cKeyword1, String cKeyword2, String cKeyword3, int cfIdx, String hostNickname) {
 		super();
 		this.ciIdx = ciIdx;
 		this.ciTitle = ciTitle;
 		this.ciContent = ciContent;
-		this.ciGoal = ciGoal;
+		this.cGoal = cGoal;
 		this.ciStartdate = ciStartdate;
 		this.ciEnddate = ciEnddate;
 		this.ciBasepoint = ciBasepoint;
@@ -82,13 +82,13 @@ public class CampaignVO {
 	}
 
 
-	public String getCiGoal() {
-		return ciGoal;
+	public String getcGoal() {
+		return cGoal;
 	}
 
 
-	public void setCiGoal(String ciGoal) {
-		this.ciGoal = ciGoal;
+	public void setcGoal(String cGoal) {
+		this.cGoal = cGoal;
 	}
 
 
