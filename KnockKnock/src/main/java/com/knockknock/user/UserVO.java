@@ -84,7 +84,7 @@ public class UserVO {
 	public UserVO(String uId) {
 		super();
 		this.uId = uId;
-	}
+	} 
 
 	// 회원가입용 생성자
 	public UserVO(String uId, String uName, String uPwd, String uNickname, String uEmail, String uPhone, String uBirth,

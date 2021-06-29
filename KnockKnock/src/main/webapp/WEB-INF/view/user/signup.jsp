@@ -33,40 +33,40 @@
                         <h2>Knock!Knock! 회원가입</h2>
                         <div class="form-row">
                         <div class="form-group">
-                                <label for="father_name">아이디 :</label>
-                                <input type="text" name="uId" id="id" placeholder="영문/숫자 혼합 3-10자" maxlength="10"/>
+                                <label for="id">아이디 :</label>
+                                <input type="text" name="uId" id="id" placeholder="영문/숫자 혼합 3-10자" maxlength="10" required/>
                             </div>
                             <div class="form-group">
                                 <label for="name">이름 :</label>
-                                <input type="text" name="name" id="name" />
+                                <input type="text" name="uName" id="name" required/>
                             </div>
                             
                         </div>
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="pwd">비밀번호 :</label>
-                                <input type="password" name="uPwd" id="pwd" placeholder="영문 8자이상, 숫자 1개 필수" />
+                                <input type="password" name="uPwd" id="pwd" placeholder="영문 8자이상, 숫자 1개 필수" required />
                             </div>
                             <div class="form-group">
-                                <label for="pwd">비밀번호 확인 :</label>
-                                <input type="password" name="uPwd2" id="pwd2" />
+                                <label for="pwd2">비밀번호 확인 :</label>
+                                <input type="password" name="uPwd2" id="pwd2" required/>
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="email">이메일 :</label>
-                                <input type="email" name="uEmail" id="email" />
+                                <input type="email" name="uEmail" id="email" required/>
                             </div>
                             <div class="form-group">
                                 <label for="phone">휴대폰번호: </label>
                                 <input type="text" name="uPhone" id="uPhone" maxlength="11"
-                                    placeholder="(-)없이 숫자만 입력" />
+                                    placeholder="(-)없이 숫자만 입력" required/>
                             </div>
                         </div>
 
                         <div class="form-radio">
-                            <label for="gender" class="radio-label">성별 :</label>
+                            <label for="gender" class="radio-label" >성별 :</label>
                             <div class="form-radio-item">
                                 <input type="radio" name="uGender" id="male" value="0" checked>
                                 <label for="male">남성</label>
@@ -82,12 +82,12 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="birth">생년월일 :</label>
-                                <input type="text" name="uBirth" id="birth" placeholder="생년월일 숫자 8자리 입력" />
+                                <input type="text" name="uBirth" id="birth" placeholder="생년월일 숫자 8자리 입력"  required/>
                             </div>
                             <div class="form-group">
-                                <label for="pwd">닉네임: </label>
-                                <input type="text" name="uNickname" id="Nickname" maxlength="8"
-                                    placeholder="최대 한글 8자" />
+                                <label for="nickname">닉네임: </label>
+                                <input type="text" name="uNickname" id="nickname" maxlength="8"
+                                    placeholder="최대 한글 8자" required />
                             </div>
                         </div>
 
@@ -98,7 +98,7 @@
                                 <input type="button"  name="uAddress" id="btnAddr" value="검색">
                             </div>
                             <div class="form-group">
-                                <input type="text" name="uAddress" id="addr1" placeholder="주소">
+                                <input type="text" name="uAddress" id="addr1" placeholder="주소" required>
                                 <br>
                                 <input type="text" name="uAddress" id="addr2" placeholder="상세주소">
 
@@ -106,8 +106,8 @@
                         </div>
 
                         <div class="form-submit">
-                            <input type="reset" value="취소" class="submit" name="reset" id="reset" />
-                            <input type="submit" value="확인" class="submit" name="submit" id="submit"/>
+                            <input type="reset" value="취소" name="reset" id="reset" />                         
+                            <input type="button" value="확인" name="submit" id="submit"/>
                         </div>
                     </form>
                 </div>
@@ -115,235 +115,254 @@
         </div>
     </div>
 	<script>
+		$(document).ready(function () {
+		  
+			//아이디    
+		  $('#id').on('blur', function () {
+			  var id = $("#id").val();
+		      var idPattern = /^[A-Za-z]{1}[A-Za-z0-9]{3,10}$/;
 
-	(function ($) {
-
-	  $('#reset').on('click', function () {
-	    $('#register-form').reset();
-	  });
-
-	})
-
-
-	$(document).ready(function () {
-	  
-		//아이디    
-	  $('#id').on('blur', function () {
-		  var id = $("#id").val();
-	      var idPattern = /^[A-Za-z]{1}[A-Za-z0-9]{3,10}$/;
-
-		  if(idPattern.test(id)==true){
-			  $.ajax("idCheck.do", {
-			      type: "get",
-			      dataType: "text",
-			      data: { "id": $("#id").val() },
-			      success: function (data) {
-			        console.log(data);
-			        if (data == 1) {
-			          console.log("사용가능");
-			        } else {
-			          alert("중복된 아이디입니다. 다시 입력해주세요.");
-			          $("#id").val(null);
-			        }
-			      },
-			      error: function () {
-			        console.log("ajax오류");
-			      }
-
-			    })
-	      }else{//false인경우
-	    	  alert("잘못된 형식의 아이디입니다. 다시 입력해주세요.")
-	      }
-	  });
+			  if(idPattern.test(id)==true){
+				  $.ajax("idCheck.do", {
+				      type: "get",
+				      dataType: "text",
+				      data: { "id": $("#id").val() },
+				      success: function (data) {
+				        console.log(data);
+				        if (data == 1) {
+				          console.log("사용가능");
+				        } else {
+				          alert("중복된 아이디입니다. 다시 입력해주세요.");
+				          $("#id").val(null);
+				          
+				        }
+				      },
+				      error: function () {
+				        console.log("ajax오류");
+				      }
+					
+				    })
+		      }else{//false인경우
+		    	  alert("잘못된 형식의 아이디입니다. 다시 입력해주세요.");
+		          $("#id").val(null);
+		      }
+		  });
 
 
-	  //이메일
-	  $('#email').on('blur', function () {
-	    var email = $('#email').val();
-	    console.log(email);
-	    $.ajax("emailCheck.do", {
-	      type: "get",
-	      dataType: "text",
-	      data: { "email": $("#email").val() },
-	      success: function (data) {
-	        if (data == 1) {
-	          console.log("ok");
-	        } else {
-	          alert("중복된 이메일 주소입니다.\n다시 확인해주세요.");
-	        }
-	      },
-	      error: function () {
-	        alert("실패");
-	      }
-	    })
-	  });
+		  //이름
+		  $('#name').on('blur', function () {
+		    var namePattern = /^[가-힣]+$/;
+		    var name = $("#name").val();
+		    console.log(namePattern.test(name));
+		    if (namePattern.test(name) == false) {
+		      alert("올바른 형식의 이름을 입력해주세요. (한글만 가능)");
+		    }
+		  });
 
-	  //이름
-	  $('#name').on('blur', function () {
-	    var namePattern = /^[가-힣]+$/;
-	    var name = $("#name").val();
-	    console.log(namePattern.test(name));
-	    if (namePattern.test(name) == false) {
-	      alert("올바른 형식의 이름을 입력해주세요. (한글만 가능)");
-	    }
-	  });
+		  //비밀번호
+		  $('#pwd').on('blur', function () {
+		    var pwd = $("#pwd").val();
+		    var pwdPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+		    console.log(pwdPattern.test(pwd));
+		    console.log(pwd);
+		    if (pwdPattern.test(pwd) == true) {
+		      console.log("ok");
+		    } else {
+		      alert("비밀번호는 최소 8자이상, 숫자 1개는 반드시 포함이 되어야합니다.");
+		      $("#pwd1").val(null);
+		    }
+		  });
 
-	  //비밀번호
-	  $('#pwd').on('blur', function () {
-	    var pwd = $("#pwd").val();
-	    var pwdPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-	    console.log(pwdPattern.test(pwd));
-	    console.log(pwd);
-	    if (pwdPattern.test(pwd) == true) {
-	      console.log("ok");
-	    } else {
-	      alert("비밀번호는 최소 8자이상, 숫자 1개는 반드시 포함이 되어야합니다.");
-	      $("#pwd1").val(null);
-	    }
-	  });
+		  $('#pwd2').on('blur', function () {
+		    if ($("#pwd").val() == $("#pwd2").val()) {
+		      //비밀번호 일치하는 경우
+		      $('#pwd').css({
+		        'background': "yellow",
+		        'color': "black",
+		        'border': "0.7px solid balck"
+		      });
+		      $('#pwd2').css({
+		        'background': "yellow",
+		        'color': "black",
+		        'border': "0.7px solid balck"
+		      });
+		    } else {
+		      //비밀번호가 일치하지 않는 경우
+		      $('#pwd').css({
+		        'background': "red",
+		        'color': "black",
+		        'border': "0.7px solid balck"
+		      });
+		      $('#pwd2').css({
+		        'background': "red",
+		        'color': "black",
+		        'border': "0.7px solid balck"
+		      });
+		      alert("비밀번호가 일치하지 않습니다.");
+		      $("#pwd1").val(null);
+		      $("#pwd2").val(null);
+		    }
+		  });
 
-	  $('#pwd2').on('blur', function () {
-	    if ($("#pwd").val() == $("#pwd2").val()) {
-	      //비밀번호 일치하는 경우
-	      $('#pwd').css({
-	        'background': "yellow",
-	        'color': "black",
-	        'border': "0.7px solid balck"
-	      });
-	      $('#pwd2').css({
-	        'background': "yellow",
-	        'color': "black",
-	        'border': "0.7px solid balck"
-	      });
-	    } else {
-	      //비밀번호가 일치하지 않는 경우
-	      $('#pwd').css({
-	        'background': "red",
-	        'color': "black",
-	        'border': "0.7px solid balck"
-	      });
-	      $('#pwd2').css({
-	        'background': "red",
-	        'color': "black",
-	        'border': "0.7px solid balck"
-	      });
-	      alert("비밀번호가 일치하지 않습니다.");
-	      $("#pwd1").val(null);
-	      $("#pwd2").val(null);
-	    }
-	  });
+		  //이메일
+		  $('#email').on('blur', function () {
+		    var email = $('#email').val();
+		    console.log(email);
+		    $.ajax("emailCheck.do", {
+		      type: "get",
+		      dataType: "text",
+		      data: { "email": $("#email").val() },
+		      success: function (data) {
+		        if (data == 1) {
+		          console.log("ok");
+		        } else {
+		          alert("중복된 이메일 주소입니다.\n다시 확인해주세요.");
+		        }
+		      },
+		      error: function () {
+		        alert("실패");
+		      }
+		    })
+		  });
+		  
+		  //휴대폰번호
+		  $("#uPhone").on('blur', function () {
+		    var phone = $("#uPhone").val();
+		    console.log(phone);
+		    var phonePattern = /^\d{2,3}-\d{3,4}-\d{4}$/;
+		    if (phone.phonePattern == false) {
+		      alert("숫자만 입력해주세요.");
+		    }
+		    var phoneFormat = phone.replace(/(^02.{0}|^01.{1}|[0-9]{3})([0-9]+)([0-9]{4})/, "$1-$2-$3");
+		    console.log(phoneFormat);
+
+		    $("#uPhone").val(phoneFormat);
+		  });
 
 
-	  //휴대폰번호
-	  $("#uPhone").on('blur', function () {
-	    var phone = $("#uPhone").val();
-	    console.log(phone);
-	    var phonePattern = /^\d{2,3}-\d{3,4}-\d{4}$/;
-	    if (phone.phonePattern == false) {
-	      alert("숫자만 입력해주세요.");
-	    }
-	    var phoneFormat = phone.replace(/(^02.{0}|^01.{1}|[0-9]{3})([0-9]+)([0-9]{4})/, "$1-$2-$3");
-	    console.log(phoneFormat);
+		  //생년월일
+		  $("#birth").on('blur', function () {
+		    $("#birth").attr("maxlength", 10);
+		    var RegNotNum = /[^0-9]/;
+		    var date = $("#birth").val();
+		    var birthPattern = /^(19|20)[0-9]{2}(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])$/;
 
-	    $("#uPhone").val(phoneFormat);
-	  });
+		    if (birthPattern.test(date) == true) {
+		      date = date.replace(RegNotNum, '');//숫자남기기 
+		      if (date == "" || date == null || date.length < 5) {
+		        this.value = date;
+		        return;
+		      }
+		      var DataFormat;
+		      var RegPhonNum;
+
+		      if (date.length <= 6) {
+		        DataFormat = "$1-$2"; // 포맷을 바꾸려면 이곳을 변경
+		        RegPhonNum = /([0-9]{4})([0-9]+)/;
+		      } else if (date.length <= 8) {
+		        DataFormat = "$1-$2-$3"; // 포맷을 바꾸려면 이곳을 변경
+		        RegPhonNum = /([0-9]{4})([0-9]{2})([0-9]+)/;
+		      }
+
+		      date = date.replace(RegPhonNum, DataFormat);
+		      this.value = date;
+
+		      if (date.length == 10) {
+		        var isVaild = true;
+		        if (isNaN(Date.parse(date))) {
+		          isVaild = false;
+		        } else {
+		          //년, 월, 일
+		          var date_sp = date.split("-");
+		          date_sp.forEach(function (sp) {
+		            if (parseInt(sp) == 0) {
+		              isVaild = false
+		            }
+		          });
+		          var last = new Date(new Date(date).getFullYear(), new Date(date).getMonth() + 1, 0);
+		          if (parseInt(date_sp[1]) != last.getMonth() + 1) {
+		            var date_sp2 = date.sp_slice(0);
+		            date_sp[2] = '01';
+		            var date2 = date_sp2.join("-");
+		            last = new Date(new Date(date2).getFullYear(), new Date(date2).getMonth() + 1, 0);
+		          }
+		          if (last.getDate() < parseInt(date_sp[2])) {
+		            isVaild = false;
+		          }
+		        }
+
+		      }
+
+		    } else {
+		      alert("생년월일 양식에 맞게 기입해주세요.");
+		    }
+		  });
+		  
+		  //닉네임
+		    $('#nickname').on('blur', function () {
+			  var nick = $("#nickname").val();
+		      var nickPattern = /[\{\}\[\]\/?.,;:|\)*~`!^\-+<>@\#$%&\\\=\(\'\"]/gi;
+		      console.log(nick);
+		      if(nickPattern.test(nick)==true){//특수문자를 가지고 있는 경우-> 제외
+		    	  alert("닉네임에 특수문자 사용은 불가능합니다.");
+		      }else{
+		    	  $.ajax("nickCheck.do", {
+		    		  type: "get",
+		    		  dataType: "text",
+		    		  data: {"nickname": $("#nickname").val()},
+		    		  success: function(data){
+		    			  if(data==0){
+		    				  alert("사용중인 닉네임입니다.\n다른 닉네임을 사용해주세요.")
+		    			  }
+		    		  },
+		    		  error: function(){
+		    			  alert("오류입니다. 관리자에게 문의하여 주세요.");
+		    		  }
+		    	  })
+		      }
 
 
-	  //생년월일
-	  $("#birth").on('blur', function () {
-	    $("#birth").attr("maxlength", 10);
-	    var RegNotNum = /[^0-9]/;
-	    var date = $("#birth").val();
-	    var birthPattern = /^(19|20)[0-9]{2}(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])$/;
+		  });	  
+		  
+		  //주소
+		  $("#btnAddr").on("click", function () {
+		    new daum.Postcode({
+		      oncomplete: function (data) {
 
-	    if (birthPattern.test(date) == true) {
-	      date = date.replace(RegNotNum, '');//숫자남기기 
-	      if (date == "" || date == null || date.length < 5) {
-	        this.value = date;
-	        return;
-	      }
-	      var DataFormat;
-	      var RegPhonNum;
+		        // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다. 
+		        var fullAddr = ''; // 최종 주소 변수 
+		        var extraAddr = ''; // 조합형 주소 변수 
 
-	      if (date.length <= 6) {
-	        DataFormat = "$1-$2"; // 포맷을 바꾸려면 이곳을 변경
-	        RegPhonNum = /([0-9]{4})([0-9]+)/;
-	      } else if (date.length <= 8) {
-	        DataFormat = "$1-$2-$3"; // 포맷을 바꾸려면 이곳을 변경
-	        RegPhonNum = /([0-9]{4})([0-9]{2})([0-9]+)/;
-	      }
+		        // 사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다. 
+		        if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우 
+		          fullAddr = data.roadAddress;
+		        } else { // 사용자가 지번 주소를 선택했을 경우(J) 
+		          fullAddr = data.jibunAddress;
+		        }
 
-	      date = date.replace(RegPhonNum, DataFormat);
-	      this.value = date;
+		        // 사용자가 선택한 주소가 도로명 타입일때 조합
+		        if (data.userSelectedType === 'R') {
+		          //법정동명이 있을 경우 추가
+		          if (data.bname !== '') {
+		            extraAddr += data.bname;
+		          }
+		          // 건물명이 있을 경우 추가 
+		          if (data.buildingName !== '') {
+		            extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+		          }
+		          // 조합형주소의 유무에 따라 양쪽에 괄호를 추가하여 최종 주소 
+		          fullAddr += (extraAddr !== '' ? ' (' + extraAddr + ')' : '');
+		        }
 
-	      if (date.length == 10) {
-	        var isVaild = true;
-	        if (isNaN(Date.parse(date))) {
-	          isVaild = false;
-	        } else {
-	          //년, 월, 일
-	          var date_sp = date.split("-");
-	          date_sp.forEach(function (sp) {
-	            if (parseInt(sp) == 0) {
-	              isVaild = false
-	            }
-	          });
-	          var last = new Date(new Date(date).getFullYear(), new Date(date).getMonth() + 1, 0);
-	          if (parseInt(date_sp[1]) != last.getMonth() + 1) {
-	            var date_sp2 = date.sp_slice(0);
-	            date_sp[2] = '01';
-	            var date2 = date_sp2.join("-");
-	            last = new Date(new Date(date2).getFullYear(), new Date(date2).getMonth() + 1, 0);
-	          }
-	          if (last.getDate() < parseInt(date_sp[2])) {
-	            isVaild = false;
-	          }
-	        }
+		        document.getElementById('addr').value = data.zonecode; //5자리 새우편번호 사용 
+		        document.getElementById('addr1').value = fullAddr; // 커서를 상세주소 필드로 이동한다. 
+		        document.getElementById('addr2').focus();
+		      }
+		    }).open();
+		  });
 
-	      }
+		});
 
-	    } else {
-	      alert("생년월일 양식에 맞게 기입해주세요.");
-	    }
-	  });
-	  //주소
-	  $("#btnAddr").on("click", function () {
-	    new daum.Postcode({
-	      oncomplete: function (data) {
-
-	        // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다. 
-	        var fullAddr = ''; // 최종 주소 변수 
-	        var extraAddr = ''; // 조합형 주소 변수 
-
-	        // 사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다. 
-	        if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우 
-	          fullAddr = data.roadAddress;
-	        } else { // 사용자가 지번 주소를 선택했을 경우(J) 
-	          fullAddr = data.jibunAddress;
-	        }
-
-	        // 사용자가 선택한 주소가 도로명 타입일때 조합
-	        if (data.userSelectedType === 'R') {
-	          //법정동명이 있을 경우 추가
-	          if (data.bname !== '') {
-	            extraAddr += data.bname;
-	          }
-	          // 건물명이 있을 경우 추가 
-	          if (data.buildingName !== '') {
-	            extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-	          }
-	          // 조합형주소의 유무에 따라 양쪽에 괄호를 추가하여 최종 주소 
-	          fullAddr += (extraAddr !== '' ? ' (' + extraAddr + ')' : '');
-	        }
-
-	        document.getElementById('addr').value = data.zonecode; //5자리 새우편번호 사용 
-	        document.getElementById('addr1').value = fullAddr; // 커서를 상세주소 필드로 이동한다. 
-	        document.getElementById('addr2').focus();
-	      }
-	    }).open();
-	  });
-
-	});
 
 
 	</script>

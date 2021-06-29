@@ -61,6 +61,16 @@ public class UserController {
 		return result;
 		
 	}
+	@RequestMapping("/user/nickCheck.do")
+	@ResponseBody
+	public int nickCheck(String nickname) {
+		UserVO vo = new UserVO();
+		int result;
+		
+		result = userService.nickCheck(nickname);
+		return result;
+	}
+	
 	//로그인
 	@PostMapping("/user/loginUser.do")
 	public String loginUser(UserVO vo, Model model) {
@@ -77,15 +87,15 @@ public class UserController {
 		}
 		
 	}
-	//로그아웃
+	//회원가입
 	@PostMapping("/user/join.do")
 	public String join(UserVO vo) {
 		System.out.println("회원가입 controller join()");
 		System.out.println("vo: "+vo);
 		userService.join(vo);
-		return "/main/main";
+		return "/user/joinconfirm";
 	}
-	
+	//로그아웃
 	@RequestMapping("/logout.do")
 	public ModelAndView logout(HttpSession session) {
 		session.invalidate();
