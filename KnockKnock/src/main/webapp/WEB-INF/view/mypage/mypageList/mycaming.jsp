@@ -32,6 +32,7 @@
 <link href="${cp}/resource/css/main.css" rel="stylesheet">
 <link href="${cp}/resource/css/nav.css" rel="stylesheet">
 
+
 <!-- Import BootStrap -->
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
@@ -45,122 +46,67 @@
 	charset="utf-8"></script>
 
 <!-- page css -->
-<style>
-.main-content {
-	width: 100%;
-	flex: 1;
-	min-height: 100vh;
-	margin-top: 100px;
-}
+<link href="${cp}/resource/css/mycaming.css" rel="stylesheet">
+<!-- page js -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-.campaingView {
-	width: 70%;
-	margin: 0 auto;
-	text-align: center;
-	position: relative;
-	padding-top:2%;
-}
+<!-- <script src="${cp}/resource/js/mycaming.js" type="text/javascript"
+	charset="utf-8"></script> -->
+<script>
+$(function(){
+	
+	 $(".enddate").each(function(index, obj){
+		
+		var idx = index;
+		var ciEndDate = $(this).text();
+		
+		console.log(idx, ciEndDate);
+		
+		CountDownTimer(ciEndDate, 'countdown');
+		
+		
+	}); 
+	 
 
-#ctext{
-	font-size:18px;
-	border-bottom:1px solid gray;
-	width:800px;
-	margin: 0 auto;
-	padding-top:3%;
-	font-style:normal;
-	font-weight:bold;
+});
 
-}
-/*캠페인 리스트 영역*/
-.clist {
-	display: grid;
-	grid-template-columns: repeat(1, 80%);
-	grid-template-rows: repeat(3, 50vh);
-	grid-gap: 10%;
-	justify-content: center;
-}
-
-.citem {
-	display: grid;
-	grid-template-columns: repeat(6, 16%);
-	grid-template-rows: repeat(5, 10vh);
-	padding: 5px;
-	border: 1px solid gray;
-}
-
-.citem span {
-	text-align: left;;
-	font-size: 15px;
-	font-style: normal;
-}
-/*해당 캠페인 사진*/
-.itemPhoto {
-	grid-column: 1/3;
-	grid-row: 1/4;
-	justify-content: center;
-}
-.itemEnddate {
-	grid-column: 1/3;
-	grid-row: 4/6;
-}
-.cphoto {
-	display: inline-block;
-	width: 90%;
-	border-radius: 5%;
-	overflow: hidden;
-	align-items: center;
-	justify-content: center;
-	border: solid 2px black;
-}
-
-.cphoto img {
-	object-fit: cover;
-	width: 100%;
-}
-
-.cphoto img:hover {
-	opacity: 0.5;
-	cursor: pointer;
-}
-/*해당 캠페인 내용들*/
-.itemTitle {
-	grid-column: 3/6;
-	grid-row: 1/2;
-}
-
-.itemContent {
-	grid-column: 3/6;
-	grid-row: 2/3;
-}
-
-.itemGoal {
-	grid-column: 3/6;
-	grid-row: 3/4;
-}
+/* $.each(function(){
+	var ciEndDate = $(".enddate").index(e);
+	console.log(ciEndDate);
+    CountDownTimer(ciEndDate, 'countdown');
+}); */
 
 
+function CountDownTimer(dt, className){
+    var end = new Date(dt);
 
-.itemEtc {
-	grid-column: 3/6;
-	grid-row: 5/6;
-}
+    var _second = 1000;
+    var _minute = _second * 60;
+    var _hour = _minute * 60;
+    var _day = _hour * 24;
+    var timer;
 
-.itemPoint {
-	grid-column: 6/7;
-	grid-row: 1/6;
-	background-color: gray;
-}
+    function showRemaining(){
+        var now = new Date();
+        var distance = end - now;
+        if ( distance < 0) {
+            clearInterval(timer);
+            $(".countdown").html("디데이!");
+            return;
+        }
+        var days = Math.floor(distance / _day);
+        var hour = Math.floor((distance % _day) / _hour);
+        var minutes = Math.floor((distance % _hour) / _minute);
+        var seconds = Math.floor((distance%_minute) / _second);
 
-.it1 {
-	width: 30%;
-	float: left;
-}
+       
+		$(".countdown").html(days+'일' + hour +'시간' + minutes +'분'+seconds+'초');
+    }
+    timer = setInterval(showRemaining, 1000);
+};
 
-.it2 {
-	width: 69%;
-	float: left;
-}
-</style>
+
+</script>
 </head>
 <body>
 	<!-- ======= Header ======= -->
@@ -188,33 +134,49 @@
 												<br>
 											</div>
 											<div class="itemTitle">
-												<span class="it1">타이틀 :</span> <span class="it2">
-													${campaign.ciTitle }</span>
+												<p class="it1">TITLE</p> <p class="it2">
+													${campaign.ciTitle }</p>
 
 											</div>
 											<div class="itemContent">
-												<span class="it1">내용 :</span> <span class="it2">
-													${campaign.ciContent }</span>
+												<p class="it1">CONTENTS</p> <p class="it2">
+													${campaign.ciContent }</p>
 
 											</div>
 											<div class="itemGoal ">
-												<span class="it1">목표 :</span> <span class="it2">
-													${campaign.ciGoal }</span>
+												<p class="it1">GOAL</p> <p class="it2">
+													${campaign.ciGoal }</p>
 
 											</div>
 											<div class="itemEnddate">
-												<span class="it1">마감일 :</span> <span class="it2">
-													${campaign.ciEnddate }</span><br>
+												<span class="it1">마감일 </span>
+												 <span class="enddate" style="display:none;">${campaign.ciEnddate }</span>
+												 <span class="countdown">남은기간</span><br>
+													<span style="font-size:11px;">이미지를 클릭하면 상세페이지로 이동합니다.</span>
 
 
 											</div>
-											<div class="itemEtc">
-												<span>이미지를 클릭하면 상세페이지로 이동합니다.</span>
-											</div>
+			
 											<div class="itemPoint">
-												<span>포인트 영역이 도ㅣ지 않을까..?</span>
+												<p>획득 가능한 포인트와 엠블럼</p>
+												<div class="apzone">
+													<div class="pt">
+														<div>
+															획득 가능 포인트
+															계속 바뀜(쿼리문으로 ? 아니면 계산해서 가져오기)
+														</div>
+													
+													</div>
+													<div class="eb">
+														<div  class="eb2">
+															<img style="object-fit:cover; width:100%;" src="/resource/img/upload/${campaign.ciEmblem }">
+														</div>
+													
+													</div>
+												</div>
 
 											</div>
+											
 										</div>
 									</div>
 						</c:forEach>
