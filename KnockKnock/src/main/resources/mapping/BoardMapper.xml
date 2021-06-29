@@ -4,39 +4,43 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="BoardDAO">
 	
-	<insert id="insertBoard" parameterType="com.knockknock.board.BoardVO">
-		INSERT INTO BOARD (BIDX ,BSUBJECT, BCONTENT, UIDX, BREGDATE, BHIT, BVIEWS, BCATEGORY, BFILE, CIIDX, SBIDX)
-		VALUES ((SELECT NVL(MAX(bIdx),0)+1 FROM BOARD), #{bSubject}, #{bContent}, #{uIdx}, #{bRegdate}, #{bHit}, #{bViews}, 
-				#{bCategory}, #{bFile}, #{ciIdx}, #{sbIdx})
+	<insert id="insertBoard" parameterType="BoardVO">
+		INSERT INTO BOARD (B_IDX ,B_SUBJECT, B_CONTENT, U_IDX, B_REGDATE, B_HIT, B_VIEWS, B_CATEGORY, B_FILE, CI_IDX, SB_IDX, B_ACTIVE)
+		VALUES ((SELECT NVL(MAX(B_IDX),0)+1 FROM BOARD), #{bSubject}, #{bContent}, #{uIdx}, #{bRegdate}, #{bHit}, #{bViews}, 
+				#{bCategory}, #{bFile}, #{ciIdx}, #{sbIdx}, #{bActive})
 	</insert>
 	
-	<update id="updateBoard" parameterType="board">
-		UPDATE BOARD SET BSUBJECT = #{bSubject}, BCONTENT = #{bContent}
-		 WHERE BIDX = #{bIdx}
+	<update id="updateBoard" parameterType="boardVO">
+		UPDATE BOARD SET B_SUBJECT = #{bSubject}, B_CONTENT = #{bContent}
+		 WHERE B_IDX = #{bIdx}
 	</update>
 	
-	<delete id="deleteBoard" parameterType="board">
-		DELETE FROM BOARD WHERE BIDX = #{bIdx}
+	<delete id="deleteBoard" parameterType="boardVO">
+		DELETE FROM BOARD WHERE B_IDX = #{bIdx}
 	</delete>
 	
-	<select id="getBoard" parameterType="board" resultType="board">
-		SELECT * FROM BOARD WHERE BIDX = #{bIdx}
+	<select id="getBoard" parameterType="boardVO" resultType="boardVO">
+		SELECT * FROM BOARD WHERE B_IDX = #{bIdx}
 	</select>
 	
-	<select id="getBoardList" parameterType="board" resultType="board">
+	<select id="getBoardList" parameterType="boardVO" resultType="boardVO">
 		SELECT * FROM BOARD 
 		WHERE 1=1
-		<if test="searchCondition == 'BSUBJECT' ">
-			AND BSUBJECT LIKE '%'|| #{searchKeyword} ||'%'
+		<if test="searchCondition == 'B_SUBJECT' ">
+			AND B_SUBJECT LIKE '%'|| #{searchKeyword} ||'%'
 		</if>
-		<if test="searchCondition == 'BCONTENT' ">
-			AND BCONTENT LIKE '%'|| #{searchKeyword} ||'%'
+		<if test="searchCondition == 'B_CONTENT' ">
+			AND B_CONTENT LIKE '%'|| #{searchKeyword} ||'%'
 		</if>
-		ORDER BY BIDX DESC
+		ORDER BY B_IDX DESC
 	</select>
 	
 	<update id="updateHit" parameterType="int">
-		UPDATE BOARD SET BHIT = BHIT + 1 WHERE BIDX = #{bIdx}
+		UPDATE BOARD SET B_HIT = B_HIT + 1 WHERE B_IDX = #{bIdx}
+	</update>
+	
+	<update id="updateViews" parameterType="int">
+		UPDATE BOARD SET B_VIEWS = B_VIEWS + 1 WHERE B_IDX = #{bIdx}
 	</update>
 	
 </mapper>

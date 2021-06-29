@@ -7,10 +7,9 @@
 
 	<!-- base-package 설정위치 포함 하위패키지 경로에서 모두 검색처리 여러개 선언해도 되고, 구분자(빈칸, 콤마, 세미콜른 
 		등) -->
-	
-      <context:component-scan
-      base-package="com.knockknock" />
-  
+
+	<context:component-scan
+		base-package="com.knockknock" />
 	<!-- === Spring JDBC 관련 설정 ===== -->
 	<!-- DataSource 설정 -->
 	<bean id="dataSource"
@@ -46,6 +45,12 @@
 	<!-- 데이터베이스 연결관력 커넥션 사용, 매퍼 사용, sqlSessionTemplat객체를 사용해서 프로그래밍 하면 된다. -->
 	<bean class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sqlSessionFactory"></constructor-arg>
-	</bean>	
+	</bean>
+	
+	<!-- MultipartResolver 설정 
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="3000" />
+        <property name="maxInMemorySize" value="100000000" />
+    </bean> -->
 	
 </beans>

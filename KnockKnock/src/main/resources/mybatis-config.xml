@@ -21,11 +21,12 @@
 		<typeAlias alias="adminUserVO"
 			type="com.knockknock.admin.AdminUserVO" />
 		<!-- 게시판 -->
-		<typeAlias alias="board" type="com.knockknock.board.BoardVO" />
+		<typeAlias alias="boardVO" type="com.knockknock.board.BoardVO" />
+		<!-- <typeAlias alias="commentsVO" type="com.knockknock.board.CommentsVO" />  -->
 		<!-- <typeAlias alias="deactivation" type="com.knockknock.board.DeactivationVO"/> -->
-		<typeAlias alias="boardCategory"
-			type="com.knockknock.board.BoardCategoryVO" />
-		<!-- <typeAlias alias="subtitle" type="com.knockknock.board.subtitleVO"/> -->
+		<!-- <typeAlias alias="boardCategoryVO"
+			type="com.knockknock.board.BoardCategoryVO" /> -->
+		<!-- <typeAlias alias="subtitleVO" type="com.knockknock.board.subtitleVO"/> -->
 		<typeAlias alias="comments"
 			type="com.knockknock.board.CommentsVO" />
 		<!-- 캠페인 -->
@@ -45,10 +46,11 @@
 	<!-- mappers는 여러개 등록 가능하다. -->
 	<mappers>
 		<mapper resource="mapping/BoardMapper.xml" />
+		<!-- <mapper resource="mapping/CommentsMapper.xml" />
 		<mapper resource="mapping/UserMapper.xml" />
 		<mapper resource="mapping/CampaignMapper.xml" />
 		<mapper resource="mapping/AdminMapper.xml" />
-		<mapper resource="mapping/UtilMapper.xml" />
+		<mapper resource="mapping/UtilMapper.xml" /> -->
 	</mappers>
 
 

@@ -23,7 +23,7 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public BoardVO getBoard(BoardVO vo) {
-		
+	
 		return boardDAO.getBoard(vo);
 	}
 
@@ -37,11 +37,13 @@ public class BoardServiceImpl implements BoardService {
 		boardDAO.deleteBoard(vo);
 	}
 
-//	@Override
-//	public int updateHit(BoardVO vo) {
-//		
-//		return boardDAO.updateHit(vo);
-//	}
-//	
-	
+	@Override
+	public void updateHit(int bIdx) {
+		boardDAO.updateHit(bIdx);
+	}
+
+	@Override
+	public void updateViews(int bIdx) {
+		boardDAO.updateViews(bIdx);	
+	}
 }
