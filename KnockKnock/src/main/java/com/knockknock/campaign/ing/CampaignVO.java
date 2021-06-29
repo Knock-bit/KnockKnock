@@ -22,13 +22,14 @@ public class CampaignVO {
 	private String cKeyword1;
 	private String cKeyword2;
 	private String cKeyword3;
+	private String hostNickname;
 
 
 	public CampaignVO() {	}
 
 	public CampaignVO(int ciIdx, String ciTitle, String ciContent, String ciGoal, Date ciStartdate, Date ciEnddate,
 			int ciBasepoint, int ciEstimatedpoint, int ciStatus, String ciFile, String ciEmblem, int uIdx,
-			String ccCategory, int cTotpoint, String cKeyword1, String cKeyword2, String cKeyword3, int cfIdx) {
+			String ccIdx, int cTotpoint, String cKeyword1, String cKeyword2, String cKeyword3, int cfIdx, String hostNickname) {
 		super();
 		this.ciIdx = ciIdx;
 		this.ciTitle = ciTitle;
@@ -48,6 +49,7 @@ public class CampaignVO {
 		this.cKeyword2 = cKeyword2;
 		this.cKeyword3 = cKeyword3;
 		this.cfIdx = cfIdx;
+		this.hostNickname = hostNickname;
 	}
 
 	public int getCiIdx() {
@@ -180,22 +182,6 @@ public class CampaignVO {
 	}
 
 
-
-
-	public String getCcCategory() {
-		return ccIdx;
-	}
-
-
-
-
-	public void setCcCategory(String ccIdx) {
-		this.ccIdx = ccIdx;
-	}
-
-
-
-
 	public String getcKeyword1() {
 		return cKeyword1;
 	}
@@ -245,6 +231,22 @@ public class CampaignVO {
 
 	public void setCfIdx(int cfIdx) {
 		this.cfIdx = cfIdx;
+	}
+
+	public String getCcIdx() {
+		return ccIdx;
+	}
+
+	public void setCcIdx(String ccIdx) {
+		this.ccIdx = ccIdx;
+	}
+
+	public String getHostNickname() {
+		return hostNickname;
+	}
+
+	public void setHostNickname(String hostNickname) {
+		this.hostNickname = hostNickname;
 	}
 	
 	
