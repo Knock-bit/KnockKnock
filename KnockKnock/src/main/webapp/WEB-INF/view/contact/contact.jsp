@@ -40,13 +40,14 @@
 									<div class="col-md-6 form-group">
 										<input type="text" class="form-control" name="ctTitle"
 											id="title" placeholder="제목" maxlength="20">
+											<p style="display:none;" >${userVO.uIdx } </p>
 									</div>
 									<div class="col-md-6 form-group">
-										<select name="ctCategory" id="category">
+										<select name="ctcIdx" id="category">
 											<option selected value="문의유형">문의유형</option>
-											<option name="ctCategory" value="주문상품/배송문의">주문상품/배송문의</option>
-											<option name="ctCategory" value="결제/취소/환불문의">결제/취소/환불문의</option>
-											<option name="ctCategory" value="캠페인 관련">캠페인 관련</option>
+											<option name="ctcIdx" value="1">주문상품/배송문의</option>
+											<option name="ctcIdx" value="2">결제/취소/환불문의</option>
+											<option name="ctcIdx" value="3">캠페인 관련</option>
 										</select>
 									</div>
 								</div>
