@@ -5,6 +5,7 @@ import java.sql.Date;
 public class CampaignVO {
 	
 	private int ciIdx;
+	private int cfIdx;
 	private String ciTitle;
 	private String ciContent;
 	private String ciGoal;
@@ -21,7 +22,6 @@ public class CampaignVO {
 	private String cKeyword1;
 	private String cKeyword2;
 	private String cKeyword3;
-	private int cfIdx;
 
 
 	public CampaignVO() {	}
