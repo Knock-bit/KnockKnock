@@ -20,7 +20,7 @@ public class UserVO {
 	private Date uJoindate;
 	private String uImg;
 	private String uImgPath;
-	private int uUsedPont;
+	private int uUsedPoint;
 
 	// ===================== [ 생성자 ] =======================
 	public UserVO() {
@@ -29,7 +29,7 @@ public class UserVO {
 	// 전체 생성자
 	public UserVO(int uIdx, String uId, String uName, String uPwd, String uNickname, String uEmail, String uPhone,
 			String uBirth, int uTotPoint, String uType, String uActive, Date uLastlogin, String uGender, String uAddress,
-			Date uJoindate, String uImg, String uImgPath, int uUsedPont) {
+			Date uJoindate, String uImg, String uImgPath, int uUsedPoint) {
 		super();
 		this.uIdx = uIdx;
 		this.uId = uId;
@@ -48,13 +48,13 @@ public class UserVO {
 		this.uJoindate = uJoindate;
 		this.uImg = uImg;
 		this.uImgPath = uImgPath;
-		this.uUsedPont = uUsedPont;
+		this.uUsedPoint = uUsedPoint;
 	}
 
 	// 마이페이지용 생성자
 	public UserVO(int uIdx, String uId, String uName, String uPwd, String uNickname, String uEmail, String uPhone,
 			String uBirth, int uTotPoint, String uGender, String uAddress, Date uJoindate, String uImg, String uImgPath,
-			int uUsedPont) {
+			int uUsedPoint) {
 		super();
 		this.uIdx = uIdx;
 		this.uId = uId;
@@ -70,7 +70,7 @@ public class UserVO {
 		this.uJoindate = uJoindate;
 		this.uImg = uImg;
 		this.uImgPath = uImgPath;
-		this.uUsedPont = uUsedPont;
+		this.uUsedPoint = uUsedPoint;
 	}
 
 	// 로그인용 생성자
@@ -231,12 +231,12 @@ public class UserVO {
 		this.uImg = uImg;
 	}
 
-	public int getuUsedPont() {
-		return uUsedPont;
+	public int getuUsedPoint() {
+		return uUsedPoint;
 	}
 
-	public void setuUsedPont(int uUsedPont) {
-		this.uUsedPont = uUsedPont;
+	public void setuUsedPoint(int uUsedPoint) {
+		this.uUsedPoint = uUsedPoint;
 	}
 
 	public String getuImgPath() {
@@ -255,7 +255,7 @@ public class UserVO {
 				+ uNickname + ", uEmail=" + uEmail + ", uPhone=" + uPhone + ", uBirth=" + uBirth + ", uTotPoint="
 				+ uTotPoint + ", uType=" + uType + ", uActive=" + uActive + ", uLastlogin=" + uLastlogin
 				+ ", uGender=" + uGender + ", uAddress=" + uAddress + ", uJoindate=" + uJoindate + ", uImg=" + uImg
-				+ ", uImgPath=" + uImgPath + ", uUsedPont=" + uUsedPont + "]";
+				+ ", uImgPath=" + uImgPath + ", uUsedPoint=" + uUsedPoint + "]";
 	}
 
 }

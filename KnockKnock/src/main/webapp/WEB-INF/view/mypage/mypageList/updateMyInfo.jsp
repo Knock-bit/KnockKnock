@@ -63,8 +63,7 @@
 				</div>
 				<div class="it5">
 					<label>생년월일  </label>
-					 <%-- <fmt:formatDate var="uBirth" value="${users.uBirth }" pattern="yyyy.MM.dd"  />
-					<input type="text" name="uBirth" value="${uBirth }" disabled="disabled"> --%>
+					<input type="text" name="uBirth" value="${users.uBirth }" disabled="disabled">
 				</div>
 				<div class="it6">
 					<label><span>*&nbsp;</span>이메일  </label>
@@ -85,12 +84,12 @@
 					<div class="photo">            
 	                   <img id="preview" src="/resource/img/upload/${users.uImg }" width=180 height=200><br>
 	                   <input id="fileBtn" type="file" name="file" onchange="readURL(this);" >
-	                   <button type="button" class="btn-upload">IMAGE</button>
+	                   <button type="button" id="btn-upload">IMAGE</button>
 	               	</div>
 				</div>
 				<div class="it10">
-					<input class="btn-upload" type="submit" value="내 정보 수정">
-					<input style="width:20%; font-size:13px; background-color:#4d4d4d;" class="btn-upload" type="button" value="비밀번호 변경하기" onclick="updatePwd()">
+					<input class="btn-upload1" type="submit" value="내 정보 수정">
+					<input style="width:20%; font-size:13px; background-color:#4d4d4d;" class="btn-upload1" type="button" value="비밀번호 변경하기" onclick="updatePwd()">
 				</div>
 			</div>
 		</form>

@@ -91,19 +91,12 @@
 		});
 
 		// 사용,가용포인트 그래프
-		var uPoint = $
-		{
-			users.uPoint / users.uTotPoint * 100
-		}
-		;
-		var ePoint = $
-		{
-			100 - (users.uPoint / users.uTotPoint * 100)
-		}
-		;
+		var uPoint = ${users.uUsedPoint / users.uTotPoint * 100};
+		var ePoint = ${100 - (users.uUsedPoint / users.uTotPoint * 100)};
 
 		$("#uPoint").css("width", uPoint + "%");
 		$("#ePoint").css("width", ePoint + "%");
+		
 
 		//엠블럼 활성화 상태
 		$(".exitem").each(function(i) {
@@ -163,13 +156,13 @@
 				<div class="item2">
 					<p>사용 포인트와 가용 포인트</p>
 					<div class="graph stack1">
-						<p>▶ 사용한 포인트 : ${users.uPoint}</p>
-						<span style="width: 37.5%" id="uPoint"></span>
+						<p>▶ 사용한 포인트 : ${users.uUsedPoint}</p>
+						<span id="uPoint"></span>
 
 					</div>
 					<div class="graph stack2">
-						<p>▶ 가용 포인트 :${users.uTotPoint-users.uPoint}</p>
-						<span id="ePoint" style="width: 62.5%"></span>
+						<p>▶ 가용 포인트 :${users.uTotPoint-users.uUsedPoint}</p>
+						<span id="ePoint"></span>
 
 					</div>
 
