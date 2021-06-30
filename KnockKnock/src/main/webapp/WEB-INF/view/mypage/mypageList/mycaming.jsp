@@ -54,27 +54,23 @@
 	charset="utf-8"></script> -->
 <script>
 $(function(){
-	
+	// 타이머
 	 $(".enddate").each(function(index, obj){
 		
 		var idx = index;
 		var ciEndDate = $(this).text();
 		
 		console.log(idx, ciEndDate);
-		
 		CountDownTimer(ciEndDate, 'countdown');
 		
-		
+		/* $.each(function(){
+			CountDownTimer(ciEndDate, 'countdown');
+			
+		}); */
+
 	}); 
-	 
 
 });
-
-/* $.each(function(){
-	var ciEndDate = $(".enddate").index(e);
-	console.log(ciEndDate);
-    CountDownTimer(ciEndDate, 'countdown');
-}); */
 
 
 function CountDownTimer(dt, className){

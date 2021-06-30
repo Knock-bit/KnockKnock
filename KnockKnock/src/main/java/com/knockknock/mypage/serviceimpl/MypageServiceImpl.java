@@ -30,11 +30,11 @@ public class MypageServiceImpl implements MypageService {
 
 		return mypageDAO.updateMyInfo(vo);
 	}
-	// 이메일 목록 가져오기
+	// 이메일 중복검사
 	@Override
-	public List<String> selectAllEmail(){
+	public int emailCheck(String email){
 		
-		return mypageDAO.selectAllEmail();
+		return mypageDAO.emailCheck(email);
 	}
 	
 	// 비밀번호 수정
