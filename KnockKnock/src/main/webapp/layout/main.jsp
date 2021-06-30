@@ -39,7 +39,7 @@
 <body>
 
   <!-- ======= Header ======= -->
-   <%@ include file= "/layout/navbar/nav.jsp" %>
+   <%@ include file= "/layout/navbar/navLoggedin.jsp" %>
 
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex justify-content-center align-items-center">
