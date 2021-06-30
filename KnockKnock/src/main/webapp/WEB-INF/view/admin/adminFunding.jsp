@@ -48,6 +48,7 @@
 				type="time" name="startTime">
 			</label> <br> <input id="subBtn" type="Button" value="글 작성"
 				style="float: right;" onclick="goWrite(this.form)">
+			<div name="text"></div>
 		</form>
 	</div>
 	<script>
@@ -80,16 +81,19 @@
 											'view',
 											[ 'codeview', 'fullscreen', 'help' ] ] ];
 
+							// 툴바생략
 							var setting = {
-								height : 150,
+								height : 300,
 								minHeight : null,
 								maxHeight : null,
 								focus : true,
 								lang : 'ko-KR',
 								toolbar : toolbar,
-								callbacks : { //여기 부분이 이미지를 첨부하는 부분
+								//콜백 함수
+								callbacks : {
 									onImageUpload : function(files, editor,
 											welEditable) {
+										// 파일 업로드(다중업로드를 위해 반복문 사용)
 										for (var i = files.length - 1; i >= 0; i--) {
 											uploadSummernoteImageFile(files[i],
 													this);
@@ -97,9 +101,24 @@
 									}
 								}
 							};
-
 							$('.summernote').summernote(setting);
 						});
+
+		function uploadSummernoteImageFile(file, el) {
+			data = new FormData();
+			data.append("file", file);
+			$.ajax({
+				data : data,
+				type : "POST",
+				url : "uploadSummernoteImageFile.do",
+				contentType : false,
+				enctype : 'multipart/form-data',
+				processData : false,
+				success : function(data) {
+					$(el).summernote('editor.insertImage', data.url);
+				}
+			});
+		}
 	</script>
 </body>
 </html>
