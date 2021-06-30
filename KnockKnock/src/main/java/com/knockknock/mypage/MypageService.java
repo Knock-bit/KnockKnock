@@ -1,8 +1,11 @@
 package com.knockknock.mypage;
 
+
 import java.util.List;
+import java.util.Map;
 
 import com.knockknock.campaign.ing.CampaignVO;
+import com.knockknock.contact.ContactVO;
 import com.knockknock.user.UserVO;
 
 public interface MypageService {
@@ -21,5 +24,13 @@ public interface MypageService {
 	List<CampaignVO> campaigningList(UserVO vo);
 	// 종료된 캠페인 리스트
 	List<CampaignVO> endCampaignList(UserVO vo);
+	// 내 문의내역 
+	//List<ContactVO> myContactList(UserVO vo);
+	// 문의내역 총 게시글 수
+	int myCclistTot(UserVO vo);
+	// 문의내역 총 게시글 수
+	List<ContactVO> myContactList(Map<String, Integer> map);
+	// 문의내역 상세보기
+	ContactVO myQuestion(Map<String, Integer> map);
 
 }

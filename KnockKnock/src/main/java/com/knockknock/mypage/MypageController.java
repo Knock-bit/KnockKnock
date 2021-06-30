@@ -6,7 +6,9 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,12 +22,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.knockknock.campaign.ing.CampaignVO;
+import com.knockknock.contact.ContactVO;
 import com.knockknock.user.UserVO;
+import com.knockknock.util.PagingVO;
 
 @Controller
 @SessionAttributes("users")
@@ -180,7 +185,7 @@ public class MypageController {
 	}
 	
 	// 종료된 캠페인 리스트
-	@GetMapping("myCampaignList.do")
+	@GetMapping("/myCampaignList.do")
 	public String myEndCampaignList(@ModelAttribute("users")UserVO vo, Model model) {
 		// 유저의 종료된 캠페인 리스트 가져오기
 		List<CampaignVO> endlist = mypageService.endCampaignList(vo);
@@ -190,4 +195,70 @@ public class MypageController {
 		return "/mypage/mypageList/myCampaignList";
 	}
 
+	
+	// 나의 문의내역
+	@GetMapping("/myContactList.do")
+	public String myContactList(@ModelAttribute("users")UserVO vo ,Model model, 
+				@RequestParam(value="nowPage", required=false)String nowPage,
+				@RequestParam(value="cntPerPage", required=false)String cntPerPage) {
+		
+		PagingVO pvo = new PagingVO();
+		// 전체 게시물 수 구하기
+		pvo.setTotal(mypageService.myCclistTot(vo));
+		int total = pvo.getTotal();
+		
+		// 페이지당 글 갯수
+		pvo.setCntPerPage(5);
+		
+		// 현재 페이지 구하기
+		if(nowPage==null && cntPerPage==null) {
+			nowPage = "1";
+			cntPerPage = "5";
+		} else if(nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) {
+			cntPerPage ="5";
+		}
+		System.out.println("cntPerPage : " +cntPerPage);
+		pvo = new  PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+
+		Map<String, Integer> map = new HashMap<>();
+		int start = pvo.getStart();
+		int end = pvo.getEnd();
+		int uIdx = vo.getuIdx();
+		map.put("start", start);
+		map.put("end", end);
+		map.put("uIdx", uIdx);
+		
+		List<ContactVO> contactList = mypageService.myContactList(map);
+
+		System.out.println("contactList : " + contactList);
+		System.out.println("pvo : " + pvo);
+		
+		model.addAttribute("pvo", pvo);
+		model.addAttribute("contactList",contactList);
+		return "/mypage/mypageList/myContactList";
+	}
+	
+	// 내 문의내역 창으로 이동(상세글보기)
+	@GetMapping("myQuestion.do")
+	public String myQuestion (@ModelAttribute("users")UserVO vo ,Model model,
+			@RequestParam(value="CT_IDX", required=false)String CT_IDX) {
+		
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		
+		// 해당 캠페인 idx랑 유저 idx 넣어주기
+		int ctIdx = Integer.parseInt(CT_IDX);
+		int uIdx = vo.getuIdx();
+		map.put("ctIdx", ctIdx);
+		map.put("uIdx", uIdx);
+		
+		
+		ContactVO cvo = mypageService.myQuestion(map);
+		
+		
+		model.addAttribute("cvo", cvo);
+		return "/mypage/mypageList/myContact";
+	}
+	
 }
