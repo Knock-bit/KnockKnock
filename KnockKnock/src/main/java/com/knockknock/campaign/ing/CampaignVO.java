@@ -23,14 +23,16 @@ public class CampaignVO {
 	private String cKeyword2;
 	private String cKeyword3;
 	private String hostNickname; // 주최자 닉네임
-	private String category;
+	private String category; // 카테고리명
+	private int userCount; // 사용자수
 
 
 	public CampaignVO() {	}
 
 	public CampaignVO(int ciIdx, String ciTitle, String ciContent, String cGoal, Date ciStartdate, Date ciEnddate,
 			int ciBasepoint, int ciEstimatedpoint, int ciStatus, String ciFile, String ciEmblem, int uIdx,
-			String ccIdx, int cTotpoint, String cKeyword1, String cKeyword2, String cKeyword3, int cfIdx, String hostNickname, String category) {
+			String ccIdx, int cTotpoint, String cKeyword1, String cKeyword2, String cKeyword3, int cfIdx, String hostNickname, String category
+			, int userCount) {
 		super();
 		this.ciIdx = ciIdx;
 		this.ciTitle = ciTitle;
@@ -52,6 +54,7 @@ public class CampaignVO {
 		this.cfIdx = cfIdx;
 		this.hostNickname = hostNickname;
 		this.category = category;
+		this.userCount = userCount;
 	}
 
 	public int getCiIdx() {
@@ -257,6 +260,14 @@ public class CampaignVO {
 
 	public void setCategory(String category) {
 		this.category = category;
+	}
+
+	public int getUserCount() {
+		return userCount;
+	}
+
+	public void setUserCount(int userCount) {
+		this.userCount = userCount;
 	}
 	
 	

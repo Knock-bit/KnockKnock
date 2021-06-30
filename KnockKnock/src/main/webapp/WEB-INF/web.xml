@@ -17,6 +17,7 @@
 	</listener>
 	
 	
+
 	<!-- 필터정의 : 모든 *.do 요청에 characterEncoding을 UTF-8 설정 -->
 	<filter>
 		<filter-name>characterEncoding</filter-name>

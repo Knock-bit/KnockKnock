@@ -109,6 +109,7 @@
               <img src="/resource/img/profile/user_default.png">
               </div></div> -->
               <c:if test="${!empty userList }">
+              ${userList.size() }명 참여중<br>
 	              <c:forEach var="user" items="${userList }">
 		              	${user.getNickname() }<br>
 		           </c:forEach>
