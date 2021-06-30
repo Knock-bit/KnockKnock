@@ -30,7 +30,8 @@
 
   <!-- Main CSS File -->
   <link href="${cp}/resource/css/main.css" rel="stylesheet">
-   <link href="${cp}/resource/css/nav.css" rel="stylesheet">
+  <link href="${cp}/resource/css/nav.css" rel="stylesheet">
+  <link href="${cp}/resource/css/funding.css" rel="stylesheet">
 
   <!-- Import BootStrap -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
@@ -55,8 +56,8 @@
       </div>
     </div><!-- End Breadcrumbs -->
 
-    <!-- ======= Courses Section ======= -->
-    <section id="courses" class="courses">
+    <!-- ======= Campaigns Section ======= -->
+    <section id="campaigns" class="campaigns">
       <div class="container" data-aos="fade-up">
 
         <div class="row" data-aos="zoom-in" data-aos-delay="100">
@@ -72,10 +73,10 @@
 		                </div>
 		
 		                <h3><a href="${cp }/campaign/funding/detail.do?cfIdx=${funding.cfIdx }">${funding.cfTitle }</a></h3>
-		                <p>캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. </p>
-		                펀딩 진행도
+		                <p>${funding.cGoal } </p>
+		                펀딩 진행도 ${funding.cfCollected } / ${funding.cfGoalpoint }
               <p class="funding-pg">
-    			<progress value="50" max="100"></progress>
+    			<progress value="${funding.cfCollected }" max="${funding.cfGoalpoint }"></progress>
   				</p>
 		                <div class="trainer d-flex justify-content-between align-items-center">
 		                  <div class="trainer-profile d-flex align-items-center">
