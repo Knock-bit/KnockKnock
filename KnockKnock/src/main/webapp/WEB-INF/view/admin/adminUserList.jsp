@@ -12,14 +12,10 @@ request.setCharacterEncoding("UTF-8");
 <head>
 <meta charset="UTF-8">
 <title></title>
-<!--jQuery import방식 2(CDN방식)-->
-<script src="https://code.jquery.com/jquery-3.6.0.js"
-	integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-	crossorigin="anonymous"></script>
-<link rel="preconnect" href="https://fonts.gstatic.com">
+<!-- bootstrap jquery 추가-->
 <link href="${cp}/resource/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="${cp}/resource/js/jquery/jquery-3.6.0.min.js"></script>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 	function active_onoff(frm) {
 		frm.action = "adminActive.do";

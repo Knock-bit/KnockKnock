@@ -4,11 +4,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -111,6 +114,21 @@ public class AdminController {
 		model.addAttribute("viewAll", adminService.getKeywordList(pvo));
 		return "/admin/adminKeywordList";
 	}
+	@GetMapping("/adminFunding.do")
+	public String getFunding() {
+		return "/admin/adminFunding";
+	}
+	
+	@PostMapping("/adminFundingWrite.do")
+	public String writeFunding(HttpServletRequest request) {
+		System.out.println(request.getParameter("idx"));
+		System.out.println(request.getParameter("title"));
+		System.out.println(request.getParameter("editordata"));
+		System.out.println(request.getParameter("startDate"));
+		System.out.println(request.getParameter("startTime"));
+		return "/admin/adminFunding";
+	}
+	
 	
 
 
