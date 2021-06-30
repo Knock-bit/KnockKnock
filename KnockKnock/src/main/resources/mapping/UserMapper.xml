@@ -4,6 +4,14 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- 참고파일 나중에 삭제 -->
 <mapper namespace="UserVO">
+
+	<select id="kakaologin" parameterType="UserVO" resultType="UserVO">
+		SELECT *FROM USERS WHERE U_EMAIL=#{uEmail}
+	</select>
+
+
+
+
 	<!-- 로그인 -->
 	<select id="selectlogin" parameterType="HashMap" resultType="UserVO">
 		SELECT U_NAME FROM USERS WHERE U_ID=#{uId} and U_PWD=#{uPwd}
@@ -26,6 +34,7 @@
 U_ACTIVE, U_GENDER, U_ADDRESS, U_JOINDATE)
 		VALUES(U_IDX_SEQ.nextval, #{uId}, #{uName}, #{uPwd}, #{uNickname}, #{uEmail}, #{uPhone}, #{uBirth}, default, 1, default, #{uGender}, #{uAddress}, sysdate)		
 	</insert>
+	 
 	
 	<!-- 마이페이지 이동 -->
 	<select id="selectOneUser" parameterType="int" resultType="UserVO">

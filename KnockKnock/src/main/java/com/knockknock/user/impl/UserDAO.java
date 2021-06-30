@@ -55,4 +55,19 @@ public class UserDAO {
 	public void join(UserVO vo) {
 		mybatis.insert("UserVO.join", vo);
 	}
+	
+	
+	//카카오
+	public UserVO kakaologin(UserVO vo) {
+		System.out.println("DAO에서 받은 vo: "+ mybatis.selectOne("UserVO.kakaologin", vo));
+		return mybatis.selectOne("UserVO.kakaologin", vo);
+		
+	}
+	
+	
+	
+	
+	
+	
+	
 }
