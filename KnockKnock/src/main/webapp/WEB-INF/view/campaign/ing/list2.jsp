@@ -41,66 +41,61 @@
 
 
 
-  
-
   <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top">
-    <div class="container d-flex align-items-center">
+   <%@ include file= "/layout/navbar/nav.jsp" %>
 
-     
-     
-        <%@ include file= "/layout/navbar/nav.jsp" %><!-- .navbar -->
+  <!-- End Header -->
 
-      <a href="campaigns.html" class="get-started-btn">Get Started</a>
-
-    </div>
-  </header><!-- End Header -->
-
-  <main id="main" data-aos="fade-in">
+  <main id="main">
 
     <!-- ======= Breadcrumbs ======= -->
-    <div class="breadcrumbs">
-      <div class="container">
-        <h2>Courses</h2>
-        <p>Est dolorum ut non facere possimus quibusdam eligendi voluptatem. Quia id aut similique quia voluptas sit quaerat debitis. Rerum omnis ipsam aperiam consequatur laboriosam nemo harum praesentium. </p>
+    <div class="campaigncrumbs justify-content-center align-items-center">
+      <div class="container position-relative">
+        <h2>knock, campaign</h2>
+        <p>진행중인 캠페인 리스트</p>
       </div>
     </div><!-- End Breadcrumbs -->
 
-    <!-- ======= Courses Section ======= -->
+    <!-- ======= Campaign Section ======= -->
     <section id="campaigns" class="campaigns">
-      <div class="container" data-aos="fade-up">
+      <div class="container" id="campaign" data-aos="fade-up">
 
         <div class="row" data-aos="zoom-in" data-aos-delay="100">
-		<c:if test="${!empty list  }">
-        <c:forEach var="campaign" items="${list }">
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" >
-            <div class="campaign-item" style="height:500px">
-              <img src="${campaign.ciFile }" class="img-fluid" alt="...">
-              <div class="campaign-content">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <h4>${campaign.category}</h4>
-                </div>
-
-                <h3><a href="${cp }/campaign/ing/detail.do?ciIdx=${campaign.ciIdx }">${campaign.ciTitle } </a></h3>
-                <p>Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
-                <div class="trainer d-flex justify-content-between align-items-center">
-                  <div class="trainer-profile d-flex align-items-center">
-                    <img src="assets/img/trainers/trainer-1.jpg" class="img-fluid" alt="">
-                    <span>Antonio</span>
-                  </div>
-                  <div class="trainer-rank d-flex align-items-center">
-                    <i class="bx bx-user"></i>&nbsp;50
-                    &nbsp;&nbsp;
-                    <i class="bx bx-heart"></i>&nbsp;65
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> <!-- End Course Item-->
-          </c:forEach>
+        	<c:if test="${!empty list  }">
+        	<c:forEach var="campaign" items="${list }">
+	        	 <div class="col-lg-4 col-md-6 d-flex align-items-stretch" style="width:1100x" >
+		            <div class="campaign-item">
+		            	<div class="campaign-img">
+			              <img src="${campaign.ciFile }" class="img-fluid" alt="...">
+		            	</div>
+		              <div class="campaign-content">
+		                <div class="d-flex justify-content-between align-items-center mb-3">
+		                  <span>${campaign.category} | </span>
+		                  
+		                </div>
+		
+		                <h3><a href="${cp }/campaign/ing/detail.do?ciIdx=${campaign.ciIdx }">${campaign.ciTitle } </a></h3>
+		                <p>${campaign.cGoal }</p>
+		                <div class="trainer d-flex justify-content-between align-items-center">
+		                  <div class="trainer-profile d-flex align-items-center">
+		                    <img src="assets/img/trainers/trainer-1.jpg" class="img-fluid" alt="">
+		                    <span>suggested by  ${campaign.hostNickname } </span>
+		                  </div>
+		                  <div class="trainer-rank d-flex align-items-center">
+		                    <i class="bx bx-user"></i>&nbsp;${campaign.userCount }명 참가중
+		                    &nbsp;&nbsp;
+		                    
+		                  </div>
+		                </div>
+		              </div>
+		            </div>
+		          </div> <!-- End Campaign Item-->
+       		</c:forEach>
         </c:if>
-
-
+        <c:if test="${empty list }">
+        진행중인 캠페인이 존재하지 않습니다.
+        </c:if>
+        
         </div>
 
       </div>
