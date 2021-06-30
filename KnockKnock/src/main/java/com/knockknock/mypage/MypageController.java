@@ -66,10 +66,6 @@ public class MypageController {
 	// 내 정보 수정 정보 받아오기
 	@PostMapping("/updateMyInfoBtn.do")
 	public String updateMyInfo(@ModelAttribute("users") UserVO vo, MultipartFile file, HttpServletRequest request) {
-		System.out.println("내 정보 업데이트");
-		System.out.println("vo: " + vo);
-		
-		
 
 		// 파일처리
 		if (file.isEmpty()) {
@@ -109,8 +105,6 @@ public class MypageController {
 			vo.setuImg(fileName);
 			vo.setuImgPath(filePath);
 
-			System.out.println("fileName : " + fileName);
-			System.out.println("filePath : " + filePath);
 
 			// 파일 서버내 폴더로 복사
 			try {
@@ -133,7 +127,7 @@ public class MypageController {
 		}
 		int result = mypageService.updateMyInfo(vo);
 
-		System.out.println("result : " + result);
+
 
 		return "/mypage/mypageList/updateMyInfo";
 	}
@@ -141,7 +135,7 @@ public class MypageController {
 	// 비밀번호 변경 페이지로 이동
 	@GetMapping("/updatePwd.do")
 	public String updatePwd(@ModelAttribute("users") UserVO vo) {
-		System.out.println("vo :" + vo);
+;
 		return "/mypage/mypageList/updatePwd";
 	}
 
@@ -151,7 +145,7 @@ public class MypageController {
 	@PostMapping("/updateMyPwd.do")
 	@ResponseBody
 	public String updateMyPwd(@ModelAttribute("users") UserVO vo) {
-		System.out.println("비밀번호 변경");
+
 		
 		mypageService.updateMyPwd(vo);
 
@@ -165,8 +159,7 @@ public class MypageController {
 		
 		// 해당 유저의 STATUS가 1인 엠블럼 이미지 가져오기
 		List<String> emImgList = mypageService.emblemList(vo);
-		System.out.println("emImgList:" + emImgList);
-		System.out.println("userVO : " + vo);
+
 		model.addAttribute("emImgList", emImgList);
 		return "/mypage/mypageList/myPointPage";
 	}
@@ -177,7 +170,7 @@ public class MypageController {
 	public String myCampainging(@ModelAttribute("users")UserVO vo, Model model) {
 		// 유저의 캠페인 리스트 가져오기
 		List<CampaignVO> clist = mypageService.campaigningList(vo);
-		System.out.println("clist:" + clist);
+
 		
 		
 		model.addAttribute("clist",clist);
@@ -219,7 +212,6 @@ public class MypageController {
 		} else if (cntPerPage == null) {
 			cntPerPage ="5";
 		}
-		System.out.println("cntPerPage : " +cntPerPage);
 		pvo = new  PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
 
 		Map<String, Integer> map = new HashMap<>();
@@ -232,9 +224,6 @@ public class MypageController {
 		
 		List<ContactVO> contactList = mypageService.myContactList(map);
 
-		System.out.println("contactList : " + contactList);
-		System.out.println("pvo : " + pvo);
-		
 		model.addAttribute("pvo", pvo);
 		model.addAttribute("contactList",contactList);
 		return "/mypage/mypageList/myContactList";
@@ -243,17 +232,18 @@ public class MypageController {
 	// 내 문의내역 창으로 이동(상세글보기)
 	@GetMapping("myQuestion.do")
 	public String myQuestion (@ModelAttribute("users")UserVO vo ,Model model,
-			@RequestParam(value="CT_IDX", required=false)String CT_IDX) {
+			@RequestParam(value="ctIdx", required=false)String ctIdx) {
 		
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		
 		// 해당 캠페인 idx랑 유저 idx 넣어주기
-		int ctIdx = Integer.parseInt(CT_IDX);
+		int ctIdx2 = Integer.parseInt(ctIdx);
 		int uIdx = vo.getuIdx();
-		map.put("ctIdx", ctIdx);
+		map.put("ctIdx", ctIdx2);
 		map.put("uIdx", uIdx);
 		
-		
+		System.out.println("ctIdx2 : " + ctIdx2);
+		System.out.println("uIdx : " + uIdx); 
 		ContactVO cvo = mypageService.myQuestion(map);
 		
 		

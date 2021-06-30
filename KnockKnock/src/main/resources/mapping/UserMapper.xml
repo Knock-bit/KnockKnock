@@ -108,10 +108,12 @@ U_ACTIVE, U_GENDER, U_ADDRESS, U_JOINDATE)
 	
 	<!-- 내 문으내용(답글포함) -->
 	<select id="myQuestionPage" parameterType="UserVO" resultType="contactVO">
-		SELECT C.*, CM.CM_CONTENT
-		FROM CONTACT C, CONTACT_COMMENT CM
-		WHERE C.CT_IDX = CM.CT_IDX
-		AND C.U_IDX = #{uIdx}
+		SELECT C.*, CM.*
+		FROM CONTACT C LEFT OUTER JOIN (
+	    SELECT * FROM CONTACT_COMMENT) CM
+	    ON(C.CT_IDX = CM.CT_IDX)
+	    WHERE C.U_IDX = #{uIdx}
+	    AND C.CT_IDX =#{ctIdx}
 	
 	</select>
 	

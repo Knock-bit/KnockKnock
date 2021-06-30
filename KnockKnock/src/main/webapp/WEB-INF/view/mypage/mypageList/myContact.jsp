@@ -22,18 +22,18 @@
  
   <!-- Main CSS File -->
   <link href="${cp}/resource/css/main.css" rel="stylesheet">
+	<link href="${cp}/resource/css/nav.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
   <!-- Import BootStrap -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  	
+  <!-- page css -->
+  <link href="${cp}/resource/css/myContact.css" rel="stylesheet">
   
-  <style>
-  .main-content{
-        flex: 1;
-        min-height:100vh;
-        margin-top:100px;
-        
-    }
-  </style>
+<script>
+	
+
+</script>
 </head>
 <body>
   <!-- ======= Header ======= -->
@@ -42,13 +42,40 @@
 <div class="main-content">
 <p id="ctext">My Question</p>
 	<div class="myQuestion">
-		${cvo.ctTitle }
-		${cvo.ctContent }
-		${cvo.ctWriteDate }
-		${cvo.cmContent }
-		${cvo.cmWriteDate }
+		<div class="qsgrid">
+			<div class="qs1">
+				<div class="qs1-2">
+					<p>제목</p> 
+					<p>${cvo.ctTitle }</p>
+				</div>
+				<p>${cvo.ctWriteDate }</p>
+			</div>
+			<div class="qs2">
+				${cvo.ctContent }
+			</div>
+			<c:if test="${cvo.ctResp > 0 }">
+			<div class="qs3">
+				
+					<div class="qs3-1">
+						<p>▶ 관리자</p>
+						<p>작성일 : ${cvo.cmWriteDate }</p>
+					</div>
+					<div class="qs3-2">
+						${cvo.cmContent }
+					</div>
+			</div>
+			</c:if>
+			<c:if test="${cvo.ctResp == 0 }">
+					<div class="qs4">
+						작성된 답글이 없습니다.
+						
+					</div>
+				</c:if>
+			<div class="qs5">
+				<button onclick="location.href='myContactList.do'">목록</button>
+			</div>
 
-
+		</div>
 
 	</div>
 
