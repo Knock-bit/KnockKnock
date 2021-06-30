@@ -29,7 +29,7 @@ public class AdminController {
 		System.out.println("==> AdminController() 객체 생성");
 	}
 	// 페이지 셋팅부분
-	public Map<String ,String> pageSet(String nowPage, String cntPerPage) {
+	public static Map<String ,String> pageSet(String nowPage, String cntPerPage) {
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = "1";
 			cntPerPage = "5";
@@ -86,14 +86,7 @@ public class AdminController {
 			@RequestParam(value = "cntPerPage", required = false) String cntPerPage) {
 
 		int total = adminService.countKeyword();
-//		if (nowPage == null && cntPerPage == null) {
-//			nowPage = "1";
-//			cntPerPage = "5";
-//		} else if (nowPage == null) {
-//			nowPage = "1";
-//		} else if (cntPerPage == null) {
-//			cntPerPage = "5";
-//		}
+
 		Map<String,String> map = pageSet(nowPage,cntPerPage);
 		nowPage = map.get("nowPage");
 		cntPerPage=map.get("cntPerPage");
