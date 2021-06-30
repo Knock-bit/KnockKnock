@@ -36,4 +36,10 @@ public class UserServiceImpl implements UserService {
 		userDAO.join(vo);
 	}
 
+	@Override
+	public UserVO kakaoLogin(UserVO vo) {
+		System.out.println("UserServiceImpl에 받은 값: "+userDAO.kakaologin(vo));
+		return userDAO.kakaologin(vo);
+	}
+
 }

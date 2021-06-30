@@ -7,5 +7,6 @@ public interface UserService {
 	public int emailCheck(String email);
 	public int nickCheck(String nickname);
 	public void join(UserVO vo);
-	
+
+	public UserVO kakaoLogin(UserVO vo);
 }
