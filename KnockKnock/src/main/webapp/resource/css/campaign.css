@@ -53,11 +53,27 @@
 }
  */
  
+ 
+.campaign-wrapper {
+	 position: relative;
+ width: 100%;
+ height: 0;
+ overflow: hidden;
+ padding-bottom: 120%;
+}
+
+.wrapper-content{
+	position: 'absolute';
+  top: 0;
+  left: 0;
+  width: '100%';
+  height: '100%';
+}
 
 .campaigns .campaign-item {
   border-radius: 10px;
   border: 1px solid #eef0ef;
-  margin-bottom: 100px;
+  margin-bottom: 10%;
   overflow:hidden;
   height: 450px;
 }
@@ -89,7 +105,7 @@
 .campaigns .campaign-content h4 {
   font-size: 14px;
   background: #f2f2f2;
-  border-radius: 25px;
+  border-radius: 5px;
   padding: 7px 14px;
   color: #787878;
   margin: 0;
