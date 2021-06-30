@@ -31,6 +31,7 @@
   <!-- Main CSS File -->
   <link href="${cp}/resource/css/main.css" rel="stylesheet">
    <link href="${cp}/resource/css/nav.css" rel="stylesheet">
+   <link href="${cp}/resource/css/campaign.css" rel="stylesheet">
 
   <!-- Import BootStrap -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
@@ -55,20 +56,22 @@
       </div>
     </div><!-- End Breadcrumbs -->
 
-    <!-- ======= Courses Section ======= -->
-    <section id="courses" class="courses">
+    <!-- ======= Campaign Section ======= -->
+    <section id="campaigns" class="campaigns">
       <div class="container" data-aos="fade-up">
 
         <div class="row" data-aos="zoom-in" data-aos-delay="100">
         	<c:if test="${!empty list  }">
         	<c:forEach var="campaign" items="${list }">
 	        	 <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-		            <div class="course-item">
-		              <img src="assets/img/course-1.jpg" class="img-fluid" alt="...">
-		              <div class="course-content">
+		            <div class="campaign-item">
+		            	<div class="campaign-img">
+			              <img src="${campaign.ciFile }" class="img-fluid" alt="...">
+		            	</div>
+		              <div class="campaign-content">
 		                <div class="d-flex justify-content-between align-items-center mb-3">
-		                  <h4>키워드?</h4>
-		                  <p class="price">$169</p>
+		                  <span>${campaign.category} | </span>
+		                  
 		                </div>
 		
 		                <h3><a href="${cp }/campaign/ing/detail.do?ciIdx=${campaign.ciIdx }">${campaign.ciTitle }</a></h3>
@@ -76,12 +79,12 @@
 		                <div class="trainer d-flex justify-content-between align-items-center">
 		                  <div class="trainer-profile d-flex align-items-center">
 		                    <img src="assets/img/trainers/trainer-1.jpg" class="img-fluid" alt="">
-		                    <span>suggested by ${campaign.hostNickname }</span>
+		                    <span>suggested by  ${campaign.hostNickname } </span>
 		                  </div>
 		                  <div class="trainer-rank d-flex align-items-center">
-		                    <i class="bx bx-user"></i>&nbsp;50
+		                    <i class="bx bx-user"></i>&nbsp;50명 참가중
 		                    &nbsp;&nbsp;
-		                    <i class="bx bx-heart"></i>&nbsp;65
+		                    
 		                  </div>
 		                </div>
 		              </div>
