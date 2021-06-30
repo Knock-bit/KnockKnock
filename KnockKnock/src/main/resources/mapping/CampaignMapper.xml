@@ -11,7 +11,7 @@
 		  WHERE SYSDATE > CI_STARTDATE
 	</update>
 
-	<!-- 진행중인 캠페인, 주최자 닉네임 불러오기 -->
+	<!-- 진행중인 캠페인, 주최자 닉네임, 카테고리, 참여자수 불러오기 -->
 	<select id="selectAllCampaign" resultType="CampaignVO">
 		SELECT C.*, U.U_NICKNAME AS HOST_NICKNAME, CC.CC_NAME AS CATEGORY, 
         (SELECT COUNT(*) FROM CAMPAIGN_USER WHERE C.CI_IDX = CAMPAIGN_USER.ci_idx) USER_COUNT
@@ -60,10 +60,14 @@
 	
 	<!--  ============= funding ============= -->
 	<select id="selectAllFunding" resultType="FundingVO">
-		SELECT F.*, U.U_NICKNAME AS HOST_NICKNAME
-		FROM USERS U, FUNDING F
-		WHERE C_STATUS = 1
-		AND U.U_IDX = F.U_IDX
+	
+		SELECT F.*, U.U_NICKNAME AS HOST_NICKNAME, CC.CC_NAME AS CATEGORY, 
+	        (SELECT COUNT(*) FROM FUNDING_USER WHERE F.CF_IDX = FUNDING_USER.CF_IDX) USER_COUNT
+			FROM USERS U, FUNDING F, CAMPAIGN_CATEGORY CC
+			WHERE CF_STATUS = 1
+			AND U.U_IDX = F.U_IDX
+			AND F.CC_IDX = CC.CC_IDX
+	
 	</select>
 	
 	

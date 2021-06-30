@@ -30,7 +30,7 @@
 
   <!-- Main CSS File -->
   <link href="${cp}/resource/css/main.css" rel="stylesheet">
-  <link href="${cp}/resource/css/campaign.css" rel="stylesheet">
+  <link href="${cp}/resource/css/campaign/campaign.css" rel="stylesheet">
 
   <!-- Import BootStrap -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
@@ -77,8 +77,6 @@
  	width:500px;
 	} 
 	
- .campaigncrumb {
- 	}	
 </style>
 </head>
 <body>
@@ -98,10 +96,7 @@
      
 	      	<div class="img-box">
 	      		<div class="detail-title">
-			     <h1>${campaign.ciTitle}</h1>
-			        <h2><p>suggested by <br><div class=profile-pic>
-              <img src="/resource/img/profile/user_default.png">
-              </div> ${campaign.hostNickname }</h2></p>
+			    ddd
       			 </div> 
       		<img src="/resource/img/campaign/ex1.jpg" >
       	    </div><!-- End Breadcrumbs -->

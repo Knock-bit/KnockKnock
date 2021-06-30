@@ -38,22 +38,31 @@
 
 
 .profile-container{
-	width: 200px;}
+	width: 200px;
+	line-height:50px;
+	height:50px;
+	text-align:center;}
+.helper{
+display:inline-block;
+width:10%;
+height:100%;
+vertical-align:middle;}
 .profile-pic{
 	 border-radius: 50%;
 	 overflow: hidden;
      align-items: center;
      justify-content: center;
-     border : solid 1px black;
+     border : solid 1px #eef0ef;
      display: inline-block;
-	 width: 50px;
-	 height: 50px;
+	 width: 40px;
+	 height: 40px;
+	 vertical-align:middle;
 	}
 .profile-pic img {
    	width:100%;
    	height:100%;
    }
-.img-box {
+/* .img-box {
    width:100%;
     height:30vh;
     overflow:hidden;
@@ -73,12 +82,27 @@
  .detail-title {
  	position:relative;
  	top:50%;
- 	left:45%;
+ 	left:40%;
  	width:500px;
+	}  */
+	 .detail-title {
+	margin-top:100px;
+	text-align:center;
 	} 
 	
- .campaigncrumb {
- 	}	
+	@media (min-width: 768px) {
+  .container {
+    width: 750px;
+		  }
+		}
+
+	@media (min-width: 1100px) {
+  .container {
+    width: 1080px;
+		  }
+		}
+
+
 </style>
 </head>
 <body>
@@ -92,19 +116,24 @@
 
     <!-- ======= Breadcrumbs ======= -->
     
-    
+         <section>
+	      		<div class="detail-title">
+	      		
+			     <h1>${campaign.ciTitle}</h1><div class="profile-contianer"><div class=profile-pic>
+             	 <img src="/resource/img/profile/user_default.png"></div> ${campaign.hostNickname }
+      	   </div><div class="helper"></div></div>
       	
       	
-     
+     <!-- 흐린배경 
 	      	<div class="img-box">
 	      		<div class="detail-title">
 			     <h1>${campaign.ciTitle}</h1>
-			        <h2><p>suggested by <br><div class=profile-pic>
-              <img src="/resource/img/profile/user_default.png">
-              </div> ${campaign.hostNickname }</h2></p>
-      			 </div> 
+			 	suggested by <div class=profile-pic>
+             	 <img src="/resource/img/profile/user_default.png"> ${campaign.hostNickname } </div> 
       		<img src="/resource/img/campaign/ex1.jpg" >
-      	    </div><!-- End Breadcrumbs -->
+      	    </div></div>
+      	     -->
+      	    <!-- End Breadcrumbs -->
 
   </section><!-- End Hero -->
 
@@ -115,7 +144,7 @@
 
         <div class="row">
           <div class="col-lg-8">
-            <img src="/resource/img/campaign/ex1.jpg" class="img-fluid" alt="">
+            <img src="${campaign.ciFile }" class="img-fluid" alt="">
             <h2>${campaign.ciTitle }</h3>
             <p>
               Qui et explicabo voluptatem et ab qui vero et voluptas. Sint voluptates temporibus quam autem. Atque nostrum voluptatum laudantium a doloremque enim et ut dicta. Nostrum ducimus est iure minima totam doloribus nisi ullam deserunt. Corporis aut officiis sit nihil est. Labore aut sapiente aperiam.

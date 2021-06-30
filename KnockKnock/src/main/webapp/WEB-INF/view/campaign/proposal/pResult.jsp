@@ -26,7 +26,7 @@
                <button class="button" onclick="location.href='campaign?type=ingList'">&nbsp;&nbsp;나의 제안서 확인
                   <i class="zmdi zmdi-arrow-right"></i>
                </button>
-               <button class="button" onclick="location.href='main.do'">&nbsp;&nbsp;캠페인 메인화면 
+               <button class="button" onclick="location.href='${cp}/main.do'">&nbsp;&nbsp;캠페인 메인화면 
                   <i class="zmdi zmdi-arrow-right"></i>
                </button>
           </div>
