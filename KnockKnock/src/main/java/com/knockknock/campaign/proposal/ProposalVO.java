@@ -2,6 +2,7 @@ package com.knockknock.campaign.proposal;
 
 import java.sql.Date;
 
+
 public class ProposalVO {
 	private int cpIdx;
 	private String cpContent;
@@ -32,7 +33,6 @@ public class ProposalVO {
 		this.cpKeyword2 = cpKeyword2;
 		this.cpKeyword3 = cpKeyword3;
 	}
-
 
 
 	public int getCpIdx() {

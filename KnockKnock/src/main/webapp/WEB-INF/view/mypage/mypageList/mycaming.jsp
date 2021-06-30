@@ -55,26 +55,43 @@
 <script>
 $(function(){
 	
+		var getPoint = $(".ptpt").text();
+		console.log(getPoint);
+	
+		$({
+			val : 0
+		}).animate({
+			val : getPoint
+		}, {
+			dutation : 4000,
+			step : $.each(function() {
+				var num = numberWithCommas(Math.floor(this.val));
+				$(".ptpt").text(num + "P");
+			}),
+			complete : $.each(function() {
+				var num = numberWithCommas(Math.floor(this.val));
+				$(".ptpt").text(num + "P");
+			})
+		});
+	
+	
+	// 타이머
 	 $(".enddate").each(function(index, obj){
 		
 		var idx = index;
 		var ciEndDate = $(this).text();
 		
 		console.log(idx, ciEndDate);
-		
 		CountDownTimer(ciEndDate, 'countdown');
 		
-		
+		/* $.each(function(){
+			CountDownTimer(ciEndDate, 'countdown');
+			
+		}); */
+
 	}); 
-	 
 
 });
-
-/* $.each(function(){
-	var ciEndDate = $(".enddate").index(e);
-	console.log(ciEndDate);
-    CountDownTimer(ciEndDate, 'countdown');
-}); */
 
 
 function CountDownTimer(dt, className){
@@ -104,7 +121,9 @@ function CountDownTimer(dt, className){
     }
     timer = setInterval(showRemaining, 1000);
 };
-
+function numberWithCommas(x) {
+	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
 </script>
 </head>
@@ -145,14 +164,14 @@ function CountDownTimer(dt, className){
 											</div>
 											<div class="itemGoal ">
 												<p class="it1">GOAL</p> <p class="it2">
-													${campaign.ciGoal }</p>
+													${campaign.cGoal }</p>
 
 											</div>
 											<div class="itemEnddate">
-												<span class="it1">마감일 </span>
+												<span class="it1">남은기간 </span>
 												 <span class="enddate" style="display:none;">${campaign.ciEnddate }</span>
-												 <span class="countdown">남은기간</span><br>
-													<span style="font-size:11px;">이미지를 클릭하면 상세페이지로 이동합니다.</span>
+												 <div class="countdown"></div><br>
+													<span style="font-size:10px;">이미지를 클릭하면 상세페이지로 이동합니다.</span>
 
 
 											</div>
@@ -161,9 +180,10 @@ function CountDownTimer(dt, className){
 												<p>획득 가능한 포인트와 엠블럼</p>
 												<div class="apzone">
 													<div class="pt">
-														<div>
-															획득 가능 포인트
-															계속 바뀜(쿼리문으로 ? 아니면 계산해서 가져오기)
+														<div class="pt2">
+															<p class="ptpt">${campaign.cTotpoint }</p>
+															<p>를 획득하실 수 있습니다!</p>
+															
 														</div>
 													
 													</div>

@@ -16,6 +16,7 @@ public class CampaignServiceimpl implements CampaignService {
 	@Autowired
 	private CampaignUserDAO campaignUserDAO;
 	
+	
 	@Override
 	public List<CampaignVO> selectCampaignList() {
 		System.out.println("campaignServiceImpl 실행");
@@ -35,8 +36,13 @@ public class CampaignServiceimpl implements CampaignService {
 	}
 
 	@Override
-	public void updateExpiredCampaign() {
-		campaignDAO.updateExpiredCampaign();
+	public int updateExpiredCampaign() {
+		return campaignDAO.updateExpiredCampaign();
+	}
+
+	@Override
+	public List<CampaignVO> selectCampaignEdList() {
+		return campaignDAO.selectAllEdCampaign();
 	}
 
 }

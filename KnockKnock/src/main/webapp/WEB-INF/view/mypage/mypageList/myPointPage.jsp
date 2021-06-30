@@ -31,7 +31,7 @@
 <!-- Main CSS File -->
 <link href="${cp}/resource/css/main.css" rel="stylesheet">
 <link href="${cp}/resource/css/nav.css" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Sans+KR:wght@300&family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
 <!-- Import BootStrap -->
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
@@ -91,19 +91,12 @@
 		});
 
 		// 사용,가용포인트 그래프
-		var uPoint = $
-		{
-			users.uPoint / users.uTotPoint * 100
-		}
-		;
-		var ePoint = $
-		{
-			100 - (users.uPoint / users.uTotPoint * 100)
-		}
-		;
+		var uPoint = ${users.uUsedPoint / users.uTotPoint * 100};
+		var ePoint = ${100 - (users.uUsedPoint / users.uTotPoint * 100)};
 
 		$("#uPoint").css("width", uPoint + "%");
 		$("#ePoint").css("width", ePoint + "%");
+		
 
 		//엠블럼 활성화 상태
 		$(".exitem").each(function(i) {
@@ -156,27 +149,32 @@
 			<div class="pointZone">
 				<div class="item1">
 					<p>누적 포인트</p>
-					<img src="/resource/img/upload/point.png">
+					<img src="/resource/img/upload/pp.png">
 					<div id="allPoint"></div>
 
 				</div>
 				<div class="item2">
-					<p>사용 포인트와 가용 포인트</p>
+					<p>사용 포인트 / 보유 포인트</p>
 					<div class="graph stack1">
-						<p>▶ 사용한 포인트 : ${users.uPoint}</p>
-						<span style="width: 37.5%" id="uPoint"></span>
+						<p style="font-weight:700;">[ 사용 포인트 ]</p>
+						<p style="font-size:15px;	color:#ff6666;font-weight:bold;"> ${users.uUsedPoint}&nbsp;P</p><br>
+						<span id="uPoint"></span>
 
 					</div>
+					<br>
 					<div class="graph stack2">
-						<p>▶ 가용 포인트 :${users.uTotPoint-users.uPoint}</p>
-						<span id="ePoint" style="width: 62.5%"></span>
+						<p style="font-weight:700;">[ 보유 포인트 ]</p>
+						<p style="font-size:15px;	color:#f8c078;font-weight:bold;">${users.uTotPoint-users.uUsedPoint}&nbsp;P</p><br>
+						<span id="ePoint"></span>
 
 					</div>
 
 
 				</div>
+				
 				<div class="item3">
-					<p>포인트 적립 및 사용 현황</p>
+					
+					<p>포인트 적립 / 사용 내역</p>
 
 
 

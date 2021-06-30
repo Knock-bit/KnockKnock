@@ -41,7 +41,6 @@
 		<!-- <property name="mapperLocations" value="classpath:mappings/BoardMapper.xml"></property> -->
 	</bean>
 
-
 	<!-- 데이터베이스 연결관력 커넥션 사용, 매퍼 사용, sqlSessionTemplat객체를 사용해서 프로그래밍 하면 된다. -->
 	<bean class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sqlSessionFactory"></constructor-arg>
@@ -55,7 +54,7 @@
 		<property name="maxUploadSize" value="100000000" />
 		<property name="maxInMemorySize" value="100000000" />
 	</bean>
-	
+
 	<!--  
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource"></property>

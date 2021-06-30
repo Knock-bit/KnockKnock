@@ -20,7 +20,8 @@ public class UserVO {
 	private Date uJoindate;
 	private String uImg;
 	private String uImgPath;
-	private int uUsedPont;
+	private int uUsedPoint;
+	private int auth;
 
 	// ===================== [ 생성자 ] =======================
 	public UserVO() {
@@ -29,7 +30,7 @@ public class UserVO {
 	// 전체 생성자
 	public UserVO(int uIdx, String uId, String uName, String uPwd, String uNickname, String uEmail, String uPhone,
 			String uBirth, int uTotPoint, String uType, String uActive, Date uLastlogin, String uGender, String uAddress,
-			Date uJoindate, String uImg, String uImgPath, int uUsedPont) {
+			Date uJoindate, String uImg, String uImgPath, int uUsedPoint) {
 		super();
 		this.uIdx = uIdx;
 		this.uId = uId;
@@ -48,13 +49,13 @@ public class UserVO {
 		this.uJoindate = uJoindate;
 		this.uImg = uImg;
 		this.uImgPath = uImgPath;
-		this.uUsedPont = uUsedPont;
+		this.uUsedPoint = uUsedPoint;
 	}
 
 	// 마이페이지용 생성자
 	public UserVO(int uIdx, String uId, String uName, String uPwd, String uNickname, String uEmail, String uPhone,
 			String uBirth, int uTotPoint, String uGender, String uAddress, Date uJoindate, String uImg, String uImgPath,
-			int uUsedPont) {
+			int uUsedPoint) {
 		super();
 		this.uIdx = uIdx;
 		this.uId = uId;
@@ -70,7 +71,7 @@ public class UserVO {
 		this.uJoindate = uJoindate;
 		this.uImg = uImg;
 		this.uImgPath = uImgPath;
-		this.uUsedPont = uUsedPont;
+		this.uUsedPoint = uUsedPoint;
 	}
 
 	// 로그인용 생성자
@@ -84,7 +85,7 @@ public class UserVO {
 	public UserVO(String uId) {
 		super();
 		this.uId = uId;
-	}
+	} 
 
 	// 회원가입용 생성자
 	public UserVO(String uId, String uName, String uPwd, String uNickname, String uEmail, String uPhone, String uBirth,
@@ -101,7 +102,10 @@ public class UserVO {
 		this.uAddress = uAddress;
 	}
 
+
 	// =======================[ getter, setter ] =========================
+
+	
 
 	public int getuIdx() {
 		return uIdx;
@@ -231,12 +235,12 @@ public class UserVO {
 		this.uImg = uImg;
 	}
 
-	public int getuUsedPont() {
-		return uUsedPont;
+	public int getuUsedPoint() {
+		return uUsedPoint;
 	}
 
-	public void setuUsedPont(int uUsedPont) {
-		this.uUsedPont = uUsedPont;
+	public void setuUsedPoint(int uUsedPoint) {
+		this.uUsedPoint = uUsedPoint;
 	}
 
 	public String getuImgPath() {
@@ -247,15 +251,22 @@ public class UserVO {
 		this.uImgPath = uImgPath;
 	}
 
-	// ================== [ toString ] ====================
+	public int getAuth() {
+		return auth;
+	}
 
+	public void setAuth(int auth) {
+		this.auth = auth;
+	}
+
+	// ================== [ toString ] ====================
 	@Override
 	public String toString() {
 		return "UserVO [uIdx=" + uIdx + ", uId=" + uId + ", uName=" + uName + ", uPwd=" + uPwd + ", uNickname="
 				+ uNickname + ", uEmail=" + uEmail + ", uPhone=" + uPhone + ", uBirth=" + uBirth + ", uTotPoint="
-				+ uTotPoint + ", uType=" + uType + ", uActive=" + uActive + ", uLastlogin=" + uLastlogin
-				+ ", uGender=" + uGender + ", uAddress=" + uAddress + ", uJoindate=" + uJoindate + ", uImg=" + uImg
-				+ ", uImgPath=" + uImgPath + ", uUsedPont=" + uUsedPont + "]";
-	}
+				+ uTotPoint + ", uType=" + uType + ", uActive=" + uActive + ", uLastlogin=" + uLastlogin + ", uGender="
+				+ uGender + ", uAddress=" + uAddress + ", uJoindate=" + uJoindate + ", uImg=" + uImg + ", uImgPath="
+				+ uImgPath + ", uUsedPoint=" + uUsedPoint + ", auth=" + auth + "]";
+	} 
 
 }

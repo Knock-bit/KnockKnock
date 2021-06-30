@@ -10,7 +10,7 @@ public class AdminUserVO {
 	private String uNickname;
 	private String uEmail;
 	private String uPhone;
-	private Date uBirth;
+	private String uBirth;
 	private int uTotPoint;
 	private String uAdmin;
 	private String uActive;
@@ -28,7 +28,7 @@ public class AdminUserVO {
 
 	//전체 생성자
 	public AdminUserVO(int uIdx, String uId, String uName, String uPwd, String uNickname, String uEmail, String uPhone,
-			Date uBirth, int uTotPoint, String uAdmin, String uActive, Date uLastlogin, String uGender, String uAddress,
+			String uBirth, int uTotPoint, String uAdmin, String uActive, Date uLastlogin, String uGender, String uAddress,
 			Date uJoindate, String uImg, int uPoint) {
 		super();
 		this.uIdx = uIdx;
@@ -52,7 +52,7 @@ public class AdminUserVO {
 
 	// 마이페이지용 생성자
 	public AdminUserVO(int uIdx, String uId, String uName, String uPwd, String uNickname, String uEmail, String uPhone,
-			Date uBirth, int uTotPoint, String uGender, String uAddress, Date uJoindate, String uImg, int uPoint) {
+			String uBirth, int uTotPoint, String uGender, String uAddress, Date uJoindate, String uImg, int uPoint) {
 		super();
 		this.uIdx = uIdx;
 		this.uId = uId;
@@ -128,11 +128,11 @@ public class AdminUserVO {
 		this.uPhone = uPhone;
 	}
 
-	public Date getuBirth() {
+	public String getuBirth() {
 		return uBirth;
 	}
 
-	public void setuBirth(Date uBirth) {
+	public void setuBirth(String uBirth) {
 		this.uBirth = uBirth;
 	}
 

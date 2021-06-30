@@ -31,11 +31,54 @@
   <!-- Main CSS File -->
   <link href="${cp}/resource/css/main.css" rel="stylesheet">
   <link href="${cp}/resource/css/nav.css" rel="stylesheet">
-  <link href="${cp}/resource/css/campaign.css" rel="stylesheet">
+  <link href="${cp}/resource/css/campaign/funding.css" rel="stylesheet">
 
   <!-- Import BootStrap -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  <style>
+  .profile-container{
+	width: 200px;
+	line-height:50px;
+	height:50px;
+	text-align:center;}
+.helper{
+display:inline-block;
+width:10%;
+height:100%;
+vertical-align:middle;}
+.profile-pic{
+	 border-radius: 50%;
+	 overflow: hidden;
+     align-items: center;
+     justify-content: center;
+     border : solid 1px #eef0ef;
+     display: inline-block;
+	 width: 40px;
+	 height: 40px;
+	 vertical-align:middle;
+	}
+.profile-pic img {
+   	width:100%;
+   	height:100%;
+   }
+  
+  	@media (min-width: 768px) {
+  .container {
+    width: 750px;
+		  }
+		}
 
+	@media (min-width: 1100px) {
+  .container {
+    width: 1080px;
+		  }
+		}
+  	 .detail-title {
+	margin-top:100px;
+	text-align:center;
+	} 
+  
+  </style>
 </head>
 <body>
 
@@ -48,13 +91,13 @@
 
     <!-- ======= Breadcrumbs ======= -->
     
-    <section id="campaign-title" class="d-flex justify-content-center align-items-center">
-    <div class="container position-relat.ive" data-aos="zoom-in" data-aos-delay="100">
-    <br><br>
-      <h1>${funding }</h1>
-      <h2>We are team of talented designers making websites with Bootstrap</h2>
-    </div>
-  </section><!-- End Hero -->
+ <section>
+	      		<div class="detail-title">
+	      		
+			     <h1>${funding.cfTitle}</h1><div class="profile-contianer"><div class=profile-pic>
+             	 <img src="/resource/img/profile/user_default.png"></div> ${funding.hostNickname }
+      	   </div><div class="helper"></div></div>
+      	   </section>
 
 
     <!-- ======= Cource Details Section ======= -->
@@ -63,7 +106,7 @@
 
         <div class="row">
           <div class="col-lg-7">
-            <img src="../resource/img/campaign/ex1.jpg" class="img-fluid" alt="">
+            <img src="${ funding.cfFile}" class="img-fluid" alt="">
             <div>펀딩하기</div>
             <h2>Et enim incidunt fuga tempora</h3>
             <p>
@@ -208,7 +251,6 @@
 
 <!--   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
  -->  <!-- Vendor JS Files -->
   <script src="${cp}/resource/vendor/aos/aos.js"></script>
   <script src="${cp}/resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

@@ -4,6 +4,14 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- 참고파일 나중에 삭제 -->
 <mapper namespace="UserVO">
+
+	<select id="kakaologin" parameterType="UserVO" resultType="UserVO">
+		SELECT *FROM USERS WHERE U_EMAIL=#{uEmail}
+	</select>
+
+
+
+
 	<!-- 로그인 -->
 	<select id="selectlogin" parameterType="HashMap" resultType="UserVO">
 		SELECT U_NAME FROM USERS WHERE U_ID=#{uId} and U_PWD=#{uPwd}
@@ -16,11 +24,17 @@
 	<select id="emailCheck" parameterType="String" resultType="String">
 		SELECT U_NAME FROM USERS WHERE U_EMAIL=#{email}
 	</select>
+	<!-- 닉네임 중복체크 -->
+	<select id="nickCheck" parameterType="String" resultType="String">
+		SELECT U_IDX FROM USERS WHERE U_NICKNAME=#{nickname}
+	</select>
 	<!-- 회원가입 -->
 	<insert id="join" parameterType="UserVO">
-		INSERT INTO USERS(U_IDX, U_ID, U_NAME, U_PWD, U_EMAIL, U_PHONE, U_GENDER, U_BIRTH, U_NICKNAME, U_ADDRESS,  U_JOINDATE, U_ACTIVE, U_TOT_PINT, U_TYPE)
-		VALUES(U_IDX_SEQ.NEXTVAL, #{uId}, #{uName}, #{uPwd}, #{uEmail}, #{uPhone}, #{uGender}, #{uBirth}, #{uNickname}, #{uAddress}, SYSDATE, 1, 1000, 1)
+		INSERT INTO USERS(U_IDX, U_ID, U_NAME, U_PWD, U_NICKNAME,U_EMAIL, U_PHONE, U_BIRTH, U_TOT_POINT, U_TYPE,
+U_ACTIVE, U_GENDER, U_ADDRESS, U_JOINDATE)
+		VALUES(U_IDX_SEQ.nextval, #{uId}, #{uName}, #{uPwd}, #{uNickname}, #{uEmail}, #{uPhone}, #{uBirth}, default, 1, default, #{uGender}, #{uAddress}, sysdate)		
 	</insert>
+	 
 	
 	<!-- 마이페이지 이동 -->
 	<select id="selectOneUser" parameterType="int" resultType="UserVO">
@@ -58,11 +72,11 @@
 	<!-- 엠블럼 리스트 -->
 	<select id="userEmblemList" parameterType="UserVO" resultType="map">
 		SELECT CI_EMBLEM
-		FROM (SELECT C.CI_IDX,C.CI_EMBLEM, U.U_IDX, U.CI_EMBLEM_ST
+		FROM (SELECT C.CI_IDX,C.CI_EMBLEM, U.U_IDX, U.CI_EMBLEM_STATUS
 		FROM CAMPAIGN C, CAMPAIGN_USER U
 		WHERE U.CI_IDX=C.CI_IDX
 		AND U.U_IDX=#{uIdx}) 
-		WHERE CI_EMBLEM_ST=1
+		WHERE CI_EMBLEM_STATUS=1
 	
 	</select>
 	
@@ -70,7 +84,7 @@
 	<select id="userCamingList" parameterType="UserVO" resultType="campaignVO" >
 		SELECT C.*
 		FROM CAMPAIGN C, CAMPAIGN_USER U
-		WHERE U.C_IDX=C.CI_IDX 
+		WHERE U.CI_IDX=C.CI_IDX 
 		AND C.CI_STATUS=1
 		AND U.U_IDX=#{uIdx}
 	</select>
@@ -83,7 +97,34 @@
 		AND C.CI_STATUS=0
 		AND U.U_IDX=#{uIdx}
 	</select>
+
+	<!-- 나의 문의내역 - 총 게시글 수 구하기 -->
+	<select id="myCcListTotalCount" parameterType="UserVO" resultType="int">
+		SELECT COUNT(*) FROM CONTACT
+    	WHERE U_IDX =#{uIdx}
+	</select>
+	<!-- 나의 문의내역 페이징 -->
+	<select id="myCcList" parameterType="hashmap" resultType="contactVO">
+		SELECT * 
+		FROM ( SELECT ROWNUM RN, C.* 
+		FROM ( SELECT *  FROM CONTACT 
+		WHERE U_IDX = #{uIdx}
+		ORDER BY CT_WRITEDATE DESC 
+		) C)
+		WHERE RN BETWEEN #{start} AND #{end}
 	
+	</select> 
+	
+	<!-- 내 문으내용(답글포함) -->
+	<select id="myQuestionPage" parameterType="UserVO" resultType="contactVO">
+		SELECT C.*, CM.*
+		FROM CONTACT C LEFT OUTER JOIN (
+	    SELECT * FROM CONTACT_COMMENT) CM
+	    ON(C.CT_IDX = CM.CT_IDX)
+	    WHERE C.U_IDX = #{uIdx}
+	    AND C.CT_IDX =#{ctIdx}
+	
+	</select>
 	
 	
 </mapper>

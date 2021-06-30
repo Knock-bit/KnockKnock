@@ -8,7 +8,7 @@ public class CampaignVO {
 	private int cfIdx;
 	private String ciTitle;
 	private String ciContent;
-	private String ciGoal;
+	private String cGoal;
 	private Date ciStartdate;
 	private Date ciEnddate;
 	private int ciBasepoint;
@@ -22,18 +22,22 @@ public class CampaignVO {
 	private String cKeyword1;
 	private String cKeyword2;
 	private String cKeyword3;
+	private String hostNickname; // 주최자 닉네임
+	private String category; // 카테고리명
+	private int userCount; // 사용자수
 
 
 	public CampaignVO() {	}
 
-	public CampaignVO(int ciIdx, String ciTitle, String ciContent, String ciGoal, Date ciStartdate, Date ciEnddate,
+	public CampaignVO(int ciIdx, String ciTitle, String ciContent, String cGoal, Date ciStartdate, Date ciEnddate,
 			int ciBasepoint, int ciEstimatedpoint, int ciStatus, String ciFile, String ciEmblem, int uIdx,
-			String ccCategory, int cTotpoint, String cKeyword1, String cKeyword2, String cKeyword3, int cfIdx) {
+			String ccIdx, int cTotpoint, String cKeyword1, String cKeyword2, String cKeyword3, int cfIdx, String hostNickname, String category
+			, int userCount) {
 		super();
 		this.ciIdx = ciIdx;
 		this.ciTitle = ciTitle;
 		this.ciContent = ciContent;
-		this.ciGoal = ciGoal;
+		this.cGoal = cGoal;
 		this.ciStartdate = ciStartdate;
 		this.ciEnddate = ciEnddate;
 		this.ciBasepoint = ciBasepoint;
@@ -48,6 +52,9 @@ public class CampaignVO {
 		this.cKeyword2 = cKeyword2;
 		this.cKeyword3 = cKeyword3;
 		this.cfIdx = cfIdx;
+		this.hostNickname = hostNickname;
+		this.category = category;
+		this.userCount = userCount;
 	}
 
 	public int getCiIdx() {
@@ -80,13 +87,13 @@ public class CampaignVO {
 	}
 
 
-	public String getCiGoal() {
-		return ciGoal;
+	public String getcGoal() {
+		return cGoal;
 	}
 
 
-	public void setCiGoal(String ciGoal) {
-		this.ciGoal = ciGoal;
+	public void setcGoal(String cGoal) {
+		this.cGoal = cGoal;
 	}
 
 
@@ -180,22 +187,6 @@ public class CampaignVO {
 	}
 
 
-
-
-	public String getCcCategory() {
-		return ccIdx;
-	}
-
-
-
-
-	public void setCcCategory(String ccIdx) {
-		this.ccIdx = ccIdx;
-	}
-
-
-
-
 	public String getcKeyword1() {
 		return cKeyword1;
 	}
@@ -245,6 +236,38 @@ public class CampaignVO {
 
 	public void setCfIdx(int cfIdx) {
 		this.cfIdx = cfIdx;
+	}
+
+	public String getCcIdx() {
+		return ccIdx;
+	}
+
+	public void setCcIdx(String ccIdx) {
+		this.ccIdx = ccIdx;
+	}
+
+	public String getHostNickname() {
+		return hostNickname;
+	}
+
+	public void setHostNickname(String hostNickname) {
+		this.hostNickname = hostNickname;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+	public int getUserCount() {
+		return userCount;
+	}
+
+	public void setUserCount(int userCount) {
+		this.userCount = userCount;
 	}
 	
 	

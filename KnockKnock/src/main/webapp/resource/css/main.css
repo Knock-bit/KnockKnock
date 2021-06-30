@@ -8,6 +8,7 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+
 body {
   font-family: "Open Sans", sans-serif;
   color: #444444;
@@ -534,73 +535,6 @@ section {
   color: #5fcf80;
 }
 
-/*--------------------------------------------------------------
-# campaigns
---------------------------------------------------------------*/
-.campaigns .campaign-item {
-  border-radius: 5px;
-  border: 1px solid #eef0ef;
-}
-
-.campaigns .campaign-content {
-  padding: 15px;
-}
-
-.campaigns .campaign-content h3 {
-  font-weight: 700;
-  font-size: 20px;
-}
-
-.campaigns .campaign-content h3 a {
-  color: #37423b;
-  transition: 0.3s;
-}
-
-.campaigns .campaign-content h3 a:hover {
-  color: #5fcf80;
-}
-
-.campaigns .campaign-content p {
-  font-size: 14px;
-  color: #777777;
-}
-
-.campaigns .campaign-content h4 {
-  font-size: 14px;
-  background: #5fcf80;
-  padding: 7px 14px;
-  color: #fff;
-  margin: 0;
-}
-
-.campaigns .campaign-content .price {
-  margin: 0;
-  font-weight: 700;
-  font-size: 18px;
-  color: #37423b;
-}
-
-.campaigns .trainer {
-  padding-top: 15px;
-  border-top: 1px solid #eef0ef;
-}
-
-.campaigns .trainer .trainer-profile img {
-  max-width: 50px;
-  border-radius: 50px;
-}
-
-.campaigns .trainer .trainer-profile span {
-  padding-left: 10px;
-  font-weight: 600;
-  font-size: 16px;
-  color: #5a6c60;
-}
-
-.campaigns .trainer .trainer-rank {
-  font-size: 18px;
-  color: #657a6d;
-}
 
 /*--------------------------------------------------------------
 # Trainers

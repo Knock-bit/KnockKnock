@@ -28,71 +28,81 @@
   <link href="${cp}/resource/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="${cp}/resource/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
+  <!-- Import BootStrap -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
   <!-- Main CSS File -->
   <link href="${cp}/resource/css/main.css" rel="stylesheet">
    <link href="${cp}/resource/css/nav.css" rel="stylesheet">
+   <link href="${cp}/resource/css/campaign/campaign.css" rel="stylesheet">
 
-  <!-- Import BootStrap -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
   
 </head>
 <body>
 
 
 
+  
+
   <!-- ======= Header ======= -->
-   <%@ include file= "/layout/navbar/nav.jsp" %>
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
 
-  <!-- End Header -->
+     
+     
+        <%@ include file= "/layout/navbar/nav.jsp" %><!-- .navbar -->
 
-  <main id="main">
+      <a href="campaigns.html" class="get-started-btn">Get Started</a>
+
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main" data-aos="fade-in">
 
     <!-- ======= Breadcrumbs ======= -->
-    <div class="breadcrumbs">
+    
+    <div class="container">
+    <div class="campaigncrumbs">
       <div class="container">
-        <h2>knock, campaign</h2>
-        <p>진행중인 캠페인 리스트</p>
-      </div>
+        <!-- <h2>Knock, Campaign</h2>
+        <p>진행중인 캠페인 리스트 </p> -->
+      </div></div>
     </div><!-- End Breadcrumbs -->
 
-    <!-- ======= Courses Section ======= -->
-    <section id="courses" class="courses">
+    <!-- ======= Campaign Section ======= -->
+    <section id="campaigns" class="campaigns">
       <div class="container" data-aos="fade-up">
 
         <div class="row" data-aos="zoom-in" data-aos-delay="100">
-        	<c:if test="${!empty list  }">
-        	<c:forEach var="campaign" items="${list }">
-	        	 <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-		            <div class="course-item">
-		              <img src="assets/img/course-1.jpg" class="img-fluid" alt="...">
-		              <div class="course-content">
-		                <div class="d-flex justify-content-between align-items-center mb-3">
-		                  <h4>키워드?</h4>
-		                  <p class="price">$169</p>
-		                </div>
-		
-		                <h3><a href="${cp }/campaign/ing/detail.do?ciIdx=${campaign.ciIdx }">${campaign.ciTitle }</a></h3>
-		                <p>캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. 캠페인 소개. </p>
-		                <div class="trainer d-flex justify-content-between align-items-center">
-		                  <div class="trainer-profile d-flex align-items-center">
-		                    <img src="assets/img/trainers/trainer-1.jpg" class="img-fluid" alt="">
-		                    <span>suggested by ${campaign.hostNickname }</span>
-		                  </div>
-		                  <div class="trainer-rank d-flex align-items-center">
-		                    <i class="bx bx-user"></i>&nbsp;50
-		                    &nbsp;&nbsp;
-		                    <i class="bx bx-heart"></i>&nbsp;65
-		                  </div>
-		                </div>
-		              </div>
-		            </div>
-		          </div> <!-- End Campaign Item-->
-       		</c:forEach>
+		<c:if test="${!empty list  }">
+        <c:forEach var="campaign" items="${list }">
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" >
+            <div class="campaign-item campaign-wrapper" >
+            <div class="wrapper-item">
+              <img src="${campaign.ciFile }" class="img-fluid" alt="...">
+              <div class="campaign-content">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <h4>${campaign.category}</h4>
+                </div>
+
+                <h3><a href="${cp }/campaign/ing/detail.do?ciIdx=${campaign.ciIdx }">${campaign.ciTitle } </a></h3>
+                <p>${campaign.cGoal }</p>
+                <div class="trainer d-flex justify-content-between align-items-center">
+                  <div class="trainer-profile d-flex align-items-center">
+                    <img src="assets/img/trainers/trainer-1.jpg" class="img-fluid" alt="">
+                    <span>suggested by  ${campaign.hostNickname } </span>
+                  </div>
+                  <div class="trainer-rank d-flex align-items-center">
+                    <i class="bx bx-user"></i>&nbsp;${campaign.userCount }명 참가중
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> <!-- End Course Item-->
+          </c:forEach>
         </c:if>
-        <c:if test="${empty list }">
-        비었음
-        </c:if>
-        
+
+
         </div>
 
       </div>
