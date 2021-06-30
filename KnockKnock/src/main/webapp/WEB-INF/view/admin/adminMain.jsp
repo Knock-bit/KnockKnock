@@ -23,6 +23,11 @@
 		frm.submit();
 	}
 	
+	function adminFunding(frm){
+		frm.action="adminFunding.do";
+		frm.submit();
+	}
+	
 	
 </script>
 </head>
@@ -33,6 +38,7 @@
 		<input type="button" value="adminUser" onclick="adminUser(this.form)">
 		<input type="button" value="adminKeyword" onclick="adminKeyword(this.form)">
 		<input type="button" value="adminCampaignCategory" onclick="adminCampaignCategory(this.form)"/>
+		<input type="button" value="adminFunding" onclick="adminFunding(this.form)">
 	</form>
 	
 </body>
