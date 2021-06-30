@@ -61,8 +61,8 @@
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs">
       <div class="container">
-        <h2>Knock, Campaign</h2>
-        <p>진행중인 캠페인 리스트 </p>
+        <h2>Knocked Campaign</h2>
+        <p>종료된 캠페인 리스트 </p>
       </div>
     </div><!-- End Breadcrumbs -->
 

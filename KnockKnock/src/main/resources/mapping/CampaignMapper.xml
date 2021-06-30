@@ -7,8 +7,8 @@
 	<!-- startDate지난 캠페인 실행시키기 -->
 	<update id="updateCampaign">
 		UPDATE CAMPAIGN
-		   SET C_STATUS = 1
-		  WHERE SYSDATE > START_DATE
+		   SET CI_STATUS = 1
+		  WHERE SYSDATE > CI_STARTDATE
 	</update>
 
 	<!-- 진행중인 캠페인, 주최자 닉네임 불러오기 -->
@@ -30,6 +30,7 @@
 		AND C.CI_IDX = #{ciIdx}
         AND C.CC_IDX = cc.cc_idx
 	</select>
+	
 	<!-- 캠페인 상세보기 - 참여자 닉네임 불러오기 -->
 	<select id="selectAllCampaignUsers" parameterType = "int" resultType ="CampaignUserVO">
 		SELECT U_NICKNAME NICKNAME FROM USERS
@@ -37,16 +38,23 @@
 		 WHERE CI_IDX = #{ciIdx})
 	</select>
 	
-	<!-- 종료된 캠페인 불러오기 -->
-	<select id="selectAllendCampaign" resultType="CampaignVO">
-		SELECT * FROM CAMPAIGN WHERE CI_STATUS = 0
-	</select>
-	<!-- 기간이 만료됐는지 확인하여 만료 시 캠페인 상태를 0으로 바꾼다 -->
+		<!-- 기간이 만료됐는지 확인하여 만료 시 캠페인 상태를 0으로 바꾼다 -->
 	<update id="updateExpiredCampaign">
 		UPDATE CAMPAIGN
-		   SET C_STATUS = 0
-		  WHERE SYSDATE > END_DATE
+		   SET CI_STATUS = 2
+		  WHERE SYSDATE > CI_ENDDATE
 	</update>
+	
+	<!-- 종료된 캠페인 불러오기 -->
+	<select id="selectAllEdCampaign" resultType="CampaignVO">
+		SELECT C.*, U.U_NICKNAME AS HOST_NICKNAME, CC.CC_NAME AS CATEGORY, 
+        (SELECT COUNT(*) FROM CAMPAIGN_USER WHERE C.CI_IDX = CAMPAIGN_USER.ci_idx) USER_COUNT
+		FROM USERS U, CAMPAIGN C, CAMPAIGN_CATEGORY CC
+		WHERE CI_STATUS = 2
+		AND U.U_IDX = C.U_IDX
+		AND C.CC_IDX = CC.CC_IDX
+	</select>
+
 	
 	
 	
@@ -63,7 +71,7 @@
 	<select id="selectOneFunding" parameterType="int" resultType="FundingVO">
 		SELECT F.*, U.U_NICKNAME AS HOST_NICKNAME
 		FROM USERS U, FUNDING F
-		WHERE C_STATUS = 1
+		WHERE CF_STATUS = 1
 		AND U.U_IDX = F.U_IDX
 		AND F.CF_IDX = #{cfIdx}
 	</select>
