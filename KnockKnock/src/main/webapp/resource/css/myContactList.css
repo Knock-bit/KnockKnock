@@ -1,0 +1,112 @@
+  /* 메인 css */
+
+*{
+	font-family:'Noto+Sans+KR';
+	
+}
+
+.main-content {
+	width: 100%;
+	flex: 1;
+	min-height: 100vh;
+	margin-top: 100px;
+}
+
+.list {
+	width: 80%;
+	margin: 0 auto;
+	text-align: center;
+	position: relative;
+	padding-top:2%;
+}
+
+#ctext{
+	font-size:15px;
+	border-bottom:1px solid gray;
+	width:800px;
+	margin: 0 auto;
+	padding-top:3%;
+	font-style:normal;
+
+}
+.container {
+	width:70%;
+	
+}
+/*게시글 답글여부*/
+.ctresp{
+	font-size:13px;
+	width:10%;
+	
+}
+.ctTitles{
+	cursor : pointer;
+	
+}
+.ctTitles:hover{
+	text-decoration: underline;
+	
+}
+
+.ctContent {
+	display:none;
+}
+
+   /* 페이징 부분 스타일 */
+	li { 
+		list-style: none; 
+	}
+	.paging {
+		text-align:center;
+		margin : 0 auto;
+		height:50px;
+		width:300px;
+		
+	}
+	.pagingNum {
+        width:1000px;
+        height:50px;
+        text-align : center;
+        margin : 0 auto;
+    }
+    .paginging {
+    	width : 80%;
+    	margin:0 auto;
+    	text-align:center;
+    	height:50px;
+ 
+    }
+    #tb{
+    	margin: 0 auto;
+    
+    }
+
+	.paging li {
+		float: left;
+		margin-right: 8px;
+	}
+	.paging li a {
+		text-decoration: none;
+		display: block;
+		padding: 3px 7px;
+		font-weight: bold;
+		color: black;
+	}
+	.paging .disable {
+		padding: 3px 7px;
+		color: silver;
+	}
+	.paging .now {
+		width:15px;
+		padding: 3px 3px;
+		
+	}
+	.paging li a:hover {
+		background-color: gray;
+		color: white;
+	}
+	ol {
+		margin: 0 auto;
+		width:30%;
+	}
+	

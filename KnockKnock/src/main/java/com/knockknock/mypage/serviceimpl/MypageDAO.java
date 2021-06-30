@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.knockknock.campaign.ing.CampaignVO;
+import com.knockknock.contact.ContactVO;
 import com.knockknock.user.UserVO;
 
 @Repository
@@ -61,6 +62,26 @@ public class MypageDAO {
 		
 		
 		return mybatis.selectList("UserVO.endCampaignList",vo);
+	}
+	
+	// 내 문의내역 페이지
+	 public List<ContactVO> myContactList(Map<String, Integer> map){
+		 List<ContactVO> list = mybatis.selectList("UserVO.myCcList", map);
+		 System.out.println("list: " + list); System.out.println("map : " + map);
+	 return list; 
+	 }
+	 
+	
+	// 내 문의내역 총 게시글 수
+	public int myCclistTot(UserVO vo) {
+		
+		return mybatis.selectOne("UserVO.myCcListTotalCount", vo);
+	}
+	
+	// 내 문의내역 상세보기
+	public ContactVO myQuestion(Map<String, Integer> map) {
+		
+		return mybatis.selectOne("UserVO.myQuestionPage", map);
 	}
 
 }

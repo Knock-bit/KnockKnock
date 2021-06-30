@@ -12,6 +12,10 @@ public class ContactVO {
 	private String ctcIdx;
 	private String ctReply;
 	
+	// comment 
+	private String cmContent;
+	private Date cmWriteDate;
+	
 	public ContactVO() {
 		super();
 	}
@@ -27,9 +31,28 @@ public class ContactVO {
 		this.ctcIdx = ctcIdx;
 		this.ctReply = ctReply;
 	}
+	// comment 포함 생성자
+	public ContactVO(int ctIdx, String ctTitle, String ctContent, int uIdx, Date ctWriteDate, int ctResp, String ctcIdx,
+			String ctReply, String cmContent, Date cmWriteDate) {
+		super();
+		this.ctIdx = ctIdx;
+		this.ctTitle = ctTitle;
+		this.ctContent = ctContent;
+		this.uIdx = uIdx;
+		this.ctWriteDate = ctWriteDate;
+		this.ctResp = ctResp;
+		this.ctcIdx = ctcIdx;
+		this.ctReply = ctReply;
+		this.cmContent = cmContent;
+		this.cmWriteDate = cmWriteDate;
+	}
+	
+	
+	
 	public int getCtIdx() {
 		return ctIdx;
 	}
+	
 	public void setCtIdx(int ctIdx) {
 		this.ctIdx = ctIdx;
 	}
@@ -75,12 +98,28 @@ public class ContactVO {
 	public void setCtReply(String ctReply) {
 		this.ctReply = ctReply;
 	}
+	
+	// ==== comment
+	public String getCmContent() {
+		return cmContent;
+	}
+	public void setCmContent(String cmContent) {
+		this.cmContent = cmContent;
+	}
+	public Date getCmWriteDate() {
+		return cmWriteDate;
+	}
+	public void setCmWriteDate(Date cmWriteDate) {
+		this.cmWriteDate = cmWriteDate;
+	}
+	
 	@Override
 	public String toString() {
 		return "ContactVO [ctIdx=" + ctIdx + ", ctTitle=" + ctTitle + ", ctContent=" + ctContent + ", uIdx=" + uIdx
 				+ ", ctWriteDate=" + ctWriteDate + ", ctResp=" + ctResp + ", ctcIdx=" + ctcIdx + ", ctReply=" + ctReply
 				+ "]";
 	}
+	
 	
 
 }

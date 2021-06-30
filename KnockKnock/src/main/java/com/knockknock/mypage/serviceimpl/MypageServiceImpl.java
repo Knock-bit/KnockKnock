@@ -1,12 +1,13 @@
 package com.knockknock.mypage.serviceimpl;
 
-import java.util.List;  
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.knockknock.campaign.ing.CampaignVO;
+import com.knockknock.contact.ContactVO;
 import com.knockknock.mypage.MypageService;
 import com.knockknock.user.UserVO;
 
@@ -62,5 +63,26 @@ public class MypageServiceImpl implements MypageService {
 	public List<CampaignVO> endCampaignList(UserVO vo){
 		
 		return mypageDAO.endCampaignList(vo);
+	}
+	
+	// 나의 문의내역 페이지
+	@Override
+	  public List<ContactVO> myContactList(Map<String, Integer> map) {
+	  
+	  return mypageDAO.myContactList(map); 
+	  };
+		 
+	
+	// 내 문의내역 총 게시글 수
+	@Override
+	public int myCclistTot(UserVO vo) {
+		
+		return mypageDAO.myCclistTot(vo);
+	}
+	
+	// 나의 문의내역 상세보기
+	public ContactVO myQuestion(Map<String, Integer> map) {
+		
+		return mypageDAO.myQuestion(map);	
 	}
 }
