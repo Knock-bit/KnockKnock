@@ -33,7 +33,7 @@
   <!-- Main CSS File -->
   <link href="${cp}/resource/css/main.css" rel="stylesheet">
    <link href="${cp}/resource/css/nav.css" rel="stylesheet">
-   <link href="${cp}/resource/css/campaign.css" rel="stylesheet">
+   <link href="${cp}/resource/css/campaign/campaign.css" rel="stylesheet">
 
   
 </head>
@@ -59,11 +59,13 @@
   <main id="main" data-aos="fade-in">
 
     <!-- ======= Breadcrumbs ======= -->
-    <div class="breadcrumbs">
+    
+    <div class="container">
+    <div class="campaigncrumbs">
       <div class="container">
-        <h2>Knock, Campaign</h2>
-        <p>진행중인 캠페인 리스트 </p>
-      </div>
+        <!-- <h2>Knock, Campaign</h2>
+        <p>진행중인 캠페인 리스트 </p> -->
+      </div></div>
     </div><!-- End Breadcrumbs -->
 
     <!-- ======= Campaign Section ======= -->

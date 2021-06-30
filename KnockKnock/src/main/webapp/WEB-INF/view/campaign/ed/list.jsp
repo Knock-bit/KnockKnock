@@ -33,7 +33,7 @@
   <!-- Main CSS File -->
   <link href="${cp}/resource/css/main.css" rel="stylesheet">
    <link href="${cp}/resource/css/nav.css" rel="stylesheet">
-   <link href="${cp}/resource/css/campaign.css" rel="stylesheet">
+   <link href="${cp}/resource/css/campaign/campaign.css" rel="stylesheet">
 
   
 </head>
@@ -90,7 +90,7 @@
                     <span>suggested by  ${campaign.hostNickname } </span>
                   </div>
                   <div class="trainer-rank d-flex align-items-center">
-                    <i class="bx bx-user"></i>&nbsp;${campaign.userCount }명 참가중
+                    <i class="bx bx-user"></i>&nbsp;${campaign.userCount }명 참가
                     </div>
                   </div>
                 </div>

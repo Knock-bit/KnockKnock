@@ -37,11 +37,11 @@ public class CampaignController {
 	@GetMapping("/campaign/ed/list.do")
 	public String edList(Model model) {
 		List<CampaignVO> campaignEdList = campaignService.selectCampaignEdList();
-		System.out.println("campaignList 출력:" + campaignEdList);
+		System.out.println("EdCampaignList 출력:" + campaignEdList);
 		if(campaignEdList !=null) {
 			model.addAttribute("list", campaignEdList);
 		}
-		System.out.println(">>> 진행중인 캠페인으로 이동");
+		System.out.println(">>> 종료된 캠페인으로 이동");
 		return "/campaign/ed/list";
 	}
 	
