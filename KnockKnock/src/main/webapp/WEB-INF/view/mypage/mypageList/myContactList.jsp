@@ -86,7 +86,7 @@
                              <c:forEach var="list" items="${contactList }" varStatus="status">
                              <tr>
                                  <td>${(pvo.total - status.index)-((pvo.nowPage-1) * pvo.cntPerPage) }</td>
-                                 <td class="ctTitles"><a href="/myQuestion.do?CT_IDX=${list.ctIdx}">${list.ctTitle }</a></td> 	
+                                 <td class="ctTitles"><a href="/myQuestion.do?ctIdx=${list.ctIdx}">${list.ctTitle }</a></td> 	
                                  <td>${list.ctWriteDate}</td>
                                  <td class="ctresp">답변 : ${list.ctResp }</td>
                              </tr>

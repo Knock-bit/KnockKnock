@@ -112,13 +112,14 @@ public class ContactVO {
 	public void setCmWriteDate(Date cmWriteDate) {
 		this.cmWriteDate = cmWriteDate;
 	}
-	
 	@Override
 	public String toString() {
 		return "ContactVO [ctIdx=" + ctIdx + ", ctTitle=" + ctTitle + ", ctContent=" + ctContent + ", uIdx=" + uIdx
 				+ ", ctWriteDate=" + ctWriteDate + ", ctResp=" + ctResp + ", ctcIdx=" + ctcIdx + ", ctReply=" + ctReply
-				+ "]";
+				+ ", cmContent=" + cmContent + ", cmWriteDate=" + cmWriteDate + "]";
 	}
+	
+	
 	
 	
 
