@@ -87,7 +87,7 @@
                              <tr>
                                  <td>${(pvo.total - status.index)-((pvo.nowPage-1) * pvo.cntPerPage) }</td>
                                  <td class="ctTitles"><a href="/myQuestion.do?ctIdx=${list.ctIdx}">${list.ctTitle }</a></td> 	
-                                 <td>${list.ctWriteDate}</td>
+                                 <td style="font-size:14px;">${list.ctWriteDate}</td>
                                  <td class="ctresp">답변 : ${list.ctResp }</td>
                              </tr>
            
