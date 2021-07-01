@@ -22,7 +22,7 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService;
 	
-	@GetMapping("/getBoardList.do")
+	@RequestMapping("/getBoardList.do")
 	public String getBoardList(BoardVO vo, Model model) {
 		List<BoardVO> boardList = boardService.getBoardList(vo);
 		model.addAttribute("boardList", boardList);
@@ -30,39 +30,44 @@ public class BoardController {
 		return "board/getBoardList";	
 	}
 	
-	@RequestMapping("/insertBoard.do")
-	public String insertBoard(BoardVO vo) throws IllegalStateException, IOException {
+	@PostMapping("/insertBoard.do")
+	public String insertBoardPost(BoardVO vo) /* throws IllegalStateException, IOException */ {
 		// 파일업로드
-		MultipartFile uploadFile = vo.getUploadFile();
-		if (!uploadFile.isEmpty()) {
-			String fileName = uploadFile.getOriginalFilename();
-			uploadFile.transferTo(new File("C:\\Mystudy\\temp\\" + fileName));
-		}
+//		MultipartFile uploadFile = vo.getUploadFile();
+//		if (!uploadFile.isEmpty()) {
+//			String fileName = uploadFile.getOriginalFilename();
+//			uploadFile.transferTo(new File("C:\\Mystudy\\temp\\" + fileName));
+//		}
 		boardService.insertBoard(vo);
 		
-		return "board/insertBoard";
+		return "redirect:/board/getBoardList.do";
 	}
 	
-	@GetMapping("/getBoard.do")
-	public String getBoard(BoardVO vo, Model model) {
-		BoardVO board = boardService.getBoard(vo);
+	@RequestMapping("/getBoard.do")
+	public String getBoard(int bIdx, Model model) {
+		BoardVO board = boardService.getBoard(bIdx);
 		model.addAttribute("board", board);
 		
 		return "board/getBoard";
 	}
+	@GetMapping("/updateBoard.do")
+	public void updateBoardGet(@RequestParam("bIdx") int bIdx, Model model) {
+		BoardVO vo2 = boardService.getBoard(bIdx);
+		model.addAttribute("getBoard", vo2);
+	}	
 	
 	@PostMapping("/updateBoard.do")
-	public String updateBoard(@ModelAttribute("board") BoardVO vo) {
+	public String updateBoardPost(BoardVO vo) {
+		System.out.println(">>> 게시글 수정");
 		boardService.updateBoard(vo);
-		
-		return "redirect:board/getBoardList";
-	}
+		return "redirect:/board/getBoard.do?bIdx=" + vo.getbIdx();
+	}	
 	
 	@RequestMapping("/deleteBoard.do")
-	public String deleteBoard(BoardVO vo) {
-		boardService.deleteBoard(vo);
+	public String deleteBoard(@RequestParam("bIdx") int bIdx) {
+		boardService.deleteBoard(bIdx);
 		
-		return "redirect:board/getBoardList";
+		return "redirect:/board/getBoardList.do";
 	}
 	
 	@ModelAttribute("conditionMap")
@@ -73,10 +78,10 @@ public class BoardController {
 		return conditionMap;
 	}
 	
-	@RequestMapping("/viewBoard.do")
+	@RequestMapping("/hitBoard.do")
 	public String updateHit (@RequestParam int bIdx) {
 		boardService.updateHit(bIdx);
 		
-		return "forward:getBoardList.do";
+		return "forward:/board/getBoardList.do";
 	}
 }
