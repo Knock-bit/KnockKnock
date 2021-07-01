@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.knockknock.board.BoardVO;
 import com.knockknock.campaign.ing.CampaignVO;
 import com.knockknock.contact.ContactVO;
 import com.knockknock.mypage.MypageService;
@@ -84,5 +85,11 @@ public class MypageServiceImpl implements MypageService {
 	public ContactVO myQuestion(Map<String, Integer> map) {
 		
 		return mypageDAO.myQuestion(map);	
+	}
+	
+	// 나의 활동
+	public List<BoardVO> myActive(UserVO vo){
+		
+		return mypageDAO.myActive(vo);
 	}
 }

@@ -38,7 +38,7 @@
                 <li><a class="dropdown-item" href="#">마감임박순</a></li>
               </ul>
             </li>
-			</ul>
+         </ul>
           
          
     </nav>

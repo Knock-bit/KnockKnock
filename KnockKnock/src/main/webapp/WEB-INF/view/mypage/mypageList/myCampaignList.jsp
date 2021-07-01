@@ -2,8 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="cp" value ="${pageContext.request.contextPath }"/>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +23,6 @@
   <!-- Main CSS File -->
   <link href="${cp}/resource/css/main.css" rel="stylesheet">
    <link href="${cp}/resource/css/nav.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
 
   <!-- Import BootStrap -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
@@ -50,7 +47,7 @@
   <!-- ======= Header 끝  === -->
 <div class="main-content">
 
-	<p id="ctext">Ended Campagin</p>
+	<p id="ctext">Ended Campagin List</p>
 	<div class="main">
 		<div class="endList">
 			<c:forEach var="endlist" items="${endlist }">
@@ -63,8 +60,6 @@
 						<p class="imEndDate">${endlist.ciEnddate }</p>
 						<p class="imGoal">${endlist.cGoal }</p>
 						<p class="imEmblem">${endlist.ciEmblem }</p>
-						<p class="imTotPoint">${endlist.cTotpoint} </p>
-					
 					</div>
 					
 				
@@ -82,35 +77,35 @@
 		    	</div>
 		    	<div class="con2">
 		    		<p>TITLE</p>
-		    		<p style="font-style:normal; font-size:12px; font-weight:600;" class="c2"></p>
+		    		<p style="font-style:normal; font-size:11px;" class="c2"></p>
 		    	
 		    	</div>
 		    	<div class="con3">
 		    		<p>CONTENT</p>
-		    		<p style="font-style:normal; font-size:10px;font-weight:500;" class="c3"></p>
+		    		<p style="font-style:normal; font-size:11px;" class="c3"></p>
 		    	</div>
 		    	<div class="con4">
 		    		<p>GOAL</p>
-		    		<p style="font-style:normal; font-size:11px; font-weight:600;" class="c4">난 고기가...좋아요..</p>
+		    		<p style="font-style:normal; font-size:11px;" class="c4">난 고기가...좋아요..</p>
 		    	</div>
 		    	<div class="con5">
 		    		<p>END DATE</p>
-		    		<p style="font-style:normal; font-size:11px; font-weight:600;" class="c5"></p>
+		    		<p style="font-style:normal; font-size:11px;" class="c5"></p>
 		    	</div>
 		    	<div class="con6">
 		    		<div class="c61">
 			    		<p>RANK</p>
 			    		<p class="cr">
-			    			<span>1위</span>홍길동 <br>
-			    			<span>2위</span>존도<br>
-			    			<span>3위</span>나
+			    			1위. 홍길동 <br>
+			    			2위. 존도<br>
+			    			3위. 나
 			    		</p>
 			    		
 			    	</div>
 		    		<div class="c62">
 			    		<p>POINT</p>
 			    		<p class="cp">
-			    		
+			    			52,000 P<br>
 			    			
 			    		</p>
 			    	</div>

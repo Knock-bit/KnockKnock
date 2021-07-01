@@ -28,5 +28,5 @@ $(function(){
 	  $(".c4").html($(".imGoal").eq(idx).html()); //  목표
 	  $(".c5").html($(".imEndDate").eq(idx).html()); //  마감일
 	  $(".ce").html("<img src='/resource/img/upload/"+$('.imEmblem').eq(idx).html()+"'>"); //  엠블럼
-  	  $(".cp").html($(".imTotPoint").eq(idx).html()+'P'); //  총 포인트
+  		
  }

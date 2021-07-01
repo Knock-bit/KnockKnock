@@ -66,9 +66,9 @@ public class AdminAjaxController {
 
 	@RequestMapping(value="/uploadSummernoteImageFile.do", produces = "application/json; charset=utf8")
 	@ResponseBody
-	public String uploadSummernoteImageFile(@RequestParam("file") MultipartFile multipartFile,@RequestParam("count") int count, HttpServletRequest request )  {
+	public String uploadSummernoteImageFile(@RequestParam("file") MultipartFile multipartFile, HttpServletRequest request )  {
 		JsonObject jsonObject = new JsonObject();
-		System.out.println("COUNT : " + count);
+
         
 		 String fileRoot = "/Users/hanjeongseol/git/Knock/knock/upload/"; // 외부경로로 저장을 희망할때.
 		 

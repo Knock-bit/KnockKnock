@@ -5,10 +5,10 @@ public class AdminSummerVO {
 	private String image;
 	private String content;
 	private String title;
-	
-	
+
+
 	public AdminSummerVO() {};
-	
+
 	public AdminSummerVO(int testIdx, String image, String content, String title) {
 		super();
 		this.testIdx = testIdx;
@@ -45,6 +45,6 @@ public class AdminSummerVO {
 		return "AdminSummerVO [testIdx=" + testIdx + ", image=" + image + ", content=" + content + ", title=" + title
 				+ "]";
 	}
-	
-	
+
+
 }

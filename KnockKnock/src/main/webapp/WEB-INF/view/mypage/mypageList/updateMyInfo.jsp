@@ -164,7 +164,7 @@ $(function(){
 				</div>
 				<div class="it10">
 					<input class="btn-upload1" type="submit" value="내 정보 수정">
-					<input style="width:20%; font-size:13px; background-color:#6c9378;" class="btn-upload1" type="button" value="비밀번호 변경하기" onclick="updatePwd()">
+					<input style="width:20%; font-size:13px; background-color:#4d4d4d;" class="btn-upload1" type="button" value="비밀번호 변경하기" onclick="updatePwd()">
 				</div>
 			</div>
 		</form>

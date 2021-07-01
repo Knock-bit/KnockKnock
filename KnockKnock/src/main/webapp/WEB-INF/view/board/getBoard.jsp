@@ -7,6 +7,7 @@
     or sessionScope.googlename != null and sessionScope.facebookname != userVO.uId}">
     
     </c:if>  -->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +16,6 @@
 <script>	
 	function insert_board(frm){
 		frm.action="insertBoard.do";
-		frm.setAttribute('method', 'get');
 		frm.submit();
 	}
 	function delete_board(frm){
@@ -30,13 +30,13 @@
 	//추천하기 버튼
 	$("#btnHit").click(function(){
 	    if(confirm("해당 글을 추천하시겠습니까?")){
-	        document.form1.action="hitBoard.do";
+	        document.form1.action="hitBoard";
 	        document.form1.submit();
 	        
-	        alert("해당 글을 추천하였습니다.");
+	        alert("해당 글을 추천하였습니다.")
 	        
 	        }
-	    });
+	    }); 
 </script>
 </head>
 <body>
@@ -78,11 +78,10 @@
 		<input type="button" value="글 등록" onclick="insert_board(this.form)">
 		<input type="button" value="글  삭제" onclick="delete_board(this.form)">
 		<input type="button" value="글 목록으로.." onclick="list_board(this.form)">
-		<hr>
-		<button type="button" id="btnHit">추천하기</button>
 	</div>
 	</form>
-	
+	<hr>
+	<button type="button" id="btnHit">추천하기</button>
 	
 </div>
 

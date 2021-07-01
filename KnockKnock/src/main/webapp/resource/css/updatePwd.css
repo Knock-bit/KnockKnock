@@ -81,30 +81,7 @@
 		text-align:right;
 		color:#0e4b20;
 	}
-	/*비밀번호 변경 완료 후 화면*/
-	.changePwdView {
-		width:100%;
-		text-align:center;
-		
-	}
-	.changePwdView p {
-		font-style : normal;
-		font-size:13px;
-		color:#0e4b20;
-		font-weight:700;
-		
-		
-	}
-	.changePwdView a {
-		padding:10px;
-		font-size:14px;
-		background-color:#ff3333;
-		color:white;
-		border-radius: 5px;
-	}
-	.changePwdView a:hover {
-		background-color:#ff8080;
-	}
+	
 	
 	/*버튼*/
 	.pBtnn{
