@@ -84,4 +84,10 @@ public class AdminServiceImpl implements AdminService{
 		return adminDAO.insertSummber(vo);
 	}
 
+	@Override
+	public AdminSummerVO selectSummer() {
+		return adminDAO.selectSummer();
+	}
+
+
 }

@@ -122,15 +122,23 @@ public class AdminController {
 		return null;
 	}
 	
-	
+	@GetMapping("/adminSummer.do")
+	public String moveSummer() {
+		return "/summernoteTest/summernote";
+	}
 	@PostMapping("/adminSummerTest.do")
 	public String ttest(AdminSummerVO vo) {
-//		System.out.println(request.getParameter("idx"));
-//		System.out.println(request.getParameter("title"));
-//		System.out.println(request.getParameter("contet"));
 		System.out.println(vo);
-//		adminService.insertSummer(vo);
-		return null;
+		adminService.insertSummer(vo);
+		return "redirect:selectSummer.do";
+	}
+	
+	@GetMapping("/selectSummer.do")
+	public String tt(Model model) {
+		AdminSummerVO svo = adminService.selectSummer();
+		model.addAttribute("summer",svo);
+		System.out.println(svo);
+		return "/summernoteTest/summernoteDetail";
 	}
 
 }

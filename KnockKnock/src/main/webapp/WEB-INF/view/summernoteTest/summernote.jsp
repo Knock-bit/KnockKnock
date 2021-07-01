@@ -10,9 +10,7 @@
 	rel="stylesheet">
 <script src="${cp}/resource/js/jquery/jquery-3.6.0.min.js"></script>
 <!-- 서머노트 추가 -->
-<%-- <script src="${cp }/resource/summernote/lang/summernote-ko-KR.js"></script> --%>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.6/lang/summernote-ko-KR.min.js"></script>
+<script src="${cp }/resource/summernote/lang/summernote-ko-KR.js"></script>
 <script src="${cp }/resource/summernote/summernote-lite.js"></script>
 <link href="${cp}/resource/summernote/summernote-lite.css"
 	rel="stylesheet">
@@ -114,20 +112,21 @@
 										// 파일 업로드(다중업로드를 위해 반복문 사용)
 										for (var i = files.length - 1; i >= 0; i--) {
 											uploadSummernoteImageFile(files[i],
-													this, count++);
+													this);
 										}
 									}
 								}
 							};
-								$('#summernote').summernote(setting);
+							$('#summernote').summernote(setting);
 						});
+
 		function uploadSummernoteImageFile(file, el) {
 			data = new FormData();
 			data.append("file", file);
 			$.ajax({
 				data : data,
 				type : "POST",
-				url : "../uploadSummernoteImageFile.do",
+				url :"uploadSummernoteImageFile.do",
 				contentType : false,
 				enctype : 'multipart/form-data',
 				processData : false,

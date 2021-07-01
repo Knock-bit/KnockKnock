@@ -84,4 +84,8 @@ public class AdminDAO {
 	public int insertSummber(AdminSummerVO vo) {
 		return mybatis.insert("insertSummer",vo);
 	}
+	
+	public AdminSummerVO selectSummer() {
+		return mybatis.selectOne("selectSummer");
+	}
 }
