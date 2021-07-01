@@ -12,10 +12,32 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
 	rel="stylesheet">
-<link rel="stylesheet" href="css/owl.carousel.min.css">
+<link rel="stylesheet" href="${cp}/resource/css/owl.carousel.min.css">
 
-<!-- Bootstrap CSS -->
-<link href="${cp}/resource/css/bootstrap.min.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="${cp}/resource/fonts/icomoon/style.css">
+	
+	<link rel="stylesheet" href="${cp}/resource/css/owl.carousel.min.css">
+	
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="${cp}/resource/css/bootstrap.min.css">
+	
+	<!-- Style -->
+	<link href="${cp}/resource/css/manual.css" rel="stylesheet">
+	
+	  <!-- Vendor CSS Files -->
+  <link href="${cp}/resource/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="${cp}/resource/vendor/aos/aos.css" rel="stylesheet">
+  <link href="${cp}/resource/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="${cp}/resource/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="${cp}/resource/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="${cp}/resource/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="${cp}/resource/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+	
+	     <link href="${cp}/resource/css/nav1.css" rel="stylesheet">
 
 <!-- Style -->
 <link href="${cp}/resource/css/contact.css" rel="stylesheet">
@@ -24,6 +46,9 @@
 </head>
 
 <body>
+<!-- ======= Header ======= -->
+   <%@ include file= "/layout/navbar/navLoggedin.jsp" %>
+  <!-- ======= Header 끝  === -->
 	<div class="content">
 
 		<div class="container">
@@ -61,7 +86,7 @@
 								<div class="row">
 									<div class="col-md-12">
 										<input type="submit" value="전송"
-											class="btn btn-primary rounded-0 py-2 px-4"> <span
+											class="btn btn-success rounded-0 py-2 px-4"> <span
 											class="submitting"></span>
 									</div>
 								</div>
@@ -79,5 +104,14 @@
 		</div>
 	</div>
 </body>
+   <script src="${cp }/resource/js/jquery.min.js"></script>
+   <script src="${cp }/resource/js/popper.js"></script>
+   <script src="${cp }/resource/js/bootstrap.min.js"></script>
+   <script src="${cp }/resource/js/owl.carousel.min.js"></script>
+   <script src="${cp }/resource/js/main.js"></script>
 
+   <!-- ======= Footer ======= -->
+   <%@ include file= "/layout/footer.jsp" %>
+ 
+ <!-- End Footer -->
 </html>
