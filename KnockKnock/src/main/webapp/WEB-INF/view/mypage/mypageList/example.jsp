@@ -63,44 +63,46 @@
 			contentHeight : 'auto',
 
 			events : function(info, successCallback, failureCallback) {
-				$.ajax({
-					url : "myCal.do",
-					type : "get",
-					dataType : 'json',
-					async: false,
-					success : function(result) {
-						var list = result;
-						console.log(list);
-
-						
-
-						var calendarEl = document.getElementById('calendar');
-
-						var events = list.map(function(item) {
-							return {
-								title : item.bSubject,
-								start : item.bRegdate + "T"
-							}
-
-						});
-
-						var calendar = new FullCalendar.Calendar(calendarEl, {
-							events : events,
-							eventTimeFormat : {
-								hour : '2-digit',
-								minute : '2-digit',
-								hour12 : false
-							}
-						});
-						calendar.render();
-						
-					}, 
-					
-				}); 
+				var uIdx = $(".uidx").val();
+				
+				
 			}
 		});
 
 	});
+	$.ajax({
+		url : "myCal.do",
+		type : "get",
+		dataType : 'json',
+		success : function(result) {
+			var list = result;
+			console.log(list);
+
+			
+
+			var calendarEl = document.getElementById('calendar');
+
+			var events = list.map(function(item) {
+				return {
+					title : item.bSubject,
+					start : item.bRegdate + "T"
+				}
+
+			});
+
+			var calendar = new FullCalendar.Calendar(calendarEl, {
+				events : events,
+				eventTimeFormat : {
+					hour : '2-digit',
+					minute : '2-digit',
+					hour12 : false
+				}
+			});
+			calendar.render();
+			
+		}, 
+		
+	}); 
 </script>
 <style>
 .main-content {
@@ -125,8 +127,8 @@
 	<%@ include file="/layout/navbar/navLoggedin.jsp"%>
 	<!-- ======= Header 끝  === -->
 	<div class="main-content">
-
-		<h3 style="text-align: center;">나의 활동일지</h3>
+	<p class="uidx" style="display:none;">${users.uIdx }</p>
+		<h3 style="text-align: center;">My Diary</h3>
 		<div class="myRecode">
 			<div id='calendar'></div>
 
