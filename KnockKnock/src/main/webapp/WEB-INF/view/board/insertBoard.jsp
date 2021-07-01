@@ -11,7 +11,7 @@
 <div id="container">
 	<h1>글등록</h1>
 	<hr>
-	<form action="insertBoard.do" method="post" enctype="multipart/form-data">
+	<form action="insertBoard.do" method="post">
 	<table>
 		<tr>
 			<th>제목</th>
@@ -46,6 +46,8 @@
 	</form>
 	
 	<p><a href="getBoardList.do">글 목록으로..</a></p>
+ 
+
 
 </div>
 

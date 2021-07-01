@@ -32,13 +32,13 @@ public class AdminProposalComtroller {
 		model.addAttribute("viewAll", adminProposalService.getProposalList(pvo));
 		System.out.println(adminProposalService.getProposalList(pvo));
 		System.out.println(pvo);
-		return "admin/adminProposal";
+		return "admin/proposal/adminProposal";
 	}
 	
 	@GetMapping("/getProposal.do")
 	public String getProposal(AdminProposalVO vo, Model model) {
 		AdminProposalVO proposal = adminProposalService.getProposal(vo);
 		model.addAttribute("proposal",proposal);
-		return "admin/adminDetailProposal";
+		return "admin/proposal/adminDetailProposal";
 	}
 }

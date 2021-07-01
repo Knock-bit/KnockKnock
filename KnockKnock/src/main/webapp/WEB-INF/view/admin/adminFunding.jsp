@@ -10,7 +10,7 @@
 	rel="stylesheet">
 <script src="${cp}/resource/js/jquery/jquery-3.6.0.min.js"></script>
 <!-- 서머노트 추가 -->
-<script src="${cp }/resource/summernote/summernote-ko-KR.js"></script>
+<script src="${cp }/resource/summernote/summernote-ko-KR.min.js"></script>
 <script src="${cp }/resource/summernote/summernote-lite.js"></script>
 <link href="${cp}/resource/summernote/summernote-lite.css"
 	rel="stylesheet">

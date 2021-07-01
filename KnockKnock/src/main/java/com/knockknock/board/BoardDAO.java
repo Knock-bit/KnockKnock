@@ -23,9 +23,9 @@ public class BoardDAO {
 	}
 	
 	//게시글 상세보기
-	public BoardVO getBoard(BoardVO vo) {
+	public BoardVO getBoard(int bIdx) {
 		
-		return mybatis.selectOne("BoardDAO.getBoard", vo);
+		return mybatis.selectOne("BoardDAO.getBoard", bIdx);
 	}
 	
 	//게시글 수정
@@ -34,13 +34,13 @@ public class BoardDAO {
 	}
 	
 	//게시글 삭제
-	public void deleteBoard(BoardVO vo) {
-		mybatis.delete("BoardDAO.deleteBoard", vo);
+	public void deleteBoard(int bIdx) {
+		mybatis.delete("BoardDAO.deleteBoard", bIdx);
 	}
 	
 	//조회수처리
 	public void updateViews(int bIdx) {
-			mybatis.update("BoardDAO.updateViews", bIdx);
+		mybatis.update("BoardDAO.updateViews", bIdx);
 	}
 			
 	//추천수처리

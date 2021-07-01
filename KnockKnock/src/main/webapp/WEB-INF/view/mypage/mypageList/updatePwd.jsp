@@ -95,16 +95,15 @@
   // ajax 사용해서 비밀번호 변경하기
   function PwdBtn(frm){
 	 var uPwd = $("#chPwd1").val();
-	 alert("PwdBtn 실행!");
 	 $.ajax("updateMyPwd.do",{
 		 type:"post",
 		 data:"uPwd="+uPwd,
 		 dataType:"text",
 		 success : function(result){
 			  let dhtml = "";
-			  dhtml += "<p> 비밀번호 변경이 완료되었습니다.</p>";
-			  dhtml += "<p> 새로운 비밀번호로 다시 로그인 해주세요 </p>";
-			  dhtml += "<a href='myPage.do'>(임시화면으로 이동)</a>";
+			  dhtml += "<div class='changePwdView'><p> 비밀번호 변경이 완료되었습니다.</p>";
+			  dhtml += "<p> 새로운 비밀번호로 다시 로그인 해주세요 </p><br><br>";
+			  dhtml += "<a href='myPage.do'>로그인창으로 이동</a></div>";
 			  
 			  $(".updatePwd").html(dhtml);	  
 		 },

@@ -62,16 +62,15 @@
 	<div id="content" class="p-4 p-md-5">
              
             <div class="container">
-            <p style="font-size:22px;">나의 문의내역</p>
-                 <p>[ my contact list ]</p>  
+            <p style="font-size:20px; text-align:left; border-bottom:1px solid gray; font-style:normal;">나의 문의내역</p>
                   <div class="table-responsive">  
                     <table class="table">
                      <thead>
                          <tr class="title" style="background-color:gray; color:white;" >
-                             <th class="no">NO</th>
-                             <th class="category">제목</th>
-                             <th class="end_date">작성일</th>
-                             <th class="reply">&nbsp;</th>
+                             <th class="no" style="width:10%;">NO</th>
+                             <th class="category" style="width:40%;">제목</th>
+                             <th class="end_date"style="width:25%;">작성일</th>
+                             <th class="reply" style="width:24%;">답변상태</th>
                          </tr>
                      </thead>
                   <tbody>
@@ -88,7 +87,12 @@
                                  <td>${(pvo.total - status.index)-((pvo.nowPage-1) * pvo.cntPerPage) }</td>
                                  <td class="ctTitles"><a href="/myQuestion.do?ctIdx=${list.ctIdx}">${list.ctTitle }</a></td> 	
                                  <td style="font-size:14px;">${list.ctWriteDate}</td>
-                                 <td class="ctresp">답변 : ${list.ctResp }</td>
+                                 <c:if test="${list.ctResp eq 0}">
+                                 	<td class="ctresp"> - </td>
+                                 </c:if>
+                                 <c:if test="${list.ctResp > 0}">
+                                 	<td class="ctresp" style="color:#4d79ff;"> 답변완료 </td>
+                                 </c:if>
                              </tr>
            
                              </c:forEach>
@@ -102,7 +106,7 @@
                 <div class="paginging">
                         <ol class="paging">
 	                        <c:if test="${pvo.startPage == 1 }">
-	                           <li id='disable'>이전으로</li>
+	                           <li id='disable' style="font-size:13px;">이전으로</li>
 	                        </c:if>
 	                        <c:if test="${pvo.startPage != 1 }">
 	                           <li>
@@ -116,15 +120,15 @@
 		                              <li class="now">${pageNo }</li>
 		                           </c:when>
 	                           <c:otherwise>
-	                              <li>
-	                                 <a href="/myContactList.do?nowPage=${pageNo }&cntPerPage=${pvo.cntPerPage}">${pageNo }</a>
+	                              <li >
+	                                 <a style="font-weight:500;"href="/myContactList.do?nowPage=${pageNo }&cntPerPage=${pvo.cntPerPage}">${pageNo }</a>
 	                              </li>
 	                           </c:otherwise>
 	                           </c:choose>
 	                        </c:forEach>      
 	                        <%-- [다음으로] 사용여부 처리 --%>
 	                        <c:if test="${pvo.endPage == pvo.lastPage }">
-								<li class="disale">다음으로</li>
+								<li class="disale" style="font-size:13px;">다음으로</li>
 							</c:if>
 	                        <c:if test="${pvo.endPage != pvo.lastPage }">
 	                           <span><a href="/myContactList.do?nowPage=${pvo.endPage+1 }&cntPerPage=${pvo.cntPerPage}">다음으로</a></span>
