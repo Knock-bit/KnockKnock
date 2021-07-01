@@ -30,7 +30,7 @@
 
   <!-- Main CSS File -->
   <link href="${cp}/resource/css/main.css" rel="stylesheet">
-  <link href="${cp}/resource/css/campaign.css" rel="stylesheet">
+  <link href="${cp}/resource/css/campaign/campaign.css" rel="stylesheet">
 
   <!-- Import BootStrap -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
@@ -187,8 +187,13 @@ vertical-align:middle;}
             </div>
 
             <div class="campaign-info d-flex justify-content-between align-items-center">
-              <h5>Schedule</h5>
-              <p>5.00 pm - 7.00 pm</p>
+             <div class="campaign-info align-items-center">
+              <div class="btn-wrap participate">
+              <button onclick="funding()" class = "btn-participate"> 참여하기 </button>
+              </div> <div class="btn-wrap participate">
+              <button onclick="funding()" class = "btn-participate"> 공유하기 </button>
+              </div>
+            </div>
             </div>
 
           </div>
