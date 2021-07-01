@@ -13,10 +13,8 @@ body {
   font-family: "Open Sans", sans-serif;
   color: #444444;
 }
-p{
-  font-size: 10px;
-  font-style: italic;
-}
+
+
 
 a {
   color: #0a3a18;
@@ -60,10 +58,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #fff;
 }
 
-#logo{
-  width: 700px;
-  height: 90px;
-}
+
 .back-to-top.active {
   visibility: visible;
   opacity: 1;
