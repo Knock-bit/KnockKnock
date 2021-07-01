@@ -1,3 +1,4 @@
+
   /* 메인 css */
   *{
 	font-family:'Noto+Sans+KR';
@@ -197,10 +198,11 @@
 	/*랭킹 css*/
 	.cr{
 		font-style:normal;
+		font-size:11px;
 	}
 
 	.cr span{
-		font-size:11px;
+		font-size:12px;
 		color: #0e4b20;
 		margin: 10%;
 		font-weight:600;

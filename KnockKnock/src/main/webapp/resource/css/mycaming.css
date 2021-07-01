@@ -1,3 +1,4 @@
+
 *{
 
 	font-family:'Noto+Sans+KR';
@@ -115,15 +116,21 @@
 }
 .itemPoint > div {
 	float:left;
-	width:49%;
+	width:48%;
 
+}
+.pzone, .ezone {
+	height:20vh;
+	margin:5px;
+	background-color:white;
+	
 }
 .pzone > p, .ezone > p {
 	background-color : #6c9378;
 	font-size:12px;
 	color:white;
 	padding:1%;
-	margin:5px;
+
 	font-style:normal;
 	
 	
@@ -151,14 +158,9 @@
 	padding-left:10px;
 	font-style:normal;
 }
-.apzone{
-	float : left;
-	width:100%;
-	
-}
+
 .pt{
-	float:left;
-	width:49%;
+	width:90%;
 	
 }
 .pt2 p {
@@ -179,13 +181,12 @@
 	
 }
 .eb{
-	float:left;
-	width:49%;
+	width:100%;
 	
 }
 
 .eb2{
-	width:30%;
+	width:25%;
 	border-radius: 50%;
 	overflow: hidden;
    	align-items: center;
@@ -195,6 +196,7 @@
    	padding:10px;
    	margin:0 auto;
 }
+
 /*남은기간 텍스트 별도 적용*/
 .itemEnddate p:first-child {
 	font-size:13px;

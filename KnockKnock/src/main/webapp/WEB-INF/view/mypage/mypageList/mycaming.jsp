@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -57,7 +58,7 @@
 <script>
 $(function(){
 	
-		var getPoint = $(".ptpt").text();
+		/* var getPoint = $(".ptpt").text();
 		console.log(getPoint);
 	
 		$({
@@ -74,7 +75,7 @@ $(function(){
 				var num = numberWithCommas(Math.floor(this.val));
 				$(".ptpt").text(num + "P");
 			})
-		});
+		}); */
 	
 	
 	// 타이머
@@ -82,14 +83,9 @@ $(function(){
 		
 		var idx = index;
 		var ciEndDate = $(this).text();
-
 		CountDownTimer(ciEndDate, idx);
-
-
 	}); 
-
 });
-
 
 function CountDownTimer(dt, idx){
     var end = new Date(dt);
@@ -179,7 +175,7 @@ function numberWithCommas(x) {
 													<div class="pt">
 														<div class="pt2">
 															<fmt:formatNumber value="${campaign.cTotpoint }" var="totPoint" pattern="#,###"/>
-															<p class="ptpt">${totPoint} &nbsp;&nbsp;<span style="font-size:20px; color:gray;">P</span></p>
+															<p class="ptpt">${totPoint} &nbsp;<span style="font-size:20px; color:gray;">P</span></p>
 															
 														</div>
 													

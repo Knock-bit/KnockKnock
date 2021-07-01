@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -146,7 +147,7 @@
 				<div>
 					<label>변경할  비밀번호</label>
 					<input type="password" id="chPwd1" name="uPwd">
-					<p class="min8">비밀번호는 최소 8자 이상, 숫자 1개는 반드시 포함되어야 합니다. </p>
+					<p class="min8">※비밀번호는 최소 8자 이상, 숫자 1개는 반드시 포함되어야 합니다. </p>
 				</div>
 				<div>
 					<label>새 비밀번호 확인</label>
