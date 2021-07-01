@@ -55,5 +55,14 @@
 	<select id="getProposal" parameterType="adminProposalVO" resultType="adminProposalVO">
 		SELECT * FROM PROPOSAL WHERE CP_IDX =#{cpIdx}
 	</select>
+	
+	<!-- 썸머노트 insert -->
+	<insert id="insertSummer" parameterType="adminSummerVO">
+		INSERT INTO TEST(TEST_IDX, CONTENT, TITLE) VALUES (#{testIdx}, #{content}, #{title})
+	</insert>
+	<!-- 썸머노트 select -->
+	<select id="selectSummer" resultType="adminSummerVO">
+		SELECT * FROM TEST WhERE TEST_IDX = 123123
+	</select>
 
 </mapper>

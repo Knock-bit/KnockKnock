@@ -7,8 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action ="backtologin.do" method="post">
-	<button onclick="location.href='main/main.jsp'" value="MAIN"></button>
-</form>
+${summer }
 </body>
 </html>

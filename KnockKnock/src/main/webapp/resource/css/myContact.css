@@ -23,9 +23,6 @@
 	width:50%;
 	margin: 0 auto;
 	padding-top:3%;
-	text-align:center;
-	font-weight:530;
-	font-style:normal;
 }
 
 /* ************************** */
@@ -46,7 +43,7 @@
 	border-top : 1px solid #0e4b20;
 	border-bottom : 1px solid #0e4b20;
 	margin:0 auto;
-	box-shadow: 0 8px 11px 0 rgb(0 0 0 / 10%), 0 1px 1px 0 rgb(0 0 0 / 1%);
+	
 }
 .qs1 div{
 	width:80%;
@@ -79,7 +76,7 @@
 	background-color:white;
 	color:#0e4b20;
 	text-align:left;
-	font-size:13px;
+	font-size:14px;
 	font-style:normal;
 
 }
@@ -90,8 +87,7 @@
 	text-align:right;
 	padding:5px;
 	font-style:normal;
-	font-size:11px;
-	color:#999999;
+	font-size:12px;
 
 }
 
@@ -104,13 +100,12 @@
 	background-color:#ecf9f2;
 	font-size:13px;
 	color:#0e4b20;
-	box-shadow: 0 8px 11px 0 rgb(0 0 0 / 10%), 0 1px 1px 0 rgb(0 0 0 / 1%);
+	
 }
 /*관리자 답변*/
 .qs3{
 	width:90%;
 	margin:0 auto;
-	box-shadow: 0 8px 11px 0 rgb(0 0 0 / 10%), 0 1px 1px 0 rgb(0 0 0 / 1%);
 }
 .qs3-1{
 	border-bottom:1px solid gray;
@@ -155,7 +150,7 @@
 	padding:10px;
 	text-align:left;
 	background-color:#f2f2f2;
-	height:80%;
+	height:70%;
 }
 /*작성된 답글 없음*/
 .qs4{
@@ -166,8 +161,6 @@
 	padding:10px;
 	text-align:left;
 	height:70%;
-	box-shadow: 0 8px 11px 0 rgb(0 0 0 / 10%), 0 1px 1px 0 rgb(0 0 0 / 1%);
-	
 }
 
 /*목록버튼*/

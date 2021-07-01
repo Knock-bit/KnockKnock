@@ -73,6 +73,7 @@
     <!-- ======= Campaign Section ======= -->
     <section id="campaigns" class="campaigns">
       <div class="container" data-aos="fade-up">
+       <%@ include file= "/layout/navbar/campaign/navCampaign.jsp" %> 
 
         <div class="row" data-aos="zoom-in" data-aos-delay="100">
 		<c:if test="${!empty fundingList  }">

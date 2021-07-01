@@ -75,7 +75,6 @@
 			</td>
 		</tr>
 	</table>
-	
 	<div>
 		<p><input type="button" value="게시글 등록" onclick="insert_board(this.form)"></p>
 	</div>	

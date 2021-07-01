@@ -28,6 +28,7 @@
   <link href="${cp}/resource/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="${cp}/resource/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
+
   <!-- Main CSS File -->
   <link href="${cp}/resource/css/main.css" rel="stylesheet">
 

@@ -46,8 +46,6 @@
 	</form>
 	
 	<p><a href="getBoardList.do">글 목록으로..</a></p>
- 
-
 
 </div>
 
