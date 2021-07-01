@@ -52,11 +52,10 @@ public class ProposalController {
 					System.out.println("if문 안");
 					break;
 				}
-				System.out.println("if문 지나오나?");
 				count ++;
 			}
 			file.transferTo(new File(uploadPath + filePath));
-			proposal.setCpFile(filePath + fileName);
+			proposal.setCpFile(uploadPath + fileName);
 		}
 		
 		int result = proposalService.insertProposal(proposal);
