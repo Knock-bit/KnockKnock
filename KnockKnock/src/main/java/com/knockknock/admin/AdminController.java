@@ -123,6 +123,14 @@ public class AdminController {
 	}
 	
 	
-
+	@PostMapping("/adminSummerTest.do")
+	public String ttest(AdminSummerVO vo) {
+//		System.out.println(request.getParameter("idx"));
+//		System.out.println(request.getParameter("title"));
+//		System.out.println(request.getParameter("contet"));
+		System.out.println(vo);
+//		adminService.insertSummer(vo);
+		return null;
+	}
 
 }

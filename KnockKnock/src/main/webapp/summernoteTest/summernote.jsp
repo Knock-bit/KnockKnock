@@ -10,44 +10,62 @@
 	rel="stylesheet">
 <script src="${cp}/resource/js/jquery/jquery-3.6.0.min.js"></script>
 <!-- 서머노트 추가 -->
-<script src="${cp }/resource/summernote/summernote-ko-KR.min.js"></script>
+<%-- <script src="${cp }/resource/summernote/lang/summernote-ko-KR.js"></script> --%>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.6/lang/summernote-ko-KR.min.js"></script>
 <script src="${cp }/resource/summernote/summernote-lite.js"></script>
 <link href="${cp}/resource/summernote/summernote-lite.css"
 	rel="stylesheet">
 
 <script>
-	function goWrite(frm) {
-		var idx = frm.idx.value;
-		var title = frm.idx.value;
-		var editordata = frm.idx.editordata;
-		var startDate = frm.idx.startDate;
-		var startTime = frm.idx.startTime;
+	/* 	function goWrite(frm) {
+	 var idx = frm.idx.value;
+	 var title = frm.idx.value;
+	 var editordata = frm.idx.editordata;
+	 var startDate = frm.idx.startDate;
+	 var startTime = frm.idx.startTime;
 
-		if (idx.trim() == '') {
-			alert("회원번호 입력");
-			return false;
-		}
+	 if (idx.trim() == '') {
+	 alert("회원번호 입력");
+	 return false;
+	 }
 
-		if (title.trim() == '') {
-			alert('제목입력');
-			return false;
-		}
-		frm.submit();
+	 if (title.trim() == '') {
+	 alert('제목입력');
+	 return false;
+	 }
+	 $('textarea[name="content"]').val($('#summernote').summernote('code'));	
+	 console.log(   $('textarea[name="content"]').val($('#summernote').summernote('code')));
+	 alert(   $('textarea[name="content"]').val($('#summernote').summernote('code')));
+	
+	 frm.action = "../adminSummerTest.do";
+	 frm.setAttribute('method', 'post');
+	 frm.submit();
+	 } */
+	function postForm() {
+		$('textarea[name="content"]').val($('#summernote').summernote('code'));
+		alert($('textarea[name="content"]').val(
+				$('#summernote').summernote('code')));
+		console.log($('textarea[name="content"]').val(
+				$('#summernote').summernote('code')));
 	}
 </script>
-</head>
-
 <body>
 	<div class="container">
-		<form method="post" action="/adminFundingWrite.do">
-			<label> index <input type="text" name="idx" />
+		<form role="form" method="post" onsubmit="postForm()"
+			action="../adminSummerTest.do">
+			<label> index <input type="text" name="testIdx" />
 			</label> <br> <label> Title <input type="text" name="title">
 			</label><br>
-			<textarea class="summernote" name="editordata"></textarea>
+			<!-- <textarea id="summerTest" class="summernote" name="content"></textarea> -->
+			<textarea name="content" style="display: none;"></textarea>
+			<div id="summernote"></div>
 			<label> 시작일 <input type="date" name="startDate"> <input
 				type="time" name="startTime">
-			</label> <br> <input id="subBtn" type="Button" value="글 작성"
-				style="float: right;" onclick="goWrite(this.form)">
+			</label> <br>
+			<!-- <input id="subBtn" type="Button" value="글 작성"
+				style="float: right;" onclick="goWrite(this.form)"> -->
+			<input type="submit" value="전송">
 			<div name="text"></div>
 		</form>
 	</div>
@@ -96,21 +114,20 @@
 										// 파일 업로드(다중업로드를 위해 반복문 사용)
 										for (var i = files.length - 1; i >= 0; i--) {
 											uploadSummernoteImageFile(files[i],
-													this);
+													this, count++);
 										}
 									}
 								}
 							};
-							$('.summernote').summernote(setting);
+								$('#summernote').summernote(setting);
 						});
-
 		function uploadSummernoteImageFile(file, el) {
 			data = new FormData();
 			data.append("file", file);
 			$.ajax({
 				data : data,
 				type : "POST",
-				url : "uploadSummernoteImageFile.do",
+				url : "../uploadSummernoteImageFile.do",
 				contentType : false,
 				enctype : 'multipart/form-data',
 				processData : false,
