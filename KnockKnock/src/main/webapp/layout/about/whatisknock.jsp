@@ -2,51 +2,45 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="cp" value ="${pageContext.request.contextPath }"/>
-<!doctype html>
-<html lang="ko">
 
+<!DOCTYPE html>
 <head>
-<title>What is knock</title>
-<meta charset="utf-8">
-<meta name="viewport"
-   content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<!--구글폰트-->
+  <title>How to use...</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="${cp}/resource/img/favicon.png" rel="icon">
+  <link href="${cp}/resource/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
-	rel="stylesheet">
-<link rel="stylesheet" href="${cp }/resource/css/whatisknock.css">
-<link rel="stylesheet" href="${cp }/resource/css/owl.carousel.min.css">
-<link rel="stylesheet"
-	href="${cp }/resource/css/owl.theme.default.min.css">
-
-<!-- Main CSS File 넣는순간 옹졸녹됨-->
-<link href="${cp}/resource/css/nav1.css" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+  <!-- Vendor CSS Files -->
+  <link href="${cp}/resource/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="${cp}/resource/vendor/aos/aos.css" rel="stylesheet">
   <link href="${cp}/resource/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="${cp}/resource/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="${cp}/resource/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="${cp}/resource/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="${cp}/resource/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
- 
-	
 
+  <!-- Main CSS File -->
+  <link href="${cp}/resource/css/main.css" rel="stylesheet">
 
-
-
-
+  <!-- Import BootStrap -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  
 </head>
 
 <body>
 
-<!-- ======= Header ======= -->
-   <%@ include file= "/layout/navbar/navLoggedin.jsp" %>
-  <!-- ======= Header 끝  === -->
-
-
-
+  <!-- ======= Header ======= -->
+   <%@ include file= "/layout/navbar/nav.jsp" %>
     <main id="main">
         <!-- ======= Breadcrumbs ======= -->
         <div class="breadcrumbs" data-aos="fade-in">
@@ -63,7 +57,7 @@
 
                 <div class="row">
                     <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
-                        <img src="${cp }/resource/img/about/plasticpollution.jpg" class="img-fluid" alt="">
+                        <img src="${cp}/resource/img/about/plasticpollution.jpg" class="img-fluid" alt="">
                     </div>
                     <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
                         <h3>지금 지구는...</h3><br>
@@ -130,7 +124,7 @@
 
                 <div class="row">
                     <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
-                        <img src="${cp }/resource/img/about/deforestation.jfif" class="img-fluid" alt="">
+                        <img src="${cp}/resource/img/deforestation.jfif" class="img-fluid" alt="">
                     </div>
                     <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
                         <h3>지구가 당신에게 하는 노크</h3><br>
@@ -163,7 +157,7 @@
 
                 <div class="row">
                     <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
-                        <img src="${cp }/resource/img/about/green.jpg" class="img-fluid" alt="">
+                        <img src="${cp}/resource/img/green.jpg" class="img-fluid" alt="">
                     </div>
                     <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
                         <h3>지구를 더 푸르게</h3>
@@ -197,29 +191,25 @@
 
     </main><!-- End #main -->
 
-    <!-- ======= Footer ======= -->
-
-
-
-
-    </footer><!-- End Footer -->
-
-    <div id="preloader"></div>
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-            class="bi bi-arrow-up-short"></i></a>
-
-   </section>
-
-   <script src="${cp }/resource/js/jquery.min.js"></script>
-   <script src="${cp }/resource/js/popper.js"></script>
-   <script src="${cp }/resource/js/bootstrap.min.js"></script>
-   <script src="${cp }/resource/js/owl.carousel.min.js"></script>
-   <script src="${cp }/resource/js/main.js"></script>
-
-   <!-- ======= Footer ======= -->
+ 
+  <!-- ======= Footer ======= -->
    <%@ include file= "/layout/footer.jsp" %>
  
  <!-- End Footer -->
+
+<!--   <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+ -->  <!-- Vendor JS Files -->
+  <script src="${cp}/resource/vendor/aos/aos.js"></script>
+  <script src="${cp}/resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="${cp}/resource/vendor/php-email-form/validate.js"></script>
+  <script src="${cp}/resource/vendor/purecounter/purecounter.js"></script>
+  <script src="${cp}/resource/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="${cp}/resource/js/main.js"></script>
+
 </body>
 
 </html>

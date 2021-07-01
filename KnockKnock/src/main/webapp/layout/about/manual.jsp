@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<c:set var="cp" value="${pageContext.request.contextPath }" />
+
 <!doctype html>
 <html lang="ko">
 
@@ -132,12 +136,12 @@
 		</div>
 	</div>
 
-
-	<script src="${cp }/resource/js/jquery.min.js"></script>
-	<script src="${cp }/resource/js/popper.js"></script>
-	<script src="${cp }/resource/js/bootstrap.min.js"></script>
-	<script src="${cp }/resource/js/owl.carousel.min.js"></script>
-	<script src="${cp }/resource/js/manual.js"></script>
+ 
+	<script src="${cp }/resource/vendor/aos/aos.js"></script>
+	<script src="${cp }/resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="${cp }/resource/vendor/php-email-form/validate.js"></script>
+	<script src="${cp }/resource/vendor/purecounter/purecounter.js"></script>
+	<script src="${cp }/resource/vendor/swiper/swiper-bundle.min.js"></script>
 
 	<!-- ======= Footer ======= -->
    <%@ include file= "/layout/footer.jsp" %>
