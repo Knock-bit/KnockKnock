@@ -28,6 +28,7 @@
   <link href="${cp}/resource/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="${cp}/resource/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="${cp}/resource/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+<<<<<<< HEAD
 
   <!-- Main CSS File -->
   <link href="${cp}/resource/css/main.css" rel="stylesheet">
@@ -35,6 +36,12 @@
   <!-- Import BootStrap -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
   
+=======
+ 
+	
+ 
+
+>>>>>>> branch '12/feat-aboutKnock' of https://github.com/Knock-bit/KnockKnock.git
 </head>
 
 <body>

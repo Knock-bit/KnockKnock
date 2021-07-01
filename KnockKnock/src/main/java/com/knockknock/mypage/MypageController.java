@@ -52,15 +52,19 @@ public class MypageController {
 	@GetMapping("/updateMyInfo.do")
 	public String updateMypage(UserVO vo, Model model) {
 
-		/* => 아작스로 처리하기
-		 * // 저장된 이메일(전체 유저 정보) 목록가져오기 List<String> emailList =
-		 * mypageService.selectAllEmail(); System.out.println("emailList: " +
-		 * emailList); model.addAttribute(emailList);
-		 */
 		model.addAttribute("users");
 		
 		
 		return "/mypage/mypageList/updateMyInfo";
+	}
+	// 이메일 중복 체크
+	@GetMapping("emailCheck.do")
+	@ResponseBody
+	public int emailCheck(String email) {
+		
+		int result = mypageService.emailCheck(email);
+		
+		return result;
 	}
 
 	// 내 정보 수정 정보 받아오기
@@ -250,5 +254,6 @@ public class MypageController {
 		model.addAttribute("cvo", cvo);
 		return "/mypage/mypageList/myContact";
 	}
+	
 	
 }

@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="BoardDAO">
 	
-	<insert id="insertBoard" parameterType="BoardVO">
+	<insert id="insertBoard" parameterType="boardVO">
 		INSERT INTO BOARD (B_IDX ,B_SUBJECT, B_CONTENT, U_IDX, B_REGDATE, B_HIT, B_VIEWS, B_CATEGORY, B_FILE, CI_IDX, SB_IDX, B_ACTIVE)
 		VALUES ((SELECT NVL(MAX(B_IDX),0)+1 FROM BOARD), #{bSubject}, #{bContent}, #{uIdx}, #{bRegdate}, #{bHit}, #{bViews}, 
 				#{bCategory}, #{bFile}, #{ciIdx}, #{sbIdx}, #{bActive})
@@ -15,7 +15,7 @@
 		 WHERE B_IDX = #{bIdx}
 	</update>
 	
-	<delete id="deleteBoard" parameterType="boardVO">
+	<delete id="deleteBoard" parameterType="int">
 		DELETE FROM BOARD WHERE B_IDX = #{bIdx}
 	</delete>
 	
@@ -26,20 +26,20 @@
 	<select id="getBoardList" parameterType="boardVO" resultType="boardVO">
 		SELECT * FROM BOARD 
 		WHERE 1=1
-		<if test="searchCondition == 'B_SUBJECT' ">
+		<if test="searchCondition == 'BSUBJECT' ">
 			AND B_SUBJECT LIKE '%'|| #{searchKeyword} ||'%'
 		</if>
-		<if test="searchCondition == 'B_CONTENT' ">
+		<if test="searchCondition == 'BCONTENT' ">
 			AND B_CONTENT LIKE '%'|| #{searchKeyword} ||'%'
 		</if>
 		ORDER BY B_IDX DESC
 	</select>
 	
-	<update id="updateHit" parameterType="int">
+	<update id="updateHit">
 		UPDATE BOARD SET B_HIT = B_HIT + 1 WHERE B_IDX = #{bIdx}
 	</update>
 	
-	<update id="updateViews" parameterType="int">
+	<update id="updateViews">
 		UPDATE BOARD SET B_VIEWS = B_VIEWS + 1 WHERE B_IDX = #{bIdx}
 	</update>
 	

@@ -16,8 +16,9 @@ public class FundingVO {
 	private String cfFile;
 	private int ccIdx;  // 캠페인 카테고리 
 	private int uIdx;   // 유저번호	
-	private String hostNickname; // uIdx를 통해 불러온 주최자 닉네임
+	private String hostNickname; // 주최자 닉네임
 	private String category;
+	private int userCount;
 	
 	
 	public FundingVO() {}
@@ -25,7 +26,7 @@ public class FundingVO {
 
 	public FundingVO(int cfIdx, int cpIdx, String cGoal, String cfTitle, String cfContent, Date cfEndtime,
 			Date cfStarttime, int cfGoalpoint, int cfCollected, String cfStatus, String cfFile, int ccIdx, int uIdx,
-			String hostNickname, String category) {
+			String hostNickname, String category, int userCount) {
 		super();
 		this.cfIdx = cfIdx;
 		this.cpIdx = cpIdx;
@@ -195,6 +196,16 @@ public class FundingVO {
 
 	public void setCategory(String category) {
 		this.category = category;
+	}
+
+
+	public int getUserCount() {
+		return userCount;
+	}
+
+
+	public void setUserCount(int userCount) {
+		this.userCount = userCount;
 	};
 	
 	

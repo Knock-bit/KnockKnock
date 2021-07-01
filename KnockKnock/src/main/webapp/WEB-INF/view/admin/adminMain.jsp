@@ -32,6 +32,11 @@
 		frm.submit();
 	}
 	
+	function adminSummer(frm){
+	frm.action ="adminSummer.do";
+	frm.submit();
+	}
+	
 	
 </script>
 </head>
@@ -44,7 +49,10 @@
 		<input type="button" value="adminCampaignCategory" onclick="adminCampaignCategory(this.form)"/>
 		<input type="button" value="adminFunding" onclick="adminFunding(this.form)">
 		<input type="button" value="adminProposal" onclick="adminProposal(this.form)">
+		<input type="button" value="adminSummer" onclick="adminSummer(this.form)">
+		
 	</form>
+	
 	
 </body>
 </html>

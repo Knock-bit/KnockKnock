@@ -30,17 +30,22 @@
 
 }
 .container {
-	width:70%;
+	width:75%;
+	
+}
+.tbody td{
+	font-size:14px;
 	
 }
 /*게시글 답글여부*/
 .ctresp{
-	font-size:13px;
+	font-size:12px;
 	width:10%;
 	
 }
 .ctTitles{
 	cursor : pointer;
+	font-size:14px;
 	
 }
 .ctTitles:hover{
