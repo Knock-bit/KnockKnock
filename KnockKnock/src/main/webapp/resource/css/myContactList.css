@@ -20,19 +20,16 @@
 	padding-top:2%;
 }
 
-#ctext{
-	font-size:15px;
-	border-bottom:1px solid gray;
-	width:800px;
-	margin: 0 auto;
-	padding-top:3%;
-	font-style:normal;
-
-}
 .container {
-	width:75%;
+	width:80%;
 	
 }
+/*thead*/
+.no, .category, .end_date, .reply{
+	font-weight:550;
+	font-size:14px;
+}
+
 .tbody td{
 	font-size:14px;
 	
@@ -45,7 +42,7 @@
 }
 .ctTitles{
 	cursor : pointer;
-	font-size:14px;
+	font-size:13px;
 	
 }
 .ctTitles:hover{
@@ -61,15 +58,9 @@
 	li { 
 		list-style: none; 
 	}
-	.paging {
-		text-align:center;
-		margin : 0 auto;
-		height:50px;
-		width:300px;
-		
-	}
+	
 	.pagingNum {
-        width:1000px;
+        width:100%;
         height:50px;
         text-align : center;
         margin : 0 auto;
@@ -81,13 +72,21 @@
     	height:50px;
  
     }
+    .paging {
+		
+		margin : 0 auto;
+		height:50px;
+		width:80%;
+		text-align:center;
+		
+	}
     #tb{
     	margin: 0 auto;
     
     }
 
 	.paging li {
-		float: left;
+		display:inline-block;
 		margin-right: 8px;
 	}
 	.paging li a {
@@ -104,14 +103,11 @@
 	.paging .now {
 		width:15px;
 		padding: 3px 3px;
-		
+		color:#ff4d4d;
+		font-weight:700;
 	}
 	.paging li a:hover {
-		background-color: gray;
-		color: white;
+		text-decoration: underline;
 	}
-	ol {
-		margin: 0 auto;
-		width:30%;
-	}
+
 	
