@@ -52,22 +52,22 @@
                         <div class="form-row1">
                            <div class="form-group">
                                 <label for="cpTitle">목표포인트</label>
-                                <input type="number" name="cpTitle" id="cpGoalPoint" min="2500" required/>
+                                <input type="number" name="cpGoalpoint" id="cpGoalPoint" min="2500" required/>
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="keyword1">키워드1</label>
-                                <input type="text" name="keyword" id="pKeyword1" />
+                                <input type="text" name="cpKeyword1" id="pKeyword1" />
                             </div>
                             <div class="form-group">
                                 <label for="keyword2">키워드2</label>
-                                <input type="text" name="keyword" id="pKeyword2" />
+                                <input type="text" name="cpKeyword2" id="pKeyword2" />
                             </div>
                             <div class="form-group">
                                 <label for="keyword3">키워드3</label>
-                                <input type="text" name="keyword" id="pKeyword3" />
+                                <input type="text" name="cpKeyword3" id="pKeyword3" />
                             </div>
                         </div>
                          <div class="form-row1">
