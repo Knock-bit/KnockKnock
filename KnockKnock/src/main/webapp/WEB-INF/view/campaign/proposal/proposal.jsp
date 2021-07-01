@@ -16,6 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
     <!-- css -->
    	<link href="${cp}/resource/css/signup.css" rel="stylesheet">
+
    	<link href="${cp}/resource/css/campaign/proposal.css" rel="stylesheet">
     <!-- js -->
     <link href="${cp}/resource/js/signup.js">

@@ -21,6 +21,7 @@ public class UserVO {
 	private String uImg;
 	private String uImgPath;
 	private int uUsedPoint;
+	private int auth;
 
 	// ===================== [ 생성자 ] =======================
 	public UserVO() {
@@ -84,7 +85,7 @@ public class UserVO {
 	public UserVO(String uId) {
 		super();
 		this.uId = uId;
-	}
+	} 
 
 	// 회원가입용 생성자
 	public UserVO(String uId, String uName, String uPwd, String uNickname, String uEmail, String uPhone, String uBirth,
@@ -101,7 +102,10 @@ public class UserVO {
 		this.uAddress = uAddress;
 	}
 
+
 	// =======================[ getter, setter ] =========================
+
+	
 
 	public int getuIdx() {
 		return uIdx;
@@ -247,15 +251,22 @@ public class UserVO {
 		this.uImgPath = uImgPath;
 	}
 
-	// ================== [ toString ] ====================
+	public int getAuth() {
+		return auth;
+	}
 
+	public void setAuth(int auth) {
+		this.auth = auth;
+	}
+
+	// ================== [ toString ] ====================
 	@Override
 	public String toString() {
 		return "UserVO [uIdx=" + uIdx + ", uId=" + uId + ", uName=" + uName + ", uPwd=" + uPwd + ", uNickname="
 				+ uNickname + ", uEmail=" + uEmail + ", uPhone=" + uPhone + ", uBirth=" + uBirth + ", uTotPoint="
-				+ uTotPoint + ", uType=" + uType + ", uActive=" + uActive + ", uLastlogin=" + uLastlogin
-				+ ", uGender=" + uGender + ", uAddress=" + uAddress + ", uJoindate=" + uJoindate + ", uImg=" + uImg
-				+ ", uImgPath=" + uImgPath + ", uUsedPoint=" + uUsedPoint + "]";
-	}
+				+ uTotPoint + ", uType=" + uType + ", uActive=" + uActive + ", uLastlogin=" + uLastlogin + ", uGender="
+				+ uGender + ", uAddress=" + uAddress + ", uJoindate=" + uJoindate + ", uImg=" + uImg + ", uImgPath="
+				+ uImgPath + ", uUsedPoint=" + uUsedPoint + ", auth=" + auth + "]";
+	} 
 
 }

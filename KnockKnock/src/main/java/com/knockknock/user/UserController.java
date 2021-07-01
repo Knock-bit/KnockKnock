@@ -1,5 +1,10 @@
 package com.knockknock.user;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,91 +13,131 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
- 
+
 @Controller
 public class UserController {
 	@Autowired
 	private UserService userService;
 	UserVO user = new UserVO();
-	
+
 	public UserController() {
 		System.out.println("UserController생성자");
 	}
 
-	//로그인하기로 이동
+	// 로그인하기로 이동
 	@GetMapping("/user/login.do")
 	public String moveLogin() {
-		
+
 		return "/user/login";
 	}
-	//회원가입창으로 이동
+
+	// 회원가입창으로 이동
 	@GetMapping("/user/signup.do")
 	public String moveSignup() {
 		return "/user/signup";
 	}
-	//회원가입 전 tnc로 이동
+
+	// 회원가입 전 tnc로 이동
 	@GetMapping("/user/tnc.do")
 	public String tnc() {
 		return "/user/tnc";
 	}
-	//id중복체크
+
+	// id중복체크
 	@RequestMapping("/user/idCheck.do")
 	@ResponseBody
 	public int idCheck(String id) {
 		UserVO vo = new UserVO();
-	
+
 		int result;
-		
- 		result = userService.idCheck(id); 		
+
+		result = userService.idCheck(id);
 		return result;
-		
+
 	}
-	//email중복체크
+
+	// email중복체크
 	@RequestMapping("/user/emailCheck.do")
 	@ResponseBody
 	public int emailCheck(String email) {
 		UserVO vo = new UserVO();
-	
+
 		int result;
-		
- 		result = userService.emailCheck(email); 		
+
+		result = userService.emailCheck(email);
 		return result;
-		
+
 	}
-	//로그인
+
+	@RequestMapping("/user/nickCheck.do")
+	@ResponseBody
+	public int nickCheck(String nickname) {
+		UserVO vo = new UserVO();
+		int result;
+
+		result = userService.nickCheck(nickname);
+		return result;
+	}
+
+	// 로그인
 	@PostMapping("/user/loginUser.do")
 	public String loginUser(UserVO vo, Model model) {
-		
+
 		UserVO loginUser = userService.selectlogin(vo);
-		
-		if(loginUser != null) {
+
+		if (loginUser != null) {
 			model.addAttribute("loginUser", loginUser);
 			return "/main/main";
-		}else {
+		} else {
 			System.out.println(">>로그인 실패한 경우");
-			
 			return "/user/login";
 		}
-		
+
 	}
-	//로그아웃
+
+	// 회원가입
 	@PostMapping("/user/join.do")
 	public String join(UserVO vo) {
 		System.out.println("회원가입 controller join()");
-		System.out.println("vo: "+vo);
+		System.out.println("vo: " + vo);
 		userService.join(vo);
-		return "/main/main";
+		return "/user/joinconfirm";
 	}
-	
+
+	// 로그아웃
 	@RequestMapping("/logout.do")
 	public ModelAndView logout(HttpSession session) {
 		session.invalidate();
 		ModelAndView mv = new ModelAndView("main/main");
-		
+
 		return mv;
 	}
-	
-	
-} 
+
+	// 카카오
+	@RequestMapping(value = "/user/kakaologin.do", method = {RequestMethod.POST, RequestMethod.GET})
+	@ResponseBody
+	public String kakaologin(String uId, HttpServletRequest request) {
+		UserVO vo = new UserVO();
+		System.out.println("1) 카카오톡 로그인 실행: " + uId);
+		vo.setuEmail(uId);
+		
+		
+		UserVO login = userService.kakaoLogin(vo);
+		
+
+		if(login == null) {
+			System.out.println("아이디가 없는 경우");
+
+			return "noid";
+		}else {
+			request.getSession().setAttribute("login", login);
+			System.out.println("로그인 성공");
+			return "idok";
+		}
+		
+	}
+
+}
