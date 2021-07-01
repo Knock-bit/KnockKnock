@@ -67,11 +67,10 @@
         <p>진행중인 캠페인 리스트 </p> -->
       </div></div>
     </div><!-- End Breadcrumbs -->
-
     <!-- ======= Campaign Section ======= -->
-    <section id="campaigns" class="campaigns">
+    <article id="campaigns" class="campaigns">
       <div class="container" data-aos="fade-up">
-
+		  <%@ include file= "/layout/navbar/campaign/navCampaign.jsp" %> 
         <div class="row" data-aos="zoom-in" data-aos-delay="100">
 		<c:if test="${!empty list  }">
         <c:forEach var="campaign" items="${list }">
@@ -106,7 +105,7 @@
         </div>
 
       </div>
-    </section><!-- End Courses Section -->
+    </article><!-- End Courses Section -->
 
   </main><!-- End #main -->
 <!-- ======= Footer ======= -->

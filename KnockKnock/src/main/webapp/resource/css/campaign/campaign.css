@@ -10,8 +10,20 @@
   vertical-align: middle;
   text-align: center;
 }
+.campaigns {
+	padding:0px;
+}
 
+campaign-navbar{
+	margin-bottom:20vh;
+	min-height:100px;
+	 
+}
 
+campaign-navbar >li >a{
+	padding-top:10px;
+	padding-bottom:10px;
+}
 
 .campaigncrumbs {
   margin-top: 50px;

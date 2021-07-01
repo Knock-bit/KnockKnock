@@ -21,7 +21,9 @@
 
   <!-- Main CSS File 넣는순간 옹졸녹됨-->
   	
-     <link href="${cp}/resource/css/main.css" rel="stylesheet">
+     <link href="${cp}/resource/css/m
+
+.css" rel="stylesheet">
 <style></style>
 
 </head>
