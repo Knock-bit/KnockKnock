@@ -1,3 +1,4 @@
+
 *{
 	font-family:'Noto+Sans+KR';
 	
@@ -174,10 +175,12 @@
 /*목록버튼*/
 .qs5 button{
 	width:10%;
-	background-color:#0e4b20;
+	background-color:#6c9378;
 	color:white;
 	padding:5px;
 	font-size:13px;
 	border-radius:5px;
+	border:1px solid #6c9378;
+	box-shadow: 0 3px 12px 0 rgb(0 0 0 / 20%), 0 4px 1px 0 rgb(0 0 0 / 1%);
 	
 }
