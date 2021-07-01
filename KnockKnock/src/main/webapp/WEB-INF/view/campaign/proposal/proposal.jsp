@@ -16,9 +16,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
     <!-- css -->
    	<link href="${cp}/resource/css/signup.css" rel="stylesheet">
-   	<link href="${cp}/resource/css/proposal.css" rel="stylesheet">
-    <!-- js
-    	<link href="${cp}/resource/js/signup.js"> -->
+
+   	<link href="${cp}/resource/css/campaign/proposal.css" rel="stylesheet">
+    <!-- js -->
+    <link href="${cp}/resource/js/signup.js">
   	<!-- jQuery -->
 	<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 </head>

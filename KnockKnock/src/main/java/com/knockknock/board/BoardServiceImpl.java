@@ -22,9 +22,9 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public BoardVO getBoard(BoardVO vo) {
-	
-		return boardDAO.getBoard(vo);
+	public BoardVO getBoard(int bIdx) {
+		boardDAO.updateViews(bIdx);
+		return boardDAO.getBoard(bIdx);
 	}
 
 	@Override
@@ -33,8 +33,8 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public void deleteBoard(BoardVO vo) {
-		boardDAO.deleteBoard(vo);
+	public void deleteBoard(int bIdx) {
+		boardDAO.deleteBoard(bIdx);
 	}
 
 	@Override

@@ -1,12 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib prefix="fmt" uri ="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+	.center { text-align: center; }
+</style>
+<script>
+	function insert_board(frm){
+		frm.action = "moveInsert.do"
+		frm.setAttribute('method', 'get');
+		frm.submit();
+	}
+</script>
 </head>
 <body>
 
@@ -18,26 +28,32 @@
 			<th>말머리</th>
 			<th>제목</th>
 			<th>작성자</th>
+			<th>내용</th>
 			<th>작성일</th>
 			<th>조회수</th>
+			<th>추천수</th>
 		</tr>
-	<c:if test="${not empty boardList }">
-		<c:forEach var="board" items="${boardList }">
+	<c:if test="${not empty boardList}">
+		<c:forEach var="board" items="${boardList}">
 		<tr>
-			<td>${board.bIdx}</td>
-			<td>${board.sbIdx }</td>
 			<td>
-				<a href="getBoard.do?b_idx=${board.bIdx }">${board.bSubject }</a>
+				<a href="getBoard.do?bIdx=${board.bIdx}">${board.bIdx}</a>
 			</td>
-			<td>${board.uIdx }</td>
+			<td>${board.sbIdx}</td>
+			<td>
+				<a href="getBoard.do?bIdx=${board.bIdx}">${board.bSubject}</a>
+			</td>
+			<td>${board.uIdx}</td>
+			<td>${board.bContent}</td>
 			<td>
 				<fmt:formatDate pattern="yyyy/MM/dd" value="${board.bRegdate}"/>
 			</td>
-			<td>${board.bViews }</td>
+			<td class="center">${board.bViews}</td>
+			<td class="center">${board.bHit}</td>
 		</tr>
 		</c:forEach>
 	</c:if>	
-	<c:if test="${empty boardList }">
+	<c:if test="${empty boardList}">
 		<tr>
 			<td colspan="7">현재 게시글이 존재하지 않습니다.</td>
 		</tr>
@@ -49,8 +65,8 @@
 		<tr>
 			<td>
 				<select name="searchCondition">
-				<c:forEach var="option" items="${conditionMap }">
-					<option value="${option.value }">${option.key }</option>
+				<c:forEach var="option" items="${conditionMap}">
+					<option value="${option.value}">${option.key}</option>
 				</c:forEach>
 				</select>
 				
@@ -58,11 +74,12 @@
 				<input type="submit" value="검색">
 			</td>
 		</tr>
-	</table>	
+	</table>
+	<div>
+		<p><input type="button" value="게시글 등록" onclick="insert_board(this.form)"></p>
+	</div>	
 	</form>
-	<hr>
-	<p><a href="insertBoard.do">게시글 등록</a></p>
 </div>
-
+	
 </body>
 </html>

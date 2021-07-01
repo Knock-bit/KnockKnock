@@ -8,7 +8,9 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.knockknock.board.BoardVO;
 import com.knockknock.campaign.ing.CampaignVO;
+import com.knockknock.contact.ContactVO;
 import com.knockknock.user.UserVO;
 
 @Repository
@@ -26,13 +28,20 @@ public class MypageDAO {
 		
 		return mybatis.update("UserVO.updateMyInfo", vo);
 	}
-	// 이메일 목록 가져오기
-	public List<String> selectAllEmail(){
-	
-		List<String> list = mybatis.selectList("UserVO.getEamilList");
-		System.out.println("list : " + list);
-		return list;
-	}
+	// 이메일 중복검사
+	public int emailCheck(String email) {
+			System.out.println("받아오는 값 : " + email);
+			String uEmail = mybatis.selectOne("UserVO.emailCheck", email);
+			System.out.println("uEmail : " + uEmail);
+			int result;
+			if(uEmail==null) {
+				result=1;  //이메일 사용가능
+			}else {
+				result=0; //이메일 사용불가(중복)
+			}
+			
+			return result;
+		}
 	
 	
 	// 비밀번호 수정
@@ -62,5 +71,32 @@ public class MypageDAO {
 		
 		return mybatis.selectList("UserVO.endCampaignList",vo);
 	}
+	
+	// 내 문의내역 페이지
+	 public List<ContactVO> myContactList(Map<String, Integer> map){
+		 List<ContactVO> list = mybatis.selectList("UserVO.myCcList", map);
+		 System.out.println("list: " + list); System.out.println("map : " + map);
+	 return list; 
+	 }
+	 
+	
+	// 내 문의내역 총 게시글 수
+	public int myCclistTot(UserVO vo) {
+		
+		return mybatis.selectOne("UserVO.myCcListTotalCount", vo);
+	}
+	
+	// 내 문의내역 상세보기
+	public ContactVO myQuestion(Map<String, Integer> map) {
+		
+		return mybatis.selectOne("UserVO.myQuestionPage", map);
+	}
+	
+	// 나의 활동일지
+	public List<BoardVO> myActive(UserVO vo) {
+
+		return mybatis.selectList("UserVO.myActive", vo);
+	}
+	
 
 }

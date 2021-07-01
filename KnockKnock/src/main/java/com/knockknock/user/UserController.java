@@ -2,7 +2,7 @@ package com.knockknock.user;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Map;
+
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -86,6 +86,7 @@ public class UserController {
 	}
 
 	// 로그인
+
 	@RequestMapping(value="/user/loginUser.do", method= {RequestMethod.POST})
 	@ResponseBody
 	public String loginUser(@RequestBody UserVO vo) {
@@ -98,6 +99,7 @@ public class UserController {
 		
 		System.out.println(vo);
 		return "";
+
 	}
 
 	// 회원가입

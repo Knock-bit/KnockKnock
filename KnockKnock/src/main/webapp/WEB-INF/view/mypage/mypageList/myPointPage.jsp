@@ -31,7 +31,7 @@
 <!-- Main CSS File -->
 <link href="${cp}/resource/css/main.css" rel="stylesheet">
 <link href="${cp}/resource/css/nav.css" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Sans+KR:wght@300&family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
 <!-- Import BootStrap -->
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
@@ -48,25 +48,25 @@
 		// 포인트 or 엠블럼 버튼 클릭
 		$("#pointBtn").on("click", function() {
 			$("#pointBtn").css("border-bottom","none");
-			$("#pointBtn").css("background-color","#fb5151");
-			$("#pointBtn").css("border","2px solid #fb5151");
+			$("#pointBtn").css("background-color","#6c9378");
+			$("#pointBtn").css("border","2px solid #6c9378");
 			$("#pointBtn").css("color","white");
 			
 			$("#emblemBtn").css("background-color","white");
-			$("#emblemBtn").css("border","2px solid #4d4d4d");
-			$("#emblemBtn").css("color","#4d4d4d");
+			$("#emblemBtn").css("border","2px solid #6c9378");
+			$("#emblemBtn").css("color","#0e4b20");
 			$(".emblemZone").hide();
 			$(".pointZone").show();
 		});
 		$("#emblemBtn").on("click", function() {
 			$("#emblemBtn").css("border-bottom","none");
-			$("#emblemBtn").css("background-color","#fb5151");
-			$("#emblemBtn").css("border","2px solid #fb5151");
+			$("#emblemBtn").css("background-color","#6c9378");
+			$("#emblemBtn").css("border","2px solid #6c9378");
 			$("#emblemBtn").css("color","white");
 			
 			$("#pointBtn").css("background-color","white");
-			$("#pointBtn").css("border","2px solid #4d4d4d");
-			$("#pointBtn").css("color","#4d4d4d");
+			$("#pointBtn").css("border","2px solid #6c9378");
+			$("#pointBtn").css("color","#0e4b20");
 			$(".emblemZone").show();
 			$(".pointZone").hide();
 		});
@@ -82,11 +82,11 @@
 			dutation : 4000,
 			step : function() {
 				var num = numberWithCommas(Math.floor(this.val));
-				$("#allPoint").text(num + "P");
+				$("#allPoint").text(num );
 			},
 			complete : function() {
 				var num = numberWithCommas(Math.floor(this.val));
-				$("#allPoint").text(num + "P");
+				$("#allPoint").text(num );
 			}
 		});
 
@@ -142,34 +142,39 @@
 
 		<div class="myPoint">
 			<div class="btnDiv">
-				<button id="pointBtn">POINT</button>
-				<button id="emblemBtn">EMBLEM</button>
+				<button id="pointBtn" style="background-color:#6c9378; color:white; border:2px solid #6c9378;">POINT</button>
+				<button id="emblemBtn" style="border:2px solid #6c9378;">EMBLEM</button>
 			</div>
 			<!-- 포인트 영역 -->
 			<div class="pointZone">
 				<div class="item1">
 					<p>누적 포인트</p>
-					<img src="/resource/img/upload/point.png">
+					<img src="/resource/img/upload/pp.png">
 					<div id="allPoint"></div>
 
 				</div>
 				<div class="item2">
-					<p>사용 포인트와 가용 포인트</p>
+					<p>사용 포인트 / 보유 포인트</p>
 					<div class="graph stack1">
-						<p>▶ 사용한 포인트 : ${users.uUsedPoint}</p>
+						<p style="font-weight:530;">[ Used Point ]</p>
+						<p style="font-size:15px;	color:#ff6666;font-weight:bold;"> ${users.uUsedPoint}&nbsp;P</p><br>
 						<span id="uPoint"></span>
 
 					</div>
+					<br>
 					<div class="graph stack2">
-						<p>▶ 가용 포인트 :${users.uTotPoint-users.uUsedPoint}</p>
+						<p style="font-weight:530;">[ Available Point ]</p>
+						<p style="font-size:15px;	color:#f8c078;font-weight:bold;">${users.uTotPoint-users.uUsedPoint}&nbsp;P</p><br>
 						<span id="ePoint"></span>
 
 					</div>
 
 
 				</div>
+				
 				<div class="item3">
-					<p>포인트 적립 및 사용 현황</p>
+					
+					<p><img src="/resource/img/upload/pp2.png">&nbsp;&nbsp;&nbsp;포인트 적립 / 사용 내역</p>
 
 
 

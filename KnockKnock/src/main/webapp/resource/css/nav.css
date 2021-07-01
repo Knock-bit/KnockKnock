@@ -22,7 +22,7 @@
 }
 
 .navbar a, .navbar a:focus {
-  display: flex;
+  display: abosolute;
   align-items: center;
   justify-content: space-between;
   padding: 10px 0 10px 30px;

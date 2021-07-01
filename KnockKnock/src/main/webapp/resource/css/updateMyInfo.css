@@ -1,3 +1,8 @@
+*{
+	font-family: 'Roboto+Slab:wght@300';
+	
+}
+
 .main-content{
   		width:100%;
         flex: 1;
@@ -13,18 +18,21 @@
    		
    }
    #ctext{
-	font-size:18px;
+	font-size:35px;
 	border-bottom:1px solid gray;
-	width:800px;
+	width:63%;
 	margin: 0 auto;
-	padding:2% 0 0 5%;
+	padding:2% 0 0 2%;
 	margin-bottom:2%;
 	font-style:normal;
-	font-weight:bold;
+	font-family: 'Roboto+Slab:wght@300';
+	text-align:center;
+	color:white;
+	text-shadow:1px 1px 0 #9e9e9e, -1px -1px 1px lightgrey;
 
 }
    /* 내 정보 수정 css */
-   
+  
    /*그리드*/
    .myInfo {
    		width:90%;
@@ -50,6 +58,8 @@
    		float:left;
    		width:10%;
    		text-align:right;
+   		color:#0e4b20;
+   		font-weight:bold;
    }
    
     .it1 input, .it2 input,.it3 input,.it4 input,.it5 input,.it6 input,.it7 input,.it8 input{
@@ -59,7 +69,24 @@
    		border-bottom:1px solid black;
    		font-size:13px;
    }
-   
+   .it6-1{
+   		grid-column:2/3;
+   		grid-row : 6/7;
+   		text-align:left;
+   		font-size:12px;
+   		margin-left:-20px;
+   		margin-top:10px;
+   		color:red;
+   }
+   .it7-1{
+   		grid-column:2/3;
+   		grid-row : 7/8;
+   		text-align:left;
+   		font-size:12px;
+   		margin-left:-20px;
+   		margin-top:10px;
+   		color:red;
+   }
    
     .it9 {
     	grid-column:2/3;
@@ -78,7 +105,7 @@
    		margin-right:5%;
    		width:25%;
    		text-align:right;
-   		font-size:16px;
+   		font-size:14px;
    
    }
    .myInfo input{
@@ -108,6 +135,7 @@
    .it10 input {
    		width:40%;
    		height:100%;
+   		
    
    }
    /* 버튼 css */
@@ -120,8 +148,11 @@
    		border:0px;
    		border-radius:5px;
    		width:40%;
-   		background-color:#0e4b20;
+   		background-color:#595959;
    		color:white;
+   		margin-top:20px;
+   		padding:3px;
+   		font-size:12px;
    
    }
    
@@ -135,3 +166,7 @@
    		text-align:center;
    		margin-top:20px;
     }
+    
+     input[type="text"]:focus {
+		 background-color:#e9fbef;
+	 }

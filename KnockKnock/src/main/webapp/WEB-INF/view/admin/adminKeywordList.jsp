@@ -9,6 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- bootstrap jquery 추가 -->
 <link href="${cp}/resource/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <script src="${cp}/resource/js/jquery/jquery-3.6.0.min.js"></script>
 

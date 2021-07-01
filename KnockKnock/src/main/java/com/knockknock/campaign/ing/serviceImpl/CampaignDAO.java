@@ -30,4 +30,8 @@ public class CampaignDAO {
 	public int updateExpiredCampaign() {
 		return mybatis.update("campaign.updateExpiredCampaign");
 	}
+
+	public List<CampaignVO> selectAllEdCampaign() {
+		return mybatis.selectList("campaign.selectAllEdCampaign");
+	}
 }

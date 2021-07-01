@@ -1,0 +1,140 @@
+*{
+	font-family:'Noto+Sans+KR';
+	
+}
+
+.main-content{
+  		width:100%;
+        flex: 1;
+        min-height:100vh;
+        margin-top:100px;
+        
+   }
+   .updatePwd {
+   		width:50%;
+   		margin: 0 auto;
+   		text-align:center;
+   		position:relative;
+   }
+   .ctext{
+	font-size:20px;
+	border-bottom:1px solid gray;
+	width:800px;
+	margin: 0 auto;
+	padding-top:3%;
+	font-style:normal;
+	font-weight:bold;
+}
+	.ctext span{
+		padding-left:5%;
+		font-size:12px;
+		color:gray;
+		font-weight: 100;
+	}
+	.ctext img{
+		width:10%;
+		padding:10px;
+	
+	}
+/*비밀번호  변경*/
+	.updatePwd{
+		width:70%;
+		height:50vh;
+		margin : 0 auto;
+		margin-top:5%;
+	
+	}
+	.pwdgrid {
+		display:grid;
+		width:100%;
+		height:30vh;
+		grid-template-columns: 100%;
+		grid-template-rows: 30% 30% 35%;
+		grid-gap:20px;
+
+	
+	}
+	.pwdgrid div{
+		padding : 1% 20% 1% 20%;
+		text-align:left;
+	
+	}
+	
+	.pwdgrid label{
+		text-align:right;
+		width:35%;
+		font-size:15px;
+		font-weight : bold;
+		color:#0e4b20;
+		padding-right:5%;
+	
+	}
+	.pwdgrid input{
+		width:60%;
+		height:6vh;
+	
+	}
+	.min8{
+		width:95%;
+		font-style:normal;
+		padding-left:10%;
+		text-align:right;
+		color:#0e4b20;
+	}
+	/*비밀번호 변경 완료 후 화면*/
+	.changePwdView {
+		width:100%;
+		text-align:center;
+
+	}
+	.changePwdView p {
+		font-style : normal;
+		font-size:13px;
+		color:#0e4b20;
+		font-weight:700;
+
+
+	}
+	.changePwdView a {
+		padding:10px;
+		font-size:14px;
+		background-color:#ff3333;
+		color:white;
+		border-radius: 5px;
+	}
+	.changePwdView a:hover {
+		background-color:#ff8080;
+	}
+	
+	
+	/*버튼*/
+	.pBtnn{
+		text-align:center;
+		margin-top:50px;
+	
+	
+	}
+   #matchPwd{
+   		display:none;
+   		color:red;
+   		font-size:12px;
+   		text-align:right;
+   }
+   #updatePwdBtn{
+   		padding:5px;
+   		color: white;
+   		background-color:#0e4b20;
+   		width:20%;
+   		border-radius:5px;
+   
+   }
+  
+   #laterBtn{
+   		padding:5px;
+   		color: white;
+   		background-color:gray;
+   		width:20%;
+   		border-radius:5px;
+   		margin-left:5%;
+   
+   }

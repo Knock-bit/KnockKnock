@@ -4,14 +4,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.knockknock.util.PagingVO;
 
@@ -24,7 +29,7 @@ public class AdminController {
 		System.out.println("==> AdminController() 객체 생성");
 	}
 	// 페이지 셋팅부분
-	public Map<String ,String> pageSet(String nowPage, String cntPerPage) {
+	public static Map<String ,String> pageSet(String nowPage, String cntPerPage) {
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = "1";
 			cntPerPage = "5";
@@ -81,14 +86,7 @@ public class AdminController {
 			@RequestParam(value = "cntPerPage", required = false) String cntPerPage) {
 
 		int total = adminService.countKeyword();
-//		if (nowPage == null && cntPerPage == null) {
-//			nowPage = "1";
-//			cntPerPage = "5";
-//		} else if (nowPage == null) {
-//			nowPage = "1";
-//		} else if (cntPerPage == null) {
-//			cntPerPage = "5";
-//		}
+
 		Map<String,String> map = pageSet(nowPage,cntPerPage);
 		nowPage = map.get("nowPage");
 		cntPerPage=map.get("cntPerPage");
@@ -111,7 +109,38 @@ public class AdminController {
 		model.addAttribute("viewAll", adminService.getKeywordList(pvo));
 		return "/admin/adminKeywordList";
 	}
+	@GetMapping("/adminFunding.do")
+	public String getFunding() {
+		return "/admin/adminFunding";
+	}
 	
+	@PostMapping("/adminFundingWrite.do")
+	public String test(HttpServletRequest request) {
+		System.out.println(request.getParameter("idx"));
+		System.out.println(request.getParameter("editordata"));
+
+		
+		return null;
+	}
+	
+	@GetMapping("/adminSummer.do")
+	public String moveSummer() {
+		return "/summernoteTest/summernote";
+	}
+	@PostMapping("/adminSummerTest.do")
+	public String ttest(AdminSummerVO vo) {
+		System.out.println(vo);
+		adminService.insertSummer(vo);
+		return "redirect:selectSummer.do";
+	}
+	
+	@GetMapping("/selectSummer.do")
+	public String tt(Model model) {
+		AdminSummerVO svo = adminService.selectSummer();
+		model.addAttribute("summer",svo);
+		System.out.println(svo);
+		return "/summernoteTest/summernoteDetail";
+	}
 
 
 }

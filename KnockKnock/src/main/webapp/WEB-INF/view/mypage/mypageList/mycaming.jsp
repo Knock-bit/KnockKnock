@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="cp" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html>
 <html>
@@ -47,6 +48,7 @@
 
 <!-- page css -->
 <link href="${cp}/resource/css/mycaming.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
 <!-- page js -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -55,29 +57,41 @@
 <script>
 $(function(){
 	
+		var getPoint = $(".ptpt").text();
+		console.log(getPoint);
+	
+		$({
+			val : 0
+		}).animate({
+			val : getPoint
+		}, {
+			dutation : 4000,
+			step : $.each(function() {
+				var num = numberWithCommas(Math.floor(this.val));
+				$(".ptpt").text(num + "P");
+			}),
+			complete : $.each(function() {
+				var num = numberWithCommas(Math.floor(this.val));
+				$(".ptpt").text(num + "P");
+			})
+		});
+	
+	
+	// 타이머
 	 $(".enddate").each(function(index, obj){
 		
 		var idx = index;
 		var ciEndDate = $(this).text();
-		
-		console.log(idx, ciEndDate);
-		
-		CountDownTimer(ciEndDate, 'countdown');
-		
-		
+
+		CountDownTimer(ciEndDate, idx);
+
+
 	}); 
-	 
 
 });
 
-/* $.each(function(){
-	var ciEndDate = $(".enddate").index(e);
-	console.log(ciEndDate);
-    CountDownTimer(ciEndDate, 'countdown');
-}); */
 
-
-function CountDownTimer(dt, className){
+function CountDownTimer(dt, idx){
     var end = new Date(dt);
 
     var _second = 1000;
@@ -91,7 +105,7 @@ function CountDownTimer(dt, className){
         var distance = end - now;
         if ( distance < 0) {
             clearInterval(timer);
-            $(".countdown").html("디데이!");
+            $(".countdown").eq(idx).html("디데이!");
             return;
         }
         var days = Math.floor(distance / _day);
@@ -100,11 +114,13 @@ function CountDownTimer(dt, className){
         var seconds = Math.floor((distance%_minute) / _second);
 
        
-		$(".countdown").html(days+'일' + hour +'시간' + minutes +'분'+seconds+'초');
+		$(".countdown").eq(idx).html(days+'일' + hour +'시간' + minutes +'분'+seconds+'초');
     }
     timer = setInterval(showRemaining, 1000);
 };
-
+function numberWithCommas(x) {
+	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
 </script>
 </head>
@@ -113,7 +129,7 @@ function CountDownTimer(dt, className){
 	<%@ include file="/layout/navbar/navLoggedin.jsp"%>
 	<!-- ======= Header 끝  === -->
 	<div class="main-content">
-		<p id="ctext">진행중인 캠페인 리스트</p>
+		<p id="ctext">My Campaign</p>
 		<div class="campaingView">
 			<div class="clist">
 				<div id="container">
@@ -145,33 +161,36 @@ function CountDownTimer(dt, className){
 											</div>
 											<div class="itemGoal ">
 												<p class="it1">GOAL</p> <p class="it2">
-													${campaign.ciGoal }</p>
+													${campaign.cGoal }</p>
 
 											</div>
 											<div class="itemEnddate">
-												<span class="it1">남은기간 </span>
+												<p class="it1">남은기간 </p>
 												 <span class="enddate" style="display:none;">${campaign.ciEnddate }</span>
 												 <div class="countdown"></div><br>
-													<span style="font-size:10px;">이미지를 클릭하면 상세페이지로 이동합니다.</span>
+												 <p>이미지를 클릭하면 상세페이지로 이동합니다.</p>
 
 
 											</div>
 			
 											<div class="itemPoint">
-												<p>획득 가능한 포인트와 엠블럼</p>
-												<div class="apzone">
+												<div class="pzone">
+													<p>획득 가능 포인트</p>
 													<div class="pt">
 														<div class="pt2">
-															<p>${campaign.cTotpoint }&nbsp;<span>P</span></p>
-															<p>를 획득하실 수 있습니다!</p>
+															<fmt:formatNumber value="${campaign.cTotpoint }" var="totPoint" pattern="#,###"/>
+															<p class="ptpt">${totPoint} &nbsp;&nbsp;<span style="font-size:20px; color:gray;">P</span></p>
 															
 														</div>
 													
 													</div>
-													<div class="eb">
-														<div  class="eb2">
-															<img style="object-fit:cover; width:100%;" src="/resource/img/upload/${campaign.ciEmblem }">
-														</div>
+													</div>
+													<div class="ezone">
+														<p>획득 가능 엠블럼</p>
+														<div class="eb">
+															<div  class="eb2">
+																<img style="object-fit:cover; width:100%;" src="/resource/img/upload/${campaign.ciEmblem }">
+															</div>
 													
 													</div>
 												</div>

@@ -8,7 +8,7 @@
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Mentor Bootstrap Template - Index</title>
+  <title>Knock!Kncok!</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -28,6 +28,7 @@
   <link href="${cp}/resource/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="${cp}/resource/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
+
   <!-- Main CSS File -->
   <link href="${cp}/resource/css/main.css" rel="stylesheet">
 
@@ -39,13 +40,13 @@
 <body>
 
   <!-- ======= Header ======= -->
-   <%@ include file= "/layout/navbar/nav.jsp" %>
+   <%@ include file= "/layout/navbar/navLoggedin.jsp" %>
 
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex justify-content-center align-items-center">
     <div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
-      <h1>Learning Today,<br>Leading Tomorrow</h1>
-      <h2>We are team of talented designers making websites with Bootstrap</h2>
+      <h1>Knock Environment<br>Knock your life.</h1>
+      <h2>To make our planet greener.</h2>
       <a href="courses.html" class="btn-get-started">Get Started</a>
     </div>
   </section><!-- End Hero -->

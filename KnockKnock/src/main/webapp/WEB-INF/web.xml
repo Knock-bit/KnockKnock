@@ -15,7 +15,8 @@
 			/WEB-INF/applicationContext.xml 파일 찾음 -->
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-
+	
+	
 
 	<!-- 필터정의 : 모든 *.do 요청에 characterEncoding을 UTF-8 설정 -->
 	<filter>
