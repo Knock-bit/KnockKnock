@@ -5,6 +5,12 @@
 /**
 * Desktop Navigation 
 */
+
+#logo{
+  width: 700px;
+  height: 90px;
+}
+
 .navbar {
   padding: 0;
 }
