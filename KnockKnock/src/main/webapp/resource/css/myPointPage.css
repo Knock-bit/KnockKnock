@@ -20,17 +20,20 @@
    		margin : 0 auto;
    		margin-bottom: 10px;
    		text-align:left;
+   		font-weight: 500;
    
    }
    .btnDiv button {
    		background-color:white;
    		border-top-left-radius: 5px;
    		border-top-right-radius: 5px;
-   		border: 2px solid #4d4d4d;
+   		border: 2px solid #d4f7e0;
+   		font-size:13px;
+   		padding:5px;
    }
    .btnDiv button:hover {
-   		background-color:#fb5151;
-   		border:2px solid #fb5151;
+   		background-color:#6c9378;
+   		border:2px solid #6c9378;
    		color:white;
    
    }
@@ -71,18 +74,21 @@
    		padding:20px;
    		color:white;
    		font-style:normal;
-   		font-size:20px;
-   		font-weight :200;
+   		font-size:17px;
+   		font-weight :500;
    		text-align:left;
-   		background-color:#0e4b20;
+   		background-color:#6c9378;
    		margin: 0 auto;
    
+   }
+   .item3 img {
+   		width : 5%;
    }
    .item2 > div {
    		padding : 30px 0 0 20px;
    
    }
-   .item1 img, .item3 img{
+   .item1 img{{
    		width:30%;
    		
    }
@@ -119,7 +125,7 @@
 	
 	}
 	.graph p:first-child {
-		width:25%;
+		width:35%;
 	}
 	
 	
