@@ -44,6 +44,7 @@
               <li><a href="myCampaignPage.do">참여중인 캠페인</a></li>
               <li><a href="myCampaignList.do">내 캠페인 목록</a></li>
               <li><a href="myContactList.do">나의 문의내역</a></li>
+              <li><a href="myActive.do">나의 활동</a></li>
               <li><a href="logout.jsp">로그아웃</a></li>
               <!-- 로그아웃 UserController에 들어있음 -->
 

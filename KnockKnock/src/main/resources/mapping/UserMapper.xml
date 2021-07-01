@@ -126,5 +126,11 @@ U_ACTIVE, U_GENDER, U_ADDRESS, U_JOINDATE)
 	
 	</select>
 	
+	<!-- 나의 활동 -->
+	<select id="myActive" parameterType="UserVO" resultType="boardVO">
+		SELECT * FROM BOARD WHERE U_IDX = #{uIdx}
+	
+	</select>
+	
 	
 </mapper>
