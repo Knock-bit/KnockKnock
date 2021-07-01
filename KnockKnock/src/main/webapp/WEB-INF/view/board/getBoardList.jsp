@@ -12,7 +12,8 @@
 </style>
 <script>
 	function insert_board(frm){
-		frm.action="insertBoard.do";
+		frm.action = "insertBoard.do"
+		frm.setAttribute('method', 'get');
 		frm.submit();
 	}
 </script>
@@ -74,6 +75,7 @@
 			</td>
 		</tr>
 	</table>
+	
 	<div>
 		<p><input type="button" value="게시글 등록" onclick="insert_board(this.form)"></p>
 	</div>	
