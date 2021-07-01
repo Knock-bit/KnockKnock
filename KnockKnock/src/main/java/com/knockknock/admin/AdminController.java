@@ -119,6 +119,7 @@ public class AdminController {
 		System.out.println(request.getParameter("idx"));
 		System.out.println(request.getParameter("editordata"));
 
+		
 		return null;
 	}
 	
