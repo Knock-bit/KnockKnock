@@ -79,4 +79,16 @@ public class AdminServiceImpl implements AdminService{
 		return adminDAO.deleteKeyword(content);
 	}
 
+	@Override
+	public int insertSummer(AdminSummerVO vo) {
+		return adminDAO.insertSummber(vo);
+	}
+
+	@Override
+	public AdminSummerVO selectSummer() {
+		return adminDAO.selectSummer();
+	}
+
+
+
 }

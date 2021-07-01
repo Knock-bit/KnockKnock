@@ -32,10 +32,7 @@
   <link href="${cp}/resource/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
  
 	
-
-
-
-
+ 
 
 </head>
 

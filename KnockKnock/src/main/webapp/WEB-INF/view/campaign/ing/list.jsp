@@ -33,7 +33,7 @@
   <!-- Main CSS File -->
   <link href="${cp}/resource/css/main.css" rel="stylesheet">
    <link href="${cp}/resource/css/nav.css" rel="stylesheet">
-   <link href="${cp}/resource/css/campaign.css" rel="stylesheet">
+   <link href="${cp}/resource/css/campaign/campaign.css" rel="stylesheet">
 
   
 </head>
@@ -59,22 +59,24 @@
   <main id="main" data-aos="fade-in">
 
     <!-- ======= Breadcrumbs ======= -->
-    <div class="breadcrumbs">
+    
+    <div class="container">
+    <div class="campaigncrumbs">
       <div class="container">
-        <h2>Courses</h2>
-        <p>Est dolorum ut non facere possimus quibusdam eligendi voluptatem. Quia id aut similique quia voluptas sit quaerat debitis. Rerum omnis ipsam aperiam consequatur laboriosam nemo harum praesentium. </p>
-      </div>
+        <!-- <h2>Knock, Campaign</h2>
+        <p>진행중인 캠페인 리스트 </p> -->
+      </div></div>
     </div><!-- End Breadcrumbs -->
-
-    <!-- ======= Courses Section ======= -->
-    <section id="campaigns" class="campaigns">
+    <!-- ======= Campaign Section ======= -->
+    <article id="campaigns" class="campaigns">
       <div class="container" data-aos="fade-up">
-
+		  <%@ include file= "/layout/navbar/campaign/navCampaign.jsp" %> 
         <div class="row" data-aos="zoom-in" data-aos-delay="100">
 		<c:if test="${!empty list  }">
         <c:forEach var="campaign" items="${list }">
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch" >
-            <div class="campaign-item" style="height:500px">
+            <div class="campaign-item campaign-wrapper" >
+            <div class="wrapper-item">
               <img src="${campaign.ciFile }" class="img-fluid" alt="...">
               <div class="campaign-content">
                 <div class="d-flex justify-content-between align-items-center mb-3">
@@ -82,16 +84,15 @@
                 </div>
 
                 <h3><a href="${cp }/campaign/ing/detail.do?ciIdx=${campaign.ciIdx }">${campaign.ciTitle } </a></h3>
-                <p>Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
+                <p>${campaign.cGoal }</p>
                 <div class="trainer d-flex justify-content-between align-items-center">
                   <div class="trainer-profile d-flex align-items-center">
                     <img src="assets/img/trainers/trainer-1.jpg" class="img-fluid" alt="">
-                    <span>Antonio</span>
+                    <span>suggested by  ${campaign.hostNickname } </span>
                   </div>
                   <div class="trainer-rank d-flex align-items-center">
-                    <i class="bx bx-user"></i>&nbsp;50
-                    &nbsp;&nbsp;
-                    <i class="bx bx-heart"></i>&nbsp;65
+                    <i class="bx bx-user"></i>&nbsp;${campaign.userCount }명 참가중
+                    </div>
                   </div>
                 </div>
               </div>
@@ -104,7 +105,7 @@
         </div>
 
       </div>
-    </section><!-- End Courses Section -->
+    </article><!-- End Courses Section -->
 
   </main><!-- End #main -->
 <!-- ======= Footer ======= -->

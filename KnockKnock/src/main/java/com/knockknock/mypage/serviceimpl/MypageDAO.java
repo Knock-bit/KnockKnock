@@ -27,13 +27,20 @@ public class MypageDAO {
 		
 		return mybatis.update("UserVO.updateMyInfo", vo);
 	}
-	// 이메일 목록 가져오기
-	public List<String> selectAllEmail(){
-	
-		List<String> list = mybatis.selectList("UserVO.getEamilList");
-		System.out.println("list : " + list);
-		return list;
-	}
+	// 이메일 중복검사
+	public int emailCheck(String email) {
+			System.out.println("받아오는 값 : " + email);
+			String uEmail = mybatis.selectOne("UserVO.emailCheck", email);
+			System.out.println("uEmail : " + uEmail);
+			int result;
+			if(uEmail==null) {
+				result=1;  //이메일 사용가능
+			}else {
+				result=0; //이메일 사용불가(중복)
+			}
+			
+			return result;
+		}
 	
 	
 	// 비밀번호 수정
@@ -83,5 +90,6 @@ public class MypageDAO {
 		
 		return mybatis.selectOne("UserVO.myQuestionPage", map);
 	}
+	
 
 }

@@ -61,7 +61,7 @@ public class ProposalController {
 		
 		int result = proposalService.insertProposal(proposal);
 		System.out.println(result + "건 제안서 제출. ");
-		return "main/main";
+		return "campaign/proposal/pResult";
 	}
 
 }

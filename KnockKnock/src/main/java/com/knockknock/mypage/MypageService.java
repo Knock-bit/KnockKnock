@@ -14,8 +14,8 @@ public interface MypageService {
 	UserVO selectOneUser(int uIdx);
 	// 유저 정보 수정(업데이트)
 	int updateMyInfo(UserVO vo);
-	// 이메일 목록 가져오기
-	List<String> selectAllEmail();
+	// 이메일 체크
+	int emailCheck(String email);
 	// 비밀번호 수정
 	int updateMyPwd(UserVO vo);
 	// 유저의 엠블럼 목록 가져오기
@@ -32,5 +32,6 @@ public interface MypageService {
 	List<ContactVO> myContactList(Map<String, Integer> map);
 	// 문의내역 상세보기
 	ContactVO myQuestion(Map<String, Integer> map);
+	
 
 }

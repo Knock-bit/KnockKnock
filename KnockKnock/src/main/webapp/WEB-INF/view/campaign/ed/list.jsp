@@ -30,17 +30,18 @@
 
   <!-- Import BootStrap -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-  
-
   <!-- Main CSS File -->
   <link href="${cp}/resource/css/main.css" rel="stylesheet">
-  <link href="${cp}/resource/css/nav.css" rel="stylesheet">
-  <link href="${cp}/resource/css/campaign/funding.css" rel="stylesheet">
-  <link href="${cp}/resource/css/campaign/campaign.css" rel="stylesheet">
+   <link href="${cp}/resource/css/nav.css" rel="stylesheet">
+   <link href="${cp}/resource/css/campaign/campaign.css" rel="stylesheet">
+
+  
 </head>
 <body>
 
 
+
+  
 
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top">
@@ -58,44 +59,38 @@
   <main id="main" data-aos="fade-in">
 
     <!-- ======= Breadcrumbs ======= -->
-    
-    <div class="container">
-    <div class="campaigncrumbs">
+    <div class="breadcrumbs">
       <div class="container">
-      <br>
-      <br>
-      <br>
-         <h2>funding campaign</h2>
-        <p>펀딩중인 캠페인 리스트</p>
-      </div></div>
+        <h2>Knocked Campaign</h2>
+        <p>종료된 캠페인 리스트 </p>
+      </div>
     </div><!-- End Breadcrumbs -->
 
     <!-- ======= Campaign Section ======= -->
     <section id="campaigns" class="campaigns">
       <div class="container" data-aos="fade-up">
-       <%@ include file= "/layout/navbar/campaign/navCampaign.jsp" %> 
 
         <div class="row" data-aos="zoom-in" data-aos-delay="100">
-		<c:if test="${!empty fundingList  }">
-        <c:forEach var="funding" items="${fundingList }">
+		<c:if test="${!empty list  }">
+        <c:forEach var="campaign" items="${list }">
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch" >
             <div class="campaign-item campaign-wrapper" >
             <div class="wrapper-item">
-              <img src="${funding.cfFile }" class="img-fluid" alt="...">
+              <img src="${campaign.ciFile }" class="img-fluid" alt="...">
               <div class="campaign-content">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                  <h4>${funding.category}</h4>
+                  <h4>${campaign.category}</h4>
                 </div>
 
-                <h3><a href="${cp }/campaign/funding/detail.do?cfIdx=${funding.cfIdx }">${funding.cfTitle } </a></h3>
-                <p>${funding.cGoal }</p>
+                <h3><a href="${cp }/campaign/ing/detail.do?ciIdx=${campaign.ciIdx }">${campaign.ciTitle } </a></h3>
+                <p>${campaign.cGoal }</p>
                 <div class="trainer d-flex justify-content-between align-items-center">
                   <div class="trainer-profile d-flex align-items-center">
                     <img src="assets/img/trainers/trainer-1.jpg" class="img-fluid" alt="">
-                    <span>suggested by  ${funding.hostNickname } </span>
+                    <span>suggested by  ${campaign.hostNickname } </span>
                   </div>
                   <div class="trainer-rank d-flex align-items-center">
-                    <i class="bx bx-user"></i>&nbsp;${funding.userCount }명 참가중
+                    <i class="bx bx-user"></i>&nbsp;${campaign.userCount }명 참가
                     </div>
                   </div>
                 </div>
