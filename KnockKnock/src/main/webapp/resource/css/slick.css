@@ -18,7 +18,7 @@
     .slide_btn_box > .slide_btn_prev { left: -100px; }
     .slide_btn_box > .slide_btn_next { right: -100px; }
     .slide_btn_box > .slide_btn_prev:hover, .slide_btn_box > .slide_btn_next:hover  {
-     		background-color : #0e4b20;
+     		background-color : #8c8c8c;
      		color:white;
      		
      }

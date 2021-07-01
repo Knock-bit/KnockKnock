@@ -63,46 +63,45 @@
 			contentHeight : 'auto',
 
 			events : function(info, successCallback, failureCallback) {
-				var uIdx = $(".uidx").val();
-				
+				$.ajax({
+					url : "myCal.do",
+					type : "get",
+					dataType : 'json',
+					success : function(result) {
+						var list = result;
+						console.log(list);
+
+						
+
+						var calendarEl = document.getElementById('calendar');
+
+						var events = list.map(function(item) {
+							return {
+								title : item.bSubject,
+								start : item.bRegdate + "T"
+							}
+
+						});
+
+						var calendar = new FullCalendar.Calendar(calendarEl, {
+							events : events,
+							eventTimeFormat : {
+								hour : '2-digit',
+								minute : '2-digit',
+								hour12 : false
+							}
+						});
+						calendar.render();
+						
+					}, 
+					
+				}); 
 				
 			}
 		});
 
 	});
-	$.ajax({
-		url : "myCal.do",
-		type : "get",
-		dataType : 'json',
-		success : function(result) {
-			var list = result;
-			console.log(list);
-
-			
-
-			var calendarEl = document.getElementById('calendar');
-
-			var events = list.map(function(item) {
-				return {
-					title : item.bSubject,
-					start : item.bRegdate + "T"
-				}
-
-			});
-
-			var calendar = new FullCalendar.Calendar(calendarEl, {
-				events : events,
-				eventTimeFormat : {
-					hour : '2-digit',
-					minute : '2-digit',
-					hour12 : false
-				}
-			});
-			calendar.render();
-			
-		}, 
-		
-	}); 
+	
 </script>
 <style>
 .main-content {
