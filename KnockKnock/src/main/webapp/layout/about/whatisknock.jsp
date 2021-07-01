@@ -19,9 +19,9 @@
 <link rel="stylesheet" href="${cp }/resource/css/owl.carousel.min.css">
 <link rel="stylesheet" href="${cp }/resource/css/owl.theme.default.min.css">
 
-  <!-- Main CSS File 넣는순간 옹졸녹됨
-     <link href="${cp}/resource/css/main.css" rel="stylesheet">-->
-
+  <!-- Main CSS File 넣는순간 옹졸녹됨-->
+  	
+     <link href="${cp}/resource/css/main.css" rel="stylesheet">
 <style></style>
 
 </head>
