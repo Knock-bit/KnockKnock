@@ -68,6 +68,7 @@ public class AdminAjaxController {
 	@ResponseBody
 	public String uploadSummernoteImageFile(@RequestParam("file") MultipartFile multipartFile, HttpServletRequest request )  {
 		JsonObject jsonObject = new JsonObject();
+
         
 		 String fileRoot = "/Users/hanjeongseol/git/Knock/knock/upload/"; // 외부경로로 저장을 희망할때.
 		 

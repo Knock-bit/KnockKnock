@@ -20,4 +20,5 @@ public interface AdminService {
 	public int deleteKeyword(List<String> content);
 	public int insertSummer(AdminSummerVO vo);
 	public AdminSummerVO selectSummer();
+
 }

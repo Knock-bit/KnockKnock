@@ -40,7 +40,7 @@
    <%@ include file= "/layout/navbar/navLoggedin.jsp" %>
   <!-- ======= Header 끝  === -->
 <div class="main-content">
-<p id="ctext">나의 문의</p>
+<p id="ctext">My Question</p>
 	<div class="myQuestion">
 		<div class="qsgrid">
 			<div class="qs1">
@@ -48,7 +48,7 @@
 					<p>제목</p> 
 					<p>${cvo.ctTitle }</p>
 				</div>
-				<p>작성일 : ${cvo.ctWriteDate }</p>
+				<p>${cvo.ctWriteDate }</p>
 			</div>
 			<div class="qs2">
 				${cvo.ctContent }

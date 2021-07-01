@@ -88,4 +88,5 @@ public class AdminDAO {
 	public AdminSummerVO selectSummer() {
 		return mybatis.selectOne("selectSummer");
 	}
+
 }
