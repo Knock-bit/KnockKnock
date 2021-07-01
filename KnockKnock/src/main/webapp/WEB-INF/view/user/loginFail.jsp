@@ -1,5 +1,4 @@
-  
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="cp" value="${pageContext.request.contextPath }" />
@@ -28,30 +27,6 @@
        Kakao.init('32ddf4beafd028ac8b3afe142ef4fe9e');
        Kakao.isInitialized();
    });
-   
-   //로그인
-   function loginfn(frm) {
-	   var id = $("#uId").val();
-	   var pwd = $("#uPwd").val();
-	   
-	   var param = {"id":id, "pwd":pwd}
-	  $.ajax("login.do", {
-		  type: "post",
-		  data: JSON.stringify(param),
-		  dataType:"text",
-		  contentType: "application/json; charset=UTF-8",
-		  success: function(data){
-			  alert("성공");
-		  },
-		  fail: function(){
-			  alert("실패");
-		  }
-
-	  })
-	   
-   }
-   
-   
    //카카오로그인
    function kakaoLogin() {
        window.Kakao.Auth.login({
@@ -106,10 +81,13 @@
 						class="social" onclick="kakaoLogin()">Kakao<i
 						class="fab fa-linkedin-in"></i></a>
 				</div>
-				<input type="text" placeholder="아이디" name="uId" id="uId" value="${user.uId}" }/>
-				<input type="password" placeholder="비밀번호" name="uPwd" id="uPwd"
-					value="${user.uPwd }" /> <a href="#">비밀번호를 잊으셨나요?</a>
-				<input type="button" onclick="loginfn(this)" value="Log In">
+				
+				<input type="text" placeholder="아이디" name="uId" value="${user.uId}" }/>
+				
+				<input type="password" placeholder="비밀번호" name="uPwd"
+					value="${user.uPwd }" /> <a href="#">비밀번호를 잊으셨나요?</a><p>아이디와 비밀번호를 확인해주세요.</p>
+				<button>Log In</button>
+				
 			</form>
 		</div>
 		<div class="overlay-container">

@@ -3,6 +3,7 @@ package com.knockknock.user;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -12,8 +13,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -83,18 +86,19 @@ public class UserController {
 	}
 
 	// 로그인
-	@PostMapping("/user/loginUser.do")
-	public String loginUser(UserVO vo, Model model) {
 
-		UserVO loginUser = userService.selectlogin(vo);
-
-		if (loginUser != null) {
-			model.addAttribute("loginUser", loginUser);
-			return "/main/main";
-		} else {
-			System.out.println(">>로그인 실패한 경우");
-			return "/user/login";
-		}
+	@RequestMapping(value="/user/loginUser.do", method= {RequestMethod.POST})
+	@ResponseBody
+	public String loginUser(@RequestBody UserVO vo) {
+		/*
+		 * System.out.println(param); 
+		 * String id = (String)param.get("id"); 
+		 * String pwd = (String)param.get("pwd"); UserVO vo = new UserVO(); vo.setuId(id);
+		 * vo.setuPwd(pwd);
+		 */
+		
+		System.out.println(vo);
+		return "";
 
 	}
 
