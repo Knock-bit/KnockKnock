@@ -2,13 +2,14 @@ package com.knockknock.user;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -86,19 +87,15 @@ public class UserController {
 	}
 
 	// 로그인
-
-	@RequestMapping(value="/user/loginUser.do", method= {RequestMethod.POST})
+	@RequestMapping(value ="/user/loginUser.do", method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseBody
-	public String loginUser(@RequestBody UserVO vo) {
-		/*
-		 * System.out.println(param); 
-		 * String id = (String)param.get("id"); 
-		 * String pwd = (String)param.get("pwd"); UserVO vo = new UserVO(); vo.setuId(id);
-		 * vo.setuPwd(pwd);
-		 */
+	public UserVO loginUsers(@RequestBody UserVO vo) {
 		
-		System.out.println(vo);
-		return "";
+		UserVO user =  userService.selectlogin(vo);
+		
+		System.out.println(user);
+
+		return user;
 
 	}
 

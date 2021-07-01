@@ -20,6 +20,39 @@
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 
 <script>
+
+	   //로그인
+	   function logindo (){
+		   var id = $("#uId").val();
+		   var pwd = $("#uPwd").val();
+		   console.log(id, pwd);
+		   
+		   let vo = {};
+		   vo.uId = id;
+		   vo.uPwd = pwd;
+		 
+		  $.ajax({
+			  url : "/user/loginUser.do",
+			  type: 'post',
+			  data : JSON.stringify(vo),
+			  dataType : "json",
+			  contentType : "application/json",
+			  success: function(data){
+				  alert("성공");
+				  location.href="/user/signup.do";
+			  },
+			  error: function(data){
+				  alert("실패");
+				  location.href="/user/login.do";
+			  }
+		  });
+	   };
+	  
+
+
+
+
+
    function signup_connect(frm) {
        frm.action = "user/signup.do";
        frm.submit();
@@ -29,27 +62,7 @@
        Kakao.isInitialized();
    });
    
-   //로그인
-   function loginfn(frm) {
-	   var id = $("#uId").val();
-	   var pwd = $("#uPwd").val();
-	   
-	   var param = {"id":id, "pwd":pwd}
-	  $.ajax("login.do", {
-		  type: "post",
-		  data: JSON.stringify(param),
-		  dataType:"text",
-		  contentType: "application/json; charset=UTF-8",
-		  success: function(data){
-			  alert("성공");
-		  },
-		  fail: function(){
-			  alert("실패");
-		  }
 
-	  })
-	   
-   }
    
    
    //카카오로그인
@@ -98,7 +111,7 @@
 	<div class="container" id="container">
 
 		<div class="form-container sign-in-container">
-			<form action="loginUser.do" method="post">
+			<form method="post">
 				<h1>Sign in</h1>
 				<div class="social-container">
 					<span>소셜계정 이용하기</span><br> <a href="#" class="social">Google<i
@@ -109,7 +122,7 @@
 				<input type="text" placeholder="아이디" name="uId" id="uId" value="${user.uId}" }/>
 				<input type="password" placeholder="비밀번호" name="uPwd" id="uPwd"
 					value="${user.uPwd }" /> <a href="#">비밀번호를 잊으셨나요?</a>
-				<input type="button" onclick="loginfn(this)" value="Log In">
+				<input type="button" onclick="logindo()" value="Log In">
 			</form>
 		</div>
 		<div class="overlay-container">
