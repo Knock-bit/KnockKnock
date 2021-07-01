@@ -12,7 +12,7 @@
 </style>
 <script>
 	function insert_board(frm){
-		frm.action = "insertBoard.do"
+		frm.action = "moveInsert.do"
 		frm.setAttribute('method', 'get');
 		frm.submit();
 	}
