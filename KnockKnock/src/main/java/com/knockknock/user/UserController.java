@@ -1,10 +1,6 @@
 package com.knockknock.user;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -84,16 +80,17 @@ public class UserController {
 
 	// 로그인
 	@PostMapping("/user/loginUser.do")
-	public String loginUser(UserVO vo, Model model) {
-
+	public String loginUser(UserVO vo, Model model)	{
+		
 		UserVO loginUser = userService.selectlogin(vo);
-
+		
 		if (loginUser != null) {
 			model.addAttribute("loginUser", loginUser);
 			return "/main/main";
 		} else {
 			System.out.println(">>로그인 실패한 경우");
-			return "/user/login";
+		
+			return "/user/NewFile";
 		}
 
 	}
