@@ -30,17 +30,19 @@ public class BoardController {
 		return "board/getBoardList";	
 	}
 	
-	@PostMapping("/insertBoard.do")
-	public String insertBoardPost(BoardVO vo) /* throws IllegalStateException, IOException */ {
-		// 파일업로드
-//		MultipartFile uploadFile = vo.getUploadFile();
-//		if (!uploadFile.isEmpty()) {
-//			String fileName = uploadFile.getOriginalFilename();
-//			uploadFile.transferTo(new File("C:\\Mystudy\\temp\\" + fileName));
-//		}
-		boardService.insertBoard(vo);
+	@GetMapping("/moveInsert.do")
+	public String moveInsert(BoardVO vo) {
 		
+		return "board/insertBoard";
+	}
+	
+	@PostMapping("/insertBoard.do")
+	public String insertBoard(BoardVO vo) {
+		System.out.println("POST vo : " + vo);
+
+		boardService.insertBoard(vo);
 		return "redirect:/board/getBoardList.do";
+		
 	}
 	
 	@RequestMapping("/getBoard.do")
@@ -59,6 +61,7 @@ public class BoardController {
 	@PostMapping("/updateBoard.do")
 	public String updateBoardPost(BoardVO vo) {
 		System.out.println(">>> 게시글 수정");
+		System.out.println("vo : " + vo);
 		boardService.updateBoard(vo);
 		return "redirect:/board/getBoard.do?bIdx=" + vo.getbIdx();
 	}	
