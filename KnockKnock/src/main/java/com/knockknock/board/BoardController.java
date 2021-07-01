@@ -19,6 +19,9 @@ import org.springframework.web.multipart.MultipartFile;
 @Controller
 @RequestMapping("/board")
 public class BoardController {
+	
+	private String uploadPath = "C:/mystudy/temp";
+	
 	@Autowired
 	private BoardService boardService;
 	
@@ -39,7 +42,7 @@ public class BoardController {
 	@PostMapping("/insertBoard.do")
 	public String insertBoard(BoardVO vo) {
 		System.out.println("POST vo : " + vo);
-
+		
 		boardService.insertBoard(vo);
 		return "redirect:/board/getBoardList.do";
 		
