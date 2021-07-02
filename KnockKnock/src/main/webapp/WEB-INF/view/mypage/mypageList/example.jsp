@@ -43,6 +43,7 @@
 <script src='/resource/img/upload/mypage/ko.js'></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
+
 	document.addEventListener('DOMContentLoaded', function() {
 
 		var calendarEl = document.getElementById('calendar');
@@ -65,44 +66,51 @@
 
 			events : function(info, successCallback, failureCallback) {
 				
+				for(var i = info.length - 1; i>=0; i--){
+					insertCalendar();
+				}
 				
 			}
 		});
 
 	});
-	$.ajax({
-		url : "myCal.do",
-		type : "get",
-		dataType : 'json',
-		success : function(result) {
-			var list = result;
-			console.log(list);
+	function insertCalendar(){
+		$.ajax({
+			url : "myCal.do",
+			type : "get",
+			dataType : 'json',
+			success : function(result) {
+				var list = result;
+				console.log(list);
+				
+				var calendarEl = document.getElementById('calendar');
 
+				var events = list.map(function(item) {
+					return {
+						title : item.bSubject,
+						start : item.bRegdate + "T"
+					}
+
+				});
+
+				var calendar = new FullCalendar.Calendar(calendarEl, {
+					events : events,
+					eventTimeFormat : {
+						hour : '2-digit',
+						minute : '2-digit',
+						hour12 : false
+					}
+				});
+				
+				calendar.render();
+				calendar.addEvent({title:'혜영아힘내라!ㅋ',color:'#ff0000',textColor:'#FFFFFF',start:'2021-07-03',end:'2021-07-03'});
+				calendar.addEvent({title:'민형이생일',color:'blue',textColor:'#FFFFFF',start:'2021-07-04',end:'2021-07-04'});
+			}, 
 			
-
-			var calendarEl = document.getElementById('calendar');
-
-			var events = list.map(function(item) {
-				return {
-					title : item.bSubject,
-					start : item.bRegdate + "T"
-				}
-
-			});
-
-			var calendar = new FullCalendar.Calendar(calendarEl, {
-				events : events,
-				eventTimeFormat : {
-					hour : '2-digit',
-					minute : '2-digit',
-					hour12 : false
-				}
-			});
-			calendar.render();
-			
-		}, 
-		
-	}); 
+		});  
+	}
+	
+	
 </script>
 <style>
 .main-content {
