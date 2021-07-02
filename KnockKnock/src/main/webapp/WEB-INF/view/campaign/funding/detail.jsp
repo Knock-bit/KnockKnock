@@ -139,7 +139,7 @@ vertical-align:middle;}
 
             <div class="campaign-info align-items-center">
               <div class="btn-wrap funding">
-              <button onclick="funding()" class = "btn-funding"> 펀딩하기 </button>
+              <button onclick="location.href='${cp}/campaign/funding/fund.do'" class = "btn-funding"> 펀딩하기 </button>
               </div>
             </div>
 
