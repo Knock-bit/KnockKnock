@@ -28,26 +28,30 @@
   <link href="${cp}/resource/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="${cp}/resource/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="${cp}/resource/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-<<<<<<< HEAD
+
 
   <!-- Main CSS File -->
   <link href="${cp}/resource/css/main.css" rel="stylesheet">
 
   <!-- Import BootStrap -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-  
-=======
- 
-	
- 
 
->>>>>>> branch '12/feat-aboutKnock' of https://github.com/Knock-bit/KnockKnock.git
 </head>
 
 <body>
 
   <!-- ======= Header ======= -->
-   <%@ include file= "/layout/navbar/nav.jsp" %>
+       <c:choose>
+  	<c:when test="${users.uType eq 1 }">
+   		<jsp:include page='/layout/navbar/navLoggedin.jsp' flush='false'/>   	
+  	</c:when>
+  	<c:when test="${users.uType eq 0 }">
+   		<jsp:include page='/layout/navbar/navAdmin.jsp' flush='false'/>   	  	
+  	</c:when>
+  	<c:otherwise>
+	   <jsp:include page='/layout/navbar/nav.jsp' flush='false'/>
+  	</c:otherwise>
+  	</c:choose>
     <main id="main">
         <!-- ======= Breadcrumbs ======= -->
         <div class="breadcrumbs" data-aos="fade-in">

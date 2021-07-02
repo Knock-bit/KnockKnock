@@ -32,7 +32,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
   <!-- Main CSS File -->
   <link href="${cp}/resource/css/main.css" rel="stylesheet">
-   <link href="${cp}/resource/css/nav.css" rel="stylesheet">
+   <link href="${cp}/resource/css/nav1.css" rel="stylesheet">
    <link href="${cp}/resource/css/campaign/campaign.css" rel="stylesheet">
 
   
@@ -47,9 +47,17 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-     
-     
-        <%@ include file= "/layout/navbar/nav.jsp" %><!-- .navbar -->
+          <c:choose>
+  	<c:when test="${users.uType eq 1 }">
+   		<jsp:include page='/layout/navbar/navLoggedin.jsp' flush='false'/>   	
+  	</c:when>
+  	<c:when test="${users.uType eq 0 }">
+   		<jsp:include page='/layout/navbar/navAdmin.jsp' flush='false'/>   	  	
+  	</c:when>
+  	<c:otherwise>
+	   <jsp:include page='/layout/navbar/nav.jsp' flush='false'/>
+  	</c:otherwise>
+  	</c:choose>
 
       <a href="campaigns.html" class="get-started-btn">Get Started</a>
 

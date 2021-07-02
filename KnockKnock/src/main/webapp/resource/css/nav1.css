@@ -154,8 +154,8 @@ h1, h2, h3, h4, h5, h6 {
 * Get Startet Button 
 */
 .get-started-btn {
-  margin-left: 50px;
-  margin-right: 10px;
+/*   margin-left: 50px;
+  margin-right: 10px; */
 
   background: #0e4b20;
   color: #fff;
@@ -166,19 +166,8 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 14px;
   display: inline-block;
 } 
-.get-started-btn2 {
-  margin-left: 0px;
-  margin-right: 10px;
 
-  background: #0e4b20;
-  color: #fff;
-  border-radius: 50px;
-  padding: 8px 25px;
-  white-space: nowrap;
-  transition: 0.3s;
-  font-size: 14px;
-  display: inline-block;
-} 
+
 .get-started-btn:hover {
   background: #0e4b20b9;
   color: #fff;
