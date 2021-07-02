@@ -9,7 +9,7 @@
            <ul class="collapse navbar-collapse justify-content-start" >
             
             <li class="nav-item">
-              <a href="#" >
+              <a href="#" id="getContent" >
                 캠페인
               </a>
             </li>

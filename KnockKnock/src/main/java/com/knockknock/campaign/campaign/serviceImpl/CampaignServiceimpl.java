@@ -45,4 +45,14 @@ public class CampaignServiceimpl implements CampaignService {
 		return campaignDAO.selectAllEdCampaign();
 	}
 
+	@Override
+	public List<CampaignVO> selectCampaignListLatest() {
+		return campaignDAO.selectCampaignListLatest();
+	}
+
+	@Override
+	public List<CampaignVO> selectCampaignListUserCount() {
+		return campaignDAO.selectCampaignListUserCount();
+	}
+
 }
