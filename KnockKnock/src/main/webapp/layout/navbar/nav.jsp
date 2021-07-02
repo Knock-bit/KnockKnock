@@ -9,7 +9,7 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo me-auto"><a href="${cp }/layout/main.jsp"><img src="${cp }/resource/img/logo.png" id=:logo></a></h1>
+      <h1 class="logo me-auto"><a href="${cp }/main.do"><img src="${cp }/resource/img/logo.png" id=:logo></a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -18,8 +18,8 @@
           <li><a class="active" href="index.html">Home</a></li>
           <li class="dropdown"><a href="#"><span>About</span> <i class="bi bi-chevron-down"></i></a>
           <ul>
-              <li><a href="#">녹녹은</a></li>
-              <li><a href="#">녹녹 사용법</a></li>
+              <li><a href="${cp }/layout/about/whatisknock.jsp">녹녹은</a></li>
+              <li><a href="${cp }/layout/about/manual.jsp">녹녹 사용법</a></li>
             </ul>
           </li>
           <li class="dropdown"><a href="#"><span>Campaign</span> <i class="bi bi-chevron-down"></i></a>
@@ -33,14 +33,14 @@
 
 
           <li><a href="courses.html">Shop</a></li>
-          <li><a href="trainers.html">Contact</a></li>
+          <li><a href="${cp }/contact/contact.do">Contact</a></li>
 
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
-      <a href="courses.html" class="get-started-btn">로그인</a>
-      <a href="courses.html" class="get-started-btn2">회원가입</a>
+      <a href="${cp }/user/login.do" class="get-started-btn">로그인</a>
+      <a href="${cp }/user/signup.do" class="get-started-btn">회원가입</a>
 
     </div>
   </header><!-- End Header -->

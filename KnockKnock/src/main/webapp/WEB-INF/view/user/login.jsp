@@ -39,7 +39,7 @@
 			  contentType : "application/json",
 			  success: function(data){
 				  alert("성공");
-				  location.href="/user/signup.do";
+				  location.href="/main.do";
 			  },
 			  error: function(data){
 				  alert("실패");

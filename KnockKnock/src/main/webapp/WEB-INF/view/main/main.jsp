@@ -39,7 +39,17 @@
 <body>
 
   <!-- ======= Header ======= -->
-   <%@ include file= "/layout/navbar/nav.jsp" %>
+     <c:choose>
+  	<c:when test="${user.uType eq 1 }">
+   		<jsp:include page='/layout/navbar/navLoggedin.jsp' flush='false'/>   	
+  	</c:when>
+  	<c:when test="${user.uType eq 0 }">
+   		<jsp:include page='/layout/navbar/navAdmin.jsp' flush='false'/>   	  	
+  	</c:when>
+  	<c:otherwise>
+	   <jsp:include page='/layout/navbar/nav.jsp' flush='false'/>
+  	</c:otherwise>
+  	</c:choose>
 
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex justify-content-center align-items-center">
@@ -61,7 +71,7 @@
             <img src="${cp}/resource/img/about.jpg" class="img-fluid" alt="">
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
-            <h3>What is knock? </h3>
+            <h3>What is knock? ${user } </h3>
             <p class="fst-italic">
               회사소개란입니다.회사소개란입니다. 
             </p>
