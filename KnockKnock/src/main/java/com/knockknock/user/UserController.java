@@ -116,6 +116,28 @@ public class UserController {
 
 		return mv;
 	}
+	
+	//구글
+	@RequestMapping(value="/googlelogin.do", method= {RequestMethod.POST, RequestMethod.GET})
+	@ResponseBody
+	public String googlelogin(String uEmail, HttpServletRequest request) {
+		UserVO vo = new UserVO();
+		System.out.println("구글로그인 시작"+uEmail);
+		
+		vo.setuEmail(uEmail);
+		
+		UserVO login = userService.googlelogin(vo);
+		
+		if(login==null) {
+			System.out.println("없는아이디. 로그인 실패");
+			return "noid";
+			
+		}else {
+			System.out.println("아이디 있음 로그인 성공");
+			return "yes";
+		}
+				
+	}
 
 	// 카카오
 	@RequestMapping(value = "/user/kakaologin.do", method = {RequestMethod.POST, RequestMethod.GET})

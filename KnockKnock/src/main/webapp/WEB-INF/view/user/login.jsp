@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -18,6 +17,15 @@
 <link href="${cp}/resource/css/login.css" rel="stylesheet">
 <!-- 카카오연결 -->
 <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+<!-- 구글연결 -->
+<meta name="google-signin-scope" content="profile email">
+<meta name="google-signin-client_id"
+    content="1001122059226-8ighhu12ecf40egqsi5kr6btkhakt8ss.apps.googleusercontent.com">
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
 <script>
 	   //로그인
 	   function logindo (){
@@ -49,10 +57,27 @@
        frm.action = "user/signup.do";
        frm.submit();
    }
-   $(document).ready(function () {
-       Kakao.init('32ddf4beafd028ac8b3afe142ef4fe9e');
-       Kakao.isInitialized();
-   }); 
+   
+    
+   
+	function attachSignin(element){
+		alert("attachSignin실행");
+		auth2.attachClickHandler(element, {},
+			function(googleUser){
+			var profile = googleUser.getBasicProfile();
+			var id_token = googleUser.getAuthResponse().id_token;
+				console.log(id_token);
+			}		
+		)		
+	}
+	
+	
+	
+	$(document).ready(function () {
+	       Kakao.init('32ddf4beafd028ac8b3afe142ef4fe9e');
+	       Kakao.isInitialized();
+	   }); 
+   
    //카카오로그인 
    function kakaoLogin() {
        window.Kakao.Auth.login({
@@ -103,8 +128,11 @@
 			<form method="post">
 				<h1>Sign in</h1>
 				<div class="social-container">
-					<span>소셜계정 이용하기</span><br> <a href="#" class="social">Google<i
-						class="fab fa-google-plus-g"></i></a> <a href="#" id="kakao"
+					<span>소셜계정 이용하기</span><br> 
+					<a href="/NewFile.jsp" id="Google"
+						class="social" >Google<i
+						class="fab fa-linkedin-in"></i></a>
+						<a href="#" id="kakao"
 						class="social" onclick="kakaoLogin()">Kakao<i
 						class="fab fa-linkedin-in"></i></a>
 				</div>

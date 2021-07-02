@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- 참고파일 나중에 삭제 -->
 <mapper namespace="UserVO">
-	<!-- 카카오로그인 -->
+	<!-- 카카오/구글 로그인 -->
 	<select id="kakaologin" parameterType="UserVO" resultType="UserVO">
 		SELECT *FROM USERS WHERE U_EMAIL=#{uEmail}
 	</select>
