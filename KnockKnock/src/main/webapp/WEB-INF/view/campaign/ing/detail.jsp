@@ -34,6 +34,7 @@
   <!-- Main CSS File -->
   <link href="${cp}/resource/css/main.css" rel="stylesheet">
   <link href="${cp}/resource/css/campaign/campaign.css" rel="stylesheet">
+  <link href="${cp}/resource/css/nav1.css" rel="stylesheet">
 
   <!-- Import BootStrap -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
