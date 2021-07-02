@@ -175,10 +175,42 @@
 				<div class="item3">
 					
 					<p><img src="/resource/img/upload/pp2.png">&nbsp;&nbsp;&nbsp;포인트 적립 / 사용 내역</p>
-
-
-
-
+					
+					<!-- 조회기간 -->
+					<div class="day">
+						<p>조회기간 선택해주세염ㅋ</p>
+					</div>
+					<div class="menu">
+						<p class="m1">이용일자</p>
+						<p class="m2">사용처</p>
+						<p class="m3">사용 포인트</p>
+						<p class="m4">취소 여부</p>
+						<p class="m5">취소 일자</p>
+					</div>
+					<!-- 내역 -->
+					<c:forEach var="plist" items=${포인트 사용내역 }>
+						<div class="usingPointList">
+							<div class="up1"> <!-- 이용일자 -->
+							ㅁ
+							</div>
+							<div class="up2"> <!-- 사용유형 -->
+							ㅁ
+							</div>
+							<div class="up3"> <!-- 사용 포인트 -->
+							ㅁ
+							</div>						
+							<div class="up4"> <!-- 취소여부 -->
+							ㅁ
+							</div>
+							<div class="up5"> <!-- 취소일자 -->
+							ㅁ
+							</div>
+							
+						
+						
+						
+						</div>
+					</c:forEach>
 				</div>
 			</div>
 			<!-- 엠블럼 영역 -->

@@ -265,7 +265,6 @@ public class MypageController {
 		return "/mypage/mypageList/example";
 	}
 	// 내 캘린더 ajax
-	//@GetMapping("myCal.do")
 	@RequestMapping(value ="/myCal.do", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseBody
 	public List<BoardVO> selectEventList(@ModelAttribute("users")UserVO vo ,Model model) {

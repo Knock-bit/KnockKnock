@@ -38,15 +38,14 @@
   <script>
   $(function () {
 	  
-      $(".ctTitles").each(function(){
-    	  
-    	  $(this).click(function() {
-    		  var idx = $(this).rowIndex();
-        	  alert(idx);
-        	  $(".ctContent").eq(idx).slideToggle(1000);
-          });
-    	  
-      });
+	  // tr 클릭시 해당 게시물로 이동
+     $(".oneSection").each(function(idx){
+    	$(this).click(function(e){
+    		var ctIdx = $(".tdctIdx").eq(idx).text();
+    		location.href="myQuestion.do?ctIdx="+ctIdx;
+    		
+    	});
+     });
     	 
      
   });
@@ -63,7 +62,7 @@
 	<div class="list">
 	<div id="content" class="p-4 p-md-5">
              
-            <div class="container">
+            <div class="container1">
            <p style="font-size:20px; text-align:left; border-bottom:1px solid gray; font-style:normal;">나의 문의내역</p>
                 
                   <div class="table-responsive">  
@@ -86,9 +85,10 @@
                          </c:if>
                          <c:if test="${not empty contactList }">
                              <c:forEach var="list" items="${contactList }" varStatus="status">
-                             <tr>
+                             <tr class="oneSection">
+                             	 <td class="tdctIdx" style="display:none;">${list.ctIdx }</td>
                                  <td>${(pvo.total - status.index)-((pvo.nowPage-1) * pvo.cntPerPage) }</td>
-                                 <td class="ctTitles"><a href="/myQuestion.do?ctIdx=${list.ctIdx}">${list.ctTitle }</a></td> 	
+                                 <td class="ctTitles">${list.ctTitle }</td> 	
                                  <td style="font-size:14px;">${list.ctWriteDate}</td>
                                   <c:if test="${list.ctResp eq 0}">
                                  	<td class="ctresp"> - </td>
