@@ -14,6 +14,17 @@ public class FundingController {
 	
 	@GetMapping("campaign/funding/list.do")
 	public String list(Model model) {
+		int result = fundingService.updateExpiredFunding();
+		
+		System.out.println(result + "개의 펀딩 종료처리 ");
+		if(result > 0) {
+			// 펀딩 종료 = >
+			// 캠페인으로 바로 등록 ? 
+			// 
+			
+			
+		}
+		
 		List<FundingVO> fundingList = fundingService.selectAllFunding();
 		System.out.println("fundingList 출력: " + fundingList);
 		model.addAttribute("fundingList", fundingList);

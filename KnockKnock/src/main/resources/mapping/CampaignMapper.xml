@@ -67,6 +67,7 @@
 		UPDATE CAMPAIGN
 		   SET CI_STATUS = 2
 		  WHERE SYSDATE > CI_ENDDATE
+		   AND CI_STATUS = 1
 	</update>
 	
 	<!-- 종료된 캠페인 불러오기 -->
@@ -115,8 +116,9 @@
 	<!-- 기간이 만료됐는지 확인하여 만료 시 펀딩 상태를 0으로 바꾼다 -->
 	<update id="updateExpiredFunding">
 		UPDATE FUNDING
-		   SET CF_STATUS = 0
-		  WHERE SYSDATE > END_DATE
+		   SET CF_STATUS = 2
+		 WHERE SYSDATE > CF_ENDDATE
+		   AND CF_STATUS = 1
 	</update>
 	
 	

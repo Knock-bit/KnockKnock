@@ -29,8 +29,8 @@ public class FundingServiceImpl implements FundingService{
 	}
 
 	@Override
-	public void updateExpiredFunding() {
-		// 작성할것!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	public int updateExpiredFunding() {
+		return fundingDAO.updateExpiredFunding();
 	}
 
 	@Override
