@@ -44,12 +44,14 @@
    		display:grid;
   		grid-template-columns: repeat(1, 100%);
   		grid-template-rows: 6fr 1fr;
+  		padding:20px;
    }
    /*캠페인 이미지*/
    .itemImg{
    		overflow: hidden;
       	align-items: center;
       	justify-content: center;
+
       	
       	
    

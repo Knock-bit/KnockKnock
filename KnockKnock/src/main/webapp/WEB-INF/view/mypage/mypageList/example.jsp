@@ -1,10 +1,10 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="cp" value="${pageContext.request.contextPath }" />
+
 <!DOCTYPE html>
-<html>
+<html lang='ko'>
 <head>
 <meta charset="UTF-8">
 <title>Mypage</title>
@@ -43,16 +43,19 @@
 <script src='/resource/img/upload/mypage/ko.js'></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
+$(function(){
+	
+});
 
 	document.addEventListener('DOMContentLoaded', function() {
-
+			
 		var calendarEl = document.getElementById('calendar');
 		var calendar = new FullCalendar.Calendar(calendarEl, {
-			plugins : [ 'datGrid', 'timeGrid', 'list', 'interaction' ],
+			plugins : [ 'dayGrid' ],
 			header : {
 				left : 'prev,next today',
 				center : 'title',
-				right : 'dayGridMonth, timeGridWeek, timeGridDay, listWeek'
+				right : 'dayGridMonth, timeGridWeek'
 			},
 			defaultView : 'dayGridMonth',
 			locale : 'ko',
@@ -60,26 +63,43 @@
 			editable : true,
 			allDaySlot : false,
 			eventLimit : true, // allow "more" link when too many events
-			minTime : '10:00:00',
-			maxTime : '24:00:00',
 			contentHeight : 'auto',
-
-			events : function(info, successCallback, failureCallback) {
-				
-				for(var i = info.length - 1; i>=0; i--){
-					insertCalendar();
-				}
+			events : function(callback){
 				
 			}
+			
+			
 		});
+		calendar.render();
+		calendar.addEvent({title:'줍깅',color:'#ff0000',textColor:'#FFFFFF',start:'2021-07-03',end:'2021-07-03'});
 
 	});
+	
+	
+	/* $.ajax({
+		url: 'myCal.do',
+		type: 'get',
+		dataType: 'json',
+		data: {
+			start : moment(info.bRegdate).format('YYYY-MM-DD'),
+			title : moment(info.bSubject).format('YYYY-MM-DD')
+		},
+		success: function(data) {
+			successCallback(data);
+		 }
+	});*/
+	/*
+	events : function(info, successCallback, failureCallback) {
+					
+				}
+
 	function insertCalendar(){
 		$.ajax({
 			url : "myCal.do",
 			type : "get",
 			dataType : 'json',
 			success : function(result) {
+				alert("성공");
 				var list = result;
 				console.log(list);
 				
@@ -103,12 +123,13 @@
 				});
 				
 				calendar.render();
-				calendar.addEvent({title:'혜영아힘내라!ㅋ',color:'#ff0000',textColor:'#FFFFFF',start:'2021-07-03',end:'2021-07-03'});
-				calendar.addEvent({title:'민형이생일',color:'blue',textColor:'#FFFFFF',start:'2021-07-04',end:'2021-07-04'});
+				calendar.addEvent({title:'줍깅',color:'#ff0000',textColor:'#FFFFFF',start:'2021-07-03',end:'2021-07-03'});
+				calendar.addEvent({title:'당근마켓거래',color:'blue',textColor:'#FFFFFF',start:'2021-07-04',end:'2021-07-04'});
+				calendar.addEvent({title:'당근마켓거래',color:'blue',textColor:'#FFFFFF',start:'2021-07-04',end:'2021-07-04'});
 			}, 
 			
 		});  
-	}
+	} */
 	
 	
 </script>

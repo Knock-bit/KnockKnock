@@ -109,7 +109,7 @@ function numberWithCommas(x) {
 		<p id="ctext">My Campaign</p>
 		<div class="campaingView">
 			<div class="clist">
-				<div id="container">
+				<div id="con">
 					<div class="slide_wrap">
 					<div class="slide_box">
 					<div class="slide_list clearfix">

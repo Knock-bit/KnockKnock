@@ -33,7 +33,7 @@
 	font-style:normal;
 
 }
-.container {
+.container1 {
 	width:80%;
 	
 }
@@ -62,6 +62,11 @@
 
 .ctContent {
 	display:none;
+}
+/*게시글 하나 선택했을 때?*/
+.oneSection:hover {
+	background-color:#D9EEE1;
+	
 }
 
    /* 페이징 부분 스타일 */
