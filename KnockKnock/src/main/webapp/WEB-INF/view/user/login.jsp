@@ -1,4 +1,4 @@
-  
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -17,10 +17,8 @@
 <!-- CSS연결 -->
 <link href="${cp}/resource/css/login.css" rel="stylesheet">
 <!-- 카카오연결 -->
-<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-
+<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script>
-
 	   //로그인
 	   function logindo (){
 		   var id = $("#uId").val();
@@ -38,21 +36,16 @@
 			  dataType : "json",
 			  contentType : "application/json",
 			  success: function(data){
-				  alert("성공");
+ 
 				  location.href="/main.do";
 			  },
 			  error: function(data){
-				  alert("실패");
+				  alert("아이디와 비밀번호를 확인해주세요.");
 				  location.href="/user/login.do";
 			  }
 		  });
 	   };
-	  
-
-
-
-
-
+	   
    function signup_connect(frm) {
        frm.action = "user/signup.do";
        frm.submit();
@@ -60,12 +53,8 @@
    $(document).ready(function () {
        Kakao.init('32ddf4beafd028ac8b3afe142ef4fe9e');
        Kakao.isInitialized();
-   });
-   
-
-   
-   
-   //카카오로그인
+   }); 
+   //카카오로그인 
    function kakaoLogin() {
        window.Kakao.Auth.login({
            scope: 'account_email',
@@ -76,8 +65,9 @@
                    success: res => {
                        const kakao_account = res.kakao_account;
                        console.log(kakao_account);
-                       let name = kakao_account.profile.nickname;
-                       let email = kakao_account.email;
+//                     let name = kakao_account.profile.nickname;
+						var name = res.properties && res.properties.nickname;
+						let email = kakao_account.email;
                        $.ajax({
                            type: "post",
                            url: "/user/kakaologin.do",
@@ -102,7 +92,7 @@
                });
            }
        })
-   }
+   } 
 </script>
 </head>
 
@@ -119,16 +109,19 @@
 						class="social" onclick="kakaoLogin()">Kakao<i
 						class="fab fa-linkedin-in"></i></a>
 				</div>
-				<input type="text" placeholder="아이디" name="uId" id="uId" value="${user.uId}" }/>
-				<input type="password" placeholder="비밀번호" name="uPwd" id="uPwd"
-					value="${user.uPwd }" /> <a href="#">비밀번호를 잊으셨나요?</a>
-				<input type="button" onclick="logindo()" value="Log In">
+				<input type="text" placeholder="아이디" name="uId" id="uId"
+					value="${user.uId}" }/> 
+				<input type="password" placeholder="비밀번호"
+					name="uPwd" id="uPwd" value="${user.uPwd }" /> <a href="#">비밀번호를
+					잊으셨나요?</a> <input type="button" style="width: 100px; color:white; background-color: #0a3a18; border-radius: 35px;
+					" onclick="logindo()" value="Log In">
 			</form>
 		</div>
 		<div class="overlay-container">
 			<div class="overlay">
 				<div class="overlay-panel overlay-right">
-					<h1>Knock!Knock!</h1>
+					<h1>Knock!綠!
+</h1>
 					<p>
 						아직 회원이 아니신가요?<br>지금 바로 가입하세요.
 					</p>
@@ -139,3 +132,5 @@
 		</div>
 	</div>
 </body>
+
+</html>
