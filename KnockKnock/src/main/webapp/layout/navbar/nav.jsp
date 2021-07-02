@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="cp" value ="${pageContext.request.contextPath }"/>
   <!-- ======= Header ======= -->
-     <link href="${cp}/resource/css/nav.css" rel="stylesheet">
   
   <meta charset=utf-8>
   <header id="header" class="fixed-top">
@@ -15,7 +14,7 @@
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="active" href="index.html">Home</a></li>
+          <li><a href="${cp }/run.jsp">Home</a></li>
           <li class="dropdown"><a href="#"><span>About</span> <i class="bi bi-chevron-down"></i></a>
           <ul>
               <li><a href="${cp }/layout/about/whatisknock.jsp">녹녹은</a></li>
