@@ -86,10 +86,10 @@ vertical-align:middle;}
 
   <!-- ======= Header ======= -->
      <c:choose>
-  	<c:when test="${user.uType eq 1 }">
+  	<c:when test="${users.uType eq 1 }">
    		<jsp:include page='/layout/navbar/navLoggedin.jsp' flush='false'/>   	
   	</c:when>
-  	<c:when test="${user.uType eq 0 }">
+  	<c:when test="${users.uType eq 0 }">
    		<jsp:include page='/layout/navbar/navAdmin.jsp' flush='false'/>   	  	
   	</c:when>
   	<c:otherwise>
