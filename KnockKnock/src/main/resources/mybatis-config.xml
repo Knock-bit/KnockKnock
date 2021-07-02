@@ -35,9 +35,9 @@
 			type="com.knockknock.board.CommentsVO" />
 		<!-- 캠페인 -->
 		<typeAlias alias="campaignVO"
-			type="com.knockknock.campaign.ing.CampaignVO" />
+			type="com.knockknock.campaign.campaign.CampaignVO" />
 		<typeAlias alias="campaignUserVO"
-			type="com.knockknock.campaign.ing.CampaignUserVO" />
+			type="com.knockknock.campaign.campaign.CampaignUserVO" />
 		<typeAlias alias="fundingVO" 
 			type="com.knockknock.campaign.funding.FundingVO"/> 
 	  	<typeAlias alias="fundingUserVO" 

@@ -21,6 +21,30 @@
 		AND C.CC_IDX = CC.CC_IDX
 	</select>
 	
+	<!-- 최신순 -->
+	<select id="selectCampaignListLatest" resultType="CampaignVO">
+		SELECT C.*, U.U_NICKNAME AS HOST_NICKNAME, CC.CC_NAME AS CATEGORY, 
+        (SELECT COUNT(*) FROM CAMPAIGN_USER WHERE C.CI_IDX = CAMPAIGN_USER.ci_idx) USER_COUNT
+		FROM USERS U, CAMPAIGN C, CAMPAIGN_CATEGORY CC
+		WHERE CI_STATUS = 1
+		AND U.U_IDX = C.U_IDX
+		AND C.CC_IDX = CC.CC_IDX
+		ORDER BY CI_STARTDATE DESC
+	</select>
+	
+	<!-- 참여자수순 -->
+		<select id="selectCampaignListUserCount" resultType="CampaignVO">
+		SELECT C.*, U.U_NICKNAME AS HOST_NICKNAME, CC.CC_NAME AS CATEGORY, 
+        (SELECT COUNT(*) FROM CAMPAIGN_USER WHERE C.CI_IDX = CAMPAIGN_USER.ci_idx) USER_COUNT
+		FROM USERS U, CAMPAIGN C, CAMPAIGN_CATEGORY CC
+		WHERE CI_STATUS = 1
+		AND U.U_IDX = C.U_IDX
+		AND C.CC_IDX = CC.CC_IDX
+		ORDER BY USER_COUNT DESC
+	</select>
+	
+	
+	
 	<!-- 캠페인 상세보기 -->
 	<select id="selectOneCampaign" parameterType="int" resultType="CampaignVO">
 		SELECT C.*, U.U_NICKNAME AS HOST_NICKNAME, CC.CC_NAME AS CATEGORY

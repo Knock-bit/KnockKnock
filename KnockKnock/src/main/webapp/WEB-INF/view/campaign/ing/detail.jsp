@@ -113,19 +113,15 @@ vertical-align:middle;}
 
 	$(function(){
 		$("#getBoard").click(function(){
-			alert("실행");
 			$("#commonDiv").load("${cp}/board/getBoardList.do");
 		});
+	
+		$("#getContent").click(function(){
+			$("#commonDiv").load("${cp}/campaign/getDetailContent.do?ciIdx=${campaign.ciIdx }")
+		})
 		
 	});
 	
-
-
-
-
-
-
-
 
 
 </script>

@@ -22,8 +22,8 @@
                 전체
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                <li><a class="dropdown-item" href="${cp }/campaign/ing/list.do">진행중</a></li>
-                <li><a class="dropdown-item" href="${cp }/campaign/ed/list.do">종료</a></li>
+                <li><a class="dropdown-item" id="getIng" href="#" >진행중</a></li>
+                <li><a class="dropdown-item" id="getEnd" href="#">종료</a></li>
               </ul>
             </li>
 
@@ -33,9 +33,9 @@
                 조회기준
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                <li><a class="dropdown-item" href="#">인기순</a></li>
-                <li><a class="dropdown-item" href="#">최신순</a></li>
-                <li><a class="dropdown-item" href="#">마감임박순</a></li>
+                <li><a class="dropdown-item" id="userCount"href="#">참가자수</a></li>
+                <li><a class="dropdown-item" id="latest" href="#">최신순</a></li>
+                <li><a class="dropdown-item" id= href="#">마감임박순</a></li>
               </ul>
             </li>
          </ul>

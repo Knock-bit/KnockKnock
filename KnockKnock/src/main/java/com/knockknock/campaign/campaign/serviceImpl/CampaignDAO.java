@@ -34,4 +34,12 @@ public class CampaignDAO {
 	public List<CampaignVO> selectAllEdCampaign() {
 		return mybatis.selectList("campaign.selectAllEdCampaign");
 	}
+
+	public List<CampaignVO> selectCampaignListLatest() {
+		return mybatis.selectList("campaign.selectCampaignListLatest");
+	}
+	
+	public List<CampaignVO> selectCampaignListUserCount() {
+		return mybatis.selectList("campaign.selectCampaignListUserCount");
+	}
 }
