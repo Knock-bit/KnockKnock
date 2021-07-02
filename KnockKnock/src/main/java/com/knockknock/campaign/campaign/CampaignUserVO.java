@@ -1,4 +1,4 @@
-package com.knockknock.campaign.ing;
+package com.knockknock.campaign.campaign;
 
 public class CampaignUserVO {
 	private int ciIdx;

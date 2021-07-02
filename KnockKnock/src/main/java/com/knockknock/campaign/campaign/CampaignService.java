@@ -1,4 +1,4 @@
-package com.knockknock.campaign.ing;
+package com.knockknock.campaign.campaign;
 
 import java.util.List;
 

@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.knockknock.board.BoardVO;
-import com.knockknock.campaign.ing.CampaignVO;
+import com.knockknock.campaign.campaign.CampaignVO;
 import com.knockknock.contact.ContactVO;
 import com.knockknock.user.UserVO;
 

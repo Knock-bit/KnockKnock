@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.knockknock.board.BoardVO;
-import com.knockknock.campaign.ing.CampaignVO;
+import com.knockknock.campaign.campaign.CampaignVO;
 import com.knockknock.contact.ContactVO;
 import com.knockknock.user.UserVO;
 import com.knockknock.util.PagingVO;
