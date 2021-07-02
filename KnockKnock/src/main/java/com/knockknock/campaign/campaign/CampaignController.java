@@ -29,6 +29,12 @@ public class CampaignController {
 		// 종료일 지난 캠페인 만료시킴
 		int result = campaignService.updateExpiredCampaign();
 		System.out.println(">>>" + result + "개의 캠페인 만료처리");
+		if (result > 0) {
+			// 포인트 분배 처리
+			
+		}
+		
+		
 		// 캠페인 목록 불러옴
 		List<CampaignVO> campaignList = campaignService.selectCampaignList();
 		System.out.println("campaignList 출력:" + campaignList);

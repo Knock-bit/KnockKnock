@@ -22,5 +22,9 @@ public class FundingDAO {
 		return mybatis.selectList("campaign.selectAllFunding");
 	}
 
+	public int updateExpiredFunding() {
+		return mybatis.update("campaign.updateExpiredFunding");
+	}
+
 	
 }

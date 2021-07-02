@@ -10,5 +10,5 @@ public interface FundingService {
 	// 펀딩중인 캠페인 참여자 목록 보기
 	List<FundingUserVO> selectAllFundingUsers(int cfIdx);
 	// 종료시간 지난 펀딩 만료처리
-	void updateExpiredFunding();
+	int updateExpiredFunding();
 }

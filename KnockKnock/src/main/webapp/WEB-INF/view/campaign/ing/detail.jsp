@@ -120,6 +120,10 @@ vertical-align:middle;}
 			$("#commonDiv").load("${cp}/campaign/getDetailContent.do?ciIdx=${campaign.ciIdx }")
 		})
 		
+		$("#participate").click(function(){
+			$("#commonDiv").load("${cp}/board/moveInsert.do")
+		})
+		
 	});
 	
 
@@ -247,13 +251,13 @@ vertical-align:middle;}
 
 			<div class="campaign-info align-items-center">
               <div class="btn-wrap funding">
-              <button onclick="funding()" class = "btn-funding"> 공유하기 </button>
+              <button onclick="funding()" id="share" class = "btn-funding"> 공유하기 </button>
               </div>
             </div>
             
             <div class="campaign-info align-items-center">
               <div class="btn-wrap funding">
-              <button onclick="funding()" class = "btn-funding"> 참여하기 </button>
+              <button onclick="funding()" id="participate" class="btn-funding"> 참여하기 </button>
               </div>
 
             </div>
