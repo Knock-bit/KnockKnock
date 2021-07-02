@@ -144,6 +144,11 @@ input {
 	}
 }
 
+input > button{
+	width: 70px;
+	color: black;
+}
+
 .overlay-container {
 	position: absolute;
 	top: 0;

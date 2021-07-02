@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!doctype html>
+
     <html lang="ko">
 
     <html>
@@ -32,7 +34,14 @@
                     $("#checkAll").prop("checked", false);
                 }
             }
-
+            
+            function agree() {
+                if ($("#chk1").is(':checked') == false || $("#chk2").is(':checked') == false) {
+                    alert("필수사항에 동의해주세요.");
+                } else {
+                    location.href = '/user/signup.do'
+                }
+            }
         </script>
         <style>
             * {
@@ -169,8 +178,7 @@
                 <li class="checkBox check01">
                     <ul class="clearfix">
                         <li>
-                            <h3 text-align="center">이용약관, 개인정보 수집 및 이용,
-                                마케팅 정보 수신(선택)에 모두 동의합니다.</h3>
+                            <h3 style="font-size:17px;">이용약관, 개인정보 수집 및 이용에 모두 동의합니다.</h3>
                         </li>
                         <li class="checkAllBtn">
                             <input type="checkbox" name="chkAll" id="checkAll" class="chkAll" onclick="cAll()">
@@ -281,8 +289,7 @@ eXpert 서비스 및 eXpert 센터 가입 등록정보 : 신청일로부터 6개
 
    </textarea>
                     <ul class=" footBtwrap">
-                        <button class="btn btn-secondary" id="next"
-                            onclick="location.href='/user/signup.do'">동의합니다</button>
+                    <button class="btn btn-secondary" id="myBtn" onclick="agree()">동의합니다</button>
 
                         <button class="btn btn-secondary" onclick="history.back()">취소하기</button>
                     </ul>
