@@ -1,4 +1,4 @@
-package com.knockknock.campaign.ing.serviceImpl;
+package com.knockknock.campaign.campaign.serviceImpl;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.knockknock.campaign.ing.CampaignUserVO;
+import com.knockknock.campaign.campaign.CampaignUserVO;
 
 @Repository
 public class CampaignUserDAO {

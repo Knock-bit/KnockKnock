@@ -1,13 +1,13 @@
-package com.knockknock.campaign.ing.serviceImpl;
+package com.knockknock.campaign.campaign.serviceImpl;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.knockknock.campaign.ing.CampaignService;
-import com.knockknock.campaign.ing.CampaignUserVO;
-import com.knockknock.campaign.ing.CampaignVO;
+import com.knockknock.campaign.campaign.CampaignService;
+import com.knockknock.campaign.campaign.CampaignUserVO;
+import com.knockknock.campaign.campaign.CampaignVO;
 
 @Service("campaignService")
 public class CampaignServiceimpl implements CampaignService {
