@@ -14,7 +14,7 @@
               </a>
             </li>
           <li class="nav-item">
-              <a href="#" >
+              <a href="${cp }/board/getBoardList.do" >
                 커뮤니티
               </a>
             </li>

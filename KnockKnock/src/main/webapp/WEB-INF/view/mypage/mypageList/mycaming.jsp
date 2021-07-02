@@ -58,25 +58,6 @@
 <script>
 $(function(){
 	
-		/* var getPoint = $(".ptpt").text();
-		console.log(getPoint);
-	
-		$({
-			val : 0
-		}).animate({
-			val : getPoint
-		}, {
-			dutation : 4000,
-			step : $.each(function() {
-				var num = numberWithCommas(Math.floor(this.val));
-				$(".ptpt").text(num + "P");
-			}),
-			complete : $.each(function() {
-				var num = numberWithCommas(Math.floor(this.val));
-				$(".ptpt").text(num + "P");
-			})
-		}); */
-	
 	
 	// 타이머
 	 $(".enddate").each(function(index, obj){
@@ -174,9 +155,9 @@ function numberWithCommas(x) {
 													<p>획득 가능 포인트</p>
 													<div class="pt">
 														<div class="pt2">
-															<fmt:formatNumber value="${campaign.cTotpoint }" var="totPoint" pattern="#,###"/>
-															<p class="ptpt">${totPoint} &nbsp;<span style="font-size:20px; color:gray;">P</span></p>
-															
+														 <fmt:formatNumber value="${campaign.cTotpoint }" var="totPoint" pattern="#,###"/>
+															<p class="ptpt">${totPoint} &nbsp;<span style="font-size:20px; color:gray;">P</span></p> 
+														
 														</div>
 													
 													</div>

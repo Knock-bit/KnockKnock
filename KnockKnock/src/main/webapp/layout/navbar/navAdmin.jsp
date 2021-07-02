@@ -13,7 +13,7 @@
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="active" href="index.html">Home</a></li>
+          <li><a href="${cp }/run.jsp">Home</a></li>
           <li class="dropdown"><a href="#"><span>About</span> <i class="bi bi-chevron-down"></i></a>
                   <ul>
               <li><a href="#">녹녹은</a></li>
@@ -38,11 +38,12 @@
                 class="bi bi-chevron-down"></i></a>
 
             <ul>
-              <li><a href="#">캠페인 관리</a></li>
-              <li><a href="#">키워드 관리</a></li>
-              <li><a href="#">게시판 관리</a></li>
-              <li><a href="#">회원 관리</a></li>
-              <li><a href="#">문의내역 확인</a></li>
+              <li><a href="${cp }/adminKeywordList.do">키워드 관리</a></li>
+              <li><a href="${cp }/adminProposalList.do">제안 관리</a></li>
+              <li><a href="${cp }/adminUserList.do">회원 관리</a></li>
+              <li><a href="${cp }/adminSummer.do">써머노트</a></li>
+              <li><a href="#">[coming soon]문의내역 확인</a></li>
+              <li><a href="${cp }/user/logout.do">로그아웃</a></li>
             </ul>
           </li>
 

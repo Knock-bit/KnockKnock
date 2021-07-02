@@ -30,7 +30,7 @@
 
   <!-- Main CSS File -->
   <link href="${cp}/resource/css/main.css" rel="stylesheet">
-  <link href="${cp}/resource/css/nav.css" rel="stylesheet">
+  <link href="${cp}/resource/css/nav1.css" rel="stylesheet">
   <link href="${cp}/resource/css/campaign/funding.css" rel="stylesheet">
 
   <!-- Import BootStrap -->
@@ -85,7 +85,17 @@ vertical-align:middle;}
   
 
   <!-- ======= Header ======= -->
-   <%@ include file= "/layout/navbar/nav.jsp" %>
+     <c:choose>
+  	<c:when test="${users.uType eq 1 }">
+   		<jsp:include page='/layout/navbar/navLoggedin.jsp' flush='false'/>   	
+  	</c:when>
+  	<c:when test="${users.uType eq 0 }">
+   		<jsp:include page='/layout/navbar/navAdmin.jsp' flush='false'/>   	  	
+  	</c:when>
+  	<c:otherwise>
+	   <jsp:include page='/layout/navbar/nav.jsp' flush='false'/>
+  	</c:otherwise>
+  	</c:choose>
 
   <main id="main">
 

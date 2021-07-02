@@ -44,6 +44,7 @@
 			  dataType : "json",
 			  contentType : "application/json",
 			  success: function(data){
+ 
 				  location.href="/main.do";
 			  },
 			  error: function(data){

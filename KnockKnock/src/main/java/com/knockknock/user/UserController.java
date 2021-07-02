@@ -30,6 +30,8 @@ public class UserController {
 	public UserController() {
 		System.out.println("UserController생성자");
 	}
+	
+	
 
 	// 로그인하기로 이동
 	@GetMapping("/user/login.do")
@@ -89,9 +91,13 @@ public class UserController {
 	// 로그인
 	@RequestMapping(value ="/user/loginUser.do", method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseBody
-	public UserVO loginUsers(@RequestBody UserVO vo) {
+	public UserVO loginUsers(@RequestBody UserVO vo, HttpSession session) {
 		
 		UserVO user =  userService.selectlogin(vo);
+		if (user != null) {
+			System.out.println("로그인 성공");
+			session.setAttribute("users", user);
+		}
 		
 		System.out.println(user);
 
@@ -109,7 +115,7 @@ public class UserController {
 	}
 
 	// 로그아웃
-	@RequestMapping("/logout.do")
+	@RequestMapping("/user/logout.do")
 	public ModelAndView logout(HttpSession session) {
 		session.invalidate();
 		ModelAndView mv = new ModelAndView("main/main");
