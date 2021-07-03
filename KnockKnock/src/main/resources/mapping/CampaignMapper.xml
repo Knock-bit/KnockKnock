@@ -96,6 +96,12 @@
 	</select>
 	
 	
+	<select id="selectFundingUser" parameterType = "int" resultType ="FundingUserVO">
+		SELECT * FROM FUNDING_USER
+		WHERE CF_IDX = #{cfIdx}	
+		AND U_IDX = #{uIdx}
+	</select>
+	
 	<!-- 펀딩 상세보기 -->
 	<select id="selectOneFunding" parameterType="int" resultType="FundingVO">
 		SELECT F.*, U.U_NICKNAME AS HOST_NICKNAME
@@ -107,11 +113,21 @@
 	<!-- 펀딩 상세보기 - 참여자 닉네임 불러오기 -->
 	<select id="selectAllFundingUsers" parameterType = "int" resultType ="FundingUserVO">
 		SELECT U_NICKNAME NICKNAME FROM USERS
-  		 WHERE U_IDX IN (SELECT U_IDX FROM CAMPAIGN_USER
-		 WHERE CI_IDX = #{ciIdx})
+  		 WHERE U_IDX IN (SELECT U_IDX FROM FUNDING_USER
+		 WHERE CF_IDX = #{ciIdx})
 	</select>
 	
 	
+	<insert id="insertCampaign" parameterType= "CampaignVO">
+		INSERT INTO CAMPAIGN(CI_IDX, CI_TITLE, CI_CONTENT, C_GOAL, CI_ENDDATE, CI_STARTDATE, 
+		CI_ESTIMATEDPOINT, CI_STATUS, CI_FILE, CI_EMBLEM, U_IDX, CC_IDX, C_TOTPOINT
+		,C_KEYWORD1, C_KEYWORD2, C_KEYWORD3, CI_BASEPOINT, CF_IDX) 
+		VALUES (CI_IDX_SEQ.NEXTVAL, #{ciTitle}, #{ciContent}, #{cGoal}, #{ciEnddate}, #{ciStartdate}, 
+		#{ciEstimatedpoint}, #{ciStatus}, #{ciFile}, #{ciEmblem}, #{uIdx}, #{ccIdx}, #{cTotpoint}
+		,#{cKeyword1}, #{cKeyword2}, #{cKeyword3}, #{ciBasepoint}, #{cfIdx}
+		
+	
+	</insert>
 	
 	<!-- 기간이 만료됐는지 확인하여 만료 시 펀딩 상태를 0으로 바꾼다 -->
 	<update id="updateExpiredFunding">
@@ -120,7 +136,17 @@
 		 WHERE SYSDATE > CF_ENDDATE
 		   AND CF_STATUS = 1
 	</update>
+
+	<insert id="insertFundingUser" parameterType="FundingUserVO">
+		INSERT INTO FUNDING_USER (U_IDX, CF_IDX, CF_POINT)
+		VALUES (#{uIdx}, #{cfIdx}, #{cfPoint})
+	</insert>
 	
+	<update id="updateFundingPoint" parameterType ="FundingUserVO">
+		UPDATE FUNDING
+		   SET CF_COLLECTED = CF_COLLECTED + #{cfPoint}
+		 WHERE CF_IDX = #{cfIdx}
+	</update>
 	
 	<!-- 제안서 제출 -->
 	<insert id="insertProposal" parameterType="ProposalVO">
@@ -132,8 +158,6 @@
   							#{cpGoalpoint}, #{cpFile}, #{uIdx}, 
   							#{cpKeyword1}, #{cpKeyword2}, #{cpKeyword3})
   	</insert>
-	
-	
 	
 	
 	

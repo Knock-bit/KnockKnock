@@ -42,4 +42,8 @@ public class CampaignDAO {
 	public List<CampaignVO> selectCampaignListUserCount() {
 		return mybatis.selectList("campaign.selectCampaignListUserCount");
 	}
+
+	public int insertCampaign(CampaignVO campaign) {
+		return mybatis.insert("campaign.insertCampaign", campaign);
+	}
 }

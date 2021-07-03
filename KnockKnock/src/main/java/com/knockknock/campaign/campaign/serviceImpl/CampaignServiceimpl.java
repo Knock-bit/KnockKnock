@@ -55,4 +55,9 @@ public class CampaignServiceimpl implements CampaignService {
 		return campaignDAO.selectCampaignListUserCount();
 	}
 
+	@Override
+	public int insertCampaign(CampaignVO campaign) {
+		return campaignDAO.insertCampaign(campaign);
+	}
+
 }
