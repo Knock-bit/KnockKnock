@@ -49,9 +49,12 @@
                type="com.knockknock.campaign.proposal.ProposalVO"/>
 		<!-- 회원 -->
 		<typeAlias alias="userVO" type="com.knockknock.user.UserVO" />
+		<typeAlias alias="pointVO" type="com.knockknock.util.PointVO" />
 		
 		<!-- contact -->
 		<typeAlias alias="contactVO" type="com.knockknock.contact.ContactVO" />
+		
+		
 		
 	</typeAliases>
 

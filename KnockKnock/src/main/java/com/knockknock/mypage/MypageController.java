@@ -1,3 +1,4 @@
+
 package com.knockknock.mypage;
 
 import java.io.BufferedOutputStream; 
@@ -32,6 +33,7 @@ import com.knockknock.campaign.campaign.CampaignVO;
 import com.knockknock.contact.ContactVO;
 import com.knockknock.user.UserVO;
 import com.knockknock.util.PagingVO;
+import com.knockknock.util.PointVO;
 
 @Controller
 @SessionAttributes("users")
@@ -165,6 +167,11 @@ public class MypageController {
 		// 해당 유저의 STATUS가 1인 엠블럼 이미지 가져오기
 		List<String> emImgList = mypageService.emblemList(vo);
 
+		// 나의 포인트 내역 가져오기
+		List<PointVO> pointList = mypageService.myPointList(vo);
+		
+		
+		model.addAttribute("pointList", pointList);
 		model.addAttribute("emImgList", emImgList);
 		return "/mypage/mypageList/myPointPage";
 	}
@@ -275,4 +282,6 @@ public class MypageController {
 		
 		return  bvo;
 	}
+	
+
 }
