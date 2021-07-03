@@ -29,13 +29,28 @@ public class FundingServiceImpl implements FundingService{
 	}
 
 	@Override
-	public void updateExpiredFunding() {
-		// 작성할것!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	public int updateExpiredFunding() {
+		return fundingDAO.updateExpiredFunding();
 	}
 
 	@Override
 	public List<FundingUserVO> selectAllFundingUsers(int cfIdx) {
 		return fundingUserDAO.selectAllCampaignUsers(cfIdx);
+	}
+
+	@Override
+	public int insertFundingUser(FundingUserVO fundingUser) {
+		return fundingUserDAO.insertFundingUser(fundingUser);
+	}
+
+	@Override
+	public int updateFundingPoint(FundingUserVO fundingUser) {
+		return fundingDAO.updateFundingPoint(fundingUser);
+	}
+
+	@Override
+	public FundingUserVO selectFundingUser(FundingUserVO fundingUser) {
+		return fundingUserDAO.selectFundingUser(fundingUser);
 	}
 	
 }

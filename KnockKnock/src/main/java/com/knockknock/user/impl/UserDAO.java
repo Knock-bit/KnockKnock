@@ -13,6 +13,7 @@ public class UserDAO {
 	//로그인
 	public UserVO selectlogin(UserVO vo) {
 		vo = mybatis.selectOne("UserVO.selectlogin", vo);
+		System.out.println("DAO = " +vo);
 		return vo;		
 	}
 	//아이디 중복체크
@@ -61,7 +62,12 @@ public class UserDAO {
 	public UserVO kakaologin(UserVO vo) {
 		System.out.println("DAO에서 받은 vo: "+ mybatis.selectOne("UserVO.kakaologin", vo));
 		return mybatis.selectOne("UserVO.kakaologin", vo);
-		
+	}
+	
+	//구글
+	public UserVO googlelogin(UserVO vo) {
+		System.out.println("DAO에서 받음: "+ mybatis.selectOne("UserVO.kakaologin", vo));
+		return mybatis.selectOne("UserVO.kakaologin", vo);
 	}
 	
 	

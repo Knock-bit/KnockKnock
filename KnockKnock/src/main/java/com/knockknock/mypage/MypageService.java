@@ -4,7 +4,8 @@ package com.knockknock.mypage;
 import java.util.List;
 import java.util.Map;
 
-import com.knockknock.campaign.ing.CampaignVO;
+import com.knockknock.board.BoardVO;
+import com.knockknock.campaign.campaign.CampaignVO;
 import com.knockknock.contact.ContactVO;
 import com.knockknock.user.UserVO;
 
@@ -32,6 +33,8 @@ public interface MypageService {
 	List<ContactVO> myContactList(Map<String, Integer> map);
 	// 문의내역 상세보기
 	ContactVO myQuestion(Map<String, Integer> map);
+	// 나의 활동
+	List<BoardVO> myActive(UserVO vo);
 	
 
 }

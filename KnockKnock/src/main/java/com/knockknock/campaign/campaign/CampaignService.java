@@ -1,4 +1,4 @@
-package com.knockknock.campaign.ing;
+package com.knockknock.campaign.campaign;
 
 import java.util.List;
 
@@ -13,6 +13,9 @@ public interface CampaignService {
 	public List<CampaignUserVO> selectAllCampaignUsers(int cIdx);
 	// 종료시간 지난 캠페인 만료처리
 	public int updateExpiredCampaign();
+	public List<CampaignVO> selectCampaignListLatest();
+	public List<CampaignVO> selectCampaignListUserCount();
+	public int insertCampaign(CampaignVO campaign);
 	
 	
 }

@@ -34,7 +34,8 @@
   <!-- Main CSS File -->
   <link href="${cp}/resource/css/main.css" rel="stylesheet">
   <link href="${cp}/resource/css/campaign/campaign.css" rel="stylesheet">
-
+  <link href="${cp}/resource/css/nav1.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <!-- Import BootStrap -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <style>
@@ -107,14 +108,50 @@ vertical-align:middle;}
 
 
 </style>
+
+<script>
+
+	$(function(){
+		$("#getBoard").click(function(){
+			$("#commonDiv").load("${cp}/board/getBoardList.do");
+		});
+	
+		$("#getContent").click(function(){
+			$("#commonDiv").load("${cp}/campaign/getDetailContent.do?ciIdx=${campaign.ciIdx }")
+		})
+		
+		$("#participate").click(function(){
+			$("#commonDiv").load("${cp}/board/moveInsert.do")
+		})
+		
+	});
+	
+
+
+</script>
+
+
+
+
+
+
 </head>
 <body>
 
   
 
   <!-- ======= Header ======= -->
-   <%@ include file= "/layout/navbar/nav.jsp" %>
-
+        <c:choose>
+  	<c:when test="${users.uType eq 1 }">
+   		<jsp:include page='/layout/navbar/navLoggedin.jsp' flush='false'/>   	
+  	</c:when>
+  	<c:when test="${users.uType eq 0 }">
+   		<jsp:include page='/layout/navbar/navAdmin.jsp' flush='false'/>   	  	
+  	</c:when>
+  	<c:otherwise>
+	   <jsp:include page='/layout/navbar/nav.jsp' flush='false'/>
+  	</c:otherwise>
+  	</c:choose>
   <main id="main">
 
     <!-- ======= Breadcrumbs ======= -->
@@ -146,15 +183,38 @@ vertical-align:middle;}
       <div class="container" data-aos="fade-up">
 		 <%@ include file= "/layout/navbar/campaign/navCampaignDetail.jsp" %>
         <div class="row">
-          <div class="col-lg-8">
+          <div class="col-lg-8" id="commonDiv">
             <img src="${campaign.ciFile }" class="img-fluid" alt="">
-            <h2>${endDate } ${now }  </h3>
+            <h2>${campaign.ciContent }  </h3>
             <p>
               Qui et explicabo voluptatem et ab qui vero et voluptas. Sint voluptates temporibus quam autem. Atque nostrum voluptatum laudantium a doloremque enim et ut dicta. Nostrum ducimus est iure minima totam doloribus nisi ullam deserunt. Corporis aut officiis sit nihil est. Labore aut sapiente aperiam.
               Qui voluptas qui vero ipsum ea voluptatem. Omnis et est. Voluptatem officia voluptatem adipisci et iusto provident doloremque consequatur. Quia et porro est. Et qui corrupti laudantium ipsa.
               Eum quasi saepe aperiam qui delectus quaerat in. Vitae mollitia ipsa quam. Ipsa aut qui numquam eum iste est dolorum. Rem voluptas ut sit ut.
+            
+            내용 
+            </p>
+            
+              <p>
+              Qui et explicabo voluptatem et ab qui vero et voluptas. Sint voluptates temporibus quam autem. Atque nostrum voluptatum laudantium a doloremque enim et ut dicta. Nostrum ducimus est iure minima totam doloribus nisi ullam deserunt. Corporis aut officiis sit nihil est. Labore aut sapiente aperiam.
+              Qui voluptas qui vero ipsum ea voluptatem. Omnis et est. Voluptatem officia voluptatem adipisci et iusto provident doloremque consequatur. Quia et porro est. Et qui corrupti laudantium ipsa.
+              Eum quasi saepe aperiam qui delectus quaerat in. Vitae mollitia ipsa quam. Ipsa aut qui numquam eum iste est dolorum. Rem voluptas ut sit ut.
+            
+            내용 
+            </p>  <p>
+              Qui et explicabo voluptatem et ab qui vero et voluptas. Sint voluptates temporibus quam autem. Atque nostrum voluptatum laudantium a doloremque enim et ut dicta. Nostrum ducimus est iure minima totam doloribus nisi ullam deserunt. Corporis aut officiis sit nihil est. Labore aut sapiente aperiam.
+              Qui voluptas qui vero ipsum ea voluptatem. Omnis et est. Voluptatem officia voluptatem adipisci et iusto provident doloremque consequatur. Quia et porro est. Et qui corrupti laudantium ipsa.
+              Eum quasi saepe aperiam qui delectus quaerat in. Vitae mollitia ipsa quam. Ipsa aut qui numquam eum iste est dolorum. Rem voluptas ut sit ut.
+            
+            내용 
             </p>
           </div>
+          
+          
+          
+          
+          
+          
+          
           <div class="col-lg-4">
 
             <div class="campaign-info align-items-center">
@@ -191,13 +251,13 @@ vertical-align:middle;}
 
 			<div class="campaign-info align-items-center">
               <div class="btn-wrap funding">
-              <button onclick="funding()" class = "btn-funding"> 공유하기 </button>
+              <button onclick="funding()" id="share" class = "btn-funding"> 공유하기 </button>
               </div>
             </div>
             
             <div class="campaign-info align-items-center">
               <div class="btn-wrap funding">
-              <button onclick="funding()" class = "btn-funding"> 참여하기 </button>
+              <button onclick="funding()" id="participate" class="btn-funding"> 참여하기 </button>
               </div>
 
             </div>
@@ -209,7 +269,7 @@ vertical-align:middle;}
     </section><!-- End Cource Details Section -->
 
     <!-- ======= Cource Details Tabs Section ======= -->
-    <section id="cource-details-tabs" class="cource-details-tabs">
+    <!-- <section id="cource-details-tabs" class="cource-details-tabs">
       <div class="container" data-aos="fade-up">
 
         <div class="row">
@@ -299,7 +359,7 @@ vertical-align:middle;}
         </div>
 
       </div>
-    </section><!-- End Cource Details Tabs Section -->
+    </section> --><!-- End Cource Details Tabs Section -->
 
   </main><!-- End #main -->
 <!-- ======= Footer ======= -->

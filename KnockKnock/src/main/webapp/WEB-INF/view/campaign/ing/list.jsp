@@ -32,8 +32,34 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
   <!-- Main CSS File -->
   <link href="${cp}/resource/css/main.css" rel="stylesheet">
-   <link href="${cp}/resource/css/nav.css" rel="stylesheet">
+   <link href="${cp}/resource/css/nav1.css" rel="stylesheet">
    <link href="${cp}/resource/css/campaign/campaign.css" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+
+	$(function(){
+		$("#getIng").click(function(){
+			$("#commonDiv").load("${cp}/campaign/getIngList.do");
+		});
+	
+		$("#getEnd").click(function(){
+			$("#commonDiv").load("${cp}/campaign/getEndList.do");
+		});
+		
+		$("#latest").click(function(){
+			$("#commonDiv").load("${cp}/campaign/getList.do?order=latest");
+		})
+		
+		$("#userCount").click(function(){
+			$("#commonDiv").load("${cp}/campaign/getList.do?order=userCount");
+		})
+		
+	});
+	
+
+
+</script>
 
   
 </head>
@@ -47,9 +73,17 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-     
-     
-        <%@ include file= "/layout/navbar/nav.jsp" %><!-- .navbar -->
+          <c:choose>
+  	<c:when test="${users.uType eq 1 }">
+   		<jsp:include page='/layout/navbar/navLoggedin.jsp' flush='false'/>   	
+  	</c:when>
+  	<c:when test="${users.uType eq 0 }">
+   		<jsp:include page='/layout/navbar/navAdmin.jsp' flush='false'/>   	  	
+  	</c:when>
+  	<c:otherwise>
+	   <jsp:include page='/layout/navbar/nav.jsp' flush='false'/>
+  	</c:otherwise>
+  	</c:choose>
 
       <a href="campaigns.html" class="get-started-btn">Get Started</a>
 
@@ -71,7 +105,7 @@
     <article id="campaigns" class="campaigns">
       <div class="container" data-aos="fade-up">
 		  <%@ include file= "/layout/navbar/campaign/navCampaign.jsp" %> 
-        <div class="row" data-aos="zoom-in" data-aos-delay="100">
+        <div class="row" id="commonDiv" data-aos="zoom-in" data-aos-delay="100" >
 		<c:if test="${!empty list  }">
         <c:forEach var="campaign" items="${list }">
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch" >

@@ -1,3 +1,9 @@
+
+*{
+
+	font-family:'Noto+Sans+KR';
+}
+
 .main-content {
 	width: 100%;
 	flex: 1;
@@ -14,12 +20,15 @@
 }
 
 #ctext{
-	font-size:15px;
+	text-align:center;
+	font-size:35px;
 	border-bottom:1px solid gray;
 	width:800px;
 	margin: 0 auto;
 	padding-top:3%;
 	font-style:normal;
+	color:white;
+	text-shadow:1px 1px 0 #9e9e9e, -1px -1px 1px lightgrey;
 
 }
 /*캠페인 리스트 영역*/
@@ -38,6 +47,8 @@
 	padding: 15px 5px 0 5px;
 	margin:0 auto;
 	grid-gap:5px;
+	box-shadow: 0 8px 11px 0 rgb(0 0 0 / 10%), 0 1px 1px 0 rgb(0 0 0 / 1%);
+	border-radius : 5px;
 }
 
 .citem span {
@@ -97,28 +108,47 @@
 
 
 
-
+/*하단 포인트, 엠블럼*/
 .itemPoint {
 	grid-column: 3/7;
 	grid-row: 4/6;
 	font-size:13px;
 }
-.itemPoint > p{
-	background-color : #0e4b20;
-	font-size:15px;
+.itemPoint > div {
+	float:left;
+	width:48%;
+
+}
+.pzone, .ezone {
+	height:20vh;
+	margin:5px;
+	background-color:white;
+	
+}
+.pzone > p, .ezone > p {
+	background-color : #6c9378;
+	font-size:12px;
 	color:white;
 	padding:1%;
+
+	font-style:normal;
 	
 	
+}
+.pt, .eb {
+	text-align:center;
+	width:90%;
+	padding:10px;
 }
 
 .it1 {
 	width: 20%;
 	padding-left:10px;
-	font-size:16px;
+	font-size:17px;
 	font-weight:bold;
 	color:#0e4b20;
 	text-align:left;
+	border-bottom: 1px solid #a6a6a6;
 }
 
 .it2 {
@@ -128,25 +158,21 @@
 	padding-left:10px;
 	font-style:normal;
 }
-.apzone{
-	float : left;
-	width:100%;
-	
-}
+
 .pt{
-	float:left;
-	width:49%;
+	width:90%;
 	
 }
 .pt2 p {
 	font-style:normal;
-	font-size:11px;
+	font-size:30px;
 
 }
 .pt2 p:first-child {
 	font-size:40px;
 	font-weight:bold;
-	color:#ffcc66;
+	color:#ffc34d;
+	text-align:right;
 	
 	
 }
@@ -155,13 +181,12 @@
 	
 }
 .eb{
-	float:left;
-	width:49%;
+	width:100%;
 	
 }
 
 .eb2{
-	width:30%;
+	width:25%;
 	border-radius: 50%;
 	overflow: hidden;
    	align-items: center;
@@ -170,4 +195,22 @@
    	background-color:white;
    	padding:10px;
    	margin:0 auto;
+}
+
+/*남은기간 텍스트 별도 적용*/
+.itemEnddate p:first-child {
+	font-size:13px;
+	width:100%;
+	font-style:normal;
+	border:0px;
+	padding-left:30px;
+	margin:0;
+}
+
+.itemEnddate p:last-child {
+	font-style:normal;
+	font-size:11px;
+	color:#f2f2f2;
+	background-color:#f2f2f2;
+	text-shadow:0px 0px 0 #675d5d, -0.1px -1px 0 #939393;
 }

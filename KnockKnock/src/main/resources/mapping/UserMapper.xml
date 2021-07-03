@@ -4,17 +4,13 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- 참고파일 나중에 삭제 -->
 <mapper namespace="UserVO">
-
+	<!-- 카카오/구글 로그인 -->
 	<select id="kakaologin" parameterType="UserVO" resultType="UserVO">
 		SELECT *FROM USERS WHERE U_EMAIL=#{uEmail}
 	</select>
-
-
-
-
 	<!-- 로그인 -->
-	<select id="selectlogin" parameterType="HashMap" resultType="UserVO">
-		SELECT U_NAME FROM USERS WHERE U_ID=#{uId} and U_PWD=#{uPwd}
+	<select id="selectlogin" parameterType="UserVO" resultType="UserVO">
+		SELECT * FROM USERS WHERE U_ID=#{uId} and U_PWD=#{uPwd}
 	</select>
 	<!-- ID중복체크 -->
 	<select id="idCheck" parameterType="String" resultType="String">
@@ -123,6 +119,12 @@ U_ACTIVE, U_GENDER, U_ADDRESS, U_JOINDATE)
 	    ON(C.CT_IDX = CM.CT_IDX)
 	    WHERE C.U_IDX = #{uIdx}
 	    AND C.CT_IDX =#{ctIdx}
+	
+	</select>
+	
+	<!-- 나의 활동 -->
+	<select id="myActive" parameterType="UserVO" resultType="boardVO">
+		SELECT * FROM BOARD WHERE U_IDX = #{uIdx}
 	
 	</select>
 	

@@ -242,9 +242,32 @@ a {
   -webkit-box-shadow: none !important;
   box-shadow: none !important; }
 
-/*버튼+버튼호버설정*/
-.btn.btn-primary {
+
+/**
+* Get Startet Button 
+*/
+.get-started-btn {
+/*   margin-left: 50px;
+  margin-right: 10px; */
+
+  background: #0e4b20;
   color: #fff;
+  border-radius: 50px;
+  padding: 8px 25px;
+  white-space: nowrap;
+  transition: 0.3s;
+  font-size: 14px;
+  display: inline-block;
+} 
+
+
+.get-started-btn:hover {
+  background: #0e4b20b9;
+  color: #fff;
+}
+.get-started-btn2:hover {
+  background: #0e4b20b9;
+/  color: #fff;
   background:  rgb(12, 59, 16);
   border-color: rgb(12, 59, 16);
   border-width: 2px;

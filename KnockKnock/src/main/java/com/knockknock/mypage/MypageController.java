@@ -27,7 +27,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.knockknock.campaign.ing.CampaignVO;
+import com.knockknock.board.BoardVO;
+import com.knockknock.campaign.campaign.CampaignVO;
 import com.knockknock.contact.ContactVO;
 import com.knockknock.user.UserVO;
 import com.knockknock.util.PagingVO;
@@ -255,5 +256,23 @@ public class MypageController {
 		return "/mypage/mypageList/myContact";
 	}
 	
-	
+	// 나의 활동으로 이동
+	@GetMapping("myActive.do")
+	public String myActive(@ModelAttribute("users")UserVO vo ,Model model) {
+		
+		//List<BoardVO> bvo = mypageService.myActive(vo);
+				
+		return "/mypage/mypageList/example";
+	}
+	// 내 캘린더 ajax
+	@RequestMapping(value ="/myCal.do", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@ResponseBody
+	public List<BoardVO> selectEventList(@ModelAttribute("users")UserVO vo ,Model model) {
+		System.out.println("uIdx : " + vo.getuIdx());
+		List<BoardVO> bvo = mypageService.myActive(vo);
+		System.out.println(bvo);
+		
+		
+		return  bvo;
+	}
 }

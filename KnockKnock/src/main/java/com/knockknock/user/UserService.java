@@ -9,4 +9,6 @@ public interface UserService {
 	public void join(UserVO vo);
 
 	public UserVO kakaoLogin(UserVO vo);
+	public UserVO googlelogin(UserVO vo);
+
 }

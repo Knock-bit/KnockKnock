@@ -1,3 +1,5 @@
+
+
   *{
   font-family: 'Roboto+Slab:wght@300';
   }
@@ -20,17 +22,20 @@
    		margin : 0 auto;
    		margin-bottom: 10px;
    		text-align:left;
+   		font-weight: 500;
    
    }
    .btnDiv button {
    		background-color:white;
    		border-top-left-radius: 5px;
    		border-top-right-radius: 5px;
-   		border: 2px solid #4d4d4d;
+   		border: 2px solid #d4f7e0;
+   		font-size:13px;
+   		padding:5px;
    }
    .btnDiv button:hover {
-   		background-color:#fb5151;
-   		border:2px solid #fb5151;
+   		background-color:#6c9378;
+   		border:2px solid #6c9378;
    		color:white;
    
    }
@@ -55,6 +60,7 @@
    		grid-column : 1/3;
    		background-color:#f2f2f2;
    		border : 0;
+   		width:100%;
    		
    
    }
@@ -71,18 +77,21 @@
    		padding:20px;
    		color:white;
    		font-style:normal;
-   		font-size:20px;
-   		font-weight :200;
+   		font-size:17px;
+   		font-weight :500;
    		text-align:left;
-   		background-color:#0e4b20;
+   		background-color:#6c9378;
    		margin: 0 auto;
    
+   }
+   .item3 img {
+   		width : 5%;
    }
    .item2 > div {
    		padding : 30px 0 0 20px;
    
    }
-   .item1 img, .item3 img{
+   .item1 img{
    		width:30%;
    		
    }
@@ -119,7 +128,7 @@
 	
 	}
 	.graph p:first-child {
-		width:25%;
+		width:35%;
 	}
 	
 	
@@ -146,6 +155,59 @@
 		font-style : normal;
 		font-size:13px;
 	}
+	/*포인트 사용내역*/
+	.day {
+		width : 90%;
+		margin: 0 auto;
+		padding:6%;
+	}
+	.menu {
+		width: 100%;
+		margin: 0 auto;
+		text-align:center;
+		padding-left:10px;
+		
+	}
+	.menu p {
+		background-color: gray;
+		margin:1px;
+		padding:3px;
+		color:white;
+		font-size:12px;
+	}
+	.m1 {width:15%;  float:left;}
+	.m2 {width:30%;  float:left;}
+	.m3 {width:20%;  float:left;}
+	.m4 {width:15%;  float:left;}
+	.m5 {width:17%;  float:left;}
+	
+	
+	.usingPointList {
+		width: 100%;
+		display: grid;
+		grid-template-columns: 15% 30% 20% 10% 17%; /*이용일자, 사용유형, 사용포인트, 취소여부, 취소일자*/
+   		grid-auto-rows: minmax(80px, auto);
+   		grid-gap:10px;
+   		margin:  0 auto;
+   		
+		
+	}
+	.up1 {
+		grid-column : 1/2;
+	}
+	.up2 {
+		grid-column : 2/3;
+	}
+	.up3 {
+		grid-column : 3/4;
+	}
+	.up4 {
+		grid-column : 4/5;
+	}
+	.up5 {
+		grid-column : 5/6;
+	}
+	
 
 	/*emblem 영역*/ 
 	.emblemZone{

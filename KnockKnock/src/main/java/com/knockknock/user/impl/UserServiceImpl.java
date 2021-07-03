@@ -42,4 +42,10 @@ public class UserServiceImpl implements UserService {
 		return userDAO.kakaologin(vo);
 	}
 
+	@Override
+	public UserVO googlelogin(UserVO vo) {
+		System.out.println("UserServiceImpl에 받은 값: "+userDAO.kakaologin(vo));
+		return userDAO.googlelogin(vo);
+	}
+
 }

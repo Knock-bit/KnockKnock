@@ -19,7 +19,11 @@
 	position: relative;
 	padding-top:2%;
 }
-
+/*thead*/
+.no, .category, .end_date, .reply{
+	font-weight:550;
+	font-size:14px;
+}
 #ctext{
 	font-size:15px;
 	border-bottom:1px solid gray;
@@ -29,8 +33,8 @@
 	font-style:normal;
 
 }
-.container {
-	width:75%;
+.container1 {
+	width:80%;
 	
 }
 .tbody td{
@@ -45,16 +49,24 @@
 }
 .ctTitles{
 	cursor : pointer;
-	font-size:14px;
+	font-size:13px;
 	
 }
 .ctTitles:hover{
 	text-decoration: underline;
 	
 }
+.ctTitles a{
+	color:#4d4d4d;
+}
 
 .ctContent {
 	display:none;
+}
+/*게시글 하나 선택했을 때?*/
+.oneSection:hover {
+	background-color:#D9EEE1;
+	
 }
 
    /* 페이징 부분 스타일 */
@@ -62,14 +74,15 @@
 		list-style: none; 
 	}
 	.paging {
-		text-align:center;
+
 		margin : 0 auto;
 		height:50px;
-		width:300px;
-		
+		width:80%;
+		text-align:center;
+
 	}
 	.pagingNum {
-        width:1000px;
+        width:100%;
         height:50px;
         text-align : center;
         margin : 0 auto;
@@ -87,7 +100,7 @@
     }
 
 	.paging li {
-		float: left;
+		display:inline-block;
 		margin-right: 8px;
 	}
 	.paging li a {
@@ -104,11 +117,12 @@
 	.paging .now {
 		width:15px;
 		padding: 3px 3px;
+		color:#ff4d4d;
+		font-weight:700;
 		
 	}
 	.paging li a:hover {
-		background-color: gray;
-		color: white;
+		text-decoration: underline;
 	}
 	ol {
 		margin: 0 auto;

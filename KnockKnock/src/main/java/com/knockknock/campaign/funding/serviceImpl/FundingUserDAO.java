@@ -17,4 +17,12 @@ public class FundingUserDAO {
 		System.out.println("cfIdx:" + cfIdx);
 		return mybatis.selectList("campaign.selectAllFundingUsers", cfIdx);
 	}
+
+	public int insertFundingUser(FundingUserVO fundingUser) {
+		return mybatis.insert("campaign.insertFundingUser", fundingUser);
+	}
+
+	public FundingUserVO selectFundingUser(FundingUserVO fundingUser) {
+		return mybatis.selectOne("campaign.selectFundingUser", fundingUser);
+	}
 }

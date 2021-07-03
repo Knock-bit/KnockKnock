@@ -30,9 +30,10 @@
 
   <!-- Main CSS File -->
   <link href="${cp}/resource/css/main.css" rel="stylesheet">
-  <link href="${cp}/resource/css/nav.css" rel="stylesheet">
+  <link href="${cp}/resource/css/nav1.css" rel="stylesheet">
   <link href="${cp}/resource/css/campaign/funding.css" rel="stylesheet">
 
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <!-- Import BootStrap -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
   <style>
@@ -79,13 +80,46 @@ vertical-align:middle;}
 	} 
   
   </style>
+  <script>
+  	$(function(){
+  		var uIdx = "${users.uIdx}";
+  		if (uIdx ==""){
+  			$("#funding").attr("onclick", "location.href='${cp}/user/login.do'"); 
+  		}
+  		
+  		var exceed = parseInt("${funding.cfGoalpoint}" - "${funding.cfCollected}");
+        console.log("exceed : " + exceed);
+        
+        if (exceed <= 0) {
+          $("#funding").attr("html", "목표달성으로 조기마감되었습니다.");
+        }
+           	
+  		
+  	})
+  	
+  	$('#myModal').on('shown.bs.modal', function () {
+ 	 $('#myInput').trigger('focus')
+	})
+
+  </script>
+  
 </head>
 <body>
 
   
 
   <!-- ======= Header ======= -->
-   <%@ include file= "/layout/navbar/nav.jsp" %>
+     <c:choose>
+  	<c:when test="${users.uType eq 1 }">
+   		<jsp:include page='/layout/navbar/navLoggedin.jsp' flush='false'/>   	
+  	</c:when>
+  	<c:when test="${users.uType eq 0 }">
+   		<jsp:include page='/layout/navbar/navAdmin.jsp' flush='false'/>   	  	
+  	</c:when>
+  	<c:otherwise>
+	   <jsp:include page='/layout/navbar/nav.jsp' flush='false'/>
+  	</c:otherwise>
+  	</c:choose>
 
   <main id="main">
 
@@ -129,7 +163,12 @@ vertical-align:middle;}
 
             <div class="campaign-info align-items-center">
               <div class="btn-wrap funding">
-              <button onclick="funding()" class = "btn-funding"> 펀딩하기 </button>
+              <c:if test="${empty fundingUser }">
+              <button id = "funding" onclick="location.href='${cp}/campaign/funding/fund.do?uIdx=${users.uIdx }&cfIdx=${funding.cfIdx}'" class = "btn-funding"> 펀딩하기 </button>
+              </c:if>
+              <c:if test="${!empty fundingUser }">
+              <button id = "funding" class = "btn-funding"> 펀딩완료 </button>
+              </c:if>
               </div>
             </div>
 
@@ -242,6 +281,27 @@ vertical-align:middle;}
 
       </div>
     </section><!-- End Cource Details Tabs Section -->
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
   </main><!-- End #main -->
 <!-- ======= Footer ======= -->

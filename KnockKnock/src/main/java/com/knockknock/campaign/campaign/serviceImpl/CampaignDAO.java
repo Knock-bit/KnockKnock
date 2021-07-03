@@ -1,4 +1,4 @@
-package com.knockknock.campaign.ing.serviceImpl;
+package com.knockknock.campaign.campaign.serviceImpl;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.knockknock.campaign.ing.CampaignUserVO;
-import com.knockknock.campaign.ing.CampaignVO;
+import com.knockknock.campaign.campaign.CampaignUserVO;
+import com.knockknock.campaign.campaign.CampaignVO;
 
 @Repository
 public class CampaignDAO {
@@ -33,5 +33,17 @@ public class CampaignDAO {
 
 	public List<CampaignVO> selectAllEdCampaign() {
 		return mybatis.selectList("campaign.selectAllEdCampaign");
+	}
+
+	public List<CampaignVO> selectCampaignListLatest() {
+		return mybatis.selectList("campaign.selectCampaignListLatest");
+	}
+	
+	public List<CampaignVO> selectCampaignListUserCount() {
+		return mybatis.selectList("campaign.selectCampaignListUserCount");
+	}
+
+	public int insertCampaign(CampaignVO campaign) {
+		return mybatis.insert("campaign.insertCampaign", campaign);
 	}
 }

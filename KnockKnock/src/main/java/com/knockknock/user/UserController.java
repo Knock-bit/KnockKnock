@@ -2,18 +2,22 @@ package com.knockknock.user;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -26,6 +30,8 @@ public class UserController {
 	public UserController() {
 		System.out.println("UserController생성자");
 	}
+	
+	
 
 	// 로그인하기로 이동
 	@GetMapping("/user/login.do")
@@ -83,18 +89,19 @@ public class UserController {
 	}
 
 	// 로그인
-	@PostMapping("/user/loginUser.do")
-	public String loginUser(UserVO vo, Model model) {
-
-		UserVO loginUser = userService.selectlogin(vo);
-
-		if (loginUser != null) {
-			model.addAttribute("loginUser", loginUser);
-			return "/main/main";
-		} else {
-			System.out.println(">>로그인 실패한 경우");
-			return "/user/login";
+	@RequestMapping(value ="/user/loginUser.do", method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@ResponseBody
+	public UserVO loginUsers(@RequestBody UserVO vo, HttpSession session) {
+		
+		UserVO user =  userService.selectlogin(vo);
+		if (user != null) {
+			System.out.println("로그인 성공");
+			session.setAttribute("users", user);
 		}
+		
+		System.out.println(user);
+
+		return user;
 
 	}
 
@@ -108,12 +115,34 @@ public class UserController {
 	}
 
 	// 로그아웃
-	@RequestMapping("/logout.do")
+	@RequestMapping("/user/logout.do")
 	public ModelAndView logout(HttpSession session) {
 		session.invalidate();
 		ModelAndView mv = new ModelAndView("main/main");
 
 		return mv;
+	}
+	
+	//구글
+	@RequestMapping(value="/googlelogin.do", method= {RequestMethod.POST, RequestMethod.GET})
+	@ResponseBody
+	public String googlelogin(String uEmail, HttpServletRequest request) {
+		UserVO vo = new UserVO();
+		System.out.println("구글로그인 시작"+uEmail);
+		
+		vo.setuEmail(uEmail);
+		
+		UserVO login = userService.googlelogin(vo);
+		
+		if(login==null) {
+			System.out.println("없는아이디. 로그인 실패");
+			return "noid";
+			
+		}else {
+			System.out.println("아이디 있음 로그인 성공");
+			return "yes";
+		}
+				
 	}
 
 	// 카카오
