@@ -52,7 +52,9 @@
 		
 		<!-- contact -->
 		<typeAlias alias="contactVO" type="com.knockknock.contact.ContactVO" />
-		
+		<!-- seller -->
+		<typeAlias alias="sellerVO" type="com.knockknock.seller.SellerVO" />
+	
 	</typeAliases>
 
 	<!-- mappers는 여러개 등록 가능하다. -->
