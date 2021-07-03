@@ -1,9 +1,7 @@
-
-
 package com.knockknock.mypage;
 
 
-import java.util.List;
+import java.util.List; 
 import java.util.Map;
 
 import com.knockknock.board.BoardVO;

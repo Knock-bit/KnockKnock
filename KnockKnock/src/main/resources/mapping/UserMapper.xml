@@ -134,4 +134,21 @@ U_ACTIVE, U_GENDER, U_ADDRESS, U_JOINDATE)
 	
 	</select>
 	
+	<!-- 상품 정보 불러오기 (임시)-->
+	<select id="productDetail" resultType="productVO">
+		SELECT * FROM PRODUCT 
+	</select>
+	
+	<!-- 장바구니 상품 확인 -->
+	<select id="checkCart" parameterType="int" resultType="String">
+		SELECT P_IDX FROM CART WHERE P_IDX =#{pIdx}
+	</select>
+	
+	<!-- 장바구니에 상품 담기 -->
+	<insert id="addCart" parameterType="hashmap">
+		INSERT INTO CART (CA_IDX, P_IDX, P_COUNT)
+		VALUES(CA_IDX_SEQ.nextval, #{pIdx}, #{pCount})
+	
+	</insert>
+	
 </mapper>
