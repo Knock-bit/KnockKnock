@@ -1,3 +1,5 @@
+
+
 package com.knockknock.mypage;
 
 
@@ -8,6 +10,7 @@ import com.knockknock.board.BoardVO;
 import com.knockknock.campaign.campaign.CampaignVO;
 import com.knockknock.contact.ContactVO;
 import com.knockknock.user.UserVO;
+import com.knockknock.util.PointVO;
 
 public interface MypageService {
 	
@@ -25,8 +28,6 @@ public interface MypageService {
 	List<CampaignVO> campaigningList(UserVO vo);
 	// 종료된 캠페인 리스트
 	List<CampaignVO> endCampaignList(UserVO vo);
-	// 내 문의내역 
-	//List<ContactVO> myContactList(UserVO vo);
 	// 문의내역 총 게시글 수
 	int myCclistTot(UserVO vo);
 	// 문의내역 총 게시글 수
@@ -35,6 +36,8 @@ public interface MypageService {
 	ContactVO myQuestion(Map<String, Integer> map);
 	// 나의 활동
 	List<BoardVO> myActive(UserVO vo);
+	// 나의 포인트 내역
+	List<PointVO> myPointList(UserVO vo);
 	
 
 }

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="cp" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html>
 <html>
@@ -178,39 +179,42 @@
 					
 					<!-- 조회기간 -->
 					<div class="day">
-						<p>조회기간 선택해주세염ㅋ</p>
+						<p>조회기간 선택해주세염ㅋ(못만들듯ㅋ)</p>
 					</div>
 					<div class="menu">
 						<p class="m1">이용일자</p>
-						<p class="m2">사용처</p>
-						<p class="m3">사용 포인트</p>
-						<p class="m4">취소 여부</p>
-						<p class="m5">취소 일자</p>
+						<p class="m2">사용/획득처</p>
+						<p class="m3">포인트내역</p>
+						
 					</div>
 					<!-- 내역 -->
-					<c:forEach var="plist" items=${포인트 사용내역 }>
+					<c:forEach var="plist" items="${pointList }">
 						<div class="usingPointList">
 							<div class="up1"> <!-- 이용일자 -->
-							ㅁ
+								<fmt:formatDate value="${plist.poDate }" var="poDate" pattern="yyyy-MM-dd HH:ss" />
+								${poDate }
 							</div>
 							<div class="up2"> <!-- 사용유형 -->
-							ㅁ
+								<c:if test="${plist.poWhere==0 }">
+									FUNDING
+								</c:if>
+								<c:if test="${plist.poWhere==1 }">
+									COUPON
+								</c:if>
+								<c:if test="${plist.poWhere==2}">
+									CAMPAIGN
+								</c:if>
 							</div>
 							<div class="up3"> <!-- 사용 포인트 -->
-							ㅁ
+								<c:if test="${plist.poEarn eq 0 }">
+									 <span style="color:#ff6666">- ${plist.poUsed }</span>
+								</c:if>
+								<c:if test="${plist.poUsed eq 0}">
+									 <span style="color:#66b3ff">+ ${plist.poEarn }</span>
+								</c:if>
 							</div>						
-							<div class="up4"> <!-- 취소여부 -->
-							ㅁ
-							</div>
-							<div class="up5"> <!-- 취소일자 -->
-							ㅁ
-							</div>
-							
-						
-						
-						
 						</div>
-					</c:forEach>
+					</c:forEach><br>
 				</div>
 			</div>
 			<!-- 엠블럼 영역 -->

@@ -1,5 +1,3 @@
-
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -60,9 +58,9 @@
 <div class="main-content">
 	
 	<div class="list">
-	<div id="content" class="p-4 p-md-5">
+	<div id="content" class="p-4 p-md-5" >
              
-            <div class="container1">
+            <div class="container1" style="text-align:center;">
            <p style="font-size:20px; text-align:left; border-bottom:1px solid gray; font-style:normal;">나의 문의내역</p>
                 
                   <div class="table-responsive">  

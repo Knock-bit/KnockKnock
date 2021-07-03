@@ -1,3 +1,4 @@
+
 package com.knockknock.mypage.serviceimpl;
 
 import java.util.List;
@@ -11,6 +12,7 @@ import com.knockknock.campaign.campaign.CampaignVO;
 import com.knockknock.contact.ContactVO;
 import com.knockknock.mypage.MypageService;
 import com.knockknock.user.UserVO;
+import com.knockknock.util.PointVO;
 
 @Service("mypageService")
 public class MypageServiceImpl implements MypageService {
@@ -91,5 +93,11 @@ public class MypageServiceImpl implements MypageService {
 	public List<BoardVO> myActive(UserVO vo){
 		
 		return mypageDAO.myActive(vo);
+	}
+	
+	// 나의 포인트 리스트
+	public List<PointVO> myPointList(UserVO vo){
+		
+		return mypageDAO.myPointList(vo);
 	}
 }

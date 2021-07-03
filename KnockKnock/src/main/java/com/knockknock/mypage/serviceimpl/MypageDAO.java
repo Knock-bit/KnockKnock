@@ -1,3 +1,4 @@
+
 package com.knockknock.mypage.serviceimpl;
 
 import java.util.List; 
@@ -12,6 +13,7 @@ import com.knockknock.board.BoardVO;
 import com.knockknock.campaign.campaign.CampaignVO;
 import com.knockknock.contact.ContactVO;
 import com.knockknock.user.UserVO;
+import com.knockknock.util.PointVO;
 
 @Repository
 public class MypageDAO {
@@ -96,6 +98,11 @@ public class MypageDAO {
 	public List<BoardVO> myActive(UserVO vo) {
 
 		return mybatis.selectList("UserVO.myActive", vo);
+	}
+	// 나의 포인트 내역
+	public List<PointVO> myPointList(UserVO vo) {
+
+		return mybatis.selectList("UserVO.myPointList", vo);
 	}
 	
 

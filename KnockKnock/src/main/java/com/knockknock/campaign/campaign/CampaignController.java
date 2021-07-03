@@ -11,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.knockknock.user.UserService;
+
 
 @Controller
 @RequestMapping("/campaign")
@@ -31,7 +33,10 @@ public class CampaignController {
 		System.out.println(">>>" + result + "개의 캠페인 만료처리");
 		if (result > 0) {
 			// 포인트 분배 처리
-			
+			int ciIdx = campaignService.selectExpiredCampaign();
+			campaignService.insertCampaignRank(ciIdx);
+			int distResult = campaignService.updateCampaignPoint(ciIdx);
+			System.out.println(">>> " + distResult + "개 캠페인 포인트 분배 완료");
 		}
 		
 		
