@@ -31,8 +31,6 @@ public class UserController {
 		System.out.println("UserController생성자");
 	}
 	
-	
-
 	// 로그인하기로 이동
 	@GetMapping("/user/login.do")
 	public String moveLogin() {
@@ -46,12 +44,34 @@ public class UserController {
 		return "/user/signup";
 	}
 
+	//사업자로 회원가입창으로 이동
+	@GetMapping("/user/signupseller.do")
+	public String SellerSignup() {
+		return "/user/signupseller";
+	}
+	
+	//개인판매자 회원가입창으로 이동
+		@GetMapping("/user/signupseller2.do")
+		public String SellerSignup2() {
+			return "/user/signupseller2";
+		}
+
 	// 회원가입 전 tnc로 이동
 	@GetMapping("/user/tnc.do")
 	public String tnc() {
 		return "/user/tnc";
 	}
-
+	
+	//sellerMain창이동
+	@GetMapping("/user/sellerJoin.do")
+	public String sellerJoin() {
+		return "/user/sellerJoinMain";
+	}
+	// Sellertnc로 이동
+	@GetMapping("/user/tncSeller.do")
+	public String tncSeller() {
+		return "/user/tncSeller";
+	}
 	// id중복체크
 	@RequestMapping("/user/idCheck.do")
 	@ResponseBody
@@ -145,6 +165,7 @@ public class UserController {
 				
 	}
 
+
 	// 카카오
 	@RequestMapping(value = "/user/kakaologin.do", method = {RequestMethod.POST, RequestMethod.GET})
 	@ResponseBody
@@ -153,10 +174,8 @@ public class UserController {
 		System.out.println("1) 카카오톡 로그인 실행: " + uId);
 		vo.setuEmail(uId);
 		
-		
 		UserVO login = userService.kakaoLogin(vo);
 		
-
 		if(login == null) {
 			System.out.println("아이디가 없는 경우");
 

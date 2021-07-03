@@ -1,11 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"
+    %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="cp" value ="${pageContext.request.contextPath }"/>
 <jsp:useBean id="today" class="java.util.Date"/>
-<fmt:formatDate var="now" value="${today }" pattern ="yyyyMMdd" />
-<fmt:formatDate var="endDate" value="${campaign.ciEnddate }" pattern="yyyyMMdd"/>
+<%-- <fmt:formatDate var="nowDate" value="${today }" pattern ="yyyy-MM-dd" /> --%>
+<fmt:parseNumber var = "now" value="${today.time / (1000 * 60 * 60 * 24) }" integerOnly="true"/>
+<fmt:parseNumber var="end" value="${campaign.ciEnddate.time / (1000 * 60 * 60 * 24) }" integerOnly="true"/>
+<%-- <fmt:parseNumber var = "end" value="${endDate.time() }" integerOnly="true"/>
+ --%>
 <!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
@@ -39,8 +43,6 @@
   <!-- Import BootStrap -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <style>
-
-
 .profile-container{
 	width: 200px;
 	line-height:50px;
@@ -71,7 +73,6 @@ vertical-align:middle;}
     height:30vh;
     overflow:hidden;
 }
-
 .img-box img {
 	width:100%; 
 	height:100%; 
@@ -82,7 +83,6 @@ vertical-align:middle;}
 	position:relative;
 	z-index:-1;
 	}
-
  .detail-title {
  	position:relative;
  	top:50%;
@@ -99,18 +99,14 @@ vertical-align:middle;}
     width: 750px;
 		  }
 		}
-
 	@media (min-width: 1100px) {
   .container {
     width: 1080px;
 		  }
 		}
-
-
 </style>
 
 <script>
-
 	$(function(){
 		$("#getBoard").click(function(){
 			$("#commonDiv").load("${cp}/board/getBoardList.do");
@@ -126,8 +122,6 @@ vertical-align:middle;}
 		
 	});
 	
-
-
 </script>
 
 
@@ -158,7 +152,6 @@ vertical-align:middle;}
     
          <section>
 	      		<div class="detail-title">
-	      		
 			     <h1>${campaign.ciTitle}</h1><div class="profile-contianer"><div class=profile-pic>
              	 <img src="/resource/img/profile/user_default.png"></div> ${campaign.hostNickname }
       	   </div><div class="helper"></div></div>
@@ -218,7 +211,7 @@ vertical-align:middle;}
           <div class="col-lg-4">
 
             <div class="campaign-info align-items-center">
-              <h2>${endDate - now }일 남았어요</h2>
+              <h2>${end - now + 1}일 남았어요</h2>
               <h3>캠페인 인증방법</h3>
             </div>
 
@@ -271,7 +264,6 @@ vertical-align:middle;}
     <!-- ======= Cource Details Tabs Section ======= -->
     <!-- <section id="cource-details-tabs" class="cource-details-tabs">
       <div class="container" data-aos="fade-up">
-
         <div class="row">
           <div class="col-lg-3">
             <ul class="nav nav-tabs flex-column">
@@ -357,7 +349,6 @@ vertical-align:middle;}
             </div>
           </div>
         </div>
-
       </div>
     </section> --><!-- End Cource Details Tabs Section -->
 
@@ -369,7 +360,6 @@ vertical-align:middle;}
 
 <!--   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
  -->  <!-- Vendor JS Files -->
   <script src="${cp}/resource/vendor/aos/aos.js"></script>
   <script src="${cp}/resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

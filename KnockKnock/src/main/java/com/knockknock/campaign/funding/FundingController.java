@@ -81,11 +81,6 @@ public class FundingController {
 		System.out.println(uIdx);
 		fundingUser.setCfPoint(cfPoint);
 		
-//		FundingUserVO fundingUser = new FundingUserVO();
-//		fundingUser.setCfPoint(cfPoint);
-//		fundingUser.setCfIdx(cfIdx);
-//		fundingUser.setuIdx(uIdx);
-
 		//		
 		fundingService.insertFundingUser(fundingUser);
 		fundingService.updateFundingPoint(fundingUser);

@@ -45,6 +45,7 @@
 	
 	
 	
+	
 	<!-- 캠페인 상세보기 -->
 	<select id="selectOneCampaign" parameterType="int" resultType="CampaignVO">
 		SELECT C.*, U.U_NICKNAME AS HOST_NICKNAME, CC.CC_NAME AS CATEGORY
@@ -70,12 +71,101 @@
 		   AND CI_STATUS = 1
 	</update>
 	
+	<insert id="insertCampaignRank" parameterType="int">
+		INSERT INTO CAMPAIGN_RANK(U_IDX, C_RANK, CI_IDX)
+	    SELECT DISTINCT * FROM
+	    (SELECT U_IDX, ROWNUM
+	              FROM
+	           (SELECT U_IDX, COUNT(U_IDX) FROM BOARD
+	             WHERE CI_IDX = #{C_IDX}
+	             GROUP BY U_IDX
+	             ORDER BY COUNT(U_IDX) DESC)
+	             WHERE ROWNUM <![CDATA[<=]]> 3)
+	   INNER JOIN
+	            ( SELECT * FROM
+	            ( SELECT #{cIdx} FROM DUAL
+	               UNION ALL
+	              SELECT #{cIdx} FROM DUAL
+	               UNION ALL
+	              SELECT #{cIdx} FROM DUAL))
+	    ON 1=1
+	</insert>
+	
+	<select id="selectExpiredCampaign" resultType="int">
+		SELECT CI_IDX 
+		  FROM CAMPAIGN
+		 WHERE CI_STATUS = 2
+	</select>
+	
+	
+	
+	<!-- 1등에게 포인트 분배 -->
+	<update id ="updateCampaignPointFirst" parameterType="int">
+		     UPDATE USERS
+		        SET U_TOT_POINT = U_TOT_POINT + (
+		     SELECT REST_POINT * 0.4 AS FIRST 
+		       FROM( SELECT (SELECT C_TOTPOINT - (300 * (SELECT COUNT(*)-3 FROM CAMPAIGN_USER WHERE CI_IDX= #{ciIdx}))
+			                   FROM CAMPAIGN WHERE CI_IDX = #{ciIdx}) AS REST_POINT
+			                   FROM DUAL))
+		      WHERE U_IDX = (SELECT U_IDX
+		                       FROM CAMPAIGN_RANK
+		                      WHERE C_RANK = 1 AND CI_IDX = #{ciIdx})
+	</update>
+	
+	
+	<update id ="updateCampaignPointSecond" parameterType="int">
+		     UPDATE USERS
+		        SET U_TOT_POINT = U_TOT_POINT + (
+		     SELECT REST_POINT * 0.35 AS Second 
+		       FROM( SELECT (SELECT C_TOTPOINT - (300 * (SELECT COUNT(*)-3 FROM CAMPAIGN_USER WHERE CI_IDX= #{ciIdx}))
+			                   FROM CAMPAIGN WHERE CI_IDX = #{ciIdx}) AS REST_POINT
+			                   FROM DUAL))
+		      WHERE U_IDX = (SELECT U_IDX
+		                       FROM CAMPAIGN_RANK
+		                      WHERE C_RANK = 2 AND CI_IDX = #{ciIdx})
+		
+	</update>
+	
+	<update id ="updateCampaignPointThird" parameterType="int">
+		     UPDATE USERS
+		        SET U_TOT_POINT = U_TOT_POINT + (
+		     SELECT REST_POINT * 0.25 AS Second 
+		       FROM( SELECT (SELECT C_TOTPOINT - (300 * (SELECT COUNT(*)-3 FROM CAMPAIGN_USER WHERE CI_IDX= #{ciIdx}))
+			                   FROM CAMPAIGN WHERE CI_IDX = #{ciIdx}) AS REST_POINT
+			                   FROM DUAL))
+		      WHERE U_IDX = (SELECT U_IDX
+		                       FROM CAMPAIGN_RANK
+		                      WHERE C_RANK = 3 AND CI_IDX = #{ciIdx})
+		
+	</update>
+	
+	
+	<update id= "updateCampaignPointRest" parameterType="int">
+			UPDATE USERS
+			   SET U_TOT_POINT = U_TOT_POINT + 300
+			 WHERE U_IDX IN (SELECT U_IDX FROM CAMPAIGN_USER WHERE CI_IDX = #{ciIdx}
+			 MINUS
+			SELECT U_IDX FROM CAMPAIGN_RANK WHERE CI_IDX = #{ciIdx})
+	</update>
+	
+	
+	
+	<update id="updateCampaignDistributed">
+		UPDATE CAMPAIGN
+		   SET CI_STATUS = 3
+		 WHERE CI_STATUS = 2
+		  AND  CI_IDX = #{ciIdx}
+	</update>
+	
+	
+	
+	
 	<!-- 종료된 캠페인 불러오기 -->
 	<select id="selectAllEdCampaign" resultType="CampaignVO">
 		SELECT C.*, U.U_NICKNAME AS HOST_NICKNAME, CC.CC_NAME AS CATEGORY, 
         (SELECT COUNT(*) FROM CAMPAIGN_USER WHERE C.CI_IDX = CAMPAIGN_USER.ci_idx) USER_COUNT
 		FROM USERS U, CAMPAIGN C, CAMPAIGN_CATEGORY CC
-		WHERE CI_STATUS = 2
+		WHERE CI_STATUS = 3
 		AND U.U_IDX = C.U_IDX
 		AND C.CC_IDX = CC.CC_IDX
 	</select>
