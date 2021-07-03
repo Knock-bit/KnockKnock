@@ -46,4 +46,21 @@ public class CampaignDAO {
 	public int insertCampaign(CampaignVO campaign) {
 		return mybatis.insert("campaign.insertCampaign", campaign);
 	}
+
+	public int insertCampaignRank(int ciIdx) {
+		return mybatis.insert("campaign.insertCampaignRank", ciIdx);
+	}
+
+	public int updateCampaignPoint(int ciIdx) {
+		mybatis.update("campaign.updateCampaignPointFirst", ciIdx);
+		mybatis.update("campaign.updateCampaignPointSecond", ciIdx);
+		mybatis.update("campaign.updateCampaignPointThird", ciIdx);
+		mybatis.update("campaign.updateCampaignPointRest", ciIdx);
+		return mybatis.update("campaign.updateCampaignDistributed", ciIdx);
+	
+	}
+
+	public int selectExpiredCampaign() {
+		return mybatis.selectOne("campaign.selectExpiredCampaign");
+	}
 }

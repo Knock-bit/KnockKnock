@@ -60,4 +60,21 @@ public class CampaignServiceimpl implements CampaignService {
 		return campaignDAO.insertCampaign(campaign);
 	}
 
+	
+
+	@Override
+	public int selectExpiredCampaign() {
+		return campaignDAO.selectExpiredCampaign();
+	}
+
+	@Override
+	public int insertCampaignRank(int ciIdx) {
+		return campaignDAO.insertCampaignRank(ciIdx);
+	}
+
+	@Override
+	public int updateCampaignPoint(int ciIdx) {
+		return campaignDAO.updateCampaignPoint(ciIdx);
+	}
+
 }
