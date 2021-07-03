@@ -60,7 +60,30 @@
 
 
 </script>
+<style>
+.scale {
+	transform: scale(1);
+	-webkit-transform: scale(1);
+	-moz-transform: scale(1);
+	-mz-transform: scale(1);
+	-o-transform: scale(1);
+	transition: all 0.3s ease-in-out;
+	}
+	
+.scale:hover {
+	transform: scale(1.1);
+	-webkit-transform: scale(1.1);
+	-moz-transform: scale(1.1);
+	-mz-transform: scale(1.1);
+	-o-transform: scale(1.1);
+	}	
+.img-campaign {
+	overflow: hidden;
+	}
+.none-deco {
+	text-decoration:none;}
 
+</style>
   
 </head>
 <body>
@@ -111,21 +134,23 @@
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch" >
             <div class="campaign-item campaign-wrapper" >
             <div class="wrapper-item">
-              <img src="${campaign.ciFile }" class="img-fluid" alt="...">
+              <div class= img-campaign>
+              <div class=scale><a href="${cp }/campaign/ing/detail.do?ciIdx=${campaign.ciIdx }">
+              <img src="${campaign.ciFile }" class="img-fluid" alt="..."></a></div></div>
               <div class="campaign-content">
                 <div class="d-flex justify-content-between align-items-center mb-3">
                   <h4>${campaign.category}</h4>
                 </div>
 
-                <h3><a href="${cp }/campaign/ing/detail.do?ciIdx=${campaign.ciIdx }">${campaign.ciTitle } </a></h3>
-                <p>${campaign.cGoal }</p>
+                <h3><a class="none-deco" href="${cp }/campaign/ing/detail.do?ciIdx=${campaign.ciIdx }">${campaign.ciTitle } </a></h3>
+                <p><a class="none-deco" href="${cp }/campaign/ing/detail.do?ciIdx=${campaign.ciIdx }">${campaign.cGoal }</a></p>
                 <div class="trainer d-flex justify-content-between align-items-center">
                   <div class="trainer-profile d-flex align-items-center">
                     <img src="assets/img/trainers/trainer-1.jpg" class="img-fluid" alt="">
                     <span>suggested by  ${campaign.hostNickname } </span>
                   </div>
                   <div class="trainer-rank d-flex align-items-center">
-                    <i class="bx bx-user"></i>&nbsp;${campaign.userCount }명 참가중
+                    <i class="bx bx-user"></i>&nbsp;<a class="none-deco" href="${cp }/campaign/ing/detail.do?ciIdx=${campaign.ciIdx }">${campaign.userCount }명 참가중</a>
                     </div>
                   </div>
                 </div>
