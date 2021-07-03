@@ -128,5 +128,10 @@ U_ACTIVE, U_GENDER, U_ADDRESS, U_JOINDATE)
 	
 	</select>
 	
+	<!-- 나의 포인트 내역 -->
+	<select id="myPointList" parameterType="UserVO" resultType="pointVO">
+		SELECT * FROM POINT WHERE U_IDX = #{uIdx} ORDER BY PO_DATE DESC
+	
+	</select>
 	
 </mapper>

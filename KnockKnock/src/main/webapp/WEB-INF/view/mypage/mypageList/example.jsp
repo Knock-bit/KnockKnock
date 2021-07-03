@@ -44,6 +44,39 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 $(function(){
+	$.ajax({
+		url : "myCal.do",
+		type : "get",
+		dataType : 'json',
+		success : function(result) {
+			var list = result;
+			console.log(list);
+			
+			var calendarEl = document.getElementById('calendar');
+
+			var events = list.map(function(item) {
+				return {
+					title : item.bSubject,
+					start : item.bRegdate + "T"
+				}
+
+			});
+
+			var calendar = new FullCalendar.Calendar(calendarEl, {
+				events : events,
+				eventTimeFormat : {
+					hour : '2-digit',
+					minute : '2-digit',
+					hour12 : false
+				}
+			});
+			
+			calendar.render();
+		
+		}, 
+		
+	});  
+
 	
 });
 
@@ -64,15 +97,14 @@ $(function(){
 			allDaySlot : false,
 			eventLimit : true, // allow "more" link when too many events
 			contentHeight : 'auto',
-			events : function(callback){
+			events : function(info, successCallback, failureCallback) {
 				
 			}
 			
 			
 		});
 		calendar.render();
-		calendar.addEvent({title:'줍깅',color:'#ff0000',textColor:'#FFFFFF',start:'2021-07-03',end:'2021-07-03'});
-
+		
 	});
 	
 	
@@ -88,48 +120,11 @@ $(function(){
 			successCallback(data);
 		 }
 	});*/
-	/*
-	events : function(info, successCallback, failureCallback) {
-					
-				}
+	
+	
 
-	function insertCalendar(){
-		$.ajax({
-			url : "myCal.do",
-			type : "get",
-			dataType : 'json',
-			success : function(result) {
-				alert("성공");
-				var list = result;
-				console.log(list);
-				
-				var calendarEl = document.getElementById('calendar');
-
-				var events = list.map(function(item) {
-					return {
-						title : item.bSubject,
-						start : item.bRegdate + "T"
-					}
-
-				});
-
-				var calendar = new FullCalendar.Calendar(calendarEl, {
-					events : events,
-					eventTimeFormat : {
-						hour : '2-digit',
-						minute : '2-digit',
-						hour12 : false
-					}
-				});
-				
-				calendar.render();
-				calendar.addEvent({title:'줍깅',color:'#ff0000',textColor:'#FFFFFF',start:'2021-07-03',end:'2021-07-03'});
-				calendar.addEvent({title:'당근마켓거래',color:'blue',textColor:'#FFFFFF',start:'2021-07-04',end:'2021-07-04'});
-				calendar.addEvent({title:'당근마켓거래',color:'blue',textColor:'#FFFFFF',start:'2021-07-04',end:'2021-07-04'});
-			}, 
-			
-		});  
-	} */
+	
+		
 	
 	
 </script>
