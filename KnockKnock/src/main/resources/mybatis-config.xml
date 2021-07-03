@@ -54,9 +54,17 @@
 		<!-- contact -->
 		<typeAlias alias="contactVO" type="com.knockknock.contact.ContactVO" />
 
+		
+		<!-- 상품 -->
+		<typeAlias alias="productVO" type="com.knockknock.util.ProductVO" />
+		
+		
+
+
 		<!-- seller -->
 		<typeAlias alias="sellerVO" type="com.knockknock.seller.SellerVO" />
 	
+
 
 	</typeAliases>
 

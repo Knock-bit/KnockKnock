@@ -1,5 +1,5 @@
 
-package com.knockknock.mypage.serviceimpl;
+package com.knockknock.mypage.mypageserviceimpl;
 
 import java.util.List; 
 import java.util.Map;
