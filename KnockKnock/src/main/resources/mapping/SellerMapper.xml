@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 참고파일 나중에 삭제 -->
+<mapper namespace="Seller">
+	
+	<!-- 로그인 -->
+	<select id="sellerLogin" parameterType="UserVO" resultType="UserVO">
+		SELECT * FROM USERS WHERE U_ID=#{uId} and U_PWD=#{uPwd}
+	</select>
+	
+	<!-- 판매자등록 -->
+	<insert id="sellerJoin" parameterType="UserVO">
+		INSERT INTO SELLER
+		VALUES(S_IDX_SEQ.NEXTVAL, #{sId}, #{sPwd}, #{sPhone}, #{sName}, #{sAddress}, #{sEmail}, #{sBiz})		
+	</insert>
+	<!-- 판매자번호 없는 등록 -->
+	<insert id="sellerJoin2" parameterType="UserVO">
+		INSERT INTO SELLER
+		VALUES(S_IDX_SEQ.NEXTVAL, #{sId}, #{sPwd}, #{sPhone}, #{sName}, #{sAddress}, #{sEmail}, 'N/A')		
+	</insert>
+</mapper>

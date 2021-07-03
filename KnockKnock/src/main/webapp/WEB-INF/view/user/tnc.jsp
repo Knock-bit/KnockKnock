@@ -173,7 +173,7 @@
     <body>
 
         <div id="joinForm">
-            <h1>Knock!Knock! 이용약관</h1>
+            <h1>綠!Knock! 이용약관</h1>
             <ul class="join_box">
                 <li class="checkBox check01">
                     <ul class="clearfix">
@@ -290,8 +290,7 @@ eXpert 서비스 및 eXpert 센터 가입 등록정보 : 신청일로부터 6개
    </textarea>
                     <ul class=" footBtwrap">
                     <button class="btn btn-secondary" id="myBtn" onclick="agree()">동의합니다</button>
-
-                        <button class="btn btn-secondary" onclick="history.back()">취소하기</button>
+                    <button class="btn btn-secondary" onclick="history.back()">취소하기</button>
                     </ul>
             </ul>
 
