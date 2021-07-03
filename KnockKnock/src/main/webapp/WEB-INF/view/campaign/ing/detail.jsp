@@ -1,11 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"
+    %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="cp" value ="${pageContext.request.contextPath }"/>
 <jsp:useBean id="today" class="java.util.Date"/>
-<fmt:formatDate var="now" value="${today }" pattern ="yyyyMMdd" />
-<fmt:formatDate var="endDate" value="${campaign.ciEnddate }" pattern="yyyyMMdd"/>
+<%-- <fmt:formatDate var="nowDate" value="${today }" pattern ="yyyy-MM-dd" /> --%>
+<fmt:parseNumber var = "now" value="${today.time / (1000 * 60 * 60 * 24) }" integerOnly="true"/>
+<fmt:parseNumber var="end" value="${campaign.ciEnddate.time / (1000 * 60 * 60 * 24) }" integerOnly="true"/>
+<%-- <fmt:parseNumber var = "end" value="${endDate.time() }" integerOnly="true"/>
+ --%>
 <!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
@@ -158,7 +162,6 @@ vertical-align:middle;}
     
          <section>
 	      		<div class="detail-title">
-	      		
 			     <h1>${campaign.ciTitle}</h1><div class="profile-contianer"><div class=profile-pic>
              	 <img src="/resource/img/profile/user_default.png"></div> ${campaign.hostNickname }
       	   </div><div class="helper"></div></div>
@@ -218,7 +221,7 @@ vertical-align:middle;}
           <div class="col-lg-4">
 
             <div class="campaign-info align-items-center">
-              <h2>${endDate - now }일 남았어요</h2>
+              <h2>${end - now + 1}일 남았어요</h2>
               <h3>캠페인 인증방법</h3>
             </div>
 
