@@ -38,92 +38,67 @@
 
 
 <!-- page css  -->
-<link href='/resource/img/upload/mypage/main.css' rel='stylesheet' />
+<!-- <link href='/resource/img/upload/mypage/main.css' rel='stylesheet' />
 <script src='/resource/img/upload/mypage/main.js'></script>
-<script src='/resource/img/upload/mypage/ko.js'></script>
+<script src='/resource/img/upload/mypage/ko.js'></script> -->
+<link href="/resource/img/upload/mypage/packages/core/main.css" rel ="stylesheet" />
+<link href="/resource/img/upload/mypage/packages/daygrid/main.css" rel ="stylesheet" />
+<script src="/resource/img/upload/mypage/packages/core/main.js"></script>
+<script src="/resource/img/upload/mypage/packages/interaction/main.js"></script>
+<script src="/resource/img/upload/mypage/packages/daygrid/main.js"></script>
+
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
+
 $(function(){
-	$.ajax({
-		url : "myCal.do",
-		type : "get",
-		dataType : 'json',
-		success : function(result) {
-			var list = result;
-			console.log(list);
-			
-			var calendarEl = document.getElementById('calendar');
-
-			var events = list.map(function(item) {
-				return {
-					title : item.bSubject,
-					start : item.bRegdate + "T"
-				}
-
-			});
-
-			var calendar = new FullCalendar.Calendar(calendarEl, {
-				events : events,
-				eventTimeFormat : {
-					hour : '2-digit',
-					minute : '2-digit',
-					hour12 : false
-				}
-			});
-			
-			calendar.render();
+	var calendarEl = document.getElementById('calendar');
+	var calendar = new FullCalendar.Calendar(calendarEl, {
+		plugins:["interaction","dayGrid"],
+		defaultView : 'dayGridMonth',
+		locale : 'ko',
+		navLinks : true, //날짜 등을 클릭하면 view로 이동하는 거인듯..?
+		editable : true,
+		eventLimit : true, // allow "more" link when too many events
+		contentHeight : 'auto',
 		
-		}, 
-		
-	});  
+		//날짜 클릭시 모달 활성화
+        dateClick: function (data) {
+           /* $("#myModal3").css("display","block");
+           $("#myModal3").addClass("in"); */
+           $("#myModal3").click();
+           onload="calModal()";
+          /*  console.log(data.dateStr); */
+        }
+      });
+      var calendar;
+      calendar.render();
 
-	
-});
-
-	document.addEventListener('DOMContentLoaded', function() {
-			
-		var calendarEl = document.getElementById('calendar');
-		var calendar = new FullCalendar.Calendar(calendarEl, {
-			plugins : [ 'dayGrid' ],
-			header : {
-				left : 'prev,next today',
-				center : 'title',
-				right : 'dayGridMonth, timeGridWeek'
-			},
-			defaultView : 'dayGridMonth',
-			locale : 'ko',
-			navLinks : true, //날짜 등을 클릭하면 view로 이동하는 거인듯..?
-			editable : true,
-			allDaySlot : false,
-			eventLimit : true, // allow "more" link when too many events
-			contentHeight : 'auto',
-			events : function(info, successCallback, failureCallback) {
+      $.ajax({
+  		url : "/myCal.do",
+  		type : "get",
+  		success : function(data) {
+  			console.log(data);
+  			
+			for(var i=0; i< data.length; i++){
+				var title = data[i].bSubject;
+				var startDate = data[i].bRegdate; // date타입 받음
+				var start = startDate.toString();
+				var color =  '#6c9378'; 
+				var textColor = '#FFFFFF';
 				
+				calendar.addEvent({title : title,color:color,textColor:textColor, start: '2021-07-01'});
+			
 			}
+  			
+  		}
+  		
+  	});  
+});
 			
-			
-		});
-		calendar.render();
 		
-	});
-	
-	
-	/* $.ajax({
-		url: 'myCal.do',
-		type: 'get',
-		dataType: 'json',
-		data: {
-			start : moment(info.bRegdate).format('YYYY-MM-DD'),
-			title : moment(info.bSubject).format('YYYY-MM-DD')
-		},
-		success: function(data) {
-			successCallback(data);
-		 }
-	});*/
-	
-	
 
-	
+
 		
 	
 	

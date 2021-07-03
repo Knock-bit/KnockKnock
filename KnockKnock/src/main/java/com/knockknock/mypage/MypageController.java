@@ -28,6 +28,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.google.gson.Gson;
 import com.knockknock.board.BoardVO;
 import com.knockknock.campaign.campaign.CampaignVO;
 import com.knockknock.contact.ContactVO;
@@ -269,18 +270,19 @@ public class MypageController {
 		
 		//List<BoardVO> bvo = mypageService.myActive(vo);
 				
-		return "/mypage/mypageList/example";
+		return "/mypage/mypageList/myDiary";
 	}
 	// 내 캘린더 ajax
 	@RequestMapping(value ="/myCal.do", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseBody
-	public List<BoardVO> selectEventList(@ModelAttribute("users")UserVO vo ,Model model) {
+	public String selectEventList(@ModelAttribute("users")UserVO vo ,Model model) {
 		System.out.println("uIdx : " + vo.getuIdx());
 		List<BoardVO> bvo = mypageService.myActive(vo);
+		
 		System.out.println(bvo);
 		
 		
-		return  bvo;
+		 return new Gson().toJson(bvo);
 	}
 	
 
