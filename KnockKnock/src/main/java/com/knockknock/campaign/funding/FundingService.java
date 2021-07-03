@@ -11,4 +11,7 @@ public interface FundingService {
 	List<FundingUserVO> selectAllFundingUsers(int cfIdx);
 	// 종료시간 지난 펀딩 만료처리
 	int updateExpiredFunding();
+	int insertFundingUser(FundingUserVO fundingUser);
+	int updateFundingPoint(FundingUserVO fundingUser);
+	FundingUserVO selectFundingUser(FundingUserVO fundingUser);
 }

@@ -15,6 +15,7 @@ public interface CampaignService {
 	public int updateExpiredCampaign();
 	public List<CampaignVO> selectCampaignListLatest();
 	public List<CampaignVO> selectCampaignListUserCount();
+	public int insertCampaign(CampaignVO campaign);
 	
 	
 }

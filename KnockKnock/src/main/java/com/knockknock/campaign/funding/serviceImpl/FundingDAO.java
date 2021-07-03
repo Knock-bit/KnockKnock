@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.knockknock.campaign.funding.FundingUserVO;
 import com.knockknock.campaign.funding.FundingVO;
 
 @Repository
@@ -25,6 +26,11 @@ public class FundingDAO {
 	public int updateExpiredFunding() {
 		return mybatis.update("campaign.updateExpiredFunding");
 	}
+
+	public int updateFundingPoint(FundingUserVO fundingUser) {
+		return mybatis.update("campaign.updateFundingPoint", fundingUser);
+	}
+
 
 	
 }

@@ -8,15 +8,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.knockknock.campaign.campaign.CampaignService;
 import com.knockknock.user.UserVO;
 
 @Controller
 @SessionAttributes("users") // users 세션에 저장
 public class FundingController {
+	int cfPoint = 250;
 	@Autowired
 	private FundingService fundingService;
+	@Autowired
+	private CampaignService campaignService;
 	
 	@GetMapping("campaign/funding/list.do")
 	public String list(Model model) {
@@ -26,9 +33,9 @@ public class FundingController {
 		if(result > 0) {
 			// 펀딩 종료 = >
 			// 캠페인으로 바로 등록 ? 
+
+			
 			// 
-			
-			
 			
 		}
 		
@@ -40,9 +47,26 @@ public class FundingController {
 	
 	
 	@GetMapping("campaign/funding/detail.do")
-	public String detail(FundingVO fundingVO, Model model) {
+	public String detail(@SessionAttribute(name = "users", required =false)UserVO user, FundingVO fundingVO, Model model) {
 		System.out.println(">>> 펀딩중 캠페인 상세페이지로 이동!");
 		int cfIdx = fundingVO.getCfIdx();
+		if(user != null) {
+			System.out.println("세션값 있음");
+			int uIdx = user.getuIdx();
+			
+			FundingUserVO fUser = new FundingUserVO();
+			fUser.setCfIdx(cfIdx);
+			fUser.setuIdx(uIdx);
+			
+//			int check = 0;
+			FundingUserVO fundingUser = fundingService.selectFundingUser(fUser);
+			
+			if(fundingUser != null) {
+				model.addAttribute("fundingUser", fundingUser);
+			 };
+			
+		}
+		 		
 		FundingVO funding = fundingService.selectOneFunding(fundingVO);
 		List<FundingUserVO> userList = fundingService.selectAllFundingUsers(cfIdx);
 		System.out.println("funding 출력 : " + funding);
@@ -52,9 +76,19 @@ public class FundingController {
 	}
 	
 	@GetMapping("campaign/funding/fund.do")
-	public String fund(UserVO users, Model model) {
+	public String fund(@RequestParam("uIdx") int uIdx, @RequestParam("cfIdx") int cfIdx , FundingUserVO fundingUser) {
 		System.out.println(">>> 펀딩");
-		System.out.println(users.getuIdx());
+		System.out.println(uIdx);
+		fundingUser.setCfPoint(cfPoint);
+		
+//		FundingUserVO fundingUser = new FundingUserVO();
+//		fundingUser.setCfPoint(cfPoint);
+//		fundingUser.setCfIdx(cfIdx);
+//		fundingUser.setuIdx(uIdx);
+
+		//		
+		fundingService.insertFundingUser(fundingUser);
+		fundingService.updateFundingPoint(fundingUser);
 		
 		/*
 		 * FundingVO funding = fundingService.selectOneFunding(fundingVO);
