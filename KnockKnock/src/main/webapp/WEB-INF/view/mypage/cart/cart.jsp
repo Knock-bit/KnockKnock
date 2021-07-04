@@ -59,7 +59,7 @@
 		<div class="cartview">
 		<div class="topcartmenu">
 			<div class="tct1">
-				<input id="allchk" type="checkbox" name='selectall' onclick="selectAll(this)" >
+				<input id="allchk" type="checkbox" name='selectall' onclick="selectAll(this)" checked="checked" >
 			</div>
 			<div class="tct2">
 				상품
@@ -79,14 +79,17 @@
 			
 			<div class="cartGrid">
 				<div class="cg1">
-					<input type="checkbox" class="opt" name='opt1' onclick="checkSelectAll()" >
+					<!-- 체크박스 default값 checked -->
+					<input type="checkbox" class="opt" name='opt1' onclick="checkSelectAll()" checked="checked"  value="0">
 				</div>
 				<div class="cg2">
+					<!-- 상품 이미지 -->
 					<div class="cgimg">
 						<img src="/resource/img/product/${cartItem.pImg }">
 					</div>
 				</div>
 				<div class="cg3">
+					<!-- 상품명, 설명 -->
 					<div style="margin-bottom:10px;">
 						<span style="font-weight:700; ">[ ${cartItem.pName } ]</span><br>
 						${cartItem.pDesc }
@@ -96,27 +99,31 @@
 					</div>
 				</div>
 				<div class="cg4">
-					<input type="button"  class="minus" onclick="minus(this)" value="-" / >
+					<!-- 수량 -->
+					<input type="button"  class="minus" onclick="minus(this)" value="-" />
 						<span class="pCount">${cartItem.pCount }</span>
 					<input type="button" class="plus" onclick="plus(this)" value="+" />
 					 
 				</div>
 				<div class="cg5">
-					<fmt:formatNumber value="${cartItem.pPrice }" var="pPrice" pattern="#,###"/>
-					<p class="cg5price">${pPrice }원</p>&nbsp;&nbsp;
+					<!-- 가격 -->
+					<p class="cg5price">${cartItem.pPrice }원</p>&nbsp;&nbsp;
 					<input class="cg5btn" type="button" value="내 쿠폰">
 				</div>
 				<div class="cg6">
-					${cartItem.pFee } 원
+					<!-- 배송비 -->
+					<span class="pFee">${cartItem.pFee }</span> 원
 				</div>
 			</div>
 			</c:forEach>	
 		</div>
+		<div class="totPrice">
+			<!-- 체크박스에 체크 된 상품의 가격만 가져오기(+배송비) -->
+			<div>총 합계 :</div><span id="price">0</span>원
+			
 		</div>
-		<div>
-			총 합계 :
+		</div>
 		
-		</div>
 
 	
 </div>	
@@ -126,8 +133,58 @@
  <!-- End Footer -->
 </body>
 <script>
+$(function(){
+	var totalPrice = 0; // 총 합계에 나타낼 금액
+	var totalPrice1 = 0; // 전체 체크때 사용할 총 합계금액(보관?용)
+	var pCount = 0;
+	var pPrice = 0;
+	var pFee = 0;
+	var aa = 0;
 	
+	$('input:checkbox[name=opt1]').each(function() {
+		// 체크된 상품의 인덱스 번호
+		idx = $('input:checkbox[name=opt1]').index(this); 
 	
+		// 동일한 인덱스번호의 상품 수량, 가격, 배송비 
+		pCount = parseInt($(".pCount").eq(idx).text());
+		//console.log(pCount);
+		pPrice = parseInt($(".cg5price").eq(idx).text());
+	
+		pFee = parseInt($(".pFee").eq(idx).text());
+		
+		aa = $('input:checkbox[name=opt1]').eq(idx).val();
+		
+		$('input:checkbox[name=opt1]').eq(idx).val((pCount*pPrice)+pFee);
+		
+		// 나중에 전체체크 때문에 전체 계산 값 따로 저장해놓기(좋은방법 생기면...알고싶다..ㅠ)
+		totalPrice1 += parseInt($('input:checkbox[name=opt1]').eq(idx).val());
+		totalPrice = totalPrice1;
+	});
+		$("#price").html(totalPrice); // 전체 체크된 상태이기 때문에 먼저 토탈값 저장해주기
+		
+		// 전체 체크/해제 상태 때의 값
+		$("#allchk").change(function(){
+			if(this.checked){
+				totalPrice += totalPrice1;
+			} else {
+				totalPrice -= totalPrice;
+			}
+			$("#price").html(totalPrice);
+		});
+		
+		// 상품 하나당 체크 해제하고 체크됐을 때의 값 
+		$(".opt").change(function(){
+			
+			if(this.checked) {
+				totalPrice += Number($(this).val());
+			} else {
+				totalPrice -= Number($(this).val());
+			}
+			$("#price").html(totalPrice);
+		});
+	
+});	
+
 
 
 </script>
