@@ -29,14 +29,35 @@
   <link href="${cp}/resource/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Import BootStrap -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-  
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <!-- Main CSS File -->
   <link href="${cp}/resource/css/main.css" rel="stylesheet">
   <link href="${cp}/resource/css/nav1.css" rel="stylesheet">
-  <link href="${cp}/resource/css/campaign/funding.css" rel="stylesheet">
   <link href="${cp}/resource/css/campaign/campaign.css" rel="stylesheet">
+  
+  <style>
+  .carousel {
+  martin-top: 70px;}
+  .carousel-item active {
+  display:flex;
+  vertical-align: middle;
+}
+
+  	@media (min-width: 768px) {
+  .container {
+    width: 750px;
+		  }
+		}
+
+	@media (min-width: 1100px) {
+  .container {
+    width: 1080px;
+		  }
+		}
+	.inner-nav{
+	margin-top:20px;
+	margin-bottom:20px;}
+  </style>
 </head>
 <body>
 
@@ -69,6 +90,38 @@
     <!-- ======= Breadcrumbs ======= -->
     
     <div class="container">
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="/resource/img/campaign/tempMain.png" alt="First slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="/resource/img/campaign/recycle.png" alt="Second slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="/resource/img/campaign/running.png" alt="Third slide">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div></div>
+    
+    
+    
+    
+    <!-- 
+    <div class="container">
     <div class="campaigncrumbs">
       <div class="container">
       <br>
@@ -77,13 +130,14 @@
          <h2>funding campaign</h2>
         <p>펀딩중인 캠페인 리스트</p>
       </div></div>
-    </div><!-- End Breadcrumbs -->
+    </div>End Breadcrumbs -->
 
     <!-- ======= Campaign Section ======= -->
     <section id="campaigns" class="campaigns">
       <div class="container" data-aos="fade-up">
+      <div class="inner-nav">
        <%@ include file= "/layout/navbar/campaign/navCampaign.jsp" %> 
-
+</div>
         <div class="row" data-aos="zoom-in" data-aos-delay="100">
 		<c:if test="${!empty fundingList  }">
         <c:forEach var="funding" items="${fundingList }">
@@ -138,6 +192,10 @@
 
   <!-- Template Main JS File -->
   <script src="${cp}/resource/js/main.js"></script>
+  
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 
 </body>
 
