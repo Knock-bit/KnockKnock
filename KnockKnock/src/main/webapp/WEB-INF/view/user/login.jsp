@@ -60,7 +60,16 @@
    }
    
     
-   
+   //구글로그인
+    function googleLogin(frm) {
+       frm.action = "user/googleLogin.do";
+       frm.submit();
+   }
+
+   //판매자가입
+   function sellerJoin() {
+		location.href="sellerJoin.do";
+   }
 	function attachSignin(element){
 		alert("attachSignin실행");
 		auth2.attachClickHandler(element, {},
@@ -118,6 +127,8 @@
            }
        })
    } 
+   
+   
 </script>
 </head>
 
@@ -130,8 +141,8 @@
 				<h1>Sign in</h1>
 				<div class="social-container">
 					<span>소셜계정 이용하기</span><br> 
-					<a href="/NewFile.jsp" id="Google"
-						class="social" >Google<i
+					<a href="googleLogin.do" id="Google"
+						class="social">Google<i
 						class="fab fa-linkedin-in"></i></a>
 						<a href="#" id="kakao"
 						class="social" onclick="kakaoLogin()">Kakao<i
@@ -155,6 +166,8 @@
 					</p>
 					<button class="ghost" id="signUp"
 						onclick="location.href='/user/tnc.do'">회원가입</button>
+                    <a href="#" onclick="sellerJoin()" style="font-style: italic; color:white; font-size:7px;">판매자 등록하기</a>
+				
 				</div>
 			</div>
 		</div>

@@ -1,3 +1,4 @@
+
   /* 메인 css */
 
 *{
@@ -34,7 +35,8 @@
 
 }
 .container1 {
-	width:80%;
+	width:100%;
+	margin:auto 0;
 	
 }
 .tbody td{

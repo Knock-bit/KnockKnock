@@ -36,7 +36,7 @@
 
                 <div class="signup-form">
                     <form method="POST" class="register-form" id="register-form" action="join.do">
-                        <h2>Knock!Knock! 회원가입</h2>
+                        <h2>綠!Knock! 회원가입</h2>
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="id">아이디 :</label>

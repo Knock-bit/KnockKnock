@@ -49,10 +49,23 @@
                type="com.knockknock.campaign.proposal.ProposalVO"/>
 		<!-- 회원 -->
 		<typeAlias alias="userVO" type="com.knockknock.user.UserVO" />
+		<typeAlias alias="pointVO" type="com.knockknock.util.PointVO" />
 		
 		<!-- contact -->
 		<typeAlias alias="contactVO" type="com.knockknock.contact.ContactVO" />
+
 		
+		<!-- 상품 -->
+		<typeAlias alias="productVO" type="com.knockknock.util.ProductVO" />
+		
+		
+
+
+		<!-- seller -->
+		<typeAlias alias="sellerVO" type="com.knockknock.seller.SellerVO" />
+	
+
+
 	</typeAliases>
 
 	<!-- mappers는 여러개 등록 가능하다. -->
