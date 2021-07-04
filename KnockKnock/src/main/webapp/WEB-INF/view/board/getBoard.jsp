@@ -14,8 +14,9 @@
 <meta charset="UTF-8">
 <title>상세보기</title>
 <script>	
-	function insert_board(frm){
-		frm.action="insertBoard.do";
+	function moveInsert_board(frm){
+		frm.action="moveInsert.do";
+		frm.setAttribute('method', 'get');
 		frm.submit();
 	}
 	function delete_board(frm){
@@ -75,7 +76,7 @@
 	</table>
 	<hr>
 	<div>
-		<input type="button" value="글 등록" onclick="insert_board(this.form)">
+		<input type="button" value="글 등록" onclick="moveInsert_board(this.form)">
 		<input type="button" value="글  삭제" onclick="delete_board(this.form)">
 		<input type="button" value="글 목록으로.." onclick="list_board(this.form)">
 	</div>

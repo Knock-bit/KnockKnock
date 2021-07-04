@@ -55,6 +55,19 @@
 		) WHERE cpRn BETWEEN #{start} AND
 		#{end}
 	</select>
+	
+	<!-- 총 게시글수 -->
+	<select id="countBoard" resultType="int">
+		SELECT COUNT(*) FROM BOARD
+	</select>
 
+	<!-- 페이징 처리 후 게시판 조회 -->
+	<select id="getBoardList" resultType="boardVO">
+		SELECT * FROM 
+		( SELECT ROWNUM RN, A.* FROM 
+		( SELECT * FROM BOARD ORDER BY B_IDX DESC) A
+		) WHERE RN
+		BETWEEN #{start} AND #{end}
+	</select>
 
 </mapper>
