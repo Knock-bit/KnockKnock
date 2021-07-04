@@ -1,6 +1,7 @@
 package com.knockknock.mypage;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,11 +27,21 @@ public class MypageProductController {
 	@Autowired
 	private MypageProductService mypageProductService;
 	
+	// 상품 목록으로 가기(임시)
+	@GetMapping("productList.do")
+	public String ProductList(@ModelAttribute("users")UserVO vo, Model model) {
+		
+		List<ProductVO> plist = mypageProductService.ProductList();
+		
+		model.addAttribute("plist", plist);
+		return "/mypage/cart/productList";
+	}
+	
 	// 상품 목록(정보) 가져오기 - 임시
 	@GetMapping("productDetail.do")
-	public String ProductDetail(@ModelAttribute("users")UserVO vo, Model model) {
+	public String ProductDetail(@ModelAttribute("users")UserVO vo, Model model, int pIdx) {
 		
-		ProductVO pvo = mypageProductService.productDetail();
+		ProductVO pvo = mypageProductService.productDetail(pIdx);
 		System.out.println("pvo : " + pvo);
 		
 		model.addAttribute("pvo", pvo);
@@ -51,6 +62,7 @@ public class MypageProductController {
 		if(result == 0 ) {
 			// 장바구니에 담기
 			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("uIdx", vo.getuIdx());
 			map.put("pIdx", pIdx);
 			map.put("pCount", selectCnt);
 			
@@ -63,10 +75,13 @@ public class MypageProductController {
 	
 	// 장바구니로 이동
 	@GetMapping("/moveCart.do")
-	public String moveCart(@ModelAttribute("users")UserVO vo) {
+	public String moveCart(@ModelAttribute("users")UserVO vo, Model model) {
 		
 		// 장바구니 리스트 불러오기
+		List<ProductVO> cartList = mypageProductService.cartList(vo);
+		System.out.println("cartList"+cartList);
 		
+		model.addAttribute("cartList", cartList);
 		return "/mypage/cart/cart";
 	}
 

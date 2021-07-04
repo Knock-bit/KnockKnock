@@ -134,9 +134,15 @@ U_ACTIVE, U_GENDER, U_ADDRESS, U_JOINDATE)
 	
 	</select>
 	
+	<!-- 상품 목록 가져오기(임시) -->
+	<select id="productList" resultType="productVO">
+		SELECT * FROM PRODUCT
+	
+	</select>
+	
 	<!-- 상품 정보 불러오기 (임시)-->
-	<select id="productDetail" resultType="productVO">
-		SELECT * FROM PRODUCT 
+	<select id="productDetail" parameterType="int" resultType="productVO">
+		SELECT * FROM PRODUCT WHERE P_IDX = #{pIdx}
 	</select>
 	
 	<!-- 장바구니 상품 확인 -->
@@ -146,9 +152,19 @@ U_ACTIVE, U_GENDER, U_ADDRESS, U_JOINDATE)
 	
 	<!-- 장바구니에 상품 담기 -->
 	<insert id="addCart" parameterType="hashmap">
-		INSERT INTO CART (CA_IDX, P_IDX, P_COUNT)
-		VALUES(CA_IDX_SEQ.nextval, #{pIdx}, #{pCount})
+		INSERT INTO CART (U_IDX, P_IDX, P_COUNT, CA_REGDATE)
+		VALUES(#{uIdx}, #{pIdx}, #{pCount}, SYSDATE)
 	
 	</insert>
+	
+	<!-- 장바구니 상품 목록 가져오기 -->
+	<select id="cartList" parameterType="UserVO" resultType="productVO">
+		SELECT C.CA_REGDATE, C.P_COUNT, P.P_IDX, P.P_NAME, P.P_PRICE, 
+				P.P_DESC, P.P_FEE, P.P_IMG
+		FROM CART C, PRODUCT P
+		WHERE C.P_IDX = P.P_IDX
+		AND U_IDX =#{uIdx}
+	
+	</select>
 	
 </mapper>

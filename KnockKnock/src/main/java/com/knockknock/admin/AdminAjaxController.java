@@ -76,7 +76,10 @@ public class AdminAjaxController {
 		// 내부경로로 저장
 //		String contextRoot = new HttpServletRequestWrapper(request).getRealPath("/");
 //		String fileRoot = contextRoot+"resources/fileupload/";
-		
+		 
+		// 내부경로 저장 -> 혜민누나버전 
+//		String savePath = request.getSession().getServletContext().getRealPath("/resource/img/upload/");
+
 		String originalFileName = multipartFile.getOriginalFilename();	//오리지날 파일명
 		String extension = originalFileName.substring(originalFileName.lastIndexOf("."));	//파일 확장자
 		String savedFileName = UUID.randomUUID() + extension;	//저장될 파일 명
