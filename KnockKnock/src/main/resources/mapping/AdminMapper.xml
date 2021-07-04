@@ -62,7 +62,7 @@
 	</insert>
 	<!-- 썸머노트 select -->
 	<select id="selectSummer" resultType="adminSummerVO">
-		SELECT * FROM TEST WhERE TEST_IDX = 123123
+		SELECT * FROM TEST WhERE TEST_IDX = 44444
 	</select>
 
 </mapper>
