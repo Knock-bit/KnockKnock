@@ -14,4 +14,5 @@ public interface FundingService {
 	int insertFundingUser(FundingUserVO fundingUser);
 	int updateFundingPoint(FundingUserVO fundingUser);
 	FundingUserVO selectFundingUser(FundingUserVO fundingUser);
+	int updateUserFundingPoint(FundingUserVO fundingUser);
 }

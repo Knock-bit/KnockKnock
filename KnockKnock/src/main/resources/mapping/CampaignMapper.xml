@@ -238,6 +238,12 @@
 		 WHERE CF_IDX = #{cfIdx}
 	</update>
 	
+	<update id="updateUserFundingPoint" parameterType = "FundingUserVO">
+		UPDATE USERS
+		   SET U_USED_POINT = U_USED_POINT + #{cfPoint}
+		 WHERE CF_IDX = #{cfIdx}
+	</update>
+	
 	<!-- 제안서 제출 -->
 	<insert id="insertProposal" parameterType="ProposalVO">
   		INSERT INTO PROPOSAL(CP_IDX, CP_REGDATE, CP_TITLE, CP_GOAL, CP_CONTENT, 
