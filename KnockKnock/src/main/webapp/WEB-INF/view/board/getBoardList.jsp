@@ -11,17 +11,31 @@
 	.center { text-align: center; }
 </style>
 <script>
-	function insert_board(frm){
+	function moveInsert_board(frm) {
 		frm.action = "moveInsert.do"
 		frm.setAttribute('method', 'get');
 		frm.submit();
 	}
+	function selChange() {
+		var sel = document.getElementById('cntPerPage').value;
+		location.href = "getBoardList.do?nowPage=${paging.nowPage}&cntPerPage="
+				+ sel;
+	}
 </script>
 </head>
 <body>
-
 <div id="container">
 	<h1>게시판 목록</h1>
+	<div style="float: right;">
+		<select id="cntPerPage" name="sel" onchange="selChange()">
+			<option value="5"
+				<c:if test="${paging.cntPerPage == 5}">selected</c:if>>5개씩보기</option>
+					<option value="10"
+				<c:if test="${paging.cntPerPage == 10}">selected</c:if>>10개씩보기</option>
+					<option value="20"
+				<c:if test="${paging.cntPerPage == 20}">selected</c:if>>20개씩보기</option>
+		</select>
+	</div>
 	<table>
 		<tr>
 			<th>게시글번호</th>
@@ -33,16 +47,12 @@
 			<th>조회수</th>
 			<th>추천수</th>
 		</tr>
-	<c:if test="${not empty boardList}">
-		<c:forEach var="board" items="${boardList}">
-		<tr>
-			<td>
-				<a href="getBoard.do?bIdx=${board.bIdx}">${board.bIdx}</a>
-			</td>
+	<c:if test="${not empty getBoardList}">
+		<c:forEach var="board" items="${getBoardList}">
+		<tr style="cursor:pointer;" onclick="location.replace='getBoard.do?bIdx=${board.bIdx }'">
+			<td>${board.bIdx}</td>
 			<td>${board.sbIdx}</td>
-			<td>
-				<a href="getBoard.do?bIdx=${board.bIdx}">${board.bSubject}</a>
-			</td>
+			<td>${board.bSubject}</td>
 			<td>${board.uIdx}</td>
 			<td>${board.bContent}</td>
 			<td>
@@ -53,7 +63,7 @@
 		</tr>
 		</c:forEach>
 	</c:if>	
-	<c:if test="${empty boardList}">
+	<c:if test="${empty getBoardList}">
 		<tr>
 			<td colspan="7">현재 게시글이 존재하지 않습니다.</td>
 		</tr>
@@ -75,8 +85,26 @@
 			</td>
 		</tr>
 	</table>
+	<div style="display: block; text-align: center;">
+		<c:if test="${paging.startPage != 1}">
+			<a href="/getBoardList.do?nowPage=${paging.startPage - 1}&cntPerPage=${paging.cntPerPage}">&lt;</a>
+		</c:if>
+		<c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="p">
+		<c:choose>
+			<c:when test="${p == paging.nowPage}">
+			<b>${p}</b>
+			</c:when>
+			<c:when test="${p != paging.nowPage }">
+			<a href="/getBoardList.do?nowPage=${p}&cntPerPage=${paging.cntPerPage}">${p}</a>
+			</c:when>
+		</c:choose>
+		</c:forEach>
+		<c:if test="${paging.endPage != paging.lastPage}">
+			<a href="/getBoardList.do?nowPage=${paging.endPage+1}&cntPerPage=${paging.cntPerPage}">&gt;</a>
+		</c:if>
+	</div>
 	<div>
-		<p><input type="button" value="게시글 등록" onclick="insert_board(this.form)"></p>
+		<p><input type="button" value="게시글 등록" onclick="moveInsert_board(this.form)"></p>
 	</div>	
 	</form>
 </div>
