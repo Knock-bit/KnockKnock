@@ -11,10 +11,11 @@
 		console.log(pCount);
 		
 		// 현재 수량이 0이면 버튼 비활성화
-		if(pCount <= 0){
-			minus.disabled = 'disabled';
-		} else if(pCount > 0) {
-			minus.disabled = false;
+		if(pCount <= 1){
+			minus.attr("disabled", true);
+			
+		} else if(pCount != 0){
+			minus.attr("disabled", false);
 		} 
 		
 		$(".pCount").eq(idx).html(number);
@@ -58,9 +59,8 @@
 	  })
 	}
 	
+// 총 합계
 
-	
-	
-
+// 체크된 상품만 가격에 더하기
 
 
