@@ -15,6 +15,10 @@ public class ProductVO {
 	private int pFee; //배송비
 	private String pImg; // 상품 사진
 	
+	// 장바구니 관련
+	private int pCount;
+	private String caRegdate;
+	
 	public ProductVO() {
 		super();
 	}
@@ -34,6 +38,29 @@ public class ProductVO {
 		this.pAble = pAble;
 		this.pTotalcnt = pTotalcnt;
 		this.pFee = pFee;
+	}
+
+	
+	
+	
+	public ProductVO(int pIdx, int pcIdx, String pName, int pPrice, int pStock, String pDesc, String pRegdate,
+			int pViews, int sIdx, String pAble, int pTotalcnt, int pFee, String pImg, int pCount, String caRegdate) {
+		super();
+		this.pIdx = pIdx;
+		this.pcIdx = pcIdx;
+		this.pName = pName;
+		this.pPrice = pPrice;
+		this.pStock = pStock;
+		this.pDesc = pDesc;
+		this.pRegdate = pRegdate;
+		this.pViews = pViews;
+		this.sIdx = sIdx;
+		this.pAble = pAble;
+		this.pTotalcnt = pTotalcnt;
+		this.pFee = pFee;
+		this.pImg = pImg;
+		this.pCount = pCount;
+		this.caRegdate = caRegdate;
 	}
 
 	public int getpIdx() {
@@ -140,12 +167,32 @@ public class ProductVO {
 		this.pImg = pImg;
 	}
 
+	// 장바구니 관련 
+	public int getpCount() {
+		return pCount;
+	}
+
+	public void setpCount(int pCount) {
+		this.pCount = pCount;
+	}
+
+	public String getCaRegdate() {
+		return caRegdate;
+	}
+
+	public void setCaRegdate(String caRegdate) {
+		this.caRegdate = caRegdate;
+	}
+
 	@Override
 	public String toString() {
 		return "ProductVO [pIdx=" + pIdx + ", pcIdx=" + pcIdx + ", pName=" + pName + ", pPrice=" + pPrice + ", pStock="
 				+ pStock + ", pDesc=" + pDesc + ", pRegdate=" + pRegdate + ", pViews=" + pViews + ", sIdx=" + sIdx
-				+ ", pAble=" + pAble + ", pTotalcnt=" + pTotalcnt + ", pFee=" + pFee + ", pImg=" + pImg + "]";
+				+ ", pAble=" + pAble + ", pTotalcnt=" + pTotalcnt + ", pFee=" + pFee + ", pImg=" + pImg + ", pCount="
+				+ pCount + ", caRegdate=" + caRegdate + "]";
 	}
+
+	
 
 	
 	

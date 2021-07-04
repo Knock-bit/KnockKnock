@@ -45,9 +45,10 @@
               <li><a href="${cp}/myCampaignList.do">내 캠페인 목록</a></li>
               <li><a href="${cp}/myContactList.do">나의 문의내역</a></li>
               <li><a href="${cp}/myActive.do">나의 활동</a></li>
+              <li><a href="${cp}/moveCart.do">내 장바구니</a></li>
               <li><a href="${cp }/user/logout.do">로그아웃</a></li>
               
-              <li><a href="${cp}/productDetail.do">상품페이지</a></li><!-- 임시 -->
+              <li><a href="${cp}/productList.do">상품목록페이지</a></li><!-- 임시 -->
               <!-- 로그아웃 UserController에 들어있음 -->
 
             </ul>
