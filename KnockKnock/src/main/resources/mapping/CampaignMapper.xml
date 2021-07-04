@@ -241,8 +241,30 @@
 	<update id="updateUserFundingPoint" parameterType = "FundingUserVO">
 		UPDATE USERS
 		   SET U_USED_POINT = U_USED_POINT + #{cfPoint}
+		 WHERE U_IDX = #{uIdx}
+	</update>
+	
+	
+	<delete id="deleteFundingUser" parameterType="FundingUserVO">
+		DELETE FROM FUNDING_USER 
+		 WHERE CF_IDX = #{cfIdx} 
+		   AND U_IDX = #{uIdx}
+	</delete>
+	
+	<update id="updateFundingPointMinus" parameterType ="FundingUserVO">
+		UPDATE FUNDING
+		   SET CF_COLLECTED = CF_COLLECTED - #{cfPoint}
 		 WHERE CF_IDX = #{cfIdx}
 	</update>
+	
+	<update id="updateUserFundingPointMinus" parameterType = "FundingUserVO">
+		UPDATE USERS
+		   SET U_USED_POINT = U_USED_POINT - #{cfPoint}
+		 WHERE U_IDX = #{uIdx}
+	</update>
+	
+	
+	
 	
 	<!-- 제안서 제출 -->
 	<insert id="insertProposal" parameterType="ProposalVO">

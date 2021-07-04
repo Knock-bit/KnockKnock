@@ -94,12 +94,22 @@ public class FundingController {
 		int pointResult = fundingService.updateFundingPoint(fundingUser);
 		int userPointReuslt = fundingService.updateUserFundingPoint(fundingUser);
 		System.out.println("result" + result);
-		/*
-		 * FundingVO funding = fundingService.selectOneFunding(fundingVO);
-		 * List<FundingUserVO> userList = fundingService.selectAllFundingUsers(cfIdx);
-		 * System.out.println("funding 출력 : " + funding); model.addAttribute("funding",
-		 * funding); model.addAttribute("userList", userList);
-		 */
+		return result;
+	}
+	
+	
+	@RequestMapping(value = "campaign/funding/cancelAjaxFund.do", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@ResponseBody
+	public int cancelAjaxFund(FundingUserVO fundingUser) {
+		System.out.println(">>> 취소할 펀딩 vo : " + fundingUser);
+		fundingUser.setCfPoint(cfPoint);
+		System.out.println(fundingUser.getuIdx());
+		System.out.println(fundingUser.getCfIdx());
+		
+		int result = fundingService.deleteFundingUser(fundingUser);
+		int pointResult = fundingService.updateFundingPointMinus(fundingUser);
+		int userPointReuslt = fundingService.updateUserFundingPointMinus(fundingUser);
+		System.out.println("result" + result);
 		return result;
 	}
 
