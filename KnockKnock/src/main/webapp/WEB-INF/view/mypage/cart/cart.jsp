@@ -72,10 +72,13 @@
 				수량
 			</div>
 			<div class="tct4">
-				가격
+				상품가격
 			</div>
 			<div class="tct5">
 				배송비
+			</div>
+			<div class="tct6">
+				합계
 			</div>
 		</div>
 			<c:if test="${not empty cartList }">
@@ -112,13 +115,16 @@
 					 
 				</div>
 				<div class="cg5">
-					<!-- 가격 -->
+					<!-- 상품 개당가격 -->
 					<p class="cg5price">${cartItem.pPrice }원</p>&nbsp;&nbsp;
-					<!--  input class="cg5btn" type="button" value="내 쿠폰"> -->
 				</div>
 				<div class="cg6">
 					<!-- 배송비 -->
 					<span class="pFee">${cartItem.pFee }</span> 원
+				</div>
+				<div class="cg7">
+					<!-- 전체 가격(수량 및 배송비 합쳐서) -->
+					<p class="cg6price">${(cartItem.pCount * cartItem.pPrice) + cartItem.pFee }원</p>&nbsp;&nbsp;
 				</div>
 			</div>
 			</c:forEach>	
@@ -132,7 +138,7 @@
 		<div class="totPrice">
 			<!-- 체크박스에 체크 된 상품의 가격만 가져오기(+배송비) -->
 			<div>총 합계 :</div><span id="price">0</span>원
-			
+			<input type="button" value="주문하기">
 		</div>
 		</div>
 		
@@ -156,22 +162,27 @@ $(function(){
 	$('input:checkbox[name=opt1]').each(function() {
 		// 체크된 상품의 인덱스 번호
 		idx = $('input:checkbox[name=opt1]').index(this); 
-	
+		console.log("인덱스:" + idx);
 		// 동일한 인덱스번호의 상품 수량, 가격, 배송비 
 		pCount = parseInt($(".pCount").eq(idx).text());
-		//console.log(pCount);
+		console.log("수량:"+pCount);
+		
 		pPrice = parseInt($(".cg5price").eq(idx).text());
-	
+		console.log("가격:"+pPrice);
+		
 		pFee = parseInt($(".pFee").eq(idx).text());
-		
+		console.log("배송비"+pFee);
 		//aa = $('input:checkbox[name=opt1]').eq(idx).val();
-		
+		var tot = ((pCount*pPrice)+pFee);
+		console.log("상품당 총가격:"+tot);
 		$('input:checkbox[name=opt1]').eq(idx).val((pCount*pPrice)+pFee);
 		
 		// 나중에 전체체크 때문에 전체 계산 값 따로 저장해놓기(좋은방법 생기면...알고싶다..ㅠ)
 		totalPrice1 += parseInt($('input:checkbox[name=opt1]').eq(idx).val());
-		totalPrice = totalPrice1;
+		
 	});
+		totalPrice = totalPrice1;
+	
 		$("#price").html(totalPrice); // 전체 체크된 상태이기 때문에 먼저 토탈값 저장해주기
 		
 		// 전체 체크/해제 상태 때의 값
@@ -195,27 +206,49 @@ $(function(){
 			$("#price").html(totalPrice);
 		});
 	
-		$.each(function(){
-			var idx1 = $(".minus").index();
-			var idx2 = $(".plus").index();
+		
+		// + 버튼 클릭했을 때 가격 증가
+		$(".plus").click(function(e){
 			
-			$(".minus").eq(idx1).click(countTotPrice);
-			$(".plus").eq(idx2).click(countTotPrice);
+			var totalPrice = parseInt($("#price").text());
+			var pPrice = 0;
+			// 총 합계
+			pPrice = parseInt($(this).closest('div').next().children().text());
+			// 상품당 가격 총 합계
+			pTotPrice = parseInt($(this).closest('div').nextAll().filter($(".cg6")).children().text());
+			
+			console.log("pTotPrice:"+pTotPrice);
+			
+			totalPrice += pPrice;
+			pTotPrice += pPrice;
+			
+			$(this).closest('div').nextAll().filter($(".cg6")).children().html(pTotPrice+"원");
+			$("#price").html(totalPrice);
+			
+			
+			
 		});
-
+		// - 버튼 클릭했을 때 해당 가격 줄어들게
+		$(".minus").click(function(e){
+			
+			var totalPrice = parseInt($("#price").text());
+			var pPrice = 0;
+			
+			// 총 합계
+			pPrice = parseInt($(this).closest('div').next().children().text());
+			// 상품당 가격 총 합계
+			pTotPrice = parseInt($(this).closest('div').nextAll().filter($(".cg6")).children().text());
+			
+			totalPrice -= pPrice;
+			pTotPrice -= pPrice;
+			
+			$(this).closest('div').nextAll().filter($(".cg6")).children().html(pTotPrice+"원");
+			$("#price").html(totalPrice);
+			
+			
+		});
 	
 });	
-
-function countTotPrice(){
-	var totalPrice = parseInt($("#price").text());
-	console.log("수량클릭시:"+totalPrice);
-	
-}
-
-//=========================================
-// 수량 체크
-
-
 
 </script>
 </html>
