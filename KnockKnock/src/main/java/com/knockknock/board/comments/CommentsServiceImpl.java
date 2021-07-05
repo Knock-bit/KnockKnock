@@ -21,10 +21,10 @@ public class CommentsServiceImpl implements CommentsService {
 		commentsDAO.insertComments(vo);
 	}
 
-	@Override
-	public void updateComments(CommentsVO vo) {
-		commentsDAO.updateComments(vo);
-	}
+//	@Override
+//	public void updateComments(CommentsVO vo) {
+//		commentsDAO.updateComments(vo);
+//	}
 
 	@Override
 	public void deleteComments(int bIdx) {
