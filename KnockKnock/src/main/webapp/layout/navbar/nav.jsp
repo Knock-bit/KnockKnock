@@ -42,7 +42,7 @@
       </nav><!-- .navbar -->
 
       <a href="${cp }/user/login.do" class="get-started-btn">로그인</a>
-      <a href="${cp }/user/signup.do" class="get-started-btn">회원가입</a>
+      <a href="${cp }/user/signupNav.do" class="get-started-btn">회원가입</a>
 
     </div>
   </header><!-- End Header -->
