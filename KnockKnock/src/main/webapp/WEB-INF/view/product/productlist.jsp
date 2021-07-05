@@ -94,6 +94,9 @@
 
         <div class="row" data-aos="zoom-in" data-aos-delay="100">
 
+		<c:if test="${!empty plist  }">
+        <c:forEach var="campaign" items="${plist }">
+		
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="course-item">
               <img src="assets/img/course-1.jpg" class="img-fluid" alt="...">
@@ -110,58 +113,15 @@
                     <span>${product.sIdx}판매자</span>
                   </div>
                   <div class="trainer-rank d-flex align-items-center">
-                    ${조회수}
+                    	${product.pView }
                   </div>
                 </div>
               </div>
+              
             </div>
-          </div> <!-- product1 끝-->
+          </div> 
+          </c:forEach></c:if>
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-            <div class="course-item">
-              <img src="assets/img/course-1.jpg" class="img-fluid" alt="...">
-              <div class="course-content">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <h4>${product.pcIdx}</h4>
-                  <p class="price">${product.pPrice}</p>
-                </div>
-
-                <h3><a href="course-details.html">${product.pName}</a></h3>
-                <p>${product.pPrice}</p>
-                <div class="trainer d-flex justify-content-between align-items-center">
-                  <div class="trainer-profile d-flex align-items-center">
-                    <span>${product.sIdx}판매자</span>
-                  </div>
-                  <div class="trainer-rank d-flex align-items-center">
-                    ${조회수}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> <!-- product2 끝-->
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-            <div class="course-item">
-              <img src="assets/img/course-1.jpg" class="img-fluid" alt="...">
-              <div class="course-content">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <h4>${product.pcIdx}</h4>
-                  <p class="price">${product.pPrice}</p>
-                </div>
-
-                <h3><a href="course-details.html">${product.pName}</a></h3>
-                <p>${product.pPrice}</p>
-                <div class="trainer d-flex justify-content-between align-items-center">
-                  <div class="trainer-profile d-flex align-items-center">
-                    <span>${product.sIdx}판매자</span>
-                  </div>
-                  <div class="trainer-rank d-flex align-items-center">
-                    ${조회수}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> <!-- product3 끝-->
 
         </div>
 
