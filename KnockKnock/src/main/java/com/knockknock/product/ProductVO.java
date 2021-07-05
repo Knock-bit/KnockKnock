@@ -14,6 +14,9 @@ public class ProductVO {
 	private int pTotalCnt;
 	private int pFee;
 	private String pImg;
+	
+	private int pCount;
+	private String caRegdate;
 
 	public ProductVO() {
 		super();
