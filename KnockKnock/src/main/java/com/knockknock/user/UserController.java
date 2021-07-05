@@ -137,7 +137,7 @@ public class UserController {
 	}
 	
 	//구글
-	@RequestMapping(value="/googlelogin.do", method= {RequestMethod.POST, RequestMethod.GET})
+	@RequestMapping(value="/user/googleLogin.do", method= {RequestMethod.POST, RequestMethod.GET})
 	@ResponseBody
 	public String googlelogin(String uEmail, HttpServletRequest request) {
 		UserVO vo = new UserVO();

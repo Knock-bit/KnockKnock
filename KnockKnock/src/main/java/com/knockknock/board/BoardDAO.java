@@ -6,6 +6,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.knockknock.util.PagingVO;
+
 @Repository
 public class BoardDAO {
 	@Autowired
@@ -46,5 +48,15 @@ public class BoardDAO {
 	//추천수처리
 	public void updateHit(int bIdx) {
 		mybatis.update("BoardDAO.updateHit", bIdx);
+	}
+	
+	//페이징 처리를 위한 총 게시글 갯수
+	public int countBoard() {
+		return mybatis.selectOne("Util.countBoard");
+	}
+	
+	//페이징처리
+	public List<BoardVO> getBoardList(PagingVO pvo) {
+		return mybatis.selectList("Util.getBoardList", pvo);
 	}
 }

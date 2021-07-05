@@ -33,7 +33,7 @@
 
 
 
-          <li><a href="#">Shop</a></li>
+          <li><a href="${cp }/productlist.do">Shop</a></li>
           <li><a href="${cp }/contact/contact.do">Contact</a></li>
 
           <li class="dropdown"><a href="#"><span class="get-started-btn">${users.uName }님</span> <i

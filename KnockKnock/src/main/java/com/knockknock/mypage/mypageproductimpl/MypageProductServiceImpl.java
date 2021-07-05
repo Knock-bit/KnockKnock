@@ -48,5 +48,19 @@ public class MypageProductServiceImpl implements MypageProductService {
 		return mypageProductDAO.cartList(vo);
 	}
 	
+	// 장바구니 상품 전체 삭제
+	@Override
+	public int deleteCart(UserVO vo) {
+		
+		return mypageProductDAO.deleteCart(vo);
+	}
+	
+	// 장바구니 상품 하나 삭제
+	@Override
+	public int deleteOne(int pIdx) {
+
+		return mypageProductDAO.deleteOne(pIdx);
+	}
+	
 	
 }

@@ -18,14 +18,18 @@ public class AdminProposalVO {
 
 //	usertable join
 	private String uNickname;
+	private String uImgpath;
 	private int cpRn;
+	
 
 	public AdminProposalVO() {
 	};
 
+
+
 	public AdminProposalVO(int cpIdx, String cpContent, String cpGoal, String cpTitle, Date cpRegdate, int cpGoalpoint,
 			String cpFile, int uIdx, String cpActive, String cpKeyword1, String cpKeyword2, String cpKeyword3,
-			String uNickname, int cpRn) {
+			String uNickname, String uImgpath, int cpRn) {
 		super();
 		this.cpIdx = cpIdx;
 		this.cpContent = cpContent;
@@ -40,8 +44,11 @@ public class AdminProposalVO {
 		this.cpKeyword2 = cpKeyword2;
 		this.cpKeyword3 = cpKeyword3;
 		this.uNickname = uNickname;
+		this.uImgpath = uImgpath;
 		this.cpRn = cpRn;
 	}
+
+
 
 	public int getCpIdx() {
 		return cpIdx;
@@ -154,6 +161,18 @@ public class AdminProposalVO {
 	public void setCpRn(int cpRn) {
 		this.cpRn = cpRn;
 	}
+
+	public String getuImgpath() {
+		return uImgpath;
+	}
+
+
+
+	public void setuImgpath(String uImgpath) {
+		this.uImgpath = uImgpath;
+	}
+
+
 
 	@Override
 	public String toString() {

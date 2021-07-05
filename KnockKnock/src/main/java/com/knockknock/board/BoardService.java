@@ -2,12 +2,16 @@ package com.knockknock.board;
 
 import java.util.List;
 
+import com.knockknock.util.PagingVO;
+
 public interface BoardService {
-	void insertBoard(BoardVO vo);
-	List<BoardVO> getBoardList(BoardVO vo);
-	BoardVO getBoard(int bIdx);
-	void updateBoard(BoardVO vo);
-	void deleteBoard(int bIdx);
-	void updateHit(int bIdx);
-	void updateViews(int bIdx);
+	public void insertBoard(BoardVO vo);
+	public List<BoardVO> getBoardList(BoardVO vo);
+	public BoardVO getBoard(int bIdx);
+	public void updateBoard(BoardVO vo);
+	public void deleteBoard(int bIdx);
+	public void updateHit(int bIdx);
+	public void updateViews(int bIdx);
+	public int countBoard();
+	public List<BoardVO> getBoardList(PagingVO pvo);
 }
