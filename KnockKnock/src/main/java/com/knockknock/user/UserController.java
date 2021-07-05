@@ -124,7 +124,7 @@ public class UserController {
 		System.out.println("회원가입 controller join()");
 		System.out.println("vo: " + vo);
 		userService.join(vo);
-		return "/user/joinconfirm";
+		return "/user/joinConfirm";
 	}
 
 	// 로그아웃

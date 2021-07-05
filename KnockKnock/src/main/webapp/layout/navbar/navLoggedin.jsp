@@ -48,7 +48,6 @@
               <li><a href="${cp}/moveCart.do">내 장바구니</a></li>
               <li><a href="${cp }/user/logout.do">로그아웃</a></li>
               
-              <li><a href="${cp}/productList.do">상품목록페이지</a></li><!-- 임시 -->
               <!-- 로그아웃 UserController에 들어있음 -->
 
             </ul>
