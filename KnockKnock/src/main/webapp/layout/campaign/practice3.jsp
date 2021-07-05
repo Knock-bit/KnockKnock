@@ -2,12 +2,16 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<c:set var="cp" value="${pageContext.request.contextPath }" />
+<c:set var="contextPath" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html>
 <html>
 <head>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
+ 	<link href="${cp}/resource/css/signup.css" rel="stylesheet">
+   	<link href="${contextPath}/resource/css/proposal.css" rel="stylesheet">
 <link href="${cp}/resource/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
+	<link href="${cp}/resource/css/signup.css" rel="stylesheet">
 <script src="${cp}/resource/js/jquery/jquery-3.6.0.min.js"></script>
 <!-- 서머노트 추가 -->
 <script src="${cp }/resource/summernote/lang/summernote-ko-KR.js"></script>
@@ -20,17 +24,27 @@
 		$('textarea[name="cpContent"]').val($('#summernote').summernote('code'));
 		alert($('textarea[name="cpContent"]').val(
 				$('#summernote').summernote('code')));
-		console.log($('textarea[name="cfContent"]').val(
+		console.log($('textarea[name="cpContent"]').val(
 				$('#summernote').summernote('code')));
 	}
 </script>
+
+<style>
+.proposal-form{
+ padding: 20px;
+}
+</style>
 <body>
-	<div class="container">
+	     <div class="main">
+        <div class="container">
+            <div class="proposal-content">
+
+                <div class="proposal-form">
 		<form role="form" method="post" onsubmit="postForm()"
 			action="${cp }/proposalSummer.do">
-			
-			<!-- <textarea id="summerTest" class="summernote" name="content"></textarea> -->
-			
+			  <h2>캠페인 제안하기</h2>
+                        <p>KNOCK!KNOCK!의 캠페인 아이디어는 모두에게 열려 있습니다.<br>다음 회차에 진행될 캠페인 아이디어를 제안해주세요.
+            		   제안된 아이디어는 검토 후에 회원들의 펀딩 참여여부에 따라 다음회차 캠페인으로 선정됩니다.</p>
 			<div class="form-row1">
                             <div class="form-group">
                                 <label for="cpTitle">캠페인 이름</label>
@@ -67,31 +81,19 @@
                                 <input type="text" name="keyword" id="pKeyword3" />
                             </div>
                         </div>
-
-
-                     
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			<br>
-			   <div class="form-submit">
-                            <input type="reset" value="취소" class="submit" name="reset" id="reset" />
-                            <input type="submit" value="제출" class="submit" name="submit" id="submit" />
-                        </div>
+			<input type="submit" value="전송">
 			<div name="text"></div>
 		</form>
-		${proposal }
 	</div>
+	</div>
+	</div>
+	</div>
+	
 	<script>
 		$(document)
 				.ready(
 						function() {
+
 							var toolbar = [
 									// 글꼴 설정
 									[ 'fontname', [ 'fontname' ] ],
@@ -116,6 +118,7 @@
 									[
 											'view',
 											[ 'codeview', 'fullscreen', 'help' ] ] ];
+
 							// 툴바생략
 							var setting = {
 								height : 300,
@@ -131,20 +134,21 @@
 										// 파일 업로드(다중업로드를 위해 반복문 사용)
 										for (var i = files.length - 1; i >= 0; i--) {
 											uploadSummernoteImageFile(files[i],
-													this, count++);
+													this);
 										}
 									}
 								}
 							};
 							$('#summernote').summernote(setting);
 						});
+
 		function uploadSummernoteImageFile(file, el) {
 			data = new FormData();
 			data.append("file", file);
 			$.ajax({
 				data : data,
 				type : "POST",
-				url : "../uploadProposalSummernoteImageFile.do",
+				url :"${cp}/uploadProposalSummernoteImageFile.do",
 				contentType : false,
 				enctype : 'multipart/form-data',
 				processData : false,
