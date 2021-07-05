@@ -26,6 +26,11 @@ public class ProductDAO {
 		return mybatis.selectOne("UserVO.productDetail", pIdx);
 	}
 
+	// 상품 등록
+	public int insertProduct(ProductVO product) {
+		return mybatis.insert("Product.insertProduct", product);
+	}
+
 
 
 }

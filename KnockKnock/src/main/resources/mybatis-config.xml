@@ -77,6 +77,7 @@
 
 		<mapper resource="mapping/UtilMapper.xml" />
 		<mapper resource="mapping/ContactMapper.xml" /> 
+		<mapper resource="mapping/ProductMapper.xml" /> 
 
 	</mappers>
 

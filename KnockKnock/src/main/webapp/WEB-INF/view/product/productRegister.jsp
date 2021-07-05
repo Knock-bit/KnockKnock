@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up for Knock!Knock!</title>
+    <title>Register for Knock! Shop</title>
 
     <!-- Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,7 +32,7 @@
                 <div class="proposal-form">
                     <form method="POST" action="${cp }/productRegister.do" class="register-form" id="register-form" enctype="multipart/form-data">
                         <h2>상품등록</h2>
-                        <p>KNOCK!KNOCK! 샵에 등록할 상품을 등록해주세요.</p>
+                        <p>KNOCK! 샵에 등록할 상품을 등록해주세요.</p>
      				 
                         <div class="form-row1">
                        		 <div class="form-group">
