@@ -1,46 +1,63 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
 <html>
 <head>
-<meta charset="UTF-8">
-<style>
-.carousel-item active {
-display:flex;
-vertical-align:middle;}
-</style>
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-<script src="js/jquery-1.7.1.min.js"></script>
-<script src="js/bootstrap.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>카톡 공유</title>
+<script type="text/JavaScript" src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 </head>
 <body>
+    <input type="button" onClick="sendLinkCustom();" value="Custom"/>
+    <input type="button" onClick="sendLinkDefault();" value="Default"/>
 
-  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img class="d-block w-100" src="/resource/img/campaign/tempMain.png" alt="First slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="/resource/img/campaign/recycling.png" alt="Second slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="/resource/img/campaign/running.png" alt="Third slide">
-    </div>
-  </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
-    
+<script type="text/javascript">
+    function sendLinkCustom() {
+        Kakao.init("24f056f59d439e22eab3d1d0b80755f1");
+        Kakao.Link.sendCustom({
+            templateId: 56298
+        });
+    }
+</script>
+
+<script>
+try {
+  function sendLinkDefault() {
+    Kakao.init('24f056f59d439e22eab3d1d0b80755f1')
+    Kakao.Link.sendDefault({
+      objectType: 'feed',
+      content: {
+        title: '녹녹한 치즈케잌',
+        description: '#케익 #녹차 #백범로 #학원 #비트캠프 #분위기',
+        imageUrl:
+          'http://k.kakaocdn.net/dn/Q2iNx/btqgeRgV54P/VLdBs9cvyn8BJXB3o7N8UK/kakaolink40_original.png',
+        link: {
+          mobileWebUrl: 'https://developers.kakao.com',
+          webUrl: 'https://developers.kakao.com',
+        },
+      },
+      buttons: [
+        {
+          title: '웹으로 보기',
+          link: {
+            mobileWebUrl: 'https://developers.kakao.com',
+            webUrl: 'https://developers.kakao.com',
+          },
+        },
+        {
+          title: '앱으로 보기',
+          link: {
+            mobileWebUrl: document.location.href,
+            webUrl: document.location.href,
+          },
+        },
+      ],
+    })
+  }
+; window.kakaoDemoCallback && window.kakaoDemoCallback() }
+catch(e) { window.kakaoDemoException && window.kakaoDemoException(e) }
+</script>
+   
 </body>
 </html>

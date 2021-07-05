@@ -26,7 +26,7 @@
 			<typeAlias alias="adminSummerVO" type="com.knockknock.admin.AdminSummerVO"/>
 		<!-- 게시판 -->
 		<typeAlias alias="boardVO" type="com.knockknock.board.BoardVO" />
-		<!-- <typeAlias alias="commentsVO" type="com.knockknock.board.CommentsVO" />  -->
+		<typeAlias alias="commentsVO" type="com.knockknock.board.CommentsVO" />
 		<!-- <typeAlias alias="deactivation" type="com.knockknock.board.DeactivationVO"/> -->
 		<!-- <typeAlias alias="boardCategoryVO"
 			type="com.knockknock.board.BoardCategoryVO" /> -->
@@ -71,7 +71,7 @@
 	<!-- mappers는 여러개 등록 가능하다. -->
 	<mappers>
 		<mapper resource="mapping/BoardMapper.xml" />
-		<!-- <mapper resource="mapping/CommentsMapper.xml" /> -->
+		<mapper resource="mapping/CommentsMapper.xml" />
 		<mapper resource="mapping/UserMapper.xml" />
 		<mapper resource="mapping/CampaignMapper.xml" />
 		<mapper resource="mapping/AdminMapper.xml" />
