@@ -163,11 +163,6 @@ function keywordDel() {
 											</c:if>
 										</tr>
 									</c:forEach>
-									<tr>
-										<td><input type="text" name="keyadd" id="keyadd" /></td>
-										<td><input type="button" value="추가하기" id="addButton" />&nbsp&nbsp<input
-											type="button" value="삭제하기" id="delButton" class="delButton" /></td>
-									</tr>
 								</tbody>
 							</c:if>
 						</table>

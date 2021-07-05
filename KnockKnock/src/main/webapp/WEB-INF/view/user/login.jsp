@@ -2,9 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="cp" value="${pageContext.request.contextPath }" />
-<%
-	String cp = request.getContextPath();
-%>
+
 <!doctype html>
 <html>
 
@@ -59,12 +57,6 @@
        frm.submit();
    }
    
-    
-   //구글로그인
-    function googleLogin(frm) {
-       frm.action = "user/googleLogin.do";
-       frm.submit();
-   }
 
    //판매자가입
    function sellerJoin() {
@@ -141,7 +133,7 @@
 				<h1>Sign in</h1>
 				<div class="social-container">
 					<span>소셜계정 이용하기</span><br> 
-					<a href="googleLogin.do" id="Google"
+					<a href="../google.jsp" id="Google"
 						class="social">Google<i
 						class="fab fa-linkedin-in"></i></a>
 						<a href="#" id="kakao"

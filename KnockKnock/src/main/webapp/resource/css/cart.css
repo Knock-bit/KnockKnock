@@ -33,7 +33,7 @@
 .cartGrid{
 	border : 1px solid gray;
 	display:grid;
-	grid-template-columns: 5% 10% 40% 10% 20% 10%;
+	grid-template-columns: 5% 10% 30% 10% 15% 10% 10%;
 	grid-auto-rows:minmax(100px, auto);
 	grid-column-gap : 10px;
 	grid-row-gap : 10px;
@@ -44,7 +44,7 @@
 /*장바구니 목록 상단바*/
 .topcartmenu{
 	display:grid;
-	grid-template-columns: 6.2% 10% 40% 10% 20% 10%;
+	grid-template-columns: 6.2% 10% 30% 10% 15% 10% 10%;
 	grid-auto-rows: 1fr;
 	grid-column-gap : 7px;
 	background-color:gray;
@@ -70,6 +70,9 @@
 }
 .tct5{
 	grid-column : 6/7;
+}
+.tct6{
+	grid-column : 7/8;
 }
 /*장바구니 목록*/
 .cg1 {
@@ -121,6 +124,7 @@
 	margin:3%;
 	
 }
+/*가격*/
 .cg5 {
 	padding: 5%;
 	display:flex;
@@ -134,5 +138,13 @@
 	align-items: center;
 	justify-content: center;
 	grid-column : 6/7;
+	
+}
+.cg7 {
+	padding: 5%;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+	grid-column : 7/8;
 	
 }

@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+ 
+  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+  <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+    <c:set var="cp" value="${pageContext.request.contextPath }" />
+ 
 <!doctype html>
 <html lang="ko">
 
@@ -7,23 +12,24 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
-	rel="stylesheet">
-<link rel="stylesheet" href="${cp}/resource/css/owl.carousel.min.css">
+   <!-- Google Fonts -->
+      <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+      <!-- Vendor CSS Files -->
+      <link href="${cp}/resource/vendor/animate.css/animate.min.css" rel="stylesheet">
+      <link href="${cp}/resource/vendor/aos/aos.css" rel="stylesheet">
+      <link href="${cp}/resource/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+      <link href="${cp}/resource/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+      <link href="${cp}/resource/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+      <link href="${cp}/resource/vendor/remixicon/remixicon.css" rel="stylesheet">
+      <link href="${cp}/resource/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-	<link rel="stylesheet" href="${cp}/resource/fonts/icomoon/style.css">
+ 	<link rel="stylesheet" href="${cp}/resource/fonts/icomoon/style.css">
 	
 	<link rel="stylesheet" href="${cp}/resource/css/owl.carousel.min.css">
-	
-	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="${cp}/resource/css/bootstrap.min.css">
+	 
 	
 	<!-- Style -->
 	<link href="${cp}/resource/css/manual.css" rel="stylesheet">
@@ -38,10 +44,21 @@
   <link href="${cp}/resource/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 	
   <link href="${cp}/resource/css/nav1.css" rel="stylesheet">
+    <link href="${cp}/resource/css/main.css" rel="stylesheet">
+  
 
 <!-- Style -->
 <link href="${cp}/resource/css/contact.css" rel="stylesheet">
-
+ 
+      <!-- Main CSS File -->
+      <link href="${cp}/resource/css/main.css" rel="stylesheet">
+      <link href="${cp}/resource/css/nav1.css" rel="stylesheet">
+      <link href="${cp}/resource/css/contact.css" rel="stylesheet">
+ 
+      <!-- Import BootStrap -->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ 
 <title>문의하기</title>
 </head>
 
@@ -90,7 +107,7 @@
 								<div class="row">
 									<div class="col-md-12 form-group">
 										<textarea class="form-control" name="ctContent" id="message"
-											cols="30" rows="7" placeholder="문의사항을 작성해주세요."></textarea>
+											cols="30" rows="10" placeholder="문의사항을 작성해주세요."></textarea>
 									</div>
 								</div>
 								<div class="row">
@@ -114,6 +131,8 @@
 		</div>
 	</div>
 </body>
+
+        <!-- Template Main JS File -->
    <script src="${cp }/resource/js/jquery.min.js"></script>
    <script src="${cp }/resource/js/popper.js"></script>
    <script src="${cp }/resource/js/bootstrap.min.js"></script>

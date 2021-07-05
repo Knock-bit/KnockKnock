@@ -2,13 +2,16 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="cp" value ="${pageContext.request.contextPath }"/>
+  <link href="${cp}/resource/css/nav1.css" rel="stylesheet">
+  <link href="${cp}/resource/css/main.css" rel="stylesheet">
+
   <!-- ======= Header ======= -->
   
   <meta charset=utf-8>
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo me-auto"><a href="${cp }/main.do"><img src="${cp }/resource/img/logo2.png" id=:logo></a></h1>
+      <h1 class="logo me-auto"><a href="${cp }/main.do"><img src="${cp }/resource/img/logo.png"></a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -31,7 +34,7 @@
           </li>
 
 
-          <li><a href="courses.html">Shop</a></li>
+          <li><a href="${cp }/productlist.do">Shop</a></li>
           <li><a href="${cp }/contact/contact.do">Contact</a></li>
 
         </ul>
@@ -39,7 +42,7 @@
       </nav><!-- .navbar -->
 
       <a href="${cp }/user/login.do" class="get-started-btn">로그인</a>
-      <a href="${cp }/user/signup.do" class="get-started-btn">회원가입</a>
+      <a href="${cp }/user/signupNav.do" class="get-started-btn">회원가입</a>
 
     </div>
   </header><!-- End Header -->

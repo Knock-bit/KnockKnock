@@ -42,6 +42,8 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <!-- Import BootStrap -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  <!-- Import Kakao -->
+  <script type="text/JavaScript" src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 <style>
 .profile-container{
 	width: 200px;
@@ -121,6 +123,42 @@ vertical-align:middle;}
 		})
 		
 	});
+	
+		    Kakao.init('24f056f59d439e22eab3d1d0b80755f1');
+	try {
+		  function sendLink() {
+		    Kakao.Link.sendDefault({
+		      objectType: 'feed',
+		      content: {
+		        title: '${campaign.ciTitle}',
+		        description: '#케익 #녹차 #백범로 #학원 #비트캠프 #분위기',
+		        imageUrl:
+		          '/resource/img/campaign/recycle.png',
+		        link: {
+		          mobileWebUrl: document.location.href,
+		          webUrl: document.location.href,
+		        },
+		      },
+		      buttons: [
+		        {
+		          title: '웹으로 보기',
+		          link: {
+		            mobileWebUrl: document.location.href,
+		            webUrl: document.location.href,
+		          },
+		        },
+		        {
+		          title: '앱으로 보기',
+		          link: {
+		            mobileWebUrl: document.location.href,
+		            webUrl: document.location.href,
+		          },
+		        },
+		      ],
+		    })
+		  }
+		; window.kakaoDemoCallback && window.kakaoDemoCallback() }
+		catch(e) { window.kakaoDemoException && window.kakaoDemoException(e) }
 	
 </script>
 
@@ -244,7 +282,7 @@ vertical-align:middle;}
 
 			<div class="campaign-info align-items-center">
               <div class="btn-wrap funding">
-              <button onclick="funding()" id="share" class = "btn-funding"> 공유하기 </button>
+              <button onclick="sendLink();" id="share" class = "btn-funding"> 공유하기 </button>
               </div>
             </div>
             

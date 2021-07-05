@@ -30,7 +30,8 @@
 		<!-- <typeAlias alias="boardCategoryVO"
 			type="com.knockknock.board.BoardCategoryVO" /> -->
 		<!-- <typeAlias alias="subtitleVO" type="com.knockknock.board.subtitleVO"/> -->
-		<typeAlias alias="comments" type="com.knockknock.board.comments.CommentsVO" />
+		<typeAlias alias="comments"
+			type="com.knockknock.board.comments.CommentsVO" />
 		<!-- 캠페인 -->
 		<typeAlias alias="campaignVO"
 			type="com.knockknock.campaign.campaign.CampaignVO" />
@@ -54,7 +55,7 @@
 
 		
 		<!-- 상품 -->
-		<typeAlias alias="productVO" type="com.knockknock.util.ProductVO" />
+		<typeAlias alias="productVO" type="com.knockknock.product.ProductVO" />
 		
 		
 

@@ -10,44 +10,63 @@
 	rel="stylesheet">
 <script src="${cp}/resource/js/jquery/jquery-3.6.0.min.js"></script>
 <!-- 서머노트 추가 -->
-<script src="${cp }/resource/summernote/summernote-ko-KR.js"></script>
+<%-- <script src="${cp }/resource/summernote/lang/summernote-ko-KR.js"></script> --%>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.6/lang/summernote-ko-KR.min.js"></script>
 <script src="${cp }/resource/summernote/summernote-lite.js"></script>
 <link href="${cp}/resource/summernote/summernote-lite.css"
 	rel="stylesheet">
 
 <script>
-	function goWrite(frm) {
-		var idx = frm.idx.value;
-		var title = frm.idx.value;
-		var editordata = frm.idx.editordata;
-		var startDate = frm.idx.startDate;
-		var startTime = frm.idx.startTime;
-
-		if (idx.trim() == '') {
-			alert("회원번호 입력");
-			return false;
-		}
-
-		if (title.trim() == '') {
-			alert('제목입력');
-			return false;
-		}
+	function postForm(frm) {
+		$('textarea[name="content"]').val($('#summernote').summernote('code'));
+		frm.action="insertFunding.do";
 		frm.submit();
 	}
 </script>
-</head>
-
-<body>
+<body>	
 	<div class="container">
-		<form method="post" action="/adminFundingWrite.do">
-			<label> index <input type="text" name="idx" />
-			</label> <br> <label> Title <input type="text" name="title">
+		<form role="form" method="post" onsubmit="postForm()"
+			action="../adminSummerTest.do">
+			<!-- 제안서 데이터 썸머노트에 보내기 위한 input -->
+			<input type="text" id="propContent" value="${proposal.cpContent }" style="display:none">
+			<!-- 제안서 번호 넘기기 -->
+			<input type="text" name="cpIdx" value="${proposal.cpIdx }" style="display:none">
+			<!-- 제안서 작성자 넘기기 -->
+			<input type="text" name="uIdx" value="${proposal.uIdx }" style="display:none">			
+			<!-- 파일경로 넘기기 -->
+			<input type="text" name="cfFile" value="${proposal.cpFile }" style="display:none">
+			<!-- 펀딩 상태 넘기기 -->
+			<input type="text" name="cfStatus" value="0" style="display:none">
+			 <label> Title <input type="text" name="cfTitle" value="${proposal.cpTitle }">
 			</label><br>
-			<textarea class="summernote" name="editordata"></textarea>
-			<label> 시작일 <input type="date" name="startDate"> <input
-				type="time" name="startTime">
-			</label> <br> <input id="subBtn" type="Button" value="글 작성"
+			<!-- 썸머노트 에디터에 작성한 내용 저장시킬 textarea display:none -->
+			<textarea name="cfContent" style="display: none;"></textarea>
+			<label>
+				캠페인 목표 <input type="text" name="cfGoal" value="${proposal.cpGoal }">
+			</label>
+			<div id="summernote"></div>
+			<label> 시작일 <input type="date" name="cfStartdate"> 
+			</label> <br>
+			<label>
+				종료일 <input type="date" name="cfEnddate">
+			</label> <br>
+			<label>
+				목표 포인트 <input type="text" name="cfGoalpoint" value="${proposal.cpGoalpoint }">
+			</label> <br>
+			<h5 style="display:inline"> 키워드 선택 - </h5>
+			<c:forEach var="i" begin="1" end="3">
+			${i }
+					<select name="cfKeyword${i }">
+						<c:forEach var="keyword" items="${keyword }">
+							<option>${keyword.kContent }</option>
+						</c:forEach>				
+					</select>	
+					
+			</c:forEach>
+			 <input id="subBtn" type="Button" value="글 작성"
 				style="float: right;" onclick="goWrite(this.form)">
+			<!-- <input type="submit" value="전송"> -->
 			<div name="text"></div>
 		</form>
 	</div>
@@ -55,7 +74,9 @@
 		$(document)
 				.ready(
 						function() {
-
+						console.log($("#propContent").text());
+						console.log($("#propContent").val());
+						 
 							var toolbar = [
 									// 글꼴 설정
 									[ 'fontname', [ 'fontname' ] ],
@@ -80,7 +101,6 @@
 									[
 											'view',
 											[ 'codeview', 'fullscreen', 'help' ] ] ];
-
 							// 툴바생략
 							var setting = {
 								height : 300,
@@ -96,21 +116,24 @@
 										// 파일 업로드(다중업로드를 위해 반복문 사용)
 										for (var i = files.length - 1; i >= 0; i--) {
 											uploadSummernoteImageFile(files[i],
-													this);
+													this, count++);
 										}
 									}
 								}
 							};
-							$('.summernote').summernote(setting);
+							var propContent = $("#propContent").val();
+							text = propContent.replace(/<(\/)?([a-zA-Z]*)(\s[a-zA-Z]*=[^>]*)?(\s)*(\/)?>/ig, "");
+							alert(text);
+						$('#summernote').summernote('editor.insertText',text);	
+						$('#summernote').summernote(setting);
 						});
-
 		function uploadSummernoteImageFile(file, el) {
 			data = new FormData();
 			data.append("file", file);
 			$.ajax({
 				data : data,
 				type : "POST",
-				url : "uploadSummernoteImageFile.do",
+				url : "../uploadSummernoteImageFile.do",
 				contentType : false,
 				enctype : 'multipart/form-data',
 				processData : false,

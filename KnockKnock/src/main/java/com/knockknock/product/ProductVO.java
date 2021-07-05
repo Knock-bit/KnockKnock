@@ -14,6 +14,25 @@ public class ProductVO {
 	private int pTotalCnt;
 	private int pFee;
 	private String pImg;
+	
+	public int getpCount() {
+		return pCount;
+	}
+
+	public void setpCount(int pCount) {
+		this.pCount = pCount;
+	}
+
+	public String getCaRegdate() {
+		return caRegdate;
+	}
+
+	public void setCaRegdate(String caRegdate) {
+		this.caRegdate = caRegdate;
+	}
+
+	private int pCount;
+	private String caRegdate;
 
 	public ProductVO() {
 		super();

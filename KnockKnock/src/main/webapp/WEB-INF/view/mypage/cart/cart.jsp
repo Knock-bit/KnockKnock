@@ -43,8 +43,8 @@
 	<h1>장바구니</h1>
 	<div class="cartmain">
 		<div>
-			<button>상품목록 가기</button>
-			<button>내 주문 목록</button>
+			<input type="button" onclick="location.href='${cp }/productlist.do'" value="더 구매하러 가기">
+			<input type="button" onclick="" value="내 주문 목록">
 		</div>
 		<div class="cartText">
 			<!-- 장바구니 text, 주문 진행 순서 명시, 상품 구매로 이동버튼, 내 주문내역 이동 버튼 -->
@@ -54,7 +54,10 @@
 			<div>
 				장바구니->주문목록->결제
 			</div>
-			<div>장바구니 비우기, 삭제</div>
+			<div>
+				<input type="button" onclick="deleteCart()" value="장바구니 비우기">
+				
+			</div>
 		</div>
 		<div class="cartview">
 		<div class="topcartmenu">
@@ -69,13 +72,18 @@
 				수량
 			</div>
 			<div class="tct4">
-				가격
+				상품가격
 			</div>
 			<div class="tct5">
 				배송비
 			</div>
+			<div class="tct6">
+				합계
+			</div>
 		</div>
+			<c:if test="${not empty cartList }">
 			<c:forEach var="cartItem" items="${cartList }">
+			
 			
 			<div class="cartGrid">
 				<div class="cg1">
@@ -91,40 +99,50 @@
 				<div class="cg3">
 					<!-- 상품명, 설명 -->
 					<div style="margin-bottom:10px;">
-						<span style="font-weight:700; ">[ ${cartItem.pName } ]</span><br>
+						<span class="pIdx" style="display:none;">${cartItem.pIdx }</span>
+						<span style="font-weight:700; "><a href="productDetail.do?pIdx=${cartItem.pIdx}">[ ${cartItem.pName } ]</a></span><br>
 						${cartItem.pDesc }
 					</div>
 					<div>
-						<span style="font-size:10px;">삭제</span>
+						<span class="deleteOne" style="font-size:10px;">삭제</span>
 					</div>
 				</div>
 				<div class="cg4">
 					<!-- 수량 -->
-					<input type="button"  class="minus" onclick="minus(this)" value="-" />
+					<input type="button"  class="minus" onclick="minus(this)" value="-" name="count" />
 						<span class="pCount">${cartItem.pCount }</span>
-					<input type="button" class="plus" onclick="plus(this)" value="+" />
+					<input type="button" class="plus" onclick="plus(this)" value="+" name="count"/>
 					 
 				</div>
 				<div class="cg5">
-					<!-- 가격 -->
+					<!-- 상품 개당가격 -->
 					<p class="cg5price">${cartItem.pPrice }원</p>&nbsp;&nbsp;
-					<input class="cg5btn" type="button" value="내 쿠폰">
 				</div>
 				<div class="cg6">
 					<!-- 배송비 -->
 					<span class="pFee">${cartItem.pFee }</span> 원
 				</div>
+				<div class="cg7">
+					<!-- 전체 가격(수량 및 배송비 합쳐서) -->
+					<p class="cg6price">${(cartItem.pCount * cartItem.pPrice) + cartItem.pFee }원</p>&nbsp;&nbsp;
+				</div>
 			</div>
 			</c:forEach>	
+			</c:if>
+			<c:if test="${empty cartList }">
+				<div style="text-align:center;"> 상품이 존재하지 않습니다. </div>
+			
+			
+			</c:if>
 		</div>
 		<div class="totPrice">
 			<!-- 체크박스에 체크 된 상품의 가격만 가져오기(+배송비) -->
 			<div>총 합계 :</div><span id="price">0</span>원
-			
+			<input type="button" value="주문하기">
 		</div>
 		</div>
 		
-
+	
 	
 </div>	
 <!-- ======= Footer ======= -->
@@ -144,22 +162,27 @@ $(function(){
 	$('input:checkbox[name=opt1]').each(function() {
 		// 체크된 상품의 인덱스 번호
 		idx = $('input:checkbox[name=opt1]').index(this); 
-	
+		console.log("인덱스:" + idx);
 		// 동일한 인덱스번호의 상품 수량, 가격, 배송비 
 		pCount = parseInt($(".pCount").eq(idx).text());
-		//console.log(pCount);
+		console.log("수량:"+pCount);
+		
 		pPrice = parseInt($(".cg5price").eq(idx).text());
-	
+		console.log("가격:"+pPrice);
+		
 		pFee = parseInt($(".pFee").eq(idx).text());
-		
-		aa = $('input:checkbox[name=opt1]').eq(idx).val();
-		
+		console.log("배송비"+pFee);
+		//aa = $('input:checkbox[name=opt1]').eq(idx).val();
+		var tot = ((pCount*pPrice)+pFee);
+		console.log("상품당 총가격:"+tot);
 		$('input:checkbox[name=opt1]').eq(idx).val((pCount*pPrice)+pFee);
 		
 		// 나중에 전체체크 때문에 전체 계산 값 따로 저장해놓기(좋은방법 생기면...알고싶다..ㅠ)
 		totalPrice1 += parseInt($('input:checkbox[name=opt1]').eq(idx).val());
-		totalPrice = totalPrice1;
+		
 	});
+		totalPrice = totalPrice1;
+	
 		$("#price").html(totalPrice); // 전체 체크된 상태이기 때문에 먼저 토탈값 저장해주기
 		
 		// 전체 체크/해제 상태 때의 값
@@ -183,9 +206,49 @@ $(function(){
 			$("#price").html(totalPrice);
 		});
 	
+		
+		// + 버튼 클릭했을 때 가격 증가
+		$(".plus").click(function(e){
+			
+			var totalPrice = parseInt($("#price").text());
+			var pPrice = 0;
+			// 총 합계
+			pPrice = parseInt($(this).closest('div').next().children().text());
+			// 상품당 가격 총 합계
+			pTotPrice = parseInt($(this).closest('div').nextAll().filter($(".cg6")).children().text());
+			
+			console.log("pTotPrice:"+pTotPrice);
+			
+			totalPrice += pPrice;
+			pTotPrice += pPrice;
+			
+			$(this).closest('div').nextAll().filter($(".cg6")).children().html(pTotPrice+"원");
+			$("#price").html(totalPrice);
+			
+			
+			
+		});
+		// - 버튼 클릭했을 때 해당 가격 줄어들게
+		$(".minus").click(function(e){
+			
+			var totalPrice = parseInt($("#price").text());
+			var pPrice = 0;
+			
+			// 총 합계
+			pPrice = parseInt($(this).closest('div').next().children().text());
+			// 상품당 가격 총 합계
+			pTotPrice = parseInt($(this).closest('div').nextAll().filter($(".cg6")).children().text());
+			
+			totalPrice -= pPrice;
+			pTotPrice -= pPrice;
+			
+			$(this).closest('div').nextAll().filter($(".cg6")).children().html(pTotPrice+"원");
+			$("#price").html(totalPrice);
+			
+			
+		});
+	
 });	
-
-
 
 </script>
 </html>

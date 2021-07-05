@@ -9,10 +9,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up as Seller</title>
-  	<!-- JS -->
-	<script src="${cp}/resource/js/signup.js" type="text/javascript" charset="utf-8"></script>
-	<!-- jQuery -->
+	<!-- jQuery JS-->
 	<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>  
+    <script src="${cp}/resource/js/signup.js" type="text/javascript" charset="utf-8"></script>
     <!-- Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -106,7 +105,7 @@
 
                         <div class="form-submit">
                             <input type="reset" value="취소" name="reset" id="reset" />
-                            <input type="button" value="확인" name="submit" id="submit" />
+                            <input type="submit" value="확인" name="submit" id="submit" />
                         </div>
                     </form>
                 </div>

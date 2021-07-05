@@ -9,17 +9,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up for Knock!Knock!</title>
-  	<!-- JS -->
-  	<script src="${cp}/resource/js/signup.js"></script>
-
     <!-- Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
     <!-- css -->
    	<link href="${cp}/resource/css/signup.css" rel="stylesheet">
-  	<!-- jQuery -->
+  	<!-- jQuery / JS -->
 	<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+  	<script src="${cp}/resource/js/signup.js"></script>
     <!--다음 카카오 주소값-->
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
@@ -129,7 +127,7 @@
 
                         <div class="form-submit">
                             <input type="reset" value="취소" name="reset" id="reset" />
-                            <input type="button" value="확인" name="submit" id="submit" />
+                            <input type="submit" value="확인" name="submit" id="submit" />
                         </div>
                     </form>
                 </div>
