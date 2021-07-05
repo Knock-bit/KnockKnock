@@ -24,11 +24,11 @@
 		WHERE U_IDX=#{uIdx}
 	</update>
 	<!-- 키워드 리스트 출력 -->
-	<select id="getKeywordList" resultType="adminKeywordVO">
+	<select id="getKeywordAll" resultType="adminKeywordVO">
 		SELECT * FROM KEYWORD
 		ORDER BY K_CONTENT
 	</select>
-
+	
 	<!-- 키워드 추가 -->
 	<insert id="insertKeyword" parameterType="adminKeywordVO">
 		INSERT INTO KEYWORD
