@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="cp" value ="${pageContext.request.contextPath }"/>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,7 +31,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
-<title>join as Seller</title>
+<title>綠!Knock! - Join</title>
 </head>
 <body>
 <!-- ======= Header ======= -->
@@ -46,57 +47,56 @@
   	</c:otherwise>
   	</c:choose>
   <!-- ======= Header 끝  === -->
-<div class="breadcrumbs" style="background-color: rgb(10, 61, 14);" data-aos="fade-in">
+  
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs" data-aos="fade-in">
       <div class="container">
-        <h2>KNOCK!綠! 판매자 등록</h2>
-        <p> KNOCK!綠!은 지속가능한 소비를 추구하는 쇼핑 플랫폼을 운영하고 있습니다.</p>
+        <h2>회원가입</h2>
+        <p>綠!Knock! 회원가입하기</p>
       </div>
     </div><!-- End Breadcrumbs -->
 
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about">
+    <!-- ======= Events Section ======= -->
+    <section id="events" class="events">
       <div class="container" data-aos="fade-up">
 
         <div class="row">
-          <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
-            <img src="${cp}/resource/img/user/seller.jpg" class="img-fluid" alt="">
+          <div class="col-md-6 d-flex align-items-stretch">
+            <div class="card">
+              <div class="card-img">
+                <img src="${cp}/resource/img/about/savetheplanet.jpg" style="width:620px; height:450px;">
+              </div>
+              <div class="card-body">
+                <h5 class="card-title"><a href="#" onclick="location.href='/user/tnc.do'">일반회원 가입하기</a></h5>
+                <p class="fst-italic text-center">綠!Knock!의 전반적인 서비스 이용을 원하는 회원</p>
+                <p class="card-text">綠!Knock!의 환경캠페인 참여 및 쇼핑몰 이용을 원하시나요? 일반회원으로 지금 바로 클릭해서 일반회원으로 가입하기를 눌러주세요.</p>
+              </div>
+            </div>
           </div>
-          <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
-            <h3>환경을 위한 바른 소비를 돕는 綠!KNOCK!의 판매자</h3>
-            <ul>
-              <li><i class="bi bi-check-circle"></i>친환경 인증제품을 판매하시나요?</li>
-              <li><i class="bi bi-check-circle"></i>친환경 정책에 맞는 판매를 추구하시나요?</li>
-            </ul>
-            <p>KNOCK!綠!은 친환경 제품을 판매하는 판매자분들이 자유롭게 물건을 파실 수 있도록 SHOP페이지를 운영하고 있습니다.</p>
-			<p>다만 판매자분들은 반드시 친환경 인증제품을 파셔야 하며 배송포장 또한 친환경 포장재를 이용하셔야 합니다.</p>
-			<p>환경을 위한 녹색소비를 추구하시는 판매자시라면 지금 KNOCK!綠!에 판매자로 등록해주세요!</p><br>
-            <a href="#" onclick="location.href='/user/tncSeller.do'" class="sellerGo">판매자로 가입하기</a>
-             </div>
+          <div class="col-md-6 d-flex align-items-stretch">
+            <div class="card">
+              <div class="card-img">
+                <img src="${cp}/resource/img/about/greenconsumer.jpg" style="width:620px; height:450px;">
+              </div>
+              <div class="card-body">
+                <h5 class="card-title"><a href="#" onclick="location.href='/user/tncSeller.do'">판매자 가입하기</a></h5>
+                <p class="fst-italic text-center">綠!Knock!의 쇼핑몰에 판매를 원하는 회원</p>
+                <p class="card-text">혹시 에코프랜들리 상품 판매를 원하는 사업자분이신가요? 아니면 사업자번호가 없는 개인 판매자이신가요?
+                  綠!Knock!의 SHOP을 이용해서 물품 판매를 원하시는 경우 이 곳을 눌러 회원가입을 진행해주세요!
+                </p>
+              </div>
+            </div>
+
+          </div>
         </div>
-        <style>
-        
-        
-.sellerGo {
-  padding: 8px 25px;
-  background: #003510;
-  border-radius: 50px;
-  color: #fff;
-  white-space: nowrap;
-  transition: 0.3s;
-  font-size: 16px;
-  display: inline-block;
-  
-  }
-  .sellerGo:hover{
-  font-weight: bolder;
-  color: white;
-  }
-  </style>
 
       </div>
-    </section><!-- End About Section -->
+    </section><!-- End Events Section -->
 
-  <!-- ======= Footer ======= -->
+  </main><!-- End #main -->
+   <!-- ======= Footer ======= -->
    <%@ include file= "/layout/footer.jsp" %>
  
  <!-- End Footer -->

@@ -19,29 +19,73 @@
 
 <script>
 	function postForm() {
-		$('textarea[name="content"]').val($('#summernote').summernote('code'));
-		alert($('textarea[name="content"]').val(
+		$('textarea[name="cfContent"]').val($('#summernote').summernote('code'));
+		alert($('textarea[name="cfContent"]').val(
 				$('#summernote').summernote('code')));
-		console.log($('textarea[name="content"]').val(
+		console.log($('textarea[name="cfContent"]').val(
 				$('#summernote').summernote('code')));
 	}
 </script>
 <body>
 	<div class="container">
 		<form role="form" method="post" onsubmit="postForm()"
-			action="../adminSummerTest.do">
-			<label> index <input type="text" name="testIdx" />
-			</label> <br> <label> Title <input type="text" name="title">
-			</label><br>
+			action="${cp }/proposalSummer.do">
+			
 			<!-- <textarea id="summerTest" class="summernote" name="content"></textarea> -->
-			<textarea name="content" style="display: none;"></textarea>
-			<div id="summernote"></div>
-			<label> 시작일 <input type="date" name="startDate"> <input
-				type="time" name="startTime">
-			</label> <br>
-			<!-- <input id="subBtn" type="Button" value="글 작성"
-				style="float: right;" onclick="goWrite(this.form)"> -->
-			<input type="submit" value="전송">
+			
+			<div class="form-row1">
+                            <div class="form-group">
+                                <label for="cpTitle">캠페인 이름</label>
+                                <input type="text" name="cpTitle" id="name" required/>
+                            </div>
+                            <div class="form-group">
+                                <label for="cpGoal">캠페인 목표</label>
+                                <input type="text" name="cpGoal" id="id" required/>
+                            </div>
+                             <div class="form-group" >
+                                <label for="cpContent">캠페인 내용</label>
+                                 <textarea name="cpContent" style="display: none;"></textarea>
+								<div id="summernote"></div>
+                            </div>
+                        </div>
+                        <div class="form-row1">
+                           <div class="form-group">
+                                <label for="cpTitle">목표포인트</label>
+                                <input type="number" name="cpTitle" id="cpGoalPoint" min="2500" required/>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="keyword1">키워드1</label>
+                                <input type="text" name="keyword" id="pKeyword1" />
+                            </div>
+                            <div class="form-group">
+                                <label for="keyword2">키워드2</label>
+                                <input type="text" name="keyword" id="pKeyword2" />
+                            </div>
+                            <div class="form-group">
+                                <label for="keyword3">키워드3</label>
+                                <input type="text" name="keyword" id="pKeyword3" />
+                            </div>
+                        </div>
+
+
+                     
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<br>
+			   <div class="form-submit">
+                            <input type="reset" value="취소" class="submit" name="reset" id="reset" />
+                            <input type="submit" value="제출" class="submit" name="submit" id="submit" />
+                        </div>
 			<div name="text"></div>
 		</form>
 		${proposal }
@@ -102,7 +146,7 @@
 			$.ajax({
 				data : data,
 				type : "POST",
-				url : "../uploadSummernoteImageFile.do",
+				url : "${cp}/uploadProposalSummernoteImageFile.do",
 				contentType : false,
 				enctype : 'multipart/form-data',
 				processData : false,

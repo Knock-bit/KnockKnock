@@ -43,8 +43,8 @@
 	<h1>장바구니</h1>
 	<div class="cartmain">
 		<div>
-			<button>상품목록 가기</button>
-			<button>내 주문 목록</button>
+			<input type="button" onclick="location.href='${cp }/productlist.do'" value="더 구매하러 가기">
+			<input type="button" onclick="" value="내 주문 목록">
 		</div>
 		<div class="cartText">
 			<!-- 장바구니 text, 주문 진행 순서 명시, 상품 구매로 이동버튼, 내 주문내역 이동 버튼 -->
@@ -54,7 +54,10 @@
 			<div>
 				장바구니->주문목록->결제
 			</div>
-			<div>장바구니 비우기, 삭제</div>
+			<div>
+				<input type="button" onclick="deleteCart()" value="장바구니 비우기">
+				
+			</div>
 		</div>
 		<div class="cartview">
 		<div class="topcartmenu">
@@ -75,7 +78,9 @@
 				배송비
 			</div>
 		</div>
+			<c:if test="${not empty cartList }">
 			<c:forEach var="cartItem" items="${cartList }">
+			
 			
 			<div class="cartGrid">
 				<div class="cg1">
@@ -91,24 +96,25 @@
 				<div class="cg3">
 					<!-- 상품명, 설명 -->
 					<div style="margin-bottom:10px;">
-						<span style="font-weight:700; ">[ ${cartItem.pName } ]</span><br>
+						<span class="pIdx" style="display:none;">${cartItem.pIdx }</span>
+						<span style="font-weight:700; "><a href="productDetail.do?pIdx=${cartItem.pIdx}">[ ${cartItem.pName } ]</a></span><br>
 						${cartItem.pDesc }
 					</div>
 					<div>
-						<span style="font-size:10px;">삭제</span>
+						<span class="deleteOne" style="font-size:10px;">삭제</span>
 					</div>
 				</div>
 				<div class="cg4">
 					<!-- 수량 -->
-					<input type="button"  class="minus" onclick="minus(this)" value="-" />
+					<input type="button"  class="minus" onclick="minus(this)" value="-" name="count" />
 						<span class="pCount">${cartItem.pCount }</span>
-					<input type="button" class="plus" onclick="plus(this)" value="+" />
+					<input type="button" class="plus" onclick="plus(this)" value="+" name="count"/>
 					 
 				</div>
 				<div class="cg5">
 					<!-- 가격 -->
 					<p class="cg5price">${cartItem.pPrice }원</p>&nbsp;&nbsp;
-					<input class="cg5btn" type="button" value="내 쿠폰">
+					<!--  input class="cg5btn" type="button" value="내 쿠폰"> -->
 				</div>
 				<div class="cg6">
 					<!-- 배송비 -->
@@ -116,6 +122,12 @@
 				</div>
 			</div>
 			</c:forEach>	
+			</c:if>
+			<c:if test="${empty cartList }">
+				<div style="text-align:center;"> 상품이 존재하지 않습니다. </div>
+			
+			
+			</c:if>
 		</div>
 		<div class="totPrice">
 			<!-- 체크박스에 체크 된 상품의 가격만 가져오기(+배송비) -->
@@ -124,7 +136,7 @@
 		</div>
 		</div>
 		
-
+	
 	
 </div>	
 <!-- ======= Footer ======= -->
@@ -152,7 +164,7 @@ $(function(){
 	
 		pFee = parseInt($(".pFee").eq(idx).text());
 		
-		aa = $('input:checkbox[name=opt1]').eq(idx).val();
+		//aa = $('input:checkbox[name=opt1]').eq(idx).val();
 		
 		$('input:checkbox[name=opt1]').eq(idx).val((pCount*pPrice)+pFee);
 		
@@ -183,7 +195,25 @@ $(function(){
 			$("#price").html(totalPrice);
 		});
 	
+		$.each(function(){
+			var idx1 = $(".minus").index();
+			var idx2 = $(".plus").index();
+			
+			$(".minus").eq(idx1).click(countTotPrice);
+			$(".plus").eq(idx2).click(countTotPrice);
+		});
+
+	
 });	
+
+function countTotPrice(){
+	var totalPrice = parseInt($("#price").text());
+	console.log("수량클릭시:"+totalPrice);
+	
+}
+
+//=========================================
+// 수량 체크
 
 
 

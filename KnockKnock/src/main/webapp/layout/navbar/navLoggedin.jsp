@@ -33,28 +33,22 @@
 						<li><a href="${cp }/campaign/ed/list.do">지난 캠페인</a></li>
 						<li><a href="${cp }/campaign/proposal.do">캠페인 제안하기</a></li>
 					</ul></li>
-				<li><a href="${cp }/productlist.do">Shop</a></li>
-				<li><a href="${cp }/contact/contact.do">Contact</a></li>
-				<li class="dropdown"><a href="#"><span
-						class="get-started-btn">${users.uName }님</span> <i
-						class="bi bi-chevron-down"></i></a>
-					<ul>
-						<li><a href="${cp}/updateMyInfo.do">정보수정</a></li>
-						<li><a href="${cp}/myPoint.do">포인트 현황</a></li>
-						<li><a href="${cp}/myCampaignPage.do">참여중인 캠페인</a></li>
-						<li><a href="${cp}/myCampaignList.do">내 캠페인 목록</a></li>
-						<li><a href="${cp}/myContactList.do">나의 문의내역</a></li>
-						<li><a href="${cp}/myActive.do">나의 활동</a></li>
-						<li><a href="${cp}/moveCart.do">내 장바구니</a></li>
-						<li><a href="${cp }/user/logout.do">로그아웃</a></li>
+          <li><a href="${cp }/productlist.do">Shop</a></li>
+          <li><a href="${cp }/contact/contact.do">Contact</a></li>
 
-						<li><a href="${cp}/productList.do">상품목록페이지</a></li>
-						<!-- 임시 -->
-						<!-- 로그아웃 UserController에 들어있음 -->
-
-					</ul></li>
-
-
+          <li class="dropdown"><a href="#"><span class="get-started-btn">${users.uName }님</span> <i
+                class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="${cp}/updateMyInfo.do">정보수정</a></li>
+              <li><a href="${cp}/myPoint.do">포인트 현황</a></li>
+              <li><a href="${cp}/myCampaignPage.do">참여중인 캠페인</a></li>
+              <li><a href="${cp}/myCampaignList.do">내 캠페인 목록</a></li>
+              <li><a href="${cp}/myContactList.do">나의 문의내역</a></li>
+              <li><a href="${cp}/myActive.do">나의 활동</a></li>
+              <li><a href="${cp}/moveCart.do">내 장바구니</a></li>
+              <li><a href="${cp }/user/logout.do">로그아웃</a></li>
+              
+              <!-- 로그아웃 UserController에 들어있음 -->
 
 			</ul>
 			<i class="bi bi-list mobile-nav-toggle"></i>
