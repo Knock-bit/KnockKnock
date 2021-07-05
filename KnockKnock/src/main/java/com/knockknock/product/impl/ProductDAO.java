@@ -1,5 +1,6 @@
 package com.knockknock.product.impl;
 
+public class ProductDAO {
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -17,5 +18,4 @@ public class ProductDAO {
 
 		return mybatis.selectList("UserVO.productList");
 	}
-
 }

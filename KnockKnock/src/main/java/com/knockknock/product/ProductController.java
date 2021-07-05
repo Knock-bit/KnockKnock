@@ -1,5 +1,11 @@
 package com.knockknock.product;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/product")
+public class ProductController {
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,5 +33,4 @@ public class ProductController {
 		return "/product/productlist";
 	}
 	
-
 }
