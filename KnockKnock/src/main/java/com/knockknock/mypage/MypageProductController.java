@@ -27,26 +27,7 @@ public class MypageProductController {
 	@Autowired
 	private MypageProductService mypageProductService;
 	
-	// 상품 목록으로 가기(임시)
-	@GetMapping("productList.do")
-	public String ProductList(@ModelAttribute("users")UserVO vo, Model model) {
-		
-		List<ProductVO> plist = mypageProductService.ProductList();
-		
-		model.addAttribute("plist", plist);
-		return "/mypage/cart/productList";
-	}
 	
-	// 상품 목록(정보) 가져오기 - 임시
-	@GetMapping("productDetail.do")
-	public String ProductDetail(@ModelAttribute("users")UserVO vo, Model model, int pIdx) {
-		
-		ProductVO pvo = mypageProductService.productDetail(pIdx);
-		System.out.println("pvo : " + pvo);
-		
-		model.addAttribute("pvo", pvo);
-		return "/mypage/cart/tempProduct";
-	}
 	
 	// 상품 장바구니에 담기
 	@RequestMapping(value="/addCart.do", method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)

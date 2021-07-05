@@ -43,7 +43,7 @@
 	<h1>장바구니</h1>
 	<div class="cartmain">
 		<div>
-			<input type="button" onclick="location.href='productList.do'" value="더 구매하러 가기">
+			<input type="button" onclick="location.href='${cp }/productlist.do'" value="더 구매하러 가기">
 			<input type="button" onclick="" value="내 주문 목록">
 		</div>
 		<div class="cartText">
@@ -97,7 +97,7 @@
 					<!-- 상품명, 설명 -->
 					<div style="margin-bottom:10px;">
 						<span class="pIdx" style="display:none;">${cartItem.pIdx }</span>
-						<span style="font-weight:700; ">[ ${cartItem.pName } ]</span><br>
+						<span style="font-weight:700; "><a href="productDetail.do?pIdx=${cartItem.pIdx}">[ ${cartItem.pName } ]</a></span><br>
 						${cartItem.pDesc }
 					</div>
 					<div>
