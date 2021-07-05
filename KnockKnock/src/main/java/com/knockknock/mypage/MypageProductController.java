@@ -84,5 +84,31 @@ public class MypageProductController {
 		model.addAttribute("cartList", cartList);
 		return "/mypage/cart/cart";
 	}
+	
+	// 장바구니 상품 전체 삭제
+	@PostMapping("/deleteCart.do")
+	@ResponseBody
+	public String deleteCart(@ModelAttribute("users")UserVO vo, Model model) {
+		
+		int result = mypageProductService.deleteCart(vo);
+		String data =String.valueOf(result);
+		
+		System.out.println("data:" + data);
+		
+		
+		return data;
+	}
 
+	// 장바구니 상품 하나 삭제
+	@PostMapping("/deleteOne.do")
+	@ResponseBody
+	public String deleteOne(@ModelAttribute("users")UserVO vo, int pIdx) {
+		
+		int result = mypageProductService.deleteOne(pIdx);
+		String data =String.valueOf(result);
+		
+		System.out.println("data:" + data);
+
+		return data;
+	}
 }

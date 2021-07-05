@@ -21,6 +21,12 @@ public interface MypageProductService {
 
 	// 나의 장바구니 목록
 	List<ProductVO> cartList(UserVO vo);
+	
+	// 나의 장바구니 목록 전체 삭제
+	int deleteCart(UserVO vo);
+	
+	// 장바구니에서 상품 하나 삭제
+	int deleteOne(int pIdx);
 
 	
 
