@@ -5,48 +5,52 @@ import java.sql.Date;
 public class FundingVO {
 	private int cfIdx;
 	private int cpIdx;
-	private String cGoal;
+	private String cfGoal;
 	private String cfTitle;
 	private String cfContent;
-	private Date cfEndtime;
-	private Date cfStarttime;
+	private Date cfEnddate;
+	private Date cfStartdate;
 	private int cfGoalpoint;
 	private int cfCollected;
 	private String cfStatus;
 	private String cfFile;
-	private int ccIdx;  // 캠페인 카테고리 
-	private int uIdx;   // 유저번호	
-	private String hostNickname; // 주최자 닉네임
-	private String category;
-	private int userCount;
+	private int ccIdx;  
+	private int uIdx;   // 주최자 유저번호	
+	private String keyword1;
+	private String keyword2;
+	private String keyword3;
+	private String hostNickname; // JOIN - 주최자 닉네임
+	private String category; // JOIN - 카테고리명
+	private int userCount; // JOIN - 참여자 수
 	
 	
 	public FundingVO() {}
 
 
-	public FundingVO(int cfIdx, int cpIdx, String cGoal, String cfTitle, String cfContent, Date cfEndtime,
-			Date cfStarttime, int cfGoalpoint, int cfCollected, String cfStatus, String cfFile, int ccIdx, int uIdx,
-			String hostNickname, String category, int userCount) {
+	public FundingVO(int cfIdx, int cpIdx, String cfGoal, String cfTitle, String cfContent, Date cfEnddate,
+			Date cfStartdate, int cfGoalpoint, int cfCollected, String cfStatus, String cfFile, int ccIdx, int uIdx,
+			String keyword1, String keyword2, String keyword3, String hostNickname, String category, int userCount) {
 		super();
 		this.cfIdx = cfIdx;
 		this.cpIdx = cpIdx;
-		this.cGoal = cGoal;
+		this.cfGoal = cfGoal;
 		this.cfTitle = cfTitle;
 		this.cfContent = cfContent;
-		this.cfEndtime = cfEndtime;
-		this.cfStarttime = cfStarttime;
+		this.cfEnddate = cfEnddate;
+		this.cfStartdate = cfStartdate;
 		this.cfGoalpoint = cfGoalpoint;
 		this.cfCollected = cfCollected;
 		this.cfStatus = cfStatus;
 		this.cfFile = cfFile;
 		this.ccIdx = ccIdx;
 		this.uIdx = uIdx;
+		this.keyword1 = keyword1;
+		this.keyword2 = keyword2;
+		this.keyword3 = keyword3;
 		this.hostNickname = hostNickname;
 		this.category = category;
+		this.userCount = userCount;
 	}
-
-
-
 
 
 	public int getCfIdx() {
@@ -69,13 +73,13 @@ public class FundingVO {
 	}
 
 
-	public String getcGoal() {
-		return cGoal;
+	public String getCfGoal() {
+		return cfGoal;
 	}
 
 
-	public void setcGoal(String cGoal) {
-		this.cGoal = cGoal;
+	public void setCfGoal(String cfGoal) {
+		this.cfGoal = cfGoal;
 	}
 
 
@@ -99,23 +103,23 @@ public class FundingVO {
 	}
 
 
-	public Date getCfEndtime() {
-		return cfEndtime;
+	public Date getCfEnddate() {
+		return cfEnddate;
 	}
 
 
-	public void setCfEndtime(Date cfEndtime) {
-		this.cfEndtime = cfEndtime;
+	public void setCfEnddate(Date cfEnddate) {
+		this.cfEnddate = cfEnddate;
 	}
 
 
-	public Date getCfStarttime() {
-		return cfStarttime;
+	public Date getCfStartdate() {
+		return cfStartdate;
 	}
 
 
-	public void setCfStarttime(Date cfStarttime) {
-		this.cfStarttime = cfStarttime;
+	public void setCfStartdate(Date cfStartdate) {
+		this.cfStartdate = cfStartdate;
 	}
 
 
@@ -179,6 +183,36 @@ public class FundingVO {
 	}
 
 
+	public String getKeyword1() {
+		return keyword1;
+	}
+
+
+	public void setKeyword1(String keyword1) {
+		this.keyword1 = keyword1;
+	}
+
+
+	public String getKeyword2() {
+		return keyword2;
+	}
+
+
+	public void setKeyword2(String keyword2) {
+		this.keyword2 = keyword2;
+	}
+
+
+	public String getKeyword3() {
+		return keyword3;
+	}
+
+
+	public void setKeyword3(String keyword3) {
+		this.keyword3 = keyword3;
+	}
+
+
 	public String getHostNickname() {
 		return hostNickname;
 	}
@@ -206,10 +240,19 @@ public class FundingVO {
 
 	public void setUserCount(int userCount) {
 		this.userCount = userCount;
-	};
-	
-	
-	
+	}
+
+
+	@Override
+	public String toString() {
+		return "FundingVO [cfIdx=" + cfIdx + ", cpIdx=" + cpIdx + ", cfGoal=" + cfGoal + ", cfTitle=" + cfTitle
+				+ ", cfContent=" + cfContent + ", cfEnddate=" + cfEnddate + ", cfStartdate=" + cfStartdate
+				+ ", cfGoalpoint=" + cfGoalpoint + ", cfCollected=" + cfCollected + ", cfStatus=" + cfStatus
+				+ ", cfFile=" + cfFile + ", ccIdx=" + ccIdx + ", uIdx=" + uIdx + ", keyword1=" + keyword1
+				+ ", keyword2=" + keyword2 + ", keyword3=" + keyword3 + ", hostNickname=" + hostNickname + ", category="
+				+ category + ", userCount=" + userCount + "]";
+	}
+
 	
 	
 
