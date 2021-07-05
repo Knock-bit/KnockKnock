@@ -18,7 +18,7 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	ProductVO product = new ProductVO();
-	@GetMapping("productlist.do")
+	@GetMapping("/productlist.do")
 	public String ProductList(UserVO vo, Model model) {
 		
 		List<ProductVO> plist = productService.ProductList();

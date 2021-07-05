@@ -70,6 +70,20 @@ public class MypageProductDAO {
 		}
 		return result;
 	}
+
+	// 장바구니 상품 하나 삭제
+	public int deleteOne(int pIdx) {
+		
+		String rt = mybatis.selectOne("UserVO.deleteOne", pIdx);
+		int result;
+		
+		if(rt == null ) {
+			result = 1; // 삭제완료
+		} else {
+			result = 0; // 에러..?
+		}
+		return result;
+	}
 	
 	
 

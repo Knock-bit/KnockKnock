@@ -95,25 +95,25 @@
         <div class="row" data-aos="zoom-in" data-aos-delay="100">
 
 		<c:if test="${!empty plist  }">
-        <c:forEach var="campaign" items="${plist }">
+        <c:forEach var="product" items="${plist }">
 		
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="course-item">
-              <img src="assets/img/course-1.jpg" class="img-fluid" alt="...">
+              <img src="/resource/img/product/${product.pImg }" class="img-fluid" alt="...">
               <div class="course-content">
                 <div class="d-flex justify-content-between align-items-center mb-3">
                   <h4>${product.pcIdx}</h4>
                   <p class="price">${product.pPrice}</p>
                 </div>
 
-                <h3><a href="course-details.html">${product.pName}</a></h3>
+                <h3><a href="productDetail.do?pIdx=${product.pIdx}">${product.pName}</a></h3>
                 <p>${product.pPrice}</p>
                 <div class="trainer d-flex justify-content-between align-items-center">
                   <div class="trainer-profile d-flex align-items-center">
                     <span>${product.sIdx}판매자</span>
                   </div>
                   <div class="trainer-rank d-flex align-items-center">
-                    	${product.pView }
+                    	${product.pViews }
                   </div>
                 </div>
               </div>
