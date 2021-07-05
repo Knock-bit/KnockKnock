@@ -105,11 +105,11 @@ $(function(){
 		var idx = index;
 		console.log("삭제idx"+idx);
 	
-		$(".deleteOne").click(function(){
+		$(".deleteOne").eq(idx).click(function(){
 			var pIdx = $(".pIdx").eq(idx).text();
 			console.log(pIdx);
 			
-			var deleteOne = confirm('해당 상품을 전체 삭제하시겠습니까?');
+			var deleteOne = confirm('해당 상품을 삭제하시겠습니까?');
 			
 			if(deleteOne){
 				 $.ajax({

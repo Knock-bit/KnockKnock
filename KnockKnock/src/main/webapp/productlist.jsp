@@ -93,7 +93,21 @@
       <div class="container" data-aos="fade-up">
 
         <div class="row" data-aos="zoom-in" data-aos-delay="100">
-
+        
+<div class="ct">
+		
+		<div class="pgrid">
+		<c:forEach var="product" items="${plist }">
+			<div class="it1">
+				<div class="pimg">
+					<a href="productDetail.do?pIdx=${product.pIdx}"><img src="/resource/img/product/${product.pImg }"></a>
+				</div>
+			</div>
+		</c:forEach>
+		</div>
+		
+	
+</div>
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="course-item">
               <img src="${cp }/resource/img/about/document.jpg" class="img-fluid" alt="...">

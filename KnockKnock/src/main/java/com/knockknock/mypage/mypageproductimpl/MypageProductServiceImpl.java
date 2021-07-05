@@ -58,8 +58,8 @@ public class MypageProductServiceImpl implements MypageProductService {
 	// 장바구니 상품 하나 삭제
 	@Override
 	public int deleteOne(int pIdx) {
-		// TODO Auto-generated method stub
-		return 0;
+
+		return mypageProductDAO.deleteOne(pIdx);
 	}
 	
 	
