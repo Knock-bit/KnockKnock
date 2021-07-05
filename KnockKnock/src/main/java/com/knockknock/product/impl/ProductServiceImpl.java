@@ -1,6 +1,6 @@
 package com.knockknock.product.impl;
 
-import java.util.List; 
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ public class ProductServiceImpl implements ProductService {
 	private ProductDAO productDAO;
 
 	@Override
-	public List<com.knockknock.util.ProductVO> ProductList() {
+	public List<ProductVO> ProductList() {
  		return productDAO.ProductList();
 	}
 
