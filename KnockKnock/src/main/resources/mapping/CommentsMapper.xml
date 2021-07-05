@@ -4,9 +4,9 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="CommentsDAO">
 	
-	<insert id="insertComments" parameterType="com.knockknock.board.CommentsVO">
+	<insert id="insertComments" parameterType="comments">
 		INSERT INTO COMMENTS (M_IDX, C_CONTENT, B_IDX, U_IDX, C_REGDATE)
-		VALUES ((SELECT NVL(MAX(M_IDX),0)+1 FROM COMMENTS), #{mIdx}, #{cContent}, #{bIdx}, #{uIdx}, #{cRegdate})
+		VALUES ((SELECT NVL(MAX(M_IDX),0)+1 FROM COMMENTS), #{cContent}, #{bIdx}, #{uIdx}, #{cRegdate})
 	</insert>
 	
 	<update id="updateComments" parameterType="comments">
@@ -17,7 +17,7 @@
 		DELETE FROM COMMENTS WHERE M_IDX = #{mIdx}
 	</delete>
 
-	<select id="CommentsList" parameterType="comments" resultType="comments">
+	<select id="commentsList" parameterType="comments" resultType="comments">
 		SELECT * FROM COMMENTS ORDER BY M_IDX DESC
 	</select>
 	

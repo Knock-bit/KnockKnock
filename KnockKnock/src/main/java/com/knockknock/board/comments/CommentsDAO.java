@@ -13,15 +13,15 @@ public class CommentsDAO {
 	
 	public List<CommentsVO> commentsList(CommentsVO vo) {
 		
-		return mybatis.selectList("commentsDAO.", vo);
+		return mybatis.selectList("CommentsDAO.commentsList", vo);
 	}
 	public void insertComments(CommentsVO vo) {
-		mybatis.insert("commentsDAO.insertComments", vo);
+		mybatis.insert("CommentsDAO.insertComments", vo);
 	}
-	public void updateComments(CommentsVO vo) {
-		mybatis.update("commentsDAO.updateComments", vo);
-	}
+//	public void updateComments(CommentsVO vo) {
+//		mybatis.update("commentsDAO.updateComments", vo);
+//	}
 	public void deleteComments(int bIdx) {
-		mybatis.delete("commentsDAO.deleteComments", bIdx);
+		mybatis.delete("CommentsDAO.deleteComments", bIdx);
 	}
 }
