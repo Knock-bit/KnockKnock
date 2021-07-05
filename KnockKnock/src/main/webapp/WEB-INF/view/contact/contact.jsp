@@ -107,7 +107,7 @@
 								<div class="row">
 									<div class="col-md-12 form-group">
 										<textarea class="form-control" name="ctContent" id="message"
-											cols="30" rows="70" placeholder="문의사항을 작성해주세요."></textarea>
+											cols="30" rows="10" placeholder="문의사항을 작성해주세요."></textarea>
 									</div>
 								</div>
 								<div class="row">
