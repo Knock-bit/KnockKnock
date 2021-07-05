@@ -34,7 +34,7 @@
           </li>
 
 
-          <li><a href="courses.html">Shop</a></li>
+          <li><a href="${cp }/productlist.do">Shop</a></li>
           <li><a href="${cp }/contact/contact.do">Contact</a></li>
 
         </ul>
