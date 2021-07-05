@@ -212,5 +212,26 @@ campaign-navbar >li >a{
 	margin:auto;
 }
 
+.scale {
+	transform: scale(1);
+	-webkit-transform: scale(1);
+	-moz-transform: scale(1);
+	-mz-transform: scale(1);
+	-o-transform: scale(1);
+	transition: all 0.3s ease-in-out;
+	}
+	
+.scale:hover {
+	transform: scale(1.1);
+	-webkit-transform: scale(1.1);
+	-moz-transform: scale(1.1);
+	-mz-transform: scale(1.1);
+	-o-transform: scale(1.1);
+	}	
+.img-campaign {
+	overflow: hidden;
+	}
+.none-deco {
+	text-decoration:none;}
 
 

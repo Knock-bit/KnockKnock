@@ -32,7 +32,7 @@
             $.ajax ({
           		
             	type: "post",
-                url:"/googlelogin.do", 
+                url:"/googleLogin.do", 
                 data: { uEmail: profile.getEmail() },
                 dataType: "text",
                 success: function (data) {

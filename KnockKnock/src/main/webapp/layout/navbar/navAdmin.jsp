@@ -7,7 +7,7 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo me-auto"><a href="${cp }/layout/main.jsp"><img src="${cp }/resource/img/logo.png" id=:logo></a></h1>
+      <h1 class="logo me-auto"><a href="${cp }/layout/main.jsp"><img src="${cp }/resource/img/logo2.png" id=:logo></a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -15,17 +15,17 @@
         <ul>
           <li><a href="${cp }/run.jsp">Home</a></li>
           <li class="dropdown"><a href="#"><span>About</span> <i class="bi bi-chevron-down"></i></a>
-                  <ul>
-              <li><a href="#">녹녹은</a></li>
-              <li><a href="#">녹녹 사용법</a></li>
+              <ul>
+              <li><a href="${cp }/layout/about/whatisknock.jsp">녹녹은</a></li>
+              <li><a href="${cp }/layout/about/manual.jsp">녹녹 사용법</a></li>
             </ul>
           </li>
           <li class="dropdown"><a href="#"><span>Campaign</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">진행중인 캠페인</a></li>
-              <li><a href="#">캠페인 펀딩하기</a></li>
-              <li><a href="#">지난 캠페인</a></li>
-              <li><a href="#">캠페인 제안하기</a></li>
+              <li><a href="${cp }/campaign/ing/list.do">진행중인 캠페인</a></li>
+              <li><a href="${cp }/campaign/funding/list.do">캠페인 펀딩하기</a></li>
+              <li><a href="${cp }/campaign/ed/list.do">지난 캠페인</a></li>
+              <li><a href="${cp }/campaign/proposal.do">캠페인 제안하기</a></li>
             </ul>
           </li>
 

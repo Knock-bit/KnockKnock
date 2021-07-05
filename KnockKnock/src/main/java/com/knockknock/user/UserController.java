@@ -1,23 +1,16 @@
 package com.knockknock.user;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -138,7 +131,7 @@ public class UserController {
 		System.out.println("회원가입 controller join()");
 		System.out.println("vo: " + vo);
 		userService.join(vo);
-		return "/user/joinconfirm";
+		return "/user/joinConfirm";
 	}
 
 	// 로그아웃
@@ -151,7 +144,7 @@ public class UserController {
 	}
 	
 	//구글
-	@RequestMapping(value="/googlelogin.do", method= {RequestMethod.POST, RequestMethod.GET})
+	@RequestMapping(value="/user/googleLogin.do", method= {RequestMethod.POST, RequestMethod.GET})
 	@ResponseBody
 	public String googlelogin(String uEmail, HttpServletRequest request) {
 		UserVO vo = new UserVO();

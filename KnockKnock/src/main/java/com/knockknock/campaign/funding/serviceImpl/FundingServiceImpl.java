@@ -52,5 +52,25 @@ public class FundingServiceImpl implements FundingService{
 	public FundingUserVO selectFundingUser(FundingUserVO fundingUser) {
 		return fundingUserDAO.selectFundingUser(fundingUser);
 	}
+
+	@Override
+	public int updateUserFundingPoint(FundingUserVO fundingUser) {
+		return fundingUserDAO.updateUserFundingPoint(fundingUser);
+	}
+
+	@Override
+	public int deleteFundingUser(FundingUserVO fundingUser) {
+		return fundingUserDAO.deleteFundingUser(fundingUser);
+	}
+
+	@Override
+	public int updateFundingPointMinus(FundingUserVO fundingUser) {
+		return fundingUserDAO.updateFundingPointMinus(fundingUser);
+	}
+
+	@Override
+	public int updateUserFundingPointMinus(FundingUserVO fundingUser) {
+		return fundingUserDAO.updateUserFundingPointMinus(fundingUser);
+	}
 	
 }

@@ -25,4 +25,20 @@ public class FundingUserDAO {
 	public FundingUserVO selectFundingUser(FundingUserVO fundingUser) {
 		return mybatis.selectOne("campaign.selectFundingUser", fundingUser);
 	}
+
+	public int updateUserFundingPoint(FundingUserVO fundingUser) {
+		return mybatis.update("campaign.updateUserFundingPoint", fundingUser);
+	}
+
+	public int deleteFundingUser(FundingUserVO fundingUser) {
+		return mybatis.delete("campaign.deleteFundingUser", fundingUser);
+	}
+
+	public int updateFundingPointMinus(FundingUserVO fundingUser) {
+		return mybatis.update("campaign.updateFundingPointMinus", fundingUser);
+	}
+
+	public int updateUserFundingPointMinus(FundingUserVO fundingUser) {
+		return mybatis.update("campaign.updateUserFundingPointMinus", fundingUser);
+	}
 }

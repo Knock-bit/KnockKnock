@@ -152,6 +152,7 @@
 			배송비 : ${pvo.pFee }
 		</div>
 		<div class="pbtn">
+			<button onclick="location.href='productList.do'">목록으로 이동</button>
 			<button>주문하기</button>
 			<input type="button" onclick="addCart()" value="장바구니">
 		</div>
@@ -185,9 +186,10 @@ function addCart(){
 				 
 				 if(moveCart){
 					 location.href="moveCart.do";
+				 } else {
+					 location.href="productDetail.do?pIdx="+pIdx; // 상품페이지 다시 리턴
 				 }
 				 
-				 location.href="productDetail.do"; // 상품페이지 다시 리턴
 			 }
 		 },
 		 error : function(data){

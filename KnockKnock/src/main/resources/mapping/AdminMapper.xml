@@ -41,28 +41,35 @@
 		SELECT COUNT(*) FROM KEYWORD WHERE K_CONTENT =
 		#{kContent}
 	</select>
-<!-- <foreach collection="list" item="item" index="index" separator="or"> -->
+	<!-- <foreach collection="list" item="item" index="index" separator="or"> -->
 	<!-- 키워드 삭제 -->
 	<delete id="deleteKeyword" parameterType="java.util.List">
 		DELETE FROM KEYWORD WHERE
 		K_CONTENT IN
-		<foreach collection="list" index="index" item="item" open="(" close=")" separator=","> 
-		#{item}
-		</foreach> 
+		<foreach collection="list" index="index" item="item" open="("
+			close=")" separator=",">
+			#{item}
+		</foreach>
 	</delete>
-	
+
 	<!-- ======== proposal =========== -->
-	<select id="getProposal" parameterType="adminProposalVO" resultType="adminProposalVO">
-		SELECT * FROM PROPOSAL WHERE CP_IDX =#{cpIdx}
+	<select id="getProposal" parameterType="adminProposalVO"
+		resultType="adminProposalVO">
+		SELECT * FROM PROPOSAL P INNER JOIN USERS U
+		ON P.U_IDX = U.U_IDX
+		WHERE CP_IDX = #{cpIdx}
 	</select>
-	
+
 	<!-- 썸머노트 insert -->
 	<insert id="insertSummer" parameterType="adminSummerVO">
-		INSERT INTO TEST(TEST_IDX, CONTENT, TITLE) VALUES (#{testIdx}, #{content}, #{title})
+		INSERT INTO
+		TEST(TEST_IDX, CONTENT, TITLE) VALUES (#{testIdx}, #{content},
+		#{title})
 	</insert>
 	<!-- 썸머노트 select -->
 	<select id="selectSummer" resultType="adminSummerVO">
-		SELECT * FROM TEST WhERE TEST_IDX = 123123
+		SELECT * FROM TEST WhERE
+		TEST_IDX = 44444
 	</select>
 
 </mapper>

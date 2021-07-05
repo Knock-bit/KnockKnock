@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="cp" value ="${pageContext.request.contextPath }"/>
 <html lang="en">
 
 <head>
@@ -23,7 +26,6 @@
             console.log('Family Name: ' + profile.getFamilyName());
             console.log("Image URL: " + profile.getImageUrl());
             console.log("Email: " + profile.getEmail());
-            alert("구글 아쟉스 시작");
 
             // The ID token you need to pass to your backend:
             var id_token = googleUser.getAuthResponse().id_token;
@@ -32,7 +34,7 @@
             $.ajax ({
           		
             	type: "post",
-                url:"/googlelogin.do", 
+                url:"/googleLogin.do", 
                 data: { uEmail: profile.getEmail() },
                 dataType: "text",
                 success: function (data) {
