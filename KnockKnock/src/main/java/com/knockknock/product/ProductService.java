@@ -5,8 +5,6 @@ import java.util.List;
 
 import com.knockknock.product.ProductVO;
 
-public interface ProductService {
-	public List<ProductVO> selectProductList();
 import com.knockknock.util.ProductVO;
 
 

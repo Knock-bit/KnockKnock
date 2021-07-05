@@ -1,9 +1,5 @@
 package com.knockknock.product.impl;
 
-
-import java.util.List; 
-
-public class ProductDAO {
 import java.util.List;
 
 
@@ -14,10 +10,10 @@ import org.springframework.stereotype.Repository;
 import com.knockknock.product.ProductVO;
 @Repository
 public class ProductDAO {
-	
+
 	@Autowired
 	private SqlSessionTemplate mybatis;
-	
+
 	public List<ProductVO> ProductList() {
 
 		return mybatis.selectList("UserVO.productList");
@@ -30,6 +26,6 @@ public class ProductDAO {
 		return mybatis.selectOne("UserVO.productDetail", pIdx);
 	}
 
-=======
+
 
 }
