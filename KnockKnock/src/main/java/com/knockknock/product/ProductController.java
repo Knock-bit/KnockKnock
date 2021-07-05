@@ -1,5 +1,11 @@
 package com.knockknock.product;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/product")
+public class ProductController {
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +35,7 @@ public class ProductController {
 		return "/product/productlist";
 	}
 	
+
 	// 상품 목록(정보) 가져오기 - 임시
 	@GetMapping("/productDetail.do")
 	public String ProductDetail(Model model, int pIdx) {
@@ -40,6 +47,6 @@ public class ProductController {
 		return "/mypage/cart/tempProduct";
 	}
 
-	
+
 
 }

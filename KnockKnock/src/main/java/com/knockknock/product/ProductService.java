@@ -2,7 +2,13 @@ package com.knockknock.product;
 
 import java.util.List; 
 
+
 import com.knockknock.product.ProductVO;
+
+public interface ProductService {
+	public List<ProductVO> selectProductList();
+import com.knockknock.util.ProductVO;
+
 
 public interface ProductService {
 	// 상품목록
