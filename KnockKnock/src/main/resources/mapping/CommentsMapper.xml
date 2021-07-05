@@ -13,7 +13,7 @@
 		UPDATE COMMENTS SET C_CONTENT = #{cContent} WHERE M_IDX = #{mIdx}
 	</update>
 	
-	<delete id="deleteComments" parameterType="comments">
+	<delete id="deleteComments" parameterType="int">
 		DELETE FROM COMMENTS WHERE M_IDX = #{mIdx}
 	</delete>
 

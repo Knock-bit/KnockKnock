@@ -1,4 +1,4 @@
-package com.knockknock.board;
+package com.knockknock.board.comments;
 
 
 import java.sql.Timestamp;
