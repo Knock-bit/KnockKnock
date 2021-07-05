@@ -1,11 +1,6 @@
 package com.knockknock.product;
 
-import java.util.List; 
-
-
-import com.knockknock.product.ProductVO;
-
-import com.knockknock.util.ProductVO;
+import java.util.List;
 
 
 public interface ProductService {
