@@ -55,6 +55,22 @@ public class MypageProductDAO {
 		return mybatis.selectList("UserVO.cartList", vo);
 	}
 	
+	// 장바구니 상품 전체 삭제
+	public int deleteCart(UserVO vo) {
+		
+		String rt = mybatis.selectOne("UserVO.deleteCart", vo);
+		System.out.println("dao result : " + rt);
+		
+		int result;
+		
+		if(rt == null ) {
+			result = 1; // 삭제완료
+		} else {
+			result = 0; // 에러..?
+		}
+		return result;
+	}
+	
 	
 
 }
