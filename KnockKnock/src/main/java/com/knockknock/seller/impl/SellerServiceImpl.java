@@ -21,5 +21,10 @@ public class SellerServiceImpl implements SellerService{
 		sellerDAO.sellerJoin2(seller);
 		
 	}
+
+	@Override
+	public SellerVO sellerLogin(SellerVO vo) {
+		return sellerDAO.sellerLogin(vo);
+	}
 	
 }

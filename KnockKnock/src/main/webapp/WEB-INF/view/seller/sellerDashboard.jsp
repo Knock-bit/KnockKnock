@@ -24,19 +24,33 @@
               <th> 주문상태</th>
               <th> 주문금액 </th>
               <th> 주문날짜 </th>
+              <th> 주문날짜 </th>
+              <th> 주문날짜 </th>
+              <th> 주문날짜 </th>
+              <th> 주문날짜 </th>
+              <th> 주문날짜 </th>
+              <th> 주문날짜 </th>
+              <th> 주문날짜 </th>
+              
             </tr>
           </thead>
           <tbody>
             <c:forEach var="endlist" items="${endlist }">
               <tr>
-                <td> ${list.oNumber} </td>
-                <td> ${list.uIdx} </td>
-                <td> ${list.oStatus} </td>
-                <td> ${list.oDate} </td>
-                <td> ${list.pIdx} </td>
-                
-                <td> ${list.oTotprice} </td>
-                <td> ${list.oDate} </td>
+ 
+              <td> ${list.oIdx} </td>
+              <td> ${list.pIdx} </td>
+              <td> ${list.pPrice} </td>
+              <td> ${list.oStatus} </td>
+              <td> ${list.fCheck} </td>                
+              <td> ${list.oTotprice} </td>
+              <td> ${list.oFee} </td>
+              <td> ${list.oNumber} </td>
+              <td> ${list.uIdx} </td>
+              <td> ${list.paIdx} </td>
+              <td> ${list.oDate} </td>
+              <td> ${list.sIdx} </td>
+           
               </tr>
             </c:forEach>
 

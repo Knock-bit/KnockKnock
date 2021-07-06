@@ -41,6 +41,9 @@
 
   <!-- ======= Header ======= -->
      <c:choose>
+     <c:when test="${!empty seller}">
+   		<jsp:include page='/layout/navbar/navSeller.jsp' flush='false'/>   	
+  	</c:when>
   	<c:when test="${users.uType eq 1 }">
    		<jsp:include page='/layout/navbar/navLoggedin.jsp' flush='false'/>   	
   	</c:when>
@@ -55,8 +58,8 @@
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex justify-content-center align-items-center">
     <div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
-      <h1>Learning Today,<br>Leading Tomorrow</h1>
-      <h2>We are team of talented designers making websites with Bootstrap</h2>
+      <h1>綠!Knock!<br>우리의 지구를 푸르게, 당신의 삶을 더 푸르게<br>환경에 노크하세요.</h1>
+      <h2>Make your life greener, knock at the environment.</h2>
       <a href="courses.html" class="btn-get-started">Get Started</a>
     </div>
   </section><!-- End Hero -->

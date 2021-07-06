@@ -63,15 +63,16 @@
 
 	<!-- mappers는 여러개 등록 가능하다. -->
 	<mappers>
-		<mapper resource="mapping/BoardMapper.xml" />
-		<mapper resource="mapping/CommentsMapper.xml" />
-		<mapper resource="mapping/UserMapper.xml" />
-		<mapper resource="mapping/CampaignMapper.xml" />
 		<mapper resource="mapping/AdminMapper.xml" />
-		<mapper resource="mapping/OrdersMapper.xml" /> 		
+		<mapper resource="mapping/BoardMapper.xml" />
+		<mapper resource="mapping/CampaignMapper.xml" />
+		<mapper resource="mapping/CommentsMapper.xml" />
+		<mapper resource="mapping/ContactMapper.xml" />
+		<mapper resource="mapping/OrdersMapper.xml" />
 		<mapper resource="mapping/ProductMapper.xml" />
+		<mapper resource="mapping/SellerMapper.xml" />
+		<mapper resource="mapping/UserMapper.xml" />
 		<mapper resource="mapping/UtilMapper.xml" />
-		<mapper resource="mapping/ContactMapper.xml" /> 
 	</mappers>
 
 

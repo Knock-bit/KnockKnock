@@ -14,6 +14,9 @@ public class OrdersVO {
 	private int paIdx;
 	private String oDate;
 	private int sIdx;
+	private String uName;
+	private String pName;
+	
 
 	public OrdersVO() {
 		super();
