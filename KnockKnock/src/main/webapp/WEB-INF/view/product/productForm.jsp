@@ -75,9 +75,11 @@
 								<div id="summernote"></div>
                             </div>
                         </div>
+                        <div class="form-group" >
+                                <label for="file">썸네일</label>
+                        <input type="file" name="file">
+                            </div>
                         
-
-
                         <div class="form-submit">
                             <input type="reset" value="취소" class="submit" name="reset" id="reset" />
                             <input type="submit" value="제출" class="submit" name="submit" id="submit" />
