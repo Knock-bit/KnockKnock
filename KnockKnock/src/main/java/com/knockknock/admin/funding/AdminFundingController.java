@@ -70,5 +70,13 @@ public class AdminFundingController {
 		System.out.println("funding>> " + adminFudingService.getFundingList(pvo));
 		return "/admin/funding/adminFundingList";
 	}
+	
+	@GetMapping("getFunding.do")
+	public String getFundingDetail(AdminFundingVO vo, Model model) {
+		AdminFundingVO funding = adminFudingService.getFunding(vo);
+		System.out.println(funding);
+		model.addAttribute("funding",funding);
+		return "/admin/funding/adminFundingDetail";
+	}
 
 }

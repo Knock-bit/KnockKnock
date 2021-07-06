@@ -12,4 +12,5 @@ public interface AdminFundingService {
 	public void updateCpActive(AdminFundingVO vo);
 	public List<AdminFundingVO> getFundingList(PagingVO pvo);
 	public int countFunding();
+	public AdminFundingVO getFunding(AdminFundingVO vo);
 }

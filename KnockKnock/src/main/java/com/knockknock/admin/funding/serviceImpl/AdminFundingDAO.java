@@ -44,4 +44,9 @@ public class AdminFundingDAO {
 	public int countFunding() {
 		return mybatis.selectOne("Util.countFunding");
 	}
+
+
+	public AdminFundingVO getFunding(AdminFundingVO vo) {
+		return mybatis.selectOne("AdminDAO.getFunding",vo);
+	}
 }
