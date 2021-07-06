@@ -90,6 +90,7 @@ public class BoardController {
 //			file.transferTo(new File(uploadPath + fPath));
 //			vo.setbFile(fPath + fName);
 //		}
+		
 		boardService.insertBoard(vo);
 		
 		return "redirect:/board/getBoardList.do";
