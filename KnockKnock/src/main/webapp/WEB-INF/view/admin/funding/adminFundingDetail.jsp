@@ -283,17 +283,18 @@
                   </div>
                 </div>
 
-
                 <div class="campaign-info d-flex justify-content-between align-items-center">
-                  <h5>Available Seats</h5>
-                  <p>30</p>
+                  <h5>펀딩 종료시간</h5>
+                  <p>${funding.cfEnddate }</p>
                 </div>
-
                 <div class="campaign-info d-flex justify-content-between align-items-center">
-                  <h5>Schedule</h5>
-                  <p>5.00 pm - 7.00 pm</p>
+                  <h5>펀딩 목표 포인트</h5>
+                  <p>${funding.cfGoalpoint }</p>
                 </div>
-
+                <div class="campaign-info d-flex justify-content-between align-items-center">
+                  <h5>카테고리</h5>
+                  <p>${funding.ccName}</p>
+                </div>
               </div>
             </div>
 
