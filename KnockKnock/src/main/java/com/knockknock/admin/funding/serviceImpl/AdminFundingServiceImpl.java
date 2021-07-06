@@ -47,4 +47,9 @@ public class AdminFundingServiceImpl implements AdminFundingService {
 	public int countFunding() {
 		return adminFundingDAO.countFunding();
 	}
+
+	@Override
+	public AdminFundingVO getFunding(AdminFundingVO vo) {
+		return adminFundingDAO.getFunding(vo);
+	}
 }
