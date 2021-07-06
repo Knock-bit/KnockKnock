@@ -72,9 +72,7 @@
 			}		
 		)		
 	}
-	
-	
-	
+	 
 	$(document).ready(function () {
 	       Kakao.init('32ddf4beafd028ac8b3afe142ef4fe9e');
 	       Kakao.isInitialized();
@@ -118,16 +116,15 @@
                });
            }
        })
-   } 
-   
-   
+   }  
 </script>
 </head>
 
 <body>
-
+<!-- ===Header - Nav 대신 로고만 -->
+<a href="/main.do"><img src="${cp}/resource/img/logo2.png" style="width:400px;"></a>
+<!-- header끝 -->
 	<div class="container" id="container">
-
 		<div class="form-container sign-in-container">
 			<form method="post">
 				<h1>Sign in</h1>
