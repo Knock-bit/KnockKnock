@@ -23,8 +23,7 @@
 			<typeAlias alias="adminKeywordVO"
 			type="com.knockknock.admin.AdminKeywordVO" />
 			<typeAlias alias="adminProposalVO" type="com.knockknock.admin.proposal.AdminProposalVO"/>
-			<typeAlias alias="adminCampaignCategoryVO" type="com.knockknock.admin.funding.AdminCampaignCategoryVO"/>
-			<typeAlias alias="adminFundingVO" type ="com.knockknock.admin.funding.AdminFundingVO"/>
+			<typeAlias alias="adminSummerVO" type="com.knockknock.admin.AdminSummerVO"/>
 		<!-- 게시판 -->
 		<typeAlias alias="boardVO" type="com.knockknock.board.BoardVO" />
 		<!-- <typeAlias alias="deactivation" type="com.knockknock.board.DeactivationVO"/> -->
@@ -64,17 +63,16 @@
 
 	<!-- mappers는 여러개 등록 가능하다. -->
 	<mappers>
-		<mapper resource="mapping/BoardMapper.xml" />
-		<mapper resource="mapping/CommentsMapper.xml" />
-		<mapper resource="mapping/UserMapper.xml" />
-		<mapper resource="mapping/CampaignMapper.xml" />
 		<mapper resource="mapping/AdminMapper.xml" />
-		<mapper resource="mapping/OrdersMapper.xml" /> 		
+		<mapper resource="mapping/BoardMapper.xml" />
+		<mapper resource="mapping/CampaignMapper.xml" />
+		<mapper resource="mapping/CommentsMapper.xml" />
+		<mapper resource="mapping/ContactMapper.xml" />
+		<mapper resource="mapping/OrdersMapper.xml" />
 		<mapper resource="mapping/ProductMapper.xml" />
+		<mapper resource="mapping/SellerMapper.xml" />
+		<mapper resource="mapping/UserMapper.xml" />
 		<mapper resource="mapping/UtilMapper.xml" />
-		<mapper resource="mapping/ContactMapper.xml" /> 
-		<mapper resource="mapping/ProductMapper.xml" /> 
-
 	</mappers>
 
 

@@ -14,8 +14,6 @@ public class OrdersVO {
 	private int paIdx;
 	private String oDate;
 	private int sIdx;
-	
-	//조인문해서 가져올거
 	private String uName;
 	private String pName;
 	
@@ -23,9 +21,9 @@ public class OrdersVO {
 	public OrdersVO() {
 		super();
 	}
- 
+
 	public OrdersVO(int oIdx, int pIdx, int oCnt, int oStatus, int pPrice, int oTotprice, String fCheck, int oFee,
-			int oNumber, int uIdx, int paIdx, String oDate, int sIdx, String uName, String pName) {
+			int oNumber, int uIdx, int paIdx, String oDate, int sIdx) {
 		super();
 		this.oIdx = oIdx;
 		this.pIdx = pIdx;
@@ -40,24 +38,6 @@ public class OrdersVO {
 		this.paIdx = paIdx;
 		this.oDate = oDate;
 		this.sIdx = sIdx;
-		this.uName = uName;
-		this.pName = pName;
-	}
-
-	public String getuName() {
-		return uName;
-	}
-
-	public void setuName(String uName) {
-		this.uName = uName;
-	}
-
-	public String getpName() {
-		return pName;
-	}
-
-	public void setpName(String pName) {
-		this.pName = pName;
 	}
 
 	public int getoIdx() {
