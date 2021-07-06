@@ -23,7 +23,7 @@
 			<typeAlias alias="adminKeywordVO"
 			type="com.knockknock.admin.AdminKeywordVO" />
 			<typeAlias alias="adminProposalVO" type="com.knockknock.admin.proposal.AdminProposalVO"/>
-			<typeAlias alias="adminSummerVO" type="com.knockknock.admin.AdminSummerVO"/>
+		<!--  <typeAlias alias="adminSummerVO" type="com.knockknock.admin.AdminSummerVO"/> -->
 		<!-- 게시판 -->
 		<typeAlias alias="boardVO" type="com.knockknock.board.BoardVO" />
 		<!-- <typeAlias alias="deactivation" type="com.knockknock.board.DeactivationVO"/> -->

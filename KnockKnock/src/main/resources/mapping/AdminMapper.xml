@@ -79,7 +79,7 @@
 		#{cfKeyword2}, #{cfKeyword3}, #{cfStartdate}, #{cfEnddate} )
 	</insert>
 	
-	<!-- 펀딩 하나 가져오기 -->
+	<!--  펀딩 하나 가져오기 -->
 	<select id="getFunding" parameterType="adminFundingVO" resultType="adminFundingVO">
 		SELECT * FROM FUNDING WHERE CF_IDX = #{cfIdx}
 	</select>
