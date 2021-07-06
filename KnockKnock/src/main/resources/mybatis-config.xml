@@ -23,7 +23,10 @@
 			<typeAlias alias="adminKeywordVO"
 			type="com.knockknock.admin.AdminKeywordVO" />
 			<typeAlias alias="adminProposalVO" type="com.knockknock.admin.proposal.AdminProposalVO"/>
-		<!--  <typeAlias alias="adminSummerVO" type="com.knockknock.admin.AdminSummerVO"/> -->
+
+			<typeAlias alias="adminCampaignCategoryVO" type="com.knockknock.admin.funding.AdminCampaignCategoryVO"/>
+			<typeAlias alias="adminFundingVO" type ="com.knockknock.admin.funding.AdminFundingVO"/> 
+
 		<!-- 게시판 -->
 		<typeAlias alias="boardVO" type="com.knockknock.board.BoardVO" />
 		<!-- <typeAlias alias="deactivation" type="com.knockknock.board.DeactivationVO"/> -->
@@ -57,7 +60,7 @@
 		<typeAlias alias="sellerVO" type="com.knockknock.seller.SellerVO" />
 		<!--주문 Orders -->
 		<typeAlias alias="ordersVO" type="com.knockknock.orders.OrdersVO" />
-
+		<typeAlias alias="ordersListVO" type="com.knockknock.orders.OrdersListVO" />
 
 	</typeAliases>
 
