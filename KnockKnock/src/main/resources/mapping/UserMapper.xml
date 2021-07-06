@@ -195,7 +195,7 @@ U_ACTIVE, U_GENDER, U_ADDRESS, U_JOINDATE)
 	</delete>
 	
 	<!-- 주문서 가져오기(주문하기창) -->
-	<select id="ordersList" parameterType="UserVO" resultType="ordersVO">
+	<select id="ordersList" parameterType="UserVO" resultType="ordersListVO">
 			SELECT P.P_IDX, O.O_CNT, P.P_PRICE, O.O_TOTPRICE, P.S_IDX, 
 					P.P_NAME, P.P_DESC,P.P_FEE, P.P_IMG
 			FROM ORDERS O, PRODUCT P
