@@ -159,7 +159,7 @@ U_ACTIVE, U_GENDER, U_ADDRESS, U_JOINDATE)
 	
 	<!-- 장바구니 상품 목록 가져오기 -->
 	<select id="cartList" parameterType="UserVO" resultType="productVO">
-		SELECT C.CA_REGDATE, C.P_COUNT, P.P_IDX, P.P_NAME, P.P_PRICE, 
+		SELECT C.CA_REGDATE, C.P_COUNT, P.P_IDX, P.P_NAME, P.P_PRICE, S_IDX,
 				P.P_DESC, P.P_FEE, P.P_IMG
 		FROM CART C, PRODUCT P
 		WHERE C.P_IDX = P.P_IDX
@@ -178,4 +178,28 @@ U_ACTIVE, U_GENDER, U_ADDRESS, U_JOINDATE)
 		DELETE FROM CART WHERE P_IDX = #{pIdx}
 	
 	</delete>
+	
+	<!-- 장바구니에서 주문하기로 데이터 입력 -->
+	<insert id="insertOrders" parameterType="ordersVO">
+			INSERT INTO ORDERS 
+				(O_IDX, P_IDX, O_CNT, O_STATUS, P_PRICE, 
+				O_TOTPRICE, U_IDX, S_IDX , O_NUMBER )
+			VALUES (O_IDX_SEQ.nextval, #{pIdx}, #{oCnt}, 0, #{pPrice}, 
+				#{oTotprice}, #{uIdx}, #{sIdx}, O_NUMBER_SEQ.nextval)
+	</insert>
+	
+	<!-- 주문된 상품 장바구니에서 삭제 -->
+	<delete id="deleteBuyProduct" parameterType="int">
+			DELETE FROM CART WHERE P_IDX = #{pIdx}
+			
+	</delete>
+	
+	<!-- 주문서 가져오기(주문하기창) -->
+	<select id="ordersList" parameterType="UserVO" resultType="ordersVO">
+			SELECT P.P_IDX, O.O_CNT, P.P_PRICE, O.O_TOTPRICE, P.S_IDX, 
+					P.P_NAME, P.P_DESC,P.P_FEE, P.P_IMG
+			FROM ORDERS O, PRODUCT P
+			WHERE O.P_IDX = P.P_IDX
+			AND O.U_IDX=#{uIdx}
+	</select>
 </mapper>

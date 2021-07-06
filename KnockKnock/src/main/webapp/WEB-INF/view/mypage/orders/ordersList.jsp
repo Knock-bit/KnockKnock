@@ -26,44 +26,10 @@
   <!-- Import BootStrap -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
   
+  <!-- pagecss -->
+  <link href="${cp}/resource/css/ordersList.css" rel="stylesheet">
   <style>
-  .main-content{
-        flex: 1;
-        min-height:100vh;
-        margin-top:100px;
-        
-   }
-   .pgrid{
-   		width:80%;
-   		display : grid;
-   		grid-template-columns: repeat(3, 30%);
-		grid-auto-rows: minmax(80px, auto);
-		margin:0 auto;
-		grid-gap:10px;
-   }
-   .it1 {
-   		width:90%;
-   		
-   }
-   
-  /*  .it1, .it2, .it3 {
-   		grid-column: 1/2, 2/3, 3/4;
-	
-		margin : 5%;
-   }
-   .it1 p, .it2 p, .it3 p{
-   		display:none;
-   } */
-   .pimg {
-   	overflow: hidden;
-	align-items: center;
-	justify-content: center;
-	}
-	.pimg img {
-   		object-fit: cover;
-		width: 100%;
-   
-   }
+  
   </style>
 </head>
 <body>
@@ -72,22 +38,58 @@
   <!-- ======= Header 끝  === -->
 <div class="main-content">
 
-	<h1>임시 상품 목록 화면</h1>
-	<div class="ct">
-		
-		<div class="pgrid">
-		<c:forEach var="product" items="${plist }">
-			<div class="it1">
-				<div class="pimg">
-					<a href="productDetail.do?pIdx=${product.pIdx}"><img src="/resource/img/product/${product.pImg }"></a>
+	<h3>주문결제</h3>
+	<div class="ordersMain">
+		<div class="ordersGrid">
+			<div class="infoOrder">
+				<h4>주문자정보</h4>
+				<div>
+					<p>이름 : ${users.uName }</p>
+					<p>주소 : ${users.uAddress}</p>
+					<p>핸드폰 : ${users.uPhone }</p>
+					<p>이메일 : ${users.uEmail }</p>
+				
 				</div>
+			
 			</div>
-		</c:forEach>
-		</div>
+			<div class="infoReciever">
+				<h4>수령자정보</h4>
+				<input type="checkbox" >주문자와 동일<br>
+				<label>이름 :</label><input type="text" name="uName"><br>
+				<label>배송지 :</label><input type="text" name="uName"><br>
+				<label>핸드폰 :</label><input type="text" name="uName"><br>
+				<label>이메일 :</label><input type="text" name="uName"><br>
+				
+				<select>
+					<option value="">배송 시 요청사항을 선택해주세요</option>
+					<option value="">부재 시 문 앞에 두고 가주세요</option>
+					<option value="">배송 전 전화 또는 문자 주세요</option>
+					<option value="">부재 시 경비실에 두고가주세요</option>
+					<option value="">직접입력</option>
+				</select>
+			
+			</div>
+			<div class="paymentMethod">
+				<p>결제방법</p>
+				<input type="radio" name="pm"><label>무통장입금</label>
+				<input type="radio" name="pm"><label>카카오페이</label>
+				<input type="radio" name="pm"><label>계좌이체</label>
+			
+			
+			</div>
+			<div class="payment">
+				<p>결제하기(금액/버튼)</p>
+				<p>얼마얼마 원</p>
+				<input type="button" value="주문하기">
+			</div>
+			<div class="infoOrdersProduct">
+				<p>주문상품정보</p>
+			
+			</div>
 		
-	
+		
+		</div>
 	</div>
-
 </div>	
 <!-- ======= Footer ======= -->
    <%@ include file= "/layout/footer.jsp" %>

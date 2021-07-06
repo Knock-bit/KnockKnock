@@ -56,8 +56,8 @@
 			</div>
 			<div>
 				<input type="button" onclick="deleteCart()" value="장바구니 비우기">
-				
 			</div>
+			<p class="uIdx" style="display:none;">${users.uIdx }</p>
 		</div>
 		<div class="cartview">
 		<div class="topcartmenu">
@@ -87,6 +87,8 @@
 			
 			<div class="cartGrid">
 				<div class="cg1">
+					<!-- 판매자idx -->
+					<p class="sIdx" style="display:none;">${cartItem.sIdx }</p>
 					<!-- 체크박스 default값 checked -->
 					<input type="checkbox" class="opt" name='opt1' onclick="checkSelectAll()" checked="checked"  value="0">
 				</div>
@@ -116,7 +118,7 @@
 				</div>
 				<div class="cg5">
 					<!-- 상품 개당가격 -->
-					<p class="cg5price">${cartItem.pPrice }원</p>&nbsp;&nbsp;
+					<p class="cg5price">${cartItem.pPrice }</p><span>원</span>&nbsp;&nbsp;
 				</div>
 				<div class="cg6">
 					<!-- 배송비 -->
@@ -124,7 +126,7 @@
 				</div>
 				<div class="cg7">
 					<!-- 전체 가격(수량 및 배송비 합쳐서) -->
-					<p class="cg6price">${(cartItem.pCount * cartItem.pPrice) + cartItem.pFee }원</p>&nbsp;&nbsp;
+					<p class="cg6price">${(cartItem.pCount * cartItem.pPrice) + cartItem.pFee }</p><span>원</span>&nbsp;&nbsp;
 				</div>
 			</div>
 			</c:forEach>	
@@ -262,37 +264,53 @@ $(function(){
 });	
 // 주문하기 버튼
 function orders(){
-	
+	console.log
 	var param = [];
 	
 	var length = $(".pIdx").length;
 	console.log("길이:"+length);
-	 
-	var data = {};
+	
+	 var data = {};
 	for(var i=0; i<length; i++){
-		data = {pIdx : $(".pIdx").eq(i).text(),
-				pCount : $(".pCount").eq(i).text(),
-				pTotPrice : $(".cg6price").eq(i).text()};
-		param.push(data);
+	
+		if($(".opt").eq(i).is(":checked")==true){
+			data = {
+					pIdx : $(".pIdx").eq(i).text(),
+					oCnt : $(".pCount").eq(i).text(),
+					pPrice : $(".cg5price").eq(i).text(),
+					sIdx : $(".sIdx").eq(i).text(),
+					oTotprice : $(".cg6price").eq(i).text(),
+					uIdx : $(".uIdx").text()
+					};
+			param.push(data);
+		}
 	}
 	var jsonData = JSON.stringify(param);
 	console.log("제발:"+jsonData);
-
+	
 	$.ajax({
 		url : "/moveOrders.do",
-		data :{"jsonData":jsonData},
+		data :JSON.stringify(param),
 		type:"post",
 		dataType:"json",
 		contentType : "application/json;",
 		async:false,
 		success: function(data){
-			alert("성공");
+			var moveOrders = confirm('주문이 완료되었습니다. \n 주문페이지로 이동하시겠습니까?');
+			
+			if(moveOrders){
+				// 주문페이지로 이동
+				location.href="ordersList.do";
+			} else {
+				location.href="moveCart.do";
+			}
+			
 		},
 		error : function(data){
 			alert("에러");
 		}
 		
-	});
+	}); 
 	
 	
 }
