@@ -24,10 +24,8 @@
 			type="com.knockknock.admin.AdminKeywordVO" />
 			<typeAlias alias="adminProposalVO" type="com.knockknock.admin.proposal.AdminProposalVO"/>
 
-
 			<typeAlias alias="adminCampaignCategoryVO" type="com.knockknock.admin.funding.AdminCampaignCategoryVO"/>
 			<typeAlias alias="adminFundingVO" type ="com.knockknock.admin.funding.AdminFundingVO"/> 
-
 
 		<!-- 게시판 -->
 		<typeAlias alias="boardVO" type="com.knockknock.board.BoardVO" />
