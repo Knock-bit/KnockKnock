@@ -132,7 +132,9 @@ function deleteUser(){
 // 회원탈퇴 비밀번호 확인 버튼
 function deletePwdCk(){
 	var deletePwd = $("#deletePwd").val();
+	console.log($("#myPwd").text());
 	if(deletePwd == $("#myPwd").text()) {
+		console.log("일치");
 		$("#deleteBtn").attr("disabled",false);
 		
 	} else {
@@ -144,9 +146,15 @@ function deletePwdCk(){
 }
 // 회원 탈퇴
 function deleteBtn(){
-	
+	var uIdx = $("#myuIdx").text();
+	var deleteConfirm = confirm("정말 회원탈퇴를 진행하시겠습니까?");
+	if(deleteConfirm){
+		// 일단 get방식이고 시간남으면 수정하기
+		location.href="deleteUsers.do?uIdx="+uIdx;
+	} else {
+		location.href="updateMyInfo.do";
+	}
 }
-
 
 </script>
 
@@ -228,19 +236,22 @@ function deleteBtn(){
 	  <div class="madalDiv">
 		    <a href="javascript:;" class="close">X</a>
 		   	<div class="dtmodal">
-		   		<p>회원탈퇴</p>
-		   		<p>- 회원탈퇴 시 보유하고 있던 포인트는 전부 초기화됩니다.<br>
-		   			- 회원탈퇴 후 3일 이내에는 재가입이 불가능합니다. <br>
-		   			- 회원탙퇴 후 남아있는 게시글은 삭제할 수 없습니다.
+		   		<p >Knockknock 계정 탈퇴</p>
+		   		<p class="dttxt">- 회원 탈퇴 시 보유하고 있던 포인트는 전부 <span style="color:red;">초기화</span>됩니다.<br>
+		   			- 회원 탈퇴 후 <span style="color:red;">3일 이내에는 재가입이 불가능</span>합니다. <br>
+		   			- 회원 탙퇴 후 남아있는 게시글은 <span style="color:red;">삭제</span>할 수 없습니다.
 		   		</p>
-		   		<input type="checkbox" id="deleteCk"><label>안내 사항을 모두 확인하였으며, 이에 동의합니다.</label><br>
-		   		<label>Password</label>
-		   		<input type="password" name="uPwd" id="deletePwd" placeholder="비밀번호를 입력해주세요" style="width:70%; font-size:13px; border:0px;">
+		   		<input style="transform : scale(1.5);"type="checkbox" id="deleteCk">
+		   		<label style="font-size:14px; font-weight:550; color:#0e4b20; margin-bottom:10px;;">안내 사항을 모두 확인하였으며, 이에 동의합니다.</label><br>
+		   		<label style="margin-right:10px; text-align:left;"><span style="color:red; margin:10px; text-align:left;">*</span>PW</label>
+		   		<input type="password" name="uPwd" id="deletePwd" placeholder="비밀번호를 입력해주세요" style="width:70%; height:4vh;font-size:13px; border:0px;">
 		   		<input type="button" value="확인" id="pwdCk" onclick="deletePwdCk()">
 		   		<p id="myPwd" style="display:none;">${users.uPwd }</p>
+		   	</div><br>
+		   	<div style="width:100%; text-align:center;">
+		   		<input type="button" value="회원탈퇴" disabled="disabled" onclick="deleteBtn()" id="deleteBtn">
 		   	</div>
-		   	<input type="button" value="회원탈퇴" disabled="disabled" onclick="deleteBtn()">
-		   	<p id="myuIdx" style="">
+		   	<p id="myuIdx" style="display:none;">${users.uIdx }</p>
   	  </div>
   	 </div>
 

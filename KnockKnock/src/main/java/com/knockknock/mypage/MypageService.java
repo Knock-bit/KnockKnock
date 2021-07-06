@@ -36,6 +36,8 @@ public interface MypageService {
 	List<BoardVO> myActive(UserVO vo);
 	// 나의 포인트 내역
 	List<PointVO> myPointList(UserVO vo);
+	// 회원 탈퇴
+	int deleteUsers(int uIdx);
 	
 
 }
