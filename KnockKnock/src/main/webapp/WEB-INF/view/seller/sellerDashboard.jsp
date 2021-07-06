@@ -27,18 +27,20 @@
             </tr>
           </thead>
           <tbody>
-            <c:forEach var="endlist" items="${endlist }">
+          <c:if test="${!empty orders }">
+          
+            <c:forEach var="list" items="${orders }">
               <tr>
-                <td> ${list.oNumber} </td>
-                <td> ${list.uIdx} </td>
-                <td> ${list.oStatus} </td>
-                <td> ${list.oDate} </td>
-                <td> ${list.pIdx} </td>
-                
-                <td> ${list.oTotprice} </td>
-                <td> ${list.oDate} </td>
+                <td> ${orders.oNumber} </td>
+                <td> ${orders.uName} </td>
+                <td> ${orders.pName} </td>
+                <td> ${orders.oCnt} </td>
+	            <td> ${orders.oStatus} </td>                
+                <td> ${orders.oTotprice} </td>
+                <td> ${orders.oDate} </td>
               </tr>
             </c:forEach>
+            </c:if>
 
           </tbody>
         </table>

@@ -3,8 +3,10 @@ package com.knockknock.seller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
+@SessionAttributes
 public class SellerController {
 	@Autowired
 	private SellerService sellerService;
@@ -29,4 +31,6 @@ public class SellerController {
 		sellerService.sellerJoin(seller);
 		return "/user/joinconfirm";
 	}
+	
+
 }

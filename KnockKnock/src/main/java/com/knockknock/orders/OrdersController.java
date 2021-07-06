@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
@@ -16,13 +17,14 @@ public class OrdersController {
 	OrdersVO order = new OrdersVO();
 	
 	@GetMapping("seller/sellerDashboard.do")
-	public String sellerDashboard(Model model) {
+	public String sellerDashboard(@ModelAttribute("seller") Model model) {
 		
-		List<OrdersVO> list = ordersService.showOrderList();
-		
-		model.addAttribute("list", list);
+		List<OrdersVO> orders = ordersService.showOrderList();
+		model.addAttribute("orders", orders);
 		return "/seller/sellerDashboard";
 		
 	}
+	
+	 
 
 }

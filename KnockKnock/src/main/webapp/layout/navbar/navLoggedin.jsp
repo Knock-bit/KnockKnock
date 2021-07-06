@@ -45,6 +45,9 @@
               <li><a href="${cp}/myContactList.do">나의 문의내역</a></li>
               <li><a href="${cp}/myActive.do">나의 활동</a></li>
               <li><a href="${cp}/moveCart.do">내 장바구니</a></li>
+              <li><a href="${cp}/sellerDashboard.do">임시 판매자 대쉬보드ㅠ</a></li>
+              
+              
               <li><a href="${cp }/user/logout.do">로그아웃</a></li>
               
               <!-- 로그아웃 UserController에 들어있음 -->
