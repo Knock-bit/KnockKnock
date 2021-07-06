@@ -38,4 +38,17 @@
 	
 	</select>
 	
+	
+	<insert id="insertProduct" parameterType="productVO">
+		INSERT INTO PRODUCT 
+		(P_IDX, PC_IDX, P_NAME, P_PRICE, P_STOCK, P_DESC, P_REGDATE, P_VIEWS, 
+		S_IDX, P_ABLE, P_TOTALCNT, P_FEE, P_IMG)
+		VALUES
+		(P_IDX_SEQ.NEXTVAL, #{pcIdx}, #{pName}, #{pPrice}, #{pStock}, #{pDesc},
+			SYSDATE, 0, #{sIdx}, 1, 0, 3000, #{pImg})
+	
+	</insert>
+	
+	
+	
 </mapper>

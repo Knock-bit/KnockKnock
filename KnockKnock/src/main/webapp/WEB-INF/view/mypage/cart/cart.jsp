@@ -56,8 +56,8 @@
 			</div>
 			<div>
 				<input type="button" onclick="deleteCart()" value="장바구니 비우기">
-				
 			</div>
+			<p class="uIdx" style="display:none;">${users.uIdx }</p>
 		</div>
 		<div class="cartview">
 		<div class="topcartmenu">
@@ -87,6 +87,8 @@
 			
 			<div class="cartGrid">
 				<div class="cg1">
+					<!-- 판매자idx -->
+					<p class="sIdx" style="display:none;">${cartItem.sIdx }</p>
 					<!-- 체크박스 default값 checked -->
 					<input type="checkbox" class="opt" name='opt1' onclick="checkSelectAll()" checked="checked"  value="0">
 				</div>
@@ -116,7 +118,7 @@
 				</div>
 				<div class="cg5">
 					<!-- 상품 개당가격 -->
-					<p class="cg5price">${cartItem.pPrice }원</p>&nbsp;&nbsp;
+					<p class="cg5price">${cartItem.pPrice }</p><span>원</span>&nbsp;&nbsp;
 				</div>
 				<div class="cg6">
 					<!-- 배송비 -->
@@ -124,7 +126,7 @@
 				</div>
 				<div class="cg7">
 					<!-- 전체 가격(수량 및 배송비 합쳐서) -->
-					<p class="cg6price">${(cartItem.pCount * cartItem.pPrice) + cartItem.pFee }원</p>&nbsp;&nbsp;
+					<p class="cg6price">${(cartItem.pCount * cartItem.pPrice) + cartItem.pFee }</p><span>원</span>&nbsp;&nbsp;
 				</div>
 			</div>
 			</c:forEach>	
@@ -138,7 +140,7 @@
 		<div class="totPrice">
 			<!-- 체크박스에 체크 된 상품의 가격만 가져오기(+배송비) -->
 			<div>총 합계 :</div><span id="price">0</span>원
-			<input type="button" value="주문하기">
+			<input type="button" value="주문하기" onclick="orders()">
 		</div>
 		</div>
 		
@@ -152,6 +154,9 @@
 </body>
 <script>
 $(function(){
+	
+	
+	
 	var totalPrice = 0; // 총 합계에 나타낼 금액
 	var totalPrice1 = 0; // 전체 체크때 사용할 총 합계금액(보관?용)
 	var pCount = 0;
@@ -165,16 +170,13 @@ $(function(){
 		console.log("인덱스:" + idx);
 		// 동일한 인덱스번호의 상품 수량, 가격, 배송비 
 		pCount = parseInt($(".pCount").eq(idx).text());
-		console.log("수량:"+pCount);
 		
 		pPrice = parseInt($(".cg5price").eq(idx).text());
-		console.log("가격:"+pPrice);
 		
 		pFee = parseInt($(".pFee").eq(idx).text());
-		console.log("배송비"+pFee);
+
 		//aa = $('input:checkbox[name=opt1]').eq(idx).val();
 		var tot = ((pCount*pPrice)+pFee);
-		console.log("상품당 총가격:"+tot);
 		$('input:checkbox[name=opt1]').eq(idx).val((pCount*pPrice)+pFee);
 		
 		// 나중에 전체체크 때문에 전체 계산 값 따로 저장해놓기(좋은방법 생기면...알고싶다..ㅠ)
@@ -215,14 +217,14 @@ $(function(){
 			// 총 합계
 			pPrice = parseInt($(this).closest('div').next().children().text());
 			// 상품당 가격 총 합계
-			pTotPrice = parseInt($(this).closest('div').nextAll().filter($(".cg6")).children().text());
+			pTotPrice = parseInt($(this).closest('div').nextAll().filter($(".cg7")).children().text());
 			
 			console.log("pTotPrice:"+pTotPrice);
 			
 			totalPrice += pPrice;
 			pTotPrice += pPrice;
 			
-			$(this).closest('div').nextAll().filter($(".cg6")).children().html(pTotPrice+"원");
+			$(this).closest('div').nextAll().filter($(".cg7")).children().html(pTotPrice+"원");
 			$("#price").html(totalPrice);
 			
 			
@@ -237,18 +239,81 @@ $(function(){
 			// 총 합계
 			pPrice = parseInt($(this).closest('div').next().children().text());
 			// 상품당 가격 총 합계
-			pTotPrice = parseInt($(this).closest('div').nextAll().filter($(".cg6")).children().text());
+			pTotPrice = parseInt($(this).closest('div').nextAll().filter($(".cg7")).children().text());
 			
 			totalPrice -= pPrice;
 			pTotPrice -= pPrice;
 			
-			$(this).closest('div').nextAll().filter($(".cg6")).children().html(pTotPrice+"원");
+			$(this).closest('div').nextAll().filter($(".cg7")).children().html(pTotPrice+"원");
 			$("#price").html(totalPrice);
 			
 			
 		});
+		
+		$(".pCount").each(function(index){
+			var idx = index;
+			if($(this).text()==1){
+				$(".minus").eq(idx).attr("disabled",true);
+			}
+			if($(this).text()==10){
+				$(".plus").eq(idx).attr("disabled",true);
+			}
+		});
+		
 	
 });	
+// 주문하기 버튼
+function orders(){
+	console.log
+	var param = [];
+	
+	var length = $(".pIdx").length;
+	console.log("길이:"+length);
+	
+	 var data = {};
+	for(var i=0; i<length; i++){
+	
+		if($(".opt").eq(i).is(":checked")==true){
+			data = {
+					pIdx : $(".pIdx").eq(i).text(),
+					oCnt : $(".pCount").eq(i).text(),
+					pPrice : $(".cg5price").eq(i).text(),
+					sIdx : $(".sIdx").eq(i).text(),
+					oTotprice : $(".cg6price").eq(i).text(),
+					uIdx : $(".uIdx").text()
+					};
+			param.push(data);
+		}
+	}
+	var jsonData = JSON.stringify(param);
+	console.log("제발:"+jsonData);
+	
+	$.ajax({
+		url : "/moveOrders.do",
+		data :JSON.stringify(param),
+		type:"post",
+		dataType:"json",
+		contentType : "application/json;",
+		async:false,
+		success: function(data){
+			var moveOrders = confirm('주문이 완료되었습니다. \n 주문페이지로 이동하시겠습니까?');
+			
+			if(moveOrders){
+				// 주문페이지로 이동
+				location.href="ordersList.do";
+			} else {
+				location.href="moveCart.do";
+			}
+			
+		},
+		error : function(data){
+			alert("에러");
+		}
+		
+	}); 
+	
+	
+}
 
 </script>
 </html>

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.knockknock.mypage.MypageProductService;
+import com.knockknock.orders.OrdersVO;
 import com.knockknock.user.UserVO;
 import com.knockknock.util.ProductVO;
 
@@ -49,6 +50,26 @@ public class MypageProductServiceImpl implements MypageProductService {
 	public int deleteOne(int pIdx) {
 
 		return mypageProductDAO.deleteOne(pIdx);
+	}
+	
+	// 장바구니에서 주문하기로 이동
+	@Override
+	public int insertOrders(OrdersVO ovo) {
+
+		return mypageProductDAO.insertOrders(ovo);
+	}
+	// 주문된 상품 장바구니에서 삭제
+	@Override
+	public int deleteBuyProduct(int pIdx) {
+
+		return mypageProductDAO.deleteBuyProduct(pIdx);
+	}
+	
+	// 주문서 가져오기
+	@Override
+	public List<OrdersVO> ordersList(UserVO vo) {
+
+		return mypageProductDAO.ordersList(vo);
 	}
 	
 	

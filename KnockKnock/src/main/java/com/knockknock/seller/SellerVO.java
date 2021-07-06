@@ -9,9 +9,16 @@ public class SellerVO {
 	private String sAddress;
 	private String sEmail;
 	private String sBiz;
-
+	
 	public SellerVO() {
 		super();
+	}
+
+	//로그인전용
+	public SellerVO(String sId, String sPwd) {
+		super();
+		this.sId = sId;
+		this.sPwd = sPwd;
 	}
 
 	public int getsIdx() {

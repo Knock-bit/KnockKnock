@@ -68,7 +68,7 @@
 
                 <div class="row">
                     <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
-                        <img src="${cp}/resource/img/about/plasticpollution.jpg" class="img-fluid" style="width:600px; height:410px;">
+                        <img src="${cp}/resource/img/about/plasticpollution.jpg" class="img-fluid" alt="">
                     </div>
                     <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
                         <h3>지금 지구는...</h3><br>
@@ -85,7 +85,7 @@
                             국회미래연구원의 중장기 미래예측을 바탕으로 볼 때, 현재와 같은 추이로 환경이 지속될 경우 2050년 한반도는 환경
                             재앙수준이 될 것이라고 해요.
                             40도가 넘는 기온, 미세먼지 악화..거주불능의 지구. OECD국가 중 인당 탄소배출의 1위인 대한민국. <br>
-                        <h2>이대로 괜찮을까요?</h2>
+                        <h5>이대로 괜찮을까요?</h5>
                         </p>
 
                     </div>
@@ -135,7 +135,7 @@
 
                 <div class="row">
                     <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
-                        <img src="${cp}/resource/img/about/deforestation.jfif" class="img-fluid" style="width:600px; height:410px;">
+                        <img src="${cp}/resource/img/deforestation.jfif" class="img-fluid" alt="">
                     </div>
                     <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
                         <h3>지구가 당신에게 하는 노크</h3><br>
@@ -168,7 +168,7 @@
 
                 <div class="row">
                     <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
-                        <img src="${cp}/resource/img/about/green.jpg" class="img-fluid" style="width:600px; height:410px;">
+                        <img src="${cp}/resource/img/green.jpg" class="img-fluid" alt="">
                     </div>
                     <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
                         <h3>지구를 더 푸르게</h3>
