@@ -172,7 +172,7 @@
                 </div>
 
                 <h3><a href="${cp }/campaign/funding/detail.do?cfIdx=${funding.cfIdx }">${funding.cfTitle } </a></h3>
-                <p><a href="${cp }/campaign/funding/detail.do?cfIdx=${funding.cfIdx }">${funding.cfGoal }</a></p>
+                <p><a href="${cp }/campaign/funding/detail.do?cfIdx=${funding.cfIdx }">${funding.cGoal }</a></p>
                 <div class="trainer d-flex justify-content-between align-items-center">
                   <div class="trainer-profile d-flex align-items-center">
                     <img src="assets/img/trainers/trainer-1.jpg" class="img-fluid" alt="">

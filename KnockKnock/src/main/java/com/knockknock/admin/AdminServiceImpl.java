@@ -89,11 +89,6 @@ public class AdminServiceImpl implements AdminService{
 		return adminDAO.selectSummer();
 	}
 
-	@Override
-	public List<AdminKeywordVO> getKeywordAll() {
-		return adminDAO.getKeywordAll();
-	}
-
 
 
 }

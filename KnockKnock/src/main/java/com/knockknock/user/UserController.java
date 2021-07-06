@@ -44,10 +44,10 @@ public class UserController {
 	}
 	
 	//개인판매자 회원가입창으로 이동
-	@GetMapping("/user/signupseller2.do")
-	public String SellerSignup2() {
-		return "/user/signupseller2";
-	}
+		@GetMapping("/user/signupseller2.do")
+		public String SellerSignup2() {
+			return "/user/signupseller2";
+		}
 
 	// 회원가입 전 tnc로 이동
 	@GetMapping("/user/tnc.do")
@@ -65,13 +65,6 @@ public class UserController {
 	public String tncSeller() {
 		return "/user/tncSeller";
 	}
-	
-	// 네비바의 회원가입 버튼 눌렀을 때 이동하는 페이지
-	@GetMapping("/user/signupNav.do")
-	public String navSignup() {
-		return "/user/NavBar-Join";
-	}
-
 	// id중복체크
 	@RequestMapping("/user/idCheck.do")
 	@ResponseBody

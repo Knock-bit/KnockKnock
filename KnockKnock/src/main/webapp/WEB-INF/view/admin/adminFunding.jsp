@@ -18,65 +18,38 @@
 	rel="stylesheet">
 
 <script>
-	function postForm(frm) {
+	function postForm() {
 		$('textarea[name="content"]').val($('#summernote').summernote('code'));
-		frm.action="insertFunding.do";
-		frm.submit();
+		alert($('textarea[name="content"]').val(
+				$('#summernote').summernote('code')));
+		console.log($('textarea[name="content"]').val(
+				$('#summernote').summernote('code')));
 	}
 </script>
-<body>	
+<body>
 	<div class="container">
 		<form role="form" method="post" onsubmit="postForm()"
 			action="../adminSummerTest.do">
-			<!-- 제안서 데이터 썸머노트에 보내기 위한 input -->
-			<input type="text" id="propContent" value="${proposal.cpContent }" style="display:none">
-			<!-- 제안서 번호 넘기기 -->
-			<input type="text" name="cpIdx" value="${proposal.cpIdx }" style="display:none">
-			<!-- 제안서 작성자 넘기기 -->
-			<input type="text" name="uIdx" value="${proposal.uIdx }" style="display:none">			
-			<!-- 파일경로 넘기기 -->
-			<input type="text" name="cfFile" value="${proposal.cpFile }" style="display:none">
-			<!-- 펀딩 상태 넘기기 -->
-			<input type="text" name="cfStatus" value="0" style="display:none">
-			 <label> Title <input type="text" name="cfTitle" value="${proposal.cpTitle }">
+			<label> index <input type="text" name="testIdx" />
+			</label> <br> <label> Title <input type="text" name="title">
 			</label><br>
-			<!-- 썸머노트 에디터에 작성한 내용 저장시킬 textarea display:none -->
-			<textarea name="cfContent" style="display: none;"></textarea>
-			<label>
-				캠페인 목표 <input type="text" name="cfGoal" value="${proposal.cpGoal }">
-			</label>
+			<!-- <textarea id="summerTest" class="summernote" name="content"></textarea> -->
+			<textarea name="content" style="display: none;"></textarea>
 			<div id="summernote"></div>
-			<label> 시작일 <input type="date" name="cfStartdate"> 
+			<label> 시작일 <input type="date" name="startDate"> <input
+				type="time" name="startTime">
 			</label> <br>
-			<label>
-				종료일 <input type="date" name="cfEnddate">
-			</label> <br>
-			<label>
-				목표 포인트 <input type="text" name="cfGoalpoint" value="${proposal.cpGoalpoint }">
-			</label> <br>
-			<h5 style="display:inline"> 키워드 선택 - </h5>
-			<c:forEach var="i" begin="1" end="3">
-			${i }
-					<select name="cfKeyword${i }">
-						<c:forEach var="keyword" items="${keyword }">
-							<option>${keyword.kContent }</option>
-						</c:forEach>				
-					</select>	
-					
-			</c:forEach>
-			 <input id="subBtn" type="Button" value="글 작성"
-				style="float: right;" onclick="goWrite(this.form)">
-			<!-- <input type="submit" value="전송"> -->
+			<!-- <input id="subBtn" type="Button" value="글 작성"
+				style="float: right;" onclick="goWrite(this.form)"> -->
+			<input type="submit" value="전송">
 			<div name="text"></div>
 		</form>
+		${proposal }
 	</div>
 	<script>
 		$(document)
 				.ready(
 						function() {
-						console.log($("#propContent").text());
-						console.log($("#propContent").val());
-						 
 							var toolbar = [
 									// 글꼴 설정
 									[ 'fontname', [ 'fontname' ] ],
@@ -121,11 +94,7 @@
 									}
 								}
 							};
-							var propContent = $("#propContent").val();
-							text = propContent.replace(/<(\/)?([a-zA-Z]*)(\s[a-zA-Z]*=[^>]*)?(\s)*(\/)?>/ig, "");
-							alert(text);
-						$('#summernote').summernote('editor.insertText',text);	
-						$('#summernote').summernote(setting);
+							$('#summernote').summernote(setting);
 						});
 		function uploadSummernoteImageFile(file, el) {
 			data = new FormData();

@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri ="http://java.sun.com/jsp/jstl/fmt" %>
-<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,8 +11,6 @@
 	.center { text-align: center; }
 </style>
 <script>
-
-	//게시글 등록창으로..
 	function moveInsert_board(frm) {
 		frm.action = "moveInsert.do"
 		frm.setAttribute('method', 'get');
@@ -59,7 +56,7 @@
 			<td>${board.uIdx}</td>
 			<td>${board.bContent}</td>
 			<td>
-				${fn:substring(board.bRegdate, 0, 10)}
+				<fmt:formatDate pattern="yyyy/MM/dd" value="${board.bRegdate}"/>
 			</td>
 			<td class="center">${board.bViews}</td>
 			<td class="center">${board.bHit}</td>

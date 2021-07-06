@@ -1,10 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
- 
   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
   <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
     <c:set var="cp" value="${pageContext.request.contextPath }" />
- 
 <!doctype html>
 <html lang="ko">
 
@@ -26,35 +24,11 @@
       <link href="${cp}/resource/vendor/remixicon/remixicon.css" rel="stylesheet">
       <link href="${cp}/resource/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
- 	<link rel="stylesheet" href="${cp}/resource/fonts/icomoon/style.css">
-	
-	<link rel="stylesheet" href="${cp}/resource/css/owl.carousel.min.css">
-	 
-	
-	<!-- Style -->
-	<link href="${cp}/resource/css/manual.css" rel="stylesheet">
-	
-	  <!-- Vendor CSS Files -->
-  <link href="${cp}/resource/vendor/animate.css/animate.min.css" rel="stylesheet">
-  <link href="${cp}/resource/vendor/aos/aos.css" rel="stylesheet">
-  <link href="${cp}/resource/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="${cp}/resource/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="${cp}/resource/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="${cp}/resource/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="${cp}/resource/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-	
-  <link href="${cp}/resource/css/nav1.css" rel="stylesheet">
-    <link href="${cp}/resource/css/main.css" rel="stylesheet">
-  
-
-<!-- Style -->
-<link href="${cp}/resource/css/contact.css" rel="stylesheet">
- 
       <!-- Main CSS File -->
       <link href="${cp}/resource/css/main.css" rel="stylesheet">
       <link href="${cp}/resource/css/nav1.css" rel="stylesheet">
       <link href="${cp}/resource/css/contact.css" rel="stylesheet">
- 
+
       <!-- Import BootStrap -->
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -107,7 +81,7 @@
 								<div class="row">
 									<div class="col-md-12 form-group">
 										<textarea class="form-control" name="ctContent" id="message"
-											cols="30" rows="10" placeholder="문의사항을 작성해주세요."></textarea>
+											cols="30" rows="70" placeholder="문의사항을 작성해주세요."></textarea>
 									</div>
 								</div>
 								<div class="row">

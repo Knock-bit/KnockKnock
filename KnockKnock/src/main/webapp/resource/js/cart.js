@@ -1,25 +1,26 @@
 // 수량 감소
 function minus(e){
 		var idx = $(".minus").index(e);
-
+		console.log(idx);
+		
 		var pCount = $(".pCount").eq(idx).text();
 		
 		var minus = $(".minus").eq(idx);
-		var plus = $(".plus").eq(idx);
-		
 		var number;
 		number = parseInt(pCount) -1;
-				
+		
+		console.log("minus:"+number);
+		
 		$(".pCount").eq(idx).html(number);
 		
 		pCount = $(".pCount").eq(idx).text();
 		
 		// 현재 수량이 0이면 버튼 비활성화
-		if(pCount <= 1){
+		if(pCount <= 0){
 			minus.attr("disabled", true);
 			
-		} else {
-			plus.attr("disabled", false);
+		} else{
+			minus.attr("disabled", false);
 		} 
 		
 	}
@@ -28,21 +29,18 @@ function minus(e){
 		var idx = $(".plus").index(e);
 		console.log("plusIdx:"+idx);
 		var minus = $(".minus").eq(idx);
-		var plus = $(".plus").eq(idx);
 		
 		var pCount = $(".pCount").eq(idx).text();
 		
 		var number;
 		number = parseInt(pCount) +1;
+		console.log("plus:"+number);
 		
 		$(".pCount").eq(idx).html(number);
 		
-		if(pCount == 1) {
+		if(pCount >= 0) {
 			minus.attr("disabled", false);
 		
-		} 
-		if(pCount==9) {
-			plus.attr("disabled", true);
 		}
 }
 
@@ -105,9 +103,11 @@ $(function(){
 	$(".deleteOne").each(function(index){
 		
 		var idx = index;
+		console.log("삭제idx"+idx);
 	
 		$(".deleteOne").eq(idx).click(function(){
 			var pIdx = $(".pIdx").eq(idx).text();
+			console.log(pIdx);
 			
 			var deleteOne = confirm('해당 상품을 삭제하시겠습니까?');
 			
@@ -141,5 +141,4 @@ $(function(){
 	});
 
 });
-// 장바구니 상품 수량 조절
 

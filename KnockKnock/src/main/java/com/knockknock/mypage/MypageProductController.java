@@ -1,6 +1,5 @@
 package com.knockknock.mypage;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,22 +11,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.knockknock.user.UserVO;
 import com.knockknock.util.ProductVO;
- 
+
 @Controller
 @SessionAttributes("users")
 public class MypageProductController {
@@ -99,16 +91,5 @@ public class MypageProductController {
 		System.out.println("data:" + data);
 
 		return data;
-	}
-	
-	// 장바구니 상품 -> 주문(테이블)으로 이동
-	@RequestMapping(value="/moveOrders.do", method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	@ResponseBody
-	public String moveOrders(@RequestBody List<Map<String,Object>> param ) {
-		System.out.println("장바구니 컨트롤러 실행");
-		
-		System.out.println(param);
-
-		return "";
 	}
 }

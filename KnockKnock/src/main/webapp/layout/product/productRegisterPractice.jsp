@@ -8,7 +8,6 @@
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
  	<link href="${cp}/resource/css/signup.css" rel="stylesheet">
-   	<link href="${contextPath}/resource/css/proposal.css" rel="stylesheet">
 <link href="${cp}/resource/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 	<link href="${cp}/resource/css/signup.css" rel="stylesheet">
@@ -21,10 +20,10 @@
 
 <script>
 	function postForm() {
-		$('textarea[name="cpContent"]').val($('#summernote').summernote('code'));
-		alert($('textarea[name="cpContent"]').val(
+		$('textarea[name="pDesc"]').val($('#summernote').summernote('code'));
+		alert($('textarea[name="pDesc"]').val(
 				$('#summernote').summernote('code')));
-		console.log($('textarea[name="cpContent"]').val(
+		console.log($('textarea[name="pDesc"]').val(
 				$('#summernote').summernote('code')));
 	}
 </script>
@@ -34,62 +33,63 @@
  padding: 20px;
 }
 </style>
+</head>
+
 <body>
-	     <div class="main">
+     <div class="main">
         <div class="container">
             <div class="proposal-content">
 
                 <div class="proposal-form">
-		<form role="form" method="post" onsubmit="postForm()"
-			action="${cp }/proposalSummer.do">
-			  <h2>캠페인 제안하기</h2>
-                        <p>KNOCK!KNOCK!의 캠페인 아이디어는 모두에게 열려 있습니다.<br>다음 회차에 진행될 캠페인 아이디어를 제안해주세요.
-            		   제안된 아이디어는 검토 후에 회원들의 펀딩 참여여부에 따라 다음회차 캠페인으로 선정됩니다.</p>
-			<div class="form-row1">
-                            <div class="form-group">
-                                <label for="cpTitle">캠페인 이름</label>
-                                <input type="text" name="cpTitle" id="name" required/>
+                    <form role="form" method="post" onsubmit="postForm()" 
+                    action="${cp }/productSummer.do" class="register-form" id="register-form" enctype="multipart/form-data">
+                        <h2>상품등록</h2>
+                        <p>KNOCK! 샵에 등록할 상품을 등록해주세요.</p>
+     				 
+                        <div class="form-row1">
+                       		 <div class="form-group">
+                                <label for="pName">상품이름</label>
+                                <input type="text" name="pName" id="pName" required/>
                             </div>
                             <div class="form-group">
-                                <label for="cpGoal">캠페인 목표</label>
-                                <input type="text" name="cpGoal" id="id" required/>
+                                <label for="pcIdx">상품분류</label>
+                                <select class="form-select" aria-label="Default select example" name="pcIdx">
+								  <option selected>분류를 선택해주세요</option>
+								  <option value="1">식품</option>
+								  <option value="2">의류</option>
+								  <option value="3">생활용품</option>
+								</select>
+                            </div>
+                            <div class="form-group">
+                                <label for="pPrice">가격</label>
+                                <input type="number" name="pPrice" id="id" required/>
                             </div>
                              <div class="form-group" >
-                                <label for="cpContent">캠페인 내용</label>
-                                 <textarea name="cpContent" style="display: none;"></textarea>
+                                <label for="pStock">재고</label>
+                                 <input type="number" name="pStock" id="pStock" required>
+                            </div>
+                            
+                            <div class="form-group" >
+                                <label for="pDesc">상품설명</label>
+                                 <textarea name="pDesc" style="display: none;"></textarea>
 								<div id="summernote"></div>
                             </div>
                         </div>
-                        <div class="form-row1">
-                           <div class="form-group">
-                                <label for="cpTitle">목표포인트</label>
-                                <input type="number" name="cpTitle" id="cpGoalPoint" min="2500" required/>
-                            </div>
-                        </div>
+                        
 
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="keyword1">키워드1</label>
-                                <input type="text" name="keyword" id="pKeyword1" />
-                            </div>
-                            <div class="form-group">
-                                <label for="keyword2">키워드2</label>
-                                <input type="text" name="keyword" id="pKeyword2" />
-                            </div>
-                            <div class="form-group">
-                                <label for="keyword3">키워드3</label>
-                                <input type="text" name="keyword" id="pKeyword3" />
-                            </div>
+
+                        <div class="form-submit">
+                            <input type="reset" value="취소" class="submit" name="reset" id="reset" />
+                            <input type="submit" value="제출" class="submit" name="submit" id="submit" />
                         </div>
-			<input type="submit" value="전송">
-			<div name="text"></div>
-		</form>
-	</div>
-	</div>
-	</div>
-	</div>
-	
-	<script>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+    <script>
 		$(document)
 				.ready(
 						function() {
@@ -148,7 +148,7 @@
 			$.ajax({
 				data : data,
 				type : "POST",
-				url :"${cp}/uploadProposalSummernoteImageFile.do",
+				url :"${cp}/uploadProductSummernoteImageFile.do",
 				contentType : false,
 				enctype : 'multipart/form-data',
 				processData : false,
@@ -158,5 +158,7 @@
 			});
 		}
 	</script>
+
 </body>
+
 </html>

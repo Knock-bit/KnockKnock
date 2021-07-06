@@ -15,6 +15,7 @@ public class AdminFundingServiceImpl implements AdminFundingService {
 
 	@Override
 	public AdminProposalVO getProposal(AdminProposalVO vo) {
-		return adminFundingDAO.getProposal(vo);
+//		return adminFundingDAO.getProposal(vo);
+		return null;
 	}
 }

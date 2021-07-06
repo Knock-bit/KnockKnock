@@ -40,6 +40,7 @@
 					<ul>
 						<li><a href="#">판매자 페이지</a></li>
 						<li><a href="#">판매상품 관리</a></li>
+						<li><a href="${cp }/productForm.do">()임시)판매상품 관리</a></li>
 						<li><a href="#">상품후기 관리</a></li>
 						<li><a href="#">판매문의 관리</a></li>
 					</ul></li>

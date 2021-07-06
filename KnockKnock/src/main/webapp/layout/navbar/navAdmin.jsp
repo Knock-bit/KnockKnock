@@ -7,7 +7,7 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo me-auto"><a href="${cp }/layout/main.jsp"><img src="${cp }/resource/img/logo.png" id=:logo></a></h1>
+      <h1 class="logo me-auto"><a href="${cp }/layout/main.jsp"><img src="${cp }/resource/img/logo2.png" id=:logo></a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -24,13 +24,15 @@
             <ul>
               <li><a href="${cp }/campaign/ing/list.do">진행중인 캠페인</a></li>
               <li><a href="${cp }/campaign/funding/list.do">캠페인 펀딩하기</a></li>
+              <li><a href="${cp }/campaign/ed/list.do">지난 캠페인</a></li>
               <li><a href="${cp }/campaign/proposal.do">캠페인 제안하기</a></li>
             </ul>
           </li>
 
 
-          <li><a href="${cp }/productlist.do">Shop</a></li>
-          <li><a href="${cp }/contact/contact.do">Contact</a></li>
+
+          <li><a href="courses.html">Shop</a></li>
+          <li><a href="trainers.html">Contact</a></li>
 
           <li class="dropdown"><a href="#"><button type="button" class="btn btn-dark">관리자모드</button> <i
                 class="bi bi-chevron-down"></i></a>

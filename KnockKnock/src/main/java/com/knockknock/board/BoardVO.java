@@ -10,7 +10,7 @@ public class BoardVO {
 	private String bSubject;
 	private String bContent;
 	private int uIdx;
-	private String bRegdate;
+	private Date bRegdate;
 	private int bHit;
 	private int bViews;
 	private int bCategory;
@@ -26,7 +26,7 @@ public class BoardVO {
 	
 	public BoardVO() {}
 	
-	public BoardVO(int bIdx, String bSubject, String bContent, int uIdx, String bRegdate, int bHit, int bViews,
+	public BoardVO(int bIdx, String bSubject, String bContent, int uIdx, Date bRegdate, int bHit, int bViews,
 			int bCategory, String bFile, int ciIdx, int sbIdx, String bActive, String searchCondition,
 			String searchKeyword, MultipartFile uploadFile) {
 		super();
@@ -71,10 +71,10 @@ public class BoardVO {
 	public void setuIdx(int uIdx) {
 		this.uIdx = uIdx;
 	}
-	public String getbRegdate() {
+	public Date getbRegdate() {
 		return bRegdate;
 	}
-	public void setbRegdate(String bRegdate) {
+	public void setbRegdate(Date bRegdate) {
 		this.bRegdate = bRegdate;
 	}
 	public int getbHit() {

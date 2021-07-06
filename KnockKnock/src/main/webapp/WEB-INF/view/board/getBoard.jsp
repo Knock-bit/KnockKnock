@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- 로그인이 되어있고, 본인 글이 아닐경우에만 추천할 수 있도록 버튼을 출력 
  
     <c:if test = "${sessionScope.uId != null and sessionScope.uId != userVO.uId
@@ -14,34 +13,31 @@
 <head>
 <meta charset="UTF-8">
 <title>상세보기</title>
-<script src="${cp}/resource/js/jquery/jquery-3.6.0.min.js"></script>
 <script>	
-
-	//게시글 등록창으로..
 	function moveInsert_board(frm){
 		frm.action="moveInsert.do";
 		frm.setAttribute('method', 'get');
 		frm.submit();
 	}
-	
-	//게시글 삭제
 	function delete_board(frm){
 		frm.action="deleteBoard.do";
 		frm.submit();
 	}
-	
-	//게시판 목록으로..
 	function list_board(frm){
 		frm.action="getBoardList.do";
 		frm.submit();
 	}
-	
-	//추천하기 버튼
-	function updateHit_board(frm){
-		frm.action="updateHit.do";
-		frm.submit();
-	}
 
+	//추천하기 버튼
+	$("#btnHit").click(function(){
+	    if(confirm("해당 글을 추천하시겠습니까?")){
+	        document.form1.action="hitBoard";
+	        document.form1.submit();
+	        
+	        alert("해당 글을 추천하였습니다.")
+	        
+	        }
+	    }); 
 </script>
 </head>
 <body>
@@ -83,34 +79,10 @@
 		<input type="button" value="글 등록" onclick="moveInsert_board(this.form)">
 		<input type="button" value="글  삭제" onclick="delete_board(this.form)">
 		<input type="button" value="글 목록으로.." onclick="list_board(this.form)">
-		<hr>
-		<input type="button" value="추천하기" onclick="updateHit_board(this.form)">
 	</div>
 	</form>
-	
-	<%-- 게시글 댓글 작성  --%>
-	<form action="insertComments.do" method="post">
-		<p>이름 : <input type="text" name="uIdx"></p>
-		<p>내용 : <textarea name="cContent" rows="4" cols="50"></textarea></p>
-		<input type="submit" value="댓글저장">
-	</form>
-	
 	<hr>
-	댓글들
-	<hr>
-	
-	<%-- 게시글 댓글 표시 --%>
-	<c:forEach var="comments" items="${commentsList}">
-	<div class="comment">
-		<form action="deleteComments.do" method="post">
-			<p>이름: ${comments.uIdx} %nbsp;%nbsp; 날짜 : ${comments.cRegdate}</p>
-			<p>내용: ${comments.cContent}</p>
-			<input type="submit" value="댓글삭제">
-			<input type="hidden" name="mIdx" value="${comments.mIdx}">
-		</form>
-	</div>
-	<hr>
-	</c:forEach>
+	<button type="button" id="btnHit">추천하기</button>
 	
 </div>
 

@@ -30,8 +30,8 @@ String cp = request.getContextPath();
 		<div class="row">
 			<div class="col-md-12">
 				<div class="card">
-					<form action="/createFunding.do?cpIdx=${cpIdx }">
-					<input type="hidden" value="${proposal.cpIdx }" name="proposalIdx">
+					<form>
+					<input type="hidden" value="${proposal.cpIdx }">
 						<div class="card-body">
 							<h1>${proposal.cpTitle }</h1>
 							<p class="time">${proposal.uNickname }|${proposal.cpRegdate }</p>
@@ -53,8 +53,6 @@ String cp = request.getContextPath();
 									</p>
 									<p>
 										<label><h2>목표 포인트</h2></label>${proposal.cpGoalpoint }</p>
-										
-										
 								</div>
 							</div>
 							<hr>
@@ -66,7 +64,8 @@ String cp = request.getContextPath();
 							</div>
 							<div class="active">
 								<c:if test="${proposal.cpActive == 0 }">
-									<input type="submit" value="펀딩 생성하기">
+									<input type="button" value="펀딩 생성하기"
+										onclick="create_funding(this.form)">
 								</c:if>
 							</div>
 						</div>

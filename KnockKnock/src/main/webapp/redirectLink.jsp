@@ -7,9 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<script>
-alert("작성완료");
-history.go(-1);
-</script>
+
 </body>
 </html>
