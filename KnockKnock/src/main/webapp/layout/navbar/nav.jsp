@@ -11,7 +11,7 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo me-auto"><a href="${cp }/main.do"><img src="${cp }/resource/img/logo2.png" id=:logo></a></h1>
+      <h1 class="logo me-auto"><a href="${cp }/main.do"><img src="${cp }/resource/img/logo.png"></a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -28,8 +28,7 @@
             <ul>
               <li><a href="${cp }/campaign/ing/list.do">진행중인 캠페인</a></li>
               <li><a href="${cp }/campaign/funding/list.do">캠페인 펀딩하기</a></li>
-              <li><a href="${cp }/campaign/ed/list.do">지난 캠페인</a></li>
-              <li><a href="${cp }/campaign/proposal.do">캠페인 제안하기</a></li>
+              <li><a href="${cp }/user/login.do">캠페인 제안하기</a></li>
             </ul>
           </li>
 
@@ -42,7 +41,7 @@
       </nav><!-- .navbar -->
 
       <a href="${cp }/user/login.do" class="get-started-btn">로그인</a>
-      <a href="${cp }/user/signup.do" class="get-started-btn">회원가입</a>
+      <a href="${cp }/user/signupNav.do" class="get-started-btn">회원가입</a>
 
     </div>
   </header><!-- End Header -->

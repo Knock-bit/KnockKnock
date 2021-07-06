@@ -58,9 +58,9 @@
    }
    
 
-   //판매자가입
-   function sellerJoin() {
-		location.href="sellerJoin.do";
+   //판매자 로그인/가입창으로 전환하기
+   function sellerPage() {
+		location.href="sellerPage.do";
    }
 	function attachSignin(element){
 		alert("attachSignin실행");
@@ -158,7 +158,7 @@
 					</p>
 					<button class="ghost" id="signUp"
 						onclick="location.href='/user/tnc.do'">회원가입</button>
-                    <a href="#" onclick="sellerJoin()" style="font-style: italic; color:white; font-size:7px;">판매자 등록하기</a>
+                    <a href="#" onclick="sellerPage()" style="font-style: italic; color:white; font-size:7px;">판매자로 로그인/회원가입</a>
 				
 				</div>
 			</div>

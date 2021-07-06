@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.knockknock.orders.OrdersVO;
 import com.knockknock.user.UserVO;
 import com.knockknock.util.ProductVO;
 
@@ -72,6 +73,22 @@ public class MypageProductDAO {
 			result = 0; // 에러..?
 		}
 		return result;
+	}
+	
+	// 장바구니에서 주문하기로 이동
+	public int insertOrders(OrdersVO ovo) {
+
+		return mybatis.insert("UserVO.insertOrders", ovo);
+	}
+	// 주문된 상품 장바구니에서 삭제
+	public int deleteBuyProduct(int pIdx) {
+
+		return mybatis.insert("UserVO.deleteBuyProduct", pIdx);
+	}
+	// 주문서 가져오기
+	public List<OrdersVO> ordersList(UserVO vo) {
+
+		return mybatis.selectList("UserVO.ordersList", vo);
 	}
 	
 	

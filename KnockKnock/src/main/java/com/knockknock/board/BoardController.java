@@ -48,6 +48,9 @@ public class BoardController {
 		List<BoardVO> boardList = boardService.getBoardList(vo);
 		model.addAttribute("getBoardList", boardList);
 		
+		String bRegdate = vo.getbRegdate();
+		System.out.println("bRegdate : " + bRegdate);
+		
 		return "board/getBoardList";	
 	}
 	
@@ -87,6 +90,7 @@ public class BoardController {
 //			file.transferTo(new File(uploadPath + fPath));
 //			vo.setbFile(fPath + fName);
 //		}
+		
 		boardService.insertBoard(vo);
 		
 		return "redirect:/board/getBoardList.do";
@@ -101,8 +105,8 @@ public class BoardController {
 	}
 	@GetMapping("/board/updateBoard.do")
 	public void updateBoardGet(@RequestParam("bIdx") int bIdx, Model model) {
-		BoardVO vo2 = boardService.getBoard(bIdx);
-		model.addAttribute("getBoard", vo2);
+		BoardVO vo = boardService.getBoard(bIdx);
+		model.addAttribute("getBoard", vo);
 	}	
 	
 	@PostMapping("/board/updateBoard.do")
@@ -128,7 +132,7 @@ public class BoardController {
 		return conditionMap;
 	}
 	
-	@RequestMapping("/board/hitBoard.do")
+	@RequestMapping("/board/updateHit.do")
 	public String updateHit (@RequestParam int bIdx) {
 		boardService.updateHit(bIdx);
 		

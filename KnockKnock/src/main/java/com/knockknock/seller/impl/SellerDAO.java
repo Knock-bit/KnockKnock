@@ -13,12 +13,17 @@ public class SellerDAO {
 	
 	public void sellerJoin(SellerVO vo) {
 		System.out.println("사업자 회원가입시 받은 sellerJoin");
-		mybatis.insert("Seller.sellerJoin", vo);
+		mybatis.insert("seller.sellerJoin", vo);
 	}
 	public void sellerJoin2(SellerVO vo) {
 		System.out.println("개인 판매자 회원가입시 받은 sellerJoin");
-		mybatis.insert("Seller.sellerJoin2", vo);
+		mybatis.insert("seller.sellerJoin2", vo);
 	}
 	
+	public SellerVO sellerLogin(SellerVO vo) {
+		vo = mybatis.selectOne("seller.sellerLogin", vo);
+		System.out.println("판매자 로그인 vo : " + vo);
+		return vo;
+	}
 	
 }
