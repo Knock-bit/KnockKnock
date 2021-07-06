@@ -43,7 +43,11 @@
 		ORDER BY USER_COUNT DESC
 	</select>
 	
-	
+	<select id="selectCampaignUser" resultType="campaignUserVO">
+		SELECT * FROM CAMPAIGN_USER
+  		 WHERE U_IDX = #{uIdx}
+  		   AND CI_IDX = #{ciIdx}
+	</select>
 	
 	
 	<!-- 캠페인 상세보기 -->
@@ -179,7 +183,7 @@
 		SELECT F.*, U.U_NICKNAME AS HOST_NICKNAME, CC.CC_NAME AS CATEGORY, 
 	        (SELECT COUNT(*) FROM FUNDING_USER WHERE F.CF_IDX = FUNDING_USER.CF_IDX) USER_COUNT
 			FROM USERS U, FUNDING F, CAMPAIGN_CATEGORY CC
-			WHERE CF_STATUS = 1
+			WHERE (CF_STATUS = 1 OR CF_STATUS = 2)
 			AND U.U_IDX = F.U_IDX
 			AND F.CC_IDX = CC.CC_IDX
 	
@@ -196,8 +200,7 @@
 	<select id="selectOneFunding" parameterType="int" resultType="FundingVO">
 		SELECT F.*, U.U_NICKNAME AS HOST_NICKNAME
 		FROM USERS U, FUNDING F
-		WHERE CF_STATUS = 1
-		AND U.U_IDX = F.U_IDX
+		WHERE U.U_IDX = F.U_IDX
 		AND F.CF_IDX = #{cfIdx}
 	</select>
 	<!-- 펀딩 상세보기 - 참여자 닉네임 불러오기 -->

@@ -63,4 +63,8 @@ public class CampaignDAO {
 	public int selectExpiredCampaign() {
 		return mybatis.selectOne("campaign.selectExpiredCampaign");
 	}
+
+	public CampaignUserVO selectCampaignUser(CampaignUserVO cUser) {
+		return mybatis.selectOne("campaign.selectCampaignUser");
+	}
 }
