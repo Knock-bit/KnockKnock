@@ -62,8 +62,8 @@
                         </div>
                         <div class="form-row1">
                            <div class="form-group">
-                                <label for="cpGoalpoint">목표포인트</label>
-                                <input type="number" name="cpGoalpoint" id="cpGoalPoint" min="2500" required/>
+                                <label for="cpTitle">목표포인트</label>
+                                <input type="number" name="cpTitle" id="cpGoalPoint" min="2500" required/>
                             </div>
                         </div>
 
@@ -81,7 +81,6 @@
                                 <input type="text" name="keyword" id="pKeyword3" />
                             </div>
                         </div>
-             <input type="hidden" name="uIdx" value=${users.uIdx }>
 			<input type="submit" value="전송">
 			<div name="text"></div>
 		</form>

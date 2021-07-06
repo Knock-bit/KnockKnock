@@ -25,6 +25,7 @@ public class OrdersController {
 	OrdersVO order = new OrdersVO();
 	
 	@GetMapping("seller/sellerDashboard.do")
+
 	public String sellerDashboard(Model model) {
 		System.out.println("DashBoard에 갈 select문 controller");
 		
