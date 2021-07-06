@@ -97,7 +97,6 @@ public class ProductController {
 		int result = productService.insertProduct(product);
 		System.out.println(result + "건 제안서 제출. ");
 		
-		
 		return "/product/productDetail";
 	}
 	
