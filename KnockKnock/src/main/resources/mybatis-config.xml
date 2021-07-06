@@ -49,20 +49,14 @@
 		<!-- 회원 -->
 		<typeAlias alias="userVO" type="com.knockknock.user.UserVO" />
 		<typeAlias alias="pointVO" type="com.knockknock.util.PointVO" />
-		
 		<!-- contact -->
 		<typeAlias alias="contactVO" type="com.knockknock.contact.ContactVO" />
-
-		
 		<!-- 상품 -->
 		<typeAlias alias="productVO" type="com.knockknock.product.ProductVO" />
-		
-		
-
-
 		<!-- seller -->
 		<typeAlias alias="sellerVO" type="com.knockknock.seller.SellerVO" />
-	
+		<!--주문 Orders -->
+		<typeAlias alias="ordersVO" type="com.knockknock.orders.OrdersVO" />
 
 
 	</typeAliases>
@@ -74,7 +68,8 @@
 		<mapper resource="mapping/UserMapper.xml" />
 		<mapper resource="mapping/CampaignMapper.xml" />
 		<mapper resource="mapping/AdminMapper.xml" />
-
+		<mapper resource="mapping/OrdersMapper.xml" /> 		
+		<mapper resource="mapping/ProductMapper.xml" />
 		<mapper resource="mapping/UtilMapper.xml" />
 		<mapper resource="mapping/ContactMapper.xml" /> 
 		<mapper resource="mapping/ProductMapper.xml" /> 
