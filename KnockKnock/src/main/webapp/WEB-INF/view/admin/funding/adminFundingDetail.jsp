@@ -114,100 +114,42 @@
         }
         
       </style>
-      <script>
-      
-      var uIdx = "${users.uIdx}";
-      var cfIdx = "${funding.cfIdx}";
-      
-      
-        function cancel_funding(){
-        	
-            $.ajax({
-                url: "cancelAjaxFund.do",
-                type: "POST",
-                /* data: JSON.stringify(param), */
-                data: { "cfIdx": cfIdx, "uIdx": uIdx },
-                contentType: "application/x-www-form-urlencoded; charset=utf-8",
-                dataType: "JSON",
-                success: function (data) {
-                  console.log(data);
-                  if(data == 1){
-                	  console.log("ok");
-                  $("#funding-btn").html('펀딩하기');
-                  $("#funding-btn2").html('펀딩하기');
-                  $("#funding-btn").attr('data-target', '#fundingModal');
-                  $("#funding-btn2").attr('data-target', '#fundingModal');
-                  $("#modal-content2").html("<div class='modal-funding'>취소되었습니다.</div>");
-                	  
-                  }
-                }, error: function () {
-                  alert("실패");
-                }
+     
+     
+     <script>
+     $(() => {
+    		$("#fundingStartBtn").click(keywordAdd);
+    	});
 
-              })
-        	
-        	
-        	
-        }
-      
-      
-      
-        function do_funding() {
-          
-          console.log(uIdx);
-          console.log(cfIdx);
-
-          var param = { "cfIdx": cfIdx, "uIdx": uIdx }
-
-          $.ajax({
-            url: "doAjaxFund.do",
-            type: "POST",
-            /* data: JSON.stringify(param), */
-            data: { "cfIdx": cfIdx, "uIdx": uIdx },
-            contentType: "application/x-www-form-urlencoded; charset=utf-8",
-            dataType: "JSON",
-            success: function (data) {
-              console.log(data);
-              if(data == 1){
-            	  console.log("ok");
-              $("#funding-btn").html('펀딩완료');
-              $("#funding-btn").attr('data-target', '#fundingModal2');
-              $("#funding-btn2").html('펀딩완료');
-              $("#funding-btn2").attr('data-target', '#fundingModal2');
-              $("#modal-content").html("<div class='modal-funding'>참여해주셔서 감사합니다.</div>");
-            	  
-              }
-            }, error: function () {
-              alert("실패");
-            }
-
-          })
+    	function keywordAdd() {
+    		var inputVal = $("#keyadd").val();
+    		var inputObj = {"kContent" : inputVal}
+    		console.log(JSON.stringify(inputObj));	
+    		if(inputVal !=''){
+    			$.ajax({
+    				url: "getJsonKeyword.do",
+    				type: "post",
+    				dataType: "json",
+    				data: JSON.stringify(inputObj),
+    				contentType: 'application/json; charset=utf-8',
+    				success: function(result) {
+    					if(result != 0){
+    						alert("입력하신 데이터가 추가되었습니다.");
+    						location.reload();
+    						
+    					} else{
+    						alert("이미 존재하는 키워드입니다.");
+    					}
+    			
+    				}
+    			}) 
+    		} else{
+    			alert("다시 입력해주세요.")
+    		}
+    	}
 
 
-        }
-
-        $(function () {
-          var uIdx = "${users.uIdx}";
-          if (uIdx == "") {
-            $("#funding-btn").attr("onclick", "location.href='${cp}/user/login.do'");
-          }
-
-          var exceed = parseInt("${funding.cfGoalpoint}" - "${funding.cfCollected}");
-          console.log("exceed : " + exceed);
-
-          if (exceed <= 0) {
-            $("#funding").attr("html", "목표달성으로 조기마감되었습니다.");
-          }
-
-
-        })
-
-        $('#myModal').on('shown.bs.modal', function () {
-          $('#myInput').trigger('focus')
-        })
-
-      </script>
-
+     </script>
     </head>
 
     <body>
@@ -295,6 +237,9 @@
                   <h5>카테고리</h5>
                   <p>${funding.ccName}</p>
                 </div>
+                <div class="campaign-info d-flex justify-content-between align-items-center">
+					<p> #${funding.cfKeyword1 } #${funding.cfKeyword2 } #${funding.cfKeyword3 }
+				</div>
               </div>
             </div>
 
@@ -302,43 +247,9 @@
         </section><!-- End Cource Details Section -->
 
       
-        <!-- Modal -->
-        <div class="modal fade" id="fundingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-          aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content" id="modal-content">
-            	<div class="modal-funding">
-              		<h5>${funding.cfTitle } 펀딩참여</h5><br>
-              펀딩하기 버튼을 누르시면 250포인트로 펀딩에 참여하게 됩니다.<br>
-            	
-            	</div>
-                   
               <div class="modal-footer">
-                  <button type="button"  class="btn btn-secondary" data-dismiss="modal">닫기</button>
-                <button type="button" onclick="do_funding()" class="btn btn-primary">펀딩하기</button>
+                  <button type="button"  class="btn btn-secondary" data-dismiss="modal" name="fundingStartBtn">펀딩 진행하기</button>
               </div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- modal2 -->
-         <div class="modal fade" id="fundingModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-          aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content" id="modal-content2">
-            	<div class="modal-funding"><br>
-              이미 참여하신 펀딩입니다.<br>
-              취소하시겠습니까?
-            	
-            	</div>
-                   
-              <div class="modal-footer">
-                  <button type="button"  class="btn btn-secondary" data-dismiss="modal">닫기</button>
-                <button type="button" onclick="cancel_funding()" class="btn btn-primary">취소하기</button>
-              </div>
-            </div>
-          </div>
-        </div>
 
       </main><!-- End #main -->
       <!-- ======= Footer ======= -->
