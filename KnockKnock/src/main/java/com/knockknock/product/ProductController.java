@@ -108,7 +108,7 @@ public class ProductController {
 	@PostMapping("/productSummer.do")
 	public String insertProposal(ProductVO product, MultipartFile file) throws IllegalStateException, IOException {
 		System.out.println(product);
-if (file.isEmpty()) {
+		if (file.isEmpty()) {
 			
 		} else {
 			// 저장경로 지정
