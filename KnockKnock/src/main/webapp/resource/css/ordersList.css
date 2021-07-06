@@ -5,7 +5,7 @@
         
 }
 .ordersMain{
-	width:85%;
+	width:70%;
 	min-height:100vh;
 	margin: 0 auto;
 }
@@ -15,7 +15,7 @@
 	width:100%;
 	display:grid;
 	grid-template-columns: 60% 37%;
-	grid-template-rows: 30vh 30vh 20vh 20vh;
+	grid-template-rows: 35vh 35vh 30vh 20vh;
 	
 }
 
@@ -40,6 +40,15 @@
 	grid-row : 3/4;
 	
 }
+/*결제방법 클릭하면 화면 띄우기*/
+.pm-2, .pm-3 {
+	display:none;
+	
+}
+
+
+
+
 /*결제하기*/
 .payment{
 	grid-column : 1/2;
@@ -52,5 +61,12 @@
 	grid-column : 2/3;
 	grid-row : 1/5;
 	border:1px solid gray;
+	
+}
+
+.onePlist{
+	border : 1px solid gray;
+	margin: 10px;
+	font-size: 13px;
 	
 }

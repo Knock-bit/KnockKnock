@@ -285,5 +285,5 @@ public class MypageController {
 		 return new Gson().toJson(bvo);
 	}
 	
-
+	// 회원탈퇴
 }
