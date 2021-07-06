@@ -80,16 +80,6 @@ public class AdminServiceImpl implements AdminService{
 	}
 
 	@Override
-	public int insertSummer(AdminSummerVO vo) {
-		return adminDAO.insertSummber(vo);
-	}
-
-	@Override
-	public AdminSummerVO selectSummer() {
-		return adminDAO.selectSummer();
-	}
-
-	@Override
 	public List<AdminKeywordVO> getKeywordAll() {
 		return adminDAO.getKeywordAll();
 	}

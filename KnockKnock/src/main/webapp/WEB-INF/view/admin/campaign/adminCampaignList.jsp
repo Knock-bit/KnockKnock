@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<c:set var="contextPath" value="${pageContext.request.contextPath }" />
+<c:set var="cp" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,15 +19,15 @@
 
 <script>
 	function postForm(frm) {
-		$('textarea[name="content"]').val($('#summernote').summernote('code'));
+		$('textarea[name="cfContent"]').val($('#summernote').summernote('code'));
 		frm.action="insertFunding.do";
+		frm.setAttribute('method', 'post');
 		frm.submit();
 	}
 </script>
 <body>	
 	<div class="container">
-		<form role="form" method="post" onsubmit="postForm()"
-			action="../adminSummerTest.do">
+		<form>
 			<!-- 제안서 데이터 썸머노트에 보내기 위한 input -->
 			<input type="text" id="propContent" value="${proposal.cpContent }" style="display:none">
 			<!-- 제안서 번호 넘기기 -->
@@ -64,8 +64,16 @@
 					</select>	
 					
 			</c:forEach>
+			<br>
+			<h5 style="display:inline"> 카테고리 선택 - </h5>
+			<select name="ccName">
+				<c:forEach var="campaignCategory" items="${campaignCategory }">
+						<option>${campaignCategory.ccName }</option>
+				</c:forEach>	
+			</select>
+			
 			 <input id="subBtn" type="Button" value="글 작성"
-				style="float: right;" onclick="goWrite(this.form)">
+				style="float: right;" onclick="postForm(this.form)">
 			<!-- <input type="submit" value="전송"> -->
 			<div name="text"></div>
 		</form>
@@ -116,24 +124,23 @@
 										// 파일 업로드(다중업로드를 위해 반복문 사용)
 										for (var i = files.length - 1; i >= 0; i--) {
 											uploadSummernoteImageFile(files[i],
-													this, count++);
+													this);
 										}
 									}
 								}
 							};
 							var propContent = $("#propContent").val();
-							text = propContent.replace(/<(\/)?([a-zA-Z]*)(\s[a-zA-Z]*=[^>]*)?(\s)*(\/)?>/ig, "");
-							alert(text);
-						$('#summernote').summernote('editor.insertText',text);	
-						$('#summernote').summernote(setting);
+						 	$('#summernote').append(propContent);
+							$('#summernote').summernote(setting);
 						});
+
 		function uploadSummernoteImageFile(file, el) {
 			data = new FormData();
 			data.append("file", file);
 			$.ajax({
 				data : data,
 				type : "POST",
-				url : "../uploadSummernoteImageFile.do",
+				url : "uploadSummernoteImageFile.do",
 				contentType : false,
 				enctype : 'multipart/form-data',
 				processData : false,

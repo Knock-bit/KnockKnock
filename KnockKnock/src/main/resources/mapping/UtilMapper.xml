@@ -69,5 +69,18 @@
 		) WHERE RN
 		BETWEEN #{start} AND #{end}
 	</select>
-
+	
+	<!-- 총 펀딩 수 -->
+	<select id="countFunding" resultType="int">
+		SELECT COUNT(*) FROM FUNDING
+	</select>
+	
+	<!-- 페이징 처리 후 펀딩리스트 조회 -->
+	<select id="getFundingList" resultType="adminFundingVO">
+		SELECT * FROM 
+		( SELECT ROWNUM RN, A.* FROM 
+		( SELECT * FROM FUNDING ORDER BY CF_IDX DESC) A
+		) WHERE RN
+		BETWEEN #{start} AND #{end}
+	</select>
 </mapper>

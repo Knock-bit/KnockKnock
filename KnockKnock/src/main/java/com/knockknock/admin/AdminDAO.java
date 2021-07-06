@@ -85,13 +85,6 @@ public class AdminDAO {
 		return mybatis.selectList("AdminDAO.getKeywordAll");
 	}
 	
-	
-	public int insertSummber(AdminSummerVO vo) {
-		return mybatis.insert("insertSummer",vo);
-	}
-	
-	public AdminSummerVO selectSummer() {
-		return mybatis.selectOne("selectSummer");
-	}
+
 
 }
