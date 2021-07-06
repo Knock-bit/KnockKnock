@@ -15,7 +15,6 @@ public class AdminProposalDAO {
 	private SqlSessionTemplate mybatis;
 	
 	public List<AdminProposalVO> getProposalList(PagingVO pvo){
-		System.out.println(mybatis.selectList("Util.getProposalList"));
 		return mybatis.selectList("Util.getProposalList",pvo);
 	}
 	

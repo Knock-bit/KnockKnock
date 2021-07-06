@@ -23,7 +23,10 @@
 			<typeAlias alias="adminKeywordVO"
 			type="com.knockknock.admin.AdminKeywordVO" />
 			<typeAlias alias="adminProposalVO" type="com.knockknock.admin.proposal.AdminProposalVO"/>
-			<typeAlias alias="adminSummerVO" type="com.knockknock.admin.AdminSummerVO"/>
+
+			<typeAlias alias="adminCampaignCategoryVO" type="com.knockknock.admin.funding.AdminCampaignCategoryVO"/>
+			<typeAlias alias="adminFundingVO" type ="com.knockknock.admin.funding.AdminFundingVO"/> 
+
 		<!-- 게시판 -->
 		<typeAlias alias="boardVO" type="com.knockknock.board.BoardVO" />
 		<!-- <typeAlias alias="deactivation" type="com.knockknock.board.DeactivationVO"/> -->
@@ -49,35 +52,30 @@
 		<!-- 회원 -->
 		<typeAlias alias="userVO" type="com.knockknock.user.UserVO" />
 		<typeAlias alias="pointVO" type="com.knockknock.util.PointVO" />
-		
 		<!-- contact -->
 		<typeAlias alias="contactVO" type="com.knockknock.contact.ContactVO" />
-
-		
 		<!-- 상품 -->
 		<typeAlias alias="productVO" type="com.knockknock.product.ProductVO" />
-		
-		
-
-
 		<!-- seller -->
 		<typeAlias alias="sellerVO" type="com.knockknock.seller.SellerVO" />
-	
-
+		<!--주문 Orders -->
+		<typeAlias alias="ordersVO" type="com.knockknock.orders.OrdersVO" />
+		<typeAlias alias="ordersListVO" type="com.knockknock.orders.OrdersListVO" />
 
 	</typeAliases>
 
 	<!-- mappers는 여러개 등록 가능하다. -->
 	<mappers>
-		<mapper resource="mapping/BoardMapper.xml" />
-		<mapper resource="mapping/CommentsMapper.xml" />
-		<mapper resource="mapping/UserMapper.xml" />
-		<mapper resource="mapping/CampaignMapper.xml" />
 		<mapper resource="mapping/AdminMapper.xml" />
-
+		<mapper resource="mapping/BoardMapper.xml" />
+		<mapper resource="mapping/CampaignMapper.xml" />
+		<mapper resource="mapping/CommentsMapper.xml" />
+		<mapper resource="mapping/ContactMapper.xml" />
+		<mapper resource="mapping/OrdersMapper.xml" />
+		<mapper resource="mapping/ProductMapper.xml" />
+		<mapper resource="mapping/SellerMapper.xml" />
+		<mapper resource="mapping/UserMapper.xml" />
 		<mapper resource="mapping/UtilMapper.xml" />
-		<mapper resource="mapping/ContactMapper.xml" /> 
-
 	</mappers>
 
 

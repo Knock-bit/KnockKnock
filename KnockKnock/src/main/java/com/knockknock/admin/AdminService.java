@@ -18,7 +18,5 @@ public interface AdminService {
 	public int insertKeyword(AdminKeywordVO kvo);  // keyword 추가
 	public int checkKeyword(AdminKeywordVO kvo);
 	public int deleteKeyword(List<String> content);
-	public int insertSummer(AdminSummerVO vo);
-	public AdminSummerVO selectSummer();
-
+	public List<AdminKeywordVO> getKeywordAll();
 }

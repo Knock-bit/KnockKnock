@@ -33,8 +33,7 @@
 <title>join as Seller</title>
 </head>
 <body>
-<!-- ======= Header ======= -->
-      <c:choose>
+ <c:choose>
   	<c:when test="${users.uType eq 1 }">
    		<jsp:include page='/layout/navbar/navLoggedin.jsp' flush='false'/>   	
   	</c:when>
@@ -45,7 +44,6 @@
 	   <jsp:include page='/layout/navbar/nav.jsp' flush='false'/>
   	</c:otherwise>
   	</c:choose>
-  <!-- ======= Header 끝  === -->
 <div class="breadcrumbs" style="background-color: rgb(10, 61, 14);" data-aos="fade-in">
       <div class="container">
         <h2>KNOCK!綠! 판매자 등록</h2>

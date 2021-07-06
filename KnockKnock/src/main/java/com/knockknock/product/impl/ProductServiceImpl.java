@@ -26,4 +26,10 @@ public class ProductServiceImpl implements ProductService {
 		
 		return productDAO.productDetail(pIdx);
 	}
+
+	// 상품 등록
+	@Override
+	public int insertProduct(ProductVO product) {
+		return productDAO.insertProduct(product);
+	}
 }

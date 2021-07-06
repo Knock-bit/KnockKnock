@@ -28,80 +28,6 @@ function selChange() {
 			+ sel;
 }
 
-$(() => {
-	$("#addButton").click(keywordAdd);
-});
-
-function keywordAdd() {
-	var inputVal = $("#keyadd").val();
-	var inputObj = {"kContent" : inputVal}
-	console.log(JSON.stringify(inputObj));	
-	if(inputVal !=''){
-		$.ajax({
-			url: "getJsonKeyword.do",
-			type: "post",
-			dataType: "json",
-			data: JSON.stringify(inputObj),
-			contentType: 'application/json; charset=utf-8',
-			success: function(result) {
-				if(result != 0){
-					alert("입력하신 데이터가 추가되었습니다.");
-					location.reload();
-					
-				} else{
-					alert("이미 존재하는 키워드입니다.");
-				}
-		
-			}
-		}) 
-	} else{
-		alert("다시 입력해주세요.")
-	}
-}
-
-
-$(() => {
-    $("#delButton").click(keywordDel);
-});
-function keywordDel() {
-	var confirm_val =confirm("정말 삭제하시겠습니까?");
-
-    var rowData = new Array();
-    var tdArr = new Array();
-    var list = [];
-    if(confirm_val){
-    // 체크된 체크박스 확인
-    var checkBox = $("input[name=keyname]:checked");
-    // 체크된 체크박스 값을 가져온다, 체크된 박스가 존재할때 실행
-    checkBox.each(function (i) {
-        // checkbox.parent() : 부모는 <td>
-        // checkbox.parent().parent() : <td>의 부모는 <tr>
-        var tr = checkBox.parent().parent().eq(i);
-        var td = tr.children();
-
-        // 체크된 데이터의 value를 list 배열에 넣기
-        list.push(td.eq(0).text());
-    });
-   	 if (list.length == 0) {
-	        alert("선택된 데이터가 없습니다.");
-	    } else {
-	        $.ajax({
-	            url: "deleteKeyword.do",
-	            type: "post",
-	            data: {chbox : list},
-	            success: function(result){
-	            	if(result != 0){
-						alert("선택한 키워드가 삭제되었습니다.");
-						location.reload();
-						
-					} else{
-						alert("키워드 삭제에 실패했습니다.");
-					}
-	            }
-	        });
-    	} 
-    }
-}
 
 </script>
 </head>
@@ -130,7 +56,7 @@ function keywordDel() {
 						style="margin-top: 300px; margin-left: 100px;">
 						<table class="table table-bordered table-striped"
 							style="margin-top: 0px;">
-							<h3 class="text-center">키워드관리창</h3>
+							<h3 class="text-center">제안서관리창</h3>
 
 							<c:if test="${empty viewAll }">
 								<tr>
