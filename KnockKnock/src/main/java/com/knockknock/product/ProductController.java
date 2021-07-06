@@ -96,12 +96,12 @@ public class ProductController {
 		int result = productService.insertProduct(product);
 		System.out.println(result + "건 제안서 제출. ");
 		
-		return "/product/productDetail";
+		return "/seller/product/productDetail";
 	}
 	
 	@GetMapping("/productForm.do")
 	public String productForm() {
-		return "product/productForm";
+		return "seller/product/productForm";
 	}
 	
 	@PostMapping("/productSummer.do")
@@ -142,7 +142,7 @@ if (file.isEmpty()) {
 		System.out.println(result + "건 등록. ");
 		
 		
-		return "/product/productResult";
+		return "/seller/product/productResult";
 	}
 	
 	

@@ -86,12 +86,14 @@ public class FundingController {
 	public int doAjaxFund(FundingUserVO fundingUser) {
 		System.out.println(">>> 펀딩 vo : " + fundingUser);
 		fundingUser.setCfPoint(cfPoint);
+		int cfIdx = fundingUser.getCfIdx();
 		System.out.println(fundingUser.getuIdx());
 		System.out.println(fundingUser.getCfIdx());
 		
 		int result = fundingService.insertFundingUser(fundingUser);
 		int pointResult = fundingService.updateFundingPoint(fundingUser);
 		int userPointReuslt = fundingService.updateUserFundingPoint(fundingUser);
+		
 		System.out.println("result" + result);
 		return result;
 	}
