@@ -130,12 +130,12 @@ public class MypageProductController {
 	
 	// 주문서로 이동
 	@GetMapping("ordersList.do")
-	public String ordersList(@ModelAttribute("users")UserVO vo) {
+	public String ordersList(@ModelAttribute("users")UserVO vo, Model model) {
 		
 		// 주문서 가져오기
 		List<OrdersVO> olist = mypageProductService.ordersList(vo);
 		
-		
+		model.addAttribute("olist",olist);
 		return "/mypage/orders/ordersList";
 	}
 }

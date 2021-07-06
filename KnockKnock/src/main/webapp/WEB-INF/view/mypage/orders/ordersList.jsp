@@ -84,6 +84,18 @@
 			</div>
 			<div class="infoOrdersProduct">
 				<p>주문상품정보</p>
+				<div>
+				<c:forEach var="item" items="${olist }">
+					상품명 : ${item.pName }<br>
+					상품설명 : ${item.pDesc }<br>
+					가격 : ${item.pPrice }<br>
+					수량 : ${item.oCnt }<br>
+					배송비 : ${item.pFee }
+				
+				
+				</c:forEach>
+				
+				</div>
 			
 			</div>
 		
