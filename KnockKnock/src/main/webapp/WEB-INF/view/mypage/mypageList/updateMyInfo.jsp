@@ -97,7 +97,55 @@ $(function(){
 	  		$("#fileBtn").click();
 	  });
 	  
+	  // 모달창 닫기
+	  $(".close").on('click',function(){
+		  $(".modal").css("display","none");
+		  $(".madalDiv").fadeOut(300);
+	  
+  	});
+	  
+	// 회원탈퇴 약관?확인
+	$("#deleteCk").click(function(){
+		
+		if($("#deleteCk").is(":checked")==true){
+			$("#deletePwd").focus();
+			$("#deletePwd").css("outline-color","#0e4b20");
+		} 
+	});
+	
+	
+	
+	  
 });
+
+// 회원탈퇴 모달창
+function deleteUser(){
+	  // 게시물 인덱스 값
+	  
+	  $(".modal").css("display", "block");
+	  $(".modal").css("z-index", "10000");
+		
+	  $(".madalDiv").css("display", "block");
+	  $(".madalDiv").css("z-index", "10000");
+}
+
+// 회원탈퇴 비밀번호 확인 버튼
+function deletePwdCk(){
+	var deletePwd = $("#deletePwd").val();
+	if(deletePwd == $("#myPwd").text()) {
+		$("#deleteBtn").attr("disabled",false);
+		
+	} else {
+		alert("비밀번호가 일치하지 않습니다.");
+		$("#deletePwd").focus();
+		$("#deletePwd").css("outline-color","red");
+	}
+	
+}
+// 회원 탈퇴
+function deleteBtn(){
+	
+}
 
 
 </script>
@@ -163,13 +211,38 @@ $(function(){
 	               	</div>
 				</div>
 				<div class="it10">
-					<input class="btn-upload1" type="submit" value="내 정보 수정">
-					<input style="width:20%; font-size:13px; background-color:#6c9378;" class="btn-upload1" type="button" value="비밀번호 변경하기" onclick="updatePwd()">
+					<div class="it10-1" style="display:inline-block; width:50%; text-align:right;">
+						<input style="width:70%;" class="btn-upload1" type="submit" value="내 정보 수정">
+					</div>
+					
+					<div class="it10-2" style="display:inline-block; width:39%; ">
+						<input style="width:35%; font-size:11px; background-color:#6c9378; padding:5px;" class="btn-upload1" type="button" value="비밀번호 변경" onclick="updatePwd()">
+						<input style="width:35%; font-size:11px; background-color:#6c9378; padding:5px;" class="btn-upload1" type="button" value="회원탈퇴" onclick="deleteUser()">
+					</div>
 				</div>
 			</div>
 		</form>
 
 	</div>
+	<div class="modal">
+	  <div class="madalDiv">
+		    <a href="javascript:;" class="close">X</a>
+		   	<div class="dtmodal">
+		   		<p>회원탈퇴</p>
+		   		<p>- 회원탈퇴 시 보유하고 있던 포인트는 전부 초기화됩니다.<br>
+		   			- 회원탈퇴 후 3일 이내에는 재가입이 불가능합니다. <br>
+		   			- 회원탙퇴 후 남아있는 게시글은 삭제할 수 없습니다.
+		   		</p>
+		   		<input type="checkbox" id="deleteCk"><label>안내 사항을 모두 확인하였으며, 이에 동의합니다.</label><br>
+		   		<label>Password</label>
+		   		<input type="password" name="uPwd" id="deletePwd" placeholder="비밀번호를 입력해주세요" style="width:70%; font-size:13px; border:0px;">
+		   		<input type="button" value="확인" id="pwdCk" onclick="deletePwdCk()">
+		   		<p id="myPwd" style="display:none;">${users.uPwd }</p>
+		   	</div>
+		   	<input type="button" value="회원탈퇴" disabled="disabled" onclick="deleteBtn()">
+		   	<p id="myuIdx" style="">
+  	  </div>
+  	 </div>
 
 </div>	
 <!-- ======= Footer ======= -->

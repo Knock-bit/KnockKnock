@@ -170,3 +170,48 @@
      input[type="text"]:focus {
 		 background-color:#e9fbef;
 	 }
+
+/*모달*/
+   .modal{
+	  display:none;
+	  position:fixed; 
+	  width:100%; height:100%;
+	  top:0; left:0; 
+	  background:rgba(0,0,0,0.7);
+	}
+	.madalDiv{
+	  position:fixed;
+	  top:50%; left:50%;
+	  transform: translate(-50%,-50%);
+	  max-width: 50%;
+	  min-height: 10%;
+	  background:#ebf9f2;
+	  width:45%;
+	  height:50vh;
+	  border-radius:8px;
+	  padding: 30px;
+	  
+	}
+	.madalDiv .close{
+	  display:block;
+	  position:absolute;
+	  width:25px; height:25px;
+	  text-align:center; line-height: 30px;
+	  text-decoration:none;
+	  color:#0e4b20; font-size:16px; font-weight: bold;
+	  right:10px; top:7px;
+	 
+	}
+	.dtmodal{
+		width:100%;
+		padding:10px;
+	}
+	.dtmodal p:first-child {
+		padding:10px;
+		width:100%;
+		color:#0e4b20;
+		font-size:18px;
+		text-align:center;
+		border-bottom: 1px solid #0e4b20;
+	
+	}
