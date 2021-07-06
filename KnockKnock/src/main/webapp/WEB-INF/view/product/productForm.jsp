@@ -75,6 +75,10 @@
 								<div id="summernote"></div>
                             </div>
                         </div>
+                        <div class="form-group" >
+                                <label for="file">썸네일</label>
+                        <input type="file" name="file">
+                            </div>
                         
 
 
