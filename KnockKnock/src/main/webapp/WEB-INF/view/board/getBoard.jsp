@@ -3,9 +3,9 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- 로그인이 되어있고, 본인 글이 아닐경우에만 추천할 수 있도록 버튼을 출력 
  
-    <c:if test = "${sessionScope.uId != null and sessionScope.uId != userVO.uId
-    or sessionScope.kakaonickname != null and sessionScope.kakaonickname != userVO.uId
-    or sessionScope.googlename != null and sessionScope.facebookname != userVO.uId}">
+    <c:if test = "${sessionScope.uIdx != null and sessionScope.uIdx != userVO.uIdx
+    or sessionScope.kakaonickname != null and sessionScope.kakaonickname != userVO.uIdx
+    or sessionScope.googlename != null and sessionScope.facebookname != userVO.uIdx}">
     
     </c:if>  -->
 
@@ -14,9 +14,9 @@
 <head>
 <meta charset="UTF-8">
 <title>상세보기</title>
-<script src="${cp}/resource/js/jquery/jquery-3.6.0.min.js"></script>
+<script src="/resource/js/jquery/jquery-3.6.0.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script>	
-
 	//게시글 등록창으로..
 	function moveInsert_board(frm){
 		frm.action="moveInsert.do";
@@ -41,7 +41,6 @@
 		frm.action="updateHit.do";
 		frm.submit();
 	}
-
 </script>
 </head>
 <body>
@@ -87,32 +86,30 @@
 		<input type="button" value="추천하기" onclick="updateHit_board(this.form)">
 	</div>
 	</form>
-	
-	<%-- 게시글 댓글 작성  --%>
-	<form action="insertComments.do" method="post">
-		<p>이름 : <input type="text" name="uIdx"></p>
-		<p>내용 : <textarea name="cContent" rows="4" cols="50"></textarea></p>
-		<input type="submit" value="댓글저장">
-	</form>
-	
 	<hr>
-	댓글들
-	<hr>
-	
-	<%-- 게시글 댓글 표시 --%>
-	<c:forEach var="comments" items="${commentsList}">
-	<div class="comment">
-		<form action="deleteComments.do" method="post">
-			<p>이름: ${comments.uIdx} %nbsp;%nbsp; 날짜 : ${comments.cRegdate}</p>
-			<p>내용: ${comments.cContent}</p>
-			<input type="submit" value="댓글삭제">
-			<input type="hidden" name="mIdx" value="${comments.mIdx}">
+	<%-- 게시글 댓글  --%>
+	<div class="container">
+		<label for="cContent">댓글 목록</label>
+		<form name="commentsInsertForm">
+			<div class="input-group">
+				<input type="hidden" name="bIdx" value="${board.bIdx}">
+				<input type="text" name="uIdx" value="${board.uIdx }">
+				<br><br>
+				<textarea id="cContent" name="cContent" placeholder="내용을 입력해주세요" rows="3" cols="50"></textarea>
+				<br><br>
+				<span class="input-group-btn">
+					<button type="button" name="commentsInsertBtn">등록</button>
+				</span>
+			</div>
 		</form>
 	</div>
 	<hr>
-	</c:forEach>
-	
+	<%-- 게시글 댓글 목록 --%>
+	<div class="container">
+		<div class="commentsList"></div>
+	</div>
+	<hr>
 </div>
-
+<%@ include file="commentsList.jsp" %>
 </body>
 </html>

@@ -6,8 +6,9 @@
 	
 	<insert id="insertComments" parameterType="comments">
 		INSERT INTO COMMENTS (M_IDX, C_CONTENT, B_IDX, U_IDX, C_REGDATE)
-		VALUES ((SELECT NVL(MAX(M_IDX),0)+1 FROM COMMENTS), #{cContent}, #{bIdx}, #{uIdx}, #{cRegdate})
+		VALUES ((SELECT NVL(MAX(M_IDX),0)+1 FROM COMMENTS), #{cContent}, #{bIdx}, #{uIdx}, SYSDATE)
 	</insert>
+	
 	
 	<update id="updateComments" parameterType="comments">
 		UPDATE COMMENTS SET C_CONTENT = #{cContent} WHERE M_IDX = #{mIdx}
@@ -17,7 +18,7 @@
 		DELETE FROM COMMENTS WHERE M_IDX = #{mIdx}
 	</delete>
 
-	<select id="commentsList" parameterType="comments" resultType="comments">
+	<select id="commentsList" resultType="comments">
 		SELECT * FROM COMMENTS ORDER BY M_IDX DESC
 	</select>
 	
