@@ -211,10 +211,10 @@
 	<insert id="insertCampaign" parameterType= "CampaignVO">
 		INSERT INTO CAMPAIGN(CI_IDX, CI_TITLE, CI_CONTENT, C_GOAL, CI_ENDDATE, CI_STARTDATE, 
 		CI_ESTIMATEDPOINT, CI_STATUS, CI_FILE, CI_EMBLEM, U_IDX, CC_IDX, C_TOTPOINT
-		,C_KEYWORD1, C_KEYWORD2, C_KEYWORD3, CI_BASEPOINT, CF_IDX) 
+		,CI_KEYWORD1, CI_KEYWORD2, CI_KEYWORD3, CI_BASEPOINT, CF_IDX) 
 		VALUES (CI_IDX_SEQ.NEXTVAL, #{ciTitle}, #{ciContent}, #{cGoal}, #{ciEnddate}, #{ciStartdate}, 
 		#{ciEstimatedpoint}, #{ciStatus}, #{ciFile}, #{ciEmblem}, #{uIdx}, #{ccIdx}, #{cTotpoint}
-		,#{cKeyword1}, #{cKeyword2}, #{cKeyword3}, #{ciBasepoint}, #{cfIdx}
+		,#{ciKeyword1}, #{ciKeyword2}, #{ciKeyword3}, #{ciBasepoint}, #{cfIdx}
 		
 	
 	</insert>

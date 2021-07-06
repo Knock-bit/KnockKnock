@@ -80,13 +80,11 @@ public class AdminDAO {
 	public int deleteKeyword(List<String> content) {
 		return mybatis.delete("deleteKeyword", content);
 	}
-	
-	public int insertSummber(AdminSummerVO vo) {
-		return mybatis.insert("insertSummer",vo);
+	// 키워드 전체 가져오기 
+	public List<AdminKeywordVO> getKeywordAll() {
+		return mybatis.selectList("AdminDAO.getKeywordAll");
 	}
 	
-	public AdminSummerVO selectSummer() {
-		return mybatis.selectOne("selectSummer");
-	}
+
 
 }
