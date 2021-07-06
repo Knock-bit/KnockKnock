@@ -33,23 +33,7 @@
 	
 	<!-- Style -->
 	<link href="${cp}/resource/css/manual.css" rel="stylesheet">
-	
-	  <!-- Vendor CSS Files -->
-  <link href="${cp}/resource/vendor/animate.css/animate.min.css" rel="stylesheet">
-  <link href="${cp}/resource/vendor/aos/aos.css" rel="stylesheet">
-  <link href="${cp}/resource/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="${cp}/resource/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="${cp}/resource/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="${cp}/resource/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="${cp}/resource/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-	
-  <link href="${cp}/resource/css/nav1.css" rel="stylesheet">
-    <link href="${cp}/resource/css/main.css" rel="stylesheet">
-  
 
-<!-- Style -->
-<link href="${cp}/resource/css/contact.css" rel="stylesheet">
- 
       <!-- Main CSS File -->
       <link href="${cp}/resource/css/main.css" rel="stylesheet">
       <link href="${cp}/resource/css/nav1.css" rel="stylesheet">

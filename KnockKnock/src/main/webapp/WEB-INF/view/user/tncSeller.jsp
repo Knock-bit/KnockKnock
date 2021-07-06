@@ -1,206 +1,203 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!doctype html>
 
-    <html lang="ko">
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<script src="https://code.jquery.com/jquery-3.6.0.js"
+    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 
-    <html>
+<script>
 
-    <head>
-        <meta charset="UTF-8">
-        <script src="https://code.jquery.com/jquery-3.6.0.js"
-            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+function cAll() {
+    if ($("#checkAll").is(':checked')) {
+        $("input[type=checkbox]").prop("checked", true);
+    } else {
+        $("input[type=checkbox]").prop("checked", false);
+    }
+}
 
-        <script>
+function chk2() {
+    if ($("#chk2").is(':checked') == false) {
+        $("#checkAll").prop("checked", false);
+    }
+}
 
-            function cAll() {
-                if ($("#checkAll").is(':checked')) {
-                    $("input[type=checkbox]").prop("checked", true);
-                } else {
-                    $("input[type=checkbox]").prop("checked", false);
-                }
-            }
+function chk1() {
+    if ($("#chk1").is(':checked') == false) {
+        $("#checkAll").prop("checked", false);
+    }
+}
 
-            function chk2() {
-                if ($("#chk2").is(':checked') == false) {
-                    $("#checkAll").prop("checked", false);
-                }
-            }
+function agree() {
+    if ($("#chk1").is(':checked') == false || $("#chk2").is(':checked') == false) {
+        alert("필수사항에 동의해주세요.");
+    } else {
+        location.href = '/user/signupseller.do'
+    }
+}
 
-            function chk1() {
-                if ($("#chk1").is(':checked') == false) {
-                    $("#checkAll").prop("checked", false);
-                }
-            }
-            
-            function agree() {
-                if ($("#chk1").is(':checked') == false || $("#chk2").is(':checked') == false) {
-                    alert("필수사항에 동의해주세요.");
-                } else {
-                    location.href = '/user/signupseller.do'
-                }
-            }
-            
-            function agree2() {
-                if ($("#chk1").is(':checked') == false || $("#chk2").is(':checked') == false) {
-                    alert("필수사항에 동의해주세요.");
-                } else {
-                    location.href = '/user/signupseller2.do'
-                }
-            }
-        </script>
-        <style>
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-                font-family: 'Noto Sans KR', sans-serif;
-                background: #f6f5f7;
+function agree2() {
+    if ($("#chk1").is(':checked') == false || $("#chk2").is(':checked') == false) {
+        alert("필수사항에 동의해주세요.");
+    } else {
+        location.href = '/user/signupseller2.do'
+    }
+}
+</script>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Noto Sans KR', sans-serif;
+    background: #f6f5f7;
 
-            }
+}
 
 
-            ul>li {
-                list-style: none
-            }
+ul>li {
+    list-style: none
+}
 
 
-            h3,
-            ul,
-            li {
-                background-color: white;
-            }
+h3,
+ul,
+li {
+    background-color: white;
+}
 
-            .clearfix::after {
-                content: "";
-                display: block;
-                clear: both;
-            }
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}
 
-            footBtwrap {
-                text-align: center;
-            }
+footBtwrap {
+    text-align: center;
+}
 
-            #joinForm {
-                width: 500px;
-                margin: 0 auto;
-                margin-top: 100px;
+#joinForm {
+    width: 500px;
+    margin: 0 auto;
+    margin-top: 100px;
 
-            }
+}
 
-            ul.join_box {
-                border: 1px solid #ddd;
-                background-color: #fff;
-                position: relative;
-                z-index: 1;
-            }
-
-
-            .checkBox,
-            .checkBox>ul {
-                position: relative;
-            }
-
-            .checkBox>ul>li {
-                float: left;
-            }
-
-            .checkBox>ul>li:first-child {
-                width: 85%;
-                padding: 15px;
-                font-weight: 600;
-                color: #888;
-            }
-
-            .checkBox>ul>li:nth-child(2) {
-                position: absolute;
-                top: 50%;
-                right: 30px;
-                margin-top: -12px;
-            }
-
-            .checkBox textarea {
-                width: 96%;
-                height: 130px;
-                margin: 0 2%;
-                background-color: #f7f7f7;
-                color: #888;
-                border: none;
-            }
-
-            .footBtwrap {
-                margin: auto 0;
-                margin-top: 20px;
-                margin-bottom: 15px;
-                text-align: center;
-            }
-
-            #submit {
-                width: 30%;
-                display: inline;
-                background-color: #6BDF8F;
-                color: #fff
-            }
-
-            #reset {
-                width: 30%;
-                display: inline;
-                background-color: #fff;
-                color: #888
-            }
+ul.join_box {
+    border: 1px solid #ddd;
+    background-color: #fff;
+    position: relative;
+    z-index: 1;
+}
 
 
-            a {
-                position: relative;
-                left: 160px;
-            }
+.checkBox,
+.checkBox>ul {
+    position: relative;
+}
 
-            h1 {
-                text-align: center;
-                margin-bottom: 20px;
-            }
+.checkBox>ul>li {
+    float: left;
+}
 
-            button {
-                width: 100px;
-                height: 30px;
-                border-radius: 20px;
-                border: 1px solid #0a3a18;
-                font-size: 12px;
-                font-weight: bold;
-                letter-spacing: 1px;
-            }
-        </style>
+.checkBox>ul>li:first-child {
+    width: 85%;
+    padding: 15px;
+    font-weight: 600;
+    color: #888;
+}
 
-        <head>
-            <title>Terms and Condition</title>
-            <meta charset="UTF-8">
-        </head>
+.checkBox>ul>li:nth-child(2) {
+    position: absolute;
+    top: 50%;
+    right: 30px;
+    margin-top: -12px;
+}
 
-    <body>
+.checkBox textarea {
+    width: 96%;
+    height: 130px;
+    margin: 0 2%;
+    background-color: #f7f7f7;
+    color: #888;
+    border: none;
+}
 
-        <div id="joinForm">
-            <h1>綠!Knock! 판매자 약관</h1>
-            <ul class="join_box">
-                <li class="checkBox check01">
-                    <ul class="clearfix">
-                        <li>
-                            <h3 style="font-size:17px;">판매 약관, 구매 약관 수집 및 이용에 모두 동의합니다.</h3>
-                        </li>
-                        <li class="checkAllBtn">
-                            <input type="checkbox" name="chkAll" id="checkAll" class="chkAll" onclick="cAll()">
-                        </li>
-                    </ul>
-                </li>
-                <li class=" checkBox check02">
-                    <ul class="clearfix">
-                        <li>판매 약관 동의(필수)</li>
-                        <li class="checkBtn">
-                            <input type="checkbox" name="chk" id="chk1" onclick="chk1()">
-                        </li>
-                    </ul>
-                   <textarea name="" id="">제1조 (목적)
+.footBtwrap {
+    margin: auto 0;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+#submit {
+    width: 30%;
+    display: inline;
+    background-color: #6BDF8F;
+    color: #fff
+}
+
+#reset {
+    width: 30%;
+    display: inline;
+    background-color: #fff;
+    color: #888
+}
+
+
+a {
+    position: relative;
+    left: 160px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+button {
+    width: 100px;
+    height: 30px;
+    border-radius: 20px;
+    border: 1px solid #0a3a18;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+</style>
+
+<head>
+    <title>Terms and Condition</title>
+    <meta charset="UTF-8">
+    
+</head>
+<body>
+    <div id="joinForm">
+  
+        <h1>綠!Knock! 판매자 약관</h1>
+        <ul class="join_box">
+            <li class="checkBox check01">
+                <ul class="clearfix">
+                    <li>
+                        <h3 style="font-size:17px;">판매 약관, 구매 약관 수집 및 이용에 모두 동의합니다.</h3>
+      </li>
+      <li class="checkAllBtn">
+          <input type="checkbox" name="chkAll" id="checkAll" class="chkAll" onclick="cAll()">
+        </li>
+    </ul>
+</li>
+<li class=" checkBox check02">
+    <ul class="clearfix">
+        <li>판매 약관 동의(필수)</li>
+        <li class="checkBtn">
+            <input type="checkbox" name="chk" id="chk1" onclick="chk1()">
+      </li>
+  </ul>
+ <textarea name="" id="">제1조 (목적)
 본 약관은 녹녹(이하 “회사”)와 회사가 운영하는 웹사이트(이하 “사이트”. 또한 이하 “회사”에 “사이트”를 포함하여 통칭함)에 판매회원(본 약관에서 ‘판매회원’은 녹녹 구매이용약관의 ‘셀러회원’과 같음)으로 가입하여 사이트에서 판매회원에게 제공하는 전자상거래 관련 서비스와 기타 서비스(이하 “서비스”)를 이용하는 자 간의 권리, 의무를 확정하고 이를 이행하여 상호 발전을 도모하는 것을 목적으로 합니다.
 
 제2조 (용어의 정의)

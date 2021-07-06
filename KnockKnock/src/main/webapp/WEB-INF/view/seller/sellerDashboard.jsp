@@ -1,9 +1,52 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="cp" value="${pageContext.request.contextPath }" />
-<!-- ======= Header ======= -->
-<meta charset=utf-8>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>綠!Knock! - SHOP</title>
+
+<!-- Favicons -->
+<link href="${cp}/resource/img/favicon.png" rel="icon">
+<link href="${cp}/resource/img/apple-touch-icon.png"
+	rel="apple-touch-icon">
+
+<!-- Google Fonts -->
+<link
+	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+	rel="stylesheet">
+
+<!-- Vendor CSS Files -->
+<link href="${cp}/resource/vendor/animate.css/animate.min.css"
+	rel="stylesheet">
+<link href="${cp}/resource/vendor/aos/aos.css" rel="stylesheet">
+<link href="${cp}/resource/vendor/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
+<link href="${cp}/resource/vendor/bootstrap-icons/bootstrap-icons.css"
+	rel="stylesheet">
+<link href="${cp}/resource/vendor/boxicons/css/boxicons.min.css"
+	rel="stylesheet">
+<link href="${cp}/resource/vendor/remixicon/remixicon.css"
+	rel="stylesheet">
+<link href="${cp}/resource/vendor/swiper/swiper-bundle.min.css"
+	rel="stylesheet">
+
+<!-- Main CSS File -->
+<link href="${cp}/resource/css/main.css" rel="stylesheet">
+<link href="${cp}/resource/css/nav1.css" rel="stylesheet">
+
+<!-- Import BootStrap -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
 <header id="header" class="fixed-top">
 	<div class="container d-flex align-items-center">
 
@@ -37,20 +80,33 @@
 				<li class="dropdown"><a href="#"><button type="button"
 							class="btn btn-outline-success">${seller.sName }</button> <i
 						class="bi bi-chevron-down"></i></a>
-
 					<ul>
 						<li><a href="${cp }/seller/sellerDashboard.do">판매자 페이지</a></li>
-
 					</ul></li>
-
-
-			</ul>
+					</ul>
 			<i class="bi bi-list mobile-nav-toggle"></i>
 		</nav>
 		<!-- .navbar -->
-
-
-
 	</div>
 </header>
 <!-- End Header -->
+
+<!-- 불러오기 -->
+	O_IDX
+P_IDX
+O_CNT
+P_PRICE
+O_STATUS
+F_CHECK
+O_TOTPRICE
+O_FEE
+O_NUMBER
+U_IDX
+PA_IDX
+O_DATE
+S_IDX
+
+
+
+</body>
+</html>
