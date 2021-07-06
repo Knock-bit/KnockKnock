@@ -80,7 +80,7 @@ public class ProductController {
 				} else { 
 					filePath = onlyFileName + "(" + count + ")" + extension;
 				}
-				System.out.println("파일 생성 ! ");
+				System.out.println("파일 생성! ");
 				File checkFile = new File(uploadPath + filePath);
 				System.out.println("파일명 :" + filePath);
 				if(!checkFile.exists()) {

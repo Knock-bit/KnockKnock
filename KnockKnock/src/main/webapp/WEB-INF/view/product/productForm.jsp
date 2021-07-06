@@ -76,7 +76,7 @@
                             </div>
                         </div>
                         <div class="form-group" >
-                                <label for="file">썸네일 </label>
+                                <label for="file">썸네일</label>
                         <input type="file" name="file">
                             </div>
                         
