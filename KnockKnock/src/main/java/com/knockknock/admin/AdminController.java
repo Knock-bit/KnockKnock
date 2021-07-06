@@ -114,33 +114,5 @@ public class AdminController {
 		return "/admin/adminFunding";
 	}
 	
-	@PostMapping("/adminFundingWrite.do")
-	public String test(HttpServletRequest request) {
-		System.out.println(request.getParameter("idx"));
-		System.out.println(request.getParameter("editordata"));
-
-		
-		return null;
-	}
-	
-	@GetMapping("/adminSummer.do")
-	public String moveSummer() {
-		return "/summernoteTest/summernote";
-	}
-	@PostMapping("/adminSummerTest.do")
-	public String ttest(AdminSummerVO vo) {
-		System.out.println(vo);
-		adminService.insertSummer(vo);
-		return "redirect:selectSummer.do";
-	}
-	
-	@GetMapping("/selectSummer.do")
-	public String tt(Model model) {
-		AdminSummerVO svo = adminService.selectSummer();
-		model.addAttribute("summer",svo);
-		System.out.println(svo);
-		return "/summernoteTest/summernoteDetail";
-	}
-
 
 }

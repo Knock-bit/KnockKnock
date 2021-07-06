@@ -28,7 +28,7 @@
 		SELECT * FROM KEYWORD
 		ORDER BY K_CONTENT
 	</select>
-	
+
 	<!-- 키워드 추가 -->
 	<insert id="insertKeyword" parameterType="adminKeywordVO">
 		INSERT INTO KEYWORD
@@ -56,20 +56,30 @@
 	<select id="getProposal" parameterType="adminProposalVO"
 		resultType="adminProposalVO">
 		SELECT * FROM PROPOSAL P INNER JOIN USERS U
-		ON P.U_IDX = U.U_IDX
+		ON P.U_IDX =
+		U.U_IDX
 		WHERE CP_IDX = #{cpIdx}
 	</select>
 
-	<!-- 썸머노트 insert -->
-	<insert id="insertSummer" parameterType="adminSummerVO">
-		INSERT INTO
-		TEST(TEST_IDX, CONTENT, TITLE) VALUES (#{testIdx}, #{content},
-		#{title})
-	</insert>
-	<!-- 썸머노트 select -->
-	<select id="selectSummer" resultType="adminSummerVO">
-		SELECT * FROM TEST WhERE
-		TEST_IDX = 44444
+	<!-- 캠페인 카테고리 리스트 출력 -->
+	<select id="getCategoryList"
+		resultType="adminCampaignCategoryVO">
+		SELECT * FROM CAMPAIGN_CATEGORY
 	</select>
 
+	<!-- 펀딩 추가하기 -->
+	<insert id="insertFunding" parameterType="adminFundingVO">
+		INSERT INTO FUNDING
+		(CF_IDX, CF_TITLE, CF_CONTENT, CF_STATUS, CF_FILE, CC_NAME,
+		CF_GOALPOINT, CF_GOAL, CP_IDX, U_IDX, CF_KEYWORD1, CF_KEYWORD2,
+		CF_KEYWORD3, CF_STARTDATE, CF_ENDDATE)
+		VALUES
+		(CF_IDX_SEQ.NEXTVAL, #{cfTitle}, #{cfContent}, #{cfStatus}, #{cfFile}, #{ccName},
+		#{cfGoalpoint},#{cfGoal}, #{cpIdx}, #{uIdx}, #{cfKeyword1},
+		#{cfKeyword2}, #{cfKeyword3}, #{cfStartdate}, #{cfEnddate} )
+	</insert>
+	
+	<update id="updateCpActive" parameterType="adminFundingVO">
+		UPDATE PROPOSAL SET CP_ACTIVE =1 WHERE CP_IDX=#{cpIdx}
+	</update>
 </mapper>
