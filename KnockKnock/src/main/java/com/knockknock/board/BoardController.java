@@ -12,10 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.knockknock.util.PagingVO;
@@ -23,7 +21,7 @@ import com.knockknock.util.PagingVO;
 @Controller
 public class BoardController {
 	
-//	private String uploadPath = "C:/Mystudy/";
+	private String uploadPath = "C:/Mystudy/";
 	
 	@Autowired
 	private BoardService boardService;
@@ -33,23 +31,20 @@ public class BoardController {
 			@RequestParam(value = "nowPage", required = false) String nowPage,
 			@RequestParam(value = "cntPerPage", required = false) String cntPerPage) {
 		
-//		int total = boardService.countBoard();
-//		if (nowPage == null && cntPerPage == null) {
-//			nowPage = "1"; 
-//			cntPerPage = "5";
-//		} else if (nowPage == null) {
-//			nowPage = "1";
-//		} else if (cntPerPage == null) {
-//			cntPerPage = "5";
-//		}
-//		pvo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
-//		model.addAttribute("paging", pvo);
-//		model.addAttribute("getBoardList", boardService.getBoardList(pvo));
-		List<BoardVO> boardList = boardService.getBoardList(vo);
+		int total = boardService.countBoard();
+		if (nowPage == null && cntPerPage == null) {
+			nowPage = "1"; 
+			cntPerPage = "5";
+		} else if (nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) {
+			cntPerPage = "5";
+		}
+		pvo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		model.addAttribute("paging", pvo);
+		model.addAttribute("getBoardList", boardService.getBoardList(pvo));
+		List<BoardVO> boardList = boardService.getBoardList(pvo);
 		model.addAttribute("getBoardList", boardList);
-		
-		String bRegdate = vo.getbRegdate();
-		System.out.println("bRegdate : " + bRegdate);
 		
 		return "board/getBoardList";	
 	}
@@ -65,32 +60,29 @@ public class BoardController {
 			 
 		System.out.println(">> vo : " + vo);
 		
-//		if (file.isEmpty()) {	
-//		} else {
-//			String fName = file.getOriginalFilename();
-//			String onlyFName = fName.substring(0, fName.indexOf("."));
-//			String extension = fName.substring(fName.indexOf("."));
-//			String fPath = null;
-//			int count = 0;
-//			
-//			while(true) {
-//				if(count == 0) {
-//					filePath = onlyFName + extension;
-//				} else { 
-//					filePath = onlyFName + "(" + count + ")" + extension;
-//				}
-//				System.out.println("파일 생성");
-//				File cFile = new File(uploadPath + fPath);
-//				System.out.println("파일명 :" + fPath);
-//				if(!cFile.exists()) {
-//					break;
-//				}
-//				count ++;
-//			}
-//			file.transferTo(new File(uploadPath + fPath));
-//			vo.setbFile(fPath + fName);
-//		}
-		
+		if (file.isEmpty()) {	
+		} else {
+			String fName = file.getOriginalFilename();
+			String onlyFName = fName.substring(0, fName.indexOf("."));
+			String extension = fName.substring(fName.indexOf("."));
+			String fPath = null;
+			int count = 0;
+			
+			while(true) {
+				if(count == 0) {
+					fPath = onlyFName + extension;
+				} else { 
+					fPath = onlyFName + "(" + count + ")" + extension;
+				}
+				File cFile = new File(uploadPath + fPath);
+				if(!cFile.exists()) {
+					break;
+				}
+				count ++;
+			}
+			file.transferTo(new File(uploadPath + fPath));
+			vo.setbFile(fPath + fName);
+		}
 		boardService.insertBoard(vo);
 		
 		return "redirect:/board/getBoardList.do";
@@ -111,8 +103,8 @@ public class BoardController {
 	
 	@PostMapping("/board/updateBoard.do")
 	public String updateBoardPost(BoardVO vo) {
-		System.out.println(">>> 게시글 수정");
-		System.out.println("vo : " + vo);
+//		System.out.println(">>> 게시글 수정");
+//		System.out.println("vo : " + vo);
 		boardService.updateBoard(vo);
 		return "redirect:/board/getBoard.do?bIdx=" + vo.getbIdx();
 	}	

@@ -79,6 +79,12 @@
 		#{cfKeyword2}, #{cfKeyword3}, #{cfStartdate}, #{cfEnddate} )
 	</insert>
 	
+	<!-- 펀딩 하나 가져오기 -->
+	<select id="getFunding" parameterType="adminFundingVO" resultType="adminFundingVO">
+		SELECT * FROM FUNDING WHERE CF_IDX = #{cfIdx}
+	</select>
+	
+	
 	<update id="updateCpActive" parameterType="adminFundingVO">
 		UPDATE PROPOSAL SET CP_ACTIVE =1 WHERE CP_IDX=#{cpIdx}
 	</update>

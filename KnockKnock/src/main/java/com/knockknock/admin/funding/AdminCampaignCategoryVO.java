@@ -32,5 +32,5 @@ public class AdminCampaignCategoryVO {
 	public String toString() {
 		return "AdminCampaignCategory [ccIdx=" + ccIdx + ", ccName=" + ccName + "]";
 	}
-	
+	 
 }

@@ -32,8 +32,8 @@
 		frm.submit();
 	}
 	
-	function adminSummer(frm){
-	frm.action ="adminSummer.do";
+	function adminFunding(frm){
+	frm.action ="getFundingList.do";
 	frm.submit();
 	}
 	
@@ -49,7 +49,8 @@
 		<input type="button" value="adminCampaignCategory" onclick="adminCampaignCategory(this.form)"/>
 		<input type="button" value="adminFunding" onclick="adminFunding(this.form)">
 		<input type="button" value="adminProposal" onclick="adminProposal(this.form)">
-		<input type="button" value="adminSummer" onclick="adminSummer(this.form)">
+		<input type="button" value="adminFunding" onclick="adminFunding(this.form)">
+		
 		
 	</form>
 	
