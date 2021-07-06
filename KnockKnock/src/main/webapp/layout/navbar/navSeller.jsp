@@ -39,7 +39,7 @@
 						class="bi bi-chevron-down"></i></a>
 
 					<ul>
-						<li><a href="${cp }/seller/sellerDashboard.do">판매자 페이지</a></li>
+						<li><a href="${cp }/seller/sellerDashboard.do?sIdx=${seller.sIdx}" >판매자 페이지</a></li>
 
 					</ul></li>
 

@@ -92,20 +92,24 @@
 <!-- End Header -->
 
 <!-- 불러오기 -->
-	O_IDX
-P_IDX
-O_CNT
-P_PRICE
-O_STATUS
-F_CHECK
-O_TOTPRICE
-O_FEE
-O_NUMBER
-U_IDX
-PA_IDX
-O_DATE
-S_IDX
+<c:forEach var="list" items="${list }">
 
+O_IDX = ${list.oIdx }
+P_IDX = ${list.pIdx }
+O_CNT = ${list.oCnt }
+P_PRICE = ${list.pPrice }
+O_STATUS = ${list.oStatus }
+F_CHECK = ${list.fCheck }
+O_TOTPRICE = ${list.oTotprice }
+O_FEE = ${list.oFee }
+O_NUMBER = ${list.oNumber }
+U_IDX = ${list.uIdx }
+PA_IDX = ${list.paIdx }
+O_DATE = ${list.oDate }
+S_IDX = ${list.sIdx }
+
+ 
+</c:forEach>
 
 
 </body>
