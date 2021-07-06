@@ -40,11 +40,6 @@
 		frm.submit();
 	}
 	
-	function connect_dashboard(frm)}{
-		frm.action="seller/sellerDashboard.do";
-		frm.submit();
-		
-	}
 </script>
 </head>
 
@@ -58,7 +53,7 @@
 		<input type="button" value="mypage" onclick="mypage_connect(this.form)">
 		<input type="button" value="user" onclick="user_connect(this.form)">
 		<input type="button" value="contact" onclick="contact_connect(this.form)">
-		<input type="button" value="sellerDashboard" onclick="connect_dashboard(this.form)">
+		
 	</form>
 	
 </body>
