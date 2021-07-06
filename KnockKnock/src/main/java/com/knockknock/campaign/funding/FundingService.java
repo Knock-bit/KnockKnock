@@ -18,4 +18,5 @@ public interface FundingService {
 	int deleteFundingUser(FundingUserVO fundingUser);
 	int updateFundingPointMinus(FundingUserVO fundingUser);
 	int updateUserFundingPointMinus(FundingUserVO fundingUser);
+	int updateSuccessFunding();
 }
