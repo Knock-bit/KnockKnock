@@ -138,4 +138,5 @@ public class MypageProductController {
 		model.addAttribute("olist",olist);
 		return "/mypage/orders/ordersList";
 	}
+	
 }
