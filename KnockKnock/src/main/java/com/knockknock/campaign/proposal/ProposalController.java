@@ -76,7 +76,7 @@ public class ProposalController {
 	
 	
 	@PostMapping("/proposalSummer.do")
-	public String insertProposal(ProposalVO proposal) {
+	public String ttest(ProposalVO proposal) {
 		System.out.println(proposal);
 		int result = proposalService.insertProposal(proposal);
 		return "campaign/proposal/pResult";
