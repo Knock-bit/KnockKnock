@@ -3,6 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri ="http://java.sun.com/jsp/jstl/fmt" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+  <c:set var="cp" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,13 +16,13 @@
 
 	//게시글 등록창으로..
 	function moveInsert_board(frm) {
-		frm.action = "moveInsert.do"
+		frm.action = "${cp}/board/moveInsert.do"
 		frm.setAttribute('method', 'get');
 		frm.submit();
 	}
 	function selChange() {
 		var sel = document.getElementById('cntPerPage').value;
-		location.href = "getBoardList.do?nowPage=${paging.nowPage}&cntPerPage="
+		location.href = "${cp}/board/getBoardList.do?nowPage=${paging.nowPage}&cntPerPage="
 				+ sel;
 	}
 	
@@ -53,7 +54,7 @@
 		</tr>
 	<c:if test="${not empty getBoardList}">
 		<c:forEach var="board" items="${getBoardList}">
-		<tr style="cursor:pointer;" onclick="location.replace='getBoard.do?bIdx=${board.bIdx }'">
+		<tr style="cursor:pointer;" onclick="location.href='${cp}/board/getBoard.do?bIdx=${board.bIdx }'">
 			<td>${board.bIdx}</td>
 			<td>${board.sbIdx}</td>
 			<td>${board.bSubject}</td>
@@ -109,7 +110,8 @@
 		</c:if>
 	</div>
 	<div>
-		<p><input type="button" value="게시글등록" onclick="moveInsert_board(this.form)"></p>
+		<p><input type="button" value="게시글등록" onclick="moveInsert_board(this.form)">
+		<input type="button" value="내글보기"></p>
 	</div>	
 	</form>
 </div>

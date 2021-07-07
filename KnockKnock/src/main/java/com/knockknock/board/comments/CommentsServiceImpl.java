@@ -16,8 +16,8 @@ public class CommentsServiceImpl implements CommentsService {
 	}
 
 	@Override
-	public void insertComments(CommentsVO vo) {
-		commentsDAO.insertComments(vo);
+	public int insertComments(CommentsVO vo) {
+		return commentsDAO.insertComments(vo);
 	}
 
 	@Override

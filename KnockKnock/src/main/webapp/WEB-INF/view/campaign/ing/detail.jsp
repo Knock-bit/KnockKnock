@@ -91,6 +91,11 @@ vertical-align:middle;}
  	left:40%;
  	width:500px;
 	}  */
+	
+	.campaign-main-info{
+	margin: 0 auto;
+	
+	}
 	 .detail-title {
 	margin-top:100px;
 	text-align:center;
@@ -103,9 +108,13 @@ vertical-align:middle;}
 		}
 	@media (min-width: 1100px) {
   .container {
-    width: 1080px;
+    width: 1100px;
 		  }
 		}
+	.ci-emblem{
+	float:left;
+	}
+		
 </style>
 
 <script>
@@ -248,7 +257,7 @@ vertical-align:middle;}
           
           
           
-          <div class="col-lg-4">
+          <div class="col-lg-4" style="padding-left:0px;">
 
               <div class="campaign-main-info">
               
@@ -257,7 +266,6 @@ vertical-align:middle;}
               총 ${campaign.cTotpoint } 포인트가<br>
               참여자들에게 나눠집니다.
               </div>
-           </div>
 
            <%--  <div class="campaign-info d-flex justify-content-between align-items-center">
               <h5>참여중인 사람 목록</h5>
@@ -282,22 +290,23 @@ vertical-align:middle;}
             </div> --%>
 
             <div class="campaign-info d-flex justify-content-between align-items-center">
-              <h5>Available Seats</h5>
-              <p>30</p>
+              
+              <p><img class="ci-emblem" src="${campaign.ciEmblem }" width=60px;> 인증방법<br>
+              ${campaign.ciGoal }</p>
+              
+              
             </div>
 
 			<div class="campaign-info align-items-center">
-              <div class="btn-wrap funding">
+               <div class="btn-wrap funding">
               <button onclick="sendLink();" id="share" class = "btn-funding"> 공유하기 </button>
               </div>
+                <div class="btn-wrap funding">
+              <button onclick="funding()" id="participate" class="btn-funding"> 참여하기 </button>
+              </div><
             </div>
             
-            <div class="campaign-info align-items-center">
-              <div class="btn-wrap funding">
-              <button onclick="funding()" id="participate" class="btn-funding"> 참여하기 </button>
-              </div>
-
-            </div>
+         
 
           </div>
         </div>

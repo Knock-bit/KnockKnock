@@ -3,9 +3,9 @@
 <script>
 	var bIdx='${board.bIdx}'; //게시글 번호
 	 
-	$('[name=commentsInsertBtn]').click(function(){ //댓글 등록 버튼 클릭시 
-	    var insertData = $('[name=commentsInsertForm]').serialize(); //commentInsertForm의 내용을 가져옴
-	    insertComments(insertData); //Insert 함수호출(아래)
+	$('[name=commentsInsertBtn]').click(function(){ 
+	    var insertData = $('[name=commentsInsertForm]').serialize();
+	    insertComments(insertData); 
 	});
  
  
@@ -19,8 +19,8 @@
 	        success : function(data){
 	            var a =''; 
 	            $.each(data, function(key, value){ 
-	                a += '<div class="commentsArea" style="border-bottom:1px solid darkgray; margin-bottom: 15px;">';
-	                a += '<div class="commentsInfo'+value.mIdx+'">'+'댓글번호 : '+value.mIDX+' / 작성자 : '+value.uIdx;
+	                a += '<div class="areaComments" style="border-bottom:1px solid darkgray; margin-bottom: 15px;">';
+	                a += '<div class="infoComments'+value.mIdx+'">'+'댓글번호 : '+value.mIDX+' / 작성자 : '+value.uIdx;
 	                a += '<a onclick="updateComments('+value.mIdx+',\''+value.cContent+'\');"> 수정 </a>';
 	                a += '<a onclick="deleteComments('+value.mIdx+');"> 삭제 </a> </div>';
 	                a += '<div class="commentsContent'+value.mIdx+'"> <p> 내용 : '+value.cContent +'</p>';
@@ -40,14 +40,14 @@
 	        data : insertData,
 	        success : function(data){
 	            if(data == 1) {
-	                commentsList(); //댓글 작성 후 댓글 목록 reload
+	                commentsList();
 	                $('[name=cContents]').val('');
 	            }
 	        }
 	    });
 	}
 	 
-	//댓글 수정 - 댓글 내용 출력을 input 폼으로 변경 
+	//댓글 수정
 	function updateComments(mIdx, cContent){
 	    var a ='';
 	    
@@ -68,7 +68,7 @@
 	        type : 'post',
 	        data : {'cContent' : updateContent, 'mIdx' : mIdx},
 	        success : function(data){
-	            if(data == 1) commentsList(bIdx); //댓글 수정후 목록 출력 
+	            if(data == 1) commentsList(bIdx);
 	        }
 	    });
 	}
@@ -79,13 +79,13 @@
 	        url : '/board/deleteComments.do/'+mIdx,
 	        type : 'post',
 	        success : function(data){
-	            if(data == 1) commentsList(bIdx); //댓글 삭제후 목록 출력 
+	            if(data == 1) commentsList(bIdx); 
 	        }
 	    });
 	}
 	
 	$(document).ready(function(){
-	    commentsList(); //페이지 로딩시 댓글 목록 출력 
+	    commentsList(); 
 	});
 
 </script>
