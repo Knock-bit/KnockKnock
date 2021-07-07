@@ -1,7 +1,6 @@
 package com.knockknock.user.impl;
 
 import java.io.PrintWriter;
-import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
@@ -39,8 +38,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void join(UserVO vo) {
-		userDAO.join(vo);
+	public void join(UserVO vo) throws Exception {
+ 		userDAO.join(vo);
 	}
 
 	@Override
@@ -72,35 +71,75 @@ public class UserServiceImpl implements UserService {
 
 		if (div.equals("findpwd")) { 
 			subject = "綠!Knock!의 임시 비밀번호 입니다.";
-			msg += "<div align='center' style='border:1px solid black; font-family:verdana'>";
-			msg += "<h3 style='color: blue;'>";
-			msg += vo.getuId() + "님의 임시 비밀번호 입니다. 비밀번호를 변경하여 사용하세요.</h3>";
+			msg += "<div align='center' style='border:1px solid rgb(184, 180, 180); font-family: Noto Sans KR'>";
+			msg += "<h1 style='color: rgb(10, 61, 14);'>綠!Knock! 비밀번호 찾기</h1>";
+			msg += "<h3>";
+			msg += vo.getuId() + "님의 임시 비밀번호를 보내드립니다.</h3>";
 			msg += "<p>임시 비밀번호 : ";
 			msg += vo.getuPwd() + "</p>";
 			msg += "로그인 하신 후 마이페이지에서 비밀번호를 변경해주시기 바랍니다.<br></div>";
+			
+			// 받는 사람 E-Mail 주소
+			String mail = vo.getuEmail();
+			System.out.println("받는사람 이메일주소 = " +mail);
+			System.out.println("hostSMTP = "+hostSMTP);
+			try {
+				HtmlEmail email = new HtmlEmail();
+				email.setDebug(true);
+				email.setCharset(charSet);
+				email.setSSL(true);
+				email.setHostName(hostSMTP);
+				email.setSmtpPort(465); // 네이버 이용시 587
+				email.setAuthentication(hostSMTPid, hostSMTPpwd);
+				email.setTLS(true);
+				email.addTo(mail, charSet);
+				email.setFrom(fromEmail, fromName, charSet);
+				email.setSubject(subject);
+				email.setHtmlMsg(msg);
+				email.send();
+			} catch (Exception e) { 
+				System.out.println("메일발송 실패 : " + e);
+	 		}
+		}else {
+			// 회원가입 메일 내용
+			subject = "綠!Knock! 회원가입 인증 메일입니다.";
+			msg += "<div align='center' style='border:1px solid rgb(184, 180, 180);font-family: Noto Sans KR'>";
+			msg += "<h1 style='color: rgb(10, 61, 14);'>綠!Knock! 회원가입을 축하드립니다.</h1>"; 
+			msg += "<h3>";
+			msg += vo.getuId() + "님 회원가입을 환영합니다.</h3>";
+			msg += "<form><div style='font-size: 130%'>";
+			msg += "하단의 인증 버튼 클릭 시 정상적으로 회원가입이 완료됩니다.</div><br/>";
+			msg += "<form method='POST' action='http://localhost:8080/userApproval.do'>";
+			msg += "<input type='hidden' name='uEmail' value='" + vo.getuEmail()+ "'>";
+			msg += "<input type='hidden' name='uApprkey' value='" + vo.getuApprkey() + "'>";
+			msg += "<input type='submit' value='인증'></form><br/></div>";
+			System.out.println("인증메일 클릭시 이메일 = "+vo.getuEmail());
+			System.out.println("인증메일 클릭시 APPRKEY = "+ vo.getuApprkey());
+
+			// 받는 사람 E-Mail 주소
+			String mail = vo.getuEmail();
+			System.out.println("받는사람 이메일주소 = " +mail);
+			System.out.println("hostSMTP = "+hostSMTP);
+			try {
+				HtmlEmail email = new HtmlEmail();
+				email.setDebug(true);
+				email.setCharset(charSet);
+				email.setSSL(true);
+				email.setHostName(hostSMTP);
+				email.setSmtpPort(465); // 네이버 이용시 587
+				email.setAuthentication(hostSMTPid, hostSMTPpwd);
+				email.setTLS(true);
+				email.addTo(mail, charSet);
+				email.setFrom(fromEmail, fromName, charSet);
+				email.setSubject(subject);
+				email.setHtmlMsg(msg);
+				email.send();
+			} catch (Exception e) { 
+				System.out.println("메일발송 실패 : " + e);
+	 		}
 		}
 
-		// 받는 사람 E-Mail 주소
-		String mail = vo.getuEmail();
-		System.out.println("받는사람 이메일주소 = " +mail);
-		System.out.println("hostSMTP = "+hostSMTP);
-		try {
-			HtmlEmail email = new HtmlEmail();
-			email.setDebug(true);
-			email.setCharset(charSet);
-			email.setSSL(true);
-			email.setHostName(hostSMTP);
-			email.setSmtpPort(465); // 네이버 이용시 587
-			email.setAuthentication(hostSMTPid, hostSMTPpwd);
-			email.setTLS(true);
-			email.addTo(mail, charSet);
-			email.setFrom(fromEmail, fromName, charSet);
-			email.setSubject(subject);
-			email.setHtmlMsg(msg);
-			email.send();
-		} catch (Exception e) { 
-			System.out.println("메일발송 실패 : " + e);
- 		}
+		
 	}
 
 	@Override
@@ -140,5 +179,26 @@ public class UserServiceImpl implements UserService {
 		}
 		return map;
 	}
+
+	@Override
+	public void userApproval(UserVO vo, HttpServletResponse resp) throws Exception {
+		resp.setContentType("text/html;charset=utf-8");
+		System.out.println(userDAO.userApproval(vo));
+		PrintWriter out = resp.getWriter();
+		if (userDAO.userApproval(vo) == 0) { // 이메일 인증에 실패하였을 경우
+			out.println("<script>");
+			out.println("alert('잘못된 접근입니다.');");
+			out.println("history.go(-1);");
+			out.println("</script>");
+			out.close();
+		} else { // 이메일 인증을 성공하였을 경우
+			out.println("<script>");
+			out.println("alert('인증이 완료되었습니다. 로그인 후 이용하세요.');");
+			out.println("location.href='/main.do';");
+			out.println("</script>");
+			out.close();
+		}		
+	}
+ 
 
 }
