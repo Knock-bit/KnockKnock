@@ -34,32 +34,33 @@ import com.google.gson.Gson;
 import com.knockknock.board.BoardVO;
 import com.knockknock.campaign.campaign.CampaignVO;
 import com.knockknock.contact.ContactVO;
+import com.knockknock.user.UserController;
 import com.knockknock.user.UserVO;
 import com.knockknock.util.PagingVO;
 import com.knockknock.util.PointVO;
 
 @Controller
-@SessionAttributes("users")
+//@SessionAttributes("users")
 public class MypageController {
 
 	@Autowired
 	private MypageService mypageService;
 
 	// 마이페이지 임시 메인으로 이동
-	@GetMapping("/myPage.do")
-	public String moveMypage(Model model) {
-		int uIdx = 1;
-		UserVO user = mypageService.selectOneUser(uIdx);
-		model.addAttribute("users", user);
-		return "/mypage/mypage";
-	}
+	/*
+	 * @GetMapping("/myPage.do") public String moveMypage(Model model, HttpSession
+	 * session) { int uIdx = 1; UserVO user = mypageService.selectOneUser(uIdx);
+	 * session.setAttribute("users", user); return "/mypage/mypage"; }
+	 */
 
 	// 내 정보 수정으로 이동
 	@GetMapping("/updateMyInfo.do")
-	public String updateMypage(UserVO vo, Model model) {
-
-		model.addAttribute("users");
+	public String updateMypage(@ModelAttribute("users")UserVO vo, Model model, HttpSession session) {
 		
+		UserVO user = (UserVO) session.getAttribute("users");
+		
+		user = mypageService.selectOneUser(user.getuIdx());
+		model.addAttribute("users",user);
 		
 		return "/mypage/mypageList/updateMyInfo";
 	}
@@ -75,8 +76,7 @@ public class MypageController {
 
 	// 내 정보 수정 정보 받아오기
 	@PostMapping("/updateMyInfoBtn.do")
-	public String updateMyInfo(@ModelAttribute("users") UserVO vo, MultipartFile file, HttpServletRequest request) {
-
+	public String updateMyInfo(UserVO vo, MultipartFile file, HttpServletRequest request, HttpSession session) {
 		// 파일처리
 		if (file.isEmpty()) {
 
@@ -85,6 +85,8 @@ public class MypageController {
 			String savePath = request.getSession().getServletContext().getRealPath("/resource/img/upload/");
 			// 실제 파일명
 			String fileName = file.getOriginalFilename();
+			System.out.println("savepath : " + savePath);
+			System.out.println("filename : " + fileName);
 
 			// 업로드한 파일명을 마지막 . 기준으로 분리 ex) img.png -> img/ .png
 			// indexOf : .위치 추출 / subString : begin ~ end 까지 자르기
@@ -135,17 +137,25 @@ public class MypageController {
 			}
 
 		}
+		UserVO userVO = (UserVO) session.getAttribute("users");
+		int idx = userVO.getuIdx();
+		vo.setuIdx(idx);
 		int result = mypageService.updateMyInfo(vo);
 
+		userVO = mypageService.selectOneUser(idx);
+		
 
-
+		session.setAttribute("users", userVO);
 		return "/mypage/mypageList/updateMyInfo";
 	}
 
 	// 비밀번호 변경 페이지로 이동
 	@GetMapping("/updatePwd.do")
-	public String updatePwd(@ModelAttribute("users") UserVO vo) {
-;
+	public String updatePwd(HttpSession session) {
+		
+		UserVO vo = (UserVO) session.getAttribute("users");
+		session.setAttribute("users", vo);
+		
 		return "/mypage/mypageList/updatePwd";
 	}
 
@@ -154,9 +164,11 @@ public class MypageController {
 	// = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@PostMapping("/updateMyPwd.do")
 	@ResponseBody
-	public String updateMyPwd(@ModelAttribute("users") UserVO vo) {
-
+	public String updateMyPwd(UserVO vo, HttpSession session) {
 		
+		UserVO user = (UserVO) session.getAttribute("users");
+		int uIdx = user.getuIdx();
+		vo.setuIdx(uIdx);
 		mypageService.updateMyPwd(vo);
 
 		return "users";
@@ -165,15 +177,22 @@ public class MypageController {
 	
 	// 포인트현황 페이지로 이동
 	@GetMapping("/myPoint.do")
-	public String myPointPage(@ModelAttribute("users")UserVO vo, Model model) {
+	public String myPointPage(UserVO vo, Model model, HttpSession session) {
+		
+		// 유저 정보 가져오기
+		UserVO user = (UserVO) session.getAttribute("users");
+		user = mypageService.selectOneUser(user.getuIdx());
+		
 		
 		// 해당 유저의 STATUS가 1인 엠블럼 이미지 가져오기
 		List<String> emImgList = mypageService.emblemList(vo);
 
 		// 나의 포인트 내역 가져오기
+		vo.setuIdx(user.getuIdx());
 		List<PointVO> pointList = mypageService.myPointList(vo);
+		System.out.println("pointList : " + pointList);
 		
-		
+		model.addAttribute("users",user);
 		model.addAttribute("pointList", pointList);
 		model.addAttribute("emImgList", emImgList);
 		return "/mypage/mypageList/myPointPage";
@@ -292,6 +311,9 @@ public class MypageController {
 	public ModelAndView deleteUsers(int uIdx, HttpSession session) {
 		
 		int result = mypageService.deleteUsers(uIdx);
+		
+		//UserController uc = new UserController();
+		//uc.logout(session);
 		
 		
 		session.invalidate();
