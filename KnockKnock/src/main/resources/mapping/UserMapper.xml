@@ -242,4 +242,6 @@ U_ACTIVE, U_GENDER, U_ADDRESS, U_JOINDATE)
 	</select> 
 	
 	
+
+
 </mapper>

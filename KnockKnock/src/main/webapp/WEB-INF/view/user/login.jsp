@@ -8,7 +8,7 @@
 
 <head>
 <meta charset="UTF-8">
-<title>Login</title>
+<title></title>
 <!--jQuery import방식 2(CDN방식)-->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- CSS연결 -->

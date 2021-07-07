@@ -3,13 +3,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<!--jQuery import방식 2(CDN방식)-->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<!-- CSS연결 -->
-<link href="${cp}/resource/css/login.css" rel="stylesheet">
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
 	$(function(){
@@ -32,28 +29,48 @@
 		});
 	})
 </script>
-
-
+<style type="text/css">
+.mybtn{
+  width:150px;
+  height:40px;
+  padding:0;
+  display:inline; 
+  border-radius: 4px; 
+  background: #212529;
+  color: #fff;
+  margin-top: 20px;
+  border: solid 2px #212529; 
+  transition: all 0.5s ease-in-out 0s;
+}
+.mybtn:hover .mybtn:focus {
+  background: white;
+  color: #212529;
+  text-decoration: none;
+}
+</style>
 <title>비밀번호 찾기</title>
 </head>
 <body>
-<!-- ===Header - Nav 대신 로고만 -->
-<a href="/main.do"><img src="${cp}/resource/img/logo2.png" style="width:400px;"></a>
-<!-- header끝 -->
-    <div class="container" style="width: 500px; height: 400px;">
-        <form method="post">
-            <div style="margin:30px;">
-                <h1>비밀번호 찾기</h1>
-            </div>
-            <input type="text" placeholder="등록한 아이디" name="uId" id="uId" style="width:300px;" />
-            <input type="email" placeholder="등록한 이메일주소" name="uEmail" id="uEmail" style="width:300px;" />
-            <p class="w3-center">
-                <button type="button" id="findBtn">찾기</button>&nbsp;&nbsp;&nbsp;
-                <button type="button" onclick="history.go(-1);">취소</button>
-            </p>
-            <p>비밀번호를 잊으셨나요?<br>등록한 아이디와 이메일주소를 입력하시면 임시 비밀번호를 전송해드립니다.</p>
-
-        </form>
-    </div>
+	<div class="w3-content w3-container w3-margin-top">
+		<div class="w3-container w3-card-4 w3-auto" style="width: 382px;height: 456.3px;">
+			<div class="w3-center w3-large w3-margin-top">
+				<h3>비밀번호 찾기</h3>
+			</div>
+			<div>
+				<p>
+					<label>아이디</label>
+					<input class="w3-input" type="text" id="uId" name="uId" placeholder="회원가입한 아이디를 입력하세요" required>
+				</p>
+				<p>
+					<label>이메일</label>
+					<input class="w3-input" type="text" id="uEmail" name="uEmail" placeholder="회원가입한 이메일주소를 입력하세요" required>
+				</p>
+				<p class="w3-center">
+					<button type="button" id="findBtn" class="w3-button w3-hover-white w3-ripple w3-margin-top w3-round mybtn">찾기</button>
+					<button type="button" onclick="history.go(-1);" class="w3-button w3-hover-white w3-ripple w3-margin-top w3-round mybtn">로그인으로</button>
+				</p>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

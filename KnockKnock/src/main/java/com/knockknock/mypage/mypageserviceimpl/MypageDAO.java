@@ -11,8 +11,6 @@ import org.springframework.stereotype.Repository;
 
 import com.knockknock.board.BoardVO;
 import com.knockknock.campaign.campaign.CampaignVO;
-import com.knockknock.campaign.funding.FundingVO;
-import com.knockknock.campaign.proposal.ProposalVO;
 import com.knockknock.contact.ContactVO;
 import com.knockknock.user.UserVO;
 import com.knockknock.util.PointVO;
@@ -110,18 +108,6 @@ public class MypageDAO {
 	public int deleteUsers(int uIdx) {
 
 		return mybatis.delete("UserVO.deleteUsers", uIdx);
-	}
-	
-	// 나의 제안글 총 글 갯수
-	public int myplistTot(UserVO vo) {
-
-		return mybatis.selectOne("UserVO.myPcListTotalCount", vo);
-	}
-	// 나의 제안글 리스트
-	public List<ProposalVO> myProposalList(Map<String, Integer> map) {
-		List<ProposalVO> list = mybatis.selectList("UserVO.mypList", map);
-		
-	 return list;
 	}
 	
 

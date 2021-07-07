@@ -33,8 +33,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.google.gson.Gson;
 import com.knockknock.board.BoardVO;
 import com.knockknock.campaign.campaign.CampaignVO;
-import com.knockknock.campaign.funding.FundingVO;
-import com.knockknock.campaign.proposal.ProposalVO;
 import com.knockknock.contact.ContactVO;
 import com.knockknock.user.UserController;
 import com.knockknock.user.UserVO;
@@ -236,14 +234,12 @@ public class MypageController {
 	@GetMapping("/myContactList.do")
 	public String myContactList(HttpSession session ,Model model, 
 				@RequestParam(value="nowPage", required=false)String nowPage,
-				@RequestParam(value="cntPerPage", required=false)String cntPerPage,
-				@RequestParam(value="pnowPage", required=false)String pnowPage,
-				@RequestParam(value="pcntPerPage", required=false)String pcntPerPage) {
+				@RequestParam(value="cntPerPage", required=false)String cntPerPage) {
 		
 		UserVO vo = (UserVO) session.getAttribute("users");
 		
 		PagingVO pvo = new PagingVO();
-		// 문의내역 전체 게시물 수 구하기
+		// 전체 게시물 수 구하기
 		pvo.setTotal(mypageService.myCclistTot(vo));
 		int total = pvo.getTotal();
 		
@@ -269,49 +265,11 @@ public class MypageController {
 		map.put("end", end);
 		map.put("uIdx", uIdx);
 		
-		// 나의 문의내역
 		List<ContactVO> contactList = mypageService.myContactList(map);
-		
-		// ======================
-		// 제안글 전체 게시물 수 구하기
-		PagingVO ppvo = new PagingVO();
-		ppvo.setTotal(mypageService.myplistTot(vo));
-		int ptotal = ppvo.getTotal();
-		
-		// 페이지당 글 갯수
-		ppvo.setCntPerPage(5);
-		
-		// 현재 페이지 구하기
-		if(pnowPage==null && pcntPerPage==null) {
-			pnowPage = "1";
-			pcntPerPage = "5";
-		} else if(pnowPage == null) {
-			pnowPage = "1";
-		} else if (cntPerPage == null) {
-			pcntPerPage ="5";
-		}
 
-		ppvo = new  PagingVO(ptotal, Integer.parseInt(pnowPage), Integer.parseInt(pcntPerPage));
-
-		Map<String, Integer> pmap = new HashMap<>();
-		int pstart = ppvo.getStart();
-		int pend = ppvo.getEnd();
-		int puIdx = vo.getuIdx();
-		pmap.put("start", pstart);
-		pmap.put("end", pend);
-		pmap.put("uIdx", puIdx);
-
-		// 나의 제안글
-		List<ProposalVO> proposalList = mypageService.myProposalList(pmap);
-		System.out.println("prolist:"+proposalList);
-		
 		model.addAttribute("users", vo);
-		// 나의 문의내역
 		model.addAttribute("pvo", pvo);
 		model.addAttribute("contactList",contactList);
-		// 나의 제안글
-		model.addAttribute("ppvo", ppvo);
-		model.addAttribute("proposalList",proposalList);
 		return "/mypage/mypageList/myContactList";
 	}
 	
