@@ -32,9 +32,16 @@
 	<!-- 회원가입 -->
 	<insert id="join" parameterType="UserVO">
 		INSERT INTO USERS(U_IDX, U_ID, U_NAME, U_PWD, U_NICKNAME,U_EMAIL, U_PHONE, U_BIRTH, U_TOT_POINT, U_TYPE,
-U_ACTIVE, U_GENDER, U_ADDRESS, U_JOINDATE)
-		VALUES(U_IDX_SEQ.nextval, #{uId}, #{uName}, #{uPwd}, #{uNickname}, #{uEmail}, #{uPhone}, #{uBirth}, default, 1, default, #{uGender}, #{uAddress}, sysdate)		
+						U_ACTIVE, U_GENDER, U_ADDRESS, U_JOINDATE,  U_APPRSTATUS)
+		VALUES(U_IDX_SEQ.nextval, #{uId}, #{uName}, #{uPwd}, #{uNickname}, #{uEmail}, #{uPhone}, #{uBirth}, default, 1, 
+						default, #{uGender}, #{uAddress}, sysdate, 'FALSE')		
 	</insert>
+	
+	<!-- 이메일 인증 -->
+	<update id="userApproval" parameterType="UserVO">
+		UPDATE USERS SET U_APPRSTATUS ='TRUE', U_APPRKEY= #{uApprkey} WHERE U_EMAIL = #{uEmail} 
+			
+	</update>
 	
 	<!-- 비밀번호 찾기 -->
 	<update id="updatePwd" parameterType="String">
