@@ -51,6 +51,7 @@
 			<div class="infoOrder">
 				<p style="background-color:#0e4b20; color:white; padding:10px; width:30%; margin: 10px; font-size:13px;">주문자 정보</p>
 				<div style="padding:20px; text-align:left;">
+					<p class="orderUIdx" style="display:none;">${users.uIdx }</p>
 					<p style="font-weight:600;" class="orderName">${users.uName }</p>
 					<p class="orderAddress"> ${users.uAddress}</p>
 					<p class="orderPhone"> ${users.uPhone }</p>
@@ -106,6 +107,7 @@
 			<div class="infoOrdersProduct">
 				<p>주문상품정보</p>
 				<div>
+				<c:if test="${!empty olist }">
 				<c:forEach var="item" items="${olist }">
 					<div class="onePlist">
 						상품명 : ${item.pName }<br>
@@ -117,7 +119,10 @@
 					</div>
 				
 				</c:forEach>
-				
+				</c:if>
+				<c:if test="${empty olist }">
+					<p>주문 정보가 없습니다.</p>
+				</c:if>
 				</div>
 			
 			</div>
@@ -139,15 +144,40 @@ $(function(){
 });
 function goPayment(){
 	
+	if($(".payPrice").html()=="0원"){
+		alert("결제할 상품이 존재하지 않습니다. 쇼핑하러 가실래염?ㅋ");
+	} else {
+		
+	
+	
 	var info = $("input[type=text]").val();
 	var pay_method = $("input[name=pm]:checked").val();
-	// 결제자 정보
+	// 결제방법 데이터변환
+	var payData = 0;
+	if($("input[name=pm]:checked").val()=="card"){
+		payData = 1;
+	} else if($("input[name=pm]:checked").val()=="trans"){
+		payData = 2;
+	} else if($("input[name=pm]:checked").val()=="vbank"){
+		payData = 3;
+	} else if($("input[name=pm]:checked").val()=="phone"){
+		payData = 4;
+	} else if($("input[name=pm]:checked").val()=="samsung"){
+		payData = 5;
+	}
+	// 결제자 정보 ( 데이터 넣을 때도 필요 )
 	var uName = $(".orderName").text();
 	var uPhone = $(".orderPhone").text();
 	var uEmail = $(".orderEmail").text();
 	var uAddress = $(".orderAddress").text();
-	
-	console.log("결제방법 : " + pay_method);
+	//console.log($("#addr1").val());
+	// 수령자 정보
+	var vo = {};
+	vo.oAddress1 = $("#addr1").val();
+	vo.oAddress2 = $("#addr2").val();
+	vo.oPhone = $("#phone").val();
+	vo.oReceiver = $("#uname").val();
+	vo.oZipcode = $("#addr").val();
 	if (info=="" || info==null){
 		alert("수령자 정보를 정확히 입력해주세요");
 	} else {
@@ -179,29 +209,46 @@ function goPayment(){
 		         }, function(rsp){   // rsp : 결제 성공여부
 			            if(rsp.success){
 			               //결제 성공시 DB에 결제정보 저장하고 사용자 화면 처리
-			               alert("결제가 완료되었습니다. 주문내역으로 이동합니다.");
+			             
 			               //location.href="";
-			               
+			               var msg = '결제가 완료되었습니다.\n';
+			               msg += '고유ID : ' + rsp.imp_uid+'\n';
+			               msg += '상점 거래ID : ' + rsp.merchant_uid+'\n';
+			               msg += '결제 금액 : ' + rsp.paid_amount+'\n';
+			               msg += '카드 승인번호 : ' + rsp.apply_num; 
+			               alert(msg);  
+			               console.log(payData);
 			               // 아작스 처리
 			               $.ajax({
-			            	  url : "",
-			            	  data : "".
-			            	  dataType : "",
-			            	  success : function(){
+			            	  url : "orderInfo.do",
+			            	  data : {'payData':payData}, // 일단은 결제방식만 업데이트 (필요한 데이터)
+			            	  dataType : "text",
+			            	  type:"post",
+			            	  success : function(data){
+			            		  alert("성공"+data);
 			            		  
+			            		  // 수령자 정보 db에 저장
+			            		  $.ajax({
+			            			  url : "userOrder.do",
+			            			  data : JSON.stringify(vo),
+			            			  dataType : 'json',
+			            			  type : "post",
+			            			  success : function(data){
+			            				  alert("수령인 정보 성공 "+data);
+			            			  },
+			            			  error : function(data){
+			            				  alert("수령인 정보 에러");
+			            			  }
+			            			  
+			            		  });
 			            	  },
-			            	  error : function(){
-			            		  
+			            	  error : function(data){
+			            		  alert("실패");
 			            	  }
 			            	   
 			               });
 			               
-			               /* var msg = '결제가 완료되었습니다.';
-			               msg += '고유ID : ' + rsp.imp_uid;
-			               msg += '상점 거래ID : ' + rsp.merchant_uid;
-			               msg += '결제 금액 : ' + rsp.paid_amount;
-			               msg += '카드 승인번호 : ' + rsp.apply_num; 
-			               alert(msg);  */
+			               
 			               // 주문서? 창으로 이동하기
 			               
 			            }else{
@@ -219,7 +266,7 @@ function goPayment(){
 		
 	}
 	
-	
+	}
 }
 
 </script>
