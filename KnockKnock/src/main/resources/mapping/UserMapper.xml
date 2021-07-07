@@ -222,4 +222,21 @@ U_ACTIVE, U_GENDER, U_ADDRESS, U_JOINDATE)
 			AND O.U_IDX=#{uIdx}
 	</select>
 	
+	<!-- 나의 제안글 - 총 게시글 수 구하기 -->
+	<select id="myPcListTotalCount" parameterType="UserVO" resultType="int">
+		SELECT COUNT(*) FROM PROPOSAL
+    	WHERE U_IDX =#{uIdx}
+	</select>
+	
+	<!-- 나의 제안글리스트  -->
+	<select id="mypList" parameterType="hashmap" resultType="ProposalVO">
+		SELECT * 
+		FROM ( SELECT ROWNUM RN, C.* 
+		FROM ( SELECT *  FROM PROPOSAL 
+		WHERE U_IDX = #{uIdx}
+		ORDER BY CP_REGDATE DESC 
+		) C)
+		WHERE RN BETWEEN #{start} AND #{end}
+	
+	</select> 
 </mapper>

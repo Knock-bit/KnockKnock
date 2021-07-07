@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import com.knockknock.board.BoardVO;
 import com.knockknock.campaign.campaign.CampaignVO;
+import com.knockknock.campaign.funding.FundingVO;
+import com.knockknock.campaign.proposal.ProposalVO;
 import com.knockknock.contact.ContactVO;
 import com.knockknock.mypage.MypageService;
 import com.knockknock.user.UserVO;
@@ -109,5 +111,19 @@ public class MypageServiceImpl implements MypageService {
 	public int deleteUsers(int uIdx) {
 
 		return mypageDAO.deleteUsers(uIdx);
+	}
+
+	//  제안글 리스트 총 페이지 수
+	@Override
+	public int myplistTot(UserVO vo) {
+
+		return mypageDAO.myplistTot(vo);
+	}
+
+	// 제안글 리스트 
+	@Override
+	public List<ProposalVO> myProposalList(Map<String, Integer> map) {
+		
+		return mypageDAO.myProposalList(map); 
 	}
 }
