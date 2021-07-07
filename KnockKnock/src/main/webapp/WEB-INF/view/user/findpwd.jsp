@@ -11,6 +11,9 @@
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 <script src="http://code.jquery.com/jquery-latest.js"></script>
+<!-- alert -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 <script>
 	$(function(){
 		$("#findBtn").click(function(){
@@ -22,11 +25,11 @@
 					uEmail : $("#uEmail").val()
 				},
 				success : function(result) {
-					alert(result);
+					swal(result);
 					href.location = "/main.do"
 				},
 				fail : function(){
-					alert("서버에 오류가 있습니다.\n관리자에게 문의해주시기 바랍니다.")
+					swal("서버에 오류가 있습니다.\n관리자에게 문의해주시기 바랍니다.")
 				}
 			})
 		});
