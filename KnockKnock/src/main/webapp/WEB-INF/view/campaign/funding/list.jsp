@@ -42,7 +42,7 @@
   display:flex;
   vertical-align: middle;
 }
-
+/* 
   	@media (min-width: 768px) {
   .container {
     width: 750px;
@@ -53,7 +53,7 @@
   .container {
     width: 1080px;
 		  }
-		}
+		} */
 	.inner-nav{
 	margin-top:20px;
 	margin-bottom:20px;}

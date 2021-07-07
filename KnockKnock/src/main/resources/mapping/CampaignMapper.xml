@@ -13,34 +13,51 @@
 
 	<!-- 진행중인 캠페인, 주최자 닉네임, 카테고리, 참여자수 불러오기 -->
 	<select id="selectAllCampaign" resultType="CampaignVO">
-		SELECT C.*, U.U_NICKNAME AS HOST_NICKNAME, CC.CC_NAME AS CATEGORY, 
+		 SELECT C.*, U.U_NICKNAME AS 
+ 		 HOST_NICKNAME,        
+		 (SELECT COUNT(*) FROM CAMPAIGN_USER WHERE C.CI_IDX = CAMPAIGN_USER.ci_idx) USER_COUNT  
+ 		FROM USERS U, CAMPAIGN C  WHERE CI_STATUS = 1  
+ 		AND U.U_IDX = C.U_IDX
+		<!-- SELECT C.*, U.U_NICKNAME AS HOST_NICKNAME, CC.CC_NAME AS CATEGORY, 
         (SELECT COUNT(*) FROM CAMPAIGN_USER WHERE C.CI_IDX = CAMPAIGN_USER.ci_idx) USER_COUNT
 		FROM USERS U, CAMPAIGN C, CAMPAIGN_CATEGORY CC
 		WHERE CI_STATUS = 1
 		AND U.U_IDX = C.U_IDX
-		AND C.CC_IDX = CC.CC_IDX
+		AND C.CC_NAME = CC.CC_NAME -->
 	</select>
 	
 	<!-- 최신순 -->
 	<select id="selectCampaignListLatest" resultType="CampaignVO">
-		SELECT C.*, U.U_NICKNAME AS HOST_NICKNAME, CC.CC_NAME AS CATEGORY, 
+		SELECT C.*, U.U_NICKNAME AS HOST_NICKNAME,
+        (SELECT COUNT(*) FROM CAMPAIGN_USER WHERE C.CI_IDX = CAMPAIGN_USER.ci_idx) USER_COUNT
+		FROM USERS U, CAMPAIGN C
+		WHERE CI_STATUS = 1
+		AND U.U_IDX = C.U_IDX
+		ORDER BY CI_STARTDATE DESC
+		<!-- SELECT C.*, U.U_NICKNAME AS HOST_NICKNAME, CC.CC_NAME AS CATEGORY, 
         (SELECT COUNT(*) FROM CAMPAIGN_USER WHERE C.CI_IDX = CAMPAIGN_USER.ci_idx) USER_COUNT
 		FROM USERS U, CAMPAIGN C, CAMPAIGN_CATEGORY CC
 		WHERE CI_STATUS = 1
 		AND U.U_IDX = C.U_IDX
-		AND C.CC_IDX = CC.CC_IDX
-		ORDER BY CI_STARTDATE DESC
+		AND C.CC_NAME = CC.CC_NAME
+		ORDER BY CI_STARTDATE DESC -->
 	</select>
 	
 	<!-- 참여자수순 -->
 		<select id="selectCampaignListUserCount" resultType="CampaignVO">
-		SELECT C.*, U.U_NICKNAME AS HOST_NICKNAME, CC.CC_NAME AS CATEGORY, 
+		SELECT C.*, U.U_NICKNAME AS HOST_NICKNAME, 
+        (SELECT COUNT(*) FROM CAMPAIGN_USER WHERE C.CI_IDX = CAMPAIGN_USER.ci_idx) USER_COUNT
+		FROM USERS U, CAMPAIGN C
+		WHERE CI_STATUS = 1
+		AND U.U_IDX = C.U_IDX
+		ORDER BY USER_COUNT DESC
+		<!-- SELECT C.*, U.U_NICKNAME AS HOST_NICKNAME, CC.CC_NAME AS CATEGORY, 
         (SELECT COUNT(*) FROM CAMPAIGN_USER WHERE C.CI_IDX = CAMPAIGN_USER.ci_idx) USER_COUNT
 		FROM USERS U, CAMPAIGN C, CAMPAIGN_CATEGORY CC
 		WHERE CI_STATUS = 1
 		AND U.U_IDX = C.U_IDX
-		AND C.CC_IDX = CC.CC_IDX
-		ORDER BY USER_COUNT DESC
+		AND C.CC_NAME = CC.CC_NAME
+		ORDER BY USER_COUNT DESC -->
 	</select>
 	
 	<select id="selectCampaignUser" resultType="campaignUserVO">
@@ -52,12 +69,11 @@
 	
 	<!-- 캠페인 상세보기 -->
 	<select id="selectOneCampaign" parameterType="int" resultType="CampaignVO">
-		SELECT C.*, U.U_NICKNAME AS HOST_NICKNAME, CC.CC_NAME AS CATEGORY
+		SELECT C.*, U.U_NICKNAME AS HOST_NICKNAME
 		FROM USERS U, CAMPAIGN C, CAMPAIGN_CATEGORY CC
 		WHERE CI_STATUS = 1
 		AND U.U_IDX = C.U_IDX
 		AND C.CI_IDX = #{ciIdx}
-        AND C.CC_IDX = cc.cc_idx
 	</select>
 	
 	<!-- 캠페인 상세보기 - 참여자 닉네임 불러오기 -->
@@ -166,12 +182,17 @@
 	
 	<!-- 종료된 캠페인 불러오기 -->
 	<select id="selectAllEdCampaign" resultType="CampaignVO">
-		SELECT C.*, U.U_NICKNAME AS HOST_NICKNAME, CC.CC_NAME AS CATEGORY, 
+		<!-- SELECT C.*, U.U_NICKNAME AS HOST_NICKNAME, CC.CC_NAME AS CATEGORY, 
         (SELECT COUNT(*) FROM CAMPAIGN_USER WHERE C.CI_IDX = CAMPAIGN_USER.ci_idx) USER_COUNT
 		FROM USERS U, CAMPAIGN C, CAMPAIGN_CATEGORY CC
 		WHERE CI_STATUS = 3
 		AND U.U_IDX = C.U_IDX
-		AND C.CC_IDX = CC.CC_IDX
+		AND C.CC_NAME = CC.CC_NAME -->
+		SELECT C.*, U.U_NICKNAME AS HOST_NICKNAME, 
+        (SELECT COUNT(*) FROM CAMPAIGN_USER WHERE C.CI_IDX = CAMPAIGN_USER.ci_idx) USER_COUNT
+		FROM USERS U, CAMPAIGN C
+		WHERE CI_STATUS = 3
+		AND U.U_IDX = C.U_IDX
 	</select>
 
 	
@@ -179,13 +200,11 @@
 	
 	<!--  ============= funding ============= -->
 	<select id="selectAllFunding" resultType="FundingVO">
-	
-		SELECT F.*, U.U_NICKNAME AS HOST_NICKNAME, CC.CC_NAME AS CATEGORY, 
+		 SELECT F.*, U.U_NICKNAME AS HOST_NICKNAME,
 	        (SELECT COUNT(*) FROM FUNDING_USER WHERE F.CF_IDX = FUNDING_USER.CF_IDX) USER_COUNT
-			FROM USERS U, FUNDING F, CAMPAIGN_CATEGORY CC
+			FROM USERS U, FUNDING F
 			WHERE (CF_STATUS = 1 OR CF_STATUS = 2)
 			AND U.U_IDX = F.U_IDX
-			AND F.CC_IDX = CC.CC_IDX
 	
 	</select>
 	
@@ -211,16 +230,16 @@
 	</select>
 	
 	
-	<insert id="insertCampaign" parameterType= "CampaignVO">
+<!-- 	<insert id="insertCampaign" parameterType= "CampaignVO">
 		INSERT INTO CAMPAIGN(CI_IDX, CI_TITLE, CI_CONTENT, C_GOAL, CI_ENDDATE, CI_STARTDATE, 
-		CI_ESTIMATEDPOINT, CI_STATUS, CI_FILE, CI_EMBLEM, U_IDX, CC_IDX, C_TOTPOINT
+		CI_ESTIMATEDPOINT, CI_STATUS, CI_FILE, CI_EMBLEM, U_IDX, CC_NAME, C_TOTPOINT
 		,CI_KEYWORD1, CI_KEYWORD2, CI_KEYWORD3, CI_BASEPOINT, CF_IDX) 
 		VALUES (CI_IDX_SEQ.NEXTVAL, #{ciTitle}, #{ciContent}, #{cGoal}, #{ciEnddate}, #{ciStartdate}, 
 		#{ciEstimatedpoint}, #{ciStatus}, #{ciFile}, #{ciEmblem}, #{uIdx}, #{ccIdx}, #{cTotpoint}
 		,#{ciKeyword1}, #{ciKeyword2}, #{ciKeyword3}, #{ciBasepoint}, #{cfIdx}
 		
 	
-	</insert>
+	</insert> -->
 	
 	<!-- 기간이 만료됐는지 확인하여 만료 시 펀딩 상태를 3으로 바꾼다 -->
 	<update id="updateExpiredFunding">
