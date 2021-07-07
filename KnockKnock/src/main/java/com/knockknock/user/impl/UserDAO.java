@@ -1,5 +1,8 @@
 package com.knockknock.user.impl;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -15,7 +18,7 @@ public class UserDAO {
    public UserVO selectlogin(UserVO vo) {
       System.out.println("로그인 mybatis "+mybatis);
       vo = mybatis.selectOne("UserVO.selectlogin", vo);
-      //System.out.println("DAO = " +vo);
+
       return vo;      
    }
    //아이디 중복체크
@@ -75,20 +78,22 @@ public class UserDAO {
    }
    
    //아이디에 해당하는 회원정보 가져오기
-   public UserVO readUserInfo(UserVO vo) throws Exception {
+   public Map<String, String> readUserInfo(UserVO vo) throws Exception {
       UserVO userVO = mybatis.selectOne("UserVO.readUserInfo", vo);
       System.out.println(mybatis);
-      System.out.println("DAO의 리턴값은 = "+userVO);
- 
-      System.out.println("받은 이메일 값: " +userVO.getuEmail());
-      System.out.println("받은 아이디 값: "+userVO.getuId());
-      
-      //DAO
-      return userVO;
-   }
-   
-   
-   
-   
-   
+      System.out.println("DAO의 리턴값은 = "+userVO);      
+      Map<String, String> map = new HashMap<String, String>();
+      System.out.println(map.isEmpty());
+      if(userVO==null) {
+         return null;  
+      }else {
+         String uEmail = userVO.getuEmail();
+         String uId = userVO.getuId();
+         map.put("uId", uId);
+         map.put("uEmail", uEmail);
+
+         return map;
+      }
+       
+   } 
 }
