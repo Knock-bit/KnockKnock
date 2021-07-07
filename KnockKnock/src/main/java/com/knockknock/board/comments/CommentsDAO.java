@@ -15,8 +15,8 @@ public class CommentsDAO {
 		
 		return mybatis.selectList("CommentsDAO.commentsList", bIdx);
 	}
-	public void insertComments(CommentsVO vo) {
-		mybatis.insert("CommentsDAO.insertComments", vo);
+	public int insertComments(CommentsVO vo) {
+		return mybatis.insert("CommentsDAO.insertComments", vo);
 	}
 	public int updateComments(CommentsVO vo) {
 		return mybatis.update("CommentsDAO.updateComments", vo);

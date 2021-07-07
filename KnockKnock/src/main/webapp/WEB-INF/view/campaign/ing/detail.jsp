@@ -91,6 +91,11 @@ vertical-align:middle;}
  	left:40%;
  	width:500px;
 	}  */
+	
+	.campaign-main-info{
+	margin: 0 auto;
+	
+	}
 	 .detail-title {
 	margin-top:100px;
 	text-align:center;
@@ -103,9 +108,10 @@ vertical-align:middle;}
 		}
 	@media (min-width: 1100px) {
   .container {
-    width: 1080px;
+    width: 1100px;
 		  }
 		}
+		
 </style>
 
 <script>
@@ -248,7 +254,7 @@ vertical-align:middle;}
           
           
           
-          <div class="col-lg-4">
+          <div class="col-lg-4" style="padding-left:0px;">
 
               <div class="campaign-main-info">
               
@@ -257,7 +263,6 @@ vertical-align:middle;}
               총 ${campaign.cTotpoint } 포인트가<br>
               참여자들에게 나눠집니다.
               </div>
-           </div>
 
            <%--  <div class="campaign-info d-flex justify-content-between align-items-center">
               <h5>참여중인 사람 목록</h5>
