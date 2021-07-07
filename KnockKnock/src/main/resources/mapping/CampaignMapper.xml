@@ -18,7 +18,7 @@
 		FROM USERS U, CAMPAIGN C, CAMPAIGN_CATEGORY CC
 		WHERE CI_STATUS = 1
 		AND U.U_IDX = C.U_IDX
-		AND C.CC_IDX = CC.CC_IDX
+		AND C.CC_NAME = CC.CC_NAME
 	</select>
 	
 	<!-- 최신순 -->
@@ -28,7 +28,7 @@
 		FROM USERS U, CAMPAIGN C, CAMPAIGN_CATEGORY CC
 		WHERE CI_STATUS = 1
 		AND U.U_IDX = C.U_IDX
-		AND C.CC_IDX = CC.CC_IDX
+		AND C.CC_NAME = CC.CC_NAME
 		ORDER BY CI_STARTDATE DESC
 	</select>
 	
@@ -39,7 +39,7 @@
 		FROM USERS U, CAMPAIGN C, CAMPAIGN_CATEGORY CC
 		WHERE CI_STATUS = 1
 		AND U.U_IDX = C.U_IDX
-		AND C.CC_IDX = CC.CC_IDX
+		AND C.CC_NAME = CC.CC_NAME
 		ORDER BY USER_COUNT DESC
 	</select>
 	
@@ -57,7 +57,7 @@
 		WHERE CI_STATUS = 1
 		AND U.U_IDX = C.U_IDX
 		AND C.CI_IDX = #{ciIdx}
-        AND C.CC_IDX = cc.cc_idx
+        AND C.CC_NAME = cc.cc_idx
 	</select>
 	
 	<!-- 캠페인 상세보기 - 참여자 닉네임 불러오기 -->
@@ -171,7 +171,7 @@
 		FROM USERS U, CAMPAIGN C, CAMPAIGN_CATEGORY CC
 		WHERE CI_STATUS = 3
 		AND U.U_IDX = C.U_IDX
-		AND C.CC_IDX = CC.CC_IDX
+		AND C.CC_NAME = CC.CC_NAME
 	</select>
 
 	
@@ -185,7 +185,7 @@
 			FROM USERS U, FUNDING F, CAMPAIGN_CATEGORY CC
 			WHERE (CF_STATUS = 1 OR CF_STATUS = 2)
 			AND U.U_IDX = F.U_IDX
-			AND F.CC_IDX = CC.CC_IDX
+			AND F.CC_NAME = CC.CC_NAME
 	
 	</select>
 	
@@ -211,16 +211,16 @@
 	</select>
 	
 	
-	<insert id="insertCampaign" parameterType= "CampaignVO">
+<!-- 	<insert id="insertCampaign" parameterType= "CampaignVO">
 		INSERT INTO CAMPAIGN(CI_IDX, CI_TITLE, CI_CONTENT, C_GOAL, CI_ENDDATE, CI_STARTDATE, 
-		CI_ESTIMATEDPOINT, CI_STATUS, CI_FILE, CI_EMBLEM, U_IDX, CC_IDX, C_TOTPOINT
+		CI_ESTIMATEDPOINT, CI_STATUS, CI_FILE, CI_EMBLEM, U_IDX, CC_NAME, C_TOTPOINT
 		,CI_KEYWORD1, CI_KEYWORD2, CI_KEYWORD3, CI_BASEPOINT, CF_IDX) 
 		VALUES (CI_IDX_SEQ.NEXTVAL, #{ciTitle}, #{ciContent}, #{cGoal}, #{ciEnddate}, #{ciStartdate}, 
 		#{ciEstimatedpoint}, #{ciStatus}, #{ciFile}, #{ciEmblem}, #{uIdx}, #{ccIdx}, #{cTotpoint}
 		,#{ciKeyword1}, #{ciKeyword2}, #{ciKeyword3}, #{ciBasepoint}, #{cfIdx}
 		
 	
-	</insert>
+	</insert> -->
 	
 	<!-- 기간이 만료됐는지 확인하여 만료 시 펀딩 상태를 3으로 바꾼다 -->
 	<update id="updateExpiredFunding">
