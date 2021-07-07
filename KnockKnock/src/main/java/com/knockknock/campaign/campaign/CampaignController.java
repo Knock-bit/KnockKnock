@@ -141,6 +141,8 @@ public class CampaignController {
 			// 식별(2) 펀딩에 참여하였는가
 			//		  -> 펀딩 참여시   0   포인트 차감 
 			//		  -> 펀딩 미참여시  300 포인트 차감
+			
+			// 공통	 -> ESTIMATED POINT  +  10
 		
 		
 		
