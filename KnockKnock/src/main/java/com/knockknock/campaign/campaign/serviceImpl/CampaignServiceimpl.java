@@ -82,4 +82,9 @@ public class CampaignServiceimpl implements CampaignService {
 		return campaignDAO.selectCampaignUser(cUser);
 	}
 
+	@Override
+	public int updateStartCampaign() {
+		return campaignDAO.updateStartCampaign();
+	}
+
 }

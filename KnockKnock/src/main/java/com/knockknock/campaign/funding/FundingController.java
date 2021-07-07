@@ -34,6 +34,7 @@ public class FundingController {
 	@GetMapping("campaign/funding/list.do")
 	public String list(Model model) {
 		int result = fundingService.updateExpiredFunding();
+		fundingService.updateStartFunding();
 		fundingService.updateSuccessFunding();
 		System.out.println(result + "개의 펀딩 종료처리 ");
 		if (result > 0) {
