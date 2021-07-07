@@ -8,7 +8,7 @@ public class CampaignVO {
 	private int cfIdx;
 	private String ciTitle;
 	private String ciContent;
-	private String cGoal;
+	private String ciGoal;
 	private Date ciStartdate;
 	private Date ciEnddate;
 	private int ciBasepoint;
@@ -30,7 +30,7 @@ public class CampaignVO {
 	
 	
 
-	public CampaignVO(int ciIdx, int cfIdx, String ciTitle, String ciContent, String cGoal, Date ciStartdate,
+	public CampaignVO(int ciIdx, int cfIdx, String ciTitle, String ciContent, String ciGoal, Date ciStartdate,
 			Date ciEnddate, int ciBasepoint, int ciEstimatedpoint, int ciStatus, String ciFile, String ciEmblem,
 			int uIdx, String ccName, int cTotpoint, String ciKeyword1, String ciKeyword2, String ciKeyword3,
 			String hostNickname, String category, int userCount) {
@@ -39,7 +39,7 @@ public class CampaignVO {
 		this.cfIdx = cfIdx;
 		this.ciTitle = ciTitle;
 		this.ciContent = ciContent;
-		this.cGoal = cGoal;
+		this.ciGoal = ciGoal;
 		this.ciStartdate = ciStartdate;
 		this.ciEnddate = ciEnddate;
 		this.ciBasepoint = ciBasepoint;
@@ -92,13 +92,19 @@ public class CampaignVO {
 		this.ciContent = ciContent;
 	}
 
-	public String getcGoal() {
-		return cGoal;
+	
+	
+	public String getCiGoal() {
+		return ciGoal;
 	}
 
-	public void setcGoal(String cGoal) {
-		this.cGoal = cGoal;
+
+
+	public void setCiGoal(String ciGoal) {
+		this.ciGoal = ciGoal;
 	}
+
+
 
 	public Date getCiStartdate() {
 		return ciStartdate;
@@ -231,7 +237,7 @@ public class CampaignVO {
 	@Override
 	public String toString() {
 		return "CampaignVO [ciIdx=" + ciIdx + ", cfIdx=" + cfIdx + ", ciTitle=" + ciTitle + ", ciContent=" + ciContent
-				+ ", cGoal=" + cGoal + ", ciStartdate=" + ciStartdate + ", ciEnddate=" + ciEnddate + ", ciBasepoint="
+				+ ", ciGoal=" + ciGoal + ", ciStartdate=" + ciStartdate + ", ciEnddate=" + ciEnddate + ", ciBasepoint="
 				+ ciBasepoint + ", ciEstimatedpoint=" + ciEstimatedpoint + ", ciStatus=" + ciStatus + ", ciFile="
 				+ ciFile + ", ciEmblem=" + ciEmblem + ", uIdx=" + uIdx + ", ccName=" + ccName + ", cTotpoint="
 				+ cTotpoint + ", ciKeyword1=" + ciKeyword1 + ", ciKeyword2=" + ciKeyword2 + ", ciKeyword3=" + ciKeyword3
