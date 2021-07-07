@@ -189,7 +189,9 @@ vertical-align:middle;}
     <!-- ======= Breadcrumbs ======= -->
     
          <section>
+         
 	      		<div class="detail-title">
+	      		              
 			     <h1>${campaign.ciTitle}</h1><div class="profile-contianer"><div class=profile-pic>
              	 <img src="/resource/img/profile/user_default.png"></div> ${campaign.hostNickname }
       	   </div><div class="helper"></div></div>
@@ -253,7 +255,7 @@ vertical-align:middle;}
               <h3>캠페인 인증방법</h3>
             </div>
 
-            <div class="campaign-info d-flex justify-content-between align-items-center">
+           <%--  <div class="campaign-info d-flex justify-content-between align-items-center">
               <h5>참여중인 사람 목록</h5>
               <p>
               <!-- <div class=profile-container>
@@ -273,7 +275,7 @@ vertical-align:middle;}
                먼저 참여해보세요!
               </c:if>
               </p>
-            </div>
+            </div> --%>
 
             <div class="campaign-info d-flex justify-content-between align-items-center">
               <h5>Available Seats</h5>
