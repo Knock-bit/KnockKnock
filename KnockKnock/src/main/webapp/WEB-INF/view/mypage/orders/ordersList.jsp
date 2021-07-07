@@ -141,6 +141,12 @@ function goPayment(){
 	
 	var info = $("input[type=text]").val();
 	var pay_method = $("input[name=pm]:checked").val();
+	// 결제자 정보
+	var uName = $(".orderName").text();
+	var uPhone = $(".orderPhone").text();
+	var uEmail = $(".orderEmail").text();
+	var uAddress = $(".orderAddress").text();
+	
 	console.log("결제방법 : " + pay_method);
 	if (info=="" || info==null){
 		alert("수령자 정보를 정확히 입력해주세요");
@@ -164,26 +170,46 @@ function goPayment(){
 		            name : "상품 결제",                     //결제 이름
 		            amount : price,                     //결제금액
 		            
-		            buyer_email : $(".email").val(),   //구매자 email주소
-		            buyer_name : $(".uname").val(),   //구매자 이름
-		            buyer_phone : $(".phone").val(),   //구매자 전화번호
-		            buyer_addr : $(".addrr").val(),   //구매자 주소
-		            buyer_postcode : $("#addr").val()           //구매자 우편번호
-		         }), function(rsp){   // rsp : 결제 성공여부
+		            buyer_email : uEmail,   //구매자 email주소
+		            buyer_name : uName,   //구매자 이름
+		            buyer_phone : uPhone,   //구매자 전화번호
+		            buyer_addr : uAddress,   //구매자 주소
+		            m_redirect_url : 'https://www.yourdomain.com/payments/complete'
+		            //buyer_postcode : $("#addr").val()           //구매자 우편번호
+		         }, function(rsp){   // rsp : 결제 성공여부
 			            if(rsp.success){
 			               //결제 성공시 DB에 결제정보 저장하고 사용자 화면 처리
-			               alert("결제 성공");
-			               var msg = '결제가 완료되었습니다.';
+			               alert("결제가 완료되었습니다. 주문내역으로 이동합니다.");
+			               //location.href="";
+			               
+			               // 아작스 처리
+			               $.ajax({
+			            	  url : "",
+			            	  data : "".
+			            	  dataType : "",
+			            	  success : function(){
+			            		  
+			            	  },
+			            	  error : function(){
+			            		  
+			            	  }
+			            	   
+			               });
+			               
+			               /* var msg = '결제가 완료되었습니다.';
 			               msg += '고유ID : ' + rsp.imp_uid;
 			               msg += '상점 거래ID : ' + rsp.merchant_uid;
 			               msg += '결제 금액 : ' + rsp.paid_amount;
-			               msg += '카드 승인번호 : ' + rsp.apply_num;
+			               msg += '카드 승인번호 : ' + rsp.apply_num; 
+			               alert(msg);  */
+			               // 주문서? 창으로 이동하기
+			               
 			            }else{
-			               alert("결제 실패");
-			                var msg = '에러내용 : ' + rsp.error_msg;
+			            	alert("실패했어용~");
+			                //msg = '결제실패 , 에러내용 : ' + rsp.error_msg;
 			            }
-		         	}
-	
+		         	});
+					
 
 		} else {
 			alert("결제가 취소되었습니다.");
