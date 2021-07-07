@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     %>
@@ -91,6 +92,12 @@ vertical-align:middle;}
  	left:40%;
  	width:500px;
 	}  */
+	
+	.campaign-main-info{
+	display:inline-block;
+	margin: 0 auto;
+	
+	}
 	 .detail-title {
 	margin-top:100px;
 	text-align:center;
@@ -103,9 +110,34 @@ vertical-align:middle;}
 		}
 	@media (min-width: 1100px) {
   .container {
-    width: 1080px;
+    width: 1100px;
 		  }
 		}
+	.ci-emblem{
+	float:left;
+	}
+	.certification{
+	font-size: 1em;
+	}
+	.campaign-keyword{
+	margin-top:10px;
+	margin-bottom:10px;
+	color: grey;}
+	.campaign-main-info{
+	margin-top: 25px;
+	margin-bottom: 25px;
+	padding:15px;}
+	
+
+	.sticky-parent{
+ block; overflow-x: hidden; overflow-y: hidden;
+	}
+	.sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
+		
 </style>
 
 <script>
@@ -189,7 +221,9 @@ vertical-align:middle;}
     <!-- ======= Breadcrumbs ======= -->
     
          <section>
+         
 	      		<div class="detail-title">
+	      		              
 			     <h1>${campaign.ciTitle}</h1><div class="profile-contianer"><div class=profile-pic>
              	 <img src="/resource/img/profile/user_default.png"></div> ${campaign.hostNickname }
       	   </div><div class="helper"></div></div>
@@ -213,7 +247,7 @@ vertical-align:middle;}
     <section id="campaign-details" class="campaign-details">
       <div class="container" data-aos="fade-up">
 		 <%@ include file= "/layout/navbar/campaign/navCampaignDetail.jsp" %>
-        <div class="row">
+        <div class="row sticky-parent">
           <div class="col-lg-8" id="commonDiv">
             <img src="${campaign.ciFile }" class="img-fluid" alt="">
             <h2>${campaign.ciContent }  </h3>
@@ -246,14 +280,19 @@ vertical-align:middle;}
           
           
           
-          <div class="col-lg-4">
+          <div class="col-lg-4 sticky" style="padding-left:0px;">
+          <center>
+          	  <div class="campaign-main-info">
+              <div class="campaign-left">
+          		
+              <h2><b>${end - now + 1}일</b> 남았어요</h2></div>
+              <div class="campaign-point">
+              총 ${campaign.cTotpoint } 포인트가<br>
+              참여자들에게 나눠집니다.
+              </div>
+              </div>
 
-            <div class="campaign-info align-items-center">
-              <h2>${end - now + 1}일 남았어요</h2>
-              <h3>캠페인 인증방법</h3>
-            </div>
-
-            <div class="campaign-info d-flex justify-content-between align-items-center">
+           <%--  <div class="campaign-info d-flex justify-content-between align-items-center">
               <h5>참여중인 사람 목록</h5>
               <p>
               <!-- <div class=profile-container>
@@ -273,25 +312,29 @@ vertical-align:middle;}
                먼저 참여해보세요!
               </c:if>
               </p>
-            </div>
+            </div> --%>
 
-            <div class="campaign-info d-flex justify-content-between align-items-center">
-              <h5>Available Seats</h5>
-              <p>30</p>
-            </div>
-
-			<div class="campaign-info align-items-center">
+			<div class="campaign-info">
+			<div class="campaign-keyword"><center>
+			# ${campaign.ciKeyword1 }    # ${campaign.ciKeyword2 } # ${campaign.ciKeyword3 }</div>
+			</div>
+            <div class="campaign-info justify-content-between align-items-center">
+              
+              <p><img class="ci-emblem" src="${campaign.ciEmblem }" width=70px;>
+              <div class="certification"><span>인증방법</span><br>
+              ${campaign.ciGoal }</p>
+              </div>
+              
               <div class="btn-wrap funding">
               <button onclick="sendLink();" id="share" class = "btn-funding"> 공유하기 </button>
               </div>
-            </div>
-            
-            <div class="campaign-info align-items-center">
-              <div class="btn-wrap funding">
+                <div class="btn-wrap funding">
               <button onclick="funding()" id="participate" class="btn-funding"> 참여하기 </button>
               </div>
-
             </div>
+
+            
+         
 
           </div>
         </div>

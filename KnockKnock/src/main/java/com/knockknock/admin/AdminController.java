@@ -4,19 +4,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
+
 
 import com.knockknock.util.PagingVO;
 
@@ -95,24 +88,51 @@ public class AdminController {
 		model.addAttribute("viewAll", adminService.getKeywordList(pvo));
 		return "/admin/adminKeywordList";
 	}
-	// 캠페인 카테고리 -> 아직 view 미완성
 	@GetMapping("/adminCampaignCategory.do")
 	public String getCampaignCategoryList(PagingVO pvo, Model model,
 			@RequestParam(value = "nowPage", required = false) String nowPage,
 			@RequestParam(value = "cntPerPage", required = false) String cntPerPage) {
-		int total = adminService.countKeyword();
+		int total = adminService.countCampaignCategory();
 		Map<String,String> map = pageSet(nowPage,cntPerPage);
 		nowPage = map.get("nowPage");
 		cntPerPage=map.get("cntPerPage");
 		pvo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
 		model.addAttribute("paging", pvo);
-		model.addAttribute("viewAll", adminService.getKeywordList(pvo));
-		return "/admin/adminKeywordList";
+		model.addAttribute("viewAll", adminService.getCampaignCategoryList(pvo));
+		return "/admin/adminCampaignCategory";
 	}
 	@GetMapping("/adminFunding.do")
 	public String getFunding() {
 		return "/admin/adminFunding";
 	}
 	
+	
+	@GetMapping("/adminCampaignList.do")
+	public String getCampaignList(PagingVO pvo, Model model,
+			@RequestParam(value = "nowPage", required = false) String nowPage,
+			@RequestParam(value = "cntPerPage", required = false) String cntPerPage) {
+
+		int total = adminService.countCampaign();
+		if (nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "3";
+		} else if (nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) {
+			cntPerPage = "3";
+		}
+		pvo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		model.addAttribute("paging", pvo);
+		model.addAttribute("viewAll", adminService.getCampaignList(pvo));
+		return "/admin/campaign/adminCampaignList";
+	}
+	
+	@GetMapping("/getCampaign.do")
+	public String getCampaign(AdminCampaignVO vo, Model model) {
+		AdminCampaignVO campaign = adminService.getCampaign(vo);
+		System.out.println("VO :: : :: : :: : : " + campaign);
+		model.addAttribute("campaign",campaign);
+		return "/admin/campaign/adminCampaignDetail";
+	}
 
 }

@@ -10,8 +10,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
+import com.knockknock.campaign.funding.FundingUserVO;
 import com.knockknock.user.UserService;
+import com.knockknock.user.UserVO;
 
 
 @Controller
@@ -107,14 +110,48 @@ public class CampaignController {
 	
 	
 	@GetMapping("/ing/detail.do")
-	public String detail(CampaignVO campaignVO, Model model) {
+	public String detail(@SessionAttribute(name = "users", required = false) UserVO user, CampaignVO campaignVO, Model model) {
 		System.out.println(">>> 진행중 캠페인 상세페이지로 이동!");
 		int ciIdx = campaignVO.getCiIdx();
+		
+		if (user != null) {
+			System.out.println("세션값 있음");
+			int uIdx = user.getuIdx();
+
+			CampaignUserVO cUser = new CampaignUserVO();
+			cUser.setCiIdx(ciIdx);
+			cUser.setuIdx(uIdx);
+
+			CampaignUserVO campaignUser = campaignService.selectCampaignUser(cUser);
+
+			if (campaignUser != null) {
+				model.addAttribute("campaignUser", campaignUser);
+			}
+			;
+
+		}
+		
+		// 캠페인 참여
+		// -> 차감할 포인트를 정하기 위해
+		// 	  후기게시판으로 이동하기 전에 사용자 식별 필요.
+		
+			// 식별(1) 캠페인에 참여하였는가
+			// -> 포인트 차감 0
+		
+			// 식별(2) 펀딩에 참여하였는가
+			//		  -> 펀딩 참여시   0   포인트 차감 
+			//		  -> 펀딩 미참여시  300 포인트 차감
+			
+			// 공통	 -> ESTIMATED POINT  +  10
+		
+		
+		
 		CampaignVO campaign = campaignService.selectOneCampaign(campaignVO);
 		List<CampaignUserVO> userList = campaignService.selectAllCampaignUsers(ciIdx);
-		for(CampaignUserVO user : userList) {
-			System.out.println("userNickName : " + user.getNickname());
-		}
+		/*
+		 * for(CampaignUserVO users : userList) { System.out.println("userNickName : " +
+		 * users.getNickname()); }
+		 */
 		model.addAttribute("campaign", campaign);
 		model.addAttribute("userList", userList);
 		return "/campaign/ing/detail";

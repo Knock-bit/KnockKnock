@@ -11,8 +11,8 @@ public class CommentsServiceImpl implements CommentsService {
 	private CommentsDAO commentsDAO;
 
 	@Override
-	public List<CommentsVO> commentsList() {
-		return commentsDAO.commentsList();
+	public List<CommentsVO> commentsList(int bIdx) {
+		return commentsDAO.commentsList(bIdx);
 	}
 
 	@Override

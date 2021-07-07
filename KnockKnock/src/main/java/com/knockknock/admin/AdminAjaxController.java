@@ -3,20 +3,15 @@ package com.knockknock.admin;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletRequestWrapper;
-import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.JsonObject;
+import com.knockknock.admin.funding.AdminCampaignCategoryVO;
 
 @Controller
 @RestController
@@ -33,7 +29,7 @@ public class AdminAjaxController {
 
 	@Autowired
 	private AdminService adminService;
-
+	// 키워드 추가
 	@RequestMapping(value = "/getJsonKeyword.do", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public int getAjaxKeyword(@RequestBody AdminKeywordVO vo) {
 		System.out.println("vo : " + vo);
@@ -45,17 +41,10 @@ public class AdminAjaxController {
 		return result;
 	}
 
-//	@RequestMapping(value = "/deleteKeyword.do", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)	
-//	public Map<String, Object> deleteKeyword(@RequestBody List<Map<String,String>>  params) {
-//		Map<String,Object> resultMap = new HashMap<String, Object>();
-//		System.out.println(params);
-//		return null;
-//		
-//	}
-
+	// 키워드 삭제 
 	@ResponseBody
 	@RequestMapping(value = "/deleteKeyword.do", method = RequestMethod.POST)
-	public int deleteCart(@RequestParam(value = "chbox[]") List<String> chArr) throws Exception {
+	public int deleteKeyword(@RequestParam(value = "chbox[]") List<String> chArr) throws Exception {
 
 		System.out.println(chArr);
 		int result = adminService.deleteKeyword(chArr);
@@ -63,7 +52,27 @@ public class AdminAjaxController {
 		return result;
 	}
 	
-
+	
+	// 캠페인 카테고리 추가 
+	@RequestMapping(value="/addCampaignCategory.do", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public int addCampaignCategory(@RequestBody AdminCampaignCategoryVO vo) {
+		int check = adminService.checkCampaignCategory(vo);
+		int result = 0;
+		if(check ==0) {
+			result = adminService.insertCampaignCategory(vo);
+		}
+		return result;
+	}
+	
+	// 캠페인 카테고리 삭제
+	@ResponseBody
+	@RequestMapping(value="/deleteCampaignCategory.do", method=RequestMethod.POST)
+	public int deleteCampaignCategory(@RequestParam(value="chbox[]") List<String> chArr) throws Exception{
+		int result = adminService.deleteCampaingCategory(chArr);
+		return result;
+	}
+	
+	
 	@RequestMapping(value="/uploadSummernoteImageFile.do", produces = "application/json; charset=utf8")
 	@ResponseBody
 	public String uploadSummernoteImageFile(@RequestParam("file") MultipartFile multipartFile, HttpServletRequest request )  {
@@ -101,4 +110,5 @@ public class AdminAjaxController {
 		System.out.println(a);
 		return a;
 	}
+	
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.knockknock.admin.funding.AdminCampaignCategoryVO;
 import com.knockknock.util.PagingVO;
 
 @Service("adminService")
@@ -82,6 +83,46 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public List<AdminKeywordVO> getKeywordAll() {
 		return adminDAO.getKeywordAll();
+	}
+
+	@Override
+	public int countCampaignCategory() {
+		return adminDAO.countCampaignCategory();
+	}
+
+	@Override
+	public List<AdminCampaignCategoryVO> getCampaignCategoryList(PagingVO pvo) {
+		return adminDAO.getCampaignCategoryList(pvo);
+	}
+
+	@Override
+	public int insertCampaignCategory(AdminCampaignCategoryVO vo) {
+		return adminDAO.insertCampaignCategory(vo);
+	}
+
+	@Override
+	public int checkCampaignCategory(AdminCampaignCategoryVO vo) {
+		return adminDAO.checkCampaignCategory(vo);
+	}
+
+	@Override
+	public int deleteCampaingCategory(List<String> content) {
+		return adminDAO.deleteCampaingCategory(content);
+	}
+
+	@Override
+	public List<AdminCampaignVO> getCampaignList(PagingVO pvo) {
+		return adminDAO.getCampaignList(pvo);
+	}
+
+	@Override
+	public int countCampaign() {
+		return adminDAO.countCampaign();
+	}
+
+	@Override
+	public AdminCampaignVO getCampaign(AdminCampaignVO vo) {
+		return adminDAO.getCampaign(vo);
 	}
 
 

@@ -36,12 +36,12 @@ $(() => {
 });
 
 function keywordAdd() {
-	var inputVal = $("#keyadd").val();
-	var inputObj = {"kContent" : inputVal}
+	var inputVal = $("#campaignCategoryAdd").val();
+	var inputObj = {"ccName" : inputVal}
 	console.log(JSON.stringify(inputObj));	
 	if(inputVal !=''){
 		$.ajax({
-			url: "getJsonKeyword.do",
+			url: "addCampaignCategory.do",
 			type: "post",
 			dataType: "json",
 			data: JSON.stringify(inputObj),
@@ -74,7 +74,7 @@ function keywordDel() {
     var list = [];
     if(confirm_val){
     // 체크된 체크박스 확인
-    var checkBox = $("input[name=keyname]:checked");
+    var checkBox = $("input[name=categoryName]:checked");
     // 체크된 체크박스 값을 가져온다, 체크된 박스가 존재할때 실행
     checkBox.each(function (i) {
         // checkbox.parent() : 부모는 <td>
@@ -89,7 +89,7 @@ function keywordDel() {
 	        alert("선택된 데이터가 없습니다.");
 	    } else {
 	        $.ajax({
-	            url: "deleteKeyword.do",
+	            url: "deleteCampaignCategory.do",
 	            type: "post",
 	            data: {chbox : list},
 	            success: function(result){
@@ -144,30 +144,34 @@ function keywordDel() {
 							<c:if test="${!empty viewAll }">
 								<thead>
 									<tr>
-										<td>키워드 이름</td>
-										<td>키워드 선택</td>
+										<td>카테고리 이름</td>
+										<td>카테고리 선택</td>
 									</tr>
 								</thead>
 								<tbody id="tableList">
-									<c:forEach var="keyword" items="${viewAll }">
+									<c:forEach var="campaign" items="${viewAll }">
 										<tr>
-											<td>${keyword.kContent }</td>
-											<td><input type="checkbox" name="keyname" /></td>
+											<td>${campaign.ccName }</td>
+											<td><input type="checkbox" name="categoryName" /></td>
 										</tr>
 									</c:forEach>
-									<tr>
-										<td><input type="text" name="keyadd" id="keyadd" /></td>
+									<!-- 									<tr>
+										<td><input type="text" name="campaignCategoryAdd" id="campaignCategoryAdd" /></td>
 										<td><input type="button" value="추가하기" id="addButton" />&nbsp&nbsp<input
 											type="button" value="삭제하기" id="delButton" class="delButton" /></td>
-									</tr>
+									</tr> -->
 								</tbody>
 							</c:if>
 						</table>
+						<input type="text" name="campaignCategoryAdd"
+							id="campaignCategoryAdd" /> <input type="button" value="추가하기"
+							id="addButton" />&nbsp&nbsp<input type="button" value="삭제하기"
+							id="delButton" class="delButton" />
 					</form>
 					<div style="display: block; text-align: center;">
 						<c:if test="${paging.startPage != 1 }">
 							<a
-								href="/adminKeywordList.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
+								href="/adminCampaignCategory.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
 						</c:if>
 						<c:forEach begin="${paging.startPage }" end="${paging.endPage }"
 							var="p">
@@ -177,13 +181,13 @@ function keywordDel() {
 								</c:when>
 								<c:when test="${p != paging.nowPage }">
 									<a
-										href="/adminKeywordList.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
+										href="/adminCampaignCategory.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
 								</c:when>
 							</c:choose>
 						</c:forEach>
 						<c:if test="${paging.endPage != paging.lastPage}">
 							<a
-								href="/adminKeywordList.do?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
+								href="/adminCampaignCategory.do?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
 						</c:if>
 					</div>
 				</div>
@@ -193,9 +197,3 @@ function keywordDel() {
 	</div>
 </body>
 </html>
-
-
-
-
-
-

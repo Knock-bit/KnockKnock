@@ -1,44 +1,57 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <c:set var="cp" value="${pageContext.request.contextPath }" />
+      <link href="${cp}/resource/css/nav1.css" rel="stylesheet">
+  <link href="${cp}/resource/css/main.css" rel="stylesheet">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  <head>
+  <style>
+  .input-group>.form-control{
+  float:right;}
+  </style>
+  </head>
 
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light campaign-navbar">
-     <ul class="collapse navbar-collapse justify-content-start" >
-      <li class="nav-item dropdown">
-        <a class="navbar-brand" href="#">캠페인 전체보기</a>
-        <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
-          aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button> -->
-        </li>
-        </ul>
-           
-           <ul class="collapse navbar-collapse justify-content-end" >
-            
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
-                data-bs-toggle="dropdown" aria-expanded="false">
-                전체
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                <li><a class="dropdown-item" id="getIng" href="#" >진행중</a></li>
-                <li><a class="dropdown-item" id="getEnd" href="#">종료</a></li>
-              </ul>
+	  <header id="header">
+    <div class="container d-flex align-items-center justify-content-end">
+    <form class="d-flex float-right">
+      <input class="form-control me-2" type="search"  aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">search</button>
+    </form>
+      <nav id="navbar" class="navbar order-last order-lg-0 justify-content-end">
+	
+          <ul>
+          <li class="dropdown"><a href="#"><span>전체</span> <i class="bi bi-chevron-down"></i></a>
+              <ul>
+              <li><a id="getIng" href="#" >진행중</a></li>
+                <li><a id="getEnd" href="#">종료</a></li>
+            </ul>
             </li>
-
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
-                data-bs-toggle="dropdown" aria-expanded="false">
-                조회기준
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                <li><a class="dropdown-item" id="userCount"href="#">참가자수</a></li>
-                <li><a class="dropdown-item" id="latest" href="#">최신순</a></li>
-                <li><a class="dropdown-item" id= href="#">마감임박순</a></li>
-              </ul>
-            </li>
-         </ul>
+            </ul>
+               <ul>
+          <li class="dropdown"><a href="#"><span>조회기준</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+                <li><a  id="userCount"href="#">참가자수</a></li>
+                <li><a id="latest" href="#">최신순</a></li>
+                <li><a  id="" href="#">마감임박순</a></li>
+            </ul>
+          </li>
+          </ul>
           
-         
-    </nav>
+        
+        <!--   	<form class="navbar-form float-right" role="search">
+            <div class="input-group float-right">
+               <input type="text" class="form-control" placeholder="Search">
+               <div class="input-group-btn">
+                  <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+               </div>
+            </div>
+         </form> -->
+
+      </nav><!-- .navbar -->
+   
+    </div>
+    </header>
+    
+            
+            
+            

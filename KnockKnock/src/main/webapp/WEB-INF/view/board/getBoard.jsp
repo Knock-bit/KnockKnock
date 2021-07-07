@@ -92,13 +92,13 @@
 		<label for="cContent">댓글 목록</label>
 		<form name="commentsInsertForm">
 			<div class="input-group">
-				<input type="hidden" name="bIdx" value="${board.bIdx}">
+				<input type="text" name="bIdx" value="${board.bIdx}">
 				<input type="text" name="uIdx" value="${board.uIdx }">
 				<br><br>
-				<textarea id="cContent" name="cContent" placeholder="내용을 입력해주세요" rows="3" cols="50"></textarea>
+				<textarea class="form-control" id="cContent" name="cContent" placeholder="내용을 입력해주세요" rows="3" cols="50"></textarea>
 				<br><br>
 				<span class="input-group-btn">
-					<button type="button" name="commentsInsertBtn">등록</button>
+					<button class="btn btn-default" type="button" name="commentsInsertBtn">등록</button>
 				</span>
 			</div>
 		</form>

@@ -11,11 +11,22 @@ public interface FundingService {
 	List<FundingUserVO> selectAllFundingUsers(int cfIdx);
 	// 종료시간 지난 펀딩 만료처리
 	int updateExpiredFunding();
-	int insertFundingUser(FundingUserVO fundingUser);
-	int updateFundingPoint(FundingUserVO fundingUser);
+	// 펀딩 유저 선택
 	FundingUserVO selectFundingUser(FundingUserVO fundingUser);
+	// 펀딩 유저 테이블에 등록
+	int insertFundingUser(FundingUserVO fundingUser);
+	// 펀딩의 collected point 연산 
+	int updateFundingPoint(FundingUserVO fundingUser);
+	// User table의 usedPoint 업데이트
 	int updateUserFundingPoint(FundingUserVO fundingUser);
+	// ---- 펀딩 취소 ----
+	// 펀딩 유저 테이블에서 삭제
 	int deleteFundingUser(FundingUserVO fundingUser);
+	// 펀딩의 collected point 연산
 	int updateFundingPointMinus(FundingUserVO fundingUser);
+	// User table usedPoint 업데이트 
 	int updateUserFundingPointMinus(FundingUserVO fundingUser);
+	
+	// 펀딩 성공 --> status 변경
+	int updateSuccessFunding();
 }

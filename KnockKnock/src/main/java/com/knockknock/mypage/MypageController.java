@@ -1,7 +1,7 @@
 
 package com.knockknock.mypage;
 
-import java.io.BufferedOutputStream; 
+import java.io.BufferedOutputStream;  
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -13,6 +13,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -27,37 +28,39 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
-
+import org.springframework.web.servlet.ModelAndView;
+import com.knockknock.campaign.proposal.ProposalVO;
 import com.google.gson.Gson;
 import com.knockknock.board.BoardVO;
 import com.knockknock.campaign.campaign.CampaignVO;
 import com.knockknock.contact.ContactVO;
+import com.knockknock.user.UserController;
 import com.knockknock.user.UserVO;
 import com.knockknock.util.PagingVO;
 import com.knockknock.util.PointVO;
 
 @Controller
-@SessionAttributes("users")
+//@SessionAttributes("users")
 public class MypageController {
 
 	@Autowired
 	private MypageService mypageService;
 
 	// 마이페이지 임시 메인으로 이동
-	@GetMapping("/myPage.do")
-	public String moveMypage(Model model) {
-		int uIdx = 1;
-		UserVO user = mypageService.selectOneUser(uIdx);
-		model.addAttribute("users", user);
-		return "/mypage/mypage";
-	}
+	/*
+	 * @GetMapping("/myPage.do") public String moveMypage(Model model, HttpSession
+	 * session) { int uIdx = 1; UserVO user = mypageService.selectOneUser(uIdx);
+	 * session.setAttribute("users", user); return "/mypage/mypage"; }
+	 */
 
 	// 내 정보 수정으로 이동
 	@GetMapping("/updateMyInfo.do")
-	public String updateMypage(UserVO vo, Model model) {
-
-		model.addAttribute("users");
+	public String updateMypage(@ModelAttribute("users")UserVO vo, Model model, HttpSession session) {
 		
+		UserVO user = (UserVO) session.getAttribute("users");
+		
+		user = mypageService.selectOneUser(user.getuIdx());
+		model.addAttribute("users",user);
 		
 		return "/mypage/mypageList/updateMyInfo";
 	}
@@ -73,8 +76,7 @@ public class MypageController {
 
 	// 내 정보 수정 정보 받아오기
 	@PostMapping("/updateMyInfoBtn.do")
-	public String updateMyInfo(@ModelAttribute("users") UserVO vo, MultipartFile file, HttpServletRequest request) {
-
+	public String updateMyInfo(UserVO vo, MultipartFile file, HttpServletRequest request, HttpSession session) {
 		// 파일처리
 		if (file.isEmpty()) {
 
@@ -83,6 +85,8 @@ public class MypageController {
 			String savePath = request.getSession().getServletContext().getRealPath("/resource/img/upload/");
 			// 실제 파일명
 			String fileName = file.getOriginalFilename();
+			System.out.println("savepath : " + savePath);
+			System.out.println("filename : " + fileName);
 
 			// 업로드한 파일명을 마지막 . 기준으로 분리 ex) img.png -> img/ .png
 			// indexOf : .위치 추출 / subString : begin ~ end 까지 자르기
@@ -133,17 +137,25 @@ public class MypageController {
 			}
 
 		}
+		UserVO userVO = (UserVO) session.getAttribute("users");
+		int idx = userVO.getuIdx();
+		vo.setuIdx(idx);
 		int result = mypageService.updateMyInfo(vo);
 
+		userVO = mypageService.selectOneUser(idx);
+		
 
-
+		session.setAttribute("users", userVO);
 		return "/mypage/mypageList/updateMyInfo";
 	}
 
 	// 비밀번호 변경 페이지로 이동
 	@GetMapping("/updatePwd.do")
-	public String updatePwd(@ModelAttribute("users") UserVO vo) {
-;
+	public String updatePwd(HttpSession session) {
+		
+		UserVO vo = (UserVO) session.getAttribute("users");
+		session.setAttribute("users", vo);
+		
 		return "/mypage/mypageList/updatePwd";
 	}
 
@@ -152,9 +164,11 @@ public class MypageController {
 	// = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@PostMapping("/updateMyPwd.do")
 	@ResponseBody
-	public String updateMyPwd(@ModelAttribute("users") UserVO vo) {
-
+	public String updateMyPwd(UserVO vo, HttpSession session) {
 		
+		UserVO user = (UserVO) session.getAttribute("users");
+		int uIdx = user.getuIdx();
+		vo.setuIdx(uIdx);
 		mypageService.updateMyPwd(vo);
 
 		return "users";
@@ -163,15 +177,22 @@ public class MypageController {
 	
 	// 포인트현황 페이지로 이동
 	@GetMapping("/myPoint.do")
-	public String myPointPage(@ModelAttribute("users")UserVO vo, Model model) {
+	public String myPointPage(UserVO vo, Model model, HttpSession session) {
+		
+		// 유저 정보 가져오기
+		UserVO user = (UserVO) session.getAttribute("users");
+		user = mypageService.selectOneUser(user.getuIdx());
+		
 		
 		// 해당 유저의 STATUS가 1인 엠블럼 이미지 가져오기
 		List<String> emImgList = mypageService.emblemList(vo);
 
 		// 나의 포인트 내역 가져오기
+		vo.setuIdx(user.getuIdx());
 		List<PointVO> pointList = mypageService.myPointList(vo);
+		System.out.println("pointList : " + pointList);
 		
-		
+		model.addAttribute("users",user);
 		model.addAttribute("pointList", pointList);
 		model.addAttribute("emImgList", emImgList);
 		return "/mypage/mypageList/myPointPage";
@@ -180,23 +201,30 @@ public class MypageController {
 	
 	// 현재 참여중인 캠페인으로 이동
 	@GetMapping("/myCampaignPage.do")
-	public String myCampainging(@ModelAttribute("users")UserVO vo, Model model) {
+	public String myCampainging( Model model, HttpSession session) {
 		// 유저의 캠페인 리스트 가져오기
+		
+		UserVO vo = (UserVO) session.getAttribute("users");
+		
 		List<CampaignVO> clist = mypageService.campaigningList(vo);
-
+		System.out.println("clist:"+clist);
+		System.out.println("vo: " + vo);
 		
-		
+		model.addAttribute("users", vo);
 		model.addAttribute("clist",clist);
 		return "/mypage/mypageList/mycaming";
 	}
 	
 	// 종료된 캠페인 리스트
 	@GetMapping("/myCampaignList.do")
-	public String myEndCampaignList(@ModelAttribute("users")UserVO vo, Model model) {
+	public String myEndCampaignList( Model model ,HttpSession session) {
 		// 유저의 종료된 캠페인 리스트 가져오기
-		List<CampaignVO> endlist = mypageService.endCampaignList(vo);
-		System.out.println("endList:" + endlist);
+		UserVO vo = (UserVO) session.getAttribute("users");
 		
+		List<CampaignVO> endlist = mypageService.endCampaignList(vo);
+		
+		
+		model.addAttribute("users", vo);
 		model.addAttribute("endlist",endlist);
 		return "/mypage/mypageList/myCampaignList";
 	}
@@ -204,12 +232,16 @@ public class MypageController {
 	
 	// 나의 문의내역
 	@GetMapping("/myContactList.do")
-	public String myContactList(@ModelAttribute("users")UserVO vo ,Model model, 
+	public String myContactList(HttpSession session ,Model model, 
 				@RequestParam(value="nowPage", required=false)String nowPage,
-				@RequestParam(value="cntPerPage", required=false)String cntPerPage) {
+				@RequestParam(value="cntPerPage", required=false)String cntPerPage,
+				@RequestParam(value="pnowPage", required=false)String pnowPage,
+				@RequestParam(value="pcntPerPage", required=false)String pcntPerPage) {
+		
+		UserVO vo = (UserVO) session.getAttribute("users");
 		
 		PagingVO pvo = new PagingVO();
-		// 전체 게시물 수 구하기
+		// 문의내역 전체 게시물 수 구하기
 		pvo.setTotal(mypageService.myCclistTot(vo));
 		int total = pvo.getTotal();
 		
@@ -234,18 +266,60 @@ public class MypageController {
 		map.put("start", start);
 		map.put("end", end);
 		map.put("uIdx", uIdx);
-		
+		// 나의 문의내역
 		List<ContactVO> contactList = mypageService.myContactList(map);
 
+		
+
+		// ======================
+		// 제안글 전체 게시물 수 구하기
+		PagingVO ppvo = new PagingVO();
+		ppvo.setTotal(mypageService.myplistTot(vo));
+		int ptotal = ppvo.getTotal();
+
+		// 페이지당 글 갯수
+		ppvo.setCntPerPage(5);
+
+		// 현재 페이지 구하기
+		if(pnowPage==null && pcntPerPage==null) {
+			pnowPage = "1";
+			pcntPerPage = "5";
+		} else if(pnowPage == null) {
+			pnowPage = "1";
+		} else if (cntPerPage == null) {
+			pcntPerPage ="5";
+		}
+
+		ppvo = new  PagingVO(ptotal, Integer.parseInt(pnowPage), Integer.parseInt(pcntPerPage));
+		
+		Map<String, Integer> pmap = new HashMap<>();
+		int pstart = ppvo.getStart();
+		int pend = ppvo.getEnd();
+		int puIdx = vo.getuIdx();
+		pmap.put("start", pstart);
+		pmap.put("end", pend);
+		pmap.put("uIdx", puIdx);
+
+		// 나의 제안글
+		List<ProposalVO> proposalList = mypageService.myProposalList(pmap);
+		System.out.println("prolist:"+proposalList);
+		
+		
+		model.addAttribute("users", vo);
+		// 나의 문의내역
 		model.addAttribute("pvo", pvo);
 		model.addAttribute("contactList",contactList);
+		// 나의 제안글
+		model.addAttribute("ppvo", ppvo);
+		model.addAttribute("proposalList",proposalList);
 		return "/mypage/mypageList/myContactList";
 	}
 	
 	// 내 문의내역 창으로 이동(상세글보기)
 	@GetMapping("myQuestion.do")
-	public String myQuestion (@ModelAttribute("users")UserVO vo ,Model model,
+	public String myQuestion (HttpSession session ,Model model,
 			@RequestParam(value="ctIdx", required=false)String ctIdx) {
+		UserVO vo = (UserVO) session.getAttribute("users");
 		
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		
@@ -255,35 +329,47 @@ public class MypageController {
 		map.put("ctIdx", ctIdx2);
 		map.put("uIdx", uIdx);
 		
-		System.out.println("ctIdx2 : " + ctIdx2);
-		System.out.println("uIdx : " + uIdx); 
 		ContactVO cvo = mypageService.myQuestion(map);
 		
-		
+		model.addAttribute("users", vo);
 		model.addAttribute("cvo", cvo);
 		return "/mypage/mypageList/myContact";
 	}
 	
 	// 나의 활동으로 이동
 	@GetMapping("myActive.do")
-	public String myActive(@ModelAttribute("users")UserVO vo ,Model model) {
+	public String myActive(HttpSession session ,Model model) {
 		
+		UserVO vo = (UserVO) session.getAttribute("users");
 		//List<BoardVO> bvo = mypageService.myActive(vo);
-				
+		model.addAttribute("users", vo);	
 		return "/mypage/mypageList/myDiary";
 	}
 	// 내 캘린더 ajax
 	@RequestMapping(value ="/myCal.do", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseBody
-	public String selectEventList(@ModelAttribute("users")UserVO vo ,Model model) {
-		System.out.println("uIdx : " + vo.getuIdx());
+	public String selectEventList(HttpSession session ,Model model) {
+		
+		UserVO vo = (UserVO) session.getAttribute("users");
 		List<BoardVO> bvo = mypageService.myActive(vo);
-		
-		System.out.println(bvo);
-		
+
 		
 		 return new Gson().toJson(bvo);
 	}
 	
-
+	// 회원탈퇴
+	@GetMapping("deleteUsers.do")
+	public ModelAndView deleteUsers(int uIdx, HttpSession session) {
+		
+		int result = mypageService.deleteUsers(uIdx);
+		
+		//UserController uc = new UserController();
+		//uc.logout(session);
+		
+		
+		session.invalidate();
+		ModelAndView mv = new ModelAndView("main/main");
+		
+		return mv;
+	}
 }
