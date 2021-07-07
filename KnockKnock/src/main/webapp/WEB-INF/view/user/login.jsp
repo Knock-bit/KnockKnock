@@ -109,7 +109,9 @@
 </head>
 
 <body>
-
+<!-- ===Header - Nav 대신 로고만 -->
+<a href="/main.do"><img src="${cp}/resource/img/logo2.png" style="width:400px;"></a>
+<!-- header끝 -->
 	<div class="container" id="container">
 
 		<div class="form-container sign-in-container">
@@ -125,7 +127,7 @@
 				<input type="text" placeholder="아이디" name="uId" id="uId"
 					value="${user.uId}" }/> 
 				<input type="password" placeholder="비밀번호"
-					name="uPwd" id="uPwd" value="${user.uPwd }" /> <a href="#">비밀번호를
+					name="uPwd" id="uPwd" value="${user.uPwd }" /> <a href="/user/findpwd.do">비밀번호를
 					잊으셨나요?</a> <input type="button" style="width: 100px; color:white; background-color: #0a3a18; border-radius: 35px;
 					" onclick="logindo()" value="Log In">
 			</form>

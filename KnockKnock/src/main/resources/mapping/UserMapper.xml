@@ -30,7 +30,14 @@
 U_ACTIVE, U_GENDER, U_ADDRESS, U_JOINDATE)
 		VALUES(U_IDX_SEQ.nextval, #{uId}, #{uName}, #{uPwd}, #{uNickname}, #{uEmail}, #{uPhone}, #{uBirth}, default, 1, default, #{uGender}, #{uAddress}, sysdate)		
 	</insert>
-	 
+	<!-- 비밀번호 찾기 -->
+	<update id="updatePwd" parameterType="String">
+		UPDATE MEMBER SET U_PWD =#{uPwd} WHERE U_EMAIL = #{uEmail}
+	</update>
+	<!-- 아이디와 이메일 체크(비밀번호 찾기용) --> 
+	<select id="readUserInfo" parameterType="UserVO" resultType="UserVO">
+		SELECT *FROM USERS WHERE U_ID=#{uId} AND U_EMAIL=#{uEmail}
+	</select>
 	
 	<!-- 마이페이지 이동 -->
 	<select id="selectOneUser" parameterType="int" resultType="UserVO">
