@@ -5,6 +5,10 @@ public class AdminKeywordVO {
 	private String kContent; // keyword 내용
 	private int kCount; // keyword 사용 횟수
 
+	// 검색 조건용 필드 추가 
+	private String searchCondition;
+	private String searchKeyword;
+
 	
 	public AdminKeywordVO() {
 		
@@ -40,10 +44,28 @@ public class AdminKeywordVO {
 		this.kCount = kCount;
 	}
 
+	public String getSearchCondition() {
+		return searchCondition;
+	}
+
+	public void setSearchCondition(String searchCondition) {
+		this.searchCondition = searchCondition;
+	}
+
+	public String getSearchKeyword() {
+		return searchKeyword;
+	}
+
+	public void setSearchKeyword(String searchKeyword) {
+		this.searchKeyword = searchKeyword;
+	}
+
 	@Override
 	public String toString() {
-		return "AdminKeywordVO [kIdx=" + kIdx + ", kContent=" + kContent + ", kCount=" + kCount + "]";
+		return "AdminKeywordVO [kIdx=" + kIdx + ", kContent=" + kContent + ", kCount=" + kCount + ", searchCondition="
+				+ searchCondition + ", searchKeyword=" + searchKeyword + "]";
 	}
+
 
 	
 }
