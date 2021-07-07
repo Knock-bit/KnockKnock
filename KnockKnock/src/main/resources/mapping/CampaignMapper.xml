@@ -70,10 +70,10 @@
 	<!-- 캠페인 상세보기 -->
 	<select id="selectOneCampaign" parameterType="int" resultType="CampaignVO">
 		SELECT C.*, U.U_NICKNAME AS HOST_NICKNAME
-		FROM USERS U, CAMPAIGN C, CAMPAIGN_CATEGORY CC
+		FROM USERS U, CAMPAIGN C
 		WHERE CI_STATUS = 1
 		AND U.U_IDX = C.U_IDX
-		AND C.CI_IDX = #{ciIdx}
+		AND C.CI_IDX =3
 	</select>
 	
 	<!-- 캠페인 상세보기 - 참여자 닉네임 불러오기 -->
