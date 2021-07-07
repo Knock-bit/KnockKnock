@@ -289,7 +289,7 @@ vertical-align:middle;}
               </p>
             </div> --%>
 
-            <div class="campaign-info d-flex justify-content-between align-items-center">
+            <div class="campaign-info justify-content-between align-items-center">
               
               <p><img class="ci-emblem" src="${campaign.ciEmblem }" width=60px;> 인증방법<br>
               ${campaign.ciGoal }</p>
