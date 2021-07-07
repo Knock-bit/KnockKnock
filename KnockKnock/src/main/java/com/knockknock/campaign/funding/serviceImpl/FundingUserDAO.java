@@ -27,6 +27,7 @@ public class FundingUserDAO {
 	}
 
 	public int updateUserFundingPoint(FundingUserVO fundingUser) {
+		mybatis.update("campaign.updateUserPlusPointDetail", fundingUser);
 		return mybatis.update("campaign.updateUserFundingPoint", fundingUser);
 	}
 
@@ -39,6 +40,7 @@ public class FundingUserDAO {
 	}
 
 	public int updateUserFundingPointMinus(FundingUserVO fundingUser) {
+		mybatis.update("campaign.updateUserMinusPointDetail", fundingUser);
 		return mybatis.update("campaign.updateUserFundingPointMinus", fundingUser);
 	}
 
