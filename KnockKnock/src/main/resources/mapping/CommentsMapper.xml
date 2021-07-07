@@ -3,6 +3,9 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="CommentsDAO">
+	<select id="commentsCount" resultType="int">
+		SELECT COUNT(*) FROM COMMENTS
+	</select>
 	
 	<insert id="insertComments" parameterType="comments">
 		INSERT INTO COMMENTS (M_IDX, C_CONTENT, B_IDX, U_IDX, C_REGDATE)
@@ -18,8 +21,9 @@
 		DELETE FROM COMMENTS WHERE M_IDX = #{mIdx}
 	</delete>
 
-	<select id="commentsList" resultType="comments">
-		SELECT * FROM COMMENTS ORDER BY M_IDX DESC
+	<select id="commentsList" parameterType="int" resultType="comments">
+		SELECT * FROM COMMENTS WHERE B_IDX = #{bIdx}
+		ORDER BY M_IDX DESC
 	</select>
 	
 </mapper>

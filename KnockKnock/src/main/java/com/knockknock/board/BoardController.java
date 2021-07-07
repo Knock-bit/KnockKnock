@@ -17,8 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.knockknock.board.comments.CommentsService;
-import com.knockknock.board.comments.CommentsVO;
 import com.knockknock.util.PagingVO;
 
 @Controller
@@ -29,9 +27,6 @@ public class BoardController {
 	
 	@Autowired
 	private BoardService boardService;
-	
-	@Autowired
-	private CommentsService commentsService;
 	
 	@RequestMapping("/board/getBoardList.do")
 	public String getBoardList(BoardVO vo, Model model, PagingVO pvo,
@@ -99,9 +94,6 @@ public class BoardController {
 	public String getBoard(int bIdx, Model model, BoardVO vo) {
 		BoardVO board = boardService.getBoard(bIdx);
 		model.addAttribute("board", board);
-		
-		List<CommentsVO> commentsList = commentsService.commentsList(vo.getbIdx());
-		model.addAttribute("commentsList", commentsList);
 		
 		return "board/getBoard";
 	}
