@@ -1,8 +1,10 @@
 package com.knockknock.user;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletResponse;
 
-public interface UserService {
+public interface UserService { 
 
 	public UserVO selectlogin(UserVO vo);
 	public int idCheck(String id);
@@ -13,5 +15,5 @@ public interface UserService {
 	public UserVO googlelogin(UserVO vo);
 	public void sendEmail(UserVO vo, String div) throws Exception;
 	public void findPwd(HttpServletResponse resp, UserVO vo) throws Exception;
-	public UserVO readUserInfo(UserVO vo);
+	public Map<String, String> readUserInfo(UserVO vo);
 }
