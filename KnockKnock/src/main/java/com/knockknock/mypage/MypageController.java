@@ -201,23 +201,30 @@ public class MypageController {
 	
 	// 현재 참여중인 캠페인으로 이동
 	@GetMapping("/myCampaignPage.do")
-	public String myCampainging(@ModelAttribute("users")UserVO vo, Model model) {
+	public String myCampainging( Model model, HttpSession session) {
 		// 유저의 캠페인 리스트 가져오기
+		
+		UserVO vo = (UserVO) session.getAttribute("users");
+		
 		List<CampaignVO> clist = mypageService.campaigningList(vo);
-
+		System.out.println("clist:"+clist);
+		System.out.println("vo: " + vo);
 		
-		
+		model.addAttribute("users", vo);
 		model.addAttribute("clist",clist);
 		return "/mypage/mypageList/mycaming";
 	}
 	
 	// 종료된 캠페인 리스트
 	@GetMapping("/myCampaignList.do")
-	public String myEndCampaignList(@ModelAttribute("users")UserVO vo, Model model) {
+	public String myEndCampaignList( Model model ,HttpSession session) {
 		// 유저의 종료된 캠페인 리스트 가져오기
-		List<CampaignVO> endlist = mypageService.endCampaignList(vo);
-		System.out.println("endList:" + endlist);
+		UserVO vo = (UserVO) session.getAttribute("users");
 		
+		List<CampaignVO> endlist = mypageService.endCampaignList(vo);
+		
+		
+		model.addAttribute("users", vo);
 		model.addAttribute("endlist",endlist);
 		return "/mypage/mypageList/myCampaignList";
 	}
@@ -225,9 +232,11 @@ public class MypageController {
 	
 	// 나의 문의내역
 	@GetMapping("/myContactList.do")
-	public String myContactList(@ModelAttribute("users")UserVO vo ,Model model, 
+	public String myContactList(HttpSession session ,Model model, 
 				@RequestParam(value="nowPage", required=false)String nowPage,
 				@RequestParam(value="cntPerPage", required=false)String cntPerPage) {
+		
+		UserVO vo = (UserVO) session.getAttribute("users");
 		
 		PagingVO pvo = new PagingVO();
 		// 전체 게시물 수 구하기
@@ -258,6 +267,7 @@ public class MypageController {
 		
 		List<ContactVO> contactList = mypageService.myContactList(map);
 
+		model.addAttribute("users", vo);
 		model.addAttribute("pvo", pvo);
 		model.addAttribute("contactList",contactList);
 		return "/mypage/mypageList/myContactList";
@@ -265,8 +275,9 @@ public class MypageController {
 	
 	// 내 문의내역 창으로 이동(상세글보기)
 	@GetMapping("myQuestion.do")
-	public String myQuestion (@ModelAttribute("users")UserVO vo ,Model model,
+	public String myQuestion (HttpSession session ,Model model,
 			@RequestParam(value="ctIdx", required=false)String ctIdx) {
+		UserVO vo = (UserVO) session.getAttribute("users");
 		
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		
@@ -276,32 +287,30 @@ public class MypageController {
 		map.put("ctIdx", ctIdx2);
 		map.put("uIdx", uIdx);
 		
-		System.out.println("ctIdx2 : " + ctIdx2);
-		System.out.println("uIdx : " + uIdx); 
 		ContactVO cvo = mypageService.myQuestion(map);
 		
-		
+		model.addAttribute("users", vo);
 		model.addAttribute("cvo", cvo);
 		return "/mypage/mypageList/myContact";
 	}
 	
 	// 나의 활동으로 이동
 	@GetMapping("myActive.do")
-	public String myActive(@ModelAttribute("users")UserVO vo ,Model model) {
+	public String myActive(HttpSession session ,Model model) {
 		
+		UserVO vo = (UserVO) session.getAttribute("users");
 		//List<BoardVO> bvo = mypageService.myActive(vo);
-				
+		model.addAttribute("users", vo);	
 		return "/mypage/mypageList/myDiary";
 	}
 	// 내 캘린더 ajax
 	@RequestMapping(value ="/myCal.do", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseBody
-	public String selectEventList(@ModelAttribute("users")UserVO vo ,Model model) {
-		System.out.println("uIdx : " + vo.getuIdx());
+	public String selectEventList(HttpSession session ,Model model) {
+		
+		UserVO vo = (UserVO) session.getAttribute("users");
 		List<BoardVO> bvo = mypageService.myActive(vo);
-		
-		System.out.println(bvo);
-		
+
 		
 		 return new Gson().toJson(bvo);
 	}

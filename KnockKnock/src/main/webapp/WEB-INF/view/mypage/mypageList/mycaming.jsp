@@ -140,8 +140,8 @@ function numberWithCommas(x) {
 											</div>
 											<div class="itemGoal ">
 												<p class="it1">GOAL</p> <p class="it2">
-													${campaign.cGoal }</p>
-													${users.uUsedPoint }											</div>
+													${campaign.ciGoal }</p>
+											</div>
 											<div class="itemEnddate">
 												<p class="it1">남은기간 </p>
 												 <span class="enddate" style="display:none;">${campaign.ciEnddate }</span>

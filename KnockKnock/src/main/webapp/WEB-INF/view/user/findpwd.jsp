@@ -20,8 +20,11 @@
 				},
 				success : function(result) {
 					alert(result);
-					alert("이메일보내주기")
+					href.location = "/main.do"
 				},
+				fail : function(){
+					alert("서버에 오류가 있습니다.\n관리자에게 문의해주시기 바랍니다.")
+				}
 			})
 		});
 	})
