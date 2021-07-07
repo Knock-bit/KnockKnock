@@ -155,14 +155,18 @@ function keywordDel() {
 											<td><input type="checkbox" name="categoryName" /></td>
 										</tr>
 									</c:forEach>
-									<tr>
+									<!-- 									<tr>
 										<td><input type="text" name="campaignCategoryAdd" id="campaignCategoryAdd" /></td>
 										<td><input type="button" value="추가하기" id="addButton" />&nbsp&nbsp<input
 											type="button" value="삭제하기" id="delButton" class="delButton" /></td>
-									</tr>
+									</tr> -->
 								</tbody>
 							</c:if>
 						</table>
+						<input type="text" name="campaignCategoryAdd"
+							id="campaignCategoryAdd" /> <input type="button" value="추가하기"
+							id="addButton" />&nbsp&nbsp<input type="button" value="삭제하기"
+							id="delButton" class="delButton" />
 					</form>
 					<div style="display: block; text-align: center;">
 						<c:if test="${paging.startPage != 1 }">
@@ -193,9 +197,3 @@ function keywordDel() {
 	</div>
 </body>
 </html>
-
-
-
-
-
-
