@@ -114,46 +114,39 @@
         }
         
       </style>
-     
-     
-     <script>
-     $(() => {
-    		$("#fundingStartBtn").click(keywordAdd);
+      
+      <script>
+      $(() => {
+    		$("#fundingStartBtn").click(startFunding);
     	});
 
-    	function keywordAdd() {
-    		var inputVal = $("#keyadd").val();
-    		var inputObj = {"kContent" : inputVal}
-    		console.log(JSON.stringify(inputObj));	
-    		if(inputVal !=''){
+    	function startFunding() {
+    		var text = $('#cfIdx').val();
+    		var inputObj = {"cfIdx" : text};
+    		console.log(JSON.stringify(inputObj));
     			$.ajax({
-    				url: "getJsonKeyword.do",
+    				url: "startFunding.do",
     				type: "post",
     				dataType: "json",
     				data: JSON.stringify(inputObj),
     				contentType: 'application/json; charset=utf-8',
     				success: function(result) {
-    					if(result != 0){
-    						alert("입력하신 데이터가 추가되었습니다.");
-    						location.reload();
-    						
-    					} else{
-    						alert("이미 존재하는 키워드입니다.");
-    					}
-    			
+    					alert("펀딩을 시작합니다.");
+    					alert(result);
+    					location.reload();
+    				},
+    				error: function(){
+    					alert("실패");
     				}
     			}) 
-    		} else{
-    			alert("다시 입력해주세요.")
-    		}
     	}
-
-
-     </script>
+      </script>
+     
     </head>
 
     <body>
-
+	<!-- hidden -->
+	<input type="hidden" id ="cfIdx" value="${funding.cfIdx }">
 
 
       <!-- ======= Header ======= -->
@@ -168,7 +161,7 @@
           <jsp:include page='/layout/navbar/nav.jsp' flush='false' />
         </c:otherwise>
       </c:choose>
-
+	
       <main id="main">
 
         <!-- ======= Breadcrumbs ======= -->
@@ -246,9 +239,22 @@
           </div>
         </section><!-- End Cource Details Section -->
 
-      
-              <div class="modal-footer">
-                  <button type="button"  class="btn btn-secondary" data-dismiss="modal" name="fundingStartBtn">펀딩 진행하기</button>
+      	
+         	  <div class="modal-footer">
+         	  	  <c:if test="${funding.cfStatus eq 0 }">
+                  	<button type="button"  class="btn btn-secondary" data-dismiss="modal" id="fundingStartBtn">펀딩 진행하기</button>
+                  </c:if>
+                  
+                  <c:if test="${funding.cfStatus eq 1 }">
+                  	<button type="button"  class="btn btn-secondary" data-dismiss="modal">진행중인 펀딩입니다.</button>
+                  </c:if>
+                  
+                  <c:if test="${funding.cfStatus eq 2 }">
+                  	<button type="button"  class="btn btn-secondary" data-dismiss="modal">펀딩에 성공한 캠페인</button>
+                  </c:if>
+                  <c:if test="${funding.cfStatus eq 3 }">
+                  	<button type="button"  class="btn btn-secondary" data-dismiss="modal">펀딩 종료된 캠페인</button>
+                  </c:if>
               </div>
 
       </main><!-- End #main -->
