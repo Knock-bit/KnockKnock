@@ -72,6 +72,11 @@ U_ACTIVE, U_GENDER, U_ADDRESS, U_JOINDATE)
 	
 	</update>
 	
+	<!-- 회원 탈퇴 -->
+	<delete id="deleteUsers" parameterType="int">
+		DELETE FROM USERS WHERE U_IDX = #{uIdx}
+	</delete>
+	
 	<!-- 엠블럼 리스트 -->
 	<select id="userEmblemList" parameterType="UserVO" resultType="map">
 		SELECT CI_EMBLEM
@@ -209,4 +214,5 @@ U_ACTIVE, U_GENDER, U_ADDRESS, U_JOINDATE)
 			WHERE O.P_IDX = P.P_IDX
 			AND O.U_IDX=#{uIdx}
 	</select>
+	
 </mapper>

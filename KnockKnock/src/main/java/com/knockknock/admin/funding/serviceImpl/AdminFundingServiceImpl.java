@@ -52,4 +52,9 @@ public class AdminFundingServiceImpl implements AdminFundingService {
 	public AdminFundingVO getFunding(AdminFundingVO vo) {
 		return adminFundingDAO.getFunding(vo);
 	}
+
+	@Override
+	public int updateCfStatus(AdminFundingVO vo) {
+		return adminFundingDAO.updateCfStatus(vo);
+	}
 }

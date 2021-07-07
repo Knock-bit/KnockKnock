@@ -51,6 +51,7 @@
 
 	<p id="ctext">Ended Campagin</p>
 	<div class="main">
+		<c:if test="${! empty endlist }">
 		<div class="endList">
 			<c:forEach var="endlist" items="${endlist }">
 				<div class="item">
@@ -70,6 +71,13 @@
 				</div>
 			</c:forEach>
 		</div>
+		</c:if>
+		<c:if test="${empty endlist }">
+			<div style="margin:5%;">
+				<p style="font-size:20px; color:#0e4b20;">종료된 캠페인이 없습니다.</p>
+			
+			</div>
+		</c:if>
 	</div>
 	<div class="modal">
 	  <div class="madalDiv">

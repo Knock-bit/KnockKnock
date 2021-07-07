@@ -112,7 +112,9 @@ function numberWithCommas(x) {
 				<div id="con">
 					<div class="slide_wrap">
 					<div class="slide_box">
+					<c:if test="${! empty clist }">
 					<div class="slide_list clearfix">
+					
 						<c:forEach var="campaign" items="${clist}">
 							
 								
@@ -177,7 +179,17 @@ function numberWithCommas(x) {
 										</div>
 									</div>
 						</c:forEach>
+						
+					
 						</div>
+						</c:if>
+						<c:if test="${empty clist }">
+							<div style="margin:5%;">
+								<p style="font-size:20px; color:#0e4b20;">현재 참여 중인 캠페인이 없습니다.</p>
+							
+							</div>
+							
+						</c:if>
 						</div>
 						<div class="slide_btn_box">
 							<button type="button" class="slide_btn_prev">Prev</button>

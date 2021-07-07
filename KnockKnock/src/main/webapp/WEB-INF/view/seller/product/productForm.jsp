@@ -7,7 +7,7 @@
 <html>
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
- 	<link href="${cp}/resource/css/signup.css" rel="stylesheet">
+ 	<link href="${contextPath}/resource/css/proposal.css" rel="stylesheet">
 <link href="${cp}/resource/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 	<link href="${cp}/resource/css/signup.css" rel="stylesheet">

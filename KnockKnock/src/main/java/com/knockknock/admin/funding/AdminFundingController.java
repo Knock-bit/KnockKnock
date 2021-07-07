@@ -3,20 +3,21 @@ package com.knockknock.admin.funding;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.knockknock.admin.AdminKeywordVO;
 import com.knockknock.admin.AdminService;
-import com.knockknock.admin.proposal.AdminProposalService;
 import com.knockknock.admin.proposal.AdminProposalVO;
 import com.knockknock.util.PagingVO;
 import com.knockknock.util.UtilClass;
@@ -77,6 +78,15 @@ public class AdminFundingController {
 		System.out.println(funding);
 		model.addAttribute("funding",funding);
 		return "/admin/funding/adminFundingDetail";
+	}
+	
+	// 펀딩 start Ajax
+	@ResponseBody
+	@RequestMapping(value="/startFunding.do", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public int startFunding(@RequestBody AdminFundingVO vo) {
+		System.out.println("Ajax funding Start"); 
+		int result = adminFudingService.updateCfStatus(vo);
+		return result;
 	}
 
 }

@@ -104,6 +104,11 @@ public class MypageDAO {
 
 		return mybatis.selectList("UserVO.myPointList", vo);
 	}
+	// 회원 탈퇴
+	public int deleteUsers(int uIdx) {
+
+		return mybatis.delete("UserVO.deleteUsers", uIdx);
+	}
 	
 
 }
