@@ -111,6 +111,9 @@ vertical-align:middle;}
     width: 1100px;
 		  }
 		}
+	.ci-emblem{
+	float:left;
+	}
 		
 </style>
 
@@ -287,22 +290,23 @@ vertical-align:middle;}
             </div> --%>
 
             <div class="campaign-info d-flex justify-content-between align-items-center">
-              <h5>Available Seats</h5>
-              <p>30</p>
+              
+              <p><img class="ci-emblem" src="${campaign.ciEmblem }" width=60px;> 인증방법<br>
+              ${campaign.ciGoal }</p>
+              
+              
             </div>
 
 			<div class="campaign-info align-items-center">
-              <div class="btn-wrap funding">
+               <div class="btn-wrap funding">
               <button onclick="sendLink();" id="share" class = "btn-funding"> 공유하기 </button>
               </div>
+                <div class="btn-wrap funding">
+              <button onclick="funding()" id="participate" class="btn-funding"> 참여하기 </button>
+              </div><
             </div>
             
-            <div class="campaign-info align-items-center">
-              <div class="btn-wrap funding">
-              <button onclick="funding()" id="participate" class="btn-funding"> 참여하기 </button>
-              </div>
-
-            </div>
+         
 
           </div>
         </div>
