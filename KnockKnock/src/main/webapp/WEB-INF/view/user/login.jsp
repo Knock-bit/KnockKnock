@@ -18,7 +18,8 @@
 <!-- 구글연결 -->
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 <meta name="google-signin-client_id" content="1001122059226-auaj2qm316tuq1mik39kinrobt084viv.apps.googleusercontent.com">
-
+<!-- alert -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
@@ -43,7 +44,7 @@
                     location.href = "/main.do";
                 },
                 error: function (data) {
-                    alert("아이디와 비밀번호를 확인해주세요.");
+                    swal("아이디와 비밀번호를 확인해주세요.");
                     location.href = "/user/login.do";
                 }
             });
@@ -86,11 +87,10 @@
                                     success: function (data) {
                                         console.log("data: ", data);
                                         if (data == "noid") {
-                                            alert("가입되지 않은 회원입니다.\n회원가입을 진행해주세요.");
+                                        	alert("가입되지 않은 회원입니다.\n회원가입을 진행해주세요.");
                                             location.href = "/user/tnc.do";
                                         } else {
-                                            alert("로그인 가능");
-                                            location.href = "main/main";
+                                             location.href = "/main.do";
                                         }
 
                                     },
