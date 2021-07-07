@@ -280,7 +280,9 @@ function orders(){
 					pPrice : $(".cg5price").eq(i).text(),
 					sIdx : $(".sIdx").eq(i).text(),
 					oTotprice : $(".cg6price").eq(i).text(),
+					oFee : $(".pFee").eq(i).text(),
 					uIdx : $(".uIdx").text()
+					
 					};
 			param.push(data);
 		}
