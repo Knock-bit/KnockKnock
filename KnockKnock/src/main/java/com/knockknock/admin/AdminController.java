@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
@@ -36,6 +37,17 @@ public class AdminController {
 		ncPage.put("cntPerPage", cntPerPage);
 		return ncPage;
 	}
+	
+	// 리스트들에서 검색하기위한 두 개의 데이터가 담겨져있는 Map를 반환하는 메소드
+	@ModelAttribute("conditionMap")
+	public Map<String, String> SearchConditionMap(){
+		System.out.println("MapContition 실행확인");
+		Map<String, String> conditionMap = new HashMap<String, String>();
+		conditionMap.put("제목", "TITLE");
+		conditionMap.put("내용", "CONTENT");
+		
+		return conditionMap;
+	}
 
 	@GetMapping("/adminMain.do")
 	public String moveAdminMain() {
@@ -52,10 +64,10 @@ public class AdminController {
 	}
 
 	@GetMapping("/adminUserList.do")
-	public String getUserList(PagingVO pvo, Model model,
+	public String getUserList(PagingVO pvo, Model model, 
 			@RequestParam(value = "nowPage", required = false) String nowPage,
 			@RequestParam(value = "cntPerPage", required = false) String cntPerPage) {
-
+		
 		int total = adminService.countUser();
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = "1";
@@ -74,9 +86,10 @@ public class AdminController {
 	}
 
 	@GetMapping("/adminKeywordList.do")
-	public String getKeywordList(PagingVO pvo, Model model,
+	public String getKeywordList(PagingVO pvo, Model model,AdminKeywordVO vo,
 			@RequestParam(value = "nowPage", required = false) String nowPage,
 			@RequestParam(value = "cntPerPage", required = false) String cntPerPage) {
+		System.out.println("vo : " + vo);
 
 		int total = adminService.countKeyword();
 
