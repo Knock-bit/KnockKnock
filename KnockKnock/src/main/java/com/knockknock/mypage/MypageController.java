@@ -13,6 +13,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -27,6 +28,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
 import com.knockknock.board.BoardVO;
@@ -285,5 +287,16 @@ public class MypageController {
 		 return new Gson().toJson(bvo);
 	}
 	
-
+	// 회원탈퇴
+	@GetMapping("deleteUsers.do")
+	public ModelAndView deleteUsers(int uIdx, HttpSession session) {
+		
+		int result = mypageService.deleteUsers(uIdx);
+		
+		
+		session.invalidate();
+		ModelAndView mv = new ModelAndView("main/main");
+		
+		return mv;
+	}
 }

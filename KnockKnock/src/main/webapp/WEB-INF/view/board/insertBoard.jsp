@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>글등록</title>
+<title>글 등록</title>
 </head>
 <body>
 
@@ -36,7 +36,7 @@
 		<tr>
 			<th>파일업로드</th>
 			<td>
-				<input type="file" name="uploadFile">
+				<input type="file" name="file">
 			</td>
 		</tr>
 		<tr>

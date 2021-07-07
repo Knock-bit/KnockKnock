@@ -6,7 +6,7 @@
 	
 	<insert id="insertBoard" parameterType="boardVO">
 		INSERT INTO BOARD (B_IDX ,B_SUBJECT, B_CONTENT, U_IDX, B_REGDATE, B_HIT, B_VIEWS, B_CATEGORY, B_FILE, CI_IDX, SB_IDX, B_ACTIVE)
-		VALUES ((SELECT NVL(MAX(B_IDX),0)+1 FROM BOARD), #{bSubject}, #{bContent}, #{uIdx}, #{bRegdate}, #{bHit}, #{bViews}, 
+		VALUES ((SELECT NVL(MAX(B_IDX),0)+1 FROM BOARD), #{bSubject}, #{bContent}, #{uIdx}, SYSDATE, #{bHit}, #{bViews}, 
 				#{bCategory}, #{bFile}, #{ciIdx}, #{sbIdx}, #{bActive})
 	</insert>
 	

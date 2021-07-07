@@ -1,0 +1,72 @@
+.main-content{
+    flex: 1;
+    min-height:100vh;
+    margin-top:100px;
+        
+}
+.ordersMain{
+	width:70%;
+	min-height:100vh;
+	margin: 0 auto;
+}
+/*메인 그리드*/
+.ordersGrid{
+	text-align:center;
+	width:100%;
+	display:grid;
+	grid-template-columns: 60% 37%;
+	grid-template-rows: 35vh 35vh 30vh 20vh;
+	
+}
+
+/*주문자정보*/
+.infoOrder{
+	border:1px solid gray;
+	grid-column : 1/2;
+	grid-row : 1/2;
+	
+}
+/*수령자정보*/
+.infoReciever{
+	grid-column : 1/2;
+	grid-row : 2/3;
+	border:1px solid gray;
+	
+}
+/*결제방법*/
+.paymentMethod{
+	border:1px solid gray;
+	grid-column : 1/2;
+	grid-row : 3/4;
+	
+}
+/*결제방법 클릭하면 화면 띄우기*/
+.pm-2, .pm-3 {
+	display:none;
+	
+}
+
+
+
+
+/*결제하기*/
+.payment{
+	grid-column : 1/2;
+	grid-row : 4/5;
+	border:1px solid gray;
+	
+}
+/*주문 상품 내역*/
+.infoOrdersProduct {
+	grid-column : 2/3;
+	grid-row : 1/5;
+	border:1px solid gray;
+	
+}
+
+.onePlist{
+	border : 1px solid gray;
+	margin: 10px;
+	font-size: 13px;
+	
+}

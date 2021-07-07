@@ -34,14 +34,13 @@ public class FundingController {
 	@GetMapping("campaign/funding/list.do")
 	public String list(Model model) {
 		int result = fundingService.updateExpiredFunding();
-
+		fundingService.updateSuccessFunding();
 		System.out.println(result + "개의 펀딩 종료처리 ");
 		if (result > 0) {
 			// 펀딩 종료 = >
 			// 캠페인으로 바로 등록 ?
 
 			//
-
 		}
 
 		List<FundingVO> fundingList = fundingService.selectAllFunding();
@@ -87,12 +86,14 @@ public class FundingController {
 	public int doAjaxFund(FundingUserVO fundingUser) {
 		System.out.println(">>> 펀딩 vo : " + fundingUser);
 		fundingUser.setCfPoint(cfPoint);
+		int cfIdx = fundingUser.getCfIdx();
 		System.out.println(fundingUser.getuIdx());
 		System.out.println(fundingUser.getCfIdx());
 		
 		int result = fundingService.insertFundingUser(fundingUser);
 		int pointResult = fundingService.updateFundingPoint(fundingUser);
 		int userPointReuslt = fundingService.updateUserFundingPoint(fundingUser);
+		
 		System.out.println("result" + result);
 		return result;
 	}

@@ -58,9 +58,9 @@
    }
    
 
-   //판매자가입
-   function sellerJoin() {
-		location.href="sellerJoin.do";
+   //판매자 로그인/가입창으로 전환하기
+   function sellerPage() {
+		location.href="sellerPage.do";
    }
 	function attachSignin(element){
 		alert("attachSignin실행");
@@ -72,9 +72,7 @@
 			}		
 		)		
 	}
-	
-	
-	
+	 
 	$(document).ready(function () {
 	       Kakao.init('32ddf4beafd028ac8b3afe142ef4fe9e');
 	       Kakao.isInitialized();
@@ -118,16 +116,15 @@
                });
            }
        })
-   } 
-   
-   
+   }  
 </script>
 </head>
 
 <body>
-
+<!-- ===Header - Nav 대신 로고만 -->
+<a href="/main.do"><img src="${cp}/resource/img/logo2.png" style="width:400px;"></a>
+<!-- header끝 -->
 	<div class="container" id="container">
-
 		<div class="form-container sign-in-container">
 			<form method="post">
 				<h1>Sign in</h1>
@@ -158,7 +155,7 @@
 					</p>
 					<button class="ghost" id="signUp"
 						onclick="location.href='/user/tnc.do'">회원가입</button>
-                    <a href="#" onclick="sellerJoin()" style="font-style: italic; color:white; font-size:7px;">판매자 등록하기</a>
+                    <a href="#" onclick="sellerPage()" style="font-style: italic; color:white; font-size:7px;">판매자로 로그인/회원가입</a>
 				
 				</div>
 			</div>

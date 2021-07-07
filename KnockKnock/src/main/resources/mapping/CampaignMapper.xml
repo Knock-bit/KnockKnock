@@ -43,7 +43,11 @@
 		ORDER BY USER_COUNT DESC
 	</select>
 	
-	
+	<select id="selectCampaignUser" resultType="campaignUserVO">
+		SELECT * FROM CAMPAIGN_USER
+  		 WHERE U_IDX = #{uIdx}
+  		   AND CI_IDX = #{ciIdx}
+	</select>
 	
 	
 	<!-- 캠페인 상세보기 -->
@@ -179,7 +183,7 @@
 		SELECT F.*, U.U_NICKNAME AS HOST_NICKNAME, CC.CC_NAME AS CATEGORY, 
 	        (SELECT COUNT(*) FROM FUNDING_USER WHERE F.CF_IDX = FUNDING_USER.CF_IDX) USER_COUNT
 			FROM USERS U, FUNDING F, CAMPAIGN_CATEGORY CC
-			WHERE CF_STATUS = 1
+			WHERE (CF_STATUS = 1 OR CF_STATUS = 2)
 			AND U.U_IDX = F.U_IDX
 			AND F.CC_IDX = CC.CC_IDX
 	
@@ -196,8 +200,7 @@
 	<select id="selectOneFunding" parameterType="int" resultType="FundingVO">
 		SELECT F.*, U.U_NICKNAME AS HOST_NICKNAME
 		FROM USERS U, FUNDING F
-		WHERE CF_STATUS = 1
-		AND U.U_IDX = F.U_IDX
+		WHERE U.U_IDX = F.U_IDX
 		AND F.CF_IDX = #{cfIdx}
 	</select>
 	<!-- 펀딩 상세보기 - 참여자 닉네임 불러오기 -->
@@ -211,21 +214,32 @@
 	<insert id="insertCampaign" parameterType= "CampaignVO">
 		INSERT INTO CAMPAIGN(CI_IDX, CI_TITLE, CI_CONTENT, C_GOAL, CI_ENDDATE, CI_STARTDATE, 
 		CI_ESTIMATEDPOINT, CI_STATUS, CI_FILE, CI_EMBLEM, U_IDX, CC_IDX, C_TOTPOINT
-		,C_KEYWORD1, C_KEYWORD2, C_KEYWORD3, CI_BASEPOINT, CF_IDX) 
+		,CI_KEYWORD1, CI_KEYWORD2, CI_KEYWORD3, CI_BASEPOINT, CF_IDX) 
 		VALUES (CI_IDX_SEQ.NEXTVAL, #{ciTitle}, #{ciContent}, #{cGoal}, #{ciEnddate}, #{ciStartdate}, 
 		#{ciEstimatedpoint}, #{ciStatus}, #{ciFile}, #{ciEmblem}, #{uIdx}, #{ccIdx}, #{cTotpoint}
-		,#{cKeyword1}, #{cKeyword2}, #{cKeyword3}, #{ciBasepoint}, #{cfIdx}
+		,#{ciKeyword1}, #{ciKeyword2}, #{ciKeyword3}, #{ciBasepoint}, #{cfIdx}
 		
 	
 	</insert>
 	
-	<!-- 기간이 만료됐는지 확인하여 만료 시 펀딩 상태를 0으로 바꾼다 -->
+	<!-- 기간이 만료됐는지 확인하여 만료 시 펀딩 상태를 3으로 바꾼다 -->
 	<update id="updateExpiredFunding">
 		UPDATE FUNDING
-		   SET CF_STATUS = 2
+		   SET CF_STATUS = 3
 		 WHERE SYSDATE > CF_ENDDATE
 		   AND CF_STATUS = 1
 	</update>
+	
+	
+	<update id="updateSuccessFunding">
+		UPDATE FUNDING
+		   SET CF_STATUS = 2
+		 WHERE SYSDATE <![CDATA[<=]]> CF_ENDDATE
+		   AND CF_STATUS = 1
+		   AND CF_COLLECTED <![CDATA[>=]]> CF_GOALPOINT
+	</update>
+	
+	
 
 	<insert id="insertFundingUser" parameterType="FundingUserVO">
 		INSERT INTO FUNDING_USER (U_IDX, CF_IDX, CF_POINT)

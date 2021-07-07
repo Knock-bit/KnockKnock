@@ -97,8 +97,64 @@ $(function(){
 	  		$("#fileBtn").click();
 	  });
 	  
+	  // 모달창 닫기
+	  $(".close").on('click',function(){
+		  $(".modal").css("display","none");
+		  $(".madalDiv").fadeOut(300);
+	  
+  	});
+	  
+	// 회원탈퇴 약관?확인
+	$("#deleteCk").click(function(){
+		
+		if($("#deleteCk").is(":checked")==true){
+			$("#deletePwd").focus();
+			$("#deletePwd").css("outline-color","#0e4b20");
+		} 
+	});
+	
+	
+	
+	  
 });
 
+// 회원탈퇴 모달창
+function deleteUser(){
+	  // 게시물 인덱스 값
+	  
+	  $(".modal").css("display", "block");
+	  $(".modal").css("z-index", "10000");
+		
+	  $(".madalDiv").css("display", "block");
+	  $(".madalDiv").css("z-index", "10000");
+}
+
+// 회원탈퇴 비밀번호 확인 버튼
+function deletePwdCk(){
+	var deletePwd = $("#deletePwd").val();
+	console.log($("#myPwd").text());
+	if(deletePwd == $("#myPwd").text()) {
+		console.log("일치");
+		$("#deleteBtn").attr("disabled",false);
+		
+	} else {
+		alert("비밀번호가 일치하지 않습니다.");
+		$("#deletePwd").focus();
+		$("#deletePwd").css("outline-color","red");
+	}
+	
+}
+// 회원 탈퇴
+function deleteBtn(){
+	var uIdx = $("#myuIdx").text();
+	var deleteConfirm = confirm("정말 회원탈퇴를 진행하시겠습니까?");
+	if(deleteConfirm){
+		// 일단 get방식이고 시간남으면 수정하기
+		location.href="deleteUsers.do?uIdx="+uIdx;
+	} else {
+		location.href="updateMyInfo.do";
+	}
+}
 
 </script>
 
@@ -163,13 +219,41 @@ $(function(){
 	               	</div>
 				</div>
 				<div class="it10">
-					<input class="btn-upload1" type="submit" value="내 정보 수정">
-					<input style="width:20%; font-size:13px; background-color:#6c9378;" class="btn-upload1" type="button" value="비밀번호 변경하기" onclick="updatePwd()">
+					<div class="it10-1" style="display:inline-block; width:50%; text-align:right;">
+						<input style="width:70%;" class="btn-upload1" type="submit" value="내 정보 수정">
+					</div>
+					
+					<div class="it10-2" style="display:inline-block; width:39%; ">
+						<input style="width:35%; font-size:11px; background-color:#6c9378; padding:5px;" class="btn-upload1" type="button" value="비밀번호 변경" onclick="updatePwd()">
+						<input style="width:35%; font-size:11px; background-color:#6c9378; padding:5px;" class="btn-upload1" type="button" value="회원탈퇴" onclick="deleteUser()">
+					</div>
 				</div>
 			</div>
 		</form>
 
 	</div>
+	<div class="modal">
+	  <div class="madalDiv">
+		    <a href="javascript:;" class="close">X</a>
+		   	<div class="dtmodal">
+		   		<p >Knockknock 계정 탈퇴</p>
+		   		<p class="dttxt">- 회원 탈퇴 시 보유하고 있던 포인트는 전부 <span style="color:red;">초기화</span>됩니다.<br>
+		   			- 회원 탈퇴 후 <span style="color:red;">3일 이내에는 재가입이 불가능</span>합니다. <br>
+		   			- 회원 탙퇴 후 남아있는 게시글은 <span style="color:red;">삭제</span>할 수 없습니다.
+		   		</p>
+		   		<input style="transform : scale(1.5);"type="checkbox" id="deleteCk">
+		   		<label style="font-size:14px; font-weight:550; color:#0e4b20; margin-bottom:10px;;">안내 사항을 모두 확인하였으며, 이에 동의합니다.</label><br>
+		   		<label style="margin-right:10px; text-align:left;"><span style="color:red; margin:10px; text-align:left;">*</span>PW</label>
+		   		<input type="password" name="uPwd" id="deletePwd" placeholder="비밀번호를 입력해주세요" style="width:70%; height:4vh;font-size:13px; border:0px;">
+		   		<input type="button" value="확인" id="pwdCk" onclick="deletePwdCk()">
+		   		<p id="myPwd" style="display:none;">${users.uPwd }</p>
+		   	</div><br>
+		   	<div style="width:100%; text-align:center;">
+		   		<input type="button" value="회원탈퇴" disabled="disabled" onclick="deleteBtn()" id="deleteBtn">
+		   	</div>
+		   	<p id="myuIdx" style="display:none;">${users.uIdx }</p>
+  	  </div>
+  	 </div>
 
 </div>	
 <!-- ======= Footer ======= -->

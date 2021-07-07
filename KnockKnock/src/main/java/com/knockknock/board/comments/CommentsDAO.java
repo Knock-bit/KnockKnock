@@ -11,17 +11,17 @@ public class CommentsDAO {
 	@Autowired
 	private SqlSessionTemplate mybatis;
 	
-	public List<CommentsVO> commentsList(CommentsVO vo) {
+	public List<CommentsVO> commentsList() {
 		
-		return mybatis.selectList("commentsDAO.", vo);
+		return mybatis.selectList("CommentsDAO.commentsList");
 	}
-	public void insertComments(CommentsVO vo) {
-		mybatis.insert("commentsDAO.insertComments", vo);
+	public int insertComments(CommentsVO vo) {
+		return mybatis.insert("CommentsDAO.insertComments", vo);
 	}
-	public void updateComments(CommentsVO vo) {
-		mybatis.update("commentsDAO.updateComments", vo);
+	public int updateComments(CommentsVO vo) {
+		return mybatis.update("commentsDAO.updateComments", vo);
 	}
-	public void deleteComments(int bIdx) {
-		mybatis.delete("commentsDAO.deleteComments", bIdx);
+	public int deleteComments(int bIdx) {
+		return mybatis.delete("CommentsDAO.deleteComments", bIdx);
 	}
 }

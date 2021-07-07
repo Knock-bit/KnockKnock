@@ -19,22 +19,24 @@ public class CampaignVO {
 	private int uIdx;
 	private String ccIdx;
 	private int cTotpoint;
-	private String cKeyword1;
-	private String cKeyword2;
-	private String cKeyword3;
-	private String hostNickname; // 주최자 닉네임
-	private String category; // 카테고리명
-	private int userCount; // 사용자수
-
+	private String ciKeyword1;
+	private String ciKeyword2;
+	private String ciKeyword3;
+	private String hostNickname; // JOIN - 주최자 닉네임
+	private String category; // JOIN - 카테고리명
+	private int userCount; // JOIN - 사용자수
 
 	public CampaignVO() {	}
 
-	public CampaignVO(int ciIdx, String ciTitle, String ciContent, String cGoal, Date ciStartdate, Date ciEnddate,
-			int ciBasepoint, int ciEstimatedpoint, int ciStatus, String ciFile, String ciEmblem, int uIdx,
-			String ccIdx, int cTotpoint, String cKeyword1, String cKeyword2, String cKeyword3, int cfIdx, String hostNickname, String category
-			, int userCount) {
+	
+
+	public CampaignVO(int ciIdx, int cfIdx, String ciTitle, String ciContent, String cGoal, Date ciStartdate,
+			Date ciEnddate, int ciBasepoint, int ciEstimatedpoint, int ciStatus, String ciFile, String ciEmblem,
+			int uIdx, String ccIdx, int cTotpoint, String ciKeyword1, String ciKeyword2, String ciKeyword3,
+			String hostNickname, String category, int userCount) {
 		super();
 		this.ciIdx = ciIdx;
+		this.cfIdx = cfIdx;
 		this.ciTitle = ciTitle;
 		this.ciContent = ciContent;
 		this.cGoal = cGoal;
@@ -48,14 +50,15 @@ public class CampaignVO {
 		this.uIdx = uIdx;
 		this.ccIdx = ccIdx;
 		this.cTotpoint = cTotpoint;
-		this.cKeyword1 = cKeyword1;
-		this.cKeyword2 = cKeyword2;
-		this.cKeyword3 = cKeyword3;
-		this.cfIdx = cfIdx;
+		this.ciKeyword1 = ciKeyword1;
+		this.ciKeyword2 = ciKeyword2;
+		this.ciKeyword3 = ciKeyword3;
 		this.hostNickname = hostNickname;
 		this.category = category;
 		this.userCount = userCount;
 	}
+
+
 
 	public int getCiIdx() {
 		return ciIdx;
@@ -64,6 +67,16 @@ public class CampaignVO {
 
 	public void setCiIdx(int ciIdx) {
 		this.ciIdx = ciIdx;
+	}
+
+
+	public int getCfIdx() {
+		return cfIdx;
+	}
+
+
+	public void setCfIdx(int cfIdx) {
+		this.cfIdx = cfIdx;
 	}
 
 
@@ -177,6 +190,16 @@ public class CampaignVO {
 	}
 
 
+	public String getCcIdx() {
+		return ccIdx;
+	}
+
+
+	public void setCcIdx(String ccIdx) {
+		this.ccIdx = ccIdx;
+	}
+
+
 	public int getcTotpoint() {
 		return cTotpoint;
 	}
@@ -187,88 +210,77 @@ public class CampaignVO {
 	}
 
 
-	public String getcKeyword1() {
-		return cKeyword1;
+	public String getCiKeyword1() {
+		return ciKeyword1;
 	}
 
 
-
-
-	public void setcKeyword1(String cKeyword1) {
-		this.cKeyword1 = cKeyword1;
+	public void setCiKeyword1(String ciKeyword1) {
+		this.ciKeyword1 = ciKeyword1;
 	}
 
 
-
-
-	public String getcKeyword2() {
-		return cKeyword2;
+	public String getCiKeyword2() {
+		return ciKeyword2;
 	}
 
 
-
-
-	public void setcKeyword2(String cKeyword2) {
-		this.cKeyword2 = cKeyword2;
+	public void setCiKeyword2(String ciKeyword2) {
+		this.ciKeyword2 = ciKeyword2;
 	}
 
 
-
-
-	public String getcKeyword3() {
-		return cKeyword3;
+	public String getCiKeyword3() {
+		return ciKeyword3;
 	}
 
 
-
-
-	public void setcKeyword3(String cKeyword3) {
-		this.cKeyword3 = cKeyword3;
+	public void setCiKeyword3(String ciKeyword3) {
+		this.ciKeyword3 = ciKeyword3;
 	}
 
-
-
-
-	public int getCfIdx() {
-		return cfIdx;
-	}
-
-
-	public void setCfIdx(int cfIdx) {
-		this.cfIdx = cfIdx;
-	}
-
-	public String getCcIdx() {
-		return ccIdx;
-	}
-
-	public void setCcIdx(String ccIdx) {
-		this.ccIdx = ccIdx;
-	}
 
 	public String getHostNickname() {
 		return hostNickname;
 	}
 
+
 	public void setHostNickname(String hostNickname) {
 		this.hostNickname = hostNickname;
 	}
+
 
 	public String getCategory() {
 		return category;
 	}
 
+
 	public void setCategory(String category) {
 		this.category = category;
 	}
+
 
 	public int getUserCount() {
 		return userCount;
 	}
 
+
 	public void setUserCount(int userCount) {
 		this.userCount = userCount;
 	}
+
+
+	@Override
+	public String toString() {
+		return "CampaignVO [ciIdx=" + ciIdx + ", cfIdx=" + cfIdx + ", ciTitle=" + ciTitle + ", ciContent=" + ciContent
+				+ ", cGoal=" + cGoal + ", ciStartdate=" + ciStartdate + ", ciEnddate=" + ciEnddate + ", ciBasepoint="
+				+ ciBasepoint + ", ciEstimatedpoint=" + ciEstimatedpoint + ", ciStatus=" + ciStatus + ", ciFile="
+				+ ciFile + ", ciEmblem=" + ciEmblem + ", uIdx=" + uIdx + ", ccIdx=" + ccIdx + ", cTotpoint=" + cTotpoint
+				+ ", ciKeyword1=" + ciKeyword1 + ", ciKeyword2=" + ciKeyword2 + ", ciKeyword3=" + ciKeyword3
+				+ ", hostNickname=" + hostNickname + ", category=" + category + ", userCount=" + userCount + "]";
+	}
+
+	
 	
 	
 

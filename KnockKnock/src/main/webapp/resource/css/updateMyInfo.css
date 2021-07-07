@@ -27,8 +27,8 @@
 	font-style:normal;
 	font-family: 'Roboto+Slab:wght@300';
 	text-align:center;
-	color:white;
-	text-shadow:1px 1px 0 #9e9e9e, -1px -1px 1px lightgrey;
+	color:#0e4b20;
+	text-shadow:1px 1px 0 #36624e, -1px -1px 1px lightgrey;
 
 }
    /* 내 정보 수정 css */
@@ -170,3 +170,83 @@
      input[type="text"]:focus {
 		 background-color:#e9fbef;
 	 }
+
+/*모달*/
+   .modal{
+	  display:none;
+	  position:fixed; 
+	  width:100%; height:100%;
+	  top:0; left:0; 
+	  background:rgba(0,0,0,0.7);
+	}
+	.madalDiv{
+	  position:fixed;
+	  top:50%; left:50%;
+	  transform: translate(-50%,-50%);
+	  max-width: 50%;
+	  min-height: 10%;
+	  background:#ebf9f2;
+	  width:45%;
+	  height:50vh;
+	  border-radius:8px;
+	  padding: 30px;
+	  
+	}
+	.madalDiv .close{
+	  display:block;
+	  position:absolute;
+	  width:25px; height:25px;
+	  text-align:center; line-height: 30px;
+	  text-decoration:none;
+	  color:#0e4b20; font-size:16px; font-weight: bold;
+	  right:10px; top:7px;
+	 
+	}
+	.dtmodal{
+		width:100%;
+		padding:10px;
+	}
+	.dtmodal p:first-child {
+		padding:10px;
+		width:100%;
+		font-size:20px;
+		text-align:left;
+		border-bottom: 1px solid #0e4b20;
+		margin:0;
+		font-weight:600;
+		color:#0e4b20; 
+	}
+	.dttxt{
+		font-size:12px;
+		border-bottom:1px solid #0e4b20;
+		padding:20px; 
+		background-color:white;
+
+	}
+	#pwdCk{
+		width:10%;
+		outline: none;
+		border:0px;
+		background-color:#0e4b20; 
+		color:white;
+		font-size:12px;
+		padding:6px;
+		border-radius: 5px;
+	}
+	#deleteBtn{
+		margin: 0 auto;
+		width:50%;
+		border-radius: 5px;
+		outline: none;
+		border:0px;
+		background-color:#737373;
+		padding:10px;
+		font-size:13px;
+		color:white;
+	
+	}
+	#deleteBtn:hover{
+		background-color:#4d4d4d;
+		color:white;
+	
+	}
