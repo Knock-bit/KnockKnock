@@ -10,17 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.knockknock.util.PagingVO;
 
 @Controller
-@SessionAttributes("board")
 public class BoardController {
 	
 	private String uploadPath = "C:/Mystudy/";
@@ -117,13 +114,13 @@ public class BoardController {
 		return "redirect:/board/getBoardList.do";
 	}
 	
-	@ModelAttribute("conditionMap")
-	public Map<String, String> searchConditionMap() {
-		Map<String, String> conditionMap = new HashMap<String, String>();
-		conditionMap.put("제목", "BSUBJECT");
-		conditionMap.put("내용", "BCONTENT");
-		return conditionMap;
-	}
+//	@ModelAttribute("conditionMap")
+//	public Map<String, String> searchConditionMap() {
+//		Map<String, String> conditionMap = new HashMap<String, String>();
+//		conditionMap.put("제목", "BSUBJECT");
+//		conditionMap.put("내용", "BCONTENT");
+//		return conditionMap;
+//	}
 	
 	@RequestMapping("/board/updateHit.do")
 	public String updateHit (@RequestParam int bIdx) {

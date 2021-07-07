@@ -3,15 +3,11 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="CommentsDAO">
-	<select id="commentsCount" resultType="int">
-		SELECT COUNT(*) FROM COMMENTS
-	</select>
 	
 	<insert id="insertComments" parameterType="comments">
 		INSERT INTO COMMENTS (M_IDX, C_CONTENT, B_IDX, U_IDX, C_REGDATE)
 		VALUES ((SELECT NVL(MAX(M_IDX),0)+1 FROM COMMENTS), #{cContent}, #{bIdx}, #{uIdx}, SYSDATE)
 	</insert>
-	
 	
 	<update id="updateComments" parameterType="comments">
 		UPDATE COMMENTS SET C_CONTENT = #{cContent} WHERE M_IDX = #{mIdx}
