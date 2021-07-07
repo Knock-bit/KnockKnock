@@ -1,6 +1,6 @@
 package com.knockknock.mypage.mypageproductimpl;
 
-import java.util.List;
+import java.util.List; 
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +10,7 @@ import com.knockknock.mypage.MypageProductService;
 import com.knockknock.orders.OrdersVO;
 import com.knockknock.user.UserVO;
 import com.knockknock.util.ProductVO;
+import com.knockknock.campaign.proposal.ProposalVO;
 
 @Service("mypageProductService")
 public class MypageProductServiceImpl implements MypageProductService {
