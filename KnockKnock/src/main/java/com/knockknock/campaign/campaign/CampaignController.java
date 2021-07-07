@@ -31,7 +31,7 @@ public class CampaignController {
 	
 	@GetMapping("/ing/list.do")
 	public String ingList(Model model) {
-		System.out.println("내프로젝트의 루트경로는?  " + System.getProperty("user.dir"));
+		int start = campaignService.updateStartCampaign();
 		int result = campaignService.updateExpiredCampaign();
 		System.out.println(">>>" + result + "개의 캠페인 만료처리");
 		if (result > 0) {

@@ -139,7 +139,7 @@
               <img src="${campaign.ciFile }" class="img-fluid" alt="..."></a></div></div>
               <div class="campaign-content">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                  <h4>${campaign.category}</h4>
+                  <h4>${campaign.ccName}</h4>
                 </div>
 
                 <h3><a class="none-deco" href="${cp }/campaign/ing/detail.do?ciIdx=${campaign.ciIdx }">${campaign.ciTitle } </a></h3>

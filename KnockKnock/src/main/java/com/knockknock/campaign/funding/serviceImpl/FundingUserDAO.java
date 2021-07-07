@@ -47,4 +47,8 @@ public class FundingUserDAO {
 	public int updateSuccessFunding() {
 		return mybatis.update("campaign.updateSuccessFunding");
 	}
+
+	public int updateStartFunding() {
+		return mybatis.update("campaign.updateStartFunding");
+	}
 }

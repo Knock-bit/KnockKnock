@@ -77,5 +77,10 @@ public class FundingServiceImpl implements FundingService{
 	public int updateSuccessFunding() {
 		return fundingUserDAO.updateSuccessFunding();
 	}
+
+	@Override
+	public int updateStartFunding() {
+		return fundingUserDAO.updateStartFunding();
+	}
 	
 }

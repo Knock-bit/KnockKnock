@@ -29,4 +29,5 @@ public interface FundingService {
 	
 	// 펀딩 성공 --> status 변경
 	int updateSuccessFunding();
+	int updateStartFunding();
 }

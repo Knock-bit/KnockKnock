@@ -27,6 +27,8 @@ public interface CampaignService {
 	public int selectExpiredCampaign();
 	// 캠페인 유저 - 참여 or 미참여
 	public CampaignUserVO selectCampaignUser(CampaignUserVO cUser);
+	//캠페인 시작
+	public int updateStartCampaign();
 	
 	
 }
