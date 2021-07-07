@@ -56,10 +56,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void sendEmail(UserVO vo, String div) throws Exception {
 		// Mail Server 설정
+		UserPwdEmail email1 = new UserPwdEmail();
 		String charSet = "utf-8";
 		String hostSMTP = "smtp.gmail.com"; // 네이버 이용시 smtp.naver.com
-		String hostSMTPid = "";
-		String hostSMTPpwd = "";
+		String hostSMTPid = email1.hostSMTPid;
+		String hostSMTPpwd = email1.hostSMTPpwd;
 
 		// 보내는 사람 EMail, 제목, 내용
 		String fromEmail = "knockadmin@knock.com";
@@ -93,7 +94,7 @@ public class UserServiceImpl implements UserService {
 			email.setSubject(subject);
 			email.setHtmlMsg(msg);
 			email.send();
-		} catch (Exception e) {
+		} catch (Exception e) { 
 			System.out.println("메일발송 실패 : " + e);
 		}
 	}
