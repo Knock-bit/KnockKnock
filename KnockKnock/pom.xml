@@ -14,21 +14,19 @@
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
-	<dependencies>
-	<!-- EMAIL -->
-	<dependency>
-	<groupId>org.apache.commons</groupId>
-	<artifactId>commons-email</artifactId>
-	<version>1.2</version>
-	</dependency>
 	
-		<!-- 트랜젝션
+	<dependencies>
+	
+		<!-- EMAIL -->
 		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-tx</artifactId>
-			<version>3.1.1.RELEASE</version>
-		</dependency> -->
-		
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-email</artifactId>
+		    <version>1.5</version>
+		</dependency>
+
+		<!-- 트랜젝션 <dependency> <groupId>org.springframework</groupId> <artifactId>spring-tx</artifactId> 
+			<version>3.1.1.RELEASE</version> </dependency> -->
+
 		<!-- 스프링-마이바티스 연동 라이브러리 설정(시작) -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
@@ -42,7 +40,7 @@
 			<version>1.3.3</version>
 		</dependency>
 		<!-- 스프링-마이바티스 연동 라이브러리 설정(끝) -->
-		
+
 		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
 		<!-- json 변환 -->
 		<dependency>
