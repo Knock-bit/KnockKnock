@@ -11,13 +11,13 @@ public class CommentsServiceImpl implements CommentsService {
 	private CommentsDAO commentsDAO;
 
 	@Override
-	public List<CommentsVO> commentsList() {
-		return commentsDAO.commentsList();
+	public List<CommentsVO> commentsList(int bIdx) {
+		return commentsDAO.commentsList(bIdx);
 	}
 
 	@Override
-	public int insertComments(CommentsVO vo) {
-		return commentsDAO.insertComments(vo);
+	public void insertComments(CommentsVO vo) {
+		commentsDAO.insertComments(vo);
 	}
 
 	@Override

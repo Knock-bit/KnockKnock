@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!-- 로그인이 되어있고, 본인 글이 아닐경우에만 추천할 수 있도록 버튼을 출력 
  
     <c:if test = "${sessionScope.uIdx != null and sessionScope.uIdx != userVO.uIdx
@@ -39,6 +40,12 @@
 	//추천하기 버튼
 	function updateHit_board(frm){
 		frm.action="updateHit.do";
+		frm.submit();
+	}
+	
+	//댓글 작성
+	function insert_comments(frm){
+		frm.action="insertComments.do";
 		frm.submit();
 	}
 </script>
@@ -89,27 +96,35 @@
 	<hr>
 	<%-- 게시글 댓글  --%>
 	<div class="container">
-		<label for="cContent">댓글 목록</label>
-		<form name="commentsInsertForm">
-			<div class="input-group">
-				<input type="hidden" name="bIdx" value="${board.bIdx}">
-				<input type="text" name="uIdx" value="${board.uIdx }">
-				<br><br>
-				<textarea id="cContent" name="cContent" placeholder="내용을 입력해주세요" rows="3" cols="50"></textarea>
-				<br><br>
-				<span class="input-group-btn">
-					<button type="button" name="commentsInsertBtn">등록</button>
-				</span>
+		<label>Comments</label>
+		<div id="comments">
+			<ol class="commentsList">
+			<c:forEach items="${commentsList}" var="commentsList">
+				<li>
+					<p>
+					작성자 : ${commentsList.uIdx}<br />
+					작성 날짜: <fmt:formatDate value="${commentsList.cRegdate}" pattern="yyyy-mm-dd" />
+					</p>
+					
+					<p>${commentsList.cContent}</p>
+				</li>
+			</c:forEach>
+			</ol>
+		</div>
+		<form name="commentsForm" method="post">
+			<input type="hidden" id="bIdx" name="bIdx" value="${getBoard.bIdx}" />
+			
+			<div>
+				<label for="uIdx">작성자</label><input type="text" id="uIdx" name="uIdx" />
+				<br/>
+				<label for="cContent">댓글 내용</label>
+				<textarea id="cContent" name="cContent" rows="3" cols="30"></textarea>
+			</div>
+			<div>
+				<input type="button" value="등록" onclick="insert_comments(this.form)">
 			</div>
 		</form>
 	</div>
-	<hr>
-	<%-- 게시글 댓글 목록 --%>
-	<div class="container">
-		<div class="commentsList"></div>
-	</div>
-	<hr>
 </div>
-<%@ include file="commentsList.jsp" %>
 </body>
 </html>

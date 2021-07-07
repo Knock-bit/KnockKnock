@@ -83,28 +83,29 @@
 					<option value="${option.value}">${option.key}</option>
 				</c:forEach>
 				</select>
-				
 				<input type="text" name="searchKeyword" placeholder="검색할 내용을 입력해주세요." style="width:200px">
 				<input type="submit" value="검색">
 			</td>
 		</tr>
 	</table>
+	</form>
+	<form>
 	<div style="display: block; text-align: center;">
-		<c:if test="${paging.startPage != 1 }">
-			<a href="/board/getBoardList.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
+		<c:if test="${paging.startPage != 1}">
+			<a href="/board/getBoardList.do?nowPage=${paging.startPage - 1}&cntPerPage=${paging.cntPerPage}">&lt;</a>
 		</c:if>
-		<c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
+		<c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="p">
 		<c:choose>
-		<c:when test="${p == paging.nowPage }">
-		<b>${p }</b>
+		<c:when test="${p == paging.nowPage}">
+		<b>${p}</b>
 		</c:when>
-		<c:when test="${p != paging.nowPage }">
-			<a href="/board/getBoardList.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
+		<c:when test="${p != paging.nowPage}">
+			<a href="/board/getBoardList.do?nowPage=${p}&cntPerPage=${paging.cntPerPage}">${p}</a>
 		</c:when>
 		</c:choose>
 		</c:forEach>
 		<c:if test="${paging.endPage != paging.lastPage}">
-			<a href="/board/getBoardList.do?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
+			<a href="/board/getBoardList.do?nowPage=${paging.endPage+1}&cntPerPage=${paging.cntPerPage}">&gt;</a>
 		</c:if>
 	</div>
 	<div>

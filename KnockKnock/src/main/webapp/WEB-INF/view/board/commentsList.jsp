@@ -53,14 +53,14 @@
 	    
 	    a += '<div class="input-group">';
 	    a += '<input type="text" class="form-control" name="cContent_'+mIdx+'" value="'+cContent+'"/>';
-	    a += '<span class="input-group-btn"><button class="btn btn-default" type="button" onclick="commentsUpdateProc('+mIdx+');">수정</button> </span>';
+	    a += '<span class="input-group-btn"><button class="btn btn-default" type="button" onclick="UpdateCommentsProc('+mIdx+');">수정</button> </span>';
 	    a += '</div>';
 	    
 	    $('.commentsContent'+mIdx).html(a);
 	}
 	 
 	//댓글 수정
-	function commentsUpdateProc(mIdx){
+	function UpdateCommentsProc(mIdx){
 	    var updateContent = $('[name=cContent_'+mIdx+']').val();
 	    
 	    $.ajax({
