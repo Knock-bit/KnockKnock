@@ -110,6 +110,21 @@ public class AdminServiceImpl implements AdminService{
 		return adminDAO.deleteCampaingCategory(content);
 	}
 
+	@Override
+	public List<AdminCampaignVO> getCampaignList(PagingVO pvo) {
+		return adminDAO.getCampaignList(pvo);
+	}
+
+	@Override
+	public int countCampaign() {
+		return adminDAO.countCampaign();
+	}
+
+	@Override
+	public AdminCampaignVO getCampaign(AdminCampaignVO vo) {
+		return adminDAO.getCampaign(vo);
+	}
+
 
 
 }
