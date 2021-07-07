@@ -32,7 +32,7 @@
 
   <!-- Main CSS File -->
   <link href="${cp}/resource/css/main.css" rel="stylesheet">
-
+	
   <!-- Import BootStrap -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
@@ -40,8 +40,11 @@
 
 <body>
 
-  <!-- ======= Header ======= -->
-       <c:choose>
+   <!-- ======= Header ======= -->
+     <c:choose>
+     <c:when test="${!empty seller}">
+   		<jsp:include page='/layout/navbar/navSeller.jsp' flush='false'/>   	
+  	</c:when>
   	<c:when test="${users.uType eq 1 }">
    		<jsp:include page='/layout/navbar/navLoggedin.jsp' flush='false'/>   	
   	</c:when>
@@ -52,6 +55,8 @@
 	   <jsp:include page='/layout/navbar/nav.jsp' flush='false'/>
   	</c:otherwise>
   	</c:choose>
+  <!-- ======= Hero Section ======= -->
+
     <main id="main">
         <!-- ======= Breadcrumbs ======= -->
         <div class="breadcrumbs" data-aos="fade-in">
@@ -68,7 +73,7 @@
 
                 <div class="row">
                     <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
-                        <img src="${cp}/resource/img/about/plasticpollution.jpg" class="img-fluid" alt="">
+                        <img src="${cp}/resource/img/about/plasticpollution.jpg" class="img-fluid" style="width:620px; height:400px;">
                     </div>
                     <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
                         <h3>지금 지구는...</h3><br>
@@ -135,7 +140,7 @@
 
                 <div class="row">
                     <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
-                        <img src="${cp}/resource/img/deforestation.jfif" class="img-fluid" alt="">
+                        <img src="${cp}/resource/img/about/deforestation.jfif" class="img-fluid" style="width:680px; height:460px;">
                     </div>
                     <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
                         <h3>지구가 당신에게 하는 노크</h3><br>
@@ -168,7 +173,7 @@
 
                 <div class="row">
                     <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
-                        <img src="${cp}/resource/img/green.jpg" class="img-fluid" alt="">
+                        <img src="${cp}/resource/img/about/green.jpg" class="img-fluid" style="width:680px; height:460px;">
                     </div>
                     <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
                         <h3>지구를 더 푸르게</h3>
