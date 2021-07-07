@@ -139,7 +139,8 @@
                   $("#funding-btn").attr('data-target', '#fundingModal');
                   $("#funding-btn2").attr('data-target', '#fundingModal');
                   $("#modal-content2").html("<div class='modal-funding'>취소되었습니다.</div>");
-                	  
+                  $("#funding-progress").attr('value', '${funding.cfCollected-250}')
+ 	              $("#progress-div").load(window.location.href + " #progress-div");
                   }
                 }, error: function () {
                   alert("실패");
@@ -171,14 +172,13 @@
               console.log(data);
               if(data == 1){
             	  console.log("ok");
-              var cfCollected = cfCollected + 250;
               $("#funding-btn").html('펀딩완료');
               $("#funding-btn").attr('data-target', '#fundingModal2');
               $("#funding-btn2").html('펀딩완료');
               $("#funding-btn2").attr('data-target', '#fundingModal2');
               $("#modal-content").html("<div class='modal-funding'>참여해주셔서 감사합니다.</div>");
-              $("#progress-div").load(window.location.href + " #progress-div");
               $("#funding-progress").attr('value', '${funding.cfCollected+250}')
+              $("#progress-div").load(window.location.href + " #progress-div");
               }
             }, error: function () {
               alert("실패");

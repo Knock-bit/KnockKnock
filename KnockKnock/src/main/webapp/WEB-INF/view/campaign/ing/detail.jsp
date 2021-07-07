@@ -250,10 +250,14 @@ vertical-align:middle;}
           
           <div class="col-lg-4">
 
-            <div class="campaign-info align-items-center">
-              <h2>${end - now + 1}일 남았어요</h2>
-              <h3>캠페인 인증방법</h3>
-            </div>
+              <div class="campaign-main-info">
+              
+              <h2><b>${end - now + 1}일</b> 남았어요</h2></div>
+              <div class="campaign-point">
+              총 ${campaign.cTotpoint } 포인트가<br>
+              참여자들에게 나눠집니다.
+              </div>
+           </div>
 
            <%--  <div class="campaign-info d-flex justify-content-between align-items-center">
               <h5>참여중인 사람 목록</h5>
