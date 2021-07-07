@@ -248,7 +248,6 @@
                   <c:if test="${funding.cfStatus eq 1 }">
                   	<button type="button"  class="btn btn-secondary" data-dismiss="modal">진행중인 펀딩입니다.</button>
                   </c:if>
-                  
                   <c:if test="${funding.cfStatus eq 2 }">
                   	<button type="button"  class="btn btn-secondary" data-dismiss="modal">펀딩에 성공한 캠페인</button>
                   </c:if>

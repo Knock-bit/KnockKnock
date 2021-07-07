@@ -105,7 +105,16 @@ public class AdminDAO {
 	public int deleteCampaingCategory(List<String> content) {
 		return mybatis.delete("AdminDAO.deleteCampaignCategory", content);
 	}
-	
 
+	public List<AdminCampaignVO> getCampaignList(PagingVO pvo) {
+		return mybatis.selectList("Util.getCampaignList", pvo);
+	}
 
+	public int countCampaign() {
+		return mybatis.selectOne("Util.countCampaign");
+		}
+
+	public AdminCampaignVO getCampaign(AdminCampaignVO vo) {
+		return mybatis.selectOne("AdminDAO.getCampaign",vo);
+	}
 }

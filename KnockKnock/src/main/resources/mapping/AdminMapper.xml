@@ -57,25 +57,41 @@
 		resultType="adminCampaignCategoryVO">
 		SELECT * FROM CAMPAIGN_CATEGORY
 	</select>
-	
+
 	<!-- 카테고리 추가 -->
-	<insert id="addCampaignCategory" parameterType="adminCampaignCategoryVO">
+	<insert id="addCampaignCategory"
+		parameterType="adminCampaignCategoryVO">
 		INSERT INTO CAMPAIGN_CATEGORY
-		(CC_IDX, CC_NAME) VALUES(CAMPAIGN_CATEGORY_SEQ.NEXTVAL, #{ccName})
+		(CC_IDX, CC_NAME)
+		VALUES(CAMPAIGN_CATEGORY_SEQ.NEXTVAL, #{ccName})
 	</insert>
-	
+
 	<!-- 카테고리 중복 확인 -->
-	<select id="checkCampaignCategory" resultType="Integer" parameterType="AdminCampaignCategoryVO">
-		SELECT COUNT(*) FROM CAMPAIGN_CATEGORY WHERE CC_NAME = #{ccName}
+	<select id="checkCampaignCategory" resultType="Integer"
+		parameterType="AdminCampaignCategoryVO">
+		SELECT COUNT(*) FROM CAMPAIGN_CATEGORY WHERE CC_NAME =
+		#{ccName}
 	</select>
 	<!-- 카테고리 삭제 -->
-	<delete id="deleteCampaignCategory" parameterType="java.util.List">
+	<delete id="deleteCampaignCategory"
+		parameterType="java.util.List">
 		DELETE FROM CAMPAIGN_CATEGORY WHERE
 		CC_NAME IN
-		<foreach collection="list" index="index" item="item" open="(" close=")" separator=",">
+		<foreach collection="list" index="index" item="item" open="("
+			close=")" separator=",">
 			#{item}
 		</foreach>
 	</delete>
+
+	<!-- ======== campaign =========== -->
+	<!-- 캠페인 하나가져오기, 유저 닉네임 사용하기위한 조인 -->
+	<select id="getCampaign" parameterType="AdminCampaignVO"
+		resultType="AdminCampaignVO">
+		SELECT * FROM CAMPAIGN C INNER JOIN USERS U on C.U_IDX =
+		U.U_IDX
+		WHERE CI_IDX=#{ciIdx}
+	</select>
+
 
 	<!-- ======== proposal =========== -->
 	<select id="getProposal" parameterType="adminProposalVO"
@@ -94,23 +110,27 @@
 		CF_GOALPOINT, CF_GOAL, CP_IDX, U_IDX, CF_KEYWORD1, CF_KEYWORD2,
 		CF_KEYWORD3, CF_STARTDATE, CF_ENDDATE)
 		VALUES
-		(CF_IDX_SEQ.NEXTVAL, #{cfTitle}, #{cfContent}, #{cfStatus}, #{cfFile}, #{ccName},
+		(CF_IDX_SEQ.NEXTVAL,
+		#{cfTitle}, #{cfContent}, #{cfStatus}, #{cfFile}, #{ccName},
 		#{cfGoalpoint},#{cfGoal}, #{cpIdx}, #{uIdx}, #{cfKeyword1},
 		#{cfKeyword2}, #{cfKeyword3}, #{cfStartdate}, #{cfEnddate} )
 	</insert>
-	
-	<!--  펀딩 하나 가져오기 -->
-	<select id="getFunding" parameterType="adminFundingVO" resultType="adminFundingVO">
+
+	<!-- 펀딩 하나 가져오기 -->
+	<select id="getFunding" parameterType="adminFundingVO"
+		resultType="adminFundingVO">
 		SELECT * FROM FUNDING WHERE CF_IDX = #{cfIdx}
 	</select>
-	
-	<!-- 제안서 등록완료 확인위해서 CP_ACTIVE를 1로 변경, 등록 완료된 제안서  -->
+
+	<!-- 제안서 등록완료 확인위해서 CP_ACTIVE를 1로 변경, 등록 완료된 제안서 -->
 	<update id="updateCpActive" parameterType="adminFundingVO">
-		UPDATE PROPOSAL SET CP_ACTIVE =1 WHERE CP_IDX=#{cpIdx}
+		UPDATE PROPOSAL SET
+		CP_ACTIVE =1 WHERE CP_IDX=#{cpIdx}
 	</update>
-	
+
 	<!-- FUNDING 상태 변경 -->
 	<update id="updateCfStatus" parameterType="adminFundingVO">
-		UPDATE FUNDING SET CF_STATUS = 1 WHERE CF_IDX=#{cfIdx}
+		UPDATE FUNDING SET
+		CF_STATUS = 1 WHERE CF_IDX=#{cfIdx}
 	</update>
 </mapper>
