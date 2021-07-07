@@ -13,7 +13,7 @@
 
 	<!-- 진행중인 캠페인, 주최자 닉네임, 카테고리, 참여자수 불러오기 -->
 	<select id="selectAllCampaign" resultType="CampaignVO">
-		 SELECT C.*, U.U_NICKNAME AS 
+		 SELECT C.*, U.U_NICKNAME  AS 
  		 HOST_NICKNAME,        
 		 (SELECT COUNT(*) FROM CAMPAIGN_USER WHERE C.CI_IDX = CAMPAIGN_USER.ci_idx) USER_COUNT  
  		FROM USERS U, CAMPAIGN C  WHERE CI_STATUS = 1  
@@ -276,6 +276,18 @@
 		   SET U_USED_POINT = U_USED_POINT + #{cfPoint}
 		 WHERE U_IDX = #{uIdx}
 	</update>
+	
+	<insert id="updateUserPlusPointDetail" parameterType = "FundingUserVO">
+		INSERT INTO POINT
+            (U_IDX, PO_USED, PO_EARN, PO_DATE, PO_WHERE)
+            VALUES( #{uIdx}, #{cfPoint}, 0, SYSDATE, 0)
+	</insert>
+	
+	<insert id="updateUserMinusPointDetail" parameterType= "FundingUserVO">
+			INSERT INTO POINT
+            (U_IDX, PO_USED, PO_EARN, PO_DATE, PO_WHERE)
+            VALUES( #{uIdx}, 0, #{cfPoint}, SYSDATE, 3)
+	</insert>
 	
 	
 	<delete id="deleteFundingUser" parameterType="FundingUserVO">
