@@ -80,10 +80,10 @@
 				<label>이메일 :</label><input type="text" name="rEmail" class="reciever" id="email">
 				<p style="display:none;" id="warningEmail"></p><br>
 				<select id="selbox" name="selbox">
-					<option value="">배송 시 요청사항을 선택해주세요</option>
-					<option value="">부재 시 문 앞에 두고 가주세요</option>
-					<option value="">배송 전 전화 또는 문자 주세요</option>
-					<option value="">부재 시 경비실에 두고가주세요</option>
+					<option value="d_none">배송 시 요청사항을 선택해주세요</option>
+					<option value="d_door">부재 시 문 앞에 두고 가주세요</option>
+					<option value="d_call">배송 전 전화 또는 문자 주세요</option>
+					<option value="d_security">부재 시 경비실에 두고가주세요</option>
 					<option value="direct">직접입력</option>
 				</select>
 				<input type="text" id="selboxDirect" name="selboxDirect"/>
@@ -138,12 +138,10 @@
 </body>
 <script>
 $(function(){
-
-	
 	
 });
 function goPayment(){
-	
+	console.log($("#selbox option:selected").text());
 	if($(".payPrice").html()=="0원"){
 		alert("결제할 상품이 존재하지 않습니다. 쇼핑하러 가실래염?ㅋ");
 	} else {
@@ -173,11 +171,22 @@ function goPayment(){
 	//console.log($("#addr1").val());
 	// 수령자 정보
 	var vo = {};
-	vo.oAddress1 = $("#addr1").val();
-	vo.oAddress2 = $("#addr2").val();
-	vo.oPhone = $("#phone").val();
-	vo.oReceiver = $("#uname").val();
-	vo.oZipcode = $("#addr").val();
+	vo.oAddress1 = $("#addr1").val(); // 기본주소
+	vo.oAddress2 = $("#addr2").val(); // 상세주소
+	vo.oPhone = $("#phone").val(); // 핸드폰
+	vo.oReceiver = $("#uname").val(); // 수령자이름
+	vo.oZipcode = $("#addr").val(); // 우편번호
+	if($("#selbox").val()=="direct"){ // 배송 요청사항
+		vo.oDelivery = $("#selboxDirect").val();
+		
+	} else if($("#selbox").val()=="d_none"){
+		vo.oDelivery = "없음";
+	} else {
+		vo.oDelivery = $("#selbox option:selected").text();
+	}
+	console.log(vo.oDelivery);
+	console.log("json:"+JSON.stringify(vo));
+	
 	if (info=="" || info==null){
 		alert("수령자 정보를 정확히 입력해주세요");
 	} else {
@@ -226,15 +235,16 @@ function goPayment(){
 			            	  type:"post",
 			            	  success : function(data){
 			            		  alert("성공"+data);
-			            		  
 			            		  // 수령자 정보 db에 저장
 			            		  $.ajax({
 			            			  url : "userOrder.do",
 			            			  data : JSON.stringify(vo),
+			            			  contentType : "application/json",
 			            			  dataType : 'json',
-			            			  type : "post",
+			            			  type : 'post',
 			            			  success : function(data){
 			            				  alert("수령인 정보 성공 "+data);
+			            				  location.href="orderConfirm.do";
 			            			  },
 			            			  error : function(data){
 			            				  alert("수령인 정보 에러");

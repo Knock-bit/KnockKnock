@@ -22,9 +22,9 @@
 	<insert id="userOrder" parameterType="userOrderVO">
 		INSERT INTO USER_ORDER 
 		(G_IDX, O_ADDRESS1, O_ADDRESS2, O_PHONE,
-			O_RECEIVER, O_ZIPCODE, U_IDX)
+			O_RECEIVER, O_ZIPCODE, U_IDX, O_DELIVERY)
 		VALUES (G_IDX_SEQ.nextval, #{oAddress1}, #{oAddress2}, #{oPhone}, 
-				#{oReceiver}, #{oZipcode}, #{uIdx} )
+				#{oReceiver}, #{oZipcode}, #{uIdx}, #{oDelivery} )
 	
 	</insert>
 
