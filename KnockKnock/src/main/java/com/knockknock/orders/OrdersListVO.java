@@ -11,13 +11,20 @@ public class OrdersListVO {
 	private String pDesc;
 	private int pFee;
 	private String pImg;
+
+	// 주문내역에 들어가야할 것들
+	private String oDate;
+	private String oTempnum;
+	private int oStatus;
 	
 	public OrdersListVO() {
 		super();
 	}
 
+	
+
 	public OrdersListVO(int pIdx, int oCnt, int pPrice, int oTotprice, int sIdx, String pName, String pDesc, int pFee,
-			String pImg) {
+			String pImg, String oDate, String oTempnum, int oStatus) {
 		super();
 		this.pIdx = pIdx;
 		this.oCnt = oCnt;
@@ -28,7 +35,12 @@ public class OrdersListVO {
 		this.pDesc = pDesc;
 		this.pFee = pFee;
 		this.pImg = pImg;
+		this.oDate = oDate;
+		this.oTempnum = oTempnum;
+		this.oStatus = oStatus;
 	}
+
+
 
 	public int getpIdx() {
 		return pIdx;
@@ -102,12 +114,52 @@ public class OrdersListVO {
 		this.pImg = pImg;
 	}
 
+	
+	public String getoDate() {
+		return oDate;
+	}
+
+
+
+	public void setoDate(String oDate) {
+		this.oDate = oDate;
+	}
+
+
+
+	public String getoTempnum() {
+		return oTempnum;
+	}
+
+
+
+	public void setoTempnum(String oTempnum) {
+		this.oTempnum = oTempnum;
+	}
+
+
+
+	public int getoStatus() {
+		return oStatus;
+	}
+
+
+
+	public void setoStatus(int oStatus) {
+		this.oStatus = oStatus;
+	}
+
+
+
 	@Override
 	public String toString() {
 		return "OrdersListVO [pIdx=" + pIdx + ", oCnt=" + oCnt + ", pPrice=" + pPrice + ", oTotprice=" + oTotprice
 				+ ", sIdx=" + sIdx + ", pName=" + pName + ", pDesc=" + pDesc + ", pFee=" + pFee + ", pImg=" + pImg
-				+ "]";
+				+ ", oDate=" + oDate + ", oTempnum=" + oTempnum + ", oStatus=" + oStatus + "]";
 	}
+
+
+
 	
 	
 	

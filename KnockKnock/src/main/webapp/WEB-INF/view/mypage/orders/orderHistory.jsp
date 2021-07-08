@@ -26,11 +26,13 @@
   <!-- Import BootStrap -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
   
-  <!-- page CSS File -->
-  <link href="${cp}/resource/css/orderconfirmation.css" rel="stylesheet">
-  
-<style>
-
+  <style>
+  .main-content{
+        flex: 1;
+        min-height:100vh;
+        margin-top:100px;
+        
+    }
   </style>
 </head>
 <body>
@@ -39,61 +41,23 @@
   <!-- ======= Header 끝  === -->
 <div class="main-content">
 
-	
-	<div class="orderConfirm">
-		<div class="orderform">
-			<div class="of1">
-				<h3>주문완료</h3>
-			</div>
-			<div class="of2">
-				<p>1. 장바구니 > 2. 주문결제 > 3.주문완료</p>
-			</div>
-			<div class="of3">
-				<p>knockknock을 이용해주셔서 감사합니다</p>
+	<h1>주문내역 페이ㅈ ㅣ 's</h1>
+	<hr>
+	<c:forEach var ="item" items="${ohList }">
+		<div style="border:1px solid gray;">
+			주문번호 : ${item.oTempnum}
+			상품명 : ${item.pName }<br>
+			상품설명 : ${item.pDesc }<br>
+			상품 가격 : ${item.pPrice }<br>
+			수량 : ${item.oCnt }<br>
+			구매날짜 : ${item.oDate }<br>
+			배송상황 : ${item.oStatus }
 			
-			</div>
-			<div class="of4">
-				상품목록
-				<c:forEach var="product" items="${plist }">
-				<div style="display:inline-block;">
-					<p>이미지</p>
-					<p>상품명 : ${product.pName }</p>
-					<p>가격: ${product.pName }</p>
-				</div>
-				</c:forEach>
-				<c:forEach var="orders" items="${ovo }">
-					<p style="display:none;">수량 : ${orders.oCnt }
-					<p class="paidx" style="display:none;">${orders.paIdx }</p>
-				</c:forEach>
-			</div>
-			<div class="of5">
-				결제내역
-				<p>상품가격(모든상품가격) : </p>
-				<p>할인금액 :</p>
-				<p>총 배송비 :</p>
-				<p>총 구매금액</p>
-				<%-- <p>최종 결제 수단 ${ovo.paIdx }</p> --%>
-				
-			</div>
-			<div class="of6">
-				배송정보내역
-				<p>구매자 이름: ${users.uName }</p>
-				<p>수취인 이름: ${uovo.oReceiver }</p>
-				<p>우편번호 : ${uovo.oZipcode }</p>
-				<p>배송지 주소: ${uovo.oAddress1 }, ${uovo.oAddress2}</p>
-				<p>수취인 연락처: ${uovo.oPhone }</p>
-				<p>배송 메시지:${uovo.oDelivery }</p>
-			</div>
-			<div class="of7">
-				<input type="button" value="주문내역" onclick="location.href='${cp }/orderHistory.do'">
-			</div>
+
 		</div>
+	</c:forEach>
 	
-	
-	
-	
-	
-	</div>
+
 </div>	
 <!-- ======= Footer ======= -->
    <%@ include file= "/layout/footer.jsp" %>
