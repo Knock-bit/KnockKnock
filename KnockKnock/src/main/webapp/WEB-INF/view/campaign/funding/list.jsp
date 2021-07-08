@@ -153,7 +153,7 @@
     </div>End Breadcrumbs -->
 
     <!-- ======= Campaign Section ======= -->
-    <article id="campaigns" class="campaigns">
+    <section id="campaigns" class="campaigns">
       <div class="container" data-aos="fade-up">
       <div class="inner-nav">
        <%@ include file= "/layout/navbar/campaign/navCampaign.jsp" %> 
@@ -193,7 +193,7 @@
         </div>
 
       </div>
-    </article><!-- End Courses Section -->
+    </section><!-- End Courses Section -->
 
   </main><!-- End #main -->
 <!-- ======= Footer ======= -->

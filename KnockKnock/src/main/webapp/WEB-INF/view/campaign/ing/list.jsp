@@ -125,7 +125,7 @@
       </div></div>
     </div><!-- End Breadcrumbs -->
     <!-- ======= Campaign Section ======= -->
-    <article id="campaigns" class="campaigns">
+    <section id="campaigns" class="campaigns">
       <div class="container" data-aos="fade-up">
 		  <%@ include file= "/layout/navbar/campaign/navCampaign.jsp" %> 
         <div class="row" id="commonDiv" data-aos="zoom-in" data-aos-delay="100" >
@@ -164,7 +164,7 @@
         </div>
 
       </div>
-    </article><!-- End Courses Section -->
+    </section><!-- End Courses Section -->
 
   </main><!-- End #main -->
 <!-- ======= Footer ======= -->

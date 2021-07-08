@@ -154,6 +154,8 @@ vertical-align:middle;}
 			$("#commonDiv").load("${cp}/board/moveInsert.do")
 		})
 		
+		$("#")
+		
 	});
 	
 		    Kakao.init('24f056f59d439e22eab3d1d0b80755f1');
