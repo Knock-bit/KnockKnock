@@ -70,15 +70,15 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="keyword1">키워드1</label>
-                                <input type="text" name="pKeyword1" id="pKeyword1" />
+                                <input type="text" name="cpKeyword1" id="cpKeyword1" />
                             </div>
                             <div class="form-group">
                                 <label for="keyword2">키워드2</label>
-                                <input type="text" name="pKeyword2" id="pKeyword2" />
+                                <input type="text" name="cpKeyword2" id="cpKeyword2" />
                             </div>
                             <div class="form-group">
                                 <label for="keyword3">키워드3</label>
-                                <input type="text" name="pKeyword3" id="pKeyword3" />
+                                <input type="text" name="cpKeyword3" id="cpKeyword3" />
                             </div>
                         </div>
 			<input type="submit" value="전송">

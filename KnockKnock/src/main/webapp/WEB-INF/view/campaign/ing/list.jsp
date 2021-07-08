@@ -68,6 +68,10 @@
 
 </script>
 <style>
+
+#commonDiv{
+ padding-top: 60px;
+}
 .scale {
 	transform: scale(1);
 	-webkit-transform: scale(1);

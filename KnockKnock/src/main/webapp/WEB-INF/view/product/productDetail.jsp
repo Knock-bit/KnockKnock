@@ -98,23 +98,23 @@
    }
    .pprice{
    		grid-column: 2/3;
-		grid-row: 2/3;
+		grid-row: 3;
    }
    .pcnt{
    		grid-column: 2/3;
-		grid-row: 3/4;
+		grid-row: 5;
    }
    .pdesc{
    		grid-column: 2/3;
-		grid-row: 4/6;
+		grid-row: 2;
    }
    .pfee {
    		grid-column: 2/3;
-		grid-row: 6/7;
+		grid-row: 4;
    }
    .pbtn {
    		grid-column: 2/3;
-		grid-row: 7/8;
+		grid-row: 6;
    }
   </style>
 </head>
@@ -173,7 +173,14 @@
 			<input type="button" onclick="addCart()" value="장바구니">
 		</div>
 	</div>
+	
+	<jsp:include page='/layout/navbar/product/navProduct.jsp' flush='false'/>   	
+	
+	
 </div>	
+
+
+
 <!-- ======= Footer ======= -->
    <%@ include file= "/layout/footer.jsp" %>
  
