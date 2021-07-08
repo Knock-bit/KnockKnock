@@ -27,12 +27,7 @@ public class SellerController {
 	public String moveSellerPage(){
 		return "/seller/sellerLogin";
 	}
-	//대쉬보드로 이동
-//	@GetMapping("/seller/sellerDashboard.do")
-//	public String moveSellerDashboard() {
-//		return "/seller/sellerDashboard";
-//	}
-	// 사업자판매자 회원가입 **return값 추후에 다시 바꿔야함 이메일인증하는걸로
+
 	@PostMapping("/user/sellerJoinConfirm.do")
 	public String sellerJoin(SellerVO seller) {
 		System.out.println("판매자 회원가입 vo = " + seller);

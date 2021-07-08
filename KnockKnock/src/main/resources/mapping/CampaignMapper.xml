@@ -323,7 +323,7 @@
   		INSERT INTO PROPOSAL(CP_IDX, CP_REGDATE, CP_TITLE, CP_GOAL, CP_CONTENT, 
   							CP_GOALPOINT, CP_FILE, U_IDX,
   							CP_KEYWORD1, CP_KEYWORD2, CP_KEYWORD3)
-					VALUES (PROPOSAL_IDX_SEQ.nextval, SYSDATE,  
+					VALUES (CP_IDX_SEQ.nextval, SYSDATE,  
 							#{cpTitle}, #{cpGoal}, #{cpContent}, 
   							#{cpGoalpoint}, #{cpFile}, #{uIdx}, 
   							#{cpKeyword1}, #{cpKeyword2}, #{cpKeyword3})

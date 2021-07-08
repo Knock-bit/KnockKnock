@@ -14,7 +14,7 @@ public class FundingVO {
 	private int cfCollected;
 	private String cfStatus;
 	private String cfFile;
-	private int ccName;  
+	private String ccName;  
 	private int uIdx;   // 주최자 유저번호	
 	private String cfKeyword1;
 	private String cfKeyword2;
@@ -26,7 +26,7 @@ public class FundingVO {
 	public FundingVO() { }
 
 	public FundingVO(int cfIdx, int cpIdx, String cfGoal, String cfTitle, String cfContent, Date cfEnddate,
-			Date cfStartdate, int cfGoalpoint, int cfCollected, String cfStatus, String cfFile, int ccName, int uIdx,
+			Date cfStartdate, int cfGoalpoint, int cfCollected, String cfStatus, String cfFile, String ccName, int uIdx,
 			String cfKeyword1, String cfKeyword2, String cfKeyword3, String hostNickname, String category,
 			int userCount) {
 		super();
@@ -141,11 +141,11 @@ public class FundingVO {
 		this.cfFile = cfFile;
 	}
 
-	public int getCcName() {
+	public String getCcName() {
 		return ccName;
 	}
 
-	public void setCcName(int ccName) {
+	public void setCcName(String ccName) {
 		this.ccName = ccName;
 	}
 

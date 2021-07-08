@@ -29,4 +29,7 @@ public interface AdminService {
 	public int countCampaign();
 	public AdminCampaignVO getCampaign(AdminCampaignVO vo);
 	
+	// ========= contact
+	public List<AdminContactCategory> getContactCategory(PagingVO pvo);
+	
 }

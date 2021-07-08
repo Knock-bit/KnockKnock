@@ -104,9 +104,12 @@ $(function(){
 	
 </script>
 <style>
+*{
+	font-family: 'Noto Sans KR', sans-serif;
+}
 .main-content {
 	flex: 1;
-	min-height: 100vh;
+	height:100%;
 	margin-top: 100px;
 }
 

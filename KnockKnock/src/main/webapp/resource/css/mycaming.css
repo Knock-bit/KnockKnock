@@ -1,7 +1,7 @@
 
 *{
 
-	font-family:'Noto+Sans+KR';
+	font-family: 'Noto Sans KR', sans-serif;
 }
 
 .main-content {
@@ -149,6 +149,7 @@
 	color:#0e4b20;
 	text-align:left;
 	border-bottom: 1px solid #a6a6a6;
+
 }
 
 .it2 {
@@ -173,6 +174,7 @@
 	font-weight:bold;
 	color:#ffc34d;
 	text-align:right;
+	
 	
 	
 }
@@ -205,6 +207,7 @@
 	border:0px;
 	padding-left:30px;
 	margin:0;
+	margin-top:20px;
 }
 
 .itemEnddate p:last-child {
