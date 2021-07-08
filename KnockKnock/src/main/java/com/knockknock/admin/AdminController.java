@@ -173,13 +173,15 @@ public class AdminController {
 	@GetMapping("/adminCampaignList.do")
 	public String getCampaignList(PagingVO pvo, Model model,
 			@RequestParam(value = "nowPage", required = false) String nowPage,
-			@RequestParam(value = "cntPerPage", required = false) String cntPerPage) {
+			@RequestParam(value = "cntPerPage", required = false) String cntPerPage,
+			@RequestParam(value = "sort", required = false) String sort) {
 
 		int total = adminService.countCampaign();
 		Map<String,String> map = pageSet(nowPage,cntPerPage);
 		nowPage = map.get("nowPage");
 		cntPerPage=map.get("cntPerPage");
-		pvo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage),pvo.getSearchCondition(),pvo.getSearchKeyword());
+		pvo.setSort(sort);
+		pvo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage),pvo.getSearchCondition(),pvo.getSearchKeyword(),pvo.getSort());
 		model.addAttribute("paging", pvo);
 		model.addAttribute("viewAll", adminService.getCampaignList(pvo));
 		return "/admin/campaign/adminCampaignList";
