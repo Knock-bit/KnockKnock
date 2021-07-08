@@ -108,8 +108,8 @@
 
 							<div class="col-lg-4 col-md-6 d-flex align-items-stretch">
 								<div class="course-item">
-									<img src="/resource/img/product/${product.pImg }"
-										class="img-fluid" style="width:370px; height:250px">
+									<a href="productDetail.do?pIdx=${product.pIdx}"><img src="/resource/img/product/${product.pImg }"
+										class="img-fluid" style="width:370px; height:250px"></a>
 									<div class="course-content">
 										<div
 											class="d-flex justify-content-between align-items-center mb-3">

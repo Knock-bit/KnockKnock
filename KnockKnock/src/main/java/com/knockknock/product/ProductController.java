@@ -52,7 +52,7 @@ public class ProductController {
 		System.out.println("pvo : " + pvo);
 		
 		model.addAttribute("pvo", pvo);
-		return "/mypage/cart/tempProduct";
+		return "/product/productDetail";
 	}
 	
 	
