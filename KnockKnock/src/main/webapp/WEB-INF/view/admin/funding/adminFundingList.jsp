@@ -23,7 +23,7 @@
 <script>
 	function selChange() {
 		var sel = document.getElementById('cntPerPage').value;
-		location.href = "adminKeywordList.do?nowPage=${paging.nowPage}&cntPerPage="
+		location.href = "getFundingList.do?nowPage=${paging.nowPage}&cntPerPage="
 				+ sel;
 	}
 </script>

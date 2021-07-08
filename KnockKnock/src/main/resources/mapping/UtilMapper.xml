@@ -112,7 +112,25 @@
 			</if>
 		</if>
 
-		ORDER BY CP_REGDATE) A
+		ORDER BY
+		<if test="sort != null">
+			<if test="sort == '제목'.toString()">
+				CP_TITLE
+			</if>
+			<if test="sort == '작성일'.toString()">
+				CP_REGDATE DESC
+			</if>
+			<if test="sort == '작성자'.toString()">
+				U_NICKNAME
+			</if>
+			<if test="sort == '생성상태'.toString()">
+				CP_ACTIVE
+			</if>
+		</if>
+		<if test="sort == null">
+			CP_REGDATE
+		</if>
+		) A
 		) WHERE cpRn
 		BETWEEN #{start} AND
 		#{end}
@@ -167,7 +185,7 @@
 				CF_STATUS
 			</if>
 		</if>
-		<if test = "sort == null">
+		<if test="sort == null">
 			CF_TITLE
 		</if>
 		) A
@@ -232,7 +250,28 @@
 				WHERE U_NICKNAME LIKE '%'||#{searchKeyword}||'%'
 			</if>
 		</if>
-		ORDER BY CI_IDX DESC) A
+		ORDER BY
+		<if test="sort != null">
+			<if test="sort == '제목'.toString()">
+				CI_TITLE
+			</if>
+			<if test="sort == '제안자'.toString()">
+				U_NICKNAME
+			</if>
+			<if test="sort == '시작일'.toString()">
+				CI_STARTDATE
+			</if>
+			<if test="sort == '종료일'.toString()">
+				CI_ENDDATE
+			</if>
+			<if test="sort == '활성상태'.toString()">
+				CI_STATUS
+			</if>
+		</if>
+		<if test ="sort == null">
+			CI_TITLE
+		</if>
+		) A
 		) WHERE ciRn
 		BETWEEN #{start} AND #{end}
 	</select>

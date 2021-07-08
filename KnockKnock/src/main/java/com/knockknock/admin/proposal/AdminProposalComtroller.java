@@ -36,13 +36,15 @@ public class AdminProposalComtroller {
 	@GetMapping("/adminProposalList.do")
 	public String getKeywordList(PagingVO pvo, Model model,
 			@RequestParam(value = "nowPage", required = false) String nowPage,
-			@RequestParam(value = "cntPerPage", required = false) String cntPerPage) {
+			@RequestParam(value = "cntPerPage", required = false) String cntPerPage,
+			@RequestParam(value = "sort" , required=false) String sort) {
 
 		int total = adminProposalService.countProposal();
 		Map<String,String> map = UtilClass.pageSet(nowPage,cntPerPage);
 		nowPage = map.get("nowPage");
 		cntPerPage=map.get("cntPerPage");
-		pvo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage),pvo.getSearchCondition(),pvo.getSearchKeyword());
+		pvo.setSort(sort);
+		pvo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage),pvo.getSearchCondition(),pvo.getSearchKeyword(), pvo.getSort());
 		model.addAttribute("paging", pvo);
 		model.addAttribute("viewAll", adminProposalService.getProposalList(pvo));
 		System.out.println(adminProposalService.getProposalList(pvo));

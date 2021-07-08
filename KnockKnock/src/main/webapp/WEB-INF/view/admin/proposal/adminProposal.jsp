@@ -23,7 +23,7 @@
 <script>
 	function selChange() {
 		var sel = document.getElementById('cntPerPage').value;
-		location.href = "adminKeywordList.do?nowPage=${paging.nowPage}&cntPerPage="
+		location.href = "adminProposalList.do?nowPage=${paging.nowPage}&cntPerPage="
 				+ sel;
 	}
 </script>
@@ -34,6 +34,10 @@
 			<div class="col-md-12">
 				<div class="row">
 					<div style="float: right;">
+						<a href="/adminProposalList.do?sort=제목">제목순</a> 
+						<a href="/adminProposalList.do?sort=작성일">작성일순</a> 
+						<a href="/adminProposalList.do?sort=작성자">작성자순</a> 
+						<a href="/adminProposalList.do?sort=생성상태">생성상태</a> 
 						<select id="cntPerPage" name="sel" onchange="selChange()">
 							<option value="5"
 								<c:if test="${paging.cntPerPage == 5}">selected</c:if>>5줄
