@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -30,18 +32,20 @@ import com.knockknock.user.UserVO;
 import com.knockknock.util.ProductVO;
  
 @Controller
-@SessionAttributes("users")
 public class MypageProductController {
 	
 	@Autowired
 	private MypageProductService mypageProductService;
 	
-	
-	
+
+
 	// 상품 장바구니에 담기
 	@RequestMapping(value="/addCart.do", method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseBody
-	public String addCart(@ModelAttribute("users")UserVO vo, int pIdx, int selectCnt) {
+	public String addCart( int pIdx, int selectCnt, HttpSession session) {
+		
+		UserVO vo = (UserVO) session.getAttribute("users");
+		
 		
 		// 상품 담기 전에 동일한 상품 번호 있는지 확인
 		
@@ -65,39 +69,41 @@ public class MypageProductController {
 	
 	// 장바구니로 이동
 	@GetMapping("/moveCart.do")
-	public String moveCart(@ModelAttribute("users")UserVO vo, Model model) {
+	public String moveCart( Model model, HttpSession session) {
 		
+		UserVO vo = (UserVO) session.getAttribute("users");
 		// 장바구니 리스트 불러오기
 		List<ProductVO> cartList = mypageProductService.cartList(vo);
 		System.out.println("cartList"+cartList);
 		
 		model.addAttribute("cartList", cartList);
+		
+		model.addAttribute("users", vo);
 		return "/mypage/cart/cart";
 	}
 	
 	// 장바구니 상품 전체 삭제
 	@PostMapping("/deleteCart.do")
 	@ResponseBody
-	public String deleteCart(@ModelAttribute("users")UserVO vo, Model model) {
-		
+	public String deleteCart(HttpSession session, Model model) {
+		UserVO vo = (UserVO) session.getAttribute("users");
 		int result = mypageProductService.deleteCart(vo);
 		String data =String.valueOf(result);
 		
 		System.out.println("data:" + data);
 		
-		
+		model.addAttribute("users", vo);
 		return data;
 	}
 
 	// 장바구니 상품 하나 삭제
 	@PostMapping("/deleteOne.do")
 	@ResponseBody
-	public String deleteOne(@ModelAttribute("users")UserVO vo, int pIdx) {
+	public String deleteOne( int pIdx) {
 		
 		int result = mypageProductService.deleteOne(pIdx);
 		String data =String.valueOf(result);
-		
-		System.out.println("data:" + data);
+
 
 		return data;
 	}
@@ -118,24 +124,25 @@ public class MypageProductController {
 			 // insert성공하면 해당 상품 delete 실행
 			 if(rs==1) {
 				deleteResult = mypageProductService.deleteBuyProduct(pIdx);
-				System.out.println("장바구니 아이템 삭제 : " + deleteResult);
 			 }
 		}
 		
 		String result = String.valueOf(deleteResult);
-		System.out.println("delete까지 완료후:" + result);
 
 		return result;
 	}
 	
 	// 주문서로 이동
 	@GetMapping("ordersList.do")
-	public String ordersList(@ModelAttribute("users")UserVO vo, Model model) {
+	public String ordersList(HttpSession session, Model model) {
 		
+		UserVO vo = (UserVO) session.getAttribute("users");
 		// 주문서 가져오기
 		List<OrdersVO> olist = mypageProductService.ordersList(vo);
 		
+		model.addAttribute("users", vo);
 		model.addAttribute("olist",olist);
 		return "/mypage/orders/ordersList";
 	}
+	
 }

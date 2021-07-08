@@ -7,7 +7,7 @@
 <html>
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
- 	<link href="${cp}/resource/css/signup.css" rel="stylesheet">
+ 	<link href="${contextPath}/resource/css/proposal.css" rel="stylesheet">
 <link href="${cp}/resource/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 	<link href="${cp}/resource/css/signup.css" rel="stylesheet">
@@ -75,9 +75,11 @@
 								<div id="summernote"></div>
                             </div>
                         </div>
+                        <div class="form-group" >
+                                <label for="file">썸네일</label>
+                        <input type="file" name="file">
+                            </div>
                         
-
-
                         <div class="form-submit">
                             <input type="reset" value="취소" class="submit" name="reset" id="reset" />
                             <input type="submit" value="제출" class="submit" name="submit" id="submit" />

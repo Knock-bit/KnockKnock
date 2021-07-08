@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
   <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+    <c:set var="cfCollected" value="${funding.cfCollected }"/>
     <c:set var="cp" value="${pageContext.request.contextPath }" />
 
     <!DOCTYPE html>
@@ -118,7 +119,7 @@
       
       var uIdx = "${users.uIdx}";
       var cfIdx = "${funding.cfIdx}";
-      
+      var cfCollected = "${funding.cfCollected}";
       
         function cancel_funding(){
         	
@@ -138,7 +139,8 @@
                   $("#funding-btn").attr('data-target', '#fundingModal');
                   $("#funding-btn2").attr('data-target', '#fundingModal');
                   $("#modal-content2").html("<div class='modal-funding'>취소되었습니다.</div>");
-                	  
+                  $("#funding-progress").attr('value', '${funding.cfCollected-250}')
+ 	              $("#progress-div").load(window.location.href + " #progress-div");
                   }
                 }, error: function () {
                   alert("실패");
@@ -148,7 +150,7 @@
         	
         	
         	
-        }
+        };
       
       
       
@@ -175,7 +177,8 @@
               $("#funding-btn2").html('펀딩완료');
               $("#funding-btn2").attr('data-target', '#fundingModal2');
               $("#modal-content").html("<div class='modal-funding'>참여해주셔서 감사합니다.</div>");
-            	  
+              $("#funding-progress").attr('value', '${funding.cfCollected+250}')
+              $("#progress-div").load(window.location.href + " #progress-div");
               }
             }, error: function () {
               alert("실패");
@@ -196,7 +199,11 @@
           console.log("exceed : " + exceed);
 
           if (exceed <= 0) {
-            $("#funding").attr("html", "목표달성으로 조기마감되었습니다.");
+            $("#funding-btn").html("펀딩마감");
+            $("#funding-btn").attr("data-target", "none");
+            $("#funding-btn").attr("onclick", "location.href=#");
+            $("#funding-btn2").attr("html", "목표달성으로 조기마감되었습니다.");
+            $("#funding-btn2").attr("onclick", "location.href='#'");
           }
 
 
@@ -268,13 +275,15 @@
 
                 <div class="campaign-info align-items-center">
                   <div>
+                  <div id="progress-div">
                     펀딩 진행도
                     <p class="funding-pg">
-                      <progress value="${funding.cfCollected }" max="${funding.cfGoalpoint }"></progress>
+                      <progress id ="funding-progress" value="${funding.cfCollected }" max="${funding.cfGoalpoint }"></progress>
                     </p>
-						<fmt:formatNumber var="fundingProgress" type="percent" value="${funding.cfCollected / funding.cfGoalpoint}" pattern="0.0%"/>
+						<fmt:formatNumber var="fundingProgress" type="percent" value="${cfCollected / funding.cfGoalpoint}" pattern="0.0%"/>
 						${fundingProgress } 달성
                   </div>
+                </div>
                 </div>
 
                 <div class="campaign-info align-items-center">

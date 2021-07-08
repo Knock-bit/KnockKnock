@@ -16,8 +16,8 @@
           <li><a href="${cp }/run.jsp">Home</a></li>
           <li class="dropdown"><a href="#"><span>About</span> <i class="bi bi-chevron-down"></i></a>
               <ul>
-              <li><a href="${cp }/layout/about/whatisknock.jsp">녹녹은</a></li>
-              <li><a href="${cp }/layout/about/manual.jsp">녹녹 사용법</a></li>
+				<li><a href="${cp }/layout/about/whatisknock.jsp">綠!Knock은?</a></li>
+				<li><a href="${cp }/layout/about/manual.jsp">綠!Knock!이용법</a></li>
             </ul>
           </li>
           <li class="dropdown"><a href="#"><span>Campaign</span> <i class="bi bi-chevron-down"></i></a>

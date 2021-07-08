@@ -15,11 +15,12 @@ public class ProposalVO {
 	private String cpKeyword1;
 	private String cpKeyword2;
 	private String cpKeyword3;
+	private int cpActive;
 	
 	public ProposalVO() {	}
 	
 	public ProposalVO(int cpIdx, String cpContent, String cpGoal, String cpTitle, Date cpRegdate, int cpGoalpoint,
-			String cpFile, int uIdx, String cpKeyword1, String cpKeyword2, String cpKeyword3) {
+			String cpFile, int uIdx, String cpKeyword1, String cpKeyword2, String cpKeyword3, int cpActive) {
 		super();
 		this.cpIdx = cpIdx;
 		this.cpContent = cpContent;
@@ -32,6 +33,7 @@ public class ProposalVO {
 		this.cpKeyword1 = cpKeyword1;
 		this.cpKeyword2 = cpKeyword2;
 		this.cpKeyword3 = cpKeyword3;
+		this.cpActive = cpActive;
 	}
 
 
@@ -122,7 +124,14 @@ public class ProposalVO {
 	public void setCpKeyword3(String cpKeyword3) {
 		this.cpKeyword3 = cpKeyword3;
 	}
-	
+	public int getCpActive() {
+		return cpActive;
+	}
+
+
+	public void setCpActive(int cpActive) {
+		this.cpActive = cpActive;
+	}
 	
 	
 	

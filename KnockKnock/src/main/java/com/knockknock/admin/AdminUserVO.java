@@ -20,6 +20,7 @@ public class AdminUserVO {
 	private Date uJoindate;
 	private String uImg;
 	private int uPoint;
+	private int RN;
 	
 	
 	// ===================== [ 생성자 ] =======================
@@ -208,7 +209,14 @@ public class AdminUserVO {
 		this.uPoint = uPoint;
 	}
 
-	
+	public int getRN() {
+		return RN;
+	}
+
+	public void setRN(int rN) {
+		RN = rN;
+	}
+
 	// ================== [ toString ] ====================
 	@Override
 	public String toString() {

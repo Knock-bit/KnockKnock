@@ -1,154 +1,152 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <c:set var="cp" value="${pageContext.request.contextPath }" />
+
 <!DOCTYPE html>
+
 <html>
 <head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- bootstrap jquery 추가 -->
 <link href="${cp}/resource/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 <script src="${cp}/resource/js/jquery/jquery-3.6.0.min.js"></script>
-<!-- 서머노트 추가 -->
-<%-- <script src="${cp }/resource/summernote/lang/summernote-ko-KR.js"></script> --%>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.6/lang/summernote-ko-KR.min.js"></script>
-<script src="${cp }/resource/summernote/summernote-lite.js"></script>
-<link href="${cp}/resource/summernote/summernote-lite.css"
-	rel="stylesheet">
 
+<style>
+.table {
+	margin-top: 250px;
+	margin-left: 50px
+}
+</style>
 <script>
-	function postForm(frm) {
-		$('textarea[name="cfContent"]').val($('#summernote').summernote('code'));
-		frm.action="insertFunding.do";
-		frm.setAttribute('method', 'post');
-		frm.submit();
+	function selChange() {
+		var sel = document.getElementById('cntPerPage').value;
+		location.href = "adminCampaignList.do?nowPage=${paging.nowPage}&cntPerPage="
+				+ sel;
 	}
 </script>
-<body>	
+</head>
+<body>
 	<div class="container">
-		<form>
-			<!-- 제안서 데이터 썸머노트에 보내기 위한 input -->
-			<input type="text" id="propContent" value="${proposal.cpContent }" style="display:none">
-			<!-- 제안서 번호 넘기기 -->
-			<input type="text" name="cpIdx" value="${proposal.cpIdx }" style="display:none">
-			<!-- 제안서 작성자 넘기기 -->
-			<input type="text" name="uIdx" value="${proposal.uIdx }" style="display:none">			
-			<!-- 파일경로 넘기기 -->
-			<input type="text" name="cfFile" value="${proposal.cpFile }" style="display:none">
-			<!-- 펀딩 상태 넘기기 -->
-			<input type="text" name="cfStatus" value="0" style="display:none">
-			 <label> Title <input type="text" name="cfTitle" value="${proposal.cpTitle }">
-			</label><br>
-			<!-- 썸머노트 에디터에 작성한 내용 저장시킬 textarea display:none -->
-			<textarea name="cfContent" style="display: none;"></textarea>
-			<label>
-				캠페인 목표 <input type="text" name="cfGoal" value="${proposal.cpGoal }">
-			</label>
-			<div id="summernote"></div>
-			<label> 시작일 <input type="date" name="cfStartdate"> 
-			</label> <br>
-			<label>
-				종료일 <input type="date" name="cfEnddate">
-			</label> <br>
-			<label>
-				목표 포인트 <input type="text" name="cfGoalpoint" value="${proposal.cpGoalpoint }">
-			</label> <br>
-			<h5 style="display:inline"> 키워드 선택 - </h5>
-			<c:forEach var="i" begin="1" end="3">
-			${i }
-					<select name="cfKeyword${i }">
-						<c:forEach var="keyword" items="${keyword }">
-							<option>${keyword.kContent }</option>
-						</c:forEach>				
-					</select>	
-					
-			</c:forEach>
-			<br>
-			<h5 style="display:inline"> 카테고리 선택 - </h5>
-			<select name="ccName">
-				<c:forEach var="campaignCategory" items="${campaignCategory }">
-						<option>${campaignCategory.ccName }</option>
-				</c:forEach>	
-			</select>
-			
-			 <input id="subBtn" type="Button" value="글 작성"
-				style="float: right;" onclick="postForm(this.form)">
-			<!-- <input type="submit" value="전송"> -->
-			<div name="text"></div>
-		</form>
-	</div>
-	<script>
-		$(document)
-				.ready(
-						function() {
-						console.log($("#propContent").text());
-						console.log($("#propContent").val());
-						 
-							var toolbar = [
-									// 글꼴 설정
-									[ 'fontname', [ 'fontname' ] ],
-									// 글자 크기 설정
-									[ 'fontsize', [ 'fontsize' ] ],
-									// 굵기, 기울임꼴, 밑줄,취소 선, 서식지우기
-									[
-											'style',
-											[ 'bold', 'italic', 'underline',
-													'strikethrough', 'clear' ] ],
-									// 글자색
-									[ 'color', [ 'forecolor', 'color' ] ],
-									// 표만들기
-									[ 'table', [ 'table' ] ],
-									// 글머리 기호, 번호매기기, 문단정렬
-									[ 'para', [ 'ul', 'ol', 'paragraph' ] ],
-									// 줄간격
-									[ 'height', [ 'height' ] ],
-									// 그림첨부, 링크만들기, 동영상첨부
-									[ 'insert', [ 'picture', 'link', 'video' ] ],
-									// 코드보기, 확대해서보기, 도움말
-									[
-											'view',
-											[ 'codeview', 'fullscreen', 'help' ] ] ];
-							// 툴바생략
-							var setting = {
-								height : 300,
-								minHeight : null,
-								maxHeight : null,
-								focus : true,
-								lang : 'ko-KR',
-								toolbar : toolbar,
-								//콜백 함수
-								callbacks : {
-									onImageUpload : function(files, editor,
-											welEditable) {
-										// 파일 업로드(다중업로드를 위해 반복문 사용)
-										for (var i = files.length - 1; i >= 0; i--) {
-											uploadSummernoteImageFile(files[i],
-													this);
-										}
-									}
-								}
-							};
-							var propContent = $("#propContent").val();
-						 	$('#summernote').append(propContent);
-							$('#summernote').summernote(setting);
-						});
+		<div class="row">
+			<div class="col-md-12">
+				<div class="row">
+					<div style="float: right;">
+						<a href="/adminCampaignList.do?sort=제목">제목순</a> 
+						<a href="/adminCampaignList.do?sort=제안자">제안자순</a> 
+						<a href="/adminCampaignList.do?sort=시작일">시작일순</a> 
+						<a href="/adminCampaignList.do?sort=종료일">종료일순</a>
+						<a href="/adminCampaignList.do?sort=활성상태">활성상태</a> 
+						<select id="cntPerPage" name="sel" onchange="selChange()">
+							<option value="5"
+								<c:if test="${paging.cntPerPage == 5}">selected</c:if>>5줄
+								보기</option>
+							<option value="10"
+								<c:if test="${paging.cntPerPage == 10}">selected</c:if>>10줄
+								보기</option>
+							<option value="15"
+								<c:if test="${paging.cntPerPage == 15}">selected</c:if>>15줄
+								보기</option>
+							<option value="20"
+								<c:if test="${paging.cntPerPage == 20}">selected</c:if>>20줄
+								보기</option>
+						</select>
+					</div>
+					<!-- 검색기능추가 -->
+					<form action="adminCampaignList.do" method="get">
+						<table class="border-none">
+							<tr>
+								<td><select name="searchCondition">
+										<c:forEach var="option" items="${conditionMapUserCampaign }">
+											<option value="${option.value}">${option.key }</option>
+										</c:forEach>
+								</select> <input type="text" name="searchKeyword"> <input
+									type="submit" value="검색"></td>
+							</tr>
+						</table>
+					</form>
+					<form id="proposalForm" method="post"
+						style="margin-top: 300px; margin-left: 100px;">
+						<table class="table table-bordered table-striped"
+							style="margin-top: 0px;">
+							<h3 class="text-center">캠페인리스트</h3>
 
-		function uploadSummernoteImageFile(file, el) {
-			data = new FormData();
-			data.append("file", file);
-			$.ajax({
-				data : data,
-				type : "POST",
-				url : "uploadSummernoteImageFile.do",
-				contentType : false,
-				enctype : 'multipart/form-data',
-				processData : false,
-				success : function(data) {
-					$(el).summernote('editor.insertImage', data.url);
-				}
-			});
-		}
-	</script>
+							<c:if test="${empty viewAll }">
+								<tr>
+									<td>등록된 캠페인 리스트가 없습니다.</td>
+								</tr>
+							</c:if>
+
+							<c:if test="${!empty viewAll }">
+								<thead>
+									<tr>
+										<td>캠페인 번호</td>
+										<td>제목</td>
+										<td>제안자</td>
+										<td>캠페인 시작일</td>
+										<td>캠페인 종료일</td>
+										<td>상태</td>
+									</tr>
+								</thead>
+								<tbody id="tableList">
+									<c:forEach var="campaign" items="${viewAll }">
+										<tr>
+											<td>${campaign.ciRn }</td>
+											<td><a href="getCampaign.do?ciIdx=${campaign.ciIdx }">${campaign.ciTitle }</a></td>
+											<td>${campaign.uNickname }</td>
+											<td>${campaign.ciStartdate }</td>
+											<td>${campaign.ciEnddate }</td>
+											<c:if test="${campaign.ciStatus  eq 0}">
+												<td>진행 대기중</td>
+											</c:if>
+											<c:if test="${campaign.ciStatus eq 1}">
+												<td>진행중</td>
+											</c:if>
+											<c:if test="${campaign.ciStatus  eq 2}">
+												<td>캠페인 종료(포인트 분배 예정)</td>
+											</c:if>
+											<c:if test="${campaign.ciStatus  eq 3}">
+												<td>포인트 분배 완료</td>
+											</c:if>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</c:if>
+						</table>
+					</form>
+					<div style="display: block; text-align: center;">
+						<c:if test="${paging.startPage != 1 }">
+							<a
+								href="/adminCampaignList.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
+						</c:if>
+						<c:forEach begin="${paging.startPage }" end="${paging.endPage }"
+							var="p">
+							<c:choose>
+								<c:when test="${p == paging.nowPage }">
+									<b>${p }</b>
+								</c:when>
+								<c:when test="${p != paging.nowPage }">
+									<a
+										href="/adminCampaignList.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
+								</c:when>
+							</c:choose>
+						</c:forEach>
+						<c:if test="${paging.endPage != paging.lastPage}">
+							<a
+								href="/adminCampaignList.do?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
+						</c:if>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
+
+
+
+
+
+

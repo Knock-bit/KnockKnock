@@ -21,14 +21,11 @@
 }
 </style>
 <script>
-
-function selChange() {
-	var sel = document.getElementById('cntPerPage').value;
-	location.href = "adminKeywordList.do?nowPage=${paging.nowPage}&cntPerPage="
-			+ sel;
-}
-
-
+	function selChange() {
+		var sel = document.getElementById('cntPerPage').value;
+		location.href = "getFundingList.do?nowPage=${paging.nowPage}&cntPerPage="
+				+ sel;
+	}
 </script>
 </head>
 <body>
@@ -37,6 +34,10 @@ function selChange() {
 			<div class="col-md-12">
 				<div class="row">
 					<div style="float: right;">
+					<a href="/getFundingList.do?sort=제목">제목순</a> 
+					<a href="/getFundingList.do?sort=시작일">시작일순</a> 
+					<a href="/getFundingList.do?sort=종료일">종료일순</a> 
+					<a href="/getFundingList.do?sort=활성상태">활성상태</a> 
 						<select id="cntPerPage" name="sel" onchange="selChange()">
 							<option value="5"
 								<c:if test="${paging.cntPerPage == 5}">selected</c:if>>5줄
@@ -52,15 +53,28 @@ function selChange() {
 								보기</option>
 						</select>
 					</div>
+					<!-- 검색기능추가 -->
+					<form action="getFundingList.do" method="get">
+						<table class="border-none">
+							<tr>
+								<td><select name="searchCondition">
+										<c:forEach var="option" items="${conditionMapFunding }">
+											<option value="${option.value}">${option.key }</option>
+										</c:forEach>
+								</select> <input type="text" name="searchKeyword"> <input
+									type="submit" value="검색"></td>
+							</tr>
+						</table>
+					</form>
 					<form id="proposalForm" method="post"
 						style="margin-top: 300px; margin-left: 100px;">
 						<table class="table table-bordered table-striped"
 							style="margin-top: 0px;">
-							<h3 class="text-center">캠페인리스트</h3>
+							<h3 class="text-center">펀딩리스트</h3>
 
 							<c:if test="${empty viewAll }">
 								<tr>
-									<td>등록된 키워드가 없습니다.</td>
+									<td>등록된 리스트가 없습니다.</td>
 								</tr>
 							</c:if>
 
@@ -81,14 +95,17 @@ function selChange() {
 											<td><a href="getFunding.do?cfIdx=${funding.cfIdx }">${funding.cfTitle }</a></td>
 											<td>${funding.cfStartdate }</td>
 											<td>${funding.cfEnddate }</td>
+											<c:if test="${funding.cfStatus  eq 0}">
+												<td>진행 대기중</td>
+											</c:if>
 											<c:if test="${funding.cfStatus eq 1}">
 												<td>진행중</td>
 											</c:if>
-											<c:if test="${funding.cfStatus  eq 0}">
-												<td>종료</td>
+											<c:if test="${funding.cfStatus  eq 2}">
+												<td>펀딩 성공</td>
 											</c:if>
 											<c:if test="${funding.cfStatus  eq 3}">
-												<td>펀딩성공</td>
+												<td>종료</td>
 											</c:if>
 										</tr>
 									</c:forEach>

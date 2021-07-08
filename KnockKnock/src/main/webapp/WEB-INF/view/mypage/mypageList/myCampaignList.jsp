@@ -51,6 +51,7 @@
 
 	<p id="ctext">Ended Campagin</p>
 	<div class="main">
+		<c:if test="${! empty endlist }">
 		<div class="endList">
 			<c:forEach var="endlist" items="${endlist }">
 				<div class="item">
@@ -60,7 +61,7 @@
 						<p class="onlyImg">${endlist.ciFile}</p>
 						<p class="imContent">${endlist.ciContent }</p>
 						<p class="imEndDate">${endlist.ciEnddate }</p>
-						<p class="imGoal">${endlist.cGoal }</p>
+						<p class="imGoal">${endlist.ciGoal }</p>
 						<p class="imEmblem">${endlist.ciEmblem }</p>
 						<p class="imTotPoint">${endlist.cTotpoint} </p>
 					</div>
@@ -70,6 +71,13 @@
 				</div>
 			</c:forEach>
 		</div>
+		</c:if>
+		<c:if test="${empty endlist }">
+			<div style="margin:5%;">
+				<p style="font-size:20px; color:#0e4b20;">종료된 캠페인이 없습니다.</p>
+			
+			</div>
+		</c:if>
 	</div>
 	<div class="modal">
 	  <div class="madalDiv">
@@ -80,20 +88,20 @@
 		    	</div>
 		    	<div class="con2">
 		    		<p>TITLE</p>
-		    		<p style="font-style:normal; font-size:12px; font-weight:600;" class="c2"></p>
+		    		<p style="font-style:normal; font-size:14px; font-weight:600;" class="c2"></p>
 		    	
 		    	</div>
 		    	<div class="con3">
 		    		<p>CONTENT</p>
-		    		<p style="font-style:normal; font-size:10px;font-weight:500;" class="c3"></p>
+		    		<p style="font-style:normal; font-size:11px;font-weight:500;" class="c3"></p>
 		    	</div>
 		    	<div class="con4">
 		    		<p>GOAL</p>
-		    		<p style="font-style:normal; font-size:11px; font-weight:600;" class="c4">난 고기가...좋아요..</p>
+		    		<p style="font-style:normal; font-size:13px; font-weight:600;" class="c4">난 고기가...좋아요..</p>
 		    	</div>
 		    	<div class="con5">
 		    		<p>END DATE</p>
-		    		<p style="font-style:normal; font-size:11px; font-weight:600;" class="c5"></p>
+		    		<p style="font-style:normal; font-size:13px; font-weight:600;" class="c5"></p>
 		    	</div>
 		    	<div class="con6">
 		    		<div class="c61">
@@ -101,7 +109,7 @@
 			    		<p class="cr">
 			    			<span>1위</span>홍길동 <br>
 			    			<span>2위</span>존도<br>
-			    			<span>3위</span>나
+			    			<span>3위</span>한정
 			    		</p>
 			    		
 			    	</div>

@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.knockknock.admin.funding.AdminCampaignCategoryVO;
 import com.knockknock.util.PagingVO;
 
 @Repository
@@ -84,7 +85,36 @@ public class AdminDAO {
 	public List<AdminKeywordVO> getKeywordAll() {
 		return mybatis.selectList("AdminDAO.getKeywordAll");
 	}
-	
 
+	public int countCampaignCategory() {
+		return mybatis.selectOne("Util.countCampaignCategory");
+	}
 
+	public List<AdminCampaignCategoryVO> getCampaignCategoryList(PagingVO pvo) {
+		return mybatis.selectList("Util.getCampaignCategoryList",pvo);
+	}
+
+	public int insertCampaignCategory(AdminCampaignCategoryVO vo) {
+		return mybatis.insert("AdminDAO.addCampaignCategory", vo);
+	}
+
+	public int checkCampaignCategory(AdminCampaignCategoryVO vo) {
+		return mybatis.selectOne("AdminDAO.checkCampaignCategory", vo);
+	}
+
+	public int deleteCampaingCategory(List<String> content) {
+		return mybatis.delete("AdminDAO.deleteCampaignCategory", content);
+	}
+
+	public List<AdminCampaignVO> getCampaignList(PagingVO pvo) {
+		return mybatis.selectList("Util.getCampaignList", pvo);
+	}
+
+	public int countCampaign() {
+		return mybatis.selectOne("Util.countCampaign");
+		}
+
+	public AdminCampaignVO getCampaign(AdminCampaignVO vo) {
+		return mybatis.selectOne("AdminDAO.getCampaign",vo);
+	}
 }

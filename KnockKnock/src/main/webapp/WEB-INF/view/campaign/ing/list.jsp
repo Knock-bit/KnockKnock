@@ -38,6 +38,13 @@
 
 <script>
 
+	function getInputValue(){
+		
+		var input = $("#inputValue").val();
+		$("#commonDiv").load("${cp}/campaign/search.do?input=" + input)
+		
+	}
+		
 	$(function(){
 		$("#getIng").click(function(){
 			$("#commonDiv").load("${cp}/campaign/getIngList.do");
@@ -125,7 +132,7 @@
       </div></div>
     </div><!-- End Breadcrumbs -->
     <!-- ======= Campaign Section ======= -->
-    <article id="campaigns" class="campaigns">
+    <section id="campaigns" class="campaigns">
       <div class="container" data-aos="fade-up">
 		  <%@ include file= "/layout/navbar/campaign/navCampaign.jsp" %> 
         <div class="row" id="commonDiv" data-aos="zoom-in" data-aos-delay="100" >
@@ -139,11 +146,11 @@
               <img src="${campaign.ciFile }" class="img-fluid" alt="..."></a></div></div>
               <div class="campaign-content">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                  <h4>${campaign.category}</h4>
+                  <h4>${campaign.ccName}</h4>
                 </div>
 
                 <h3><a class="none-deco" href="${cp }/campaign/ing/detail.do?ciIdx=${campaign.ciIdx }">${campaign.ciTitle } </a></h3>
-                <p><a class="none-deco" href="${cp }/campaign/ing/detail.do?ciIdx=${campaign.ciIdx }">${campaign.cGoal }</a></p>
+                <p><a class="none-deco" href="${cp }/campaign/ing/detail.do?ciIdx=${campaign.ciIdx }">${campaign.ciGoal }</a></p>
                 <div class="trainer d-flex justify-content-between align-items-center">
                   <div class="trainer-profile d-flex align-items-center">
                     <img src="assets/img/trainers/trainer-1.jpg" class="img-fluid" alt="">
@@ -164,7 +171,7 @@
         </div>
 
       </div>
-    </article><!-- End Courses Section -->
+    </section><!-- End Courses Section -->
 
   </main><!-- End #main -->
 <!-- ======= Footer ======= -->

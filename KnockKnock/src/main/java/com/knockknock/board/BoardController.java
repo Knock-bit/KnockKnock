@@ -14,11 +14,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.knockknock.util.PagingVO;
 
 @Controller
+@SessionAttributes("board")
 public class BoardController {
 	
 	private String uploadPath = "C:/Mystudy/";
@@ -89,7 +91,7 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/board/getBoard.do")
-	public String getBoard(int bIdx, Model model) {
+	public String getBoard(int bIdx, Model model, BoardVO vo) {
 		BoardVO board = boardService.getBoard(bIdx);
 		model.addAttribute("board", board);
 		
@@ -103,9 +105,8 @@ public class BoardController {
 	
 	@PostMapping("/board/updateBoard.do")
 	public String updateBoardPost(BoardVO vo) {
-//		System.out.println(">>> 게시글 수정");
-//		System.out.println("vo : " + vo);
 		boardService.updateBoard(vo);
+		
 		return "redirect:/board/getBoard.do?bIdx=" + vo.getbIdx();
 	}	
 	
@@ -143,6 +144,7 @@ public class BoardController {
 		Map<String, String> ncPage = new HashMap<String, String>();
 		ncPage.put("nowPage", nowPage);
 		ncPage.put("cntPerPage", cntPerPage);
+		
 		return ncPage;
 	}
 }

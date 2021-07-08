@@ -16,12 +16,11 @@
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
           <li><a href="${cp }/run.jsp">Home</a></li>
-          <li class="dropdown"><a href="#"><span>About</span> <i class="bi bi-chevron-down"></i></a>
-              <ul>
-              <li><a href="${cp }/layout/about/whatisknock.jsp">녹녹은</a></li>
-              <li><a href="${cp }/layout/about/manual.jsp">녹녹 사용법</a></li>
-            </ul>
-          </li>
+        <li class="dropdown"><a href="#"><span>About</span> <i class="bi bi-chevron-down"></i></a>
+			<ul>
+				<li><a href="${cp }/layout/about/whatisknock.jsp">綠!Knock은?</a></li>
+				<li><a href="${cp }/layout/about/manual.jsp">綠!Knock!이용법</a></li>
+			</ul></li>
           <li class="dropdown"><a href="#"><span>Campaign</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="${cp }/campaign/ing/list.do">진행중인 캠페인</a></li>
@@ -42,7 +41,7 @@
               <li><a href="${cp}/updateMyInfo.do">정보수정</a></li>
               <li><a href="${cp}/myPoint.do">포인트 현황</a></li>
               <li><a href="${cp}/myCampaignPage.do">참여중인 캠페인</a></li>
-              <li><a href="${cp}/myCampaignList.do">내 캠페인 목록</a></li>
+              <li><a href="${cp}/myCampaignList.do">지난 캠페인</a></li>
               <li><a href="${cp}/myContactList.do">나의 문의내역</a></li>
               <li><a href="${cp}/myActive.do">나의 활동</a></li>
               <li><a href="${cp}/moveCart.do">내 장바구니</a></li>
