@@ -41,7 +41,7 @@
               <li><a href="${cp}/updateMyInfo.do">정보수정</a></li>
               <li><a href="${cp}/myPoint.do">포인트 현황</a></li>
               <li><a href="${cp}/myCampaignPage.do">참여중인 캠페인</a></li>
-              <li><a href="${cp}/myCampaignList.do">내 캠페인 목록</a></li>
+              <li><a href="${cp}/myCampaignList.do">지난 캠페인</a></li>
               <li><a href="${cp}/myContactList.do">나의 문의내역</a></li>
               <li><a href="${cp}/myActive.do">나의 활동</a></li>
               <li><a href="${cp}/moveCart.do">내 장바구니</a></li>

@@ -178,7 +178,7 @@ function deleteBtn(){
 					<input type="text" name="uName" value="${users.uName }"  disabled="disabled">
 				</div >
 				<div class="it3">
-					<label><span>*&nbsp;</span>닉네임  </label>
+					<label ><span>*&nbsp;</span>닉네임  </label>
 					<input type="text" name="uNickname" value="${users.uNickname }">
 				</div>
 				<div class="it4">
