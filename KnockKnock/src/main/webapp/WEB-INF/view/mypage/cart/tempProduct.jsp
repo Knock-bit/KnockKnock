@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="cp" value ="${pageContext.request.contextPath }"/>
 <!DOCTYPE html>
 <html>
@@ -21,7 +22,7 @@
  
   <!-- Main CSS File -->
   <link href="${cp}/resource/css/main.css" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Sans+KR:wght@300&family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
   <!-- Import BootStrap -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -65,18 +66,32 @@
 }
   </script>
   <style>
+  *{
+  	font-family: 'Noto Sans KR', sans-serif;
+  }
   .main-content{
-        flex: 1;d
-        min-height:100vh;
-        margin-top:100px;
+        flex: 1;
+        height:100%;
+        margin-top:200px;
         
-    }
+   }
+   .productDetail{
+   		width: 80%;
+   		height:100%;
+   		margin: 0 auto;
+   		text-align:center;
+   }
    .pgrid {
    		width:80%;
    		display : grid;
    		grid-template-columns: 30% 69%;
 		grid-template-rows: repeat(7, 1fr) ;
 		margin:0 auto;
+		margin-top:100px;
+   }
+   .pname, .pprice,  .pdesc, .pfee, .pcnt{
+   		text-align:left;
+   		padding-left:100px;
    }
    .pimg {
    		grid-column: 1/2;
@@ -115,6 +130,17 @@
    		grid-column: 2/3;
 		grid-row: 7/8;
    }
+   span {
+   		font-weight:700;
+   		font-size:16px;
+   		margin-right:5%;
+   }
+   
+   /*수량 버튼*/
+   #plus, #minus {
+   		outline: none;
+   		border : 0px;
+   }
   </style>
 </head>
 <body>
@@ -123,38 +149,42 @@
   <!-- ======= Header 끝  === -->
 <div class="main-content">
 
-	<h1>주문임시페이지</h1>
-	<div class="pgrid">
-		<div class="pimg">
-			<img src="/resource/img/product/${pvo.pImg }">
-		
-		</div>
-		<div class="pname">
-			<!-- 상품 idx -->
-			<p id="pIdx" style="display:none;">${pvo.pIdx }</p>
-			상품명 : ${pvo.pName }
-		</div>
-		<div class="pprice">
-			상품가격 : ${pvo.pPrice }원
+	<div class="productDetail">
+		<div class="pgrid">
+			<div class="pimg">
+				<img src="/resource/img/product/${pvo.pImg }">
 			
-		</div>
-		<div class="pcnt">
-			<input type="button" id="minus" onclick="count('minus')" value="-" />
-			<span id="result">1</span>
-			<input type="button" id="plus" onclick="count('plus')" value="+" />
-			
-			
-		</div>
-		<div class="pdesc">
-			상품 설명 : ${pvo.pDesc }
-		</div>
-		<div class="pfee">
-			배송비 : ${pvo.pFee }
-		</div>
-		<div class="pbtn">
-			<button onclick="location.href='${cp }productlist.do'">목록으로 이동</button>
-			<button>주문하기</button>
-			<input type="button" onclick="addCart()" value="장바구니">
+			</div>
+			<div class="pname">
+				<!-- 상품 idx -->
+				<p id="pIdx" style="display:none;">${pvo.pIdx }</p>
+				<span>상품명 </span> ${pvo.pName }
+			</div>
+			<div class="pprice">
+				<span>상품가격</span>
+				<fmt:formatNumber type="number" maxFractionDigits="3" value="${pvo.pPrice }" />원
+				
+			</div>
+			<div class="pcnt">
+				<span>수량 </span>
+				<input type="button" id="minus" onclick="count('minus')" value="-" />&nbsp;
+				<span id="result" style="margin:0px;">1</span>&nbsp;
+				<input type="button" id="plus" onclick="count('plus')" value="+" />
+				
+				
+			</div>
+			<div class="pdesc">
+				<span>상품 설명</span><br> ${pvo.pDesc }
+			</div>
+			<div class="pfee">
+				<span>배송비</span>
+				<fmt:formatNumber type="number" maxFractionDigits="3" value="${pvo.pFee }" />원 
+			</div>
+			<div class="pbtn">
+				<button onclick="location.href='${cp }productlist.do'">목록으로 이동</button>
+				<button>주문하기</button>
+				<input type="button" onclick="addCart()" value="장바구니">
+			</div>
 		</div>
 	</div>
 </div>	

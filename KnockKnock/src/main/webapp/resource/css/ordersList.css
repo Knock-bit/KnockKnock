@@ -1,13 +1,19 @@
+*{
+	font-family: 'Noto Sans KR', sans-serif;
+	
+}
+
 .main-content{
     flex: 1;
-    min-height:100vh;
+    height:100%;
     margin-top:100px;
         
 }
 .ordersMain{
 	width:70%;
-	min-height:100vh;
+	height:100%;
 	margin: 0 auto;
+	margin-top:100px;
 }
 /*메인 그리드*/
 .ordersGrid{
@@ -16,7 +22,7 @@
 	display:grid;
 	grid-template-columns: 60% 37%;
 	grid-template-rows: 35vh 35vh 30vh 20vh;
-	
+	margin-top:200px;
 }
 
 /*주문자정보*/
@@ -26,12 +32,29 @@
 	grid-row : 1/2;
 	
 }
+.ifo1 div{
+	display:inline-block;
+	width:45%;
+}
 /*수령자정보*/
 .infoReciever{
 	grid-column : 1/2;
 	grid-row : 2/3;
 	border:1px solid gray;
 	
+}
+.ifr1{
+	display:inline-block;
+	width:47%;
+}
+#selbox{
+	margin-top:10px;
+}
+#ifrtext{
+	display:inline-block;
+}
+#sameOrdersInfo{
+	display:inline-block;
 }
 /*결제방법*/
 .paymentMethod{
