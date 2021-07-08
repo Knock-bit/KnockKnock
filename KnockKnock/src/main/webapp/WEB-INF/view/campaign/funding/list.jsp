@@ -53,10 +53,10 @@
   .container {
     width: 1080px;
 		  }
-		} *//* 
+		} */
 	.inner-nav{
 	margin-top:20px;
-	margin-bottom:20px;} */
+	margin-bottom:20px;}
 	
 	.scale {
 	transform: scale(1);
@@ -168,7 +168,7 @@
               <div class=scale><a href="${cp }/campaign/funding/detail.do?cfIdx=${funding.cfIdx }"><img src="${funding.cfFile }" class="img-fluid" alt="..."></a></div></div>
               <div class="campaign-content">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                  <h4>${funding.ccName}</h4>
+                  <h4>${funding.category}</h4>
                 </div>
 
                 <h3><a href="${cp }/campaign/funding/detail.do?cfIdx=${funding.cfIdx }">${funding.cfTitle } </a></h3>

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:set var="cp" value ="${pageContext.request.contextPath }"/>
+<c:set var="cp" value="${pageContext.request.contextPath }" />
 
 <!DOCTYPE html>
 
@@ -10,7 +10,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <!-- bootstrap jquery 추가 -->
-<link href="${cp}/resource/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="${cp}/resource/vendor/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
 <script src="${cp}/resource/js/jquery/jquery-3.6.0.min.js"></script>
 
 <style>
@@ -125,6 +126,21 @@ function keywordDel() {
 								보기</option>
 						</select>
 					</div>
+
+					<!-- 검색기능추가 -->
+					<form action="adminKeywordList.do" method="get">
+						<table class="border-none">
+							<tr>
+								<td><select name="searchCondition">
+										<c:forEach var="option" items="${conditionMapOnlyContent }">
+											<option value="${option.value}">${option.key }</option>
+										</c:forEach>
+								</select> <input type="text" name="searchKeyword"> <input
+									type="submit" value="검색"></td>
+							</tr>
+						</table>
+					</form>
+
 					<form id="keywordForm" method="post"
 						style="margin-top: 300px; margin-left: 100px;">
 						<table class="table table-bordered table-striped"
@@ -140,6 +156,7 @@ function keywordDel() {
 							<c:if test="${!empty viewAll }">
 								<thead>
 									<tr>
+										<td>번호</td>
 										<td>키워드 이름</td>
 										<td>키워드 선택</td>
 									</tr>
@@ -147,18 +164,24 @@ function keywordDel() {
 								<tbody id="tableList">
 									<c:forEach var="keyword" items="${viewAll }">
 										<tr>
+											<td>${keyword.RN }</td>
 											<td>${keyword.kContent }</td>
 											<td><input type="checkbox" name="keyname" /></td>
 										</tr>
 									</c:forEach>
-									<tr>
+									<!-- 									<tr>
 										<td><input type="text" name="keyadd" id="keyadd" /></td>
 										<td><input type="button" value="추가하기" id="addButton" />&nbsp&nbsp<input
 											type="button" value="삭제하기" id="delButton" class="delButton" /></td>
-									</tr>
+									</tr> -->
 								</tbody>
 							</c:if>
 						</table>
+
+						<input type="text" name="keyadd" id="keyadd" /> <input
+							type="button" value="추가하기" id="addButton" />&nbsp&nbsp<input
+							type="button" value="삭제하기" id="delButton" class="delButton" />
+
 					</form>
 					<div style="display: block; text-align: center;">
 						<c:if test="${paging.startPage != 1 }">
@@ -188,9 +211,3 @@ function keywordDel() {
 	</div>
 </body>
 </html>
-
-
-
-
-
-

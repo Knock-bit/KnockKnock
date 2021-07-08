@@ -36,12 +36,12 @@ public class FundingUserDAO {
 	}
 
 	public int updateFundingPointMinus(FundingUserVO fundingUser) {
-		return mybatis.update("campaign.updateFundingPointMinus", fundingUser);
+		return mybatis.insert("campaign.updateFundingPointMinus", fundingUser);
 	}
 
 	public int updateUserFundingPointMinus(FundingUserVO fundingUser) {
-		mybatis.update("campaign.updateUserMinusPointDetail", fundingUser);
-		return mybatis.update("campaign.updateUserFundingPointMinus", fundingUser);
+		mybatis.insert("campaign.updateUserMinusPointDetail", fundingUser);
+		return mybatis.insert("campaign.updateUserFundingPointMinus", fundingUser);
 	}
 
 	public int updateSuccessFunding() {

@@ -13,7 +13,10 @@ public class OrdersDAO {
 	@Autowired
 	private SqlSessionTemplate mybatis;
 
-	public List<OrdersVO> showOrderList(){
-		return mybatis.selectList("Orders.selectOrderList");
+	public List<OrdersVO> showOrderList(int sIdx){
+		System.out.println("sIdx는 "+sIdx);
+		List<OrdersVO> vo = mybatis.selectList("Orders.selectOrderList", sIdx); 
+		System.out.println("vo는 "+vo);
+		return vo;
 	}
 }

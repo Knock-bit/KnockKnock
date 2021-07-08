@@ -21,14 +21,11 @@
 }
 </style>
 <script>
-
-function selChange() {
-	var sel = document.getElementById('cntPerPage').value;
-	location.href = "adminKeywordList.do?nowPage=${paging.nowPage}&cntPerPage="
-			+ sel;
-}
-
-
+	function selChange() {
+		var sel = document.getElementById('cntPerPage').value;
+		location.href = "adminKeywordList.do?nowPage=${paging.nowPage}&cntPerPage="
+				+ sel;
+	}
 </script>
 </head>
 <body>
@@ -52,6 +49,18 @@ function selChange() {
 								보기</option>
 						</select>
 					</div>
+					<form action="adminProposalList.do" method="get">
+						<table class="border-none">
+							<tr>
+								<td><select name="searchCondition">
+										<c:forEach var="option" items="${conditionMapFunding }">
+											<option value="${option.value}">${option.key }</option>
+										</c:forEach>
+								</select> <input type="text" name="searchKeyword"> <input
+									type="submit" value="검색"></td>
+							</tr>
+						</table>
+					</form>
 					<form id="proposalForm" method="post"
 						style="margin-top: 300px; margin-left: 100px;">
 						<table class="table table-bordered table-striped"

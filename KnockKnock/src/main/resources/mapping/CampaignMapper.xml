@@ -5,11 +5,10 @@
 <!-- 참고파일 나중에 삭제 -->
 <mapper namespace="campaign">
 	<!-- startDate지난 캠페인 실행시키기 -->
-	<update id="updateStartCampaign">
+	<update id="updateCampaign">
 		UPDATE CAMPAIGN
 		   SET CI_STATUS = 1
-		 WHERE SYSDATE > CI_STARTDATE
-		   AND CI_STATUS = 0 
+		  WHERE SYSDATE > CI_STARTDATE
 	</update>
 	
 	<!-- 캠페인 검색 -->
@@ -77,11 +76,11 @@
 	
 	<!-- 캠페인 상세보기 -->
 	<select id="selectOneCampaign" parameterType="int" resultType="CampaignVO">
-		SELECT C.*, U.U_NICKNAME AS HOST_NICKNAME, U.U_IMGPATH
+		SELECT C.*, U.U_NICKNAME AS HOST_NICKNAME
 		FROM USERS U, CAMPAIGN C
 		WHERE CI_STATUS = 1
 		AND U.U_IDX = C.U_IDX
-		AND C.CI_IDX = #{ciIdx}
+		AND C.CI_IDX =3
 	</select>
 	
 	<!-- 캠페인 상세보기 - 참여자 닉네임 불러오기 -->
@@ -207,15 +206,6 @@
 	
 	
 	<!--  ============= funding ============= -->
-	
-	<update id="updateStartFunding">
-		UPDATE FUNDING
-		   SET CF_STATUS = 1
-		 WHERE SYSDATE > CF_STARTDATE
-		   AND CF_STATUS = 0 
-	</update>
-	
-	
 	<select id="selectAllFunding" resultType="FundingVO">
 		 SELECT F.*, U.U_NICKNAME AS HOST_NICKNAME,
 	        (SELECT COUNT(*) FROM FUNDING_USER WHERE F.CF_IDX = FUNDING_USER.CF_IDX) USER_COUNT

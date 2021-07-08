@@ -167,7 +167,6 @@ $(function(){
 	$('input:checkbox[name=opt1]').each(function() {
 		// 체크된 상품의 인덱스 번호
 		idx = $('input:checkbox[name=opt1]').index(this); 
-		console.log("인덱스:" + idx);
 		// 동일한 인덱스번호의 상품 수량, 가격, 배송비 
 		pCount = parseInt($(".pCount").eq(idx).text());
 		
@@ -218,9 +217,7 @@ $(function(){
 			pPrice = parseInt($(this).closest('div').next().children().text());
 			// 상품당 가격 총 합계
 			pTotPrice = parseInt($(this).closest('div').nextAll().filter($(".cg7")).children().text());
-			
-			console.log("pTotPrice:"+pTotPrice);
-			
+						
 			totalPrice += pPrice;
 			pTotPrice += pPrice;
 			
@@ -264,11 +261,9 @@ $(function(){
 });	
 // 주문하기 버튼
 function orders(){
-	console.log
 	var param = [];
 	
 	var length = $(".pIdx").length;
-	console.log("길이:"+length);
 	
 	 var data = {};
 	for(var i=0; i<length; i++){
@@ -280,13 +275,14 @@ function orders(){
 					pPrice : $(".cg5price").eq(i).text(),
 					sIdx : $(".sIdx").eq(i).text(),
 					oTotprice : $(".cg6price").eq(i).text(),
+					oFee : $(".pFee").eq(i).text(),
 					uIdx : $(".uIdx").text()
+					
 					};
 			param.push(data);
 		}
 	}
 	var jsonData = JSON.stringify(param);
-	console.log("제발:"+jsonData);
 	
 	$.ajax({
 		url : "/moveOrders.do",
@@ -296,7 +292,7 @@ function orders(){
 		contentType : "application/json;",
 		async:false,
 		success: function(data){
-			var moveOrders = confirm('주문이 완료되었습니다. \n 주문페이지로 이동하시겠습니까?');
+			var moveOrders = confirm('주문페이지로 이동하시겠습니까?');
 			
 			if(moveOrders){
 				// 주문페이지로 이동

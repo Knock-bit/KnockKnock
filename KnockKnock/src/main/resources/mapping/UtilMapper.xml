@@ -14,10 +14,27 @@
 		SELECT * FROM(
 		SELECT ROWNUM
 		RN, A.* FROM (
-		SELECT * FROM USERS ORDER BY U_NAME DESC) A
+		SELECT * FROM USERS
+		<if test="searchCondition != null">
+			<if test="searchCondition == 'ID'.toString()">
+				WHERE U_ID LIKE '%'||#{searchKeyword}||'%'
+			</if>
+			<if test="searchCondition == 'NAME'.toString()">
+				WHERE U_NAME LIKE '%'||#{searchKeyword}||'%'
+			</if>
+			<if test="searchCondition == 'NICKNAME'.toString()">
+				WHERE U_NICKNAME LIKE '%'||#{searchKeyword}||'%'
+			</if>
+			<if test="searchCondition == 'ACTIVE'.toString()">
+				WHERE U_ACTIVE LIKE '%'||#{searchKeyword}||'%'
+			</if>
+		</if>
+		ORDER BY
+		U_NAME DESC) A
 		) WHERE RN
 		BETWEEN #{start} AND
 		#{end}
+
 
 	</select>
 
@@ -32,7 +49,14 @@
 		SELECT * FROM(
 		SELECT
 		ROWNUM RN, A.* FROM (
-		SELECT * FROM KEYWORD ORDER BY K_CONTENT) A
+		SELECT * FROM KEYWORD
+
+		<if test="searchCondition != null">
+			<if test="searchCondition == 'CONTENT'.toString()">
+				WHERE K_CONTENT LIKE '%'||#{searchKeyword}||'%'
+			</if>
+		</if>
+		ORDER BY K_CONTENT) A
 		)
 		WHERE RN BETWEEN #{start} AND
 		#{end}
@@ -47,15 +71,27 @@
 	<!-- 페이징 처리 후 제안서조회 -->
 	<select id="getProposalList" resultType="adminProposalVO">
 		SELECT * FROM (
-		SELECT ROWNUM cpRn, A.*
+		SELECT
+		ROWNUM cpRn, A.*
 		FROM (
 		SELECT P.*, U.U_NICKNAME
-		FROM PROPOSAL P INNER JOIN USERS U on P.U_IDX = U.U_IDX
+		FROM PROPOSAL P INNER
+		JOIN USERS U on P.U_IDX = U.U_IDX
+		<if test="searchCondition != null">
+			<if test="searchCondition == 'TITLE'.toString()">
+				WHERE CP_TITLE LIKE '%'||#{searchKeyword}||'%'
+			</if>
+			<if test="searchCondition == 'USER'.toString()">
+				WHERE U_NICKNAME LIKE '%'||#{searchKeyword}||'%'
+			</if>
+		</if>
+
 		ORDER BY CP_REGDATE) A
-		) WHERE cpRn BETWEEN #{start} AND
+		) WHERE cpRn
+		BETWEEN #{start} AND
 		#{end}
 	</select>
-	
+
 	<!-- 총 게시글수 -->
 	<select id="countBoard" resultType="int">
 		SELECT COUNT(*) FROM BOARD
@@ -63,24 +99,89 @@
 
 	<!-- 페이징 처리 후 게시판 조회 -->
 	<select id="getBoardList" resultType="boardVO">
-		SELECT * FROM 
-		( SELECT ROWNUM RN, A.* FROM 
+		SELECT * FROM
+		( SELECT
+		ROWNUM RN, A.* FROM
 		( SELECT * FROM BOARD ORDER BY B_IDX DESC) A
-		) WHERE RN
-		BETWEEN #{start} AND #{end}
+		) WHERE
+		RN
+		BETWEEN #{start}
+		AND #{end}
 	</select>
-	
+
 	<!-- 총 펀딩 수 -->
 	<select id="countFunding" resultType="int">
-		SELECT COUNT(*) FROM FUNDING
+		SELECT COUNT(*) FROM
+		FUNDING
 	</select>
-	
+
 	<!-- 페이징 처리 후 펀딩리스트 조회 -->
 	<select id="getFundingList" resultType="adminFundingVO">
-		SELECT * FROM 
-		( SELECT ROWNUM cfRn, A.* FROM 
-		( SELECT * FROM FUNDING ORDER BY CF_IDX DESC) A
-		) WHERE cfRn
+		SELECT * FROM
+		( SELECT
+		ROWNUM cfRn, A.* FROM
+		( SELECT * FROM FUNDING
+		<if test="searchCondition != null">
+			<if test="searchCondition == 'TITLE'.toString()">
+				WHERE CF_TITLE LIKE '%'||#{searchKeyword}||'%'
+			</if>
+		</if>
+		ORDER BY CF_IDX DESC) A
+		)
+		WHERE cfRn
+		BETWEEN
+		#{start} AND #{end}
+	</select>
+
+	<!-- 총 캠페인 카테고리 수 -->
+	<select id="countCampaignCategory" resultType="int">
+		SELECT COUNT(*)
+		FROM CAMPAIGN_CATEGORY
+	</select>
+
+	<!-- 페이징 처리 후 캠페인 카테고리 리스트 조회 -->
+	<select id="getCampaignCategoryList"
+		resultType="adminCampaignCategoryVO">
+		SELECT * FROM
+		( SELECT ROWNUM ccRn, A.* FROM
+		( SELECT * FROM
+		CAMPAIGN_CATEGORY
+		<if test="searchCondition != null">
+			<if test="searchCondition == 'CONTENT'.toString()">
+				WHERE CC_NAME LIKE '%'||#{searchKeyword}||'%'
+			</if>
+		</if>
+		ORDER BY CC_IDX DESC) A
+		) WHERE ccRn
+		BETWEEN #{start}
+		AND #{end}
+	</select>
+
+	<!-- 총 캠페인 수 -->
+	<select id="countCampaign" resultType="int">
+		SELECT COUNT(*) FROM
+		CAMPAIGN
+	</select>
+
+	<!-- 페이징 처리 후 캠페인 리스트 조회 -->
+	<select id="getCampaignList" resultType="adminCampaignVO">
+		SELECT * FROM
+		( SELECT
+		ROWNUM ciRn, A.* FROM
+		( SELECT CI.*, U.U_NICKNAME
+		FROM CAMPAIGN CI
+		INNER JOIN USERS U ON CI.U_IDX = U.U_IDX
+		<if test="searchCondition != null">
+			<if test="searchCondition == 'TITLE'.toString()">
+				WHERE CI_TITLE LIKE '%'||#{searchKeyword}||'%'
+			</if>
+			<if test="searchCondition == 'USER'.toString()">
+				WHERE U_NICKNAME LIKE '%'||#{searchKeyword}||'%'
+			</if>
+		</if>
+		ORDER BY CI_IDX DESC) A
+		) WHERE ciRn
 		BETWEEN #{start} AND #{end}
 	</select>
+
 </mapper>
