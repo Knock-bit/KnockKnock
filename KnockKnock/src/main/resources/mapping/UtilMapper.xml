@@ -73,10 +73,19 @@
 				WHERE K_CONTENT LIKE '%'||#{searchKeyword}||'%'
 			</if>
 		</if>
-		ORDER BY K_CONTENT) A
-		)
-		WHERE RN BETWEEN #{start} AND
-		#{end}
+		ORDER BY
+		<if test="sort != null">
+			<if test="sort == '이름역'.toString()">
+				K_CONTENT DESC
+			</if>
+		</if>
+		<if test ="sort == null || sort =='이름'.toString()">
+			K_CONTENT
+		</if>
+			) A
+			)
+			WHERE RN BETWEEN #{start} AND
+			#{end}
 	</select>
 
 	<!-- 총 Proposal 수 출력 -->

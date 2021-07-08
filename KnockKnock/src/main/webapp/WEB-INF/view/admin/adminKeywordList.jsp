@@ -111,7 +111,10 @@ function keywordDel() {
 			<div class="col-md-12">
 				<div class="row">
 					<div style="float: right;">
-						<select id="cntPerPage" name="sel" onchange="selChange()">
+					<a href="/adminKeywordList.do?sort=이름">이름순</a>
+						<a href="/adminKeywordList.do?sort=이름역">이름역순</a> 
+						<select
+							id="cntPerPage" name="sel" onchange="selChange()">
 							<option value="5"
 								<c:if test="${paging.cntPerPage == 5}">selected</c:if>>5줄
 								보기</option>
