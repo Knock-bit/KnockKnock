@@ -8,6 +8,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -49,7 +51,7 @@ public class MypageOrdersListController {
 	// 수령인 정보 INSERT
 	@RequestMapping(value="/userOrder.do", method=RequestMethod.POST,  produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseBody
-	public String userOrder(HttpSession session, UserOrderVO vo) {
+	public String userOrder(@RequestBody UserOrderVO vo, HttpSession session) {
 		
 		UserVO user = (UserVO) session.getAttribute("users");
 		vo.setuIdx(user.getuIdx());
@@ -64,6 +66,19 @@ public class MypageOrdersListController {
 		}
 		
 		return data;
+	}
+	
+	// 주문확인서로 이동
+	@GetMapping("orderConfirm.do")
+	public String orderConfirmList(HttpSession session, Model model) {
+		
+		UserVO vo = (UserVO) session.getAttribute("users");
+		
+		
+		
+		
+		model.addAttribute("users", vo);
+		return "/mypage/orders/orderconfirmation";
 	}
 
 }
