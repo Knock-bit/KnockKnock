@@ -14,10 +14,27 @@
 		SELECT * FROM(
 		SELECT ROWNUM
 		RN, A.* FROM (
-		SELECT * FROM USERS ORDER BY U_NAME DESC) A
+		SELECT * FROM USERS
+		<if test="searchCondition != null">
+			<if test="searchCondition == 'ID'.toString()">
+				WHERE U_ID LIKE '%'||#{searchKeyword}||'%'
+			</if>
+			<if test="searchCondition == 'NAME'.toString()">
+				WHERE U_NAME LIKE '%'||#{searchKeyword}||'%'
+			</if>
+			<if test="searchCondition == 'NICKNAME'.toString()">
+				WHERE U_NICKNAME LIKE '%'||#{searchKeyword}||'%'
+			</if>
+			<if test="searchCondition == 'ACTIVE'.toString()">
+				WHERE U_ACTIVE LIKE '%'||#{searchKeyword}||'%'
+			</if>
+		</if>
+		ORDER BY
+		U_NAME DESC) A
 		) WHERE RN
 		BETWEEN #{start} AND
 		#{end}
+
 
 	</select>
 
@@ -32,15 +49,17 @@
 		SELECT * FROM(
 		SELECT
 		ROWNUM RN, A.* FROM (
-		SELECT * FROM KEYWORD ORDER BY K_CONTENT) A
-		)
-		WHERE RN BETWEEN #{start} AND
-		#{end} 
-		<if test ="searchCondition != null">
+		SELECT * FROM KEYWORD
+
+		<if test="searchCondition != null">
 			<if test="searchCondition == 'CONTENT'.toString()">
-				AND K_CONTENT LIKE '%'||#{searchKeyword}||'%'
+				WHERE K_CONTENT LIKE '%'||#{searchKeyword}||'%'
 			</if>
 		</if>
+		ORDER BY K_CONTENT) A
+		)
+		WHERE RN BETWEEN #{start} AND
+		#{end}
 	</select>
 
 	<!-- 총 Proposal 수 출력 -->
@@ -72,9 +91,11 @@
 	<!-- 페이징 처리 후 게시판 조회 -->
 	<select id="getBoardList" resultType="boardVO">
 		SELECT * FROM
-		( SELECT ROWNUM RN, A.* FROM
+		( SELECT
+		ROWNUM RN, A.* FROM
 		( SELECT * FROM BOARD ORDER BY B_IDX DESC) A
-		) WHERE RN
+		) WHERE
+		RN
 		BETWEEN #{start}
 		AND #{end}
 	</select>
@@ -88,9 +109,11 @@
 	<!-- 페이징 처리 후 펀딩리스트 조회 -->
 	<select id="getFundingList" resultType="adminFundingVO">
 		SELECT * FROM
-		( SELECT ROWNUM cfRn, A.* FROM
+		( SELECT
+		ROWNUM cfRn, A.* FROM
 		( SELECT * FROM FUNDING ORDER BY CF_IDX DESC) A
-		) WHERE cfRn
+		)
+		WHERE cfRn
 		BETWEEN
 		#{start} AND #{end}
 	</select>
@@ -106,21 +129,24 @@
 		resultType="adminCampaignCategoryVO">
 		SELECT * FROM
 		( SELECT ROWNUM ccRn, A.* FROM
-		( SELECT * FROM CAMPAIGN_CATEGORY ORDER BY CC_IDX DESC) A
+		( SELECT * FROM
+		CAMPAIGN_CATEGORY ORDER BY CC_IDX DESC) A
 		) WHERE ccRn
-		BETWEEN #{start} AND #{end}
+		BETWEEN #{start}
+		AND #{end}
 	</select>
-	
+
 	<!-- 총 캠페인 수 -->
 	<select id="countCampaign" resultType="int">
-		SELECT COUNT(*) FROM CAMPAIGN
+		SELECT COUNT(*) FROM
+		CAMPAIGN
 	</select>
-	
+
 	<!-- 페이징 처리 후 캠페인 리스트 조회 -->
-	<select id="getCampaignList"
-		resultType="adminCampaignVO">
+	<select id="getCampaignList" resultType="adminCampaignVO">
 		SELECT * FROM
-		( SELECT ROWNUM ciRn, A.* FROM
+		( SELECT
+		ROWNUM ciRn, A.* FROM
 		( SELECT * FROM CAMPAIGN ORDER BY CI_IDX DESC) A
 		) WHERE ciRn
 		BETWEEN #{start} AND #{end}

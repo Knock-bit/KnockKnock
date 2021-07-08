@@ -3,7 +3,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:set var="cp" value ="${pageContext.request.contextPath }"/>
+<c:set var="cp" value="${pageContext.request.contextPath }" />
 <%
 request.setCharacterEncoding("UTF-8");
 %>
@@ -13,7 +13,8 @@ request.setCharacterEncoding("UTF-8");
 <meta charset="UTF-8">
 <title></title>
 <!-- bootstrap jquery 추가-->
-<link href="${cp}/resource/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="${cp}/resource/vendor/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
 <script src="${cp}/resource/js/jquery/jquery-3.6.0.min.js"></script>
 
 <script>
@@ -51,6 +52,19 @@ request.setCharacterEncoding("UTF-8");
 							보기</option>
 					</select>
 				</div>
+				<!-- 검색기능추가 -->
+				<form action="adminUserList.do" method="get">
+					<table class="border-none">
+						<tr>
+							<td><select name="searchCondition">
+									<c:forEach var="option" items="${conditionMapUser }">
+										<option value="${option.value}">${option.key }</option>
+									</c:forEach>
+							</select> <input type="text" name="searchKeyword"> <input
+								type="submit" value="검색"></td>
+						</tr>
+					</table>
+				</form>
 				<form>
 					<table class="table table-bordered table-striped">
 						<thead>
@@ -75,7 +89,7 @@ request.setCharacterEncoding("UTF-8");
 								<c:forEach var="user" items="${viewAll }">
 									<input type="hidden" name="uIdx" value="${user.uIdx }" />
 									<tr>
-										<td>${user.uIdx }</td>
+										<td>${user.RN }</td>
 										<td>${user.uId}</td>
 										<td>${user.uName }</td>
 										<td>${user.uNickname }</td>
