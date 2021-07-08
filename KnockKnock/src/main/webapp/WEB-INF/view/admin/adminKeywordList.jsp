@@ -80,7 +80,7 @@ function keywordDel() {
         var td = tr.children();
 
         // 체크된 데이터의 value를 list 배열에 넣기
-        list.push(td.eq(0).text());
+        list.push(td.eq(1).text());
     });
    	 if (list.length == 0) {
 	        alert("선택된 데이터가 없습니다.");

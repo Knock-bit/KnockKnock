@@ -124,4 +124,9 @@ public class AdminServiceImpl implements AdminService {
 		return adminDAO.getCampaign(vo);
 	}
 
+	@Override
+	public List<AdminContactCategory> getContactCategory(PagingVO pvo) {
+		return adminDAO.getContactCategory(pvo);
+	}
+
 }
