@@ -30,7 +30,24 @@
 			</if>
 		</if>
 		ORDER BY
-		U_NAME DESC) A
+		<if test="sort != null">
+			<if test="sort == '아이디'.toString()">
+				U_ID
+			</if>
+			<if test="sort == '가입일'.toString()">
+				U_JOINDATE DESC
+			</if>
+			<if test="sort == '최종접속일'.toString()">
+				U_LASTLOGIN DESC
+			</if>
+			<if test="sort == '활성상태'.toString()">
+				U_ACTIVE DESC
+			</if>
+		</if>
+		<if test="sort == null">
+			U_NAME DESC
+		</if>
+		) A
 		) WHERE RN
 		BETWEEN #{start} AND
 		#{end}
