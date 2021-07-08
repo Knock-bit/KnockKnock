@@ -131,15 +131,12 @@ function keywordDel() {
 					<form action="adminKeywordList.do" method="get">
 						<table class="border-none">
 							<tr>
-								<td>
-									<select name ="searchCondition">
-										<c:forEach var = "option" items="${conditionMapOnlyContent }">
+								<td><select name="searchCondition">
+										<c:forEach var="option" items="${conditionMapOnlyContent }">
 											<option value="${option.value}">${option.key }</option>
 										</c:forEach>
-									</select>
-									<input type="text" name="searchKeyword">
-									<input type="submit" value="검색">
-								</td>
+								</select> <input type="text" name="searchKeyword"> <input
+									type="submit" value="검색"></td>
 							</tr>
 						</table>
 					</form>
@@ -159,6 +156,7 @@ function keywordDel() {
 							<c:if test="${!empty viewAll }">
 								<thead>
 									<tr>
+										<td>번호</td>
 										<td>키워드 이름</td>
 										<td>키워드 선택</td>
 									</tr>
@@ -166,6 +164,7 @@ function keywordDel() {
 								<tbody id="tableList">
 									<c:forEach var="keyword" items="${viewAll }">
 										<tr>
+											<td>${keyword.RN }</td>
 											<td>${keyword.kContent }</td>
 											<td><input type="checkbox" name="keyname" /></td>
 										</tr>
@@ -178,11 +177,11 @@ function keywordDel() {
 								</tbody>
 							</c:if>
 						</table>
-						
-						<input type="text" name="keyadd" id="keyadd" />
-							<input type="button" value="추가하기" id="addButton" />&nbsp&nbsp<input
-								type="button" value="삭제하기" id="delButton" class="delButton" />
-						
+
+						<input type="text" name="keyadd" id="keyadd" /> <input
+							type="button" value="추가하기" id="addButton" />&nbsp&nbsp<input
+							type="button" value="삭제하기" id="delButton" class="delButton" />
+
 					</form>
 					<div style="display: block; text-align: center;">
 						<c:if test="${paging.startPage != 1 }">

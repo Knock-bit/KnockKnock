@@ -40,7 +40,6 @@ public class AdminController {
 	// 리스트들에서 검색하기위한 두 개의 데이터가 담겨져있는 Map를 반환하는 메소드
 	@ModelAttribute("conditionMap")
 	public Map<String, String> SearchConditionMap(){
-		System.out.println("MapContition 실행확인");
 		Map<String, String> conditionMap = new HashMap<String, String>();
 		conditionMap.put("제목", "TITLE");
 		conditionMap.put("내용", "CONTENT");
@@ -49,10 +48,19 @@ public class AdminController {
 	}
 	
 	@ModelAttribute("conditionMapOnlyContent")
-	public Map<String, String> SearchConditionMapTitle(){
-		System.out.println("MapContition 실행확인");
+	public Map<String, String> SearchConditionMapContent(){
 		Map<String, String> conditionMap = new HashMap<String, String>();
 		conditionMap.put("내용", "CONTENT");
+		
+		return conditionMap;
+	}
+	@ModelAttribute("conditionMapUser")
+	public Map<String, String> SearchConditionMapUser(){
+		Map<String, String> conditionMap = new HashMap<String, String>();
+		conditionMap.put("아이디", "ID");
+		conditionMap.put("이름", "NAME");
+		conditionMap.put("닉네임", "NICKNAME");
+		conditionMap.put("활성상태", "ACTIVE");
 		
 		return conditionMap;
 	}
@@ -81,7 +89,7 @@ public class AdminController {
 		Map<String,String> map = pageSet(nowPage,cntPerPage);
 		nowPage = map.get("nowPage");
 		cntPerPage=map.get("cntPerPage");
-		pvo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		pvo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage),pvo.getSearchCondition(),pvo.getSearchKeyword());
 		model.addAttribute("paging", pvo);
 		model.addAttribute("viewAll", adminService.getUserList(pvo));
 		System.out.println(adminService.getUserList(pvo));
