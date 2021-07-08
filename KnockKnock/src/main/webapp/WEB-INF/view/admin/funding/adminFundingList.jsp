@@ -34,6 +34,10 @@
 			<div class="col-md-12">
 				<div class="row">
 					<div style="float: right;">
+					<a href="/getFundingList.do?sort=제목">제목순</a> 
+					<a href="/getFundingList.do?sort=시작일">시작일순</a> 
+					<a href="/getFundingList.do?sort=종료일">종료일순</a> 
+					<a href="/getFundingList.do?sort=활성상태">활성상태</a> 
 						<select id="cntPerPage" name="sel" onchange="selChange()">
 							<option value="5"
 								<c:if test="${paging.cntPerPage == 5}">selected</c:if>>5줄

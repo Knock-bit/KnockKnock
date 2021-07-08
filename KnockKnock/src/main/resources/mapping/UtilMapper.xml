@@ -79,13 +79,13 @@
 				K_CONTENT DESC
 			</if>
 		</if>
-		<if test ="sort == null || sort =='이름'.toString()">
+		<if test="sort == null || sort =='이름'.toString()">
 			K_CONTENT
 		</if>
-			) A
-			)
-			WHERE RN BETWEEN #{start} AND
-			#{end}
+		) A
+		)
+		WHERE RN BETWEEN #{start} AND
+		#{end}
 	</select>
 
 	<!-- 총 Proposal 수 출력 -->
@@ -152,7 +152,25 @@
 				WHERE CF_TITLE LIKE '%'||#{searchKeyword}||'%'
 			</if>
 		</if>
-		ORDER BY CF_IDX DESC) A
+		ORDER BY
+		<if test="sort != null">
+			<if test="sort == '제목'.toString()">
+				CF_TITLE
+			</if>
+			<if test="sort == '시작일'.toString()">
+				CF_STARTDATE DESC
+			</if>
+			<if test="sort == '종료일'.toString()">
+				CF_ENDDATE DESC
+			</if>
+			<if test="sort == '활성상태'.toString()">
+				CF_STATUS
+			</if>
+		</if>
+		<if test = "sort == null">
+			CF_TITLE
+		</if>
+		) A
 		)
 		WHERE cfRn
 		BETWEEN
@@ -177,7 +195,16 @@
 				WHERE CC_NAME LIKE '%'||#{searchKeyword}||'%'
 			</if>
 		</if>
-		ORDER BY CC_IDX DESC) A
+		ORDER BY
+		<if test="sort != null">
+			<if test="sort == '이름역'.toString()">
+				CC_NAME DESC
+			</if>
+		</if>
+		<if test="sort == null || sort =='이름'.toString()">
+			CC_NAME
+		</if>
+		) A
 		) WHERE ccRn
 		BETWEEN #{start}
 		AND #{end}
