@@ -48,6 +48,15 @@ public class AdminController {
 		
 		return conditionMap;
 	}
+	
+	@ModelAttribute("conditionMapOnlyContent")
+	public Map<String, String> SearchConditionMapTitle(){
+		System.out.println("MapContition 실행확인");
+		Map<String, String> conditionMap = new HashMap<String, String>();
+		conditionMap.put("내용", "CONTENT");
+		
+		return conditionMap;
+	}
 
 	@GetMapping("/adminMain.do")
 	public String moveAdminMain() {
@@ -69,14 +78,9 @@ public class AdminController {
 			@RequestParam(value = "cntPerPage", required = false) String cntPerPage) {
 		
 		int total = adminService.countUser();
-		if (nowPage == null && cntPerPage == null) {
-			nowPage = "1";
-			cntPerPage = "3";
-		} else if (nowPage == null) {
-			nowPage = "1";
-		} else if (cntPerPage == null) {
-			cntPerPage = "3";
-		}
+		Map<String,String> map = pageSet(nowPage,cntPerPage);
+		nowPage = map.get("nowPage");
+		cntPerPage=map.get("cntPerPage");
 		pvo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
 		model.addAttribute("paging", pvo);
 		model.addAttribute("viewAll", adminService.getUserList(pvo));
@@ -86,21 +90,21 @@ public class AdminController {
 	}
 
 	@GetMapping("/adminKeywordList.do")
-	public String getKeywordList(PagingVO pvo, Model model,AdminKeywordVO vo,
+	public String getKeywordList(PagingVO pvo, Model model,
 			@RequestParam(value = "nowPage", required = false) String nowPage,
 			@RequestParam(value = "cntPerPage", required = false) String cntPerPage) {
-		System.out.println("vo : " + vo);
-
 		int total = adminService.countKeyword();
-
 		Map<String,String> map = pageSet(nowPage,cntPerPage);
 		nowPage = map.get("nowPage");
 		cntPerPage=map.get("cntPerPage");
-		pvo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		pvo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage),pvo.getSearchCondition(),pvo.getSearchKeyword());
+		List<AdminKeywordVO> kvo = adminService.getKeywordList(pvo);
+		System.out.println(kvo);
 		model.addAttribute("paging", pvo);
-		model.addAttribute("viewAll", adminService.getKeywordList(pvo));
+		model.addAttribute("viewAll", kvo);
 		return "/admin/adminKeywordList";
 	}
+	
 	@GetMapping("/adminCampaignCategory.do")
 	public String getCampaignCategoryList(PagingVO pvo, Model model,
 			@RequestParam(value = "nowPage", required = false) String nowPage,
@@ -126,14 +130,9 @@ public class AdminController {
 			@RequestParam(value = "cntPerPage", required = false) String cntPerPage) {
 
 		int total = adminService.countCampaign();
-		if (nowPage == null && cntPerPage == null) {
-			nowPage = "1";
-			cntPerPage = "3";
-		} else if (nowPage == null) {
-			nowPage = "1";
-		} else if (cntPerPage == null) {
-			cntPerPage = "3";
-		}
+		Map<String,String> map = pageSet(nowPage,cntPerPage);
+		nowPage = map.get("nowPage");
+		cntPerPage=map.get("cntPerPage");
 		pvo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
 		model.addAttribute("paging", pvo);
 		model.addAttribute("viewAll", adminService.getCampaignList(pvo));

@@ -35,7 +35,12 @@
 		SELECT * FROM KEYWORD ORDER BY K_CONTENT) A
 		)
 		WHERE RN BETWEEN #{start} AND
-		#{end}
+		#{end} 
+		<if test ="searchCondition != null">
+			<if test="searchCondition == 'CONTENT'.toString()">
+				AND K_CONTENT LIKE '%'||#{searchKeyword}||'%'
+			</if>
+		</if>
 	</select>
 
 	<!-- 총 Proposal 수 출력 -->

@@ -132,7 +132,7 @@ function keywordDel() {
 							<tr>
 								<td>
 									<select name ="searchCondition">
-										<c:forEach var = "option" items="${conditionMap }">
+										<c:forEach var = "option" items="${conditionMapOnlyContent }">
 											<option value="${option.value}">${option.key }</option>
 										</c:forEach>
 									</select>
