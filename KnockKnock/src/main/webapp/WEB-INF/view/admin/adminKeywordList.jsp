@@ -126,6 +126,24 @@ function keywordDel() {
 								보기</option>
 						</select>
 					</div>
+
+					<!-- 검색기능추가 -->
+					<form action="adminKeywordList.do" method="get">
+						<table class="border-none">
+							<tr>
+								<td>
+									<select name ="searchCondition">
+										<c:forEach var = "option" items="${conditionMapOnlyContent }">
+											<option value="${option.value}">${option.key }</option>
+										</c:forEach>
+									</select>
+									<input type="text" name="searchKeyword">
+									<input type="submit" value="검색">
+								</td>
+							</tr>
+						</table>
+					</form>
+
 					<form id="keywordForm" method="post"
 						style="margin-top: 300px; margin-left: 100px;">
 						<table class="table table-bordered table-striped"
