@@ -1,11 +1,12 @@
-  *{
-  font-family: 'Roboto+Slab:wght@300';
-  }
+*{
+	font-family: 'Noto Sans KR', sans-serif;
+	
+}
   
   .main-content{
   		width:100%;
         flex: 1;
-        min-height:100vh;
+        height:100%;
         margin-top:100px;
         
    }
@@ -85,6 +86,9 @@
    .item3 img {
    		width : 5%;
    }
+   .item2 {
+   		padding-bottom:20px;
+   }
    .item2 > div {
    		padding : 30px 0 0 20px;
    
@@ -97,6 +101,7 @@
    #allPoint{
    		font-size:3rem;
    		color:#0e4b20;
+   		padding-bottom:20px;
    }
    
    /*포인트 그래프*/
