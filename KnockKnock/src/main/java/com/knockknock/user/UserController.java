@@ -113,19 +113,32 @@ public class UserController {
    // 로그인
    @RequestMapping(value ="/user/loginUser.do", method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
    @ResponseBody
-   public UserVO loginUsers(@RequestBody UserVO vo, HttpSession session, String result) {      
-      
-      result = userService.checkApprLogin(vo);
-      System.out.println("checkApprVO = "+result);
-      UserVO user =  userService.selectlogin(vo);
-      if (user != null) {
-         System.out.println("로그인 성공");
-         session.setAttribute("users", user);
-      }
-      
-      System.out.println(user);
+   public String loginUsers(@RequestBody UserVO vo, HttpSession session, String result) {      
+		result = userService.checkApprLogin(vo);
+		System.out.println("checkApprVO = " + result);
+		UserVO user = userService.selectlogin(vo);
+		String data="";
+		if (result=="pass") {
+			// 이메일 인증 안한경우
+			if (user != null) {
+				System.out.println("로그인 성공");
+				System.out.println(user);
+				// ID, PWD가 일치한 경우
+				session.setAttribute("users", user);
+				data= "1";
+			} else {
+				// ID,PWD가 일치하지 않은경우
+				System.out.println("로그인 실패" + user);
+				data= "2";
+			}
 
-      return user; 
+		} else if(result=="Fail") {
+			// 이메일 인증 한 경우
+			System.out.println("이메일 인증 안했음" + result);
+			data= "3";
+		}
+		return data;
+
    }
 
    // 회원가입
