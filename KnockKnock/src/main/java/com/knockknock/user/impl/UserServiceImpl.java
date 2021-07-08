@@ -106,13 +106,13 @@ public class UserServiceImpl implements UserService {
 			msg += "<div align='center' style='border:1px solid rgb(184, 180, 180);font-family: Noto Sans KR'>";
 			msg += "<h1 style='color: rgb(10, 61, 14);'>綠!Knock! 회원가입을 축하드립니다.</h1>"; 
 			msg += "<h3>";
-			msg += vo.getuId() + "님 회원가입을 환영합니다.</h3>";
-			msg += "<form><div style='font-size: 130%'>";
+			msg += vo.getuName() + "님 회원가입을 환영합니다.</h3>";
+			msg += "<div style='font-size: 130%'>";
 			msg += "하단의 인증 버튼 클릭 시 정상적으로 회원가입이 완료됩니다.</div><br/>";
 			msg += "<form method='POST' action='http://localhost:8080/userApproval.do'>";
 			msg += "<input type='hidden' name='uEmail' value='" + vo.getuEmail()+ "'>";
 			msg += "<input type='hidden' name='uApprkey' value='" + vo.getuApprkey() + "'>";
-			msg += "<input type='submit' value='인증'></form><br/></div>";
+			msg += "<input type='submit' value='인증'></form><br/></div></form>";
 			System.out.println("인증메일 클릭시 이메일 = "+vo.getuEmail());
 			System.out.println("인증메일 클릭시 APPRKEY = "+ vo.getuApprkey());
 
