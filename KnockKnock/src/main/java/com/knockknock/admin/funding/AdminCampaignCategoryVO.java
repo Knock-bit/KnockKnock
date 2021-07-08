@@ -3,6 +3,7 @@ package com.knockknock.admin.funding;
 public class AdminCampaignCategoryVO {
 	private int ccIdx;
 	private String ccName;
+	private int ccRn;
 	
 	public AdminCampaignCategoryVO() {}
 	
@@ -26,6 +27,15 @@ public class AdminCampaignCategoryVO {
 
 	public void setCcName(String ccName) {
 		this.ccName = ccName;
+	}
+	
+
+	public int getCcRn() {
+		return ccRn;
+	}
+
+	public void setCcRn(int ccRn) {
+		this.ccRn = ccRn;
 	}
 
 	@Override
