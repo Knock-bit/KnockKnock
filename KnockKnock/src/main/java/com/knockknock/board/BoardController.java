@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -89,7 +88,7 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/board/getBoard.do")
-	public String getBoard(int bIdx, Model model) {
+	public String getBoard(int bIdx, Model model, BoardVO vo) {
 		BoardVO board = boardService.getBoard(bIdx);
 		model.addAttribute("board", board);
 		
@@ -103,9 +102,8 @@ public class BoardController {
 	
 	@PostMapping("/board/updateBoard.do")
 	public String updateBoardPost(BoardVO vo) {
-//		System.out.println(">>> 게시글 수정");
-//		System.out.println("vo : " + vo);
 		boardService.updateBoard(vo);
+		
 		return "redirect:/board/getBoard.do?bIdx=" + vo.getbIdx();
 	}	
 	
@@ -116,13 +114,13 @@ public class BoardController {
 		return "redirect:/board/getBoardList.do";
 	}
 	
-	@ModelAttribute("conditionMap")
-	public Map<String, String> searchConditionMap() {
-		Map<String, String> conditionMap = new HashMap<String, String>();
-		conditionMap.put("제목", "BSUBJECT");
-		conditionMap.put("내용", "BCONTENT");
-		return conditionMap;
-	}
+//	@ModelAttribute("conditionMap")
+//	public Map<String, String> searchConditionMap() {
+//		Map<String, String> conditionMap = new HashMap<String, String>();
+//		conditionMap.put("제목", "BSUBJECT");
+//		conditionMap.put("내용", "BCONTENT");
+//		return conditionMap;
+//	}
 	
 	@RequestMapping("/board/updateHit.do")
 	public String updateHit (@RequestParam int bIdx) {
@@ -143,6 +141,7 @@ public class BoardController {
 		Map<String, String> ncPage = new HashMap<String, String>();
 		ncPage.put("nowPage", nowPage);
 		ncPage.put("cntPerPage", cntPerPage);
+		
 		return ncPage;
 	}
 }

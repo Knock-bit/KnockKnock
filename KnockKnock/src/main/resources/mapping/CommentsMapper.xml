@@ -9,7 +9,6 @@
 		VALUES ((SELECT NVL(MAX(M_IDX),0)+1 FROM COMMENTS), #{cContent}, #{bIdx}, #{uIdx}, SYSDATE)
 	</insert>
 	
-	
 	<update id="updateComments" parameterType="comments">
 		UPDATE COMMENTS SET C_CONTENT = #{cContent} WHERE M_IDX = #{mIdx}
 	</update>
@@ -18,8 +17,9 @@
 		DELETE FROM COMMENTS WHERE M_IDX = #{mIdx}
 	</delete>
 
-	<select id="commentsList" resultType="comments">
-		SELECT * FROM COMMENTS ORDER BY M_IDX DESC
+	<select id="commentsList" parameterType="int" resultType="comments">
+		SELECT * FROM COMMENTS WHERE B_IDX = #{bIdx}
+		ORDER BY M_IDX DESC
 	</select>
 	
 </mapper>

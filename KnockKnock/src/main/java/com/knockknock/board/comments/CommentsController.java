@@ -1,20 +1,15 @@
 package com.knockknock.board.comments;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class CommentsController {
@@ -23,14 +18,13 @@ public class CommentsController {
 	
 	@RequestMapping("/board/commentsList.do")
 	@ResponseBody
-	public List<CommentsVO> CommentsList(Model model) {
+	public List<CommentsVO> CommentsList(int bIdx) {
 		
-		return commentsService.commentsList();
+		return commentsService.commentsList(bIdx);
 	}
 	
 	@RequestMapping("/board/insertComments.do")
-	@ResponseBody
-	public int insertComments(@RequestParam(value="bIdx") int bIdx, 
+	public void  insertComments(@RequestParam(value="bIdx") int bIdx, 
 			@RequestParam(value="cContent") String cContent, int uIdx) {
 			
 		CommentsVO vo = new CommentsVO();
@@ -38,7 +32,8 @@ public class CommentsController {
 		vo.setcContent(cContent);
 		vo.setuIdx(uIdx);
 		
-		return commentsService.insertComments(vo);
+		commentsService.insertComments(vo);
+		
 		
 	}
 	
@@ -54,10 +49,13 @@ public class CommentsController {
 		return commentsService.updateComments(vo);
 	}
 	
-	@RequestMapping("/board/deleteComments.do/{mIdx}")
+	@PostMapping("/board/deleteComments.do")
 	@ResponseBody
-	public int deleteComments(@PathVariable int mIdx) {
+	public String deleteComments(int mIdx, RedirectAttributes rttr) {
 
-		return 	commentsService.deleteComments(mIdx);
+		commentsService.deleteComments(mIdx);
+		rttr.addFlashAttribute("result", "delete success");
+		
+		return "redirect:/board/list";
 	}
 }

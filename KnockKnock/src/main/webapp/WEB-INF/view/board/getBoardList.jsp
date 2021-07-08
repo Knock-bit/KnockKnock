@@ -3,6 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri ="http://java.sun.com/jsp/jstl/fmt" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+  <c:set var="cp" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,16 +13,21 @@
 	.center { text-align: center; }
 </style>
 <script>
-
 	//게시글 등록창으로..
 	function moveInsert_board(frm) {
-		frm.action = "moveInsert.do"
+		frm.action = "${cp}/board/moveInsert.do"
+		frm.setAttribute('method', 'get');
+		frm.submit();
+	}
+	//내글만보기
+	function myView_board(frm) {
+		frm.action = "${cp}/board/myView.do"
 		frm.setAttribute('method', 'get');
 		frm.submit();
 	}
 	function selChange() {
 		var sel = document.getElementById('cntPerPage').value;
-		location.href = "getBoardList.do?nowPage=${paging.nowPage}&cntPerPage="
+		location.href = "${cp}/board/getBoardList.do?nowPage=${paging.nowPage}&cntPerPage="
 				+ sel;
 	}
 	
@@ -53,7 +59,7 @@
 		</tr>
 	<c:if test="${not empty getBoardList}">
 		<c:forEach var="board" items="${getBoardList}">
-		<tr style="cursor:pointer;" onclick="location.replace='getBoard.do?bIdx=${board.bIdx }'">
+		<tr style="cursor:pointer;" onclick="location.href='${cp}/board/getBoard.do?bIdx=${board.bIdx }'">
 			<td>${board.bIdx}</td>
 			<td>${board.sbIdx}</td>
 			<td>${board.bSubject}</td>
@@ -83,32 +89,34 @@
 					<option value="${option.value}">${option.key}</option>
 				</c:forEach>
 				</select>
-				
 				<input type="text" name="searchKeyword" placeholder="검색할 내용을 입력해주세요." style="width:200px">
 				<input type="submit" value="검색">
 			</td>
 		</tr>
 	</table>
+	</form>
+	<form>
 	<div style="display: block; text-align: center;">
-		<c:if test="${paging.startPage != 1 }">
-			<a href="/board/getBoardList.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
+		<c:if test="${paging.startPage != 1}">
+			<a href="/board/getBoardList.do?nowPage=${paging.startPage - 1}&cntPerPage=${paging.cntPerPage}">&lt;</a>
 		</c:if>
-		<c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
+		<c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="p">
 		<c:choose>
-		<c:when test="${p == paging.nowPage }">
-		<b>${p }</b>
+		<c:when test="${p == paging.nowPage}">
+		<b>${p}</b>
 		</c:when>
-		<c:when test="${p != paging.nowPage }">
-			<a href="/board/getBoardList.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
+		<c:when test="${p != paging.nowPage}">
+			<a href="/board/getBoardList.do?nowPage=${p}&cntPerPage=${paging.cntPerPage}">${p}</a>
 		</c:when>
 		</c:choose>
 		</c:forEach>
 		<c:if test="${paging.endPage != paging.lastPage}">
-			<a href="/board/getBoardList.do?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
+			<a href="/board/getBoardList.do?nowPage=${paging.endPage+1}&cntPerPage=${paging.cntPerPage}">&gt;</a>
 		</c:if>
 	</div>
 	<div>
-		<p><input type="button" value="게시글등록" onclick="moveInsert_board(this.form)"></p>
+		<p><input type="button" value="게시글등록" onclick="moveInsert_board(this.form)">
+		<input type="button" value="내글보기" onclick="myView_board(this.form)"></p>
 	</div>	
 	</form>
 </div>

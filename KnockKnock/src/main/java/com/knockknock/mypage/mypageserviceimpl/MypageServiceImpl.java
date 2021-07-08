@@ -84,20 +84,30 @@ public class MypageServiceImpl implements MypageService {
 	}
 	
 	// 나의 문의내역 상세보기
+	@Override
 	public ContactVO myQuestion(Map<String, Integer> map) {
 		
 		return mypageDAO.myQuestion(map);	
 	}
 	
 	// 나의 활동
+	@Override
 	public List<BoardVO> myActive(UserVO vo){
 		
 		return mypageDAO.myActive(vo);
 	}
 	
 	// 나의 포인트 리스트
+	@Override
 	public List<PointVO> myPointList(UserVO vo){
 		
 		return mypageDAO.myPointList(vo);
+	}
+
+	// 회원 탈퇴
+	@Override
+	public int deleteUsers(int uIdx) {
+
+		return mypageDAO.deleteUsers(uIdx);
 	}
 }

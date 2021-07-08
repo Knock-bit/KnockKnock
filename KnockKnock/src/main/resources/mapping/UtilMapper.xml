@@ -83,4 +83,18 @@
 		) WHERE cfRn
 		BETWEEN #{start} AND #{end}
 	</select>
+	
+	<!-- 총 캠페인 카테고리 수 -->
+	<select id="countCampaignCategory" resultType="int">
+		SELECT COUNT(*) FROM CAMPAIGN_CATEGORY
+	</select>
+	
+		<!-- 페이징 처리 후 캠페인 카테고리 리스트 조회 -->
+	<select id="getCampaignCategoryList" resultType="adminCampaignCategoryVO">
+		SELECT * FROM 
+		( SELECT ROWNUM ccRn, A.* FROM 
+		( SELECT * FROM CAMPAIGN_CATEGORY ORDER BY CC_IDX DESC) A
+		) WHERE ccRn
+		BETWEEN #{start} AND #{end}
+	</select>
 </mapper>

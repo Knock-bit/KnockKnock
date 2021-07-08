@@ -64,6 +64,7 @@
 		<div class="form-container sign-in-container">
 			<form method="post">
 				<h1>판매자 로그인</h1>
+				<br>
 				<input type="text" placeholder="아이디" name="sId" id="sId"
 					value="${seller.sId}" } /> <input type="password"
 					placeholder="비밀번호" name="sPwd" id="sPwd" value="${seller.sPwd }" />

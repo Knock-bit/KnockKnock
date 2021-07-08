@@ -100,14 +100,14 @@ public class AdminController {
 	public String getCampaignCategoryList(PagingVO pvo, Model model,
 			@RequestParam(value = "nowPage", required = false) String nowPage,
 			@RequestParam(value = "cntPerPage", required = false) String cntPerPage) {
-		int total = adminService.countKeyword();
+		int total = adminService.countCampaignCategory();
 		Map<String,String> map = pageSet(nowPage,cntPerPage);
 		nowPage = map.get("nowPage");
 		cntPerPage=map.get("cntPerPage");
 		pvo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
 		model.addAttribute("paging", pvo);
-		model.addAttribute("viewAll", adminService.getKeywordList(pvo));
-		return "/admin/adminKeywordList";
+		model.addAttribute("viewAll", adminService.getCampaignCategoryList(pvo));
+		return "/admin/adminCampaignCategory";
 	}
 	@GetMapping("/adminFunding.do")
 	public String getFunding() {

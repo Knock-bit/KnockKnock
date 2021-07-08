@@ -14,8 +14,9 @@ public class OrdersServiceImpl implements OrdersService{
 	private OrdersDAO ordersDAO;
 
 	@Override
-	public List<OrdersVO> showOrderList() {
-		return ordersDAO.showOrderList();
+	public List<OrdersVO> showOrderList(int sIdx) {
+		System.out.println("여기는 Service "+sIdx);
+		return ordersDAO.showOrderList(sIdx);
 	}
 
 

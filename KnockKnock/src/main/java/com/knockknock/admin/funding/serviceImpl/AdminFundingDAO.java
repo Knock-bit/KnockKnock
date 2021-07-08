@@ -49,4 +49,9 @@ public class AdminFundingDAO {
 	public AdminFundingVO getFunding(AdminFundingVO vo) {
 		return mybatis.selectOne("AdminDAO.getFunding",vo);
 	}
+
+
+	public int updateCfStatus(AdminFundingVO vo) {
+		return mybatis.update("AdminDAO.updateCfStatus",vo);
+	}
 }
