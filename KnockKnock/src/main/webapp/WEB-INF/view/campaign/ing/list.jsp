@@ -38,6 +38,13 @@
 
 <script>
 
+	function getInputValue(){
+		
+		var input = $("#inputValue").val();
+		$("#commonDiv").load("${cp}/campaign/search.do?input=" + input)
+		
+	}
+		
 	$(function(){
 		$("#getIng").click(function(){
 			$("#commonDiv").load("${cp}/campaign/getIngList.do");
