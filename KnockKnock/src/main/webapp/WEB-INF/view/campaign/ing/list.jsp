@@ -115,7 +115,6 @@
   	</c:otherwise>
   	</c:choose>
 
-      <a href="campaigns.html" class="get-started-btn">Get Started</a>
 
     </div>
   </header><!-- End Header -->

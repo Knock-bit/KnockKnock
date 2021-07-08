@@ -154,7 +154,7 @@
     height: 2.8em;
     border-radius: 8px;
     font-size: 1.5em;
-    border: 1px solid #5f5f5f;
+    border: 1px solid #c1c1c1;
 }
 #participate{
 	    width: 9.7em;
@@ -171,8 +171,14 @@
     padding: 25px 15px;
     margin-bottom: 15px;
     border-radius: 5px;
-    border: 1px solid #d2d2d2;
+    border: 1px solid #e3e3e3;
 }
+
+	.inner-nav{
+	margin-bottom:10px;}
+	
+	#commonDiv{
+	padding-right:20px;}
         </style>
 
         <script>
@@ -303,7 +309,9 @@
           <!-- ======= Cource Details Section ======= -->
           <section id="campaign-details" class="campaign-details">
             <div class="container" data-aos="fade-up">
+            <div class="inner-nav">
               <%@ include file="/layout/navbar/campaign/navCampaignDetail.jsp" %>
+              </div>
                 <div class="row sticky-parent">
                   <div class="col-lg-8" id="commonDiv">
                     <img src="${campaign.ciFile }" class="img-fluid" alt="">
@@ -353,7 +361,7 @@
 
 
 
-                  <div class="col-lg-4 sticky" style="padding-left:0px;">
+                  <div class="col-lg-4" style="padding-left:0px;">
                     <center>
                       <div class="campaign-main-info">
                         <div class="campaign-left">
@@ -361,6 +369,7 @@
                           <h2><b>${end - now + 1}일</b> 남았어요</h2>
                         </div>
                         <div class="campaign-point">
+                        
                           총 ${campaign.cTotpoint } 포인트가<br>
                           참여자들에게 나눠집니다.
                         </div>
