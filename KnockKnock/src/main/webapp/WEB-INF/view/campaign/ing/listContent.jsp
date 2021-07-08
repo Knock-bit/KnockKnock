@@ -12,11 +12,11 @@
               <img src="${campaign.ciFile }" class="img-fluid" alt="...">
               <div class="campaign-content">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                  <h4>${campaign.category}</h4>
+                  <h4>${campaign.ccName}</h4>
                 </div>
 
                 <h3><a href="${cp }/campaign/ing/detail.do?ciIdx=${campaign.ciIdx }">${campaign.ciTitle } </a></h3>
-                <p>${campaign.cGoal }</p>
+                <p>${campaign.ciGoal }</p>
                 <div class="trainer d-flex justify-content-between align-items-center">
                   <div class="trainer-profile d-flex align-items-center">
                     <img src="assets/img/trainers/trainer-1.jpg" class="img-fluid" alt="">

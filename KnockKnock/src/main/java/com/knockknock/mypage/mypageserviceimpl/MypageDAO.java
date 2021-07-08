@@ -1,20 +1,20 @@
 
 package com.knockknock.mypage.mypageserviceimpl;
 
-import java.util.List; 
+import java.util.List;  
 import java.util.Map;
 
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
+import com.knockknock.campaign.proposal.ProposalVO;
 import com.knockknock.board.BoardVO;
 import com.knockknock.campaign.campaign.CampaignVO;
 import com.knockknock.contact.ContactVO;
 import com.knockknock.user.UserVO;
 import com.knockknock.util.PointVO;
-
+ 
 @Repository
 public class MypageDAO {
 	@Autowired
@@ -110,5 +110,16 @@ public class MypageDAO {
 		return mybatis.delete("UserVO.deleteUsers", uIdx);
 	}
 	
+	// 나의 제안글 총 글 갯수
+	public int myplistTot(UserVO vo) {
+
+		return mybatis.selectOne("UserVO.myPcListTotalCount", vo);
+	}
+	// 나의 제안글 리스트
+	public List<ProposalVO> myProposalList(Map<String, Integer> map) {
+		List<ProposalVO> list = mybatis.selectList("UserVO.mypList", map);
+
+	 return list;
+	}
 
 }
