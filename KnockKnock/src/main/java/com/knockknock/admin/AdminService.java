@@ -11,7 +11,7 @@ public interface AdminService {
 	// UserVO에 searchKeyword(검색조건용 필드) 추가해서 사용할 경우 vo를 받는다.
 	void getUserList(AdminUserVO vo);  
 	AdminUserVO getUser(AdminUserVO vo);
-	void updateUserActive(AdminUserVO vo);
+	public void updateUserActive(AdminUserVO vo);
 	public int countUser();  	// user count 가져오기
 	public List<AdminUserVO> getUserList(PagingVO pvo); 	// 페이징 처리 user조회
 	public int countKeyword();  // keyword count 가져오기 

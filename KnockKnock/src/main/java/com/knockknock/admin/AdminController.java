@@ -5,12 +5,16 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.knockknock.util.PagingVO;
 
@@ -94,25 +98,29 @@ public class AdminController {
 		return "/admin/adminMain";
 	}
 
-	@GetMapping("/adminActive.do")
-	public String updateUserActive(AdminUserVO vo) {
+	// 유저 활성상태 변경
+	@RequestMapping(value="/adminActive.do", method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public void updateUserActive(@RequestBody AdminUserVO vo) {
 		System.out.println("유저 활성 상태 변경");
+		System.out.println(vo);
 		AdminUserVO user = adminService.getUser(vo);
 		adminService.updateUserActive(user);
-		System.out.println(user);
-		return "redirect:admin.do";
+		System.out.println("uuuuu" + user);
 	}
-
+	 
+	
+	// 유저리스트
 	@GetMapping("/adminUserList.do")
 	public String getUserList(PagingVO pvo, Model model,
 			@RequestParam(value = "nowPage", required = false) String nowPage,
-			@RequestParam(value = "cntPerPage", required = false) String cntPerPage) {
-
+			@RequestParam(value = "cntPerPage", required = false) String cntPerPage,
+			@RequestParam(value = "sort", required = false) String sort) {
 		int total = adminService.countUser();
 		Map<String,String> map = pageSet(nowPage,cntPerPage);
 		nowPage = map.get("nowPage");
 		cntPerPage=map.get("cntPerPage");
-		pvo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage),pvo.getSearchCondition(),pvo.getSearchKeyword());
+		pvo.setSort(sort);
+		pvo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage),pvo.getSearchCondition(),pvo.getSearchKeyword(),pvo.getSort());
 		model.addAttribute("paging", pvo);
 		model.addAttribute("viewAll", adminService.getUserList(pvo));
 		System.out.println(adminService.getUserList(pvo));
@@ -120,6 +128,7 @@ public class AdminController {
 		return "/admin/adminUserList";
 	}
 
+	// 키워드 리스트
 	@GetMapping("/adminKeywordList.do")
 	public String getKeywordList(PagingVO pvo, Model model,
 			@RequestParam(value = "nowPage", required = false) String nowPage,
@@ -137,6 +146,7 @@ public class AdminController {
 		return "/admin/adminKeywordList";
 	}
 	
+	// 캠페인 카테고리 리스트
 	@GetMapping("/adminCampaignCategory.do")
 	public String getCampaignCategoryList(PagingVO pvo, Model model,
 			@RequestParam(value = "nowPage", required = false) String nowPage,

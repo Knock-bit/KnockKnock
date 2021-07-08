@@ -14,6 +14,8 @@ public class PagingVO {
 	private String STATUS;
 	private String ACTIVE;
 
+	// 정렬 조건 추가 
+	private String sort;
 	public PagingVO() {
 	}
 
@@ -25,7 +27,7 @@ public class PagingVO {
 		calcStartEndPage(getNowPage(), cntPage);
 		calcStartEnd(getNowPage(), getCntPerPage());
 	}
-
+	
 	public PagingVO(int total, int nowPage, int cntPerPage, String searchCondition, String searchKeyword) {
 		setNowPage(nowPage);
 		setCntPerPage(cntPerPage);
@@ -35,6 +37,18 @@ public class PagingVO {
 		calcStartEnd(getNowPage(), getCntPerPage());
 		setSearchCondition(searchCondition);
 		setSearchKeyword(searchKeyword);
+	}
+
+	public PagingVO(int total, int nowPage, int cntPerPage, String searchCondition, String searchKeyword, String sort) {
+		setNowPage(nowPage);
+		setCntPerPage(cntPerPage);
+		setTotal(total);
+		calcLastPage(getTotal(), getCntPerPage());
+		calcStartEndPage(getNowPage(), cntPage);
+		calcStartEnd(getNowPage(), getCntPerPage());
+		setSearchCondition(searchCondition);
+		setSearchKeyword(searchKeyword);
+		setSort(sort);
 	}
 
 	// 제일 마지막 페이지 계산
@@ -170,6 +184,17 @@ public class PagingVO {
 
 	public void setACTIVE(String aCTIVE) {
 		ACTIVE = aCTIVE;
+	}
+	
+
+	
+
+	public String getSort() {
+		return sort;
+	}
+
+	public void setSort(String sort) {
+		this.sort = sort;
 	}
 
 	@Override
