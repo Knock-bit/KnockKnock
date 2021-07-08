@@ -2,6 +2,8 @@ package com.knockknock.orders;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,7 +14,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.knockknock.seller.SellerVO;
 
 @Controller
-@SessionAttributes("seller")
 public class OrdersController {
 	@Autowired
 	private OrdersService ordersService;
@@ -20,13 +21,13 @@ public class OrdersController {
 	
 	@GetMapping("/seller/sellerDashboard.do")
 
-	public String sellerDashboard(@ModelAttribute("seller")SellerVO seller, Model model, int sIdx) {
+	public String sellerDashboard(HttpSession session, SellerVO seller, Model model, int sIdx) {
 		System.out.println("DashBoard에 갈 select문 controller");
-		
-		List<OrdersVO> list = ordersService.showOrderList(sIdx);
-		
+		session.getAttribute("seller");
+		List<OrdersVO> list = ordersService.showOrderList(sIdx);		
 		System.out.println("확인해보기");
 		model.addAttribute("list", list);
+		model.addAttribute("session", session);
 		return "/seller/sellerDashboard";		
 	}
 	

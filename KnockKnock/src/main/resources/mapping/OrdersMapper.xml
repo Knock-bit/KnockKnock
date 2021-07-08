@@ -6,7 +6,11 @@
 <mapper namespace="Orders">
  	 
 	<select id="selectOrderList" parameterType="int" resultType="ordersVO">
-		SELECT *FROM ORDERS WHERE S_IDX = #{sIdx}
+		SELECT O_NUMBER, U_NAME, P.P_NAME, O.O_CNT, O.O_STATUS,
+		O.O_TOTPRICE, O.O_DATE
+		FROM ORDERS O, USERS U, PRODUCT P
+		WHERE O.S_IDX=#{sIdx} AND U.U_IDX = O.U_IDX
+		AND P.P_IDX=O.P_IDX ORDER BY O_DATE DESC
 	</select>
 	
 

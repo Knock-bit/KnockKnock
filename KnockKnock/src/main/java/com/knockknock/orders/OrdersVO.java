@@ -8,7 +8,6 @@ public class OrdersVO {
 	private int pPrice;
 	private int oTotprice;
 	private String fCheck;
-	private int oFee;
 	private int oNumber;
 	private int uIdx;
 	private int paIdx;
@@ -16,7 +15,6 @@ public class OrdersVO {
 	private int sIdx;
 	private String uName;
 	private String pName;
-	
 
 	public OrdersVO() {
 		super();
@@ -33,13 +31,11 @@ public class OrdersVO {
 		this.pPrice = pPrice;
 		this.oTotprice = oTotprice;
 		this.fCheck = fCheck;
-		this.oFee = oFee;
 		this.oNumber = oNumber;
 		this.uIdx = uIdx;
 		this.paIdx = paIdx;
 		this.oDate = oDate;
 		this.sIdx = sIdx;
-
 		this.uName = uName;
 		this.pName = pName;
 	}
@@ -58,7 +54,7 @@ public class OrdersVO {
 
 	public void setpName(String pName) {
 		this.pName = pName;
-    
+
 	}
 
 	public int getoIdx() {
@@ -117,14 +113,6 @@ public class OrdersVO {
 		this.fCheck = fCheck;
 	}
 
-	public int getoFee() {
-		return oFee;
-	}
-
-	public void setoFee(int oFee) {
-		this.oFee = oFee;
-	}
-
 	public int getoNumber() {
 		return oNumber;
 	}
@@ -168,7 +156,7 @@ public class OrdersVO {
 	@Override
 	public String toString() {
 		return "OrdersVO [oIdx=" + oIdx + ", pIdx=" + pIdx + ", oCnt=" + oCnt + ", oStatus=" + oStatus + ", pPrice="
-				+ pPrice + ", oTotprice=" + oTotprice + ", fCheck=" + fCheck + ", oFee=" + oFee + ", oNumber=" + oNumber
+				+ pPrice + ", oTotprice=" + oTotprice + ", fCheck=" + fCheck + ", oNumber=" + oNumber
 				+ ", uIdx=" + uIdx + ", paIdx=" + paIdx + ", oDate=" + oDate + ", sIdx=" + sIdx + "]";
 	}
 
