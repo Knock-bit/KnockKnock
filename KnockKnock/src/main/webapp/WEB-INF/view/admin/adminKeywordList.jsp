@@ -126,6 +126,7 @@ function keywordDel() {
 								보기</option>
 						</select>
 					</div>
+
 					<!-- 검색기능추가 -->
 					<form action="adminKeywordList.do" method="get">
 						<table class="border-none">
@@ -139,6 +140,7 @@ function keywordDel() {
 							</tr>
 						</table>
 					</form>
+
 					<form id="keywordForm" method="post"
 						style="margin-top: 300px; margin-left: 100px;">
 						<table class="table table-bordered table-striped"

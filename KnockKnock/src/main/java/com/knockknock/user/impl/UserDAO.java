@@ -6,6 +6,7 @@ import java.util.Map;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.knockknock.user.UserVO;
     
@@ -59,7 +60,7 @@ public class UserDAO {
    }
    //회원가입
    public void join(UserVO vo) {
-      mybatis.insert("UserVO.join", vo);
+       mybatis.insert("UserVO.join", vo);
    }   
    
    //카카오
@@ -96,4 +97,14 @@ public class UserDAO {
       }
        
    } 
+   
+   //회원 인증 이메일
+   @Transactional
+   public int userApproval(UserVO vo) throws Exception {
+	   System.out.println("회원인증중 DAO= "+mybatis.update("UserVO.userApproval", vo));
+	   return mybatis.update("UserVO.userApproval", vo);
+   }
+   
+   
+   
 }

@@ -53,4 +53,5 @@ public class AdminKeywordVO {
 		return "AdminKeywordVO [kIdx=" + kIdx + ", kContent=" + kContent + ", kCount=" + kCount + "]";
 	}
 
+
 }

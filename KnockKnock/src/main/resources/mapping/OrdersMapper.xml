@@ -9,5 +9,23 @@
 		SELECT *FROM ORDERS WHERE S_IDX = #{sIdx}
 	</select>
 	
+	
+	<!-- 주문(order테이블) 업데이트(결제완료 후) -->
+	<update id="orderInfo" parameterType="hashmap">
+		UPDATE ORDERS
+		SET O_STATUS = 1, F_CHECK = 1, PA_IDX = #{paIdx}, O_DATE = SYSDATE
+		WHERE U_IDX = #{uIdx} AND O_STATUS = 0
+	
+	</update>
+	
+	<!-- 수령인 정보 입력 -->
+	<insert id="userOrder" parameterType="userOrderVO">
+		INSERT INTO USER_ORDER 
+		(G_IDX, O_ADDRESS1, O_ADDRESS2, O_PHONE,
+			O_RECEIVER, O_ZIPCODE, U_IDX, O_DELIVERY)
+		VALUES (G_IDX_SEQ.nextval, #{oAddress1}, #{oAddress2}, #{oPhone}, 
+				#{oReceiver}, #{oZipcode}, #{uIdx}, #{oDelivery} )
+	
+	</insert>
 
 </mapper>

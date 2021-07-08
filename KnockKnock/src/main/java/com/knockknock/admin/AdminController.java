@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
@@ -37,7 +36,7 @@ public class AdminController {
 		ncPage.put("cntPerPage", cntPerPage);
 		return ncPage;
 	}
-	
+
 	// 리스트들에서 검색하기위한 두 개의 데이터가 담겨져있는 Map를 반환하는 메소드
 	@ModelAttribute("conditionMap")
 	public Map<String, String> SearchConditionMap(){
@@ -66,6 +65,7 @@ public class AdminController {
 		return conditionMap;
 	}
 
+
 	@GetMapping("/adminMain.do")
 	public String moveAdminMain() {
 		return "/admin/adminMain";
@@ -81,10 +81,10 @@ public class AdminController {
 	}
 
 	@GetMapping("/adminUserList.do")
-	public String getUserList(PagingVO pvo, Model model, 
+	public String getUserList(PagingVO pvo, Model model,
 			@RequestParam(value = "nowPage", required = false) String nowPage,
 			@RequestParam(value = "cntPerPage", required = false) String cntPerPage) {
-		
+
 		int total = adminService.countUser();
 		Map<String,String> map = pageSet(nowPage,cntPerPage);
 		nowPage = map.get("nowPage");
@@ -101,6 +101,7 @@ public class AdminController {
 	public String getKeywordList(PagingVO pvo, Model model,
 			@RequestParam(value = "nowPage", required = false) String nowPage,
 			@RequestParam(value = "cntPerPage", required = false) String cntPerPage) {
+
 		int total = adminService.countKeyword();
 		Map<String,String> map = pageSet(nowPage,cntPerPage);
 		nowPage = map.get("nowPage");
