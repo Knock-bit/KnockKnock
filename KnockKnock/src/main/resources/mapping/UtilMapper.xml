@@ -130,7 +130,13 @@
 		SELECT * FROM
 		( SELECT ROWNUM ccRn, A.* FROM
 		( SELECT * FROM
-		CAMPAIGN_CATEGORY ORDER BY CC_IDX DESC) A
+		CAMPAIGN_CATEGORY
+		<if test="searchCondition != null">
+			<if test="searchCondition == 'CONTENT'.toString()">
+				WHERE CC_NAME LIKE '%'||#{searchKeyword}||'%'
+			</if>
+		</if>
+		ORDER BY CC_IDX DESC) A
 		) WHERE ccRn
 		BETWEEN #{start}
 		AND #{end}

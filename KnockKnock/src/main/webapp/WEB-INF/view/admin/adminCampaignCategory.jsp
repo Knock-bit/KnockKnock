@@ -129,11 +129,25 @@ function keywordDel() {
 								보기</option>
 						</select>
 					</div>
+
+					<!-- 검색기능추가 -->
+					<form action="adminCampaignCategory.do" method="get">
+						<table class="border-none">
+							<tr>
+								<td><select name="searchCondition">
+										<c:forEach var="option" items="${conditionMapOnlyContent }">
+											<option value="${option.value}">${option.key }</option>
+										</c:forEach>
+								</select> <input type="text" name="searchKeyword"> <input
+									type="submit" value="검색"></td>
+							</tr>
+						</table>
+					</form>
 					<form id="keywordForm" method="post"
 						style="margin-top: 300px; margin-left: 100px;">
 						<table class="table table-bordered table-striped"
 							style="margin-top: 0px;">
-							<h3 class="text-center">키워드관리창</h3>
+							<h3 class="text-center">캠페인카테고리</h3>
 
 							<c:if test="${empty viewAll }">
 								<tr>
@@ -144,6 +158,7 @@ function keywordDel() {
 							<c:if test="${!empty viewAll }">
 								<thead>
 									<tr>
+										<td>카테고리 번호</td>
 										<td>카테고리 이름</td>
 										<td>카테고리 선택</td>
 									</tr>
@@ -151,6 +166,7 @@ function keywordDel() {
 								<tbody id="tableList">
 									<c:forEach var="campaign" items="${viewAll }">
 										<tr>
+											<td>${campaign.ccRn }</td>
 											<td>${campaign.ccName }</td>
 											<td><input type="checkbox" name="categoryName" /></td>
 										</tr>

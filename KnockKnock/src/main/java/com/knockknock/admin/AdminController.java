@@ -47,7 +47,7 @@ public class AdminController {
 		
 		return conditionMap;
 	}
-	
+	// 키워드, 캠페인 카테고리 검색 
 	@ModelAttribute("conditionMapOnlyContent")
 	public Map<String, String> SearchConditionMapContent(){
 		Map<String, String> conditionMap = new HashMap<String, String>();
@@ -55,6 +55,8 @@ public class AdminController {
 		
 		return conditionMap;
 	}
+	
+	// 유저 검색 
 	@ModelAttribute("conditionMapUser")
 	public Map<String, String> SearchConditionMapUser(){
 		Map<String, String> conditionMap = new HashMap<String, String>();
@@ -66,7 +68,7 @@ public class AdminController {
 		return conditionMap;
 	}
 
-
+	
 	@GetMapping("/adminMain.do")
 	public String moveAdminMain() {
 		return "/admin/adminMain";
@@ -123,7 +125,7 @@ public class AdminController {
 		Map<String,String> map = pageSet(nowPage,cntPerPage);
 		nowPage = map.get("nowPage");
 		cntPerPage=map.get("cntPerPage");
-		pvo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		pvo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage),pvo.getSearchCondition(),pvo.getSearchKeyword());
 		model.addAttribute("paging", pvo);
 		model.addAttribute("viewAll", adminService.getCampaignCategoryList(pvo));
 		return "/admin/adminCampaignCategory";
