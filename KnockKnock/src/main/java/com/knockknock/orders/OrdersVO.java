@@ -15,6 +15,7 @@ public class OrdersVO {
 	private int sIdx;
 	private String uName;
 	private String pName;
+	private int oFee;
 
 	private String oTempnum;
 
@@ -163,15 +164,28 @@ public class OrdersVO {
 	public void setoTempnum(String oTempnum) {
 		this.oTempnum = oTempnum;
 	}
+	
+	
+
+	public int getoFee() {
+		return oFee;
+	}
+
+	public void setoFee(int oFee) {
+		this.oFee = oFee;
+	}
 
 	@Override
 	public String toString() {
 		return "OrdersVO [oIdx=" + oIdx + ", pIdx=" + pIdx + ", oCnt=" + oCnt + ", oStatus=" + oStatus + ", pPrice="
-				+ pPrice + ", oTotprice=" + oTotprice + ", fCheck=" + fCheck + ", oFee=" + oFee + ", oNumber=" + oNumber
-				+ ", uIdx=" + uIdx + ", paIdx=" + paIdx + ", oDate=" + oDate + ", sIdx=" + sIdx + ", uName=" + uName
-				+ ", pName=" + pName + ", oTempnum=" + oTempnum + "]";
-
-	
+				+ pPrice + ", oTotprice=" + oTotprice + ", fCheck=" + fCheck + ", oNumber=" + oNumber + ", uIdx=" + uIdx
+				+ ", paIdx=" + paIdx + ", oDate=" + oDate + ", sIdx=" + sIdx + ", uName=" + uName + ", pName=" + pName
+				+ ", oFee=" + oFee + ", oTempnum=" + oTempnum + "]";
+	}
 	
 	
 }
+	
+	
+	
+
