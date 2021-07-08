@@ -19,11 +19,6 @@
 	<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
      <!--다음 카카오 주소값-->
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-
-<script>
-
-</script>   
-
 </head>
 <body>
      <body>
@@ -137,10 +132,9 @@
     $(document).ready(function () {
 
         //아이디    
-        $('#id').blur(function () {
+              $('#id').blur(function () {
             var id = $("#id").val();
             var idPattern = /^[A-Za-z]{1}[A-Za-z0-9]{3,10}$/;
-
             if (idPattern.test(id) == true) {
                 $.ajax("idCheck.do", {
                     type: "get",
@@ -155,7 +149,6 @@
                             $("#warningId").html("중복된 아이디입니다.");
                             $("#id").val("");
                             $("#id").focus();
-
                         }
                     },
                     error: function () {
@@ -168,7 +161,6 @@
                 $("#id").focus();
             }
         });
-
 
         //이름
         $('#name').blur(function () {
@@ -259,10 +251,10 @@
         });
 
         //휴대폰번호
-        $("#uPhone").blur(function () {
+        $("#uPhone").blur(function() {
             var phone = $("#uPhone").val();
             console.log(phone);
-            var phonePattern = /^\d{2,3}-\d{3,4}-\d{4}$/;
+            var phonePattern = /^\d{2,3}\d{3,4}\d{4}$/;
             if (phonePattern.test(phone) == false) {
                 $("#warningPhone").html("숫자만 입력해주세요.");
             } else {
@@ -276,13 +268,28 @@
         });
 
 
-        //생년월일
-        $("#birth").blur(function () {
+      //생년월일
+        $("#birth").focusout(function () {
             $("#birth").attr("maxlength", 10);
             var RegNotNum = /[^0-9]/;
             var date = $("#birth").val();
-            var birthPattern = /^(19[0-9][0-9]|20\d{2})-(0[0-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/;
+            var birthPattern = /^(19[0-9][0-9]|20\d{2})(0[0-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])$/;
             console.log(date);
+
+            const ageYear = date.substr(0, 4);
+            console.log(ageYear);
+
+            const today = new Date();
+            const thisyear = today.getFullYear();
+            console.log(thisyear);
+            const age = thisyear - ageYear;
+            console.log(age);
+
+            if (age < 15) {
+                console.log("14세미만");
+                alert("죄송합니다. 14세 미만은 가입이 불가능합니다.");
+                location.href = "/main.do";
+            }
 
             console.log(birthPattern.test(date));
             if (birthPattern.test(date) == true) {
@@ -337,10 +344,14 @@
                 $("#birth").val("");
                 $("#birth").focus();
             }
+
+
         });
 
+        
+
         //닉네임
-        $('#nickname').on('blur', function () {
+        $('#nickname').blur(function () {
             var nick = $("#nickname").val();
             var nickPattern = /[\{\}\[\]\/?.,;:|\)*~`!^\-+<>@\#$%&\\\=\(\'\"]/gi;
             console.log(nick);
