@@ -84,6 +84,12 @@
 		 WHERE CI_IDX = #{ciIdx})
 	</select>
 	
+	<select id="selectInputResult" parameterType="string" resultType="CampaignVO">
+		SELECT * FROM CAMPAIGN
+		WHERE CI_STATUS = 1
+		  AND CI_TITLE LIKE '%'||#{input}||'%'
+	</select>
+	
 		<!-- 기간이 만료됐는지 확인하여 만료 시 캠페인 상태를 0으로 바꾼다 -->
 	<update id="updateExpiredCampaign">
 		UPDATE CAMPAIGN

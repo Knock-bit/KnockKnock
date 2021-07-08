@@ -190,6 +190,7 @@ campaign-navbar >li >a{
   background: #f6f7f6;
   padding: 10px 15px;
   margin-bottom: 15px;
+  border-radius:10px;
 }
 
 .campaign-details .campaign-info h5 {

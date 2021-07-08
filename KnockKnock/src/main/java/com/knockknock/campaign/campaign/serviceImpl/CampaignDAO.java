@@ -71,4 +71,8 @@ public class CampaignDAO {
 	public int updateStartCampaign() {
 		return mybatis.update("campaign.updateStartCampaign");
 	}
+
+	public List<CampaignVO> selectInputResult(String input) {
+		return  mybatis.selectList("campaign.selectInputResult", input);
+	}
 }

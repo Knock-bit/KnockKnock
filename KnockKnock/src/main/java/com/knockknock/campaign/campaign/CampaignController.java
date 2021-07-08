@@ -108,6 +108,19 @@ public class CampaignController {
 		return "/campaign/ed/list";
 	}
 	
+	@GetMapping("/search.do")
+	public String search(String input, Model model) {
+		System.out.println("input값:" + input);
+		List<CampaignVO> searchedList = campaignService.selectInputResult(input);
+		if(searchedList !=null) {
+			model.addAttribute("list", searchedList);
+			model.addAttribute("input", input);
+		}
+		return "/campaign/ing/searched";
+	}
+	
+	
+	
 	
 	@GetMapping("/ing/detail.do")
 	public String detail(@SessionAttribute(name = "users", required = false) UserVO user, CampaignVO campaignVO, Model model) {

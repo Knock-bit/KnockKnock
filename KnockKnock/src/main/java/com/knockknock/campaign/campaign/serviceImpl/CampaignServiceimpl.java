@@ -87,4 +87,9 @@ public class CampaignServiceimpl implements CampaignService {
 		return campaignDAO.updateStartCampaign();
 	}
 
+	@Override
+	public List<CampaignVO> selectInputResult(String input) {
+		return campaignDAO.selectInputResult(input);
+	}
+
 }

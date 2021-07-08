@@ -37,6 +37,16 @@
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
+	
+	function getInputValue(){
+		
+		var input = $("#inputValue").val();
+		$("#commonDiv").load("${cp}/campaign/search.do?input=" + input)
+		
+	}
+		
+	function search(){
+	}
 
 	$(function(){
 		$("#getIng").click(function(){
@@ -54,6 +64,7 @@
 		$("#userCount").click(function(){
 			$("#commonDiv").load("${cp}/campaign/getList.do?order=userCount");
 		})
+		
 		
 	});
 	
