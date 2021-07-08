@@ -268,6 +268,16 @@ public class UserVO {
 		this.uImgPath = uImgPath;
 	} 
 	// ================== [ toString ] ====================
+
+	@Override
+	public String toString() {
+		return "UserVO [uIdx=" + uIdx + ", uId=" + uId + ", uName=" + uName + ", uPwd=" + uPwd + ", uNickname="
+				+ uNickname + ", uEmail=" + uEmail + ", uPhone=" + uPhone + ", uBirth=" + uBirth + ", uTotPoint="
+				+ uTotPoint + ", uType=" + uType + ", uActive=" + uActive + ", uLastlogin=" + uLastlogin + ", uGender="
+				+ uGender + ", uAddress=" + uAddress + ", uJoindate=" + uJoindate + ", uImg=" + uImg + ", uImgPath="
+				+ uImgPath + ", uUsedPoint=" + uUsedPoint + ", uApprkey=" + uApprkey + ", uApprstatus=" + uApprstatus
+				+ "]";
+	}
  
  
 

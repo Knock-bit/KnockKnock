@@ -12,8 +12,13 @@
 	<!-- 로그인 -->
 	<select id="selectlogin" parameterType="UserVO" resultType="UserVO">
 		SELECT * FROM USERS WHERE U_ID=#{uId} and U_PWD=#{uPwd}
+ 	</select>
+ 	
+ 	<!-- 이메일 인증 완료했는지 체크하기 -->
+	<select id="checkApprLogin" parameterType="UserVO" resultType="UserVO">
+		SELECT * FROM USERS WHERE U_ID=#{uId} and U_APPRSTATUS='TRUE'
+		
 	</select>
-	
 	<!-- ID중복체크 -->
 	<select id="idCheck" parameterType="String" resultType="String">
 		SELECT U_IDX FROM USERS WHERE U_ID=#{id}

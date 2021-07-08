@@ -17,11 +17,13 @@ public class UserDAO {
    
    //로그인
    public UserVO selectlogin(UserVO vo) {
-      System.out.println("로그인 mybatis "+mybatis);
-      vo = mybatis.selectOne("UserVO.selectlogin", vo);
-
-      return vo;      
+      return mybatis.selectOne("UserVO.selectlogin", vo);      
    }
+   
+   public UserVO checkApprLogin(UserVO vo) {
+	   return mybatis.selectOne("UserVO.checkApprLogin", vo);
+   }
+  
    //아이디 중복체크
    public int idCheck(String id) {
       String uId = mybatis.selectOne("UserVO.idCheck", id);
@@ -104,6 +106,7 @@ public class UserDAO {
 	   System.out.println("회원인증중 DAO= "+mybatis.update("UserVO.userApproval", vo));
 	   return mybatis.update("UserVO.userApproval", vo);
    }
+   
    
    
    
