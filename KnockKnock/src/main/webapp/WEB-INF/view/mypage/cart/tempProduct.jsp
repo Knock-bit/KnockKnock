@@ -152,7 +152,7 @@
 			배송비 : ${pvo.pFee }
 		</div>
 		<div class="pbtn">
-			<button onclick="location.href='productList.do'">목록으로 이동</button>
+			<button onclick="location.href='${cp }productlist.do'">목록으로 이동</button>
 			<button>주문하기</button>
 			<input type="button" onclick="addCart()" value="장바구니">
 		</div>

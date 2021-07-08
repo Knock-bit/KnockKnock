@@ -11,13 +11,14 @@ public class UserOrderVO {
 	private int oZipcode;
 	private int uIdx;
 	private String oDelivery;
+	private String oTempnum;
 	
 	public UserOrderVO() {
 		
 	}
 
 	public UserOrderVO(int gIdx, String oAddress1, String oAddress2, String oPhone, String oReceiver, int oZipcode,
-			int uIdx, String oDelivery) {
+			int uIdx, String oDelivery, String oTempnum) {
 		super();
 		this.gIdx = gIdx;
 		this.oAddress1 = oAddress1;
@@ -27,6 +28,7 @@ public class UserOrderVO {
 		this.oZipcode = oZipcode;
 		this.uIdx = uIdx;
 		this.oDelivery = oDelivery;
+		this.oTempnum = oTempnum;
 	}
 
 	public int getgIdx() {
@@ -95,12 +97,24 @@ public class UserOrderVO {
 		this.oDelivery = oDelivery;
 	}
 
+	
+	
+	public String getoTempnum() {
+		return oTempnum;
+	}
+
+	public void setoTempnum(String oTempnum) {
+		this.oTempnum = oTempnum;
+	}
+
 	@Override
 	public String toString() {
 		return "UserOrderVO [gIdx=" + gIdx + ", oAddress1=" + oAddress1 + ", oAddress2=" + oAddress2 + ", oPhone="
 				+ oPhone + ", oReceiver=" + oReceiver + ", oZipcode=" + oZipcode + ", uIdx=" + uIdx + ", oDelivery="
-				+ oDelivery + "]";
+				+ oDelivery + ", oTempnum=" + oTempnum + "]";
 	}
+
+	
 
 	
 	

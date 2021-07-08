@@ -37,8 +37,8 @@ public class MypageProductController {
 	@Autowired
 	private MypageProductService mypageProductService;
 	
-	
-	
+
+
 	// 상품 장바구니에 담기
 	@RequestMapping(value="/addCart.do", method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseBody

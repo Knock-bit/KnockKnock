@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.knockknock.orders.OrdersListVO;
 import com.knockknock.orders.OrdersVO;
 import com.knockknock.orders.UserOrderVO;
 import com.knockknock.product.ProductVO;
@@ -52,5 +53,29 @@ public class MypageOrdersListServiceImpl implements MypageOrdersListService {
 	public UserOrderVO confirmationUserOrderInfo() {
 		
 		return ordersListDAO.confirmationUserOrderInfo();
+	}
+	// 수령자 정보에 들어갈 tempnum 가져오기
+	@Override
+	public String oTempnum() {
+		
+		return  ordersListDAO.oTempnum();
+	}
+	// 임시테이블 데이터 삭제
+	@Override
+	public int deleteOrderTemp() {
+		// TODO Auto-generated method stub
+		return ordersListDAO.deleteOrderTemp();
+	}
+	// 주문내역
+	@Override
+	public List<OrdersListVO> orderHistoryList() {
+		
+		return ordersListDAO.orderHistoryList();
+	}
+	// 임시테이블 데이터 삭제 전 데이터 확인
+	@Override
+	public int deleteCheck() {
+		// TODO Auto-generated method stub
+		return ordersListDAO.deleteCheck();
 	}
 }

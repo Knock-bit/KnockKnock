@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.knockknock.orders.OrdersListVO;
 import com.knockknock.orders.OrdersVO;
 import com.knockknock.orders.UserOrderVO;
 import com.knockknock.product.ProductVO;
@@ -47,5 +48,34 @@ public class MypageOrdersListDAO {
 	public UserOrderVO confirmationUserOrderInfo() {
 		
 		return mybatis.selectOne("Orders.confirmationUserOrderInfo");
+	}
+	// 수령자 정보에 들어갈 tempnu 가져오기
+	public String oTempnum() {
+		
+		return mybatis.selectOne("Orders.oTempnum");
+	}
+	// 임시데이터 삭제
+	public int deleteOrderTemp() {
+		
+		return mybatis.delete("Orders.deleteOrderTemp");
+	}
+	// 주문내역
+	public List<OrdersListVO> orderHistoryList() {
+		
+		return mybatis.selectList("Orders.orderHistoryList");
+	}
+	// 임시테이블 데이터 삭제 전 데이터 확인
+	public int deleteCheck() {
+		
+		List<String> list = mybatis.selectList("Orders.deleteCheck");
+		
+		int result = 0;
+		if(list.size()>0) {
+			result = 1;
+		} else {
+			result = 0;
+		}
+		// TODO Auto-generated method stub
+		return result;
 	}
 }
