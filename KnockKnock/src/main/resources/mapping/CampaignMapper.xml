@@ -11,6 +11,13 @@
 		 WHERE SYSDATE > CI_STARTDATE
 		   AND CI_STATUS = 0 
 	</update>
+	
+	<!-- 캠페인 검색 -->
+	<select id="selectInputResult" parameterType="string" resultType="CampaignVO">
+		SELECT * FROM CAMPAIGN
+		WHERE CI_STATUS = 1
+		  AND CI_TITLE LIKE '%'||#{input}||'%'
+	</select>
 
 	<!-- 진행중인 캠페인, 주최자 닉네임, 카테고리, 참여자수 불러오기 -->
 	<select id="selectAllCampaign" resultType="CampaignVO">

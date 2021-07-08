@@ -29,6 +29,6 @@ public interface CampaignService {
 	public CampaignUserVO selectCampaignUser(CampaignUserVO cUser);
 	//캠페인 시작
 	public int updateStartCampaign();
-	
-	
+	// 캠페인 검색
+	public List<CampaignVO> selectInputResult(String input);
 }

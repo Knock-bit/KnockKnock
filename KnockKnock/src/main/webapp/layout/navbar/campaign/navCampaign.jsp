@@ -13,10 +13,10 @@
 
 	  <header id="header">
     <div class="container d-flex align-items-center justify-content-end">
-    <form class="d-flex float-right">
-      <input class="form-control me-2" type="search"  aria-label="Search">
-      <button class="btn btn-outline-success" type="submit">search</button>
-    </form>
+     <div class="d-flex float-right">
+      <input id="inputValue" class="form-control me-2" type="search"  aria-label="Search" required >
+      <button type="submit" class="btn btn-outline-success" onclick="getInputValue()"><i class="bi bi-search"></i></button>
+    </div>
       <nav id="navbar" class="navbar order-last order-lg-0 justify-content-end">
 	
           <ul>
