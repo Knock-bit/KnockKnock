@@ -21,14 +21,11 @@
 }
 </style>
 <script>
-
-function selChange() {
-	var sel = document.getElementById('cntPerPage').value;
-	location.href = "adminKeywordList.do?nowPage=${paging.nowPage}&cntPerPage="
-			+ sel;
-}
-
-
+	function selChange() {
+		var sel = document.getElementById('cntPerPage').value;
+		location.href = "adminKeywordList.do?nowPage=${paging.nowPage}&cntPerPage="
+				+ sel;
+	}
 </script>
 </head>
 <body>
@@ -52,6 +49,19 @@ function selChange() {
 								보기</option>
 						</select>
 					</div>
+					<!-- 검색기능추가 -->
+					<form action="adminCampaignList.do" method="get">
+						<table class="border-none">
+							<tr>
+								<td><select name="searchCondition">
+										<c:forEach var="option" items="${conditionMapUserCampaign }">
+											<option value="${option.value}">${option.key }</option>
+										</c:forEach>
+								</select> <input type="text" name="searchKeyword"> <input
+									type="submit" value="검색"></td>
+							</tr>
+						</table>
+					</form>
 					<form id="proposalForm" method="post"
 						style="margin-top: 300px; margin-left: 100px;">
 						<table class="table table-bordered table-striped"
@@ -60,7 +70,7 @@ function selChange() {
 
 							<c:if test="${empty viewAll }">
 								<tr>
-									<td>등록된 리스트가 없습니다.</td>
+									<td>등록된 캠페인 리스트가 없습니다.</td>
 								</tr>
 							</c:if>
 
@@ -69,6 +79,7 @@ function selChange() {
 									<tr>
 										<td>캠페인 번호</td>
 										<td>제목</td>
+										<td>제안자</td>
 										<td>캠페인 시작일</td>
 										<td>캠페인 종료일</td>
 										<td>상태</td>
@@ -79,6 +90,7 @@ function selChange() {
 										<tr>
 											<td>${campaign.ciRn }</td>
 											<td><a href="getCampaign.do?ciIdx=${campaign.ciIdx }">${campaign.ciTitle }</a></td>
+											<td>${campaign.uNickname }</td>
 											<td>${campaign.ciStartdate }</td>
 											<td>${campaign.ciEnddate }</td>
 											<c:if test="${campaign.ciStatus  eq 0}">

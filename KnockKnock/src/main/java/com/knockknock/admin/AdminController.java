@@ -66,6 +66,27 @@ public class AdminController {
 		
 		return conditionMap;
 	}
+	
+	// 캠페인 리스트 검색 
+	@ModelAttribute("conditionMapUserCampaign")
+	public Map<String, String> SearchConditionMapUserCampaign(){
+		Map<String, String> conditionMap = new HashMap<String, String>();
+		conditionMap.put("제목", "TITLE");
+		conditionMap.put("제안자", "USER");
+		
+		return conditionMap;
+	}
+	
+	// 제안서 검색
+	@ModelAttribute("conditionMapProposal")
+	public Map<String, String> SearchConditionMapProposal() {
+		Map<String, String> conditionMap = new HashMap<String, String>();
+		conditionMap.put("제목", "TITLE");
+		conditionMap.put("제안자", "USER");
+
+		return conditionMap;
+	}
+	
 
 	
 	@GetMapping("/adminMain.do")
@@ -134,7 +155,7 @@ public class AdminController {
 		return "/admin/adminFunding";
 	}
 	
-	
+	// 캠페인 리스트 가져오기 
 	@GetMapping("/adminCampaignList.do")
 	public String getCampaignList(PagingVO pvo, Model model,
 			@RequestParam(value = "nowPage", required = false) String nowPage,
@@ -144,12 +165,13 @@ public class AdminController {
 		Map<String,String> map = pageSet(nowPage,cntPerPage);
 		nowPage = map.get("nowPage");
 		cntPerPage=map.get("cntPerPage");
-		pvo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		pvo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage),pvo.getSearchCondition(),pvo.getSearchKeyword());
 		model.addAttribute("paging", pvo);
 		model.addAttribute("viewAll", adminService.getCampaignList(pvo));
 		return "/admin/campaign/adminCampaignList";
 	}
 	
+	// 캠페인 상세보기
 	@GetMapping("/getCampaign.do")
 	public String getCampaign(AdminCampaignVO vo, Model model) {
 		AdminCampaignVO campaign = adminService.getCampaign(vo);

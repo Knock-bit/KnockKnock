@@ -168,7 +168,18 @@
 		SELECT * FROM
 		( SELECT
 		ROWNUM ciRn, A.* FROM
-		( SELECT * FROM CAMPAIGN ORDER BY CI_IDX DESC) A
+		( SELECT CI.*, U.U_NICKNAME
+		FROM CAMPAIGN CI
+		INNER JOIN USERS U ON CI.U_IDX = U.U_IDX
+		<if test="searchCondition != null">
+			<if test="searchCondition == 'TITLE'.toString()">
+				WHERE CI_TITLE LIKE '%'||#{searchKeyword}||'%'
+			</if>
+			<if test="searchCondition == 'USER'.toString()">
+				WHERE U_NICKNAME LIKE '%'||#{searchKeyword}||'%'
+			</if>
+		</if>
+		ORDER BY CI_IDX DESC) A
 		) WHERE ciRn
 		BETWEEN #{start} AND #{end}
 	</select>
