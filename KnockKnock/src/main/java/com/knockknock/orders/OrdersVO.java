@@ -16,14 +16,14 @@ public class OrdersVO {
 	private int sIdx;
 	private String uName;
 	private String pName;
-	
+	private String oTempnum;
 
 	public OrdersVO() {
 		super();
 	}
 
 	public OrdersVO(int oIdx, int pIdx, int oCnt, int oStatus, int pPrice, int oTotprice, String fCheck, int oFee,
-			int oNumber, int uIdx, int paIdx, String oDate, int sIdx) {
+			int oNumber, int uIdx, int paIdx, String oDate, int sIdx, String oTempnum) {
 
 		super();
 		this.oIdx = oIdx;
@@ -39,7 +39,7 @@ public class OrdersVO {
 		this.paIdx = paIdx;
 		this.oDate = oDate;
 		this.sIdx = sIdx;
-
+		this.oTempnum = oTempnum;
 		this.uName = uName;
 		this.pName = pName;
 	}
@@ -165,11 +165,22 @@ public class OrdersVO {
 		this.sIdx = sIdx;
 	}
 
+	public String getoTempnum() {
+		return oTempnum;
+	}
+
+	public void setoTempnum(String oTempnum) {
+		this.oTempnum = oTempnum;
+	}
+
 	@Override
 	public String toString() {
 		return "OrdersVO [oIdx=" + oIdx + ", pIdx=" + pIdx + ", oCnt=" + oCnt + ", oStatus=" + oStatus + ", pPrice="
 				+ pPrice + ", oTotprice=" + oTotprice + ", fCheck=" + fCheck + ", oFee=" + oFee + ", oNumber=" + oNumber
-				+ ", uIdx=" + uIdx + ", paIdx=" + paIdx + ", oDate=" + oDate + ", sIdx=" + sIdx + "]";
+				+ ", uIdx=" + uIdx + ", paIdx=" + paIdx + ", oDate=" + oDate + ", sIdx=" + sIdx + ", uName=" + uName
+				+ ", pName=" + pName + ", oTempnum=" + oTempnum + "]";
 	}
-
+	
+	
+	
 }

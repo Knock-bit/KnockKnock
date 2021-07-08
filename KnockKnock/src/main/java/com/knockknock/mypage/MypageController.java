@@ -10,6 +10,7 @@ import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -185,12 +186,13 @@ public class MypageController {
 		
 		
 		// 해당 유저의 STATUS가 1인 엠블럼 이미지 가져오기
-		List<String> emImgList = mypageService.emblemList(vo);
+		List<String> emImgList = mypageService.emblemList(user);
 
 		// 나의 포인트 내역 가져오기
 		vo.setuIdx(user.getuIdx());
 		List<PointVO> pointList = mypageService.myPointList(vo);
 		System.out.println("pointList : " + pointList);
+		
 		
 		model.addAttribute("users",user);
 		model.addAttribute("pointList", pointList);

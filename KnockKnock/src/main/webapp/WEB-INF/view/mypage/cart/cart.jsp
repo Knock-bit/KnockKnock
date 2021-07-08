@@ -45,6 +45,7 @@
 		<div>
 			<input type="button" onclick="location.href='${cp }/productlist.do'" value="더 구매하러 가기">
 			<input type="button" onclick="location.href='ordersList.do'" value="내 주문 목록">
+			<input type="button" onclick="location.href='orderConfirm.do'" value="주문확인(임시)">
 		</div>
 		<div class="cartText">
 			<!-- 장바구니 text, 주문 진행 순서 명시, 상품 구매로 이동버튼, 내 주문내역 이동 버튼 -->
