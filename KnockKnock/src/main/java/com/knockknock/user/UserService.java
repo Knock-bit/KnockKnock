@@ -17,4 +17,5 @@ public interface UserService {
 	public void findPwd(HttpServletResponse resp, UserVO vo) throws Exception;
 	public Map<String, String> readUserInfo(UserVO vo);
 	public void userApproval(UserVO vo, HttpServletResponse resp) throws Exception;
+	public String checkApprLogin(UserVO vo);
 }

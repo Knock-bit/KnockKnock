@@ -53,6 +53,19 @@ public class UserServiceImpl implements UserService {
 		System.out.println("UserServiceImpl에 받은 값: " + userDAO.kakaologin(vo));
 		return userDAO.googlelogin(vo);
 	}
+	//이메일 인증 완료했는지 체크하기.
+	@Override
+	public String checkApprLogin(UserVO vo) {
+		System.out.println("checkApprServiceImpl = " +userDAO.checkApprLogin(vo));
+		String result = "";
+		if(userDAO.checkApprLogin(vo)==null) {
+			result = "fail";
+		}else {
+			result = "pass";
+		}
+		System.out.println(result);
+		return result;
+	}
 
 	@Override
 	public void sendEmail(UserVO vo, String div) throws Exception {
@@ -199,6 +212,8 @@ public class UserServiceImpl implements UserService {
 			out.close();
 		}		
 	}
+
+	
  
 
 }

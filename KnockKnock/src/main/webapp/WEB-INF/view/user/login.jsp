@@ -39,12 +39,20 @@
                 dataType: "json",
                 contentType: "application/json",
                 success: function (data) {
+ 					if(data=="1"){
+	                    location.href = "/main.do";	
+					}else if(data=="3"){
+						alert("이메일 인증이 완료되지 않은 계정입니다.\n이메일을 확인해주세요.");
+						location.href="/user/login.do";
+					}else if(data=="2"){
+	                    alert("아이디와 비밀번호를 확인해주세요.");
+						location.href="/user/login.do";
 
-                    location.href = "/main.do";
+					}
                 },
                 error: function (data) {
-                    alert("아이디와 비밀번호를 확인해주세요.");
-                    location.href = "/user/login.do";
+                    alert("시스템 오류입니다. 관리자에게 문의해주시기 바랍니다.");
+                    location.href = "/main.do";
                 }
             });
         };
