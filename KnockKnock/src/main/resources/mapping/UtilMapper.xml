@@ -111,7 +111,13 @@
 		SELECT * FROM
 		( SELECT
 		ROWNUM cfRn, A.* FROM
-		( SELECT * FROM FUNDING ORDER BY CF_IDX DESC) A
+		( SELECT * FROM FUNDING
+		<if test="searchCondition != null">
+			<if test="searchCondition == 'TITLE'.toString()">
+				WHERE CF_TITLE LIKE '%'||#{searchKeyword}||'%'
+			</if>
+		</if>
+		ORDER BY CF_IDX DESC) A
 		)
 		WHERE cfRn
 		BETWEEN

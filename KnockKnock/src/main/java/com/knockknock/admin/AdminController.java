@@ -63,7 +63,6 @@ public class AdminController {
 		conditionMap.put("아이디", "ID");
 		conditionMap.put("이름", "NAME");
 		conditionMap.put("닉네임", "NICKNAME");
-		conditionMap.put("활성상태", "ACTIVE");
 		
 		return conditionMap;
 	}
