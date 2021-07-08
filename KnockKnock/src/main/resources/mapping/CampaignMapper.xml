@@ -80,7 +80,7 @@
 		FROM USERS U, CAMPAIGN C
 		WHERE CI_STATUS = 1
 		AND U.U_IDX = C.U_IDX
-		AND C.CI_IDX =3
+		AND C.CI_IDX = #{ciIdx}
 	</select>
 	
 	<!-- 캠페인 상세보기 - 참여자 닉네임 불러오기 -->

@@ -22,8 +22,8 @@
 <script>
 	function postForm() {
 		$('textarea[name="cpContent"]').val($('#summernote').summernote('code'));
-		alert($('textarea[name="cpContent"]').val(
-				$('#summernote').summernote('code')));
+		/* alert($('textarea[name="cpContent"]').val(
+				$('#summernote').summernote('code'))); */
 		console.log($('textarea[name="cpContent"]').val(
 				$('#summernote').summernote('code')));
 	}
