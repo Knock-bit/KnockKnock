@@ -77,6 +77,15 @@
 		SELECT P.*, U.U_NICKNAME
 		FROM PROPOSAL P INNER
 		JOIN USERS U on P.U_IDX = U.U_IDX
+		<if test="searchCondition != null">
+			<if test="searchCondition == 'TITLE'.toString()">
+				WHERE CP_TITLE LIKE '%'||#{searchKeyword}||'%'
+			</if>
+			<if test="searchCondition == 'USER'.toString()">
+				WHERE U_NICKNAME LIKE '%'||#{searchKeyword}||'%'
+			</if>
+		</if>
+
 		ORDER BY CP_REGDATE) A
 		) WHERE cpRn
 		BETWEEN #{start} AND
