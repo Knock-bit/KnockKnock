@@ -66,16 +66,19 @@ public class AdminFundingController {
 		return "redirect:getFundingList.do";
 	}
 
+	// 펀딩 리스트 가져오기
 	@GetMapping("getFundingList.do")
 	public String getFundingList(AdminFundingVO vo, PagingVO pvo, Model model,
 			@RequestParam(value = "nowPage", required = false) String nowPage,
-			@RequestParam(value = "cntPerPage", required = false) String cntPerPage) {
+			@RequestParam(value = "cntPerPage", required = false) String cntPerPage,
+			@RequestParam(value = "sort", required = false) String sort) {
 		int total = adminFudingService.countFunding();
 		Map<String, String> map = UtilClass.pageSet(nowPage, cntPerPage);
 		nowPage = map.get("nowPage");
 		cntPerPage = map.get("cntPerPage");
+		pvo.setSort(sort);
 		pvo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage), pvo.getSearchCondition(),
-				pvo.getSearchKeyword());
+				pvo.getSearchKeyword(), pvo.getSort());
 		model.addAttribute("paging", pvo);
 		model.addAttribute("viewAll", adminFudingService.getFundingList(pvo));
 		System.out.println("funding>> " + adminFudingService.getFundingList(pvo));
