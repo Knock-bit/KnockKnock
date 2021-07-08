@@ -55,6 +55,7 @@ public class ProductController {
 		return "/mypage/cart/tempProduct";
 	}
 	
+	@GetMapping("")
 	
 	// 상품 등록(일반)
 	@PostMapping("/productRegister.do")

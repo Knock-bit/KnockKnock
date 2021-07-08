@@ -90,13 +90,13 @@
                         <div class="form-row1">
                             <div class="form-group">
                                 <label for="address">판매자 주소 :</label>
-                                <input type="text" name="uAddress" id="addr" placeholder="우편번호" />
-                                <input type="button" name="uAddress" id="btnAddr" value="검색">
+                                <input type="text" name="sAddress" id="addr" placeholder="우편번호" />
+                                <input type="button" name="sAddress" id="btnAddr" value="검색">
                             </div>
                             <div class="form-group">
-                                <input type="text" name="uAddress" id="addr1" placeholder="주소" required>
+                                <input type="text" name="sAddress" id="addr1" placeholder="주소" required>
                                 <br>
-                                <input type="text" name="uAddress" id="addr2" placeholder="상세주소">
+                                <input type="text" name="sAddress" id="addr2" placeholder="상세주소">
 
                             </div>
                         </div>
