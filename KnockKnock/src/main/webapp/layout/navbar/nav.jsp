@@ -35,7 +35,7 @@
 					</ul></li>
 
 
-				<li><a href="${cp }/productlist.do">Shop</a></li>
+				<li><a href="${cp }/productlist.do?pcIdx=0">Shop</a></li>
 				<li><a href="${cp }/contact/contact.do">Contact</a></li>
 
 			</ul>

@@ -30,7 +30,7 @@
 						<li><a href="${cp }/campaign/funding/list.do">캠페인 펀딩하기</a></li>
 						<li><a href="${cp }/campaign/proposal.do">캠페인 제안하기</a></li>
 					</ul></li>
-						<li><a href="${cp }/productlist.do">Shop</a></li>
+						<li><a href="${cp }/productlist.do?pcIdx=0">Shop</a></li>
 						<li><a href="${cp }/contact/contact.do">Contact</a></li>
 		
 						<li class="dropdown"><a href="#">

@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,7 +19,7 @@ public class CommentsController {
 	
 	@RequestMapping("/board/commentsList.do")
 	@ResponseBody
-	public List<CommentsVO> CommentsList(int bIdx) {
+	public List<CommentsVO> CommentsList(int bIdx, Model model) {
 		
 		return commentsService.commentsList(bIdx);
 	}
@@ -53,6 +53,6 @@ public class CommentsController {
 		commentsService.deleteComments(mIdx);
 		rttr.addFlashAttribute("result", "delete success");
 		
-		return "redirect:/board/getBoard";
+		return "redirect:/board/getBoard.do";
 	}
 }
