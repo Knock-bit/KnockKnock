@@ -144,4 +144,27 @@ public class BoardController {
 		
 		return ncPage;
 	}
+	
+	@RequestMapping("/board/myViewBoard.do")
+	public String myViewBoard(BoardVO vo, Model model, PagingVO pvo,
+			@RequestParam(value = "nowPage", required = false) String nowPage,
+			@RequestParam(value = "cntPerPage", required = false) String cntPerPage) {
+		
+		int total = boardService.countBoard();
+		if (nowPage == null && cntPerPage == null) {
+			nowPage = "1"; 
+			cntPerPage = "5";
+		} else if (nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) {
+			cntPerPage = "5";
+		}
+		pvo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		model.addAttribute("paging", pvo);
+		model.addAttribute("getBoardList", boardService.getBoardList(pvo));
+		List<BoardVO> myViewBoard = boardService.getBoardList(pvo);
+		model.addAttribute("myViewBoard", myViewBoard);
+		
+		return "board/getBoardList";	
+	}
 }

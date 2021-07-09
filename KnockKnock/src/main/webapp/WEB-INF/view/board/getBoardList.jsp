@@ -21,7 +21,7 @@
 	}
 	//내글만보기
 	function myView_board(frm) {
-		frm.action = "${cp}/board/myView.do"
+		frm.action = "${cp}/board/myViewBoard.do"
 		frm.setAttribute('method', 'get');
 		frm.submit();
 	}
