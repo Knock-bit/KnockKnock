@@ -13,7 +13,7 @@
 <div id="container">
 	<h1>글등록</h1>
 	<hr>
-	<form action="insertBoard.do" method="post" enctype="multipart/form-data">
+	<form action="${cp }/board/insertBoard.do" method="post" enctype="multipart/form-data">
 	<table>
 		<tr>
 			<th>제목</th>
