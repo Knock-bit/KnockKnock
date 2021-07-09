@@ -8,7 +8,19 @@
 <head>
 <meta charset="UTF-8">
 <title>글 등록</title>
+<!-- 서머노트 추가 -->
+<script src="${cp}/resource/js/jquery/jquery-3.6.0.min.js"></script>
+<script src="${cp }/resource/summernote/lang/summernote-ko-KR.js"></script>
+<script src="${cp }/resource/summernote/summernote-lite.js"></script>
+<link href="${cp}/resource/summernote/summernote-lite.css"
+	rel="stylesheet">
 <script>
+ 	$(function(){
+		$("#input-btn").click(function(){
+			$("#boardForm").submit();
+		});
+	}); 
+
    function postForm() {
       $('textarea[name="bContent"]').val($('#summernote').summernote('code'));
       /* alert($('textarea[name="bContent"]').val(
@@ -24,8 +36,10 @@
 <div id="container">
 	<h1>글등록</h1>
 	<hr>
-	<form role="form" method="post" onsubmit="postForm()"
-         action="${cp}/boardSummer.do">
+	<%-- <form role="form" method="post" onsubmit="postForm()"
+         action="${cp}/boardSummer.do"> --%>
+         <form role="form" method="post" onsubmit="postForm()"
+         action="${cp}/board/boardSummer.do" id="boardForm" >
 	<table>
 		<tr>
 			<th>제목</th>
@@ -37,7 +51,7 @@
 			<th>작성자</th>
 			<td>
 				 ${users.uNickname }
-            	<input type="hidden" value="${users.uIdx }">
+            	<input type="hidden" value="${users.uIdx }" name="uIdx">
 			</td>
 		</tr>
 		<tr>
@@ -55,7 +69,8 @@
 		</tr>
 		<tr>
 			<td colspan="2">
-				<input type="submit" value="글 등록">
+			<input type="hidden" value="${ciIdx }" name="ciIdx">
+				<input type="button" id="input-btn" value="글 등록">
 			</td>
 		</tr>
 	</table>

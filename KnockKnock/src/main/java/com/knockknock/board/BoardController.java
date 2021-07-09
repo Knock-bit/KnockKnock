@@ -33,10 +33,11 @@ public class BoardController {
 	private BoardService boardService;
 	
 	@RequestMapping("/board/getBoardList.do")
-	public String getBoardList(BoardVO vo, Model model, PagingVO pvo,
+	public String getBoardList(int ciIdx, BoardVO vo, Model model, PagingVO pvo,
 			@RequestParam(value = "nowPage", required = false) String nowPage,
 			@RequestParam(value = "cntPerPage", required = false) String cntPerPage) {
-		
+		System.out.println("getBoardList 실행");
+		System.out.println(ciIdx);
 		int total = boardService.countBoard();
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = "1"; 
@@ -46,18 +47,23 @@ public class BoardController {
 		} else if (cntPerPage == null) {
 			cntPerPage = "5";
 		}
+		
+		
 		pvo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		model.addAttribute("ciIdx", ciIdx);
 		model.addAttribute("paging", pvo);
 		model.addAttribute("getBoardList", boardService.getBoardList(pvo));
-		List<BoardVO> boardList = boardService.getBoardList(pvo);
+		/* List<BoardVO> boardList = boardService.getBoardList(pvo); */
+		List<BoardVO> boardList = boardService.getCampaignBoardList(ciIdx);
 		model.addAttribute("getBoardList", boardList);
 		
 		return "board/getBoardList";	
 	}
 	
 	@GetMapping("/board/moveInsert.do")
-	public String moveInsert(BoardVO vo) {
-		
+	public String moveInsert(int ciIdx, Model model) {
+		System.out.println("moveInsert! ciIdx:" + ciIdx);
+		model.addAttribute("ciIdx", ciIdx);
 		return "board/insertBoard";
 	}
 	
@@ -214,7 +220,9 @@ public class BoardController {
 	  @PostMapping("/board/boardSummer.do")
 	  public String insertBoardSummer(BoardVO vo, Model model, MultipartFile file) throws IllegalStateException, IOException {
 		  System.out.println(vo);
+		  int ciIdx = vo.getCiIdx();
 	      boardService.insertBoard(vo);
-	      return "redirect:/board/getBoardList.do";
+	      model.addAttribute("ciIdx", ciIdx);
+	      return "campaign/ing/detailWithBoard";
 	  }
 }
