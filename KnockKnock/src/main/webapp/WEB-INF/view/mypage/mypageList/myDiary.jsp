@@ -46,7 +46,7 @@
 <script src="/resource/img/upload/mypage/packages/core/main.js"></script>
 <script src="/resource/img/upload/mypage/packages/interaction/main.js"></script>
 <script src="/resource/img/upload/mypage/packages/daygrid/main.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
@@ -82,12 +82,12 @@ $(function(){
   			
 			for(var i=0; i< data.length; i++){
 				var title = data[i].bSubject;
-				var startDate = data[i].bRegdate; // date타입 받음
-				var start = startDate.toString();
+				var start = data[i].bRegdate; // date타입 받음
+				//var start = moment(data[i].bRegdate).format('yyyy-MM-dd'); 
 				var color =  '#6c9378'; 
 				var textColor = '#FFFFFF';
 				
-				calendar.addEvent({title : title,color:color,textColor:textColor, start: '2021-07-01'});
+				calendar.addEvent({title : title,color:color,textColor:textColor, start: start});
 			
 			}
   			
@@ -104,9 +104,12 @@ $(function(){
 	
 </script>
 <style>
+*{
+	font-family: 'Noto Sans KR', sans-serif;
+}
 .main-content {
 	flex: 1;
-	min-height: 100vh;
+	height:100%;
 	margin-top: 100px;
 }
 
@@ -118,6 +121,7 @@ $(function(){
 #calendar {
 	width: 70%;
 	margin: 0 auto;
+	font-size:13px;
 }
 </style>
 </head>

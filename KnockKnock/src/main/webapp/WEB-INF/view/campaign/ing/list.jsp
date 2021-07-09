@@ -38,6 +38,13 @@
 
 <script>
 
+	function getInputValue(){
+		
+		var input = $("#inputValue").val();
+		$("#commonDiv").load("${cp}/campaign/search.do?input=" + input)
+		
+	}
+		
 	$(function(){
 		$("#getIng").click(function(){
 			$("#commonDiv").load("${cp}/campaign/getIngList.do");
@@ -61,6 +68,10 @@
 
 </script>
 <style>
+
+#commonDiv{
+ padding-top: 60px;
+}
 .scale {
 	transform: scale(1);
 	-webkit-transform: scale(1);
@@ -108,7 +119,6 @@
   	</c:otherwise>
   	</c:choose>
 
-      <a href="campaigns.html" class="get-started-btn">Get Started</a>
 
     </div>
   </header><!-- End Header -->
@@ -125,7 +135,7 @@
       </div></div>
     </div><!-- End Breadcrumbs -->
     <!-- ======= Campaign Section ======= -->
-    <article id="campaigns" class="campaigns">
+    <section id="campaigns" class="campaigns">
       <div class="container" data-aos="fade-up">
 		  <%@ include file= "/layout/navbar/campaign/navCampaign.jsp" %> 
         <div class="row" id="commonDiv" data-aos="zoom-in" data-aos-delay="100" >
@@ -139,7 +149,7 @@
               <img src="${campaign.ciFile }" class="img-fluid" alt="..."></a></div></div>
               <div class="campaign-content">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                  <h4>${campaign.category}</h4>
+                  <h4>${campaign.ccName}</h4>
                 </div>
 
                 <h3><a class="none-deco" href="${cp }/campaign/ing/detail.do?ciIdx=${campaign.ciIdx }">${campaign.ciTitle } </a></h3>
@@ -164,7 +174,7 @@
         </div>
 
       </div>
-    </article><!-- End Courses Section -->
+    </section><!-- End Courses Section -->
 
   </main><!-- End #main -->
 <!-- ======= Footer ======= -->

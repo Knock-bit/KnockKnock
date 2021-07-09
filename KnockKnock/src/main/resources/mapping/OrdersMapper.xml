@@ -6,8 +6,89 @@
 <mapper namespace="Orders">
  	 
 	<select id="selectOrderList" parameterType="int" resultType="ordersVO">
-		SELECT *FROM ORDERS WHERE S_IDX = #{sIdx}
+		SELECT O_NUMBER, U_NAME, P.P_NAME, O.O_CNT, O.O_STATUS,
+		O.O_TOTPRICE, O.O_DATE
+		FROM ORDERS O, USERS U, PRODUCT P
+		WHERE O.S_IDX=#{sIdx} AND U.U_IDX = O.U_IDX
+		AND P.P_IDX=O.P_IDX ORDER BY O_DATE DESC
 	</select>
 	
-
+	
+	<!-- 주문(order테이블) 업데이트(결제완료 후) -->
+	<update id="orderInfo" parameterType="hashmap">
+		UPDATE ORDERS
+		SET O_STATUS = 1, F_CHECK = 1, PA_IDX = #{paIdx}, O_DATE = SYSDATE, O_TEMPNUM = #{oTempnum}
+		WHERE U_IDX = #{uIdx} AND O_STATUS = 0
+	
+	</update>
+	
+	<!-- 임시 주문 데이터에 방금 결제한 주문정보 넣어놓기 -->
+	<insert id="tempOrder" parameterType="string">
+		INSERT INTO ORDERS_TEMP (OT_IDX, O_TEMPNUM)
+		VALUES (OT_NUM_SEQ.nextval, #{oTempnum})
+	
+	</insert>
+	<select id="oTempnum" resultType="string">
+		SELECT O_TEMPNUM FROM ORDERS_TEMP
+	
+	</select>
+	
+	<!-- 수령인 정보 입력 -->
+	<insert id="userOrder" parameterType="userOrderVO">
+		INSERT INTO USER_ORDER 
+		(G_IDX, O_ADDRESS1, O_ADDRESS2, O_PHONE,
+			O_RECEIVER, O_ZIPCODE, U_IDX, O_DELIVERY, O_TEMPNUM)
+		VALUES (G_IDX_SEQ.nextval, #{oAddress1}, #{oAddress2}, #{oPhone}, 
+				#{oReceiver}, #{oZipcode}, #{uIdx}, #{oDelivery}, #{oTempnum})
+	
+	</insert>
+	
+	<!-- 주문확인서 내용 -->
+	<!-- 주문 정보 가져오기 -->
+	<select id="confirmationOrderInfo" resultType="ordersVO">
+		SELECT O.*
+		FROM ORDERS O, ORDERS_TEMP OT
+		WHERE O.O_TEMPNUM = OT.O_TEMPNUM
+	
+	</select>
+	<!-- 주문 정보에 대한 상품 정보 가져오기 -->
+	<select id="confirmationProductInfo" resultType="productVO">
+		SELECT P.*, A.O_TEMPNUM
+		FROM PRODUCT P ,      
+		(SELECT O.P_IDX, O.O_TEMPNUM
+		FROM ORDERS O, ORDERS_TEMP OT
+		WHERE O.O_TEMPNUM = OT.O_TEMPNUM) A
+		WHERE P.P_IDX = A.P_IDX
+	
+	</select>
+	<!-- 주문 정보에 대한 수령자 정보 가져오기 -->
+	<select id="confirmationUserOrderInfo" resultType="userOrderVO">
+		SELECT U.* 
+		FROM USER_ORDER U,ORDERS_TEMP OT
+		WHERE U.O_TEMPNUM = OT.O_TEMPNUM
+	</select>
+	
+	<!-- 임시 데이터 삭제하기 전 데이터 유무 확인 -->
+	<select id="deleteCheck" resultType="string">
+		SELECT OT_IDX FROM ORDERS_TEMP 
+	</select>
+	
+	<!-- 임시 데이터 삭제 -->
+	<delete id="deleteOrderTemp">
+		DELETE FROM ORDERS_TEMP
+	</delete>
+	
+	<!-- 주문내역 -->
+	<select id="orderHistoryList" resultType="ordersListVO">
+		SELECT P.P_NAME, P.P_IMG, P.P_DESC, P.P_PRICE, 
+				O.O_CNT, O.O_DATE, O_TEMPNUM, O.O_STATUS
+		FROM PRODUCT P,
+		(SELECT * FROM 
+		ORDERS 
+		ORDER BY O_DATE DESC) O
+		WHERE P.P_IDX = O.P_IDX
+	
+	</select>
+	
+	
 </mapper>

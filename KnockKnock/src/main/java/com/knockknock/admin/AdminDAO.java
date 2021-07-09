@@ -79,7 +79,8 @@ public class AdminDAO {
 	
 	// 키워드 삭제
 	public int deleteKeyword(List<String> content) {
-		return mybatis.delete("deleteKeyword", content);
+		System.out.println("DAO" + content);
+		return mybatis.delete("AdminDAO.deleteKeyword", content);
 	}
 	// 키워드 전체 가져오기 
 	public List<AdminKeywordVO> getKeywordAll() {
@@ -105,7 +106,20 @@ public class AdminDAO {
 	public int deleteCampaingCategory(List<String> content) {
 		return mybatis.delete("AdminDAO.deleteCampaignCategory", content);
 	}
+
+	public List<AdminCampaignVO> getCampaignList(PagingVO pvo) {
+		return mybatis.selectList("Util.getCampaignList", pvo);
+	}
+
+	public int countCampaign() {
+		return mybatis.selectOne("Util.countCampaign");
+		}
+
+	public AdminCampaignVO getCampaign(AdminCampaignVO vo) {
+		return mybatis.selectOne("AdminDAO.getCampaign",vo);
+	}
 	
-
-
+	public List<AdminContactCategory> getContactCategory(PagingVO pvo){
+		return mybatis.selectList("Util.getCampaignList",pvo);
+	}
 }

@@ -26,6 +26,7 @@
 
 			<typeAlias alias="adminCampaignCategoryVO" type="com.knockknock.admin.funding.AdminCampaignCategoryVO"/>
 			<typeAlias alias="adminFundingVO" type ="com.knockknock.admin.funding.AdminFundingVO"/> 
+			<typeAlias alias="adminCampaignVO" type="com.knockknock.admin.AdminCampaignVO"/>
 
 		<!-- 게시판 -->
 		<typeAlias alias="boardVO" type="com.knockknock.board.BoardVO" />
@@ -62,7 +63,9 @@
 		<typeAlias alias="ordersVO" type="com.knockknock.orders.OrdersVO" />
 		<typeAlias alias="ordersListVO" type="com.knockknock.orders.OrdersListVO" />
 		<typeAlias alias="reviewVO" type="com.knockkncok.review.ReviewVO"/>
-
+=======
+		<!-- user_order -->
+		<typeAlias alias="userOrderVO" type="com.knockknock.orders.UserOrderVO" />
 	</typeAliases>
 
 	<!-- mappers는 여러개 등록 가능하다. -->

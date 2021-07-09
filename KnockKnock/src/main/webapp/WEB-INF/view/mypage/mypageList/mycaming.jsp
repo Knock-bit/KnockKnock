@@ -124,7 +124,7 @@ function numberWithCommas(x) {
 											<div class="itemPhoto">
 												<p style="display: none;">${campaign.ciIdx }</p>
 												<p class="cphoto">
-													<img src="/resource/img/upload/${campaign.ciFile}">
+													<img src="${campaign.ciFile}">
 												</p>
 												<br>
 											</div>
@@ -140,8 +140,8 @@ function numberWithCommas(x) {
 											</div>
 											<div class="itemGoal ">
 												<p class="it1">GOAL</p> <p class="it2">
-													${campaign.cGoal }</p>
-													${users.uUsedPoint }											</div>
+													${campaign.ciGoal }</p>
+											</div>
 											<div class="itemEnddate">
 												<p class="it1">남은기간 </p>
 												 <span class="enddate" style="display:none;">${campaign.ciEnddate }</span>
@@ -164,10 +164,10 @@ function numberWithCommas(x) {
 													</div>
 													</div>
 													<div class="ezone">
-														<p>획득 가능 엠블럼</p>
+														<p style="margin:0;">획득 가능 엠블럼</p>
 														<div class="eb">
 															<div  class="eb2">
-																<img style="object-fit:cover; width:100%;" src="/resource/img/upload/${campaign.ciEmblem }">
+																<img style="object-fit:cover; width:100%;" src="${campaign.ciEmblem }">
 															</div>
 													
 													</div>

@@ -10,10 +10,17 @@
 		   SET CI_STATUS = 1
 		  WHERE SYSDATE > CI_STARTDATE
 	</update>
+	
+	<!-- 캠페인 검색 -->
+	<select id="selectInputResult" parameterType="string" resultType="CampaignVO">
+		SELECT * FROM CAMPAIGN
+		WHERE CI_STATUS = 1
+		  AND CI_TITLE LIKE '%'||#{input}||'%'
+	</select>
 
 	<!-- 진행중인 캠페인, 주최자 닉네임, 카테고리, 참여자수 불러오기 -->
 	<select id="selectAllCampaign" resultType="CampaignVO">
-		 SELECT C.*, U.U_NICKNAME AS 
+		 SELECT C.*, U.U_NICKNAME  AS 
  		 HOST_NICKNAME,        
 		 (SELECT COUNT(*) FROM CAMPAIGN_USER WHERE C.CI_IDX = CAMPAIGN_USER.ci_idx) USER_COUNT  
  		FROM USERS U, CAMPAIGN C  WHERE CI_STATUS = 1  
@@ -73,7 +80,7 @@
 		FROM USERS U, CAMPAIGN C
 		WHERE CI_STATUS = 1
 		AND U.U_IDX = C.U_IDX
-		AND C.CI_IDX =3
+		AND C.CI_IDX = #{ciIdx}
 	</select>
 	
 	<!-- 캠페인 상세보기 - 참여자 닉네임 불러오기 -->
@@ -277,6 +284,18 @@
 		 WHERE U_IDX = #{uIdx}
 	</update>
 	
+	<insert id="updateUserPlusPointDetail" parameterType = "FundingUserVO">
+		INSERT INTO POINT
+            (U_IDX, PO_USED, PO_EARN, PO_DATE, PO_WHERE)
+            VALUES( #{uIdx}, #{cfPoint}, 0, SYSDATE, 0)
+	</insert>
+	
+	<insert id="updateUserMinusPointDetail" parameterType= "FundingUserVO">
+			INSERT INTO POINT
+            (U_IDX, PO_USED, PO_EARN, PO_DATE, PO_WHERE)
+            VALUES( #{uIdx}, 0, #{cfPoint}, SYSDATE, 3)
+	</insert>
+	
 	
 	<delete id="deleteFundingUser" parameterType="FundingUserVO">
 		DELETE FROM FUNDING_USER 
@@ -304,7 +323,7 @@
   		INSERT INTO PROPOSAL(CP_IDX, CP_REGDATE, CP_TITLE, CP_GOAL, CP_CONTENT, 
   							CP_GOALPOINT, CP_FILE, U_IDX,
   							CP_KEYWORD1, CP_KEYWORD2, CP_KEYWORD3)
-					VALUES (PROPOSAL_IDX_SEQ.nextval, SYSDATE,  
+					VALUES (CP_IDX_SEQ.nextval, SYSDATE,  
 							#{cpTitle}, #{cpGoal}, #{cpContent}, 
   							#{cpGoalpoint}, #{cpFile}, #{uIdx}, 
   							#{cpKeyword1}, #{cpKeyword2}, #{cpKeyword3})

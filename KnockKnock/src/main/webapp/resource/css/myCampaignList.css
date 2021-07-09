@@ -1,7 +1,7 @@
 
   /* 메인 css */
   *{
-	font-family:'Noto+Sans+KR';
+	font-family: 'Noto Sans KR', sans-serif;
 
 }
   .main-content{
@@ -96,7 +96,7 @@
 	  top:50%; left:50%;
 	  transform: translate(-50%,-50%);
 	  max-width: 60%;
-	  min-height: 30%;
+	  min-height: 70%;
 	  background:#ebf9f2;
 	  width:60%;
 	  height:60vh;

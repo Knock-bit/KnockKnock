@@ -144,7 +144,7 @@
 		<div class="myPoint">
 			<div class="btnDiv">
 				<button id="pointBtn" style="background-color:#6c9378; color:white; border:2px solid #6c9378;">POINT</button>
-				<button id="emblemBtn" style="border:2px solid #6c9378;">EMBLEM</button>
+				<button id="emblemBtn" style="border:2px solid #6c9378; color:rgb(10, 61, 14);">EMBLEM</button>
 			</div>
 			<!-- 포인트 영역 -->
 			<div class="pointZone">
@@ -170,7 +170,6 @@
 
 					</div>
 
-
 				</div>
 				
 				<div class="item3">
@@ -179,7 +178,7 @@
 					
 					<!-- 조회기간 -->
 					<div class="day">
-						<p>조회기간 선택해주세염ㅋ(못만들듯ㅋ)</p>
+						<p>-</p>
 					</div>
 					<div class="menu">
 						<p class="m1">이용일자</p>
@@ -204,6 +203,9 @@
 								<c:if test="${plist.poWhere==2}">
 									CAMPAIGN
 								</c:if>
+								<c:if test="${plist.poWhere==3}">
+									CANCEL POINT
+								</c:if>
 							</div>
 							<div class="up3"> <!-- 사용 포인트 -->
 								<c:if test="${plist.poEarn eq 0 }">
@@ -219,12 +221,12 @@
 			</div>
 			<!-- 엠블럼 영역 -->
 			<div class="emblemZone">
-				<p style="text-align:right;">MY EMBLEM</p>
+				<p style="text-align:center;">EMBLEM</p>
 				<div class="getEmblem">
 
 					<c:forEach var="emblem" items="${emImgList }">
 						<div class="eitem">
-							<img src="/resource/img/upload/${emblem.CI_EMBLEM }">
+							<img src="${emblem.CI_EMBLEM }">
 						</div>
 
 					</c:forEach>

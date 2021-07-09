@@ -14,10 +14,44 @@
 		SELECT * FROM(
 		SELECT ROWNUM
 		RN, A.* FROM (
-		SELECT * FROM USERS ORDER BY U_NAME DESC) A
+		SELECT * FROM USERS
+		<if test="searchCondition != null">
+			<if test="searchCondition == 'ID'.toString()">
+				WHERE U_ID LIKE '%'||#{searchKeyword}||'%'
+			</if>
+			<if test="searchCondition == 'NAME'.toString()">
+				WHERE U_NAME LIKE '%'||#{searchKeyword}||'%'
+			</if>
+			<if test="searchCondition == 'NICKNAME'.toString()">
+				WHERE U_NICKNAME LIKE '%'||#{searchKeyword}||'%'
+			</if>
+			<if test="searchCondition == 'ACTIVE'.toString()">
+				WHERE U_ACTIVE LIKE '%'||#{searchKeyword}||'%'
+			</if>
+		</if>
+		ORDER BY
+		<if test="sort != null">
+			<if test="sort == '아이디'.toString()">
+				U_ID
+			</if>
+			<if test="sort == '가입일'.toString()">
+				U_JOINDATE DESC
+			</if>
+			<if test="sort == '최종접속일'.toString()">
+				U_LASTLOGIN DESC
+			</if>
+			<if test="sort == '활성상태'.toString()">
+				U_ACTIVE DESC
+			</if>
+		</if>
+		<if test="sort == null">
+			U_NAME DESC
+		</if>
+		) A
 		) WHERE RN
 		BETWEEN #{start} AND
 		#{end}
+
 
 	</select>
 
@@ -32,7 +66,23 @@
 		SELECT * FROM(
 		SELECT
 		ROWNUM RN, A.* FROM (
-		SELECT * FROM KEYWORD ORDER BY K_CONTENT) A
+		SELECT * FROM KEYWORD
+
+		<if test="searchCondition != null">
+			<if test="searchCondition == 'CONTENT'.toString()">
+				WHERE K_CONTENT LIKE '%'||#{searchKeyword}||'%'
+			</if>
+		</if>
+		ORDER BY
+		<if test="sort != null">
+			<if test="sort == '이름역'.toString()">
+				K_CONTENT DESC
+			</if>
+		</if>
+		<if test="sort == null || sort =='이름'.toString()">
+			K_CONTENT
+		</if>
+		) A
 		)
 		WHERE RN BETWEEN #{start} AND
 		#{end}
@@ -47,15 +97,45 @@
 	<!-- 페이징 처리 후 제안서조회 -->
 	<select id="getProposalList" resultType="adminProposalVO">
 		SELECT * FROM (
-		SELECT ROWNUM cpRn, A.*
+		SELECT
+		ROWNUM cpRn, A.*
 		FROM (
 		SELECT P.*, U.U_NICKNAME
-		FROM PROPOSAL P INNER JOIN USERS U on P.U_IDX = U.U_IDX
-		ORDER BY CP_REGDATE) A
-		) WHERE cpRn BETWEEN #{start} AND
+		FROM PROPOSAL P INNER
+		JOIN USERS U on P.U_IDX = U.U_IDX
+		<if test="searchCondition != null">
+			<if test="searchCondition == 'TITLE'.toString()">
+				WHERE CP_TITLE LIKE '%'||#{searchKeyword}||'%'
+			</if>
+			<if test="searchCondition == 'USER'.toString()">
+				WHERE U_NICKNAME LIKE '%'||#{searchKeyword}||'%'
+			</if>
+		</if>
+
+		ORDER BY
+		<if test="sort != null">
+			<if test="sort == '제목'.toString()">
+				CP_TITLE
+			</if>
+			<if test="sort == '작성일'.toString()">
+				CP_REGDATE DESC
+			</if>
+			<if test="sort == '작성자'.toString()">
+				U_NICKNAME
+			</if>
+			<if test="sort == '생성상태'.toString()">
+				CP_ACTIVE
+			</if>
+		</if>
+		<if test="sort == null">
+			CP_REGDATE
+		</if>
+		) A
+		) WHERE cpRn
+		BETWEEN #{start} AND
 		#{end}
 	</select>
-	
+
 	<!-- 총 게시글수 -->
 	<select id="countBoard" resultType="int">
 		SELECT COUNT(*) FROM BOARD
@@ -63,38 +143,137 @@
 
 	<!-- 페이징 처리 후 게시판 조회 -->
 	<select id="getBoardList" resultType="boardVO">
-		SELECT * FROM 
-		( SELECT ROWNUM RN, A.* FROM 
+		SELECT * FROM
+		( SELECT
+		ROWNUM RN, A.* FROM
 		( SELECT * FROM BOARD ORDER BY B_IDX DESC) A
-		) WHERE RN
-		BETWEEN #{start} AND #{end}
+		) WHERE
+		RN
+		BETWEEN #{start}
+		AND #{end}
 	</select>
-	
+
 	<!-- 총 펀딩 수 -->
 	<select id="countFunding" resultType="int">
-		SELECT COUNT(*) FROM FUNDING
+		SELECT COUNT(*) FROM
+		FUNDING
 	</select>
-	
+
 	<!-- 페이징 처리 후 펀딩리스트 조회 -->
 	<select id="getFundingList" resultType="adminFundingVO">
-		SELECT * FROM 
-		( SELECT ROWNUM cfRn, A.* FROM 
-		( SELECT * FROM FUNDING ORDER BY CF_IDX DESC) A
-		) WHERE cfRn
-		BETWEEN #{start} AND #{end}
+		SELECT * FROM
+		( SELECT
+		ROWNUM cfRn, A.* FROM
+		( SELECT * FROM FUNDING
+		<if test="searchCondition != null">
+			<if test="searchCondition == 'TITLE'.toString()">
+				WHERE CF_TITLE LIKE '%'||#{searchKeyword}||'%'
+			</if>
+		</if>
+		ORDER BY
+		<if test="sort != null">
+			<if test="sort == '제목'.toString()">
+				CF_TITLE
+			</if>
+			<if test="sort == '시작일'.toString()">
+				CF_STARTDATE DESC
+			</if>
+			<if test="sort == '종료일'.toString()">
+				CF_ENDDATE DESC
+			</if>
+			<if test="sort == '활성상태'.toString()">
+				CF_STATUS
+			</if>
+		</if>
+		<if test="sort == null">
+			CF_TITLE
+		</if>
+		) A
+		)
+		WHERE cfRn
+		BETWEEN
+		#{start} AND #{end}
 	</select>
-	
+
 	<!-- 총 캠페인 카테고리 수 -->
 	<select id="countCampaignCategory" resultType="int">
-		SELECT COUNT(*) FROM CAMPAIGN_CATEGORY
+		SELECT COUNT(*)
+		FROM CAMPAIGN_CATEGORY
 	</select>
-	
-		<!-- 페이징 처리 후 캠페인 카테고리 리스트 조회 -->
-	<select id="getCampaignCategoryList" resultType="adminCampaignCategoryVO">
-		SELECT * FROM 
-		( SELECT ROWNUM ccRn, A.* FROM 
-		( SELECT * FROM CAMPAIGN_CATEGORY ORDER BY CC_IDX DESC) A
+
+	<!-- 페이징 처리 후 캠페인 카테고리 리스트 조회 -->
+	<select id="getCampaignCategoryList"
+		resultType="adminCampaignCategoryVO">
+		SELECT * FROM
+		( SELECT ROWNUM ccRn, A.* FROM
+		( SELECT * FROM
+		CAMPAIGN_CATEGORY
+		<if test="searchCondition != null">
+			<if test="searchCondition == 'CONTENT'.toString()">
+				WHERE CC_NAME LIKE '%'||#{searchKeyword}||'%'
+			</if>
+		</if>
+		ORDER BY
+		<if test="sort != null">
+			<if test="sort == '이름역'.toString()">
+				CC_NAME DESC
+			</if>
+		</if>
+		<if test="sort == null || sort =='이름'.toString()">
+			CC_NAME
+		</if>
+		) A
 		) WHERE ccRn
+		BETWEEN #{start}
+		AND #{end}
+	</select>
+
+	<!-- 총 캠페인 수 -->
+	<select id="countCampaign" resultType="int">
+		SELECT COUNT(*) FROM
+		CAMPAIGN
+	</select>
+
+	<!-- 페이징 처리 후 캠페인 리스트 조회 -->
+	<select id="getCampaignList" resultType="adminCampaignVO">
+		SELECT * FROM
+		( SELECT
+		ROWNUM ciRn, A.* FROM
+		( SELECT CI.*, U.U_NICKNAME
+		FROM CAMPAIGN CI
+		INNER JOIN USERS U ON CI.U_IDX = U.U_IDX
+		<if test="searchCondition != null">
+			<if test="searchCondition == 'TITLE'.toString()">
+				WHERE CI_TITLE LIKE '%'||#{searchKeyword}||'%'
+			</if>
+			<if test="searchCondition == 'USER'.toString()">
+				WHERE U_NICKNAME LIKE '%'||#{searchKeyword}||'%'
+			</if>
+		</if>
+		ORDER BY
+		<if test="sort != null">
+			<if test="sort == '제목'.toString()">
+				CI_TITLE
+			</if>
+			<if test="sort == '제안자'.toString()">
+				U_NICKNAME
+			</if>
+			<if test="sort == '시작일'.toString()">
+				CI_STARTDATE
+			</if>
+			<if test="sort == '종료일'.toString()">
+				CI_ENDDATE
+			</if>
+			<if test="sort == '활성상태'.toString()">
+				CI_STATUS
+			</if>
+		</if>
+		<if test ="sort == null">
+			CI_TITLE
+		</if>
+		) A
+		) WHERE ciRn
 		BETWEEN #{start} AND #{end}
 	</select>
+
 </mapper>

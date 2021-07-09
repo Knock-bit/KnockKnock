@@ -21,14 +21,11 @@
 }
 </style>
 <script>
-
-function selChange() {
-	var sel = document.getElementById('cntPerPage').value;
-	location.href = "adminKeywordList.do?nowPage=${paging.nowPage}&cntPerPage="
-			+ sel;
-}
-
-
+	function selChange() {
+		var sel = document.getElementById('cntPerPage').value;
+		location.href = "adminCampaignList.do?nowPage=${paging.nowPage}&cntPerPage="
+				+ sel;
+	}
 </script>
 </head>
 <body>
@@ -37,6 +34,11 @@ function selChange() {
 			<div class="col-md-12">
 				<div class="row">
 					<div style="float: right;">
+						<a href="/adminCampaignList.do?sort=제목">제목순</a> 
+						<a href="/adminCampaignList.do?sort=제안자">제안자순</a> 
+						<a href="/adminCampaignList.do?sort=시작일">시작일순</a> 
+						<a href="/adminCampaignList.do?sort=종료일">종료일순</a>
+						<a href="/adminCampaignList.do?sort=활성상태">활성상태</a> 
 						<select id="cntPerPage" name="sel" onchange="selChange()">
 							<option value="5"
 								<c:if test="${paging.cntPerPage == 5}">selected</c:if>>5줄
@@ -52,6 +54,19 @@ function selChange() {
 								보기</option>
 						</select>
 					</div>
+					<!-- 검색기능추가 -->
+					<form action="adminCampaignList.do" method="get">
+						<table class="border-none">
+							<tr>
+								<td><select name="searchCondition">
+										<c:forEach var="option" items="${conditionMapUserCampaign }">
+											<option value="${option.value}">${option.key }</option>
+										</c:forEach>
+								</select> <input type="text" name="searchKeyword"> <input
+									type="submit" value="검색"></td>
+							</tr>
+						</table>
+					</form>
 					<form id="proposalForm" method="post"
 						style="margin-top: 300px; margin-left: 100px;">
 						<table class="table table-bordered table-striped"
@@ -60,38 +75,40 @@ function selChange() {
 
 							<c:if test="${empty viewAll }">
 								<tr>
-									<td>등록된 리스트가 없습니다.</td>
+									<td>등록된 캠페인 리스트가 없습니다.</td>
 								</tr>
 							</c:if>
 
 							<c:if test="${!empty viewAll }">
 								<thead>
 									<tr>
-										<td>펀딩중인 캠페인 번호</td>
+										<td>캠페인 번호</td>
 										<td>제목</td>
-										<td>펀딩 시작일</td>
-										<td>펀딩 종료일</td>
+										<td>제안자</td>
+										<td>캠페인 시작일</td>
+										<td>캠페인 종료일</td>
 										<td>상태</td>
 									</tr>
 								</thead>
 								<tbody id="tableList">
 									<c:forEach var="campaign" items="${viewAll }">
 										<tr>
-											<td>${campaign.cfRn }</td>
-											<td><a href="getFunding.do?cfIdx=${funding.cfIdx }">${funding.cfTitle }</a></td>
-											<td>${campaign.cfStartdate }</td>
-											<td>${funding.cfEnddate }</td>
-											<c:if test="${funding.cfStatus  eq 0}">
+											<td>${campaign.ciRn }</td>
+											<td><a href="getCampaign.do?ciIdx=${campaign.ciIdx }">${campaign.ciTitle }</a></td>
+											<td>${campaign.uNickname }</td>
+											<td>${campaign.ciStartdate }</td>
+											<td>${campaign.ciEnddate }</td>
+											<c:if test="${campaign.ciStatus  eq 0}">
 												<td>진행 대기중</td>
 											</c:if>
-											<c:if test="${funding.cfStatus eq 1}">
+											<c:if test="${campaign.ciStatus eq 1}">
 												<td>진행중</td>
 											</c:if>
-											<c:if test="${funding.cfStatus  eq 2}">
-												<td>펀딩 성공</td>
+											<c:if test="${campaign.ciStatus  eq 2}">
+												<td>캠페인 종료(포인트 분배 예정)</td>
 											</c:if>
-											<c:if test="${funding.cfStatus  eq 3}">
-												<td>종료</td>
+											<c:if test="${campaign.ciStatus  eq 3}">
+												<td>포인트 분배 완료</td>
 											</c:if>
 										</tr>
 									</c:forEach>
@@ -102,7 +119,7 @@ function selChange() {
 					<div style="display: block; text-align: center;">
 						<c:if test="${paging.startPage != 1 }">
 							<a
-								href="/getFundingList.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
+								href="/adminCampaignList.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
 						</c:if>
 						<c:forEach begin="${paging.startPage }" end="${paging.endPage }"
 							var="p">
@@ -112,13 +129,13 @@ function selChange() {
 								</c:when>
 								<c:when test="${p != paging.nowPage }">
 									<a
-										href="/getFundingList.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
+										href="/adminCampaignList.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
 								</c:when>
 							</c:choose>
 						</c:forEach>
 						<c:if test="${paging.endPage != paging.lastPage}">
 							<a
-								href="/getFundingList.do?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
+								href="/adminCampaignList.do?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
 						</c:if>
 					</div>
 				</div>

@@ -6,22 +6,30 @@
 
 
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>綠!Knock! - SHOP</title>
+<html lang="ko">
 
-<!-- Favicons -->
-<link href="${cp}/resource/img/favicon.png" rel="icon">
-<link href="${cp}/resource/img/apple-touch-icon.png"
-	rel="apple-touch-icon">
+<head>
+
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Knock!Knock! Seller</title>
+
+<!-- style css -->
+<link rel="stylesheet"
+	href="${cp}/resource/dashboard/css/shared/style.css">
+<!-- Layout styles -->
+<link rel="stylesheet"
+	href="${cp}/resource/dashboard/css/demo_1/style.css">
+
 
 <!-- Google Fonts -->
 <link
 	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
 	rel="stylesheet">
-
-<!-- Vendor CSS Files -->
+<link href="${cp}/resource/css/main.css" rel="stylesheet">
+<link href="${cp}/resource/css/nav1.css" rel="stylesheet">
 <link href="${cp}/resource/vendor/animate.css/animate.min.css"
 	rel="stylesheet">
 <link href="${cp}/resource/vendor/aos/aos.css" rel="stylesheet">
@@ -36,81 +44,337 @@
 <link href="${cp}/resource/vendor/swiper/swiper-bundle.min.css"
 	rel="stylesheet">
 
-<!-- Main CSS File -->
-<link href="${cp}/resource/css/main.css" rel="stylesheet">
-<link href="${cp}/resource/css/nav1.css" rel="stylesheet">
-
-<!-- Import BootStrap -->
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
 </head>
+<body>
+
 
 <body>
-<header id="header" class="fixed-top">
-	<div class="container d-flex align-items-center">
+  <div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+       
+   		<jsp:include page='/layout/navbar/navSeller.jsp' flush='false'/>   	
+  	
+       
+    </nav>
 
-		<h1 class="logo me-auto">
-			<a href="${cp }/layout/main.jsp"><img
-				src="${cp }/resource/img/logo.png" id=:logo></a>
-		</h1>
-		<!-- Uncomment below if you prefer to use an image logo -->
-		<!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
-		<nav id="navbar" class="navbar order-last order-lg-0">
-			<ul>
-				<li><a class="active" href="index.html">Home</a></li>
-				<li class="dropdown"><a href="#"><span>About</span> <i
-						class="bi bi-chevron-down"></i></a>
-					<ul>
-						<li><a href="${cp }/layout/about/whatisknock.jsp">녹녹은</a></li>
-						<li><a href="${cp }/layout/about/manual.jsp">녹녹 사용법</a></li>
-					</ul></li>
-				<li class="dropdown"><a href="#"><span>Campaign</span> <i
-						class="bi bi-chevron-down"></i></a>
-					<ul>
-						<li><a href="${cp }/campaign/ing/list.do">진행중인 캠페인</a></li>
-						<li><a href="${cp }/campaign/funding/list.do">캠페인 펀딩하기</a></li>
-						<li><a href="${cp }/campaign/ed/list.do">지난 캠페인</a></li>
-						<li><a href="${cp }/campaign/proposal.do">캠페인 제안하기</a></li>
-					</ul></li>
-				<li><a href="${cp }/productlist.do">Shop</a></li>
-				<li><a href="${cp }/contact/contact.do">Contact</a></li>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:partials/_sidebar.html -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <ul class="nav">
 
-				<li class="dropdown"><a href="#"><button type="button"
-							class="btn btn-outline-success">${seller.sName }</button> <i
-						class="bi bi-chevron-down"></i></a>
-					<ul>
-						<li><a href="${cp }/seller/sellerDashboard.do">판매자 페이지</a></li>
-					</ul></li>
-					</ul>
-			<i class="bi bi-list mobile-nav-toggle"></i>
-		</nav>
-		<!-- .navbar -->
-	</div>
-</header>
-<!-- End Header -->
+          <li class="nav-item nav-category"> </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">
+              
+              <span class="menu-title">Dashboard</span>
+            </a>
+          </li>
 
-<!-- 불러오기 -->
-<c:forEach var="list" items="${list }">
+          <li class="nav-item">
+            <a class="nav-link" href="pages/forms/basic_elements.html">
+             
+              <span class="menu-title">판매물품 관리</span>
+            </a>
+          </li>
 
-O_IDX = ${list.oIdx }
-P_IDX = ${list.pIdx }
-O_CNT = ${list.oCnt }
-P_PRICE = ${list.pPrice }
-O_STATUS = ${list.oStatus }
-F_CHECK = ${list.fCheck }
-O_TOTPRICE = ${list.oTotprice }
-O_FEE = ${list.oFee }
-O_NUMBER = ${list.oNumber }
-U_IDX = ${list.uIdx }
-PA_IDX = ${list.paIdx }
-O_DATE = ${list.oDate }
-S_IDX = ${list.sIdx }
+          <li class="nav-item">
+            <a class="nav-link" href="pages/tables/basic-table.html">
+              
+              <span class="menu-title">상품 등록하기</span>
+            </a>
+          </li>
+
+
+        </ul>
+      </nav>
+      <!-- partial 사이드바 끝 -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <!-- Page Title Header Starts-->
+
+          <!-- Page Title Header Ends-->
+          <div class="row">
+            <div class="col-md-12 grid-margin">
+              <div class="card">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                      <div class="d-flex">
+                        <div class="wrapper">
+                          <h3 class="mb-0 font-weight-semibold">32,451</h3>
+                          <h5 class="mb-0 font-weight-medium text-primary">판매순위</h5>
+                          <p class="mb-0 text-muted">+14.00(+0.50%)</p>
+                        </div>
+
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mt-md-0 mt-4">
+                      <div class="d-flex">
+                        <div class="wrapper">
+                          <h3 class="mb-0 font-weight-semibold">15,236</h3>
+                          <h5 class="mb-0 font-weight-medium text-primary">리뷰별점평균</h5>
+                          <p class="mb-0 text-muted">+138.97(+0.54%)</p>
+                        </div>
+
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mt-md-0 mt-4">
+                      <div class="d-flex">
+                        <div class="wrapper">
+                          <h3 class="mb-0 font-weight-semibold">7,688</h3>
+                          <h5 class="mb-0 font-weight-medium text-primary">누적 판매건수</h5>
+                          <p class="mb-0 text-muted">+57.62(+0.76%)</p>
+                        </div>
+
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mt-md-0 mt-4">
+                      <div class="d-flex">
+                        <div class="wrapper">
+                          <h3 class="mb-0 font-weight-semibold">1,553</h3>
+                          <h5 class="mb-0 font-weight-medium text-primary">누적 환불건수</h5>
+                          <p class="mb-0 text-muted">+138.97(+0.54%)</p>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-8 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title mb-0">년간 총 판매금액</h4>
+                  <div class="d-flex align-items-center justify-content-between w-100">
+                    <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    <div class="dropdown">
+                      <button class="btn dropdown-toggle" type="button" id="dateSorter"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">2021년</button>
+                      <div class="dropdown-menu" aria-labelledby="dateSorter">
+                        <div class="dropdown-item" id="market-overview_1">2020년</div> 
+                      </div>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-end">
+                    <h3 class="mb-0 font-weight-semibold">$36,2531.00</h3>
+                    <p class="mb-0 font-weight-medium mr-2 ml-2 mb-1">USD</p>
+                    <p class="mb-0 text-success font-weight-semibold mb-1">(+1.37%)</p>
+                  </div>
+                  <canvas class="mt-4" height="100" id="market-overview-chart"></canvas>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-md-4 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body d-flex flex-column">
+                  <div class="wrapper">
+                    <h4 class="card-title mb-0">Net Profit Margin</h4>
+                    <p>Started collecting data from February 2019</p>
+                    <div class="mb-4" id="net-profit-legend"></div>
+                  </div>
+                  <canvas class="my-auto mx-auto" height="250" id="net-profit"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-8">
+              <div class="row">
+                <div class="col-md-6 grid-margin stretch-card">
+
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="row">
+
+                        <div class="col-md-6">
+                          <div class="d-flex align-items-center pb-2">
+                            <div class="dot-indicator bg-danger mr-2"></div>
+                            <p class="mb-0">누적 주문건수</p>
+                          </div>
+                          <h4 class="font-weight-semibold">7,590</h4>
+                          <div class="progress progress-md">
+                            <div class="progress-bar bg-danger" role="progressbar" style="width: 78%" aria-valuenow="78"
+                              aria-valuemin="0" aria-valuemax="78"></div>
+                          </div>
+                        </div>
+
+                        <div class="col-md-6 mt-4 mt-md-0">
+                          <div class="d-flex align-items-center pb-2">
+                            <div class="dot-indicator bg-success mr-2"></div>
+                            <p class="mb-0">누적 환불건수</p>
+                          </div>
+                          <h4 class="font-weight-semibold">5,460</h4>
+                          <div class="progress progress-md">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 45%"
+                              aria-valuenow="45" aria-valuemin="0" aria-valuemax="45"></div>
+                          </div>
+                        </div>
+
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="col-md-6 grid-margin stretch-card average-price-card">
+                  <div class="card text-white">
+                    <div class="card-body">
+                      <div class="d-flex justify-content-between pb-2 align-items-center">
+                        <h2 class="font-weight-semibold mb-0">4,624</h2>
+                        <div class="icon-holder">
+                         <i class="bi bi-basket3-fill"></i>
+                        </div>
+                      </div>
+                      <div class="d-flex justify-content-between">
+                        <h5 class="font-weight-semibold mb-0">주문건당 평균 결제금액</h5>
+                        <p class="text-white mb-0">Since last month</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="col-md-12 grid-margin">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="d-flex justify-content-between">
+                        <h4 class="card-title mb-0">Invoice</h4>
+                        <a href="#"><small>Show All</small></a>
+                      </div>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est quod cupiditate esse fuga</p>
+                      <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                          <thead>
+                            <tr>
+                              <th>주문번호</th>
+	                          <th>주문자명</th>
+	                          <th>제품명</th>
+	                          <th>수량</th>
+	                          <th>주문상태</th>
+	                          <th>주문날짜</th>
+	                          <th>주문금액</th>
+	                        </tr>
+	                      </thead>
+	                      <tbody>
+	         				<c:forEach var="list" items="${list }">
+					 		<tr>
+	             			  <td>${list.oNumber }</td>
+	                          <td>${list.uName }</td>
+	                          <td>${list.pName}</td>
+	                          <td>${list.oCnt }</td>
+	                          <td>${list.oStatus }</td>
+	                          <td>${list.oDate }</td>
+	                          <td>${list.oTotprice}</td>   
+	                        </tr>
+	                        </c:forEach>
+	                      </tbody>                         
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title mb-0">가장 많이 구매한 고객</h4>
+                  <div class="d-flex mt-3 py-2 border-bottom">
+                    <img class="img-sm rounded-circle" src="assets/images/faces/face3.jpg" alt="profile image">
+                    <div class="wrapper ml-2">
+                      <p class="mb-n1 font-weight-semibold">Ray Douglas</p>
+                      <small>누적 구매금액</small> 금액
+                      <small class="text-muted ml-auto">총 구매 횟수</small>
+
+
+                    </div>
+                    <small class="text-muted ml-auto">총 구매 횟수</small>
+
+                  </div>
+                  <div class="d-flex py-2 border-bottom">
+                    <span class="img-sm rounded-circle bg-warning text-white text-avatar">OH</span>
+                    <div class="wrapper ml-2">
+                      <p class="mb-n1 font-weight-semibold">Ora Hill</p>
+                      <small>162543</small>
+                    </div>
+                    <small class="text-muted ml-auto">4 Hours ago</small>
+                  </div>
+                  <div class="d-flex py-2 border-bottom">
+                    <img class="img-sm rounded-circle" src="assets/images/faces/face4.jpg" alt="profile image">
+                    <div class="wrapper ml-2">
+                      <p class="mb-n1 font-weight-semibold">Brian Dean</p>
+                      <small>162543</small>
+                    </div>
+                    <small class="text-muted ml-auto">4 Hours ago</small>
+                  </div>
+                  <div class="d-flex pt-2">
+                    <span class="img-sm rounded-circle bg-success text-white text-avatar">OB</span>
+                    <div class="wrapper ml-2">
+                      <p class="mb-n1 font-weight-semibold">Olive Bridges</p>
+                      <small>162543</small>
+                    </div>
+                    <small class="text-muted ml-auto">7 Hours ago</small>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- content-wrapper ends -->
+    <!-- partial:partials/_footer.html -->
+    <footer class="footer">
+         <%@ include file= "/layout/footer.jsp" %>
+ 
+    </footer>
+    <!-- partial -->
+  </div>
+  <!-- main-panel ends -->
+  </div>
+  <!-- page-body-wrapper ends -->
+  </div>
+  
+  
+  	<!-- container-scroller -->
+	<!-- plugins:js -->
+	<script src="${cp}/resource/dashboard/vendors/js/vendor.bundle.base.js"></script>
+	<script
+		src="${cp}/resource/dashboard/vendors/js/vendor.bundle.addons.js"></script>
+	<!-- endinject -->
+	<!-- inject:js -->
+	<script src="${cp}/resource/dashboard/js/shared/off-canvas.js"></script>
+	<script src="${cp}/resource/dashboard/js/shared/misc.js"></script>
+	<!-- endinject -->
+	<script src="${cp}/resource/dashboard/js/demo_1/dashboard.js"></script>
+ 
+  
+  
+</body>
+
+</html>
+
 
  
-</c:forEach>
-
-
-</body>
-</html>

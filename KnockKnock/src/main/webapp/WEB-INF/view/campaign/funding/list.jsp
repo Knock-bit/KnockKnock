@@ -77,6 +77,8 @@
 .img-campaign {
 	overflow: hidden;
 	}
+	.carousel{
+	margin-top:72px;}
   </style>
 </head>
 <body>
@@ -100,7 +102,6 @@
   	</c:otherwise>
   	</c:choose>
   	
-      <a href="campaigns.html" class="get-started-btn">Get Started</a>
 
     </div>
   </header><!-- End Header -->
@@ -168,7 +169,7 @@
               <div class=scale><a href="${cp }/campaign/funding/detail.do?cfIdx=${funding.cfIdx }"><img src="${funding.cfFile }" class="img-fluid" alt="..."></a></div></div>
               <div class="campaign-content">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                  <h4>${funding.category}</h4>
+                  <h4>${funding.ccName}</h4>
                 </div>
 
                 <h3><a href="${cp }/campaign/funding/detail.do?cfIdx=${funding.cfIdx }">${funding.cfTitle } </a></h3>

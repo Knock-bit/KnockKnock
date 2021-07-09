@@ -9,12 +9,11 @@ import com.knockknock.admin.funding.AdminCampaignCategoryVO;
 import com.knockknock.util.PagingVO;
 
 @Service("adminService")
-public class AdminServiceImpl implements AdminService{
+public class AdminServiceImpl implements AdminService {
 
 	@Autowired
 	private AdminDAO adminDAO;
-	
-	
+
 	public AdminServiceImpl() {
 		System.out.println(">> AdmainServiceImpl() 객체 생성");
 	}
@@ -27,14 +26,14 @@ public class AdminServiceImpl implements AdminService{
 
 	@Override
 	public void getUserList(AdminUserVO vo) {
-		System.out.println(">> Impl : getUserList(UserVO vo)");		
+		System.out.println(">> Impl : getUserList(UserVO vo)");
 	}
 
 	@Override
 	public AdminUserVO getUser(AdminUserVO vo) {
 		System.out.println(">> Impl : getUser(UserVO vo)");
 		return adminDAO.getUser(vo);
-		
+
 	}
 
 	@Override
@@ -110,6 +109,24 @@ public class AdminServiceImpl implements AdminService{
 		return adminDAO.deleteCampaingCategory(content);
 	}
 
+	@Override
+	public List<AdminCampaignVO> getCampaignList(PagingVO pvo) {
+		return adminDAO.getCampaignList(pvo);
+	}
 
+	@Override
+	public int countCampaign() {
+		return adminDAO.countCampaign();
+	}
+
+	@Override
+	public AdminCampaignVO getCampaign(AdminCampaignVO vo) {
+		return adminDAO.getCampaign(vo);
+	}
+
+	@Override
+	public List<AdminContactCategory> getContactCategory(PagingVO pvo) {
+		return adminDAO.getContactCategory(pvo);
+	}
 
 }

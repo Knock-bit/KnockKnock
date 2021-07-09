@@ -22,7 +22,9 @@
  
   <!-- Main CSS File -->
   <link href="${cp}/resource/css/main.css" rel="stylesheet">
-
+<link
+	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap"
+	rel="stylesheet">
   <!-- Import BootStrap -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
   
@@ -45,44 +47,52 @@
   <!-- ======= Header 끝  === -->
 <div class="main-content">
 
-	<h3>주문결제</h3>
 	<div class="ordersMain">
 		<div class="ordersGrid">
 			<div class="infoOrder">
 				<p style="background-color:#0e4b20; color:white; padding:10px; width:30%; margin: 10px; font-size:13px;">주문자 정보</p>
-				<div style="padding:20px; text-align:left;">
-					<p style="font-weight:600;" class="orderName">${users.uName }</p>
-					<p class="orderAddress"> ${users.uAddress}</p>
-					<p class="orderPhone"> ${users.uPhone }</p>
-					<input type="checkbox"><label>안심번호 사용</label><span style="width:50%; border:1px solid gray; border-radius: 50%;">?</span>
-					<p class="orderEmail">${users.uEmail }</p>
-				
+				<div style="padding:20px; text-align:left;" class="ifo1">
+					<div>
+						<p class="orderUIdx" style="display:none;">${users.uIdx }</p>
+						이름<p style="font-weight:600;" class="orderName">${users.uName }</p>
+						주소<p class="orderAddress"> ${users.uAddress}</p>
+					</div>
+					<div>
+						휴대폰<p class="orderPhone"> ${users.uPhone }</p>
+						
+						이메일<p class="orderEmail">${users.uEmail }</p>
+					</div>
 				</div>
 			
 			</div>
 			<div class="infoReciever" style="text-align:left; font-size:13px;">
-				<p style="background-color:#0e4b20; color:white; padding:10px; width:30%; margin: 10px; font-size:13px;">수령자 정보</p>
+				<p id="ifrtext" style="background-color:#0e4b20; color:white; padding:10px; width:30%; margin: 10px; font-size:13px;">수령자 정보</p>
 				<input id="sameOrdersInfo" type="checkbox" >주문자와 동일<br>
-				<label>이름 :</label><input type="text" name="rName" class="reciever" id="uname"><br>
-				<div class="reciever">
-                    <label for="address">주소 :</label>
-                    <input type="text" name="uAddress" id="addr" placeholder="우편번호" />
-                    <input type="button" name="uAddress" id="btnAddr" value="검색">
+				<div class="ifr1">
+					<label>이름 :</label><input type="text" name="rName" class="reciever" id="uname"><br>
+					<div class="reciever">
+	                    <label for="address">주소 :</label>
+	                    <input type="text" name="uAddress" id="addr" placeholder="우편번호" />
+	                    <input type="button" name="uAddress" id="btnAddr" value="검색">
+	                </div>
+	                <div class="form-group">
+	                    <input type="text" name="rAddress" id="addr1" class="addrr" placeholder="주소" required>
+	                    <input type="text" name="uAddress" id="addr2" class="addrr" placeholder="상세주소">
+	
+	                </div>
                 </div>
-                <div class="form-group">
-                    <input type="text" name="rAddress" id="addr1" class="addrr" placeholder="주소" required>
-                    <input type="text" name="uAddress" id="addr2" class="addrr" placeholder="상세주소">
-
-                </div>
-				<label>연락처 :</label><input type="text" name="rPhone" class="reciever" id="phone">
-				<p style="display:none;" id="warningPhone"></p><br>
-				<label>이메일 :</label><input type="text" name="rEmail" class="reciever" id="email">
-				<p style="display:none;" id="warningEmail"></p><br>
+                <div class="ifr1">
+					<label>연락처 :</label><input type="text" name="rPhone" class="reciever" id="phone">
+					<p style="display:none;" id="warningPhone"></p><br>
+					<label>이메일 :</label><input type="text" name="rEmail" class="reciever" id="email">
+					<p style="display:none;" id="warningEmail"></p><br>
+				</div>
+				<br>
 				<select id="selbox" name="selbox">
-					<option value="">배송 시 요청사항을 선택해주세요</option>
-					<option value="">부재 시 문 앞에 두고 가주세요</option>
-					<option value="">배송 전 전화 또는 문자 주세요</option>
-					<option value="">부재 시 경비실에 두고가주세요</option>
+					<option value="d_none">배송 시 요청사항을 선택해주세요</option>
+					<option value="d_door">부재 시 문 앞에 두고 가주세요</option>
+					<option value="d_call">배송 전 전화 또는 문자 주세요</option>
+					<option value="d_security">부재 시 경비실에 두고가주세요</option>
 					<option value="direct">직접입력</option>
 				</select>
 				<input type="text" id="selboxDirect" name="selboxDirect"/>
@@ -99,13 +109,14 @@
 			
 			</div>
 			<div class="payment">
-				<p>결제하기(금액/버튼)</p>
+				<p>총 결제 금액</p>
 				<p class="payPrice"></p>
 				<input type="button" value="결제하기" id="payBtn" onclick="goPayment()">
 			</div>
 			<div class="infoOrdersProduct">
 				<p>주문상품정보</p>
 				<div>
+				<c:if test="${!empty olist }">
 				<c:forEach var="item" items="${olist }">
 					<div class="onePlist">
 						상품명 : ${item.pName }<br>
@@ -117,7 +128,10 @@
 					</div>
 				
 				</c:forEach>
-				
+				</c:if>
+				<c:if test="${empty olist }">
+					<p>주문 정보가 없습니다.</p>
+				</c:if>
 				</div>
 			
 			</div>
@@ -133,21 +147,55 @@
 </body>
 <script>
 $(function(){
-
-	
 	
 });
 function goPayment(){
+	console.log($("#selbox option:selected").text());
+	if($(".payPrice").html()=="0원"){
+		alert("결제할 상품이 존재하지 않습니다.");
+	} else {
+		
+	
 	
 	var info = $("input[type=text]").val();
 	var pay_method = $("input[name=pm]:checked").val();
-	// 결제자 정보
+	// 결제방법 데이터변환
+	var payData = 0;
+	if($("input[name=pm]:checked").val()=="card"){
+		payData = 1;
+	} else if($("input[name=pm]:checked").val()=="trans"){
+		payData = 2;
+	} else if($("input[name=pm]:checked").val()=="vbank"){
+		payData = 3;
+	} else if($("input[name=pm]:checked").val()=="phone"){
+		payData = 4;
+	} else if($("input[name=pm]:checked").val()=="samsung"){
+		payData = 5;
+	}
+	// 결제자 정보 ( 데이터 넣을 때도 필요 )
 	var uName = $(".orderName").text();
 	var uPhone = $(".orderPhone").text();
 	var uEmail = $(".orderEmail").text();
 	var uAddress = $(".orderAddress").text();
+	//console.log($("#addr1").val());
+	// 수령자 정보
+	var vo = {};
+	vo.oAddress1 = $("#addr1").val(); // 기본주소
+	vo.oAddress2 = $("#addr2").val(); // 상세주소
+	vo.oPhone = $("#phone").val(); // 핸드폰
+	vo.oReceiver = $("#uname").val(); // 수령자이름
+	vo.oZipcode = $("#addr").val(); // 우편번호
+	if($("#selbox").val()=="direct"){ // 배송 요청사항
+		vo.oDelivery = $("#selboxDirect").val();
+		
+	} else if($("#selbox").val()=="d_none"){
+		vo.oDelivery = "없음";
+	} else {
+		vo.oDelivery = $("#selbox option:selected").text();
+	}
+	console.log(vo.oDelivery);
+	console.log("json:"+JSON.stringify(vo));
 	
-	console.log("결제방법 : " + pay_method);
 	if (info=="" || info==null){
 		alert("수령자 정보를 정확히 입력해주세요");
 	} else {
@@ -179,29 +227,45 @@ function goPayment(){
 		         }, function(rsp){   // rsp : 결제 성공여부
 			            if(rsp.success){
 			               //결제 성공시 DB에 결제정보 저장하고 사용자 화면 처리
-			               alert("결제가 완료되었습니다. 주문내역으로 이동합니다.");
+			             
 			               //location.href="";
-			               
+			               var msg = '결제가 완료되었습니다.\n';
+			               msg += '고유ID : ' + rsp.imp_uid+'\n';
+			               msg += '상점 거래ID : ' + rsp.merchant_uid+'\n';
+			               msg += '결제 금액 : ' + rsp.paid_amount+'\n';
+			               msg += '카드 승인번호 : ' + rsp.apply_num; 
+			               alert(msg);  
+			               console.log(payData);
 			               // 아작스 처리
 			               $.ajax({
-			            	  url : "",
-			            	  data : "".
-			            	  dataType : "",
-			            	  success : function(){
-			            		  
+			            	  url : "orderInfo.do",
+			            	  data : {'payData':payData}, // 일단은 결제방식만 업데이트 (필요한 데이터)
+			            	  dataType : "text",
+			            	  type:"post",
+			            	  success : function(data){
+			            		  // 수령자 정보 db에 저장
+			            		  $.ajax({
+			            			  url : "userOrder.do",
+			            			  data : JSON.stringify(vo),
+			            			  contentType : "application/json",
+			            			  dataType : 'json',
+			            			  type : 'post',
+			            			  success : function(data){
+			            				  location.href="orderConfirm.do";
+			            			  },
+			            			  error : function(data){
+			            				  alert("수령인 정보 에러");
+			            			  }
+			            			  
+			            		  });
 			            	  },
-			            	  error : function(){
-			            		  
+			            	  error : function(data){
+			            		  alert("실패");
 			            	  }
 			            	   
 			               });
 			               
-			               /* var msg = '결제가 완료되었습니다.';
-			               msg += '고유ID : ' + rsp.imp_uid;
-			               msg += '상점 거래ID : ' + rsp.merchant_uid;
-			               msg += '결제 금액 : ' + rsp.paid_amount;
-			               msg += '카드 승인번호 : ' + rsp.apply_num; 
-			               alert(msg);  */
+			               
 			               // 주문서? 창으로 이동하기
 			               
 			            }else{
@@ -219,7 +283,7 @@ function goPayment(){
 		
 	}
 	
-	
+	}
 }
 
 </script>

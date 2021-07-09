@@ -4,12 +4,12 @@ public class AdminKeywordVO {
 	private int kIdx; // index
 	private String kContent; // keyword 내용
 	private int kCount; // keyword 사용 횟수
+	private int RN;
 
-	
 	public AdminKeywordVO() {
-		
+
 	}
-	
+
 	public AdminKeywordVO(int kIdx, String kContent, int kCount) {
 		this.kIdx = kIdx;
 		this.kContent = kContent;
@@ -40,10 +40,18 @@ public class AdminKeywordVO {
 		this.kCount = kCount;
 	}
 
+	public int getRN() {
+		return RN;
+	}
+
+	public void setRN(int rN) {
+		RN = rN;
+	}
+
 	@Override
 	public String toString() {
 		return "AdminKeywordVO [kIdx=" + kIdx + ", kContent=" + kContent + ", kCount=" + kCount + "]";
 	}
 
-	
+
 }

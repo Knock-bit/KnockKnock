@@ -8,7 +8,6 @@ public class OrdersVO {
 	private int pPrice;
 	private int oTotprice;
 	private String fCheck;
-	private int oFee;
 	private int oNumber;
 	private int uIdx;
 	private int paIdx;
@@ -16,14 +15,16 @@ public class OrdersVO {
 	private int sIdx;
 	private String uName;
 	private String pName;
-	
+	private int oFee;
+
+	private String oTempnum;
 
 	public OrdersVO() {
 		super();
 	}
 
 	public OrdersVO(int oIdx, int pIdx, int oCnt, int oStatus, int pPrice, int oTotprice, String fCheck, int oFee,
-			int oNumber, int uIdx, int paIdx, String oDate, int sIdx) {
+			int oNumber, int uIdx, int paIdx, String oDate, int sIdx, String oTempnum) {
 
 		super();
 		this.oIdx = oIdx;
@@ -33,13 +34,12 @@ public class OrdersVO {
 		this.pPrice = pPrice;
 		this.oTotprice = oTotprice;
 		this.fCheck = fCheck;
-		this.oFee = oFee;
 		this.oNumber = oNumber;
 		this.uIdx = uIdx;
 		this.paIdx = paIdx;
 		this.oDate = oDate;
 		this.sIdx = sIdx;
-
+		this.oTempnum = oTempnum;
 		this.uName = uName;
 		this.pName = pName;
 	}
@@ -58,7 +58,7 @@ public class OrdersVO {
 
 	public void setpName(String pName) {
 		this.pName = pName;
-    
+
 	}
 
 	public int getoIdx() {
@@ -117,14 +117,6 @@ public class OrdersVO {
 		this.fCheck = fCheck;
 	}
 
-	public int getoFee() {
-		return oFee;
-	}
-
-	public void setoFee(int oFee) {
-		this.oFee = oFee;
-	}
-
 	public int getoNumber() {
 		return oNumber;
 	}
@@ -165,11 +157,35 @@ public class OrdersVO {
 		this.sIdx = sIdx;
 	}
 
+	public String getoTempnum() {
+		return oTempnum;
+	}
+
+	public void setoTempnum(String oTempnum) {
+		this.oTempnum = oTempnum;
+	}
+	
+	
+
+	public int getoFee() {
+		return oFee;
+	}
+
+	public void setoFee(int oFee) {
+		this.oFee = oFee;
+	}
+
 	@Override
 	public String toString() {
 		return "OrdersVO [oIdx=" + oIdx + ", pIdx=" + pIdx + ", oCnt=" + oCnt + ", oStatus=" + oStatus + ", pPrice="
-				+ pPrice + ", oTotprice=" + oTotprice + ", fCheck=" + fCheck + ", oFee=" + oFee + ", oNumber=" + oNumber
-				+ ", uIdx=" + uIdx + ", paIdx=" + paIdx + ", oDate=" + oDate + ", sIdx=" + sIdx + "]";
+				+ pPrice + ", oTotprice=" + oTotprice + ", fCheck=" + fCheck + ", oNumber=" + oNumber + ", uIdx=" + uIdx
+				+ ", paIdx=" + paIdx + ", oDate=" + oDate + ", sIdx=" + sIdx + ", uName=" + uName + ", pName=" + pName
+				+ ", oFee=" + oFee + ", oTempnum=" + oTempnum + "]";
 	}
-
+	
+	
 }
+	
+	
+	
+

@@ -1,8 +1,12 @@
 package com.knockknock.user.impl;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.knockknock.user.UserVO;
     
@@ -13,11 +17,13 @@ public class UserDAO {
    
    //로그인
    public UserVO selectlogin(UserVO vo) {
-      System.out.println("로그인 mybatis "+mybatis);
-      vo = mybatis.selectOne("UserVO.selectlogin", vo);
-      //System.out.println("DAO = " +vo);
-      return vo;      
+      return mybatis.selectOne("UserVO.selectlogin", vo);      
    }
+   
+   public UserVO checkApprLogin(UserVO vo) {
+	   return mybatis.selectOne("UserVO.checkApprLogin", vo);
+   }
+  
    //아이디 중복체크
    public int idCheck(String id) {
       String uId = mybatis.selectOne("UserVO.idCheck", id);
@@ -56,7 +62,7 @@ public class UserDAO {
    }
    //회원가입
    public void join(UserVO vo) {
-      mybatis.insert("UserVO.join", vo);
+       mybatis.insert("UserVO.join", vo);
    }   
    
    //카카오
@@ -75,18 +81,31 @@ public class UserDAO {
    }
    
    //아이디에 해당하는 회원정보 가져오기
-   public UserVO readUserInfo(UserVO vo) throws Exception {
+   public Map<String, String> readUserInfo(UserVO vo) throws Exception {
       UserVO userVO = mybatis.selectOne("UserVO.readUserInfo", vo);
       System.out.println(mybatis);
-      System.out.println("DAO의 리턴값은 = "+userVO);
- 
-      System.out.println("받은 이메일 값: " +userVO.getuEmail());
-      System.out.println("받은 아이디 값: "+userVO.getuId());
-      
-      //DAO
-      return userVO;
-   }
+      System.out.println("DAO의 리턴값은 = "+userVO);      
+      Map<String, String> map = new HashMap<String, String>();
+      System.out.println(map.isEmpty());
+      if(userVO==null) {
+         return null;  
+      }else {
+         String uEmail = userVO.getuEmail();
+         String uId = userVO.getuId();
+         map.put("uId", uId);
+         map.put("uEmail", uEmail);
+
+         return map;
+      }
+       
+   } 
    
+   //회원 인증 이메일
+   @Transactional
+   public int userApproval(UserVO vo) throws Exception {
+	   System.out.println("회원인증중 DAO= "+mybatis.update("UserVO.userApproval", vo));
+	   return mybatis.update("UserVO.userApproval", vo);
+   }
    
    
    

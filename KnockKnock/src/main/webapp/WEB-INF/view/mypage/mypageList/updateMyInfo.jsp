@@ -25,6 +25,8 @@
   <!-- Main CSS File -->
   <link href="${cp}/resource/css/main.css" rel="stylesheet">
   <link href="${cp}/resource/css/updateMyInfo.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
   <!-- Import BootStrap -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
@@ -178,7 +180,7 @@ function deleteBtn(){
 					<input type="text" name="uName" value="${users.uName }"  disabled="disabled">
 				</div >
 				<div class="it3">
-					<label><span>*&nbsp;</span>닉네임  </label>
+					<label ><span>*&nbsp;</span>닉네임  </label>
 					<input type="text" name="uNickname" value="${users.uNickname }">
 				</div>
 				<div class="it4">
