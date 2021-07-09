@@ -19,4 +19,12 @@ public class OrdersDAO {
 		System.out.println("vo는 "+vo);
 		return vo;
 	}
+	
+	public int countOrders(int sIdx) {
+		return mybatis.selectOne("Orders.countOrders", sIdx);
+	}
+	
+	public int avgTot(int sIdx) {
+		return mybatis.selectOne("Orders.avgTot", sIdx);
+	}
 }

@@ -16,7 +16,7 @@
 <script>
 	//게시글 등록창으로..
 	function moveInsert_board(frm) {
-		frm.action = "${cp}/board/moveInsert.do"
+		frm.action = "${cp}/board/moveInsert.do?ciIdx=${board.ciIdx}"
 		frm.setAttribute('method', 'get');
 		frm.submit();
 	}
@@ -112,7 +112,7 @@
 		</c:if>
 	</div>
 	<div>
-		<p><input type="button" value="게시글등록" onclick="moveInsert_board(this.form)">
+		<p><button type="button"  onclick="moveInsert_board(this.form)">게시글등록</button>
 		<input type="button" value="내글보기" onclick="myView_board(this.form)"></p>
 	</div>	
 	</form>

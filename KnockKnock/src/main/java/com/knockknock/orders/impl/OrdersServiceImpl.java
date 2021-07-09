@@ -19,5 +19,15 @@ public class OrdersServiceImpl implements OrdersService{
 		return ordersDAO.showOrderList(sIdx);
 	}
 
+	@Override
+	public int countOrders(int sIdx) {		
+		return ordersDAO.countOrders(sIdx);
+	}
+
+	@Override
+	public int avgTot(int sIdx) {
+		return ordersDAO.avgTot(sIdx);
+	}
+
 
 }
