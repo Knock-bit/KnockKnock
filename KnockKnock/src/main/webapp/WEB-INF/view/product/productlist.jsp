@@ -82,60 +82,70 @@
 			<form action="" method="post">
 				<input type="search" placeholder="Search" aria-label="Search"><input type="submit" value="검색">
 			</form>
-	</nav>
+ 	</nav>
 
-<!-- ======= ProductList Section ======= -->
-<section id="courses" class="courses">
-	<div class="container" data-aos="fade-up">
 
-		<div class="row" data-aos="zoom-in" data-aos-delay="100">
-			<c:if test="${!empty plist }">
-				<c:forEach var="product" items="${plist }">
-					<div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-						<div class="course-item">
-							<img src="/resource/img/product/${product.pImg }"
-								class="img-fluid" style="width: 370px; height: 250px">
-							<div class="course-content">
-								<div
-									class="d-flex justify-content-between align-items-center mb-3">
-									<h4>${product.pcIdx}</h4>
-									<p class="price">${product.pPrice}</p>
-								</div>
-								<h3>
-									<a href="productDetail.do?pIdx=${product.pIdx}">${product.pName}</a>
-								</h3>
-								<p>${product.pPrice}</p>
-								<div class="trainer d-flex justify-content-between align-items-center">
-									<div class="trainer-profile d-flex align-items-center">
-										<span>${product.sIdx}판매자</span>
-									</div>
-									<div class="trainer-rank d-flex align-items-center">${product.pViews }</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</c:forEach>
-			</c:if>
-		</div>
-	</div>
-</section>
-<!-- End Courses Section -->
-</main>
-	<!-- End #main -->
+      <!-- ======= ProductList Section ======= -->
+      <section id="courses" class="courses">
+         <div class="container" data-aos="fade-up">
 
-	<!-- ======= Footer ======= -->
-	<%@ include file="/layout/footer.jsp"%>
+            <div class="row" data-aos="zoom-in" data-aos-delay="100">
 
-	<!-- Vendor JS Files -->
-	<script src="${cp}/resource/vendor/aos/aos.js"></script>
-	<script
-		src="${cp}/resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<script src="${cp}/resource/vendor/php-email-form/validate.js"></script>
-	<script src="${cp}/resource/vendor/purecounter/purecounter.js"></script>
-	<script src="${cp}/resource/vendor/swiper/swiper-bundle.min.js"></script>
+               <c:if test="${!empty plist }">
+                  <c:forEach var="product" items="${plist }">
 
-	<!-- Template Main JS File -->
-	<script src="${cp}/resource/js/main.js"></script>
+                     <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                        <div class="course-item">
+                           <a href="productDetail.do?pIdx=${product.pIdx}"><img src="/resource/img/product/${product.pImg }"
+                              class="img-fluid" style="width:370px; height:250px"></a>
+                           <div class="course-content">
+                              <div
+                                 class="d-flex justify-content-between align-items-center mb-3">
+                                 <h4>${product.pcIdx}</h4>
+                                 <p class="price">${product.pPrice}</p>
+                              </div>
+
+                              <h3>
+                                 <a href="productDetail.do?pIdx=${product.pIdx}">${product.pName}</a>
+                              </h3>
+                              <p>${product.pPrice}</p>
+                              <div
+                                 class="trainer d-flex justify-content-between align-items-center">
+                                 <div class="trainer-profile d-flex align-items-center">
+                                    <span>${product.sIdx}판매자</span>
+                                 </div>
+                                 <div class="trainer-rank d-flex align-items-center">
+                                    ${product.pViews }</div>
+                              </div>
+                           </div>
+
+                        </div>
+                     </div>
+                  </c:forEach>
+               </c:if>
+
+            </div>
+
+         </div>
+      </section>
+      <!-- End Courses Section -->
+
+   </main>
+   <!-- End #main -->
+
+   <!-- ======= Footer ======= -->
+   <%@ include file="/layout/footer.jsp"%>
+
+   <!-- Vendor JS Files -->
+   <script src="${cp}/resource/vendor/aos/aos.js"></script>
+   <script
+      src="${cp}/resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+   <script src="${cp}/resource/vendor/php-email-form/validate.js"></script>
+   <script src="${cp}/resource/vendor/purecounter/purecounter.js"></script>
+   <script src="${cp}/resource/vendor/swiper/swiper-bundle.min.js"></script>
+
+   <!-- Template Main JS File -->
+   <script src="${cp}/resource/js/main.js"></script>
 
 </body>
 </html>

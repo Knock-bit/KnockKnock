@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ReivewDAO">
+	
+	<insert id="insertReview" parameterType="reviewVO">
+		INSERT INTO REVIEW (R_IDX, P_IDX, R_WRITE, R_IMG, R_REGDATE, R_STATUS, U_IDX, R_RATING)
+		VALUES ((SELECT NVL(MAX(R_IDX),0)+1 FROM REVIEW), #{pIdx}, #{rWrite}, SYSDATE, #{rStatus}, #{uIdx}, #{rRating})
+	</insert>	
+	
+	<update id="updateReview" parameterType="reviewVO">
+		UPDATE REVIEW SET R_WRITE = #{rWrite} WHERE R_IDX = #{rIdx}
+	</update>
+
+	<delete id="deleteReview" parameterType="int">
+		DELETE FROM REVIEW WHERE R_IDX = #{rIdx}
+	</delete>	
+	
+	<select id="reviewList" parameterType="int" resultType="reviewVO">
+		SELECT * FROM REVIEW WHERE R_IDX = #{rIdx}
+		ORDER BY R_IDX DESC
+	</select>
+	
+</mapper>
