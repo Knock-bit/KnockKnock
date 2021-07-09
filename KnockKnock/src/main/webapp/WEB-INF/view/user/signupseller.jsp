@@ -100,6 +100,7 @@
 
                             </div>
                         </div>
+	
 
                         <div class="form-submit">
                             <input type="reset" value="취소" name="reset" id="reset" />

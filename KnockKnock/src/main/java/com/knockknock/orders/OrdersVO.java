@@ -180,9 +180,10 @@ public class OrdersVO {
 		return "OrdersVO [oIdx=" + oIdx + ", pIdx=" + pIdx + ", oCnt=" + oCnt + ", oStatus=" + oStatus + ", pPrice="
 				+ pPrice + ", oTotprice=" + oTotprice + ", fCheck=" + fCheck + ", oNumber=" + oNumber + ", uIdx=" + uIdx
 				+ ", paIdx=" + paIdx + ", oDate=" + oDate + ", sIdx=" + sIdx + ", uName=" + uName + ", pName=" + pName
-				+ ", oFee=" + oFee + ", oTempnum=" + oTempnum + "]";
+			+ ", oTempnum=" + oTempnum + "]";
 	}
-	
+
+
 	
 }
 	
