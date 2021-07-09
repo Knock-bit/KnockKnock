@@ -20,21 +20,18 @@
 <script>	
 	//게시글 등록창으로..
 	function moveInsert_board(frm){
-		frm.action="moveInsert.do";
-		frm.setAttribute('method', 'get');
-		frm.submit();
+		$("#commonDiv").load("${cp}/board/moveInsert.do?ciIdx=${board.ciIdx}");
 	}
 	
 	//게시글 삭제
 	function delete_board(frm){
-		frm.action="deleteBoard.do";
-		frm.submit();
+		alert()
+		$("#commonDiv").load("${cp}/board/deleteBoard.do?bIdx=" + ${board.bIdx});
 	}
 	
 	//게시판 목록으로..
 	function list_board(frm){
 		frm.action="getBoardList.do";
-		frm.submit();
 	}
 	
 	//추천하기 버튼
