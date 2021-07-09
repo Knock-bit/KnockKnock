@@ -48,6 +48,16 @@
 <div class="main-content">
 
 	<div class="ordersMain">
+		<div class="ordersTop">
+			<div class="ct1">
+				<h2> 주문하기 </h2>
+			</div>
+			<div class="ct2">
+				<img src="/resource/img/upload/etc/shopping-cart.png"><span style="font-size:18px;">장바구니</span>
+				<img src="/resource/img/upload/etc/checklist.png"><span style="font-weight:bold; color:white;">주문목록</span>
+				<img src="/resource/img/upload/etc/checked.png"><span style="font-size:18px;">결제</span>
+			</div>
+		</div>
 		<div class="ordersGrid">
 			<div class="infoOrder">
 				<p><i class="bi bi-person-fill" style="margin-right:10px;"></i>주문자 정보</p>
@@ -140,11 +150,11 @@
 						</div>
 						<div class="op2">
 							<div class="op2grid">
-								<span style="padding:5px;">상품명</span>  ${item.pName }<br>
-								<span>가격</span>  ${item.pPrice }원<br>
-								<span>수량</span>  ${item.oCnt }<br>
-								<span>배송비</span>  ${item.pFee }원<br>
-								<span>총 금액</span>  <span class="ototPrice">${item.oTotprice }원</span>
+								<span class="op2-1">상품명</span><span class="op3-1">  ${item.pName }</span><br>
+								<span class="op2-2">가격</span><span class="op3-2"> ${item.pPrice }원</span> <br>
+								<span class="op2-3">수량</span> <span class="op3-3">${item.oCnt }</span> <br>
+								<span class="op2-4">배송비</span><span class="op3-4">${item.pFee }원</span>  <br>
+								<span class="op2-5">총 금액</span><span class="ototPrice">${item.oTotprice }원</span>
 							</div>
 						</div>
 					</div>
@@ -198,7 +208,7 @@ function goPayment(){
 	var uName = $(".orderName").text();
 	var uPhone = $(".orderPhone").text();
 	var uEmail = $(".orderEmail").text();
-	var uAddress = $(".orderAddress").text();
+	var uAddress = $(".orderAddress1").text();
 	//console.log($("#addr1").val());
 	// 수령자 정보
 	var vo = {};
