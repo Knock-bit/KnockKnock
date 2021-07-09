@@ -16,8 +16,8 @@ public class CommentsServiceImpl implements CommentsService {
 	}
 
 	@Override
-	public int insertComments(CommentsVO vo) {
-		return commentsDAO.insertComments(vo);
+	public void insertComments(CommentsVO vo) {
+		commentsDAO.insertComments(vo);
 	}
 
 	@Override
@@ -26,7 +26,7 @@ public class CommentsServiceImpl implements CommentsService {
 	}
 
 	@Override
-	public int deleteComments(int bIdx) {
-		return commentsDAO.deleteComments(bIdx);
+	public void deleteComments(int bIdx) {
+		commentsDAO.deleteComments(bIdx);
 	}
 }
