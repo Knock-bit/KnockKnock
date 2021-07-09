@@ -43,10 +43,14 @@ public class CampaignUserVO {
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
-	
+
 	@Override
 	public String toString() {
-		return this.nickname;
+		return "CampaignUserVO [ciIdx=" + ciIdx + ", uIdx=" + uIdx + ", ciEmblem=" + ciEmblem + ", nickname=" + nickname
+				+ "]";
 	}
+	
+
+	
 	
 }

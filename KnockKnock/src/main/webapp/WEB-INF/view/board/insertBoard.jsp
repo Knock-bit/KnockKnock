@@ -61,12 +61,7 @@
                         <div id="summernote"></div>
             </td>
 		</tr>
-		<tr>
-			<th>파일업로드</th>
-			<td>
-				<input type="file" name="file">
-			</td>
-		</tr>
+		
 		<tr>
 			<td colspan="2">
 			<input type="hidden" value="${ciIdx }" name="ciIdx">

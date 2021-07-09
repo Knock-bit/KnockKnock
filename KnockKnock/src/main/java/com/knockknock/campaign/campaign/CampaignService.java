@@ -7,6 +7,8 @@ public interface CampaignService {
 	public List<CampaignVO> selectCampaignList();
 	// 진행중인 캠페인 상세보기
 	public CampaignVO selectOneCampaign(CampaignVO campaign);
+	// 진행중인 캠페인 상세보기 by ciIdx
+	public CampaignVO selectOneCampaign(int ciIdx);
 	// 종료된 리스트 불러오기
 	public List<CampaignVO> selectCampaignEdList();
 	// 캠페인 참여자 리스트 불러오기
@@ -31,4 +33,8 @@ public interface CampaignService {
 	public int updateStartCampaign();
 	// 캠페인 검색
 	public List<CampaignVO> selectInputResult(String input);
+	// 캠페인 참여에 따른 포인트 차감
+	public int updateParticipatePoint(CampaignUserVO cUser);
+	// 캠페인 유저에 등록
+	public int insertCampaignUser(CampaignUserVO cUser);
 }

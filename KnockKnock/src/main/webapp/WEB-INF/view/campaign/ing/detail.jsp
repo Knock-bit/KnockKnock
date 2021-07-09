@@ -190,6 +190,8 @@
         <script>
           var ciIdx = "${campaign.ciIdx}";
         
+
+          
           function getBoardView(bIdx) {
             $("#commonDiv").load("${cp}/board/getBoard.do?bIdx=" + bIdx);
           }
@@ -208,6 +210,10 @@
         	  $("#commonDiv").load("${cp}/board/getBoardList.do?ciIdx=" + ciIdx);
           }
           
+          function myViewBoard(){
+        	  $("#commonDiv").load("${cp}/board/myViewBoard.do?uIdx=${users.uIdx }");
+          }
+          
           
           $(function () {
         	 
@@ -216,9 +222,10 @@
                   $("#participate").attr("onclick", "location.href='${cp}/user/login.do'");
               }
               
-         	$("#moveInsert").click(function(){
-         		 $("#commonDiv").load("${cp}/board/moveInsert.do?ciIdx=" + ciIdx);
-         	})
+
+            $("#moveInsert").click(function () {
+               $("#commonDiv").load("${cp}/board/moveInsert.do?ciIdx=" + ciIdx);
+             });
             
             $("#getBoard").click(function () {
               $("#commonDiv").load("${cp}/board/getBoardList.do?ciIdx=${campaign.ciIdx }");
@@ -233,6 +240,7 @@
               /* $("#commonDiv").load("${cp}/board/getBoard.do?bIdx=${board.bIdx }"); */
               $("#commonDiv").load("${cp}/board/getBoard.do?bIdx=${board.bIdx }")
             });
+            
             
            
 		
