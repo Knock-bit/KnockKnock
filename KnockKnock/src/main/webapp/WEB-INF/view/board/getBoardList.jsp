@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -57,7 +58,7 @@
 		</tr>
 	<c:if test="${not empty getBoardList}">
 		<c:forEach var="board" items="${getBoardList}">
-		<tr style="cursor:pointer;" onclick="location.href='${cp}/board/getBoard.do?bIdx=${board.bIdx }'">
+		<tr style="cursor:pointer;" onclick="getBoardView(${board.bIdx})">
 			<td>${board.bIdx}</td>
 			<td>${board.bSubject}</td>
 			<td>${board.uIdx}</td>
@@ -119,3 +120,4 @@
 	
 </body>
 </html>
+

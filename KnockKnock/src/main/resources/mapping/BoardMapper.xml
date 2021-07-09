@@ -7,7 +7,8 @@
 	<insert id="insertBoard" parameterType="boardVO">
 		INSERT INTO BOARD (B_IDX ,B_SUBJECT, B_CONTENT, U_IDX, B_REGDATE, B_HIT, B_VIEWS, B_CATEGORY, B_FILE, CI_IDX, B_ACTIVE)
 		VALUES ((SELECT NVL(MAX(B_IDX),0)+1 FROM BOARD), #{bSubject}, #{bContent}, #{uIdx}, SYSDATE, #{bHit}, #{bViews}, 
-				#{bCategory}, #{bFile}, #{ciIdx}, #{bActive})
+                  #{bCategory}, #{bFile}, #{ciIdx}, #{sbIdx}, 1)
+
 	</insert>
 	
 	<update id="updateBoard" parameterType="boardVO">

@@ -51,51 +51,36 @@
 <body>
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
-    <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-       
-   		<jsp:include page='/layout/navbar/navSeller.jsp' flush='false'/>   	
-  	
-       
+    <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">       
+   		<jsp:include page='/layout/navbar/navSeller.jsp' flush='false'/> 
     </nav>
-
-
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
       <!-- partial:partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
-
           <li class="nav-item nav-category"> </li>
           <li class="nav-item">
-            <a class="nav-link" href="index.html">
-              
-              <span class="menu-title">Dashboard</span>
+            <a class="nav-link" href="index.html">              
+              <span class="menu-title">판매 Dashboard</span>
             </a>
           </li>
-
           <li class="nav-item">
-            <a class="nav-link" href="pages/forms/basic_elements.html">
-             
+            <a class="nav-link" href="pages/forms/basic_elements.html">             
               <span class="menu-title">판매물품 관리</span>
             </a>
           </li>
-
           <li class="nav-item">
-            <a class="nav-link" href="pages/tables/basic-table.html">
-              
+            <a class="nav-link" href="pages/tables/basic-table.html">              
               <span class="menu-title">상품 등록하기</span>
             </a>
           </li>
-
-
         </ul>
       </nav>
       <!-- partial 사이드바 끝 -->
       <div class="main-panel">
         <div class="content-wrapper">
-          <!-- Page Title Header Starts-->
 
-          <!-- Page Title Header Ends-->
           <div class="row">
             <div class="col-md-12 grid-margin">
               <div class="card">
