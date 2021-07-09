@@ -8,56 +8,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-	crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.6.0.js"
-	integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-	crossorigin="anonymous"></script>
+<title>캠페인 카테고리</title>
 
-<!-- Favicons -->
-<link href="${cp}/resource/img/favicon.png" rel="icon">
-<link href="${cp}/resource/img/apple-touch-icon.png"
-	rel="apple-touch-icon">
+<!-- js link , table css -->
+<jsp:include page='${cp}/layout/admin/adminLink.jsp' flush='false' />
+<link href='${cp}/resource/css/admin/adminCss.css' rel="stylesheet"
+	type="text/css">
 
-<!-- Google Fonts -->
-<link
-	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-	rel="stylesheet">
-
-<!-- Vendor CSS Files -->
-<link href="${cp}/resource/vendor/animate.css/animate.min.css"
-	rel="stylesheet">
-<link href="${cp}/resource/vendor/aos/aos.css" rel="stylesheet">
-<link href="${cp}/resource/vendor/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
-<link href="${cp}/resource/vendor/bootstrap-icons/bootstrap-icons.css"
-	rel="stylesheet">
-<link href="${cp}/resource/vendor/boxicons/css/boxicons.min.css"
-	rel="stylesheet">
-<link href="${cp}/resource/vendor/remixicon/remixicon.css"
-	rel="stylesheet">
-<link href="${cp}/resource/vendor/swiper/swiper-bundle.min.css"
-	rel="stylesheet">
-
-<!-- Main CSS File -->
-<link href="${cp}/resource/css/main.css" rel="stylesheet">
-<link href="${cp}/resource/css/nav1.css" rel="stylesheet">
-<link href="${cp}/resource/css/campaign/funding.css" rel="stylesheet">
-
-<!-- Import BootStrap -->
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<style>
-.table {
-	margin-top: 250px;
-	margin-left: 50px
-}
-</style>
 <script>
 
 function selChange() {
@@ -118,7 +75,7 @@ function keywordDel() {
         var td = tr.children();
 
         // 체크된 데이터의 value를 list 배열에 넣기
-        list.push(td.eq(0).text());
+        list.push(td.eq(1).text());
     });
    	 if (list.length == 0) {
 	        alert("선택된 데이터가 없습니다.");
@@ -144,12 +101,16 @@ function keywordDel() {
 </script>
 </head>
 <body>
-	<jsp:include page='/layout/navbar/navAdmin.jsp' flush='false' />
-
-	<div class="container" style="margin-top: 200px">
-		<div class="row">
-			<div class="col-md-12">
-				<div class="row">
+	<nav
+		class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+		<jsp:include page='/layout/navbar/navAdmin.jsp' flush='false' />
+	</nav>
+	<div class="container-fluid page-body-wrapper">
+		<jsp:include page='${cp}/layout/admin/adminSideNav.jsp' flush='false' />
+		<div class="content-wrapper">
+			<div class="row">
+				<div class="col-md-12">
+					<h3 class="text-center">캠페인 카테고리 관리창</h3>
 					<div style="float: right;">
 						<a href="/adminCampaignCategory.do?sort=이름">이름순</a> <a
 							href="/adminCampaignCategory.do?sort=이름역">이름역순</a> <select
@@ -182,12 +143,8 @@ function keywordDel() {
 							</tr>
 						</table>
 					</form>
-					<form id="keywordForm" method="post"
-						style="margin-top: 300px; margin-left: 100px;">
-						<table class="table table-bordered table-striped"
-							style="margin-top: 0px;">
-							<h3 class="text-center">캠페인카테고리</h3>
-
+					<form id="adminCampaignCategory" method="post">
+						<table class="table table-bordered table-striped" id="list-table">
 							<c:if test="${empty viewAll }">
 								<tr>
 									<td>등록된 키워드가 없습니다.</td>
