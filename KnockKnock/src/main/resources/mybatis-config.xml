@@ -63,7 +63,6 @@
 		<typeAlias alias="ordersVO" type="com.knockknock.orders.OrdersVO" />
 		<typeAlias alias="ordersListVO" type="com.knockknock.orders.OrdersListVO" />
 		<typeAlias alias="reviewVO" type="com.knockkncok.review.ReviewVO"/>
-=======
 		<!-- user_order -->
 		<typeAlias alias="userOrderVO" type="com.knockknock.orders.UserOrderVO" />
 	</typeAliases>
