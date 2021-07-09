@@ -63,4 +63,9 @@ public class BoardServiceImpl implements BoardService {
 	public List<BoardVO> getCampaignBoardList(int ciIdx) {
 		return boardDAO.getCampaignBoardList(ciIdx);
 	}
+
+	@Override
+	public List<BoardVO> getMyBoardList(int uIdx) {
+		return boardDAO.getMyBoardList(uIdx);
+	}
 }

@@ -18,6 +18,7 @@ public class BoardVO {
 	private int ciIdx;
 	private int sbIdx;
 	private String bActive;
+	private String uNickname; // 조인
 	
 	//검색조건용, 파일업로드
 	/*
@@ -30,7 +31,7 @@ public class BoardVO {
 	
 
 	public BoardVO(int bIdx, String bSubject, String bContent, int uIdx, String bRegdate, int bHit, int bViews,
-			int bCategory, String bFile, int ciIdx, int sbIdx, String bActive) {
+			int bCategory, String bFile, int ciIdx, int sbIdx, String bActive, String uNickname) {
 		super();
 		this.bIdx = bIdx;
 		this.bSubject = bSubject;
@@ -44,6 +45,7 @@ public class BoardVO {
 		this.ciIdx = ciIdx;
 		this.sbIdx = sbIdx;
 		this.bActive = bActive;
+		this.uNickname = uNickname;
 	}
 
 
@@ -143,6 +145,20 @@ public class BoardVO {
 	public void setbActive(String bActive) {
 		this.bActive = bActive;
 	}
+
+	
+	
+	public String getuNickname() {
+		return uNickname;
+	}
+
+
+
+	public void setuNickname(String uNickname) {
+		this.uNickname = uNickname;
+	}
+
+
 
 	@Override
 	public String toString() {
