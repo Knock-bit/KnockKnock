@@ -41,11 +41,6 @@
 		frm.action="updateHit.do";
 		frm.submit();
 	}
-	$("#deleteComments_btn").on("click", function(e){
-		form.attr("action", "/board/deleteComments");
-		form.attr("method", "post");
-		form.submit();
-	});
 </script>
 </head>
 <body>
