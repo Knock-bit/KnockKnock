@@ -59,8 +59,8 @@ public class AdminFundingController {
 	public String insertFunding(AdminFundingVO vo) {
 		int result = adminFudingService.insertFunding(vo);
 		if (result != 0) {
-//			cpActive 1로 변경해야함. 테스트 위해 주석처리
-//			adminFudingService.updateCpActive(vo);
+//			cpActive 1로 변경해야함. 테스트 위해 주석처리, 주석처리해제
+			adminFudingService.updateCpActive(vo);
 		}
 
 		return "redirect:getFundingList.do";

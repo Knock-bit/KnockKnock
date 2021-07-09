@@ -147,7 +147,7 @@
 		<!-- ======= Breadcrumbs ======= -->
 		<div class="container-fluid page-body-wrapper">
 			<jsp:include page='${cp}/layout/admin/adminSideNav.jsp' flush='false' />
-			<div class="content-wrapper">
+			<div class="content-wrapper" style="background: white;">
 				<section>
 					<div class="detail-title">
 
