@@ -3,13 +3,13 @@ $(document).ready(function(){
 	// 주문자 정보 가져와서 수령자 정보에 넣기
 	$("#sameOrdersInfo").click(function(){
 		var orderName = $(".orderName").text();
-		var orderAddress = $(".orderAddress").text();
+		var orderAddress1 = $(".orderAddress1").text();
 		var orderPhone = $(".orderPhone").text();
 		var orderEmail = $(".orderEmail").text();
 		
 		if($(".reciever").val() =="" || $(".reciever").val() == null) {
 			$("input[name='rName']").attr('value',orderName);
-			$("input[name='rAddress']").attr('value',orderAddress);
+			$("input[name='rAddress']").attr('value',orderAddress1);
 			$("input[name='rPhone']").attr('value',orderPhone);
 			$("input[name='rEmail']").attr('value',orderEmail);
 		} else {
@@ -163,7 +163,7 @@ $(document).ready(function(){
 		payment += otp;
 	});
 	console.log("총금액" + payment);
-	$(".payPrice").html(payment+"원");
+	$(".payPrice").html(payment);
 
 
 
