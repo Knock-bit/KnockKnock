@@ -148,20 +148,8 @@
 	<!-- hidden -->
 	<input type="hidden" id ="cfIdx" value="${funding.cfIdx }">
 
+	<jsp:include page='/layout/navbar/navAdmin.jsp' flush='false' />
 
-      <!-- ======= Header ======= -->
-      <c:choose>
-        <c:when test="${users.uType eq 1 }">
-          <jsp:include page='/layout/navbar/navLoggedin.jsp' flush='false' />
-        </c:when>
-        <c:when test="${users.uType eq 0 }">
-          <jsp:include page='/layout/navbar/navAdmin.jsp' flush='false' />
-        </c:when>
-        <c:otherwise>
-          <jsp:include page='/layout/navbar/nav.jsp' flush='false' />
-        </c:otherwise>
-      </c:choose>
-	
       <main id="main">
 
         <!-- ======= Breadcrumbs ======= -->
