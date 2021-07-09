@@ -21,8 +21,9 @@
 	width:100%;
 	display:grid;
 	grid-template-columns: 60% 37%;
-	grid-template-rows: 35vh 35vh 30vh 20vh;
+	grid-template-rows: 40vh 40vh 30vh 20vh;
 	margin-top:200px;
+	grid-gap:10px;
 }
 
 /*주문자정보*/
@@ -32,9 +33,29 @@
 	grid-row : 1/2;
 	
 }
+.infoOrder > p{
+	color:#0e4b20; 
+	padding:10px; 
+	width:99%; 
+	margin: 10px 0 0 10px;; 
+	font-size:20px;
+	font-weight:bold;
+	border-bottom: 1px solid gray;
+	text-align:left;
+	
+}
+.orderName, .orderAddress, .orderPhone, .orderEmail{
+	font-size:15px;
+	font-weight:600;
+}
+.orderAddress{
+	font-size:14px;
+}
 .ifo1 div{
 	display:inline-block;
 	width:45%;
+	height: 100%;
+	padding-left:5%;
 }
 /*수령자정보*/
 .infoReciever{
@@ -43,9 +64,57 @@
 	border:1px solid gray;
 	
 }
-.ifr1{
+.infoReciever input {
+	border : 0px;
+	border-bottom:1px solid gray;
+	
+}
+#ifrtext{
+	color:#0e4b20; 
+	padding:10px; 
+	width:50%; 
+	margin: 10px 0 0 10px;; 
+	font-size:20px;
+	font-weight:bold;
+	text-align:left;
+	
+}
+#uname, #addr1, #addr2, #phone, #email{
+	width:70%;
+	color:#0e4b20; 
+	font-weight:600;
+	font-size:12px;
+	
+}
+#uname:focus, #addr1:focus, #addr2:focus, #phone:focus, #email:focus{
+	outline : none;
+	background-color:#e9fcea;
+}
+#sameOrdersInfo{
+	margin:8px;
+	width:20px;
+}
+.sametext{
+	font-size:15px;
+}
+#ifrtext, .ifrtext2{
 	display:inline-block;
-	width:47%;
+}
+.ifr1 {
+	display:inline-block;
+	width:54%;
+	margin-left:20px;
+	min-height: 20vh;
+}
+.ifr1 label, .ifr2 label {
+	 margin:2%;
+}
+.ifr1 input {
+	min-height:4vh;
+}
+.ifr2{
+	display:inline-block;
+	width:37%;
 }
 #selbox{
 	margin-top:10px;
@@ -56,12 +125,90 @@
 #sameOrdersInfo{
 	display:inline-block;
 }
+#addr1, #addr2 {
+	margin-left : 38px;
+	margin-bottom : 5px;
+}
+#warningPhone, #warningEmail{
+	padding: 5px;
+	color:red;
+	margin:35px;
+	font-size:12px;
+	
+}
+.requestDelivery{
+	width:100%;
+	text-align:left;
+	padding-left:9%;
+}
+#selbox{
+	height:4vh;
+	width:45%;
+}
+#selboxDirect{
+	width:50%;
+}
 /*결제방법*/
 .paymentMethod{
 	border:1px solid gray;
 	grid-column : 1/2;
 	grid-row : 3/4;
 	
+}
+.paymentMethod > p {
+	color:#0e4b20; 
+	padding:10px; 
+	width:50%; 
+	margin: 10px 0 0 10px;; 
+	font-size:20px;
+	font-weight:bold;
+	text-align:left;
+}
+.methodDiv {
+	padding-top:20px;
+	font-size:15px;
+	text-align:center;
+}
+.methodDiv p{
+	display:inline-block;
+	margin-right:4%;
+}
+.pm1, .pm2 {
+	display:inline-block;
+	height:100%;
+}
+.pm1 {
+	width:60%;
+	text-align:left;
+	padding-top:20px;
+}
+.pm1 p {
+	display : inline-block;
+}
+.pm2 {
+	width:30%;
+	padding:5%;
+}
+.pm2 input {
+	margin : 0 auto;
+	min-height:7vh;
+	width:100%;
+	font-size: 20px;
+	border:1px solid #0e4b20; 
+	background-color:white;
+	border-radius: 5px;
+	
+	
+}
+.pm2 input:hover {
+	background-color:#0e4b20; 
+	color:white;
+	font-weight : 600;
+}
+.payPrice{
+	font-size:30px;
+	font-weight : 600;
+	margin:10px;
 }
 /*결제방법 클릭하면 화면 띄우기*/
 .pm-2, .pm-3 {
@@ -86,10 +233,45 @@
 	border:1px solid gray;
 	
 }
-
+.infoOrdersProduct p:first-child{
+	color:#0e4b20; 
+	padding:10px;  
+	margin: 10px 0 0 0; 
+	font-size:20px;
+	font-weight:bold;
+	text-align:center;
+}
 .onePlist{
 	border : 1px solid gray;
 	margin: 10px;
 	font-size: 13px;
 	
+}
+.op1, .op2{
+	display:inline-block;
+}
+.op1{
+	width:40%;
+	align-items: center;
+    justify-content: center;
+	overflow: hidden;
+}
+.op1 img{
+	object-fit:cover;
+   	width:100%;
+
+}
+.op2{
+	padding:5px 10px 5px 10px;
+	width:59%;
+	text-align:left;
+	 vertical-align: top;
+	
+	
+}
+.op2grid {
+	width:100%;
+	display:grid;
+	grid-template-columns: 30% 67%;
+	grid-template-rows: repeat(5, 1fr);
 }
