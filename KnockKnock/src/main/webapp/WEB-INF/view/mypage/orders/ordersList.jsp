@@ -22,7 +22,9 @@
  
   <!-- Main CSS File -->
   <link href="${cp}/resource/css/main.css" rel="stylesheet">
-
+<link
+	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap"
+	rel="stylesheet">
   <!-- Import BootStrap -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
   
@@ -45,40 +47,47 @@
   <!-- ======= Header 끝  === -->
 <div class="main-content">
 
-	<h3>주문결제</h3>
 	<div class="ordersMain">
 		<div class="ordersGrid">
 			<div class="infoOrder">
 				<p style="background-color:#0e4b20; color:white; padding:10px; width:30%; margin: 10px; font-size:13px;">주문자 정보</p>
-				<div style="padding:20px; text-align:left;">
-					<p class="orderUIdx" style="display:none;">${users.uIdx }</p>
-					<p style="font-weight:600;" class="orderName">${users.uName }</p>
-					<p class="orderAddress"> ${users.uAddress}</p>
-					<p class="orderPhone"> ${users.uPhone }</p>
-					<input type="checkbox"><label>안심번호 사용</label><span style="width:50%; border:1px solid gray; border-radius: 50%;">?</span>
-					<p class="orderEmail">${users.uEmail }</p>
-				
+				<div style="padding:20px; text-align:left;" class="ifo1">
+					<div>
+						<p class="orderUIdx" style="display:none;">${users.uIdx }</p>
+						이름<p style="font-weight:600;" class="orderName">${users.uName }</p>
+						주소<p class="orderAddress"> ${users.uAddress}</p>
+					</div>
+					<div>
+						휴대폰<p class="orderPhone"> ${users.uPhone }</p>
+						
+						이메일<p class="orderEmail">${users.uEmail }</p>
+					</div>
 				</div>
 			
 			</div>
 			<div class="infoReciever" style="text-align:left; font-size:13px;">
-				<p style="background-color:#0e4b20; color:white; padding:10px; width:30%; margin: 10px; font-size:13px;">수령자 정보</p>
+				<p id="ifrtext" style="background-color:#0e4b20; color:white; padding:10px; width:30%; margin: 10px; font-size:13px;">수령자 정보</p>
 				<input id="sameOrdersInfo" type="checkbox" >주문자와 동일<br>
-				<label>이름 :</label><input type="text" name="rName" class="reciever" id="uname"><br>
-				<div class="reciever">
-                    <label for="address">주소 :</label>
-                    <input type="text" name="uAddress" id="addr" placeholder="우편번호" />
-                    <input type="button" name="uAddress" id="btnAddr" value="검색">
+				<div class="ifr1">
+					<label>이름 :</label><input type="text" name="rName" class="reciever" id="uname"><br>
+					<div class="reciever">
+	                    <label for="address">주소 :</label>
+	                    <input type="text" name="uAddress" id="addr" placeholder="우편번호" />
+	                    <input type="button" name="uAddress" id="btnAddr" value="검색">
+	                </div>
+	                <div class="form-group">
+	                    <input type="text" name="rAddress" id="addr1" class="addrr" placeholder="주소" required>
+	                    <input type="text" name="uAddress" id="addr2" class="addrr" placeholder="상세주소">
+	
+	                </div>
                 </div>
-                <div class="form-group">
-                    <input type="text" name="rAddress" id="addr1" class="addrr" placeholder="주소" required>
-                    <input type="text" name="uAddress" id="addr2" class="addrr" placeholder="상세주소">
-
-                </div>
-				<label>연락처 :</label><input type="text" name="rPhone" class="reciever" id="phone">
-				<p style="display:none;" id="warningPhone"></p><br>
-				<label>이메일 :</label><input type="text" name="rEmail" class="reciever" id="email">
-				<p style="display:none;" id="warningEmail"></p><br>
+                <div class="ifr1">
+					<label>연락처 :</label><input type="text" name="rPhone" class="reciever" id="phone">
+					<p style="display:none;" id="warningPhone"></p><br>
+					<label>이메일 :</label><input type="text" name="rEmail" class="reciever" id="email">
+					<p style="display:none;" id="warningEmail"></p><br>
+				</div>
+				<br>
 				<select id="selbox" name="selbox">
 					<option value="d_none">배송 시 요청사항을 선택해주세요</option>
 					<option value="d_door">부재 시 문 앞에 두고 가주세요</option>
@@ -100,7 +109,7 @@
 			
 			</div>
 			<div class="payment">
-				<p>결제하기(금액/버튼)</p>
+				<p>총 결제 금액</p>
 				<p class="payPrice"></p>
 				<input type="button" value="결제하기" id="payBtn" onclick="goPayment()">
 			</div>
@@ -143,7 +152,7 @@ $(function(){
 function goPayment(){
 	console.log($("#selbox option:selected").text());
 	if($(".payPrice").html()=="0원"){
-		alert("결제할 상품이 존재하지 않습니다. 쇼핑하러 가실래염?ㅋ");
+		alert("결제할 상품이 존재하지 않습니다.");
 	} else {
 		
 	
@@ -234,7 +243,6 @@ function goPayment(){
 			            	  dataType : "text",
 			            	  type:"post",
 			            	  success : function(data){
-			            		  alert("성공"+data);
 			            		  // 수령자 정보 db에 저장
 			            		  $.ajax({
 			            			  url : "userOrder.do",
@@ -243,7 +251,6 @@ function goPayment(){
 			            			  dataType : 'json',
 			            			  type : 'post',
 			            			  success : function(data){
-			            				  alert("수령인 정보 성공 "+data);
 			            				  location.href="orderConfirm.do";
 			            			  },
 			            			  error : function(data){

@@ -5,9 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class CommentsController {
@@ -21,20 +24,13 @@ public class CommentsController {
 		return commentsService.commentsList(bIdx);
 	}
 	
-	@RequestMapping("/board/insertComments.do")
-	@ResponseBody
-	public String insertComments(@RequestParam(value="bIdx") int bIdx, 
-			@RequestParam(value="cContent") String cContent, int uIdx) {
-			
-		CommentsVO vo = new CommentsVO();
-		vo.setbIdx(bIdx);
-		vo.setcContent(cContent);
-		vo.setuIdx(uIdx);
-		
+	@RequestMapping(value="/board/insertComments.do", method=RequestMethod.POST)
+	public String insertComments(CommentsVO vo, RedirectAttributes rttr) {
+	
 		commentsService.insertComments(vo);
+		rttr.addAttribute("bIdx", vo.getbIdx());
 		
-		return "redirect:/board/getboard.do?bIdx=" + vo.getbIdx();
-		
+		return "redirect:/board/getBoard";	
 	}
 	
 	@RequestMapping("/board/updateComments.do")
@@ -49,10 +45,14 @@ public class CommentsController {
 		return commentsService.updateComments(vo);
 	}
 	
-	@RequestMapping("/board/deleteComments.do/{mIdx}")
+	@PostMapping("/board/deleteComments.do")
 	@ResponseBody
-	public int deleteComments(@PathVariable int mIdx) {
+	public String deleteComments(@RequestParam(value="mIdx") int mIdx, 
+			RedirectAttributes rttr) {
 
-		return 	commentsService.deleteComments(mIdx);
+		commentsService.deleteComments(mIdx);
+		rttr.addFlashAttribute("result", "delete success");
+		
+		return "redirect:/board/getBoard";
 	}
 }

@@ -16,7 +16,40 @@ request.setCharacterEncoding("UTF-8");
 <link href="${cp}/resource/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 <script src="${cp}/resource/js/jquery/jquery-3.6.0.min.js"></script>
+<!-- Favicons -->
+<link href="${cp}/resource/img/favicon.png" rel="icon">
+<link href="${cp}/resource/img/apple-touch-icon.png"
+	rel="apple-touch-icon">
 
+<!-- Google Fonts -->
+<link
+	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+	rel="stylesheet">
+
+<!-- Vendor CSS Files -->
+<link href="${cp}/resource/vendor/animate.css/animate.min.css"
+	rel="stylesheet">
+<link href="${cp}/resource/vendor/aos/aos.css" rel="stylesheet">
+<link href="${cp}/resource/vendor/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
+<link href="${cp}/resource/vendor/bootstrap-icons/bootstrap-icons.css"
+	rel="stylesheet">
+<link href="${cp}/resource/vendor/boxicons/css/boxicons.min.css"
+	rel="stylesheet">
+<link href="${cp}/resource/vendor/remixicon/remixicon.css"
+	rel="stylesheet">
+<link href="${cp}/resource/vendor/swiper/swiper-bundle.min.css"
+	rel="stylesheet">
+
+<!-- Main CSS File -->
+<link href="${cp}/resource/css/main.css" rel="stylesheet">
+<link href="${cp}/resource/css/nav1.css" rel="stylesheet">
+<link href="${cp}/resource/css/campaign/funding.css" rel="stylesheet">
+
+<!-- Import BootStrap -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 
 $(() =>{
@@ -61,17 +94,17 @@ $(() =>{
 <title>관리자 - 회원관리</title>
 </head>
 <body>
+	<jsp:include page='/layout/navbar/navAdmin.jsp' flush='false' />
 
 	<div class="container" style="margin-top: 60px">
 		<div class="row">
 			<div class="col-md-12">
 				<h3 class="text-center">회원관리창</h3>
 				<div style="float: right;">
-					<a href="/adminUserList.do?sort=아이디">아이디순</a> 
-					<a href="/adminUserList.do?sort=가입일">가입일순</a> 
-					<a href="/adminUserList.do?sort=최종접속일">최종접속일순</a> 
-					<a href="/adminUserList.do?sort=활성상태">활성상태</a> 
-					<select
+					<a href="/adminUserList.do?sort=아이디">아이디순</a> <a
+						href="/adminUserList.do?sort=가입일">가입일순</a> <a
+						href="/adminUserList.do?sort=최종접속일">최종접속일순</a> <a
+						href="/adminUserList.do?sort=활성상태">활성상태</a> <select
 						id="cntPerPage" name="sel" onchange="selChange()">
 						<option value="5"
 							<c:if test="${paging.cntPerPage == 5}">selected</c:if>>5줄

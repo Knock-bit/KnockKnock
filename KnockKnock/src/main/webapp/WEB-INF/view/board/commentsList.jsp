@@ -1,14 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <script>
-	var bIdx='${board.bIdx}'; //게시글 번호
+	var bIdx='${board.bIdx}'; 
 	 
 	$('[name=commentsInsertBtn]').click(function(){ 
 	    var insertData = $('[name=commentsInsertForm]').serialize();
 	    insertComments(insertData); 
 	});
- 
- 
  
 	//댓글 목록 
 	function commentsList(){
@@ -20,13 +18,12 @@
 	            var a =''; 
 	            $.each(data, function(key, value){ 
 	                a += '<div class="areaComments" style="border-bottom:1px solid darkgray; margin-bottom: 15px;">';
-	                a += '<div class="infoComments'+value.mIdx+'">'+'댓글번호 : '+value.mIDX+' / 작성자 : '+value.uIdx;
+	                a += '<div class="infoComments'+value.mIdx+'">'+'댓글번호 : '+value.mIdx+' / 작성자 : '+value.uIdx;
 	                a += '<a onclick="updateComments('+value.mIdx+',\''+value.cContent+'\');"> 수정 </a>';
-	                a += '<a onclick="deleteComments('+value.mIdx+');"> 삭제 </a> </div>';
+	                a += '<a onclick="deleteComments('+value.mIdx+',\''+value.mIdx+'\');"> 삭제 </a> </div>';
 	                a += '<div class="commentsContent'+value.mIdx+'"> <p> 내용 : '+value.cContent +'</p>';
 	                a += '</div></div>';
 	            });
-	            
 	            $(".commentsList").html(a);
 	        }
 	    });
@@ -61,12 +58,12 @@
 	 
 	//댓글 수정
 	function UpdateCommentsProc(mIdx){
-	    var updateContent = $('[name=cContent_'+mIdx+']').val();
+	    var updateComments = $('[name=cContent_'+mIdx+']').val();
 	    
 	    $.ajax({
 	        url : '/board/updateComments.do',
 	        type : 'post',
-	        data : {'cContent' : updateContent, 'mIdx' : mIdx},
+	        data : {'cContent' : updateComments, 'mIdx' : mIdx},
 	        success : function(data){
 	            if(data == 1) commentsList(bIdx);
 	        }
@@ -83,10 +80,9 @@
 	        }
 	    });
 	}
-	
 	$(document).ready(function(){
 	    commentsList(); 
-	});
+	}); 
 
 </script>
 </head>

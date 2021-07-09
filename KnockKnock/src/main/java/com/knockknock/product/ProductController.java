@@ -52,9 +52,10 @@ public class ProductController {
 		System.out.println("pvo : " + pvo);
 		
 		model.addAttribute("pvo", pvo);
-		return "/mypage/cart/tempProduct";
+		return "/product/productDetail";
 	}
 	
+	@GetMapping("")
 	
 	// 상품 등록(일반)
 	@PostMapping("/productRegister.do")

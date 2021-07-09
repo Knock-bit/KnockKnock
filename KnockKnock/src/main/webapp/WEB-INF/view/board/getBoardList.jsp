@@ -13,10 +13,15 @@
 	.center { text-align: center; }
 </style>
 <script>
-
 	//게시글 등록창으로..
 	function moveInsert_board(frm) {
 		frm.action = "${cp}/board/moveInsert.do"
+		frm.setAttribute('method', 'get');
+		frm.submit();
+	}
+	//내글만보기
+	function myView_board(frm) {
+		frm.action = "${cp}/board/myViewBoard.do"
 		frm.setAttribute('method', 'get');
 		frm.submit();
 	}
@@ -111,7 +116,7 @@
 	</div>
 	<div>
 		<p><input type="button" value="게시글등록" onclick="moveInsert_board(this.form)">
-		<input type="button" value="내글보기"></p>
+		<input type="button" value="내글보기" onclick="myView_board(this.form)"></p>
 	</div>	
 	</form>
 </div>

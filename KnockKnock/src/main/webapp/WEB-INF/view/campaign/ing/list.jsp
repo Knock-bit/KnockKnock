@@ -68,6 +68,10 @@
 
 </script>
 <style>
+
+#commonDiv{
+ padding-top: 60px;
+}
 .scale {
 	transform: scale(1);
 	-webkit-transform: scale(1);
@@ -115,7 +119,6 @@
   	</c:otherwise>
   	</c:choose>
 
-      <a href="campaigns.html" class="get-started-btn">Get Started</a>
 
     </div>
   </header><!-- End Header -->

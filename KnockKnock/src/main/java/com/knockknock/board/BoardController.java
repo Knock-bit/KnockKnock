@@ -10,17 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.knockknock.util.PagingVO;
 
 @Controller
-@SessionAttributes("board")
 public class BoardController {
 	
 	private String uploadPath = "C:/Mystudy/";
@@ -117,13 +114,13 @@ public class BoardController {
 		return "redirect:/board/getBoardList.do";
 	}
 	
-	@ModelAttribute("conditionMap")
-	public Map<String, String> searchConditionMap() {
-		Map<String, String> conditionMap = new HashMap<String, String>();
-		conditionMap.put("제목", "BSUBJECT");
-		conditionMap.put("내용", "BCONTENT");
-		return conditionMap;
-	}
+//	@ModelAttribute("conditionMap")
+//	public Map<String, String> searchConditionMap() {
+//		Map<String, String> conditionMap = new HashMap<String, String>();
+//		conditionMap.put("제목", "BSUBJECT");
+//		conditionMap.put("내용", "BCONTENT");
+//		return conditionMap;
+//	}
 	
 	@RequestMapping("/board/updateHit.do")
 	public String updateHit (@RequestParam int bIdx) {
@@ -146,5 +143,28 @@ public class BoardController {
 		ncPage.put("cntPerPage", cntPerPage);
 		
 		return ncPage;
+	}
+	
+	@RequestMapping("/board/myViewBoard.do")
+	public String myViewBoard(BoardVO vo, Model model, PagingVO pvo,
+			@RequestParam(value = "nowPage", required = false) String nowPage,
+			@RequestParam(value = "cntPerPage", required = false) String cntPerPage) {
+		
+		int total = boardService.countBoard();
+		if (nowPage == null && cntPerPage == null) {
+			nowPage = "1"; 
+			cntPerPage = "5";
+		} else if (nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) {
+			cntPerPage = "5";
+		}
+		pvo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		model.addAttribute("paging", pvo);
+		model.addAttribute("getBoardList", boardService.getBoardList(pvo));
+		List<BoardVO> myViewBoard = boardService.getBoardList(pvo);
+		model.addAttribute("myViewBoard", myViewBoard);
+		
+		return "board/getBoardList";	
 	}
 }

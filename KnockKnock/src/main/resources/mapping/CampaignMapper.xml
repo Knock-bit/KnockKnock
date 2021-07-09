@@ -80,7 +80,7 @@
 		FROM USERS U, CAMPAIGN C
 		WHERE CI_STATUS = 1
 		AND U.U_IDX = C.U_IDX
-		AND C.CI_IDX =3
+		AND C.CI_IDX = #{ciIdx}
 	</select>
 	
 	<!-- 캠페인 상세보기 - 참여자 닉네임 불러오기 -->
@@ -323,7 +323,7 @@
   		INSERT INTO PROPOSAL(CP_IDX, CP_REGDATE, CP_TITLE, CP_GOAL, CP_CONTENT, 
   							CP_GOALPOINT, CP_FILE, U_IDX,
   							CP_KEYWORD1, CP_KEYWORD2, CP_KEYWORD3)
-					VALUES (PROPOSAL_IDX_SEQ.nextval, SYSDATE,  
+					VALUES (CP_IDX_SEQ.nextval, SYSDATE,  
 							#{cpTitle}, #{cpGoal}, #{cpContent}, 
   							#{cpGoalpoint}, #{cpFile}, #{uIdx}, 
   							#{cpKeyword1}, #{cpKeyword2}, #{cpKeyword3})

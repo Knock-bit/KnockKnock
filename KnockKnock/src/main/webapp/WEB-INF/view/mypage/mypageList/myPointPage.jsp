@@ -170,7 +170,6 @@
 
 					</div>
 
-
 				</div>
 				
 				<div class="item3">
@@ -179,7 +178,7 @@
 					
 					<!-- 조회기간 -->
 					<div class="day">
-						<p>조회기간 선택해주세염ㅋ(못만들듯ㅋ)</p>
+						<p>-</p>
 					</div>
 					<div class="menu">
 						<p class="m1">이용일자</p>
@@ -227,7 +226,7 @@
 
 					<c:forEach var="emblem" items="${emImgList }">
 						<div class="eitem">
-							<img src="/resource/img/upload/${emblem.CI_EMBLEM }">
+							<img src="${emblem.CI_EMBLEM }">
 						</div>
 
 					</c:forEach>

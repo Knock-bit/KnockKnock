@@ -26,8 +26,9 @@ public class AdminController {
 	public AdminController() {
 		System.out.println("==> AdminController() 객체 생성");
 	}
+
 	// 페이지 셋팅부분
-	public static Map<String ,String> pageSet(String nowPage, String cntPerPage) {
+	public static Map<String, String> pageSet(String nowPage, String cntPerPage) {
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = "1";
 			cntPerPage = "5";
@@ -44,43 +45,44 @@ public class AdminController {
 
 	// 리스트들에서 검색하기위한 두 개의 데이터가 담겨져있는 Map를 반환하는 메소드
 	@ModelAttribute("conditionMap")
-	public Map<String, String> SearchConditionMap(){
+	public Map<String, String> SearchConditionMap() {
 		Map<String, String> conditionMap = new HashMap<String, String>();
 		conditionMap.put("제목", "TITLE");
 		conditionMap.put("내용", "CONTENT");
-		
+
 		return conditionMap;
 	}
-	// 키워드, 캠페인 카테고리 검색 
+
+	// 키워드, 캠페인 카테고리 검색
 	@ModelAttribute("conditionMapOnlyContent")
-	public Map<String, String> SearchConditionMapContent(){
+	public Map<String, String> SearchConditionMapContent() {
 		Map<String, String> conditionMap = new HashMap<String, String>();
 		conditionMap.put("내용", "CONTENT");
-		
+
 		return conditionMap;
 	}
-	
-	// 유저 검색 
+
+	// 유저 검색
 	@ModelAttribute("conditionMapUser")
-	public Map<String, String> SearchConditionMapUser(){
+	public Map<String, String> SearchConditionMapUser() {
 		Map<String, String> conditionMap = new HashMap<String, String>();
 		conditionMap.put("아이디", "ID");
 		conditionMap.put("이름", "NAME");
 		conditionMap.put("닉네임", "NICKNAME");
-		
+
 		return conditionMap;
 	}
-	
-	// 캠페인 리스트 검색 
+
+	// 캠페인 리스트 검색
 	@ModelAttribute("conditionMapUserCampaign")
-	public Map<String, String> SearchConditionMapUserCampaign(){
+	public Map<String, String> SearchConditionMapUserCampaign() {
 		Map<String, String> conditionMap = new HashMap<String, String>();
 		conditionMap.put("제목", "TITLE");
 		conditionMap.put("제안자", "USER");
-		
+
 		return conditionMap;
 	}
-	
+
 	// 제안서 검색
 	@ModelAttribute("conditionMapProposal")
 	public Map<String, String> SearchConditionMapProposal() {
@@ -90,16 +92,14 @@ public class AdminController {
 
 		return conditionMap;
 	}
-	
 
-	
 	@GetMapping("/adminMain.do")
 	public String moveAdminMain() {
 		return "/admin/adminMain";
 	}
 
 	// 유저 활성상태 변경
-	@RequestMapping(value="/adminActive.do", method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@RequestMapping(value = "/adminActive.do", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public void updateUserActive(@RequestBody AdminUserVO vo) {
 		System.out.println("유저 활성 상태 변경");
 		System.out.println(vo);
@@ -107,8 +107,7 @@ public class AdminController {
 		adminService.updateUserActive(user);
 		System.out.println("uuuuu" + user);
 	}
-	 
-	
+
 	// 유저리스트
 	@GetMapping("/adminUserList.do")
 	public String getUserList(PagingVO pvo, Model model,
@@ -116,11 +115,12 @@ public class AdminController {
 			@RequestParam(value = "cntPerPage", required = false) String cntPerPage,
 			@RequestParam(value = "sort", required = false) String sort) {
 		int total = adminService.countUser();
-		Map<String,String> map = pageSet(nowPage,cntPerPage);
+		Map<String, String> map = pageSet(nowPage, cntPerPage);
 		nowPage = map.get("nowPage");
-		cntPerPage=map.get("cntPerPage");
+		cntPerPage = map.get("cntPerPage");
 		pvo.setSort(sort);
-		pvo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage),pvo.getSearchCondition(),pvo.getSearchKeyword(),pvo.getSort());
+		pvo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage), pvo.getSearchCondition(),
+				pvo.getSearchKeyword(), pvo.getSort());
 		model.addAttribute("paging", pvo);
 		model.addAttribute("viewAll", adminService.getUserList(pvo));
 		System.out.println(adminService.getUserList(pvo));
@@ -136,18 +136,19 @@ public class AdminController {
 			@RequestParam(value = "sort", required = false) String sort) {
 
 		int total = adminService.countKeyword();
-		Map<String,String> map = pageSet(nowPage,cntPerPage);
+		Map<String, String> map = pageSet(nowPage, cntPerPage);
 		nowPage = map.get("nowPage");
-		cntPerPage=map.get("cntPerPage");
+		cntPerPage = map.get("cntPerPage");
 		pvo.setSort(sort);
-		pvo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage),pvo.getSearchCondition(),pvo.getSearchKeyword(),pvo.getSort());
+		pvo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage), pvo.getSearchCondition(),
+				pvo.getSearchKeyword(), pvo.getSort());
 		List<AdminKeywordVO> kvo = adminService.getKeywordList(pvo);
 		System.out.println(kvo);
 		model.addAttribute("paging", pvo);
 		model.addAttribute("viewAll", kvo);
 		return "/admin/adminKeywordList";
 	}
-	
+
 	// 캠페인 카테고리 리스트
 	@GetMapping("/adminCampaignCategory.do")
 	public String getCampaignCategoryList(PagingVO pvo, Model model,
@@ -155,21 +156,23 @@ public class AdminController {
 			@RequestParam(value = "cntPerPage", required = false) String cntPerPage,
 			@RequestParam(value = "sort", required = false) String sort) {
 		int total = adminService.countCampaignCategory();
-		Map<String,String> map = pageSet(nowPage,cntPerPage);
+		Map<String, String> map = pageSet(nowPage, cntPerPage);
 		nowPage = map.get("nowPage");
-		cntPerPage=map.get("cntPerPage");
+		cntPerPage = map.get("cntPerPage");
 		pvo.setSort(sort);
-		pvo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage),pvo.getSearchCondition(),pvo.getSearchKeyword(),pvo.getSort());
+		pvo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage), pvo.getSearchCondition(),
+				pvo.getSearchKeyword(), pvo.getSort());
 		model.addAttribute("paging", pvo);
 		model.addAttribute("viewAll", adminService.getCampaignCategoryList(pvo));
 		return "/admin/adminCampaignCategory";
 	}
-	@GetMapping("/adminFunding.do")
-	public String getFunding() {
-		return "/admin/adminFunding";
-	}
-	
-	// 캠페인 리스트 가져오기 
+
+//	@GetMapping("/adminFunding.do")
+//	public String getFunding() {
+//		return "/admin/funding/adminFunding";
+//	}
+
+	// 캠페인 리스트 가져오기
 	@GetMapping("/adminCampaignList.do")
 	public String getCampaignList(PagingVO pvo, Model model,
 			@RequestParam(value = "nowPage", required = false) String nowPage,
@@ -177,23 +180,42 @@ public class AdminController {
 			@RequestParam(value = "sort", required = false) String sort) {
 
 		int total = adminService.countCampaign();
-		Map<String,String> map = pageSet(nowPage,cntPerPage);
+		Map<String, String> map = pageSet(nowPage, cntPerPage);
 		nowPage = map.get("nowPage");
-		cntPerPage=map.get("cntPerPage");
+		cntPerPage = map.get("cntPerPage");
 		pvo.setSort(sort);
-		pvo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage),pvo.getSearchCondition(),pvo.getSearchKeyword(),pvo.getSort());
+		pvo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage), pvo.getSearchCondition(),
+				pvo.getSearchKeyword(), pvo.getSort());
 		model.addAttribute("paging", pvo);
 		model.addAttribute("viewAll", adminService.getCampaignList(pvo));
 		return "/admin/campaign/adminCampaignList";
 	}
-	
+
 	// 캠페인 상세보기
 	@GetMapping("/getCampaign.do")
 	public String getCampaign(AdminCampaignVO vo, Model model) {
 		AdminCampaignVO campaign = adminService.getCampaign(vo);
 		System.out.println("VO :: : :: : :: : : " + campaign);
-		model.addAttribute("campaign",campaign);
+		model.addAttribute("campaign", campaign);
 		return "/admin/campaign/adminCampaignDetail";
+	}
+
+	// 문의사항 리스트 보기
+	@GetMapping("/adminContactList.do")
+	public String getContactList(PagingVO pvo, Model model,
+			@RequestParam(value = "nowPage", required = false) String nowPage,
+			@RequestParam(value = "cntPerPage", required = false) String cntPerPage,
+			@RequestParam(value = "sort", required = false) String sort) {
+		int total = adminService.countCampaign();
+		Map<String, String> map = pageSet(nowPage, cntPerPage);
+		nowPage = map.get("nowPage");
+		cntPerPage = map.get("cntPerPage");
+		pvo.setSort(sort);
+		pvo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage), pvo.getSearchCondition(),
+				pvo.getSearchKeyword(), pvo.getSort());
+		model.addAttribute("paging", pvo);
+		model.addAttribute("viewAll", adminService.getCampaignList(pvo));
+		return "/admin/contact/adminContactList";
 	}
 
 }

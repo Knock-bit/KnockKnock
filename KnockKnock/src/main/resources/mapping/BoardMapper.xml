@@ -43,4 +43,8 @@
 		UPDATE BOARD SET B_VIEWS = B_VIEWS + 1 WHERE B_IDX = #{bIdx}
 	</update>
 	
+	<select id="myViewBoard" parameterType="boardVO" resultType="boardVO">
+		SELECT * FROM BOARD WHERE U_IDX = #{uIdx}
+	</select>
+	
 </mapper>

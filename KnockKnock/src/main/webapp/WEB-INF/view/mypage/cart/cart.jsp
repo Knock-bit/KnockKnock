@@ -22,7 +22,7 @@
  
   <!-- Main CSS File -->
   <link href="${cp}/resource/css/main.css" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Sans+KR:wght@300&family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
   <!-- Import BootStrap -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
   
@@ -39,23 +39,40 @@
    <%@ include file= "/layout/navbar/navLoggedin.jsp" %>
   <!-- ======= Header 끝  === -->
 <div class="main-content">
+<!-- nav -->
+		<nav class="navbar navbar-expand-lg navbar-light bg-light"
+			style="padding: 0 5% 0 5%;">
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active"><a class="nav-link" id="myq"
+						href="${cp }/productlist.do">더 구매하러 가기</a></li>
+					<li class="nav-item"><a class="nav-link" id="myf" href="ordersList.do">주문 내역</a></li>
+					 <li class="nav-item dropdown"><a class="nav-link" href="orderConfirm.do">주문 확인(임시)</a>
+				</li><!--
+				<li class="nav-item dropdown"><a class="nav-link" href="#">생활용품</a>
+				</li> -->
+				</ul>
 
-	<h1>장바구니</h1>
+			</div>
+			<form action="" method="post">
+				<input type="search" placeholder="Search" aria-label="Search"><input
+					type="submit" value="검색">
+			</form>
+		</nav>
+	<div class="cart">
+	
 	<div class="cartmain">
-		<div>
-			<input type="button" onclick="location.href='${cp }/productlist.do'" value="더 구매하러 가기">
-			<input type="button" onclick="location.href='ordersList.do'" value="내 주문 목록">
-			<input type="button" onclick="location.href='orderConfirm.do'" value="주문확인(임시)">
-		</div>
 		<div class="cartText">
 			<!-- 장바구니 text, 주문 진행 순서 명시, 상품 구매로 이동버튼, 내 주문내역 이동 버튼 -->
-			<div>
-				장바구니
+			<div class="ct1">
+				<h4 style="margin:4%; text-align:center;">장바구니</h4>
 			</div>
-			<div>
-				장바구니->주문목록->결제
+			<div class="ct2">
+				<img src="/resource/img/upload/etc/shopping-cart.png"><span>장바구니</span>
+				<img src="/resource/img/upload/etc/checklist.png"><span>주문목록</span>
+				<img src="/resource/img/upload/etc/checked.png"><span>결제</span>
 			</div>
-			<div>
+			<div class="ct3">
 				<input type="button" onclick="deleteCart()" value="장바구니 비우기">
 			</div>
 			<p class="uIdx" style="display:none;">${users.uIdx }</p>
@@ -127,7 +144,7 @@
 				</div>
 				<div class="cg7">
 					<!-- 전체 가격(수량 및 배송비 합쳐서) -->
-					<p class="cg6price">${(cartItem.pCount * cartItem.pPrice) + cartItem.pFee }</p><span>원</span>&nbsp;&nbsp;
+					<p class="cg6price">${(cartItem.pCount * cartItem.pPrice) + cartItem.pFee }</p>원&nbsp;&nbsp;
 				</div>
 			</div>
 			</c:forEach>	
@@ -140,13 +157,17 @@
 		</div>
 		<div class="totPrice">
 			<!-- 체크박스에 체크 된 상품의 가격만 가져오기(+배송비) -->
-			<div>총 합계 :</div><span id="price">0</span>원
-			<input type="button" value="주문하기" onclick="orders()">
+			<div class="totp1">
+				<div>총 합계 :</div>&nbsp;&nbsp;&nbsp;<span id="price">0</span>&nbsp;&nbsp;&nbsp;원
+			</div>
+			<div class="totp2">
+				<input type="button" value="주문하기" onclick="orders()">
+			</div>
 		</div>
 		</div>
 		
 	
-	
+	</div>
 </div>	
 <!-- ======= Footer ======= -->
    <%@ include file= "/layout/footer.jsp" %>

@@ -1,22 +1,23 @@
 *{
-	font-family: 'Roboto+Slab:wght@300';
+	font-family: 'Noto Sans KR', sans-serif;
 	
 }
 
 .main-content{
   		width:100%;
         flex: 1;
-        min-height:100vh;
+        height:100%;
         margin-top:100px;
         
     }
-   .updateMyInfoForm {
-   		width:70%;
-   		margin: 0 auto;
-   		text-align:center;
-   		position:relative;
-   		
-   }
+  .updateMyInfoForm {
+  		width:70%;
+  		margin: 0 auto;
+  		text-align:center;
+  		position:relative;
+  		height:100%;
+  		
+  }
    #ctext{
 	font-size:35px;
 	border-bottom:1px solid gray;
@@ -191,7 +192,7 @@
 	  top:50%; left:50%;
 	  transform: translate(-50%,-50%);
 	  max-width: 50%;
-	  min-height: 10%;
+	  min-height: 55%;
 	  background:#ebf9f2;
 	  width:45%;
 	  height:50vh;

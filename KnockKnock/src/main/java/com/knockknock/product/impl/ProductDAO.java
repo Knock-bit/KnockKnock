@@ -25,7 +25,11 @@ public class ProductDAO {
 
 		return mybatis.selectOne("UserVO.productDetail", pIdx);
 	}
-
+	//식품만 가져오기
+	public List<ProductVO> foodProductOnly(int pcIdx) {
+		return mybatis.selectOne("Product.foodProductOnly", pcIdx);
+	}
+	
 	// 상품 등록
 	public int insertProduct(ProductVO product) {
 		return mybatis.insert("Product.insertProduct", product);

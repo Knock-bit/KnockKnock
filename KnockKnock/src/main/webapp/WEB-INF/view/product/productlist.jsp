@@ -62,102 +62,90 @@
 
 	<!-- ======= Hero Section ======= -->
 	<main id="main" data-aos="fade-in">
-
-		<!-- ======= Breadcrumbs ======= -->
-		<div class="breadcrumbs" style="background-color: rgb(10, 61, 14);">
-			<div class="container">
-				<h2>SHOP</h2>
-				<p>綠!Knock!과 함께하는 친환경 상품들을 만나보세요!</p>
-			</div>
+	<!-- ======= Breadcrumbs ======= -->
+	<div class="breadcrumbs" style="background-color: rgb(10, 61, 14);">
+		<div class="container">
+			<h2>SHOP</h2>
+			<p>綠!Knock!과 함께하는 친환경 상품들을 만나보세요!</p>
 		</div>
-		<!-- End Breadcrumbs -->
-
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-
-
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav mr-auto">
-					<li class="nav-item active"><a class="nav-link" href="#">전체상품보기</a>
-					</li>
-					<li class="nav-item"><a class="nav-link" href="#">식품</a></li>
-					<li class="nav-item dropdown"><a class="nav-link" href="#">의류</a>
-
-					</li>
-					<li class="nav-item dropdown"><a class="nav-link" href="#">생활용품</a>
-
-					</li>
-				</ul>
-
-			</div>
+	</div>
+	<!-- End Breadcrumbs -->
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active"><a class="nav-link" href="/productDetail.do">전체상품보기</a></li>
+				<li class="nav-item"><a class="nav-link" href="/product/food.do">식품</a></li>				
+				<li class="nav-item dropdown"><a class="nav-link" href="/product/fashion.do">의류</a></li>
+				<li class="nav-item dropdown"><a class="nav-link" href="/product/grocery.do">생활용품</a></li>
+			</ul>
+		</div>
 			<form action="" method="post">
-				<input type="search" placeholder="Search" aria-label="Search"><input
-					type="submit" value="검색">
+				<input type="search" placeholder="Search" aria-label="Search"><input type="submit" value="검색">
 			</form>
-		</nav>
+ 	</nav>
 
 
+      <!-- ======= ProductList Section ======= -->
+      <section id="courses" class="courses">
+         <div class="container" data-aos="fade-up">
 
-		<!-- ======= ProductList Section ======= -->
-		<section id="courses" class="courses">
-			<div class="container" data-aos="fade-up">
+            <div class="row" data-aos="zoom-in" data-aos-delay="100">
 
-				<div class="row" data-aos="zoom-in" data-aos-delay="100">
+               <c:if test="${!empty plist }">
+                  <c:forEach var="product" items="${plist }">
 
-					<c:if test="${!empty plist }">
-						<c:forEach var="product" items="${plist }">
+                     <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                        <div class="course-item">
+                           <a href="productDetail.do?pIdx=${product.pIdx}"><img src="/resource/img/product/${product.pImg }"
+                              class="img-fluid" style="width:370px; height:250px"></a>
+                           <div class="course-content">
+                              <div
+                                 class="d-flex justify-content-between align-items-center mb-3">
+                                 <h4>${product.pcIdx}</h4>
+                                 <p class="price">${product.pPrice}</p>
+                              </div>
 
-							<div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-								<div class="course-item">
-									<img src="/resource/img/product/${product.pImg }"
-										class="img-fluid" style="width:370px; height:250px">
-									<div class="course-content">
-										<div
-											class="d-flex justify-content-between align-items-center mb-3">
-											<h4>${product.pcIdx}</h4>
-											<p class="price">${product.pPrice}</p>
-										</div>
+                              <h3>
+                                 <a href="productDetail.do?pIdx=${product.pIdx}">${product.pName}</a>
+                              </h3>
+                              <p>${product.pPrice}</p>
+                              <div
+                                 class="trainer d-flex justify-content-between align-items-center">
+                                 <div class="trainer-profile d-flex align-items-center">
+                                    <span>${product.sIdx}판매자</span>
+                                 </div>
+                                 <div class="trainer-rank d-flex align-items-center">
+                                    ${product.pViews }</div>
+                              </div>
+                           </div>
 
-										<h3>
-											<a href="productDetail.do?pIdx=${product.pIdx}">${product.pName}</a>
-										</h3>
-										<p>${product.pPrice}</p>
-										<div
-											class="trainer d-flex justify-content-between align-items-center">
-											<div class="trainer-profile d-flex align-items-center">
-												<span>${product.sIdx}판매자</span>
-											</div>
-											<div class="trainer-rank d-flex align-items-center">
-												${product.pViews }</div>
-										</div>
-									</div>
+                        </div>
+                     </div>
+                  </c:forEach>
+               </c:if>
 
-								</div>
-							</div>
-						</c:forEach>
-					</c:if>
+            </div>
 
-				</div>
+         </div>
+      </section>
+      <!-- End Courses Section -->
 
-			</div>
-		</section>
-		<!-- End Courses Section -->
+   </main>
+   <!-- End #main -->
 
-	</main>
-	<!-- End #main -->
+   <!-- ======= Footer ======= -->
+   <%@ include file="/layout/footer.jsp"%>
 
-	<!-- ======= Footer ======= -->
-	<%@ include file="/layout/footer.jsp"%>
+   <!-- Vendor JS Files -->
+   <script src="${cp}/resource/vendor/aos/aos.js"></script>
+   <script
+      src="${cp}/resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+   <script src="${cp}/resource/vendor/php-email-form/validate.js"></script>
+   <script src="${cp}/resource/vendor/purecounter/purecounter.js"></script>
+   <script src="${cp}/resource/vendor/swiper/swiper-bundle.min.js"></script>
 
-	<!-- Vendor JS Files -->
-	<script src="${cp}/resource/vendor/aos/aos.js"></script>
-	<script
-		src="${cp}/resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<script src="${cp}/resource/vendor/php-email-form/validate.js"></script>
-	<script src="${cp}/resource/vendor/purecounter/purecounter.js"></script>
-	<script src="${cp}/resource/vendor/swiper/swiper-bundle.min.js"></script>
-
-	<!-- Template Main JS File -->
-	<script src="${cp}/resource/js/main.js"></script>
+   <!-- Template Main JS File -->
+   <script src="${cp}/resource/js/main.js"></script>
 
 </body>
 </html>
