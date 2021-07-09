@@ -217,5 +217,10 @@ public class AdminController {
 		model.addAttribute("viewAll", adminService.getCampaignList(pvo));
 		return "/admin/contact/adminContactList";
 	}
+	
+	@GetMapping("/cssTest.do")
+	public String cssTest() {
+		return "/admin/csstest";
+	}
 
 }

@@ -34,12 +34,7 @@
 		frm.action="user/login.do";
 		frm.submit();
 	}
-	
-	function contact_connect(frm){
-		frm.action="contact/contact.do";
-		frm.submit();
-	}
-	
+
 </script>
 </head>
 

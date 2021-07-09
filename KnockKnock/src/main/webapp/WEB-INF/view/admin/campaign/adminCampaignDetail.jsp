@@ -21,42 +21,21 @@
 <meta content="" name="description">
 <meta content="" name="keywords">
 
+<!-- js link , table css -->
+<jsp:include page='${cp}/layout/admin/adminLink.jsp' flush='false' />
+<link href='${cp}/resource/css/admin/adminCss.css' rel="stylesheet"
+	type="text/css">
+
 <!-- Favicons -->
 <link href="${cp}/resource/img/favicon.png" rel="icon">
 <link href="${cp}/resource/img/apple-touch-icon.png"
 	rel="apple-touch-icon">
 
-<!-- Google Fonts -->
-<link
-	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-	rel="stylesheet">
 
-<!-- Vendor CSS Files -->
-<link href="${cp}/resource/vendor/animate.css/animate.min.css"
-	rel="stylesheet">
-<link href="${cp}/resource/vendor/aos/aos.css" rel="stylesheet">
-<link href="${cp}/resource/vendor/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
-<link href="${cp}/resource/vendor/bootstrap-icons/bootstrap-icons.css"
-	rel="stylesheet">
-<link href="${cp}/resource/vendor/boxicons/css/boxicons.min.css"
-	rel="stylesheet">
-<link href="${cp}/resource/vendor/remixicon/remixicon.css"
-	rel="stylesheet">
-<link href="${cp}/resource/vendor/swiper/swiper-bundle.min.css"
-	rel="stylesheet">
-
-<!-- Main CSS File -->
-<link href="${cp}/resource/css/main.css" rel="stylesheet">
-<link href="${cp}/resource/css/campaign/campaign.css" rel="stylesheet">
-<link href="${cp}/resource/css/nav1.css" rel="stylesheet">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<!-- Import BootStrap -->
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <!-- Import Kakao -->
 <script type="text/JavaScript"
 	src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <style>
 .profile-container {
 	width: 200px;
@@ -88,27 +67,12 @@
 	width: 100%;
 	height: 100%;
 }
-/* .img-box {
-   width:100%;
-    height:30vh;
-    overflow:hidden;
+
+.campaign-main-info {
+	display: inline-block;
+	margin: 0 auto;
 }
-.img-box img {
-	width:100%; 
-	height:100%; 
-	object-fit:cover;
-	-webkit-filter: blur(20px); 
-	filter:blur(20px);
-	opacity: 70%;
-	position:relative;
-	z-index:-1;
-	}
- .detail-title {
- 	position:relative;
- 	top:50%;
- 	left:40%;
- 	width:500px;
-	}  */
+
 .detail-title {
 	margin-top: 100px;
 	text-align: center;
@@ -122,167 +86,292 @@
 
 @media ( min-width : 1100px) {
 	.container {
-		width: 1080px;
+		width: 1100px;
 	}
 }
+
+.ci-emblem {
+	float: left;
+	margin-left: 0.3em;
+}
+
+.certification {
+	margin-top: 10px;
+	font-size: 1em;
+}
+
+.campaign-keyword {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	color: grey;
+}
+
+.campaign-main-info {
+	margin-top: 25px;
+	margin-bottom: 25px;
+	padding: 15px;
+}
+
+.sticky-parent {
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+
+.sticky {
+	position: -webkit-sticky;
+	position: sticky;
+	top: 0;
+}
+
+.campaign-info {
+	border-radius: 10px;
+}
+
+.buttons {
+	display: block;
+	margin-top: 1.5em;
+}
+
+#share {
+	width: 2.8em;
+	height: 2.8em;
+	border-radius: 8px;
+	font-size: 1.5em;
+	border: 1px solid #c1c1c1;
+}
+
+#participate {
+	width: 9.7em;
+	height: 2.8em;
+	margin-left: 0.3em;
+	border-radius: 8px;
+	background-color: rgb(10, 61, 14);
+	color: white;
+	font-size: 1.5em;
+	border: none;
+}
+
+.campaign-details .campaign-info {
+	background: #f6f7f6;
+	padding: 25px 15px;
+	margin-bottom: 15px;
+	border-radius: 5px;
+	border: 1px solid #e3e3e3;
+}
+
+.inner-nav {
+	margin-bottom: 10px;
+}
+
+#commonDiv {
+	padding-right: 20px;
+}
 </style>
-<!-- Favicons -->
-<link href="${cp}/resource/img/favicon.png" rel="icon">
-<link href="${cp}/resource/img/apple-touch-icon.png"
-	rel="apple-touch-icon">
 
-<!-- Google Fonts -->
-<link
-	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-	rel="stylesheet">
 
-<!-- Vendor CSS Files -->
-<link href="${cp}/resource/vendor/animate.css/animate.min.css"
-	rel="stylesheet">
-<link href="${cp}/resource/vendor/aos/aos.css" rel="stylesheet">
-<link href="${cp}/resource/vendor/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
-<link href="${cp}/resource/vendor/bootstrap-icons/bootstrap-icons.css"
-	rel="stylesheet">
-<link href="${cp}/resource/vendor/boxicons/css/boxicons.min.css"
-	rel="stylesheet">
-<link href="${cp}/resource/vendor/remixicon/remixicon.css"
-	rel="stylesheet">
-<link href="${cp}/resource/vendor/swiper/swiper-bundle.min.css"
-	rel="stylesheet">
+<script>
+	function getBoardView(bIdx) {
+		$("#commonDiv").load("${cp}/board/getBoard.do?bIdx=" + bIdx);
+	}
 
-<!-- Main CSS File -->
-<link href="${cp}/resource/css/main.css" rel="stylesheet">
-<link href="${cp}/resource/css/nav1.css" rel="stylesheet">
-<link href="${cp}/resource/css/campaign/funding.css" rel="stylesheet">
+	function participate() {
+		$("#commonDiv").load("${cp}/board/moveInsert.do");
+	}
+	$(function() {
 
-<!-- Import BootStrap -->
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		var uIdx = "${users.uIdx}";
+		if (uIdx == "") {
+			$("#participate").attr("onclick",
+					"location.href='${cp}/user/login.do'");
+		}
+
+		$("#getBoard").click(function() {
+			$("#commonDiv").load("${cp}/board/getBoardList.do");
+		});
+		$("#getContent")
+				.click(
+						function() {
+							$("#commonDiv")
+									.load(
+											"${cp}/campaign/getDetailContent.do?ciIdx=${campaign.ciIdx }")
+						})
+		/*  $("#participate").click(function () {
+		   $("#commonDiv").load("${cp}/board/moveInsert.do");
+		 }) */
+		$("#insertBoard").click(function() {
+			$("#commonDiv").load("${cp}/board/getBoard.do?bIdx=${board.bIdx }")
+		});
+
+	});
+	Kakao.init('24f056f59d439e22eab3d1d0b80755f1');
+	try {
+		function sendLink() {
+			Kakao.Link.sendDefault({
+				objectType : 'feed',
+				content : {
+					title : '${campaign.ciTitle}',
+					description : '#케익 #녹차 #백범로 #학원 #비트캠프 #분위기',
+					imageUrl : '/resource/img/campaign/recycle.png',
+					link : {
+						mobileWebUrl : document.location.href,
+						webUrl : document.location.href,
+					},
+				},
+				buttons : [ {
+					title : '웹으로 보기',
+					link : {
+						mobileWebUrl : document.location.href,
+						webUrl : document.location.href,
+					},
+				}, {
+					title : '앱으로 보기',
+					link : {
+						mobileWebUrl : document.location.href,
+						webUrl : document.location.href,
+					},
+				}, ],
+			})
+		}
+		;
+		window.kakaoDemoCallback && window.kakaoDemoCallback()
+	} catch (e) {
+		window.kakaoDemoException && window.kakaoDemoException(e)
+	}
+</script>
+
+
 </head>
 <body>
 
 
 
+	<nav
+		class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
 		<jsp:include page='/layout/navbar/navAdmin.jsp' flush='false' />
-	
+	</nav>
 
-		<!-- ======= Breadcrumbs ======= -->
+	<!-- ======= Breadcrumbs ======= -->
 
-		<section>
-			<div class="detail-title">
-				<h1>${campaign.ciTitle}</h1>
-				<div class="profile-contianer">
-					<div class=profile-pic>
-						<img src="/resource/img/profile/user_default.png">
-					</div>
-					${campaign.uNickname }
+	<section>
+		<div class="detail-title">
+			<h1>${campaign.ciTitle}</h1>
+			<div class="profile-contianer">
+				<div class=profile-pic>
+					<img src="/resource/img/profile/user_default.png">
 				</div>
-				<div class="helper"></div>
+				${campaign.uNickname }
 			</div>
+			<div class="helper"></div>
+		</div>
 
 
-		</section>
-
-		<!-- ======= Cource Details Section ======= -->
-		<section id="campaign-details" class="campaign-details">
-			<div class="container" data-aos="fade-up">
-				<%@ include file="/layout/navbar/campaign/navCampaignDetail.jsp"%>
-				<div class="row">
-					<div class="col-lg-8" id="commonDiv">
-					<!-- 썸네일 -->
-						<img src="${campaign.ciFile }" class="img-fluid" alt="">
-						<h2>${campaign.ciContent }
-							</h3>
-					</div>
-
-
-
-
-
-
-
-					<div class="col-lg-4">
-
-						<div class="campaign-info align-items-center">
-							<h2>${end - now + 1}일남았어요</h2>
-							<h3>캠페인 인증방법</h3>
+	</section>
+	<div class="container-fluid page-body-wrapper">
+		<jsp:include page='${cp}/layout/admin/adminSideNav.jsp' flush='false' />
+		<div class="content-wrapper">
+			<!-- 상단, 좌측 네비바 추가1 -->
+			<!-- ======= Cource Details Section ======= -->
+			<section id="campaign-details" class="campaign-details">
+				<div class="container" data-aos="fade-up">
+					<%@ include file="/layout/navbar/campaign/navCampaignDetail.jsp"%>
+					<div class="row">
+						<div class="col-lg-8" id="commonDiv">
+							<!-- 썸네일 -->
+							<img src="${campaign.ciFile }" class="img-fluid" alt="">
+							<h2>${campaign.ciContent }</h2>
 						</div>
 
-						<div
-							class="campaign-info d-flex justify-content-between align-items-center">
-							<h5>참여중인 사람 목록</h5>
-							<p>
-								<!-- <div class=profile-container>
+
+						<div class="col-lg-4" style="padding-left: 0px;">
+							<center>
+								<div class="campaign-main-info">
+									<div class="campaign-left">
+										<h2>
+											<b>${end - now + 1}일</b> 남았어요
+										</h2>
+									</div>
+									<div class="campaign-point">
+										총 ${campaign.cTotpoint } 포인트가<br> 참여자들에게 나눠집니다.
+									</div>
+								</div>
+								<div class="campaign-info campaign-keyword">
+									<div>
+										<center># ${campaign.ciKeyword1 } #
+											${campaign.ciKeyword2 } # ${campaign.ciKeyword3 }
+									</div>
+								</div>
+								<div
+									class="campaign-info justify-content-between align-items-center">
+
+									<p>
+										<img class="ci-emblem" src="${campaign.ciEmblem }" width=70px;>
+									<div class="certification">
+										<span>인증방법</span><br> ${campaign.cGoal }
+										</p>
+									</div>
+									<div class="buttons">
+										<div class="btn-wrap funding">
+											<button onclick="sendLink();" id="share" class="btn-funding">
+												<i class="bi bi-share"></i>
+											</button>
+											<button onclick="participate()" id="participate"
+												class="btn-funding">참여하기</button>
+										</div>
+									</div>
+								</div>
+								<div
+									class="campaign-info d-flex justify-content-between align-items-center">
+									<h5>참여중인 사람 목록</h5>
+									<p>
+										<!-- <div class=profile-container>
               <div class=profile-pic-1>
               <img src="/resource/img/profile/user_default.png">
               </div>
               <div class=profile-pic-2>
               <img src="/resource/img/profile/user_default.png">
               </div></div> -->
-								<c:if test="${!empty userList }">
+										<c:if test="${!empty userList }">
               ${userList.size() }명 참여중<br>
-									<c:forEach var="user" items="${userList }">
+											<c:forEach var="user" items="${userList }">
 		              	${user.getNickname() }<br>
-									</c:forEach>
-								</c:if>
-								<c:if test="${empty userList }">
+											</c:forEach>
+										</c:if>
+										<c:if test="${empty userList }">
                먼저 참여해보세요!
               </c:if>
-							</p>
+									</p>
+								</div>
 						</div>
-
-						<div class="campaign-info align-items-center">
-							<div class="btn-wrap funding">
-								<button onclick="sendLink();" id="share" class="btn-funding">
-									공유하기</button>
-							</div>
-						</div>
-
-						<div class="campaign-info align-items-center">
-							<div class="btn-wrap funding">
-								<button onclick="funding()" id="participate" class="btn-funding">
-									참여하기</button>
-							</div>
-
-						</div>
-
 					</div>
 				</div>
-
-			</div>
-		</section>
-
-		<div class="modal-footer">
-			<c:if test="${campaign.ciStatus eq 0 }">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal"
-					id="fundingStartBtn">캠페인 진행하기</button>
-			</c:if>
-
-			<c:if test="${campaign.ciStatus eq 1 }">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">진행중인
-					캠페인입니다.</button>
-			</c:if>
-
-			<c:if test="${campaign.ciStatus eq 2 }">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">종료된 캠페인(포인트 분배 대기중)</button>
-			</c:if>
-			<c:if test="${campaign.ciStatus eq 3 }">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">종료된 캠페인</button>
-			</c:if>
+			</section>
 		</div>
+	</div>
+	<div class="modal-footer">
+		<c:if test="${campaign.ciStatus eq 0 }">
+			<button type="button" class="btn btn-secondary" data-dismiss="modal"
+				id="fundingStartBtn">캠페인 진행하기</button>
+		</c:if>
 
+		<c:if test="${campaign.ciStatus eq 1 }">
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">진행중인
+				캠페인입니다.</button>
+		</c:if>
+
+		<c:if test="${campaign.ciStatus eq 2 }">
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">종료된
+				캠페인(포인트 분배 대기중)</button>
+		</c:if>
+		<c:if test="${campaign.ciStatus eq 3 }">
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">종료된
+				캠페인</button>
+		</c:if>
+	</div>
 	</main>
 	<!-- ======= Footer ======= -->
 	<%@ include file="/layout/footer.jsp"%>
 
-	<!-- End Footer -->
 
-	<!--   <div id="preloader"></div>
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
- -->
-	<!-- Vendor JS Files -->
 	<script src="${cp}/resource/vendor/aos/aos.js"></script>
 	<script
 		src="${cp}/resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -292,7 +381,6 @@
 
 	<!-- Template Main JS File -->
 	<script src="${cp}/resource/js/main.js"></script>
-
 </body>
 
 </html>
