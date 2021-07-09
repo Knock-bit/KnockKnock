@@ -4,13 +4,21 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- 참고파일 나중에 삭제 -->
 <mapper namespace="Orders">
- 	 
+ 	 <!-- 판매자별 주문리스트 뽑기 -->
 	<select id="selectOrderList" parameterType="int" resultType="ordersVO">
 		SELECT O_NUMBER, U_NAME, P.P_NAME, O.O_CNT, O.O_STATUS,
 		O.O_TOTPRICE, O.O_DATE
 		FROM ORDERS O, USERS U, PRODUCT P
 		WHERE O.S_IDX=#{sIdx} AND U.U_IDX = O.U_IDX
 		AND P.P_IDX=O.P_IDX ORDER BY O_DATE DESC
+	</select>
+	<!-- 판매자별 누적 주문횟수 뽑기 -->
+	<select id="countOrders" parameterType="int" resultType="int">
+		SELECT COUNT(*) FROM ORDERS WHERE S_IDX = #{sIdx}			
+	</select>
+	<!-- 주문건당  -->
+	<select id="avgTot" parameterType="int" resultType="int">
+		SELECT AVG(O_TOTPRICE) FROM ORDERS WHERE S_IDX = #{sIdx}
 	</select>
 	
 	

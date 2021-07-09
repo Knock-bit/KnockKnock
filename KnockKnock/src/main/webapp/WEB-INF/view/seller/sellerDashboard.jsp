@@ -1,29 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <c:set var="cp" value="${pageContext.request.contextPath }" />
-
-
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
-
 <!-- Required meta tags -->
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Knock!Knock! Seller</title>
-
 <!-- style css -->
 <link rel="stylesheet"
 	href="${cp}/resource/dashboard/css/shared/style.css">
 <!-- Layout styles -->
 <link rel="stylesheet"
 	href="${cp}/resource/dashboard/css/demo_1/style.css">
-
-
 <!-- Google Fonts -->
 <link
 	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
@@ -43,19 +37,16 @@
 	rel="stylesheet">
 <link href="${cp}/resource/vendor/swiper/swiper-bundle.min.css"
 	rel="stylesheet">
-
 </head>
-<body>
 
-
-<body>
+<body style="height:100%">
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">       
    		<jsp:include page='/layout/navbar/navSeller.jsp' flush='false'/> 
     </nav>
     <!-- partial -->
-    <div class="container-fluid page-body-wrapper">
+    <div class="container-fluid page-body-wrapper" style="width:100%">
       <!-- partial:partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
@@ -184,7 +175,7 @@
                             <div class="dot-indicator bg-danger mr-2"></div>
                             <p class="mb-0">누적 주문건수</p>
                           </div>
-                          <h4 class="font-weight-semibold">7,590</h4>
+                          <h4 class="font-weight-semibold">${number}</h4>
                           <div class="progress progress-md">
                             <div class="progress-bar bg-danger" role="progressbar" style="width: 78%" aria-valuenow="78"
                               aria-valuemin="0" aria-valuemax="78"></div>
@@ -196,7 +187,7 @@
                             <div class="dot-indicator bg-success mr-2"></div>
                             <p class="mb-0">누적 환불건수</p>
                           </div>
-                          <h4 class="font-weight-semibold">5,460</h4>
+                          <h4 class="font-weight-semibold">0</h4>
                           <div class="progress progress-md">
                             <div class="progress-bar bg-success" role="progressbar" style="width: 45%"
                               aria-valuenow="45" aria-valuemin="0" aria-valuemax="45"></div>
@@ -214,14 +205,16 @@
                   <div class="card text-white">
                     <div class="card-body">
                       <div class="d-flex justify-content-between pb-2 align-items-center">
-                        <h2 class="font-weight-semibold mb-0">4,624</h2>
+                        <h2 class="font-weight-semibold mb-0">
+                        <fmt:formatNumber value="${avgTot }" pattern="#,###" />원
+                        </h2>
                         <div class="icon-holder">
                          <i class="bi bi-basket3-fill"></i>
                         </div>
                       </div>
                       <div class="d-flex justify-content-between">
                         <h5 class="font-weight-semibold mb-0">주문건당 평균 결제금액</h5>
-                        <p class="text-white mb-0">Since last month</p>
+                        <p class="text-white mb-0">판매시작 이후 현재까지</p>
                       </div>
                     </div>
                   </div>
