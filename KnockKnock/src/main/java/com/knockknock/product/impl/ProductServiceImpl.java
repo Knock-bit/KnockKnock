@@ -13,11 +13,21 @@ import com.knockknock.product.ProductVO;
 public class ProductServiceImpl implements ProductService {
 	@Autowired
 	private ProductDAO productDAO;
- 
+	
+	//shop 메인페이지(상품정보 리스트 보여주기)
+	public List<ProductVO> ProductList() {
+ 		return productDAO.ProductList();
+	}
+	// 카테고리별
+	@Override
+	public List<ProductVO> categoryProduct(ProductVO vo) {
+		
+		return productDAO.categoryProduct(vo);
+	} 
+	
 	// 상품정보 가져오기 (임시)
 	@Override
 	public ProductVO productDetail(int pIdx) {
-		
 		return productDAO.productDetail(pIdx);
 	}
 
@@ -25,19 +35,5 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public int insertProduct(ProductVO product) {
 		return productDAO.insertProduct(product);
-	}
-
-	// 식품만
-	@Override
-	public List<ProductVO> foodProduct(int pcIdx) {
-		return productDAO.foodProductOnly(pcIdx);
-	}
-
-	@Override
-	public List<ProductVO> ProductList() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	
+	}	
 }

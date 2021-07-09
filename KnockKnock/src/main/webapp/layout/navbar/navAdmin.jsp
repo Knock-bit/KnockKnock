@@ -29,7 +29,7 @@
           </li>
 
 
-          <li><a href="${cp }/productlist.do">Shop</a></li>
+          <li><a href="${cp }/productlist.do?pcIdx=0">Shop</a></li>
           <li><a href="${cp }/contact/contact.do">Contact</a></li>
 
           <li class="dropdown"><a href="#"><button type="button" class="btn btn-dark">관리자모드</button> <i
