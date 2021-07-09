@@ -1,9 +1,10 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri ="http://java.sun.com/jsp/jstl/fmt" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-  <c:set var="cp" value="${pageContext.request.contextPath }" />
+<c:set var="cp" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,7 +22,7 @@
 	}
 	//내글만보기
 	function myView_board(frm) {
-		frm.action = "${cp}/board/myView.do"
+		frm.action = "${cp}/board/myViewBoard.do"
 		frm.setAttribute('method', 'get');
 		frm.submit();
 	}
@@ -49,22 +50,18 @@
 	<table>
 		<tr>
 			<th>게시글번호</th>
-			<th>말머리</th>
 			<th>제목</th>
 			<th>작성자</th>
-			<th>내용</th>
 			<th>작성일</th>
 			<th>조회수</th>
 			<th>추천수</th>
 		</tr>
 	<c:if test="${not empty getBoardList}">
 		<c:forEach var="board" items="${getBoardList}">
-		<tr style="cursor:pointer;" onclick="location.href='${cp}/board/getBoard.do?bIdx=${board.bIdx }'">
+		<tr style="cursor:pointer;" onclick="getBoardView(${board.bIdx})">
 			<td>${board.bIdx}</td>
-			<td>${board.sbIdx}</td>
 			<td>${board.bSubject}</td>
 			<td>${board.uIdx}</td>
-			<td>${board.bContent}</td>
 			<td>
 				${fn:substring(board.bRegdate, 0, 10)}
 			</td>
@@ -123,3 +120,4 @@
 	
 </body>
 </html>
+

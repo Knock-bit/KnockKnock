@@ -190,6 +190,17 @@
           function participate(){
         	  $("#commonDiv").load("${cp}/board/moveInsert.do");
           }
+          
+          function insertBoard(){
+        	  alert("글 등록을 완료하였습니다.");
+        	  $("#commonDiv").load("${cp}/board/getBoardList.do");
+          }
+          
+          function getBoard(){
+        	  $("#commonDiv").load("${cp}/board/getBoardList.do");
+          }
+          
+          
           $(function () {
         	 
         	  var uIdx = "${users.uIdx}";
@@ -207,6 +218,7 @@
               $("#commonDiv").load("${cp}/board/moveInsert.do");
             }) */
             $("#insertBoard").click(function () {
+              /* $("#commonDiv").load("${cp}/board/getBoard.do?bIdx=${board.bIdx }"); */
               $("#commonDiv").load("${cp}/board/getBoard.do?bIdx=${board.bIdx }")
             });
             
@@ -315,7 +327,7 @@
                 <div class="row sticky-parent">
                   <div class="col-lg-8" id="commonDiv">
                     <img src="${campaign.ciFile }" class="img-fluid" alt="">
-                    <h2>${campaign.ciContent } </h3>
+                    <h2>${campaign.ciContent } </h2>
                       <p>
                         Qui et explicabo voluptatem et ab qui vero et voluptas. Sint voluptates temporibus quam autem.
                         Atque nostrum voluptatum laudantium a doloremque enim et ut dicta. Nostrum ducimus est iure

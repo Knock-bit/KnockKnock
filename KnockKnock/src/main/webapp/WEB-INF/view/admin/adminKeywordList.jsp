@@ -8,18 +8,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<!-- bootstrap jquery 추가 -->
-<link href="${cp}/resource/vendor/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
-<script src="${cp}/resource/js/jquery/jquery-3.6.0.min.js"></script>
+<title>키워드 카테고리</title>
 
-<style>
-.table {
-	margin-top: 250px;
-	margin-left: 50px
-}
-</style>
+<!-- js link , table css -->
+<jsp:include page='${cp}/layout/admin/adminLink.jsp' flush='false' />
+<link href='${cp}/resource/css/admin/adminCss.css' rel="stylesheet" type="text/css">
+
 <script>
 
 function selChange() {
@@ -106,14 +100,21 @@ function keywordDel() {
 </script>
 </head>
 <body>
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<div class="row">
+	<!-- 상단, 좌측 네비바 추가1 -->
+	<nav
+		class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+		<jsp:include page='/layout/navbar/navAdmin.jsp' flush='false' />
+	</nav>
+	<div class="container-fluid page-body-wrapper">
+		<jsp:include page='${cp}/layout/admin/adminSideNav.jsp' flush='false' />
+		<div class="content-wrapper"style="background: white;">
+	<!-- 상단, 좌측 네비바 추가1 -->	
+			<div class="row">
+				<div class="col-md-12">
+					<h3 class="text-center">키워드 관리창</h3>
 					<div style="float: right;">
-					<a href="/adminKeywordList.do?sort=이름">이름순</a>
-						<a href="/adminKeywordList.do?sort=이름역">이름역순</a> 
-						<select
+						<a href="/adminKeywordList.do?sort=이름">이름순</a> <a
+							href="/adminKeywordList.do?sort=이름역">이름역순</a> <select
 							id="cntPerPage" name="sel" onchange="selChange()">
 							<option value="5"
 								<c:if test="${paging.cntPerPage == 5}">selected</c:if>>5줄
@@ -144,11 +145,8 @@ function keywordDel() {
 						</table>
 					</form>
 
-					<form id="keywordForm" method="post"
-						style="margin-top: 300px; margin-left: 100px;">
-						<table class="table table-bordered table-striped"
-							style="margin-top: 0px;">
-							<h3 class="text-center">키워드관리창</h3>
+					<form id="keywordForm" method="post">
+						<table class="table table-bordered table-striped" id="list-table">
 
 							<c:if test="${empty viewAll }">
 								<tr>
@@ -164,7 +162,7 @@ function keywordDel() {
 										<td>키워드 선택</td>
 									</tr>
 								</thead>
-								<tbody id="tableList">
+								<tbody>
 									<c:forEach var="keyword" items="${viewAll }">
 										<tr>
 											<td>${keyword.RN }</td>
@@ -180,37 +178,37 @@ function keywordDel() {
 								</tbody>
 							</c:if>
 						</table>
-
 						<input type="text" name="keyadd" id="keyadd" /> <input
 							type="button" value="추가하기" id="addButton" />&nbsp&nbsp<input
 							type="button" value="삭제하기" id="delButton" class="delButton" />
 
 					</form>
-					<div style="display: block; text-align: center;">
-						<c:if test="${paging.startPage != 1 }">
-							<a
-								href="/adminKeywordList.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
-						</c:if>
-						<c:forEach begin="${paging.startPage }" end="${paging.endPage }"
-							var="p">
-							<c:choose>
-								<c:when test="${p == paging.nowPage }">
-									<b>${p }</b>
-								</c:when>
-								<c:when test="${p != paging.nowPage }">
-									<a
-										href="/adminKeywordList.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
-								</c:when>
-							</c:choose>
-						</c:forEach>
-						<c:if test="${paging.endPage != paging.lastPage}">
-							<a
-								href="/adminKeywordList.do?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
-						</c:if>
-					</div>
+				</div>
+				<div style="display: block; text-align: center;">
+					<c:if test="${paging.startPage != 1 }">
+						<a
+							href="/adminKeywordList.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
+					</c:if>
+					<c:forEach begin="${paging.startPage }" end="${paging.endPage }"
+						var="p">
+						<c:choose>
+							<c:when test="${p == paging.nowPage }">
+								<b>${p }</b>
+							</c:when>
+							<c:when test="${p != paging.nowPage }">
+								<a
+									href="/adminKeywordList.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
+							</c:when>
+						</c:choose>
+					</c:forEach>
+					<c:if test="${paging.endPage != paging.lastPage}">
+						<a
+							href="/adminKeywordList.do?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
+					</c:if>
 				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 </body>
 </html>

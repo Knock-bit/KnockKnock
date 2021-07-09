@@ -9,17 +9,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- bootstrap jquery 추가 -->
-<link href="${cp}/resource/vendor/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
-<script src="${cp}/resource/js/jquery/jquery-3.6.0.min.js"></script>
+<!-- js link , table css -->
+<jsp:include page='${cp}/layout/admin/adminLink.jsp' flush='false' />
+<link href='${cp}/resource/css/admin/adminCss.css' rel="stylesheet"
+	type="text/css">
 
-<style>
-.table {
-	margin-top: 250px;
-	margin-left: 50px
-}
-</style>
 <script>
 	function selChange() {
 		var sel = document.getElementById('cntPerPage').value;
@@ -29,16 +23,24 @@
 </script>
 </head>
 <body>
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<div class="row">
+	<!-- 상단, 좌측 네비바 추가1 -->
+	<nav
+		class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+		<jsp:include page='/layout/navbar/navAdmin.jsp' flush='false' />
+	</nav>
+	<div class="container-fluid page-body-wrapper">
+		<jsp:include page='${cp}/layout/admin/adminSideNav.jsp' flush='false' />
+		<div class="content-wrapper"  style="background: white;">
+			<!-- 상단, 좌측 네비바 추가1 -->
+			<div class="row">
+				<div class="col-md-12">
+					<h3 class="text-center">제안서관리창</h3>
 					<div style="float: right;">
-						<a href="/adminProposalList.do?sort=제목">제목순</a> 
-						<a href="/adminProposalList.do?sort=작성일">작성일순</a> 
-						<a href="/adminProposalList.do?sort=작성자">작성자순</a> 
-						<a href="/adminProposalList.do?sort=생성상태">생성상태</a> 
-						<select id="cntPerPage" name="sel" onchange="selChange()">
+						<a href="/adminProposalList.do?sort=제목">제목순</a> <a
+							href="/adminProposalList.do?sort=작성일">작성일순</a> <a
+							href="/adminProposalList.do?sort=작성자">작성자순</a> <a
+							href="/adminProposalList.do?sort=생성상태">생성상태</a> <select
+							id="cntPerPage" name="sel" onchange="selChange()">
 							<option value="5"
 								<c:if test="${paging.cntPerPage == 5}">selected</c:if>>5줄
 								보기</option>
@@ -65,11 +67,8 @@
 							</tr>
 						</table>
 					</form>
-					<form id="proposalForm" method="post"
-						style="margin-top: 300px; margin-left: 100px;">
-						<table class="table table-bordered table-striped"
-							style="margin-top: 0px;">
-							<h3 class="text-center">제안서관리창</h3>
+					<form id="proposalForm" method="post">
+						<table class="table table-bordered table-striped" id="list-table">
 
 							<c:if test="${empty viewAll }">
 								<tr>
@@ -106,28 +105,28 @@
 							</c:if>
 						</table>
 					</form>
-					<div style="display: block; text-align: center;">
-						<c:if test="${paging.startPage != 1 }">
-							<a
-								href="/adminProposalList.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
-						</c:if>
-						<c:forEach begin="${paging.startPage }" end="${paging.endPage }"
-							var="p">
-							<c:choose>
-								<c:when test="${p == paging.nowPage }">
-									<b>${p }</b>
-								</c:when>
-								<c:when test="${p != paging.nowPage }">
-									<a
-										href="/adminProposalList.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
-								</c:when>
-							</c:choose>
-						</c:forEach>
-						<c:if test="${paging.endPage != paging.lastPage}">
-							<a
-								href="/adminProposalList.do?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
-						</c:if>
-					</div>
+				</div>
+				<div style="display: block; text-align: center;">
+					<c:if test="${paging.startPage != 1 }">
+						<a
+							href="/adminProposalList.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
+					</c:if>
+					<c:forEach begin="${paging.startPage }" end="${paging.endPage }"
+						var="p">
+						<c:choose>
+							<c:when test="${p == paging.nowPage }">
+								<b>${p }</b>
+							</c:when>
+							<c:when test="${p != paging.nowPage }">
+								<a
+									href="/adminProposalList.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
+							</c:when>
+						</c:choose>
+					</c:forEach>
+					<c:if test="${paging.endPage != paging.lastPage}">
+						<a
+							href="/adminProposalList.do?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
+					</c:if>
 				</div>
 			</div>
 		</div>

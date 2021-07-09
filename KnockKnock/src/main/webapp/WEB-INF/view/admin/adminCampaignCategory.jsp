@@ -8,21 +8,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-	crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.6.0.js"
-	integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-	crossorigin="anonymous"></script>
-<style>
-.table {
-	margin-top: 250px;
-	margin-left: 50px
-}
-</style>
+<title>캠페인 카테고리</title>
+
+<!-- js link , table css -->
+<jsp:include page='${cp}/layout/admin/adminLink.jsp' flush='false' />
+<link href='${cp}/resource/css/admin/adminCss.css' rel="stylesheet"
+	type="text/css">
+
 <script>
 
 function selChange() {
@@ -83,7 +75,7 @@ function keywordDel() {
         var td = tr.children();
 
         // 체크된 데이터의 value를 list 배열에 넣기
-        list.push(td.eq(0).text());
+        list.push(td.eq(1).text());
     });
    	 if (list.length == 0) {
 	        alert("선택된 데이터가 없습니다.");
@@ -109,14 +101,20 @@ function keywordDel() {
 </script>
 </head>
 <body>
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<div class="row">
+	<nav
+		class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+		<jsp:include page='/layout/navbar/navAdmin.jsp' flush='false' />
+	</nav>
+	<div class="container-fluid page-body-wrapper">
+		<jsp:include page='${cp}/layout/admin/adminSideNav.jsp' flush='false' />
+		<div class="content-wrapper" style="background: white;">
+			<div class="row">
+				<div class="col-md-12">
+					<h3 class="text-center">캠페인 카테고리 관리창</h3>
 					<div style="float: right;">
-						<a href="/adminCampaignCategory.do?sort=이름">이름순</a>
-						<a href="/adminCampaignCategory.do?sort=이름역">이름역순</a> 
-						<select id="cntPerPage" name="sel" onchange="selChange()">
+						<a href="/adminCampaignCategory.do?sort=이름">이름순</a> <a
+							href="/adminCampaignCategory.do?sort=이름역">이름역순</a> <select
+							id="cntPerPage" name="sel" onchange="selChange()">
 							<option value="5"
 								<c:if test="${paging.cntPerPage == 5}">selected</c:if>>5줄
 								보기</option>
@@ -145,12 +143,8 @@ function keywordDel() {
 							</tr>
 						</table>
 					</form>
-					<form id="keywordForm" method="post"
-						style="margin-top: 300px; margin-left: 100px;">
-						<table class="table table-bordered table-striped"
-							style="margin-top: 0px;">
-							<h3 class="text-center">캠페인카테고리</h3>
-
+					<form id="adminCampaignCategory" method="post">
+						<table class="table table-bordered table-striped" id="list-table">
 							<c:if test="${empty viewAll }">
 								<tr>
 									<td>등록된 키워드가 없습니다.</td>
