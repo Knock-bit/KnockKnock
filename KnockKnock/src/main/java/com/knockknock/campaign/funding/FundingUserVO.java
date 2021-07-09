@@ -31,6 +31,11 @@ public class FundingUserVO {
 	public void setCfPoint(int cfPoint) {
 		this.cfPoint = cfPoint;
 	}
+
+	@Override
+	public String toString() {
+		return "FundingUserVO [uIdx=" + uIdx + ", cfIdx=" + cfIdx + ", cfPoint=" + cfPoint + "]";
+	}
 	
 	
 	

@@ -92,4 +92,19 @@ public class CampaignServiceimpl implements CampaignService {
 		return campaignDAO.selectInputResult(input);
 	}
 
+	@Override
+	public CampaignVO selectOneCampaign(int ciIdx) {
+		return campaignDAO.selectOneCampaign(ciIdx);
+	}
+
+	@Override
+	public int updateParticipatePoint(CampaignUserVO cUser) {
+		return campaignDAO.updateParticipatePoint(cUser);
+	}
+
+	@Override
+	public int insertCampaignUser(CampaignUserVO cUser) {
+		return campaignDAO.insertCampaignUser(cUser);
+	}
+
 }

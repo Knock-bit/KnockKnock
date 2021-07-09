@@ -22,6 +22,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.JsonObject;
+import com.knockknock.campaign.campaign.CampaignService;
+import com.knockknock.campaign.campaign.CampaignUserVO;
+import com.knockknock.campaign.campaign.CampaignVO;
+import com.knockknock.campaign.funding.FundingService;
+import com.knockknock.campaign.funding.FundingUserVO;
 import com.knockknock.util.PagingVO;
 
 @Controller
@@ -31,6 +36,10 @@ public class BoardController {
 	
 	@Autowired
 	private BoardService boardService;
+	@Autowired
+	private CampaignService campaignService;
+	@Autowired
+	private FundingService fundingService;
 	
 	@RequestMapping("/board/getBoardList.do")
 	public String getBoardList(int ciIdx, BoardVO vo, Model model, PagingVO pvo,
@@ -121,8 +130,10 @@ public class BoardController {
 	}	
 	
 	@RequestMapping("/board/deleteBoard.do")
-	public String deleteBoard(@RequestParam("bIdx") int bIdx) {
+	public String deleteBoard(int bIdx, int ciIdx, Model model) {
+		System.out.println("deleteBoard 실행");
 		boardService.deleteBoard(bIdx);
+		model.addAttribute("ciIdx", ciIdx);
 		
 		return "redirect:/board/getBoardList.do";
 	}
@@ -175,7 +186,8 @@ public class BoardController {
 		pvo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
 		model.addAttribute("paging", pvo);
 		model.addAttribute("getBoardList", boardService.getBoardList(pvo));
-		List<BoardVO> myViewBoard = boardService.getBoardList(pvo);
+		List<BoardVO> myViewBoard = boardService.getMyBoardList(vo.getuIdx());
+		/* List<BoardVO> myViewBoard = boardService.getBoardList(pvo); */
 		model.addAttribute("myViewBoard", myViewBoard);
 		
 		return "board/getBoardList";	
@@ -188,12 +200,6 @@ public class BoardController {
 
 	      String fileRoot = "C:/knock2/summer/"; // 외부경로로 저장을 희망할때.
 	      
-	      // 내부경로로 저장
-//	      String contextRoot = new HttpServletRequestWrapper(request).getRealPath("/");
-//	      String fileRoot = contextRoot+"resources/fileupload/";
-	       
-	      // 내부경로 저장 -> 혜민누나버전 
-//	      String savePath = request.getSession().getServletContext().getRealPath("/resource/img/upload/");
 
 	      String originalFileName = multipartFile.getOriginalFilename();   //오리지날 파일명
 	      String extension = originalFileName.substring(originalFileName.lastIndexOf("."));   //파일 확장자
@@ -218,11 +224,39 @@ public class BoardController {
 	   }
 	  
 	  @PostMapping("/board/boardSummer.do")
-	  public String insertBoardSummer(BoardVO vo, Model model, MultipartFile file) throws IllegalStateException, IOException {
+	  public String insertBoardSummer(BoardVO vo, CampaignUserVO campaignUser, FundingUserVO fundingUser, Model model, MultipartFile file) throws IllegalStateException, IOException {
 		  System.out.println(vo);
 		  int ciIdx = vo.getCiIdx();
+		  System.out.println(fundingUser);
+		  System.out.println(campaignUser);
+		  CampaignUserVO cUser = campaignService.selectCampaignUser(campaignUser);
+		  FundingUserVO fUser = fundingService.selectFundingUser(fundingUser);
+
+		  // 캠페인 참여
+		  // -> 차감할 포인트를 정하기 위해
+		  // 	  후기게시판으로 이동하기 전에 사용자 식별 필요.
+		  
+		  if(cUser!=null) {
+			  // 식별(1) 캠페인에 참여한 적 있는 경우
+			  // -> 포인트 차감 0 
+		  } else {
+			  // 캠페인 참여 처음
+			  // 공통 => campaign user에 추가
+			  campaignService.insertCampaignUser(campaignUser);
+			  // 식별(2) 펀딩에 참여하였는가
+			  // 	-> 펀딩 참여시 0 포인트 차감
+			  //    -> 펀딩 미참여시  300 포인트 차감
+			  if(fUser==null) {
+				  // 펀딩에 미참여한 경우 => 300포인트 차감
+				  campaignService.updateParticipatePoint(campaignUser);
+			  }
+		  }
+		  
+		  
 	      boardService.insertBoard(vo);
+	      CampaignVO campaign = campaignService.selectOneCampaign(ciIdx);
 	      model.addAttribute("ciIdx", ciIdx);
+	      model.addAttribute("campaign", campaign);
 	      return "campaign/ing/detailWithBoard";
 	  }
 }

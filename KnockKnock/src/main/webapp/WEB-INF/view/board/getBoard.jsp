@@ -18,15 +18,27 @@
 <script src="/resource/js/jquery/jquery-3.6.0.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script>	
+
+	
+	$(function () {
+		var uIdx = "${users.uIdx }";
+		var buIdx = "${board.uIdx}";
+		if(uIdx != buIdx){
+			$("#modify").css("display", "none");
+			$("#delete").css("display", "none");
+		}
+		
+	});
+	
 	//게시글 등록창으로..
 	function moveInsert_board(frm){
 		$("#commonDiv").load("${cp}/board/moveInsert.do?ciIdx=${board.ciIdx}");
 	}
 	
 	//게시글 삭제
-	function delete_board(frm){
-		alert()
-		$("#commonDiv").load("${cp}/board/deleteBoard.do?bIdx=" + ${board.bIdx});
+	function delete_board(){
+		alert("정말 삭제하시겠습니까?");
+		$("#commonDiv").load("${cp}/board/deleteBoard.do?bIdx=${board.bIdx}&ciIdx=${board.ciIdx}");
 	}
 	
 	//게시판 목록으로..
@@ -56,7 +68,7 @@
 		<tr>
 			<th>작성자</th>
 			<td>
-				 ${users.uNickname }
+				 ${board.uNickname }
           		<input type="hidden" value="${users.uIdx }">
 			</td>
 		</tr>
@@ -72,14 +84,14 @@
 		</tr>
 		<tr>
 			<td colspan="2">
-				<input type="submit" value="글 수정하기">
+				<input type="submit" id="modify" value="글 수정하기">
 			</td>
 		</tr>
 	</table>
 	<hr>
 	<div>
-		<input type="button" value="글 등록" onclick="moveInsert_board(this.form)">
-		<input type="button" value="글  삭제" onclick="delete_board(this.form)">
+		<input type="button" value="글 등록" onclick="participate()">
+		<button type="button" id="delete"  onclick="delete_board()">글 삭제하기</button>
 		<input type="button" value="글 목록으로.." onclick="list_board(this.form)">
 		<hr>
 		<input type="button" value="추천하기" onclick="updateHit_board(this.form)">

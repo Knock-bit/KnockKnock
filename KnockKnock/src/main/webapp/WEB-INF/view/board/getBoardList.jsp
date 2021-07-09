@@ -16,7 +16,7 @@
 <script>
 	//게시글 등록창으로..
 	function moveInsert_board(frm) {
-		frm.action = "${cp}/board/moveInsert.do?ciIdx=${board.ciIdx}"
+		frm.action = "${cp}/board/moveInsert.do?ciIdx=${ciIdx}"
 		frm.setAttribute('method', 'get');
 		frm.submit();
 	}
@@ -36,7 +36,7 @@
 </head>
 <body>
 <div id="container">
-	<h1>게시판 목록</h1>
+	<h1>${ciIdx }...게시판 목록</h1>
 	<div style="float: right;">
 		<select id="cntPerPage" name="sel" onchange="selChange()">
 			<option value="5"
@@ -112,8 +112,8 @@
 		</c:if>
 	</div>
 	<div>
-		<p><button type="button"  onclick="moveInsert_board(this.form)">게시글등록</button>
-		<input type="button" value="내글보기" onclick="myView_board(this.form)"></p>
+		<p><button type="button" onclick="participate()">게시글등록</button>
+		<button type="button" onclick="myViewBoard()"></button></p>
 	</div>	
 	</form>
 </div>
