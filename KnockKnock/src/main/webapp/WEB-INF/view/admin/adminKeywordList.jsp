@@ -107,7 +107,7 @@ function keywordDel() {
 	</nav>
 	<div class="container-fluid page-body-wrapper">
 		<jsp:include page='${cp}/layout/admin/adminSideNav.jsp' flush='false' />
-		<div class="content-wrapper">
+		<div class="content-wrapper"style="background: white;">
 	<!-- 상단, 좌측 네비바 추가1 -->	
 			<div class="row">
 				<div class="col-md-12">
