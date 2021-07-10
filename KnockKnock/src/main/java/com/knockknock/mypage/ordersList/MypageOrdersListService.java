@@ -7,6 +7,7 @@ import com.knockknock.orders.OrdersListVO;
 import com.knockknock.orders.OrdersVO;
 import com.knockknock.orders.UserOrderVO;
 import com.knockknock.product.ProductVO;
+import com.knockknock.user.UserVO;
 
 public interface MypageOrdersListService {
 	// 주문서 업데이트(결제완료 후)
@@ -26,8 +27,14 @@ public interface MypageOrdersListService {
 	// 임시테이블 데이터 삭제
 	int deleteOrderTemp();
 	// 주문내역
-	List<OrdersListVO> orderHistoryList();
+	List<OrdersListVO> orderHistoryList(Map<String, Integer> map);
 	// 임시테이블 데이터 삭제전 확인
 	int deleteCheck();
+	// 주문내역 총 페이지 수
+	int orderHistoryListCount(UserVO vo);
+	// 주문내역 기간별 조회
+	List<OrdersListVO> orderHistorysearchList(Map<String, Object> map);
+	// 주문내역 기간별 총 페이지 수
+	int orderHistoryListCountDay(Map<String, Object> map);
 
 }

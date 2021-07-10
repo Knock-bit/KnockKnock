@@ -46,8 +46,8 @@
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item active"><a class="nav-link" id="myq"
 						href="${cp }/productlist.do">더 구매하러 가기</a></li>
-					<li class="nav-item"><a class="nav-link" id="myf" href="ordersList.do">주문 내역</a></li>
-					 <li class="nav-item dropdown"><a class="nav-link" href="orderConfirm.do">주문 확인(임시)</a>
+					<li class="nav-item"><a class="nav-link" id="myf" href="orderHistory.do">주문 내역</a></li>
+					 
 				</li><!--
 				<li class="nav-item dropdown"><a class="nav-link" href="#">생활용품</a>
 				</li> -->
@@ -73,7 +73,7 @@
 				<img src="/resource/img/upload/etc/checked.png"><span style="font-size:18px;">결제</span>
 			</div>
 			<div class="ct3">
-				<input type="button" onclick="deleteCart()" value="장바구니 비우기">
+				<i class="bi bi-trash"></i><input type="button" onclick="deleteCart()" value="장바구니 비우기">
 			</div>
 			<p class="uIdx" style="display:none;">${users.uIdx }</p>
 		</div>
@@ -153,7 +153,7 @@
 			</c:forEach>	
 			</c:if>
 			<c:if test="${empty cartList }">
-				<div style="text-align:center;"> 상품이 존재하지 않습니다. </div>
+				<div style="text-align:center; margin:8% 0 10% 0;"> 상품이 존재하지 않습니다. </div>
 			
 			
 			</c:if>
@@ -290,6 +290,10 @@ function orders(){
 	
 	var length = $(".pIdx").length;
 	
+	if(length==0){
+		alert("주문가능한 상품이 존재하지 않습니다.");
+	} else {
+	
 	 var data = {};
 	for(var i=0; i<length; i++){
 	
@@ -333,7 +337,7 @@ function orders(){
 		
 	}); 
 	
-	
+	}
 }
 
 </script>

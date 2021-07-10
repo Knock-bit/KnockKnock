@@ -104,7 +104,7 @@
 				</div>
 			</div>
 			<div class="of7">
-				<input type="button" value="주문내역" onclick="location.href='${cp }/orderHistory.do'">
+				<input type="button" value="주문내역" onclick="location.href='${cp }/orderHistory.do?searchDay=0'">
 			</div>
 		</div>
 	
@@ -128,7 +128,7 @@ $(function(){
 	}
 	
 	// 총 결제 금액
-	var ototprice = 0;
+	/* var ototprice = 0;
 	//ototprice = numberWithCommas(ototprice);
 	
 	$(".op1-3").each(function(){
@@ -137,15 +137,20 @@ $(function(){
 		ototprice += totprice;
 	});
 	console.log("토탈"+ototprice);
-	$(".of5-2-2").html(ototprice+"원");
+	$(".of5-2-2").html(ototprice+"원"); */
 	
 	// 수량
+	// 상품당 총 금액
+	var priceCnt = 0;
 	$(".oCnt").each(function(){
 		var idx = $(".oCnt").index(this);
 		var cnt = $(".oCnt").eq(idx).text();
+		var totprice = parseInt($(".op1-3").eq(idx).text());// 가격
+		priceCnt += cnt*totprice;
 		$(".op1-4").eq(idx).html(cnt);
 	});
-	
+	$(".of5-2-2").html(priceCnt+"원"); // 총 결제금액
+	console.log(priceCnt);
 	// 배송비
 	var delFee = 0;
 	$(".delivaryFee").each(function(){
@@ -156,7 +161,7 @@ $(function(){
 	$(".of5-2-4").html(delFee+"원");
 	
 	// 최종 결제금액
-	$(".of5-2-5").html(ototprice+delFee+"원");
+	$(".of5-2-5").html(priceCnt+delFee+"원");
 })
 
 function numberWithCommas(x) {
