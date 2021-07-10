@@ -4,21 +4,26 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.knockknock.util.PagingVO;
 
 @Controller
+@SessionAttributes("contact")
 public class AdminController {
 	@Autowired
 	private AdminService adminService;
@@ -92,6 +97,18 @@ public class AdminController {
 
 		return conditionMap;
 	}
+	
+	
+	// 문의사항 검색
+	@ModelAttribute("conditionMapContact")
+	public Map<String, String> SearchConditionMapContact() {
+		Map<String, String> conditionMap = new HashMap<String, String>();
+		conditionMap.put("제목", "TITLE");
+		conditionMap.put("작성자", "USER");
+
+		return conditionMap;
+	}
+
 
 	@GetMapping("/adminMain.do")
 	public String moveAdminMain() {
@@ -201,21 +218,46 @@ public class AdminController {
 	}
 
 	// 문의사항 리스트 보기
-	@GetMapping("/adminContactList.do")
+	@GetMapping("/getContactList.do")
 	public String getContactList(PagingVO pvo, Model model,
 			@RequestParam(value = "nowPage", required = false) String nowPage,
 			@RequestParam(value = "cntPerPage", required = false) String cntPerPage,
 			@RequestParam(value = "sort", required = false) String sort) {
-		int total = adminService.countCampaign();
+		int total = adminService.countContact();
 		Map<String, String> map = pageSet(nowPage, cntPerPage);
 		nowPage = map.get("nowPage");
 		cntPerPage = map.get("cntPerPage");
 		pvo.setSort(sort);
 		pvo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage), pvo.getSearchCondition(),
 				pvo.getSearchKeyword(), pvo.getSort());
+		System.out.println(pvo);
 		model.addAttribute("paging", pvo);
-		model.addAttribute("viewAll", adminService.getCampaignList(pvo));
+		model.addAttribute("viewAll", adminService.getContactList(pvo));
 		return "/admin/contact/adminContactList";
 	}
+	
+	// 문의사항 상세보기
+	@GetMapping("/getContactDetail.do")
+	public String getContactDetail(AdminContactVO vo, Model model) {
+		AdminContactVO contact = adminService.getContactDetail(vo);
+		List<AdminContactCommentVO> comment = adminService.getCommentList(vo);
+		System.out.println(contact);
+		model.addAttribute("contact", contact);
+		model.addAttribute("comment", comment);
+		return "/admin/contact/adminContactDetail";
+	}
 
+	@PostMapping("/insertContactComment.do")
+	public String insertContactComment(@ModelAttribute("contact") AdminContactVO vo, AdminContactCommentVO cmvo, HttpServletRequest request) throws Exception {
+		System.out.println(vo);
+		System.out.println(cmvo);
+		adminService.sendEmail(vo,cmvo.getCmContent());
+		cmvo.setCtIdx(vo.getCtIdx());
+		cmvo.setuIdx(vo.getuIdx());
+		adminService.insertComment(cmvo);
+		String referer = request.getHeader("Referer");
+		adminService.updateCtResp(vo);
+		return "redirect:" + referer;
+	}
+	
 }

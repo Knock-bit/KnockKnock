@@ -133,4 +133,32 @@
 		UPDATE FUNDING SET
 		CF_STATUS = 1 WHERE CF_IDX=#{cfIdx}
 	</update>
-</mapper>
+	
+	<!-- ======= 문의사항 하나 가져오기 ========= -->
+	 <select id="getContact" parameterType="adminContactVO" resultType="adminContactVO">
+	 SELECT * FROM CONTACT CT INNER JOIN USERS U on CT.U_IDX = U.U_IDX INNER JOIN CONTACT_CATEGORY CTC ON CT.CTC_IDX = CTC.CTC_IDX WHERE CT_IDX = #{ctIdx}
+	</select>
+	
+	<!-- 문의사항 댓글 추가하기 -->
+	<insert id="insertComment" parameterType="adminContactCommentVO">
+		INSERT INTO CONTACT_COMMENT (CM_IDX, CM_CONTENT, CT_IDX, U_IDX, CM_WRITEDATE) VALUES (CM_IDX_SEQ.nextval, #{cmContent}, #{ctIdx}, #{uIdx}, sysdate)
+	</insert>
+	
+	<!-- 문의사항 답변 완료 후 상태 변경 -->
+	<update id ="updateCtResp" parameterType="adminContactVO">
+		UPDATE CONTACT SET CT_RESP = 
+		<if test= "ctResp == 1 ">
+			0
+		</if>
+		<if test = "ctResp == 0">
+			1
+		</if>
+		 WHERE CT_IDX = #{ctIdx}
+	</update>
+	
+	<!-- 댓글 가져오기 -->
+	<select id="getCommentList" parameterType="adminContactVO" resultType="adminContactCommentVO">
+		SELECT CM.CM_IDX, CM.CM_CONTENT, CM.CT_IDX, CM.U_IDX, CM.CM_WRITEDATE FROM CONTACT_COMMENT CM INNER JOIN CONTACT CT ON CM.CT_IDX = CT.CT_IDX WHERE CT.CT_IDX = #{ctIdx}
+	</select>
+</mapper
+>
