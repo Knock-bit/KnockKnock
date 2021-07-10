@@ -65,7 +65,7 @@ public class CampaignDAO {
 	}
 
 	public CampaignUserVO selectCampaignUser(CampaignUserVO cUser) {
-		return mybatis.selectOne("campaign.selectCampaignUser");
+		return mybatis.selectOne("campaign.selectCampaignUser", cUser);
 	}
 
 	public int updateStartCampaign() {

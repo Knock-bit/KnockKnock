@@ -55,12 +55,15 @@
 	margin-bottom:5px;
 	background-color:white;
 	border : 0px;
+	
 }
 .ct3 input:hover {
 	text-decoration: underline;
 	font-size:16px;
 	font-weight:bold;
 	color:rgb(10, 61, 14);
+	text-underline-position: under;
+	
 	
 }
 /*장바구니에 담긴 상품 목록*/

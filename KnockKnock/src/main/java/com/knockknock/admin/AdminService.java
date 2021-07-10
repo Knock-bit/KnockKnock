@@ -3,6 +3,7 @@ package com.knockknock.admin;
 import java.util.List;
 
 import com.knockknock.admin.funding.AdminCampaignCategoryVO;
+import com.knockknock.user.UserVO;
 import com.knockknock.util.PagingVO;
 
 public interface AdminService {
@@ -29,7 +30,12 @@ public interface AdminService {
 	public int countCampaign();
 	public AdminCampaignVO getCampaign(AdminCampaignVO vo);
 	
-	// ========= contact
-	public List<AdminContactCategory> getContactCategory(PagingVO pvo);
-	
+	// ========= contact ==========
+	public List<AdminContactVO> getContactList(PagingVO pvo);
+	public int countContact();
+	public AdminContactVO getContactDetail(AdminContactVO vo);
+	public void sendEmail(AdminContactVO vo, String content) throws Exception;
+	public int insertComment(AdminContactCommentVO vo);
+	public int updateCtResp(AdminContactVO vo);
+	public List<AdminContactCommentVO> getCommentList(AdminContactVO vo);
 }

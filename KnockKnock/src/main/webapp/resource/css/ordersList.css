@@ -22,8 +22,10 @@
 	grid-template-columns: 50% 49%;
 	grid-template-rows: 10vh;
 	margin-bottom:10px;
-	background-color:#0e4b20; 
+	background-color:#e3f1e4;
 	color:white;
+	border-top: 1px solid gray;
+	border-bottom:1px solid gray;
 }
 .ct1, .ct2 {
 	display:inline-block;
@@ -31,7 +33,7 @@
 }
 .ct1 {
 	text-align:center;
-	padding:10px;
+	padding:15px;
 }
 .ct2{
 	text-align:right;
@@ -70,12 +72,12 @@
 }
 .infoOrder > p{
 	color:#0e4b20; 
-	padding:10px; 
-	width:99%; 
-	margin: 10px 0 0 10px;; 
+	padding:15px; 
+	width:100%; 
 	font-size:20px;
 	font-weight:bold;
 	text-align:left;
+	background-color:#efefef;
 	
 }
 .orderName, .orderAddress, .orderPhone, .orderEmail{
@@ -193,12 +195,12 @@
 }
 .paymentMethod > p {
 	color:#0e4b20; 
-	padding:10px; 
-	width:50%; 
-	margin: 10px 0 0 10px;; 
+	padding:15px; 
+	width:100%; 
 	font-size:20px;
 	font-weight:bold;
 	text-align:left;
+	background-color:#efefef;
 }
 .methodDiv {
 	padding-top:20px;
@@ -271,13 +273,13 @@
 	box-shadow: 0 8px 11px 0 rgb(0 0 0 / 10%), 0 1px 1px 0 rgb(0 0 0 / 1%);
 	
 }
-.infoOrdersProduct p:first-child{
+.infoop{
 	color:#0e4b20; 
-	padding:10px;  
-	margin: 10px 0 0 0; 
+	padding:15px;  
 	font-size:20px;
 	font-weight:bold;
 	text-align:center;
+	background-color:#efefef;
 }
 .onePlist{
 	border : 1px solid gray;

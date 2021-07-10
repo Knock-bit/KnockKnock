@@ -58,4 +58,11 @@
 		SELECT * FROM BOARD WHERE U_IDX = #{uIdx}
 	</select>
 	
+	<select id="getMyBoardList" parameterType="campaignVO" resultType="boardVO">
+		SELECT * FROM BOARD
+		WHERE U_IDX = #{uIdx}
+		 AND CI_IDX = #{ciIdx}
+	</select>
+	
+	
 </mapper>

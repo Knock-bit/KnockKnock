@@ -50,12 +50,12 @@
 	<div class="ordersMain">
 		<div class="ordersTop">
 			<div class="ct1">
-				<h2> 주문하기 </h2>
+				<h2 style="color:#0e4b20; "> 주문하기 </h2>
 			</div>
 			<div class="ct2">
-				<img src="/resource/img/upload/etc/shopping-cart.png"><span style="font-size:18px;">장바구니</span>
-				<img src="/resource/img/upload/etc/checklist.png"><span style="font-weight:bold; color:white;">주문목록</span>
-				<img src="/resource/img/upload/etc/checked.png"><span style="font-size:18px;">결제</span>
+				<img src="/resource/img/upload/etc/shopping-cart.png"><span style="font-size:18px; color:#0e4b20; ">장바구니</span>
+				<img src="/resource/img/upload/etc/checklist.png"><span style="font-weight:bold; color:#0e4b20; ">주문목록</span>
+				<img src="/resource/img/upload/etc/checked.png"><span style="font-size:18px; color:#0e4b20; ">결제</span>
 			</div>
 		</div>
 		<div class="ordersGrid">
@@ -81,8 +81,10 @@
 			
 			</div>
 			<div class="infoReciever" style="text-align:left; font-size:13px;">
-				<p id="ifrtext"><i class="bi bi-person-plus-fill" style="margin-right:10px;"></i>수령자 정보</p>
-				<p class="ifrtext2"><input id="sameOrdersInfo" type="checkbox" ><span class="sametext">주문자와 동일</span><br></p>
+				<div style="width:100%;background-color:#efefef; ">
+					<p id="ifrtext"><i class="bi bi-person-plus-fill" style="margin-right:10px;"></i>수령자 정보</p>
+					<p class="ifrtext2"><input id="sameOrdersInfo" type="checkbox" ><span class="sametext">주문자와 동일</span><br></p>
+				</div>
 				<div class="ifr1">
 					<label>이름 </label><input type="text" name="rName" class="reciever" id="uname"><br>
 					<div class="reciever">
@@ -137,10 +139,11 @@
 				</div>
 				<div class="pm2">
 					<input type="button" value="결제하기" id="payBtn" onclick="goPayment()">
+					<input type="button" value="주문취소" id="cancelBtn" onclick="goPayment()">
 				</div>
 			</div>
 			<div class="infoOrdersProduct">
-				<p><i class="bi bi-info-circle-fill" style="margin:15px;"></i>주문상품정보</p>
+				<p class="infoop"><i class="bi bi-info-circle-fill" style="margin:15px;"></i>주문상품정보</p>
 				<div>
 				<c:if test="${!empty olist }">
 				<c:forEach var="item" items="${olist }">

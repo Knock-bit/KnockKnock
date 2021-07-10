@@ -44,11 +44,13 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="pages/tables/basic-table.html">
+            <a class="nav-link" href="getContactList.do">
               
               <span class="menu-title">문의내역</span>
             </a>
           </li>
+          
+          
           
 
 

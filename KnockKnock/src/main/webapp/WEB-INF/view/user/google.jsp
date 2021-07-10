@@ -13,7 +13,6 @@
 <body>   
 <div class="g-signin2" data-onsuccess="onSignIn"></div>
     <script>
-<<<<<<< HEAD
     
         function onSignIn(googleUser) {
             // Useful data for your client-side scripts:
@@ -25,10 +24,7 @@
             console.log("Image URL: " + profile.getImageUrl());
             console.log("Email: " + profile.getEmail());
             alert("구글 아쟉스 시작");
-=======
-  //구글로그인
-    function onSignIn(googleUser) {
->>>>>>> refs/heads/main
+
 
        	var auth2 = gapi.auth2.getAuthInstance();
 
