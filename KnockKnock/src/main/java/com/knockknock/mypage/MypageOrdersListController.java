@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.knockknock.mypage.ordersList.MypageOrdersListService;
@@ -23,6 +25,7 @@ import com.knockknock.orders.OrdersVO;
 import com.knockknock.orders.UserOrderVO;
 import com.knockknock.product.ProductVO;
 import com.knockknock.user.UserVO;
+import com.knockknock.util.PagingVO;
 
 @Controller
 public class MypageOrdersListController {
@@ -121,13 +124,43 @@ public class MypageOrdersListController {
 	
 	// 나의 주문내역으로 이동
 	@GetMapping("/orderHistory.do")
-	public String orderHistory(HttpSession session, Model model) {
+	public String orderHistory(HttpSession session, Model model, HttpServletRequest request,
+							@RequestParam(value="nowPage", required=false)String nowPage,
+							@RequestParam(value="cntPerPage", required=false)String cntPerPage) {
 		
 		UserVO vo = (UserVO) session.getAttribute("users");
 		
-		// 주문내역 가져오기 (product내용도..
+		// 주문내역 가져오기 (페이징)
+		PagingVO pvo = new PagingVO();
+		// 주문내역 전체 게시물 수 구하기
+		pvo.setTotal(ordersListService.orderHistoryListCount(vo));
+		int total = pvo.getTotal();
 		
-		List<OrdersListVO> ohList = ordersListService.orderHistoryList();
+		// 페이지당 글 갯수
+		pvo.setCntPerPage(6);
+		
+		// 현재 페이지 구하기
+		if(nowPage==null && cntPerPage==null) {
+			nowPage = "1";
+			cntPerPage = "6";
+		} else if(nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) {
+			cntPerPage ="6";
+		}
+		pvo = new  PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+
+		Map<String, Integer> map = new HashMap<>();
+		int start = pvo.getStart();
+		int end = pvo.getEnd();
+		int uIdx = vo.getuIdx();
+		map.put("start", start);
+		map.put("end", end);
+		map.put("uIdx", uIdx);
+		
+		List<OrdersListVO> ohList = ordersListService.orderHistoryList(map);
+		
+		 
 		System.out.println("주문내역 : " + ohList);
 		 
 		// 임시 테이블 데이터 확인
@@ -135,9 +168,73 @@ public class MypageOrdersListController {
 		if(result == 1) {
 			ordersListService.deleteOrderTemp();
 		} 
-		
+		model.addAttribute("pvo", pvo);
 		model.addAttribute("ohList", ohList);
 		model.addAttribute("users", vo);
+		
+		return "/mypage/orders/orderHistory";
+	}
+	
+	
+	// 나의 주문내역으로 이동
+	@GetMapping("/orderHistoryCal.do")
+	public String orderHistoryCal(HttpSession session, Model model,
+							@RequestParam(value="nowPage", required=false)String nowPage,
+							@RequestParam(value="cntPerPage", required=false)String cntPerPage,
+							@RequestParam(value="cal1", required=false)String cal1,
+							@RequestParam(value="cal2", required=false)String cal2) {
+		
+		UserVO vo = (UserVO) session.getAttribute("users");
+		Map<String, Object> map = new HashMap<>();
+		int uIdx = vo.getuIdx();
+		map.put("cal1",cal1);
+		map.put("cal2",cal2);
+		map.put("uIdx", uIdx);
+		// 주문내역 가져오기 (페이징)
+		PagingVO pvo = new PagingVO();
+		// 주문내역 전체 게시물 수 구하기
+		pvo.setTotal(ordersListService.orderHistoryListCountDay(map));
+		int total = pvo.getTotal();
+		System.out.println("전체 게시물 수 : " + total);
+		// 페이지당 글 갯수
+		pvo.setCntPerPage(6);
+		
+		// 현재 페이지 구하기
+		if(nowPage==null && cntPerPage==null) {
+			nowPage = "1";
+			cntPerPage = "6";
+		} else if(nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) {
+			cntPerPage ="6";
+		}
+		pvo = new  PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+
+		
+		int start = pvo.getStart();
+		int end = pvo.getEnd();
+	
+		map.put("start", start);
+		map.put("end", end);
+		
+		
+
+		System.out.println("cal1:"+cal1 +", cal2 :" + cal2);
+		
+		map.put("cal1",cal1);
+		map.put("cal2",cal2);
+		
+		List<OrdersListVO> ohList = ordersListService.orderHistorysearchList(map);
+		 
+		
+		System.out.println("주문내역 : " + ohList);
+		
+		 // 임시 테이블 데이터 확인
+		int result = ordersListService.deleteCheck(); 
+		if(result ==1) { ordersListService.deleteOrderTemp(); } 
+		model.addAttribute("pvo", pvo);
+		model.addAttribute("ohList", ohList); model.addAttribute("users", vo);
+			 
 		return "/mypage/orders/orderHistory";
 	}
 

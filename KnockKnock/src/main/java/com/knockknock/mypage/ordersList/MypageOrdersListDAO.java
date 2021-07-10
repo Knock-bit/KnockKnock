@@ -11,6 +11,7 @@ import com.knockknock.orders.OrdersListVO;
 import com.knockknock.orders.OrdersVO;
 import com.knockknock.orders.UserOrderVO;
 import com.knockknock.product.ProductVO;
+import com.knockknock.user.UserVO;
 
 @Repository
 public class MypageOrdersListDAO {
@@ -60,9 +61,9 @@ public class MypageOrdersListDAO {
 		return mybatis.delete("Orders.deleteOrderTemp");
 	}
 	// 주문내역
-	public List<OrdersListVO> orderHistoryList() {
+	public List<OrdersListVO> orderHistoryList(Map<String, Integer> map) {
 		
-		return mybatis.selectList("Orders.orderHistoryList");
+		return mybatis.selectList("Orders.orderHistoryList", map);
 	}
 	// 임시테이블 데이터 삭제 전 데이터 확인
 	public int deleteCheck() {
@@ -77,5 +78,21 @@ public class MypageOrdersListDAO {
 		}
 		// TODO Auto-generated method stub
 		return result;
+	}
+	// 주문내역 총 페이지 수
+	public int orderHistoryListCount(UserVO vo) {
+		// TODO Auto-generated method stub
+		return mybatis.selectOne("Orders.orderHistoryListCount", vo);
+	}
+	// 주문내역 기간별 조회
+	public List<OrdersListVO> orderHistorysearchList(Map<String, Object> map) {
+		System.out.println(map);
+		
+		return mybatis.selectList("Orders.orderHistorysearchList", map);
+	}
+	// 주문내역 기간별 총 페이지 수
+	public int orderHistoryListCountDay(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return mybatis.selectOne("Orders.orderHistoryListCountDay", map);
 	}
 }

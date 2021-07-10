@@ -85,18 +85,55 @@
 	<delete id="deleteOrderTemp">
 		DELETE FROM ORDERS_TEMP
 	</delete>
-	
+	<!-- 나의 주문내역 - 총 게시글 수 구하기 -->
+	<select id="orderHistoryListCount" parameterType="UserVO" resultType="int">
+		SELECT  COUNT(*)
+		FROM PRODUCT P,
+		(SELECT ROWNUM RN, B.* FROM 
+		ORDERS B
+		ORDER BY O_DATE DESC) O
+        WHERE P.P_IDX = O.P_IDX
+        AND O.U_IDX=#{uIdx}
+	</select>
+	<!-- 나의 주문내역 기간별 조회 - 총 게시글 수 구하기 -->
+	<select id="orderHistoryListCountDay" parameterType="hashmap" resultType="int">
+		SELECT  COUNT(*)
+		FROM PRODUCT P,
+		(SELECT ROWNUM RN, B.* FROM 
+		ORDERS B
+		ORDER BY O_DATE DESC) O
+        WHERE P.P_IDX = O.P_IDX
+        AND O.O_DATE BETWEEN TO_DATE(#{cal1},'YYYY-MM-DD') 
+        AND TO_DATE(#{cal2}||'23:59:59', 'YYYY-MM-DD HH24:MI:SS')
+        AND O.U_IDX=#{uIdx}
+	</select>
 	<!-- 주문내역 -->
-	<select id="orderHistoryList" resultType="ordersListVO">
-		SELECT P.P_NAME, P.P_IMG, P.P_DESC, P.P_PRICE, 
+	<select id="orderHistoryList" parameterType="hashmap" resultType="ordersListVO">
+		SELECT  P.P_NAME, P.P_IMG, P.P_DESC, P.P_PRICE, P.P_FEE,
 				O.O_CNT, O.O_DATE, O_TEMPNUM, O.O_STATUS
 		FROM PRODUCT P,
-		(SELECT * FROM 
-		ORDERS 
+		(SELECT ROWNUM RN, B.* FROM 
+		ORDERS B
 		ORDER BY O_DATE DESC) O
-		WHERE P.P_IDX = O.P_IDX
-	
+        WHERE P.P_IDX = O.P_IDX
+        AND RN BETWEEN #{start} AND #{end}
+        AND O.U_IDX=#{uIdx}
+		
 	</select>
-	
+	<!-- 주문내역 기간별 조회 -->
+	<select id="orderHistorysearchList" parameterType="hashmap" resultType="ordersListVO">
+		SELECT ROWNUM RN,  P.P_NAME, P.P_IMG, P.P_DESC, P.P_PRICE, P.P_FEE,
+				O.O_CNT, O.O_DATE, O_TEMPNUM, O.O_STATUS
+		FROM PRODUCT P,
+		(SELECT ROWNUM RN, B.* FROM 
+		ORDERS B
+		ORDER BY O_DATE DESC) O
+        WHERE P.P_IDX = O.P_IDX
+        AND O.O_DATE BETWEEN TO_DATE(#{cal1},'YYYY-MM-DD') 
+            AND TO_DATE(#{cal2}||'23:59:59', 'YYYY-MM-DD HH24:MI:SS')
+        AND ROWNUM BETWEEN #{start} AND #{end}
+        AND O.U_IDX=#{uIdx}
+		
+	</select>
 	
 </mapper>
