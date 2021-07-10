@@ -16,16 +16,26 @@ public class OrdersVO {
 	private String uName;
 	private String pName;
 	private int oFee;
+	private int total;
+	private String salesdate;	
+	
+	public int getTotal() {
+		return total;
+	}
+
+	public void setTotal(int total) {
+		this.total = total;
+	}
 
 	private String oTempnum;
 
 	public OrdersVO() {
 		super();
 	}
-
-	public OrdersVO(int oIdx, int pIdx, int oCnt, int oStatus, int pPrice, int oTotprice, String fCheck, int oFee,
-			int oNumber, int uIdx, int paIdx, String oDate, int sIdx, String oTempnum) {
-
+  
+	public OrdersVO(int oIdx, int pIdx, int oCnt, int oStatus, int pPrice, int oTotprice, String fCheck, int oNumber,
+			int uIdx, int paIdx, String oDate, int sIdx, String uName, String pName, int oFee, int total,
+			String oTempnum) {
 		super();
 		this.oIdx = oIdx;
 		this.pIdx = pIdx;
@@ -39,9 +49,11 @@ public class OrdersVO {
 		this.paIdx = paIdx;
 		this.oDate = oDate;
 		this.sIdx = sIdx;
-		this.oTempnum = oTempnum;
 		this.uName = uName;
 		this.pName = pName;
+		this.oFee = oFee;
+		this.total = total;
+		this.oTempnum = oTempnum;
 	}
 
 	public String getuName() {
@@ -164,9 +176,7 @@ public class OrdersVO {
 	public void setoTempnum(String oTempnum) {
 		this.oTempnum = oTempnum;
 	}
-	
-	
-
+	 
 	public int getoFee() {
 		return oFee;
 	}
@@ -175,12 +185,20 @@ public class OrdersVO {
 		this.oFee = oFee;
 	}
 
+	public String getSalesdate() {
+		return salesdate;
+	}
+
+	public void setSalesdate(String salesdate) {
+		this.salesdate = salesdate;
+	}
+
 	@Override
 	public String toString() {
 		return "OrdersVO [oIdx=" + oIdx + ", pIdx=" + pIdx + ", oCnt=" + oCnt + ", oStatus=" + oStatus + ", pPrice="
 				+ pPrice + ", oTotprice=" + oTotprice + ", fCheck=" + fCheck + ", oNumber=" + oNumber + ", uIdx=" + uIdx
 				+ ", paIdx=" + paIdx + ", oDate=" + oDate + ", sIdx=" + sIdx + ", uName=" + uName + ", pName=" + pName
-			+ ", oTempnum=" + oTempnum + "]";
+				+ ", oFee=" + oFee + ", total=" + total + ", salesdate=" + salesdate + ", oTempnum=" + oTempnum + "]";
 	}
 
 

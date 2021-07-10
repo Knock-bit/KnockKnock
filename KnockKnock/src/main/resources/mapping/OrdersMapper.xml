@@ -7,10 +7,24 @@
  	 <!-- 판매자별 주문리스트 뽑기 -->
 	<select id="selectOrderList" parameterType="int" resultType="ordersVO">
 		SELECT O_NUMBER, U_NAME, P.P_NAME, O.O_CNT, O.O_STATUS,
-		O.O_TOTPRICE, O.O_DATE
+		O.O_TOTPRICE + O.O_FEE as TOTAL, O.O_DATE 
 		FROM ORDERS O, USERS U, PRODUCT P
 		WHERE O.S_IDX=#{sIdx} AND U.U_IDX = O.U_IDX
 		AND P.P_IDX=O.P_IDX ORDER BY O_DATE DESC
+	</select>
+	<!-- 일주일간 일별 매출 -->
+	<select id="selectDailySales" parameterType="int" resultType="ordersVO">
+		SELECT TO_CHAR(O_DATE, 'YYYY-MM-DD') AS SALESDATE, SUM(O_TOTPRICE) AS TOTAL
+		FROM ORDERS 
+		WHERE O_DATE >= TO_CHAR(SYSDATE-7, 'YYYY-MM-DD') AND S_IDX= #{sIdx}
+		GROUP BY TO_CHAR(O_DATE, 'YYYY-MM-DD') 
+		ORDER BY TO_CHAR(O_DATE, 'YYYY-MM-DD') DESC	
+	</select>
+	<!-- 일주일 매출 합계 -->
+	<select id="selectDailyTot" parameterType="int" resultType="int">
+		SELECT SUM(O_TOTPRICE) AS TOTAL
+		FROM ORDERS 
+		WHERE O_DATE >= TO_CHAR(SYSDATE-7, 'YYYY-MM-DD') AND S_IDX=#{sIdx}	
 	</select>
 	<!-- 판매자별 누적 주문횟수 뽑기 -->
 	<select id="countOrders" parameterType="int" resultType="int">
@@ -20,7 +34,6 @@
 	<select id="avgTot" parameterType="int" resultType="int">
 		SELECT AVG(O_TOTPRICE) FROM ORDERS WHERE S_IDX = #{sIdx}
 	</select>
-	
 	
 	<!-- 주문(order테이블) 업데이트(결제완료 후) -->
 	<update id="orderInfo" parameterType="hashmap">
