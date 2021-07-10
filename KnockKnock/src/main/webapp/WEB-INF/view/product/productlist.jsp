@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="cp" value="${pageContext.request.contextPath }" />
@@ -9,32 +9,32 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>綠!Knock! - SHOP</title>
+<title>綠!Knock! - SHOP</title>
 
 <!-- Favicons -->
 <link href="${cp}/resource/img/favicon.png" rel="icon">
 <link href="${cp}/resource/img/apple-touch-icon.png"
-	rel="apple-touch-icon">
+   rel="apple-touch-icon">
 
 <!-- Google Fonts -->
 <link
-	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-	rel="stylesheet">
+   href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+   rel="stylesheet">
 
 <!-- Vendor CSS Files -->
 <link href="${cp}/resource/vendor/animate.css/animate.min.css"
-	rel="stylesheet">
+   rel="stylesheet">
 <link href="${cp}/resource/vendor/aos/aos.css" rel="stylesheet">
 <link href="${cp}/resource/vendor/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
+   rel="stylesheet">
 <link href="${cp}/resource/vendor/bootstrap-icons/bootstrap-icons.css"
-	rel="stylesheet">
+   rel="stylesheet">
 <link href="${cp}/resource/vendor/boxicons/css/boxicons.min.css"
-	rel="stylesheet">
+   rel="stylesheet">
 <link href="${cp}/resource/vendor/remixicon/remixicon.css"
-	rel="stylesheet">
+   rel="stylesheet">
 <link href="${cp}/resource/vendor/swiper/swiper-bundle.min.css"
-	rel="stylesheet">
+   rel="stylesheet">
 
 <!-- Main CSS File -->
 <link href="${cp}/resource/css/main.css" rel="stylesheet">
@@ -42,47 +42,47 @@
 
 <!-- Import BootStrap -->
 <script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+   src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 </head>
 <body>
 <body>
-	<!-- ======= Header ======= -->
-	<c:choose>
-		<c:when test="${users.uType eq 1 }">
-			<jsp:include page='/layout/navbar/navLoggedin.jsp' flush='false' />
-		</c:when>
-		<c:when test="${users.uType eq 0 }">
-			<jsp:include page='/layout/navbar/navAdmin.jsp' flush='false' />
-		</c:when>
-		<c:otherwise>
-			<jsp:include page='/layout/navbar/nav.jsp' flush='false' />
-		</c:otherwise>
-	</c:choose>
+   <!-- ======= Header ======= -->
+   <c:choose>
+      <c:when test="${users.uType eq 1 }">
+         <jsp:include page='/layout/navbar/navLoggedin.jsp' flush='false' />
+      </c:when>
+      <c:when test="${users.uType eq 0 }">
+         <jsp:include page='/layout/navbar/navAdmin.jsp' flush='false' />
+      </c:when>
+      <c:otherwise>
+         <jsp:include page='/layout/navbar/nav.jsp' flush='false' />
+      </c:otherwise>
+   </c:choose>
 
-	<!-- ======= Hero Section ======= -->
-	<main id="main" data-aos="fade-in">
-	<!-- ======= Breadcrumbs ======= -->
-	<div class="breadcrumbs" style="background-color: rgb(10, 61, 14);">
-		<div class="container">
-			<h2>SHOP</h2>
-			<p>綠!Knock!과 함께하는 친환경 상품들을 만나보세요!</p>
-		</div>
-	</div>
-	<!-- End Breadcrumbs -->
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active"><a class="nav-link" href="/productDetail.do">전체상품보기</a></li>
-				<li class="nav-item"><a class="nav-link" href="/product/food.do">식품</a></li>				
-				<li class="nav-item dropdown"><a class="nav-link" href="/product/fashion.do">의류</a></li>
-				<li class="nav-item dropdown"><a class="nav-link" href="/product/grocery.do">생활용품</a></li>
-			</ul>
-		</div>
-			<form action="" method="post">
-				<input type="search" placeholder="Search" aria-label="Search"><input type="submit" value="검색">
-			</form>
- 	</nav>
+   <!-- ======= Hero Section ======= -->
+   <main id="main" data-aos="fade-in">
+   <!-- ======= Breadcrumbs ======= -->
+   <div class="breadcrumbs" style="background-color: rgb(10, 61, 14);">
+      <div class="container">
+         <h2>SHOP</h2>
+         <p>綠!Knock!과 함께하는 친환경 상품들을 만나보세요!</p>
+      </div>
+   </div>
+   <!-- End Breadcrumbs -->
+   <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+         <ul class="navbar-nav mr-auto">
+            <li class="nav-item active"><a class="nav-link" href="/productlist.do?pcIdx=0">전체상품보기</a></li>
+            <li class="nav-item"><a class="nav-link" href="/productlist.do?pcIdx=1">식품</a></li>            
+            <li class="nav-item dropdown"><a class="nav-link" href="/productlist.do?pcIdx=2">의류</a></li>
+            <li class="nav-item dropdown"><a class="nav-link" href="/productlist.do?pcIdx=3">생활용품</a></li>
+         </ul>
+      </div>
+         <form action="" method="post">
+            <input type="search" placeholder="Search" aria-label="Search"><input type="submit" value="검색">
+         </form>
+    </nav>
 
 
       <!-- ======= ProductList Section ======= -->

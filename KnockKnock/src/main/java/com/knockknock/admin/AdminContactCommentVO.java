@@ -6,13 +6,13 @@ public class AdminContactCommentVO {
 	private int cmIdx;
 	private String cmContent;
 	private int ctIdx;
-	private String uIdx;
+	private int uIdx;
 	private Date cmWritedate;
 	private int ctcIdx;
 	
-	public AdminContactCommentVO() {};
-	
-	public AdminContactCommentVO(int cmIdx, String cmContent, int ctIdx, String uIdx, Date cmWritedate, int ctcIdx) {
+	public AdminContactCommentVO() {}
+
+	public AdminContactCommentVO(int cmIdx, String cmContent, int ctIdx, int uIdx, Date cmWritedate, int ctcIdx) {
 		super();
 		this.cmIdx = cmIdx;
 		this.cmContent = cmContent;
@@ -46,11 +46,11 @@ public class AdminContactCommentVO {
 		this.ctIdx = ctIdx;
 	}
 
-	public String getuIdx() {
+	public int getuIdx() {
 		return uIdx;
 	}
 
-	public void setuIdx(String uIdx) {
+	public void setuIdx(int uIdx) {
 		this.uIdx = uIdx;
 	}
 
@@ -74,7 +74,7 @@ public class AdminContactCommentVO {
 	public String toString() {
 		return "AdminContactCommentVO [cmIdx=" + cmIdx + ", cmContent=" + cmContent + ", ctIdx=" + ctIdx + ", uIdx="
 				+ uIdx + ", cmWritedate=" + cmWritedate + ", ctcIdx=" + ctcIdx + "]";
-	}
+	};
 	
 	
 	

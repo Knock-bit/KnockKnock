@@ -316,7 +316,23 @@
 	</update>
 	
 	
+	<update id="updateUserParticipate" parameterType="CampaignUserVO">
+		UPDATE USERS
+		   SET U_USED_POINT = U_USED_POINT + 300
+		 WHERE U_IDX = #{uIdx}
+	</update>
 	
+	<update id="updateUserCampaignMinusPoint" parameterType="CampaignUserVO">
+		INSERT INTO POINT
+            (U_IDX, PO_USED, PO_EARN, PO_DATE, PO_WHERE)
+            VALUES( #{uIdx}, 300, 0, SYSDATE, 2)
+	</update>
+	
+	<insert id="insertCampaignUser" parameterType="CampaignUserVO">
+		INSERT INTO CAMPAIGN_USER(CI_IDX, U_IDX, CI_EMBLEM_STATUS) 
+		VALUES (#{ciIdx}, #{uIdx}, 1)
+		
+	</insert>
 	
 	<!-- 제안서 제출 -->
 	<insert id="insertProposal" parameterType="ProposalVO">

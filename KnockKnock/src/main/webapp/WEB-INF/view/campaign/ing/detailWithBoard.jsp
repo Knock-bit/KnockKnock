@@ -188,13 +188,9 @@
         </style>
 
         <script>
-          var ciIdx = "${campaign.ciIdx}";
-          var cfIdx = "${campaign.cfIdx}";
+        	var ciIdx = "${campaign.ciIdx}";
+        	var cfIdx = "${campaign.cfIdx}";
         
-          function list_board(){
-      		$("#commonDiv").load("${cp}/board/getBoardList.do?ciIdx=${board.ciIdx}");
-      		}
-          
           function getBoardView(bIdx) {
             $("#commonDiv").load("${cp}/board/getBoard.do?bIdx=" + bIdx);
           }
@@ -209,29 +205,28 @@
         	  $("#commonDiv").load("${cp}/board/getBoardList.do");
           }
           
-          function getBoard(ciIdx){
-        	  $("#commonDiv").load("${cp}/board/getBoardList.do?ciIdx=" + ciIdx);
-          }
-          
-          function myBoardList(){
-        	  $("#commonDiv").load("${cp}/board/myBoardList.do?uIdx=${users.uIdx }&ciIdx=" + ciIdx);
+          function getBoard(){
+        	  $("#commonDiv").load("${cp}/board/getBoardList.do");
           }
           
           
           $(function () {
         	 
+        	  
+        	  $("#commonDiv").load("${cp}/board/getBoardList.do?ciIdx=" + ciIdx);
+        	  
+        	  
         	  var uIdx = "${users.uIdx}";
               if (uIdx == "") {
                   $("#participate").attr("onclick", "location.href='${cp}/user/login.do'");
               }
               
-
-            $("#moveInsert").click(function () {
-            	$("#commonDiv").load("${cp}/board/moveInsert.do?ciIdx=" + ciIdx + "&cfIdx=" + cfIdx);
-             });
+              $("#moveInsert").click(function () {
+              	$("#commonDiv").load("${cp}/board/moveInsert.do?ciIdx=" + ciIdx + "&cfIdx=" + cfIdx);
+               });
             
             $("#getBoard").click(function () {
-              $("#commonDiv").load("${cp}/board/getBoardList.do?ciIdx=${campaign.ciIdx }");
+              $("#commonDiv").load("${cp}/board/getBoardList.do?ciIdx=" + ciIdx);
             });
             $("#getContent").click(function () {
               $("#commonDiv").load("${cp}/campaign/getDetailContent.do?ciIdx=${campaign.ciIdx }")
@@ -243,7 +238,6 @@
               /* $("#commonDiv").load("${cp}/board/getBoard.do?bIdx=${board.bIdx }"); */
               $("#commonDiv").load("${cp}/board/getBoard.do?bIdx=${board.bIdx }")
             });
-            
             
            
 		
@@ -317,7 +311,7 @@
 
             <div class="detail-title">
 
-              <h1><a onClick="window.location.reload()" style="cursor: pointer;">${campaign.ciTitle}</a></h1>
+              <h1>${campaign.ciTitle}</h1>
               <div class="profile-contianer">
                 <div class=profile-pic>
                   <img src="/resource/img/profile/user_default.png">
@@ -350,7 +344,7 @@
                 <div class="row sticky-parent">
                   <div class="col-lg-8" id="commonDiv">
                     <img src="${campaign.ciFile }" class="img-fluid" alt="">
-                    <h2>${campaign.ciContent } </h2>
+                    <h2>${campaign.ciContent } </h3>
                       <p>
                         Qui et explicabo voluptatem et ab qui vero et voluptas. Sint voluptates temporibus quam autem.
                         Atque nostrum voluptatum laudantium a doloremque enim et ut dicta. Nostrum ducimus est iure

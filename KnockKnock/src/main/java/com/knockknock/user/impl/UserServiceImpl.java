@@ -122,7 +122,7 @@ public class UserServiceImpl implements UserService {
 			msg += vo.getuName() + "님 회원가입을 환영합니다.</h3>";
 			msg += "<div style='font-size: 130%'>";
 			msg += "하단의 인증 버튼 클릭 시 정상적으로 회원가입이 완료됩니다.</div><br/>";
-			msg += "<form method='POST' action='http://localhost:8080/userApproval.do'>";
+			msg += "<form method='POST' action='http://localhost:8000/userApproval.do'>";
 			msg += "<input type='hidden' name='uEmail' value='" + vo.getuEmail()+ "'>";
 			msg += "<input type='hidden' name='uApprkey' value='" + vo.getuApprkey() + "'>";
 			msg += "<input type='submit' value='인증'></form><br/></div></form>";

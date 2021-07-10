@@ -48,31 +48,48 @@
 <div class="main-content">
 
 	<div class="ordersMain">
+		<div class="ordersTop">
+			<div class="ct1">
+				<h2 style="color:#0e4b20; "> 주문하기 </h2>
+			</div>
+			<div class="ct2">
+				<img src="/resource/img/upload/etc/shopping-cart.png"><span style="font-size:18px; color:#0e4b20; ">장바구니</span>
+				<img src="/resource/img/upload/etc/checklist.png"><span style="font-weight:bold; color:#0e4b20; ">주문목록</span>
+				<img src="/resource/img/upload/etc/checked.png"><span style="font-size:18px; color:#0e4b20; ">결제</span>
+			</div>
+		</div>
 		<div class="ordersGrid">
 			<div class="infoOrder">
-				<p style="background-color:#0e4b20; color:white; padding:10px; width:30%; margin: 10px; font-size:13px;">주문자 정보</p>
-				<div style="padding:20px; text-align:left;" class="ifo1">
+				<p><i class="bi bi-person-fill" style="margin-right:10px;"></i>주문자 정보</p>
+				<div style="padding:15px 0 5px 15px; text-align:left;" class="ifo1">
 					<div>
 						<p class="orderUIdx" style="display:none;">${users.uIdx }</p>
-						이름<p style="font-weight:600;" class="orderName">${users.uName }</p>
-						주소<p class="orderAddress"> ${users.uAddress}</p>
+							<span style="font-size:13px;">이름</span><p class="orderName">${users.uName }</p>
+							<span style="font-size:13px;">주소</span>
+						<p class="orderAddress">
+							<span style="font-size:11px"> </span><br>
+					 		<span class="orderAddress1">${users.uAddress}</span>
+					 	</p>
 					</div>
-					<div>
-						휴대폰<p class="orderPhone"> ${users.uPhone }</p>
-						
-						이메일<p class="orderEmail">${users.uEmail }</p>
+					<div style="margin-bottom:10px;">
+						<span style="font-size:13px;">휴대폰</span><p class="orderPhone"> ${users.uPhone }</p>
+						<p>
+							<span style="font-size:13px;">이메일</span> <p class="orderEmail">${users.uEmail }</p>
+						</p>
 					</div>
 				</div>
 			
 			</div>
 			<div class="infoReciever" style="text-align:left; font-size:13px;">
-				<p id="ifrtext" style="background-color:#0e4b20; color:white; padding:10px; width:30%; margin: 10px; font-size:13px;">수령자 정보</p>
-				<input id="sameOrdersInfo" type="checkbox" >주문자와 동일<br>
+				<div style="width:100%;background-color:#efefef; ">
+					<p id="ifrtext"><i class="bi bi-person-plus-fill" style="margin-right:10px;"></i>수령자 정보</p>
+					<p class="ifrtext2"><input id="sameOrdersInfo" type="checkbox" ><span class="sametext">주문자와 동일</span><br></p>
+				</div>
 				<div class="ifr1">
-					<label>이름 :</label><input type="text" name="rName" class="reciever" id="uname"><br>
+					<label>이름 </label><input type="text" name="rName" class="reciever" id="uname"><br>
 					<div class="reciever">
-	                    <label for="address">주소 :</label>
-	                    <input type="text" name="uAddress" id="addr" placeholder="우편번호" />
+	                    <label for="address">주소 </label>
+	                    <input type="text" name="uAddress" id="addr" placeholder="우편번호" style="width:20%;"/>
 	                    <input type="button" name="uAddress" id="btnAddr" value="검색">
 	                </div>
 	                <div class="form-group">
@@ -81,50 +98,68 @@
 	
 	                </div>
                 </div>
-                <div class="ifr1">
-					<label>연락처 :</label><input type="text" name="rPhone" class="reciever" id="phone">
-					<p style="display:none;" id="warningPhone"></p><br>
-					<label>이메일 :</label><input type="text" name="rEmail" class="reciever" id="email">
-					<p style="display:none;" id="warningEmail"></p><br>
+                <div class="ifr2">
+                	<div>
+						<label>연락처 </label><input type="text" name="rPhone" class="reciever" id="phone">
+						<br><span style="display:none;" id="warningPhone"></span><br>
+					</div>
+					<br>
+					<div>
+						<label>이메일 </label><input type="text" name="rEmail" class="reciever" id="email">
+						<br><span style="display:none;" id="warningEmail"></span><br>
+					</div>
 				</div>
 				<br>
-				<select id="selbox" name="selbox">
-					<option value="d_none">배송 시 요청사항을 선택해주세요</option>
-					<option value="d_door">부재 시 문 앞에 두고 가주세요</option>
-					<option value="d_call">배송 전 전화 또는 문자 주세요</option>
-					<option value="d_security">부재 시 경비실에 두고가주세요</option>
-					<option value="direct">직접입력</option>
-				</select>
-				<input type="text" id="selboxDirect" name="selboxDirect"/>
-			
+				<div class="requestDelivery">
+					<select id="selbox" name="selbox">
+						<option value="d_none">배송 시 요청사항을 선택해주세요</option>
+						<option value="d_door">부재 시 문 앞에 두고 가주세요</option>
+						<option value="d_call">배송 전 전화 또는 문자 주세요</option>
+						<option value="d_security">부재 시 경비실에 두고가주세요</option>
+						<option value="direct">직접입력</option>
+					</select>
+					<input type="text" id="selboxDirect" name="selboxDirect"/>
+				</div>
 			</div>
 			<div class="paymentMethod" style="text-align:left;">
-				<p>결제방법</p>
-				<input type="radio" name="pm" id="pm1" value="card" checked="checked">신용카드<br>
-				<input type="radio" name="pm" id="pm2" value="trans">실시간 계좌이체<br>
-				<input type="radio" name="pm" id="pm3" value="vbank" >가상계좌 <br>
-				<input type="radio" name="pm" id="pm3" value="phone">휴대폰 소액결제 <br>
-				<input type="radio" name="pm" id="pm3" value="samsung">삼성페이<br>
-			
+				<p><i class="bi bi-credit-card-2-back-fill" style="margin-right:10px;"></i>결제방법</p>
+				<div class="methodDiv">
+					<p><input type="radio" name="pm" id="pm1" value="card" checked="checked">신용카드</p>
+					<p><input type="radio" name="pm" id="pm2" value="trans">실시간 계좌이체</p>
+					<p><input type="radio" name="pm" id="pm3" value="vbank" >가상계좌 </p>
+					<p><input type="radio" name="pm" id="pm3" value="phone">휴대폰 소액결제 </p>
+					<p><input type="radio" name="pm" id="pm3" value="samsung">삼성페이</p>
+				</div>
 			
 			</div>
 			<div class="payment">
-				<p>총 결제 금액</p>
-				<p class="payPrice"></p>
-				<input type="button" value="결제하기" id="payBtn" onclick="goPayment()">
+				<div class="pm1">
+					<p><i class="bi bi-currency-exchange" style="margin:15px; width:10%;"></i>총 결제 금액 : </p>
+					<p class="payPrice"></p>원
+				</div>
+				<div class="pm2">
+					<input type="button" value="결제하기" id="payBtn" onclick="goPayment()">
+					<input type="button" value="주문취소" id="cancelBtn" onclick="goPayment()">
+				</div>
 			</div>
 			<div class="infoOrdersProduct">
-				<p>주문상품정보</p>
+				<p class="infoop"><i class="bi bi-info-circle-fill" style="margin:15px;"></i>주문상품정보</p>
 				<div>
 				<c:if test="${!empty olist }">
 				<c:forEach var="item" items="${olist }">
 					<div class="onePlist">
-						상품명 : ${item.pName }<br>
-						상품설명 : ${item.pDesc }<br>
-						가격 : ${item.pPrice }<br>
-						수량 : ${item.oCnt }<br>
-						배송비 : ${item.pFee }<br>
-						총 금액 : <span class="ototPrice">${item.oTotprice }</span>
+						<div class="op1">
+							<p><img src="/resource/img/product/${item.pImg }" /></p>
+						</div>
+						<div class="op2">
+							<div class="op2grid">
+								<span class="op2-1">상품명</span><span class="op3-1">  ${item.pName }</span><br>
+								<span class="op2-2">가격</span><span class="op3-2"> ${item.pPrice }원</span> <br>
+								<span class="op2-3">수량</span> <span class="op3-3">${item.oCnt }</span> <br>
+								<span class="op2-4">배송비</span><span class="op3-4">${item.pFee }원</span>  <br>
+								<span class="op2-5">총 금액</span><span class="ototPrice">${item.oTotprice }원</span>
+							</div>
+						</div>
 					</div>
 				
 				</c:forEach>
@@ -151,7 +186,7 @@ $(function(){
 });
 function goPayment(){
 	console.log($("#selbox option:selected").text());
-	if($(".payPrice").html()=="0원"){
+	if($(".payPrice").html()=="0"){
 		alert("결제할 상품이 존재하지 않습니다.");
 	} else {
 		
@@ -176,7 +211,7 @@ function goPayment(){
 	var uName = $(".orderName").text();
 	var uPhone = $(".orderPhone").text();
 	var uEmail = $(".orderEmail").text();
-	var uAddress = $(".orderAddress").text();
+	var uAddress = $(".orderAddress1").text();
 	//console.log($("#addr1").val());
 	// 수령자 정보
 	var vo = {};

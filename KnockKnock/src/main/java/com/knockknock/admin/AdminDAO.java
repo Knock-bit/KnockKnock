@@ -119,7 +119,27 @@ public class AdminDAO {
 		return mybatis.selectOne("AdminDAO.getCampaign",vo);
 	}
 	
-	public List<AdminContactCategory> getContactCategory(PagingVO pvo){
-		return mybatis.selectList("Util.getCampaignList",pvo);
+	public List<AdminContactVO> getContactList(PagingVO pvo){
+		return mybatis.selectList("Util.getContactList",pvo);
+	}
+
+	public int countContact() {
+		return mybatis.selectOne("Util.countContact");
+	}
+
+	public AdminContactVO getContact(AdminContactVO vo) {
+		return mybatis.selectOne("AdminDAO.getContact", vo);
+	}
+
+	public int insertComment(AdminContactCommentVO vo) {
+		return mybatis.insert("insertComment", vo);
+	}
+
+	public int updateCtResp(AdminContactVO vo) {
+		return mybatis.update("updateCtResp",vo);
+	}
+
+	public List<AdminContactCommentVO> getCommentList(AdminContactVO vo) {
+		return mybatis.selectList("getCommentList",vo);
 	}
 }
