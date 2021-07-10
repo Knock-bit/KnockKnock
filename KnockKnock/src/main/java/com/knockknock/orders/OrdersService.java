@@ -8,4 +8,9 @@ public interface OrdersService {
 	public int countOrders(int sIdx);
 	
 	public int avgTot(int sIdx);
+
+	public List<OrdersVO> selectDailySales(int sIdx);
+
+	public int selectDailyTot(int sIdx);
+
 }

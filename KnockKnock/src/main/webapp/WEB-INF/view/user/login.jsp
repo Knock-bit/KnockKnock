@@ -27,7 +27,7 @@
             var id = $("#uId").val();
             var pwd = $("#uPwd").val();
             console.log(id, pwd);
-
+			
             let vo = {};
             vo.uId = id;
             vo.uPwd = pwd;

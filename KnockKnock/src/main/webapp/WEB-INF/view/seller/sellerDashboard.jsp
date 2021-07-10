@@ -126,22 +126,29 @@
             <div class="col-md-8 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title mb-0">년간 총 판매금액</h4>
+                  <h4 class="card-title mb-0" style="font-weight:bolder">일간매출</h4>
                   <div class="d-flex align-items-center justify-content-between w-100">
-                    <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    <p class="mb-0">최근 1주일간의 판매금액 합계(날짜별)</p>
                     <div class="dropdown">
                       <button class="btn dropdown-toggle" type="button" id="dateSorter"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">2021년</button>
-                      <div class="dropdown-menu" aria-labelledby="dateSorter">
-                        <div class="dropdown-item" id="market-overview_1">2020년</div> 
-                      </div>
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">더 보기</button>
+                       <div style="display:none";>
+                       <c:forEach items="${dailySales}" var="dailySales" >
+                       <p class="dailySales"> ${dailySales.salesdate} </p>
+                       </c:forEach>
+                       </div>
                     </div>
                   </div>
                   <div class="d-flex align-items-end">
-                    <h3 class="mb-0 font-weight-semibold">$36,2531.00</h3>
-                    <p class="mb-0 font-weight-medium mr-2 ml-2 mb-1">USD</p>
-                    <p class="mb-0 text-success font-weight-semibold mb-1">(+1.37%)</p>
+                    <h3 class="mb-0 font-weight-semibold">
+                    <fmt:formatNumber value="${dailyTot }" pattern="#,###" />원 
+                    </h3> 
                   </div>
+                  <div style="display:none";>
+                       <c:forEach items="${dailySales}" var="dailySales" >
+                       <p class="dailySalesTotal"> ${dailySales.total } </p>
+                       </c:forEach>
+                       </div>
                   <canvas class="mt-4" height="100" id="market-overview-chart"></canvas>
                 </div>
               </div>
@@ -250,7 +257,8 @@
 	                          <td>${list.pName}</td>
 	                          <td>${list.oCnt }</td>
 	                          <td>${list.oStatus }</td>
-	                          <td>${list.oDate }</td>
+	                          <td><fmt:parseDate pattern="yyyy-MM-dd" value = "${list.oDate}" />
+	                         </td>
 	                          <td>${list.oTotprice}</td>   
 	                        </tr>
 	                        </c:forEach>
@@ -259,16 +267,7 @@
                       </div>
                     </div>
                   </div>
-                </div>
-
-
-
-
-
-
-
-
-
+                </div> 
 
               </div>
             </div>
@@ -346,7 +345,7 @@
 	<script src="${cp}/resource/dashboard/js/shared/off-canvas.js"></script>
 	<script src="${cp}/resource/dashboard/js/shared/misc.js"></script>
 	<!-- endinject -->
-	<script src="${cp}/resource/dashboard/js/demo_1/dashboard.js"></script>
+	<script src="${cp}/resource/dashboard/js/demo_1/dashboardSeller.js"></script>
  
   
   

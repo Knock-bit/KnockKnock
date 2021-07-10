@@ -16,7 +16,6 @@ public class OrdersDAO {
 	public List<OrdersVO> showOrderList(int sIdx){
 		System.out.println("sIdx는 "+sIdx);
 		List<OrdersVO> vo = mybatis.selectList("Orders.selectOrderList", sIdx); 
-		System.out.println("vo는 "+vo);
 		return vo;
 	}
 	
@@ -26,5 +25,13 @@ public class OrdersDAO {
 	
 	public int avgTot(int sIdx) {
 		return mybatis.selectOne("Orders.avgTot", sIdx);
+	}
+	
+	public List<OrdersVO> showDailySales(int sIdx){
+		return mybatis.selectList("Orders.selectDailySales", sIdx);
+	}
+	
+	public int selectDailyTot(int sIdx) {
+		return mybatis.selectOne("Orders.selectDailyTot", sIdx);
 	}
 }

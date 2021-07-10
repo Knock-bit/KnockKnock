@@ -24,18 +24,27 @@ public class OrdersController {
 	public String sellerDashboard(HttpSession session, SellerVO seller, Model model, int sIdx) {
 		System.out.println("DashBoard에 갈 select문 controller");
 		session.getAttribute("seller");
+		//주문내역
 		List<OrdersVO> list = ordersService.showOrderList(sIdx);		
+		//누적주문건수
 		int number = ordersService.countOrders(sIdx);
+		//주문건당 평균 결제금액
 		int avgTot = ordersService.avgTot(sIdx);
-		System.out.println(number);
+		//일간매출
+		List<OrdersVO> dailySales = ordersService.selectDailySales(sIdx);
+		//일주일간 총매출액 합계
+		int dailyTot = ordersService.selectDailyTot(sIdx);
+
 		model.addAttribute("number", number);
 		model.addAttribute("list", list);
 		model.addAttribute("avgTot", avgTot);
-
+		model.addAttribute("dailySales", dailySales);
+ 		model.addAttribute("dailyTot", dailyTot);
 		model.addAttribute("session", session);
+		
 		return "/seller/sellerDashboard";		
 	}
- 
+
 	
 
 }

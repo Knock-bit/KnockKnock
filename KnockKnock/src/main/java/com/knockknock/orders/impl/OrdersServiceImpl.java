@@ -15,7 +15,6 @@ public class OrdersServiceImpl implements OrdersService{
 
 	@Override
 	public List<OrdersVO> showOrderList(int sIdx) {
-		System.out.println("여기는 Service "+sIdx);
 		return ordersDAO.showOrderList(sIdx);
 	}
 
@@ -27,6 +26,17 @@ public class OrdersServiceImpl implements OrdersService{
 	@Override
 	public int avgTot(int sIdx) {
 		return ordersDAO.avgTot(sIdx);
+	}
+
+	@Override
+	public List<OrdersVO> selectDailySales(int sIdx) {
+		//일주일간 daily 매출		
+		return ordersDAO.showDailySales(sIdx);
+	}
+
+	@Override
+	public int selectDailyTot(int sIdx) {
+ 		return ordersDAO.selectDailyTot(sIdx);
 	}
 
 
