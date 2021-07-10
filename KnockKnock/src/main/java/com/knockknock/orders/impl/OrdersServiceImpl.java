@@ -39,5 +39,35 @@ public class OrdersServiceImpl implements OrdersService{
  		return ordersDAO.selectDailyTot(sIdx);
 	}
 
+	@Override
+	public List<OrdersVO> countGuest(int sIdx) {
+		return ordersDAO.countGuest(sIdx);
+	}
+
+	@Override
+	public List<OrdersVO> countWeeklySales(int sIdx) {
+		return ordersDAO.countWeeklySales(sIdx);
+	}
+
+	@Override
+	public List<OrdersVO> countWeeklySales2(int sIdx) {
+		return ordersDAO.countWeeklySales2(sIdx);
+	}
+
+	@Override
+	public List<OrdersVO> sellerRank(int sIdx) {
+ 		return ordersDAO.sellerRank(sIdx);
+	}
+
+	@Override
+	public String sellerRegdate(int sIdx) {
+		return ordersDAO.sellerRegdate(sIdx);
+	}
+
+	@Override
+	public int totalRevenue(int sIdx) {
+		return ordersDAO.totalRevenue(sIdx);
+	}
+
 
 }

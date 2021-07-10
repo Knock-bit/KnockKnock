@@ -32,7 +32,7 @@ function loginGo(){
             </div>
 
 
-            <h3>綠!Knock! 회원가입이 완료 되었습니다.<br>등록한 이메일을 통하여 인증절차를 완료한 후 바로 이용 가능합니다.</h3>
+            <h3>Knock!綠!  회원가입이 완료 되었습니다.<br>등록한 이메일을 통하여 인증절차를 완료한 후 바로 이용 가능합니다.</h3>
                 <p>이메일을 통한 인증절차 완료한 뒤 로그인해주세요.</p>
                 <p class="w3-center">
                 <button type="button" onclick="loginGo()">로그인하기</button> 

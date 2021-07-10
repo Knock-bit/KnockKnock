@@ -76,7 +76,7 @@
 		<div class="overlay-container">
 			<div class="overlay">
 				<div class="overlay-panel overlay-right">
-					<h1>綠!Knock!</h1>
+					<h1>Knock!綠!</h1>
 					<p>
 						안녕하세요 판매자님!<br>오늘도 그린커슈머를 위한 친환경소비에<br>힘써주셔서 감사합니다.
 					</p>

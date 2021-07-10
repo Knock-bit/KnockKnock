@@ -75,8 +75,8 @@
               </div>
               <div class="card-body">
                 <h5 class="card-title"><a href="/user/tnc.do">일반회원 가입하기</a></h5>
-                <p class="fst-italic text-center">綠!Knock!의 전반적인 서비스 이용을 원하는 회원</p>
-                <p class="card-text">綠!Knock!의 환경캠페인 참여 및 쇼핑몰 이용을 원하시나요? 일반회원으로 지금 바로 클릭해서 일반회원으로 가입하기를 눌러주세요.</p>
+                <p class="fst-italic text-center">Knock!綠!의 전반적인 서비스 이용을 원하는 회원</p>
+                <p class="card-text">Knock!綠!의 환경캠페인 참여 및 쇼핑몰 이용을 원하시나요? 일반회원으로 지금 바로 클릭해서 일반회원으로 가입하기를 눌러주세요.</p>
               </div>
             </div>
           </div>
@@ -87,9 +87,9 @@
               </div>
               <div class="card-body">
                 <h5 class="card-title"><a href="/user/sellerJoin.do">판매자 가입하기</a></h5>
-                <p class="fst-italic text-center">綠!Knock!의 쇼핑몰에 판매를 원하는 회원</p>
+                <p class="fst-italic text-center">Knock!綠!의 쇼핑몰에 판매를 원하는 회원</p>
                 <p class="card-text">혹시 에코프랜들리 상품 판매를 원하는 사업자분이신가요? 아니면 사업자번호가 없는 개인 판매자이신가요?
-                  綠!Knock!의 SHOP을 이용해서 물품 판매를 원하시는 경우 이 곳을 눌러 회원가입을 진행해주세요!
+                  Knock!綠!의 SHOP을 이용해서 물품 판매를 원하시는 경우 이 곳을 눌러 회원가입을 진행해주세요!
                 </p>
               </div>
             </div>
