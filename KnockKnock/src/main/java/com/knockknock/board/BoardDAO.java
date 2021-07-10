@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.knockknock.campaign.campaign.CampaignUserVO;
 import com.knockknock.util.PagingVO;
 
 @Repository
@@ -65,9 +66,9 @@ public class BoardDAO {
 		return mybatis.selectList("BoardDAO.getCampaignBoardList", ciIdx);
 	}
 
-	public List<BoardVO> getMyBoardList(int uIdx) {
-		// TODO Auto-generated method stub
-		return null;
+
+	public List<BoardVO> getMyBoardList(CampaignUserVO cUser) {
+		return mybatis.selectList("BoardDAO.getMyBoardList", cUser);
 	}
 
 }

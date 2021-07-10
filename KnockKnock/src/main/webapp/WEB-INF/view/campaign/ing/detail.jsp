@@ -189,8 +189,11 @@
 
         <script>
           var ciIdx = "${campaign.ciIdx}";
+          var cfIdx = "${campaign.cfIdx}";
         
-
+          function list_board(){
+      		$("#commonDiv").load("${cp}/board/getBoardList.do?ciIdx=${board.ciIdx}");
+      		}
           
           function getBoardView(bIdx) {
             $("#commonDiv").load("${cp}/board/getBoard.do?bIdx=" + bIdx);
@@ -198,7 +201,7 @@
           
           
           function participate(){
-        	  $("#commonDiv").load("${cp}/board/moveInsert.do?ciIdx=" + ciIdx);
+        	  $("#commonDiv").load("${cp}/board/moveInsert.do?ciIdx=" + ciIdx + "&cfIdx=" + cfIdx);
           }
           
           function insertBoard(){
@@ -210,8 +213,8 @@
         	  $("#commonDiv").load("${cp}/board/getBoardList.do?ciIdx=" + ciIdx);
           }
           
-          function myViewBoard(){
-        	  $("#commonDiv").load("${cp}/board/myViewBoard.do?uIdx=${users.uIdx }");
+          function myBoardList(){
+        	  $("#commonDiv").load("${cp}/board/myBoardList.do?uIdx=${users.uIdx }&ciIdx=" + ciIdx);
           }
           
           
@@ -224,7 +227,7 @@
               
 
             $("#moveInsert").click(function () {
-               $("#commonDiv").load("${cp}/board/moveInsert.do?ciIdx=" + ciIdx);
+            	$("#commonDiv").load("${cp}/board/moveInsert.do?ciIdx=" + ciIdx + "&cfIdx=" + cfIdx);
              });
             
             $("#getBoard").click(function () {
@@ -314,7 +317,7 @@
 
             <div class="detail-title">
 
-              <h1>${campaign.ciTitle}</h1>
+              <h1><a onClick="window.location.reload()" style="cursor: pointer;">${campaign.ciTitle}</a></h1>
               <div class="profile-contianer">
                 <div class=profile-pic>
                   <img src="/resource/img/profile/user_default.png">

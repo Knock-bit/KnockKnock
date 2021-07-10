@@ -2,6 +2,7 @@ package com.knockknock.board;
 
 import java.util.List;
 
+import com.knockknock.campaign.campaign.CampaignUserVO;
 import com.knockknock.util.PagingVO;
 
 public interface BoardService {
@@ -15,5 +16,5 @@ public interface BoardService {
 	public int countBoard();
 	public List<BoardVO> getBoardList(PagingVO pvo);
 	public List<BoardVO> getCampaignBoardList(int ciIdx);
-	public List<BoardVO> getMyBoardList(int uIdx);
+	public List<BoardVO> getMyBoardList(CampaignUserVO campaignUser);
 }
