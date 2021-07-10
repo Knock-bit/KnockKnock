@@ -188,7 +188,8 @@
         </style>
 
         <script>
-        	
+        	var ciIdx = "${campaign.ciIdx}";
+        	var cfIdx = "${campaign.cfIdx}";
         
           function getBoardView(bIdx) {
             $("#commonDiv").load("${cp}/board/getBoard.do?bIdx=" + bIdx);
@@ -196,7 +197,7 @@
           
           
           function participate(){
-        	  $("#commonDiv").load("${cp}/board/moveInsert.do");
+        	  $("#commonDiv").load("${cp}/board/moveInsert.do?ciIdx=" + ciIdx + "&cfIdx=" + cfIdx);
           }
           
           function insertBoard(){
@@ -212,7 +213,7 @@
           $(function () {
         	 
         	  
-        	  $("#commonDiv").load("${cp}/board/getBoardList.do?ciIdx=" + ${ciIdx});
+        	  $("#commonDiv").load("${cp}/board/getBoardList.do?ciIdx=" + ciIdx);
         	  
         	  
         	  var uIdx = "${users.uIdx}";
@@ -220,10 +221,12 @@
                   $("#participate").attr("onclick", "location.href='${cp}/user/login.do'");
               }
               
-         
+              $("#moveInsert").click(function () {
+              	$("#commonDiv").load("${cp}/board/moveInsert.do?ciIdx=" + ciIdx + "&cfIdx=" + cfIdx);
+               });
             
             $("#getBoard").click(function () {
-              $("#commonDiv").load("${cp}/board/getBoardList.do");
+              $("#commonDiv").load("${cp}/board/getBoardList.do?ciIdx=" + ciIdx);
             });
             $("#getContent").click(function () {
               $("#commonDiv").load("${cp}/campaign/getDetailContent.do?ciIdx=${campaign.ciIdx }")

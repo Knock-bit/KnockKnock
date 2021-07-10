@@ -65,13 +65,14 @@
 		<tr>
 			<td colspan="2">
 			<input type="hidden" value="${ciIdx }" name="ciIdx">
+			<input type="hidden" value="${cfIdx }" name="cfIdx">
 				<input type="button" id="input-btn" value="글 등록">
 			</td>
 		</tr>
 	</table>
 	</form>
 	
-	<p><a href="getBoardList.do">글 목록으로..</a></p>
+	<p><button onclick="list_board()">글 목록으로..</button></p>
 
 </div>
 <script>

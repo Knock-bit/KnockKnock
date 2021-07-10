@@ -17,40 +17,31 @@
 <title>상세보기</title>
 <script src="/resource/js/jquery/jquery-3.6.0.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script>	
-
-	$(function () {
-		var uIdx = "${users.uIdx }";
-		var buIdx = "${board.uIdx}";
-		if(uIdx != buIdx){
-			$("#modify").css("display", "none");
-			$("#delete").css("display", "none");
-		}
-		
-	});
-	
-	//게시글 등록창으로..
-	function moveInsert_board(frm){
-		$("#commonDiv").load("${cp}/board/moveInsert.do?ciIdx=${board.ciIdx}");
-	}
-	
-	
-	//게시글 삭제
-	function delete_board(){
-		alert("정말 삭제하시겠습니까?");
-		$("#commonDiv").load("${cp}/board/deleteBoard.do?bIdx=${board.bIdx}&ciIdx=${board.ciIdx}");
-	}
-	
-	//게시판 목록으로..
-	function list_board(){
-		$("#commonDiv").load("${cp}/board/getBoardList.do?ciIdx=${board.ciIdx}");
-	}
-	
-	//추천하기 버튼
-	function updateHit_board(frm){
-		frm.action="${cp}/board/updateHit.do";
-		frm.submit();
-	}
+<script>   
+   //게시글 등록창으로..
+   function moveInsert_board(frm){
+      frm.action="moveInsert.do";
+      frm.setAttribute('method', 'get');
+      frm.submit();
+   }
+   
+   //게시글 삭제
+   function delete_board(frm){
+      frm.action="deleteBoard.do";
+      frm.submit();
+   }
+   
+   //게시판 목록으로..
+   function list_board(frm){
+      frm.action="getBoardList.do";
+      frm.submit();
+   }
+   
+   //추천하기 버튼
+   function updateHit_board(frm){
+      frm.action="updateHit.do";
+      frm.submit();
+   }
 </script>
 
 <style type="text/css">
@@ -67,20 +58,21 @@
 <body>
 
 <div id="container">
-	<h1>글상세보기</h1>
-	<hr>
-	<form action="updateBoard.do" method="post">
-		<input type="hidden" name="bIdx" value="${board.bIdx}">
-	 <div class="board-cont">
+   <h1>글상세보기</h1>
+   <hr>
+   <form action="updateBoard.do" method="post">
+      <input type="hidden" name="bIdx" value="${board.bIdx}">
+      
+      <div class="board-cont">
          <div>
             <span>제목</span>
             <span>${board.bSubject}</span>
          </div>
          <div>
             <span>작성자</span>
-               <span> ${users.uNickname }
+            <span> ${users.uNickname }
                 <input type="hidden" value="${users.uIdx }"></span>
-           </div>
+         </div>
          <div>
             <span>내용</span>
             <span>${board.bContent}</span>
@@ -90,22 +82,21 @@
             <span>${fn:substring(board.bRegdate, 0, 10)}</span>
          </div>
          <div>
-            <input class="btn-style" id="modify" type="submit" value="글 수정하기">
+            <input class="btn-style" type="submit" value="글 수정하기">
          </div>
       </div>
-			
-	<hr>
-	<div>
-		<button class="btn-style" type="button" onclick="participate()">글 등록</button>
-		<button class="btn-style" type="button" id="delete"  onclick="delete_board()">글 삭제하기</button>
-		<button class="btn-style" type="button" onclick="list_board()">글목록</button>
-		<hr>
-		<input class="btn-style" type="button" value="추천하기" onclick="updateHit_board(this.form)">
-	</div>
-	</form>
-	<hr>
-	<%-- 게시글 댓글  --%>
-	<div class="container">
+   <hr>
+   <div>
+      <input class="btn-style" type="button" value="글 등록" onclick="moveInsert_board(this.form)">
+      <input class="btn-style" type="button" value="글  삭제" onclick="delete_board(this.form)">
+      <input class="btn-style" type="button" value="글 목록으로.." onclick="list_board(this.form)">
+      <hr>
+      <input class="btn-style" type="button" value="추천하기" onclick="updateHit_board(this.form)">
+   </div>
+   </form>
+   <hr>
+   <%-- 게시글 댓글  --%>
+   <div class="container">
       <label for="cContent">댓글 목록</label>
       <br><br>
       <form name="commentsInsertForm">

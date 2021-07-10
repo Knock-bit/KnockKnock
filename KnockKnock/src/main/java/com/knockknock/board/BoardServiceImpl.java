@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.knockknock.campaign.campaign.CampaignUserVO;
 import com.knockknock.util.PagingVO;
 
 @Service("boardService")
@@ -65,7 +66,7 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List<BoardVO> getMyBoardList(int uIdx) {
-		return boardDAO.getMyBoardList(uIdx);
+	public List<BoardVO> getMyBoardList(CampaignUserVO cUser) {
+		return boardDAO.getMyBoardList(cUser);
 	}
 }
