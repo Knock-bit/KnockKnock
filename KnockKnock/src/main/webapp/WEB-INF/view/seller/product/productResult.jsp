@@ -26,7 +26,7 @@
                <button class="button">&nbsp;&nbsp;등록상품 확인
                   <i class="zmdi zmdi-arrow-right"></i>
                </button>
-               <button class="button">&nbsp;&nbsp;knock! mall 메인 
+               <button class="button" onclick="${cp }/productlist.do">&nbsp;&nbsp;knock! mall 메인 
                   <i class="zmdi zmdi-arrow-right"></i>
                </button>
           </div>

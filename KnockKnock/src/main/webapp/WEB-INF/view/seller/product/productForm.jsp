@@ -43,7 +43,7 @@
                 <div class="proposal-form">
                     <form role="form" method="post" onsubmit="postForm()" 
                     action="${cp }/productSummer.do" class="register-form" id="register-form" enctype="multipart/form-data">
-                        <h2>상품등록</h2>
+                        <h2>상품 등록</h2>
                         <p>KNOCK! 샵에 등록할 상품을 등록해주세요.</p>
      				 
                         <div class="form-row1">
