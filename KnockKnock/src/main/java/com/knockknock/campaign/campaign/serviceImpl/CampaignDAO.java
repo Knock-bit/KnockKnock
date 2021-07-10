@@ -76,4 +76,17 @@ public class CampaignDAO {
 	public List<CampaignVO> selectInputResult(String input) {
 		return  mybatis.selectList("campaign.selectInputResult", input);
 	}
+
+	public CampaignVO selectOneCampaign(int ciIdx) {
+		return mybatis.selectOne("campaign.selectOneCampaign", ciIdx);
+	}
+
+	public int updateParticipatePoint(CampaignUserVO cUser) {
+		return mybatis.update("campaign.updateUserParticipate", cUser);
+	}
+
+	public int insertCampaignUser(CampaignUserVO cUser) {
+		mybatis.update("campaign.updateUserCampaignMinusPoint", cUser);
+		return mybatis.update("campaign.insertCampaignUser", cUser);
+	}
 }

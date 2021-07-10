@@ -59,4 +59,15 @@ public class BoardDAO {
 	public List<BoardVO> getBoardList(PagingVO pvo) {
 		return mybatis.selectList("Util.getBoardList", pvo);
 	}
+
+
+	public List<BoardVO> getCampaignBoardList(int ciIdx) {
+		return mybatis.selectList("BoardDAO.getCampaignBoardList", ciIdx);
+	}
+
+	public List<BoardVO> getMyBoardList(int uIdx) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

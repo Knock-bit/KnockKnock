@@ -1,9 +1,10 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri ="http://java.sun.com/jsp/jstl/fmt" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-  <c:set var="cp" value="${pageContext.request.contextPath }" />
+<c:set var="cp" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +16,7 @@
 <script>
 	//게시글 등록창으로..
 	function moveInsert_board(frm) {
-		frm.action = "${cp}/board/moveInsert.do"
+		frm.action = "${cp}/board/moveInsert.do?ciIdx=${ciIdx}"
 		frm.setAttribute('method', 'get');
 		frm.submit();
 	}
@@ -35,7 +36,7 @@
 </head>
 <body>
 <div id="container">
-	<h1>게시판 목록</h1>
+	<h1>${ciIdx }...게시판 목록</h1>
 	<div style="float: right;">
 		<select id="cntPerPage" name="sel" onchange="selChange()">
 			<option value="5"
@@ -49,22 +50,18 @@
 	<table>
 		<tr>
 			<th>게시글번호</th>
-			<th>말머리</th>
 			<th>제목</th>
 			<th>작성자</th>
-			<th>내용</th>
 			<th>작성일</th>
 			<th>조회수</th>
 			<th>추천수</th>
 		</tr>
 	<c:if test="${not empty getBoardList}">
 		<c:forEach var="board" items="${getBoardList}">
-		<tr style="cursor:pointer;" onclick="location.href='${cp}/board/getBoard.do?bIdx=${board.bIdx }'">
+		<tr style="cursor:pointer;" onclick="getBoardView(${board.bIdx})">
 			<td>${board.bIdx}</td>
-			<td>${board.sbIdx}</td>
 			<td>${board.bSubject}</td>
 			<td>${board.uIdx}</td>
-			<td>${board.bContent}</td>
 			<td>
 				${fn:substring(board.bRegdate, 0, 10)}
 			</td>
@@ -115,11 +112,12 @@
 		</c:if>
 	</div>
 	<div>
-		<p><input type="button" value="게시글등록" onclick="moveInsert_board(this.form)">
-		<input type="button" value="내글보기" onclick="myView_board(this.form)"></p>
+		<p><button type="button" onclick="participate()">게시글등록</button>
+		<button type="button" onclick="myViewBoard()"></button></p>
 	</div>	
 	</form>
 </div>
 	
 </body>
 </html>
+

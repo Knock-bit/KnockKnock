@@ -5,9 +5,10 @@
 <mapper namespace="BoardDAO">
 	
 	<insert id="insertBoard" parameterType="boardVO">
-		INSERT INTO BOARD (B_IDX ,B_SUBJECT, B_CONTENT, U_IDX, B_REGDATE, B_HIT, B_VIEWS, B_CATEGORY, B_FILE, CI_IDX, SB_IDX, B_ACTIVE)
+		INSERT INTO BOARD (B_IDX ,B_SUBJECT, B_CONTENT, U_IDX, B_REGDATE, B_HIT, B_VIEWS, B_CATEGORY, B_FILE, CI_IDX, B_ACTIVE)
 		VALUES ((SELECT NVL(MAX(B_IDX),0)+1 FROM BOARD), #{bSubject}, #{bContent}, #{uIdx}, SYSDATE, #{bHit}, #{bViews}, 
-				#{bCategory}, #{bFile}, #{ciIdx}, #{sbIdx}, #{bActive})
+                  #{bCategory}, #{bFile}, #{ciIdx}, 1)
+
 	</insert>
 	
 	<update id="updateBoard" parameterType="boardVO">
@@ -20,10 +21,20 @@
 	</delete>
 	
 	<select id="getBoard" parameterType="boardVO" resultType="boardVO">
-		SELECT * FROM BOARD WHERE B_IDX = #{bIdx}
+		SELECT B.*, U.U_NICKNAME        
+ 		FROM USERS U, BOARD B    
+ 		WHERE U.U_IDX = B.U_IDX
+ 		AND B_IDX = #{bIdx}
 	</select>
 	
-	<select id="getBoardList" parameterType="boardVO" resultType="boardVO">
+	
+	<select id="getCampaignBoardList" parameterType="boardVO" resultType="boardVO">
+		SELECT * FROM BOARD 
+		WHERE CI_IDX = #{ciIdx}
+		ORDER BY B_IDX DESC
+	</select>
+	
+ 	<select id="getBoardList" parameterType="boardVO" resultType="boardVO">
 		SELECT * FROM BOARD 
 		WHERE 1=1
 		<if test="searchCondition == 'BSUBJECT' ">
@@ -33,7 +44,7 @@
 			AND B_CONTENT LIKE '%'|| #{searchKeyword} ||'%'
 		</if>
 		ORDER BY B_IDX DESC
-	</select>
+	</select> 
 	
 	<update id="updateHit">
 		UPDATE BOARD SET B_HIT = B_HIT + 1 WHERE B_IDX = #{bIdx}

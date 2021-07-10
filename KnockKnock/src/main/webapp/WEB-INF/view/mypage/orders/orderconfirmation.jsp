@@ -22,7 +22,9 @@
  
   <!-- Main CSS File -->
   <link href="${cp}/resource/css/main.css" rel="stylesheet">
-
+<link
+	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap"
+	rel="stylesheet">
   <!-- Import BootStrap -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
   
@@ -39,26 +41,32 @@
   <!-- ======= Header 끝  === -->
 <div class="main-content">
 
-	
 	<div class="orderConfirm">
 		<div class="orderform">
 			<div class="of1">
-				<h3>주문완료</h3>
+				<h3>결제 완료</h3>
 			</div>
 			<div class="of2">
-				<p>1. 장바구니 > 2. 주문결제 > 3.주문완료</p>
+				<img src="/resource/img/upload/etc/shopping-cart.png"><span style="font-size:18px;">장바구니</span>
+				<img src="/resource/img/upload/etc/checklist.png"><span style="font-size:18px;">주문목록</span>
+				<img src="/resource/img/upload/etc/checked.png"><span style="font-weight:bold; color:rgb(10, 61, 14);">결제</span>
 			</div>
 			<div class="of3">
 				<p>knockknock을 이용해주셔서 감사합니다</p>
 			
 			</div>
 			<div class="of4">
-				상품목록
-				<c:forEach var="product" items="${plist }">
-				<div style="display:inline-block;">
-					<p>이미지</p>
-					<p>상품명 : ${product.pName }</p>
-					<p>가격: ${product.pName }</p>
+				<p style="text-align:left;">구매목록</p>
+				<c:forEach var="product" items="${plist }" varStatus="status">
+				<div style="display:inline-block; text-align:left;">
+					<c:out value="${status.count }" />
+					<div class="op1">
+						<p><img src="/resource/img/product/${product.pImg }" /></p>
+					</div>
+					<div  class="op2">
+						<p>상품명 : ${product.pName }</p>
+						<p>가격: ${product.pName }</p>
+					</div>
 				</div>
 				</c:forEach>
 				<c:forEach var="orders" items="${ovo }">
@@ -67,16 +75,18 @@
 				</c:forEach>
 			</div>
 			<div class="of5">
-				결제내역
-				<p>상품가격(모든상품가격) : </p>
-				<p>할인금액 :</p>
-				<p>총 배송비 :</p>
-				<p>총 구매금액</p>
-				<%-- <p>최종 결제 수단 ${ovo.paIdx }</p> --%>
-				
+				<p style="text-align:left;">결제내역</p>
+				<p>최종 결제 수단 <%-- ${ovo.paIdx } --%></p>
+				<div class="of5-1">
+					<p class="of5-1-1">상품가격  </p> <p class="of5-2-1">1000</p>
+					<p class="of5-1-2">할인금액 </p>	<p class="of5-2-2">-</p>
+					<p class="of5-1-3">총 배송비 </p>	<p class="of5-2-3">3000</p>
+					<p class="of5-1-4">최종 결제금액</p> 	<p class="of5-2-4">4000</p>
+					
+				</div>
 			</div>
 			<div class="of6">
-				배송정보내역
+				<p style="text-align:left;">배송정보내역</p>
 				<p>구매자 이름: ${users.uName }</p>
 				<p>수취인 이름: ${uovo.oReceiver }</p>
 				<p>우편번호 : ${uovo.oZipcode }</p>
