@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.JsonObject;
@@ -27,6 +28,7 @@ import com.knockknock.campaign.campaign.CampaignUserVO;
 import com.knockknock.campaign.campaign.CampaignVO;
 import com.knockknock.campaign.funding.FundingService;
 import com.knockknock.campaign.funding.FundingUserVO;
+import com.knockknock.user.UserVO;
 import com.knockknock.util.PagingVO;
 
 @Controller
@@ -42,27 +44,33 @@ public class BoardController {
 	private FundingService fundingService;
 
 	@RequestMapping("/board/getBoardList.do")
-	public String getBoardList(int ciIdx, BoardVO vo, Model model, PagingVO pvo,
+	public String getBoardList( 
+			int ciIdx, BoardVO vo, Model model, PagingVO pvo,
 			@RequestParam(value = "nowPage", required = false) String nowPage,
 			@RequestParam(value = "cntPerPage", required = false) String cntPerPage) {
 		System.out.println("getBoardList 실행");
 		System.out.println(ciIdx);
-		int total = boardService.countBoard();
+//		int total = boardService.countBoard();
+		int total = boardService.countCampaignBoard(ciIdx);
+		
+		// 현재 페이지 구하기
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = "1";
-			cntPerPage = "5";
+			cntPerPage = "10";
 		} else if (nowPage == null) {
 			nowPage = "1";
 		} else if (cntPerPage == null) {
-			cntPerPage = "5";
+			cntPerPage = "10";
 		}
-
-		pvo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		
+		pvo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage),String.valueOf(ciIdx));
+		
 		model.addAttribute("ciIdx", ciIdx);
 		model.addAttribute("paging", pvo);
-		model.addAttribute("getBoardList", boardService.getBoardList(pvo));
+		/* model.addAttribute("getBoardList", boardService.getBoardList(pvo)); */
 		/* List<BoardVO> boardList = boardService.getBoardList(pvo); */
-		List<BoardVO> boardList = boardService.getCampaignBoardList(ciIdx);
+		List<BoardVO> boardList = boardService.getCampaignBoardList(pvo);
+		System.out.println(boardList);
 		model.addAttribute("getBoardList", boardList);
 
 		return "board/getBoardList";
@@ -119,6 +127,14 @@ public class BoardController {
 		return "board/getBoard";
 	}
 
+	@GetMapping("/board/modifyBoard.do")
+	public String moveModify(@RequestParam("bIdx") int bIdx, Model model) {
+		System.out.println("수정창으로 이동");
+		BoardVO vo = boardService.getBoard(bIdx);
+		model.addAttribute("board", vo);
+		return "board/getModify";
+	}
+	
 	@GetMapping("/board/updateBoard.do")
 	public void updateBoardGet(@RequestParam("bIdx") int bIdx, Model model) {
 		BoardVO vo = boardService.getBoard(bIdx);
@@ -150,10 +166,13 @@ public class BoardController {
 //	}
 
 	@RequestMapping("/board/updateHit.do")
-	public String updateHit(@RequestParam int bIdx) {
+	@ResponseBody
+	public int updateHit(@RequestParam int bIdx, Model model) {
 		boardService.updateHit(bIdx);
-
-		return "forward:/board/getBoardList.do";
+		BoardVO board = boardService.getBoard(bIdx);
+		int bHit = board.getbHit();
+		System.out.println("bHit:" + bHit);
+		return bHit;
 	}
 
 	public static Map<String, String> pageSet(String nowPage, String cntPerPage) {
@@ -177,7 +196,7 @@ public class BoardController {
 			@RequestParam(value = "nowPage", required = false) String nowPage,
 			@RequestParam(value = "cntPerPage", required = false) String cntPerPage) {
 		System.out.println(campaignUser);
-		int total = boardService.countBoard();
+		int total = boardService.countMyCampaignBoard(campaignUser);
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = "1";
 			cntPerPage = "5";
@@ -217,7 +236,7 @@ public class BoardController {
 	 * return "board/getBoardList"; }
 	 */
 	
-	@RequestMapping(value = "/uploadBoardlSummernoteImageFile.do", produces = "application/json; charset=utf8")
+	@RequestMapping(value = "/uploadBoardSummernoteImageFile.do", produces = "application/json; charset=utf8")
 	@ResponseBody
 	public String uploadSummernoteImageFile(@RequestParam("file") MultipartFile multipartFile,
 			HttpServletRequest request) {
@@ -250,6 +269,7 @@ public class BoardController {
 	@PostMapping("/board/boardSummer.do")
 	public String insertBoardSummer(BoardVO vo, CampaignUserVO campaignUser, FundingUserVO fundingUser, Model model,
 			MultipartFile file) throws IllegalStateException, IOException {
+		
 		System.out.println(vo);
 		int ciIdx = vo.getCiIdx();
 		System.out.println(fundingUser);
@@ -271,13 +291,14 @@ public class BoardController {
 			System.out.println("캠페인 참여한 적이 없음");
 			// 캠페인 참여 처음
 			// 공통 => campaign user에 추가
+			System.out.println("캠페인 첫 참여. CAMPAIGN_USER 테이블에 추가");
 			campaignService.insertCampaignUser(campaignUser);
 			// 식별(2) 펀딩에 참여하였는가
 			// -> 펀딩 참여시 0 포인트 차감
 			// -> 펀딩 미참여시 300 포인트 차감
 			if (fUser == null) {
-				System.out.println("펀딩에 미참여하였음");
 				// 펀딩에 미참여한 경우 => 300포인트 차감
+				System.out.println("펀딩 미참여. 300포인트 차감");
 				campaignService.updateParticipatePoint(campaignUser);
 			}
 		}

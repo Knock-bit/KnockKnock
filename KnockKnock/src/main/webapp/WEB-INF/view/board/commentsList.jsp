@@ -19,8 +19,10 @@
 	            $.each(data, function(key, value){ 
 	                a += '<div class="areaComments" style="border-bottom:1px solid darkgray; margin-bottom: 15px;">';
 	                a += '<div class="infoComments'+value.mIdx+'">'+'댓글번호 : '+value.mIdx+' / 작성자 : '+value.uIdx;
+	                a += '<c:if test="${users.uIdx} eq ' + value.uIdx +'">';
 	                a += '<a onclick="updateComments('+value.mIdx+',\''+value.cContent+'\');"> 수정 </a>';
 	                a += '<a onclick="deleteComments('+value.mIdx+',\''+value.mIdx+'\');"> 삭제 </a> </div>';
+	                a += '</c:if>';
 	                a += '<div class="commentsContent'+value.mIdx+'"> <p> 내용 : '+value.cContent +'</p>';
 	                a += '</div></div>';
 	            });
@@ -73,7 +75,7 @@
 	//댓글 삭제 
 	function deleteComments(mIdx){
 	    $.ajax({
-	        url : '/board/deleteComments.do/'+mIdx,
+	        url : '/board/deleteComments.do?mIdx='+ mIdx,
 	        type : 'post',
 	        success : function(data){
 	            if(data == 1) commentsList(bIdx); 

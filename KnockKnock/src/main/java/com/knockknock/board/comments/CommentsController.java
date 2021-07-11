@@ -24,14 +24,25 @@ public class CommentsController {
 		return commentsService.commentsList(bIdx);
 	}
 	
-	@RequestMapping(value="/board/insertComments.do", method=RequestMethod.POST)
-	public String insertComments(CommentsVO vo, RedirectAttributes rttr) {
+	/*
+	 * @RequestMapping(value="/board/insertComments.do", method=RequestMethod.POST)
+	 * public String insertComments(CommentsVO vo, RedirectAttributes rttr) {
+	 * 
+	 * commentsService.insertComments(vo); rttr.addAttribute("bIdx", vo.getbIdx());
+	 * 
+	 * return "redirect:/board/getBoard"; }
+	 */
 	
-		commentsService.insertComments(vo);
-		rttr.addAttribute("bIdx", vo.getbIdx());
-		
-		return "redirect:/board/getBoard";	
-	}
+	
+	  @RequestMapping(value="/board/insertComments.do", method=RequestMethod.POST)
+	  @ResponseBody
+	  public int insertComments(CommentsVO vo) {
+		  System.out.println(vo);
+	  return commentsService.insertComments(vo); 
+	  
+	   }
+	 
+	
 	
 	@RequestMapping("/board/updateComments.do")
 	@ResponseBody
@@ -45,14 +56,25 @@ public class CommentsController {
 		return commentsService.updateComments(vo);
 	}
 	
-	@PostMapping("/board/deleteComments.do")
+	/*
+	 * @PostMapping("/board/deleteComments.do")
+	 * 
+	 * @ResponseBody public String deleteComments(@RequestParam(value="mIdx") int
+	 * mIdx, RedirectAttributes rttr) {
+	 * 
+	 * commentsService.deleteComments(mIdx); rttr.addFlashAttribute("result",
+	 * "delete success");
+	 * 
+	 * return "redirect:/board/getBoard.do"; }
+	 */
+	
+	
+	@RequestMapping("/board/deleteComments.do")
 	@ResponseBody
-	public String deleteComments(@RequestParam(value="mIdx") int mIdx, 
-			RedirectAttributes rttr) {
-
-		commentsService.deleteComments(mIdx);
-		rttr.addFlashAttribute("result", "delete success");
+	public int deleteComments(@RequestParam(value="mIdx") int mIdx) {
+		System.out.println("comments 삭제");
+		/* rttr.addFlashAttribute("result", "delete success"); */
 		
-		return "redirect:/board/getBoard.do";
+		return commentsService.deleteComments(mIdx);
 	}
 }

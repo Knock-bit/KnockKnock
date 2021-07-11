@@ -27,21 +27,18 @@
 
    .text-center { text-align: center; }
    .text-left { text-align: left; }
+   .title { width:50%;}
    
 </style>
 <script>
-	//게시글 등록창으로..
-	function moveInsert_board(frm) {
-		frm.action = "${cp}/board/moveInsert.do?ciIdx=${ciIdx}"
-		frm.setAttribute('method', 'get');
-		frm.submit();
+
+	function nextPage() {
+		$("#commonDiv").load("${cp }''/board/getBoardList.do?nowPage=${paging.endPage+1}&cntPerPage=${paging.cntPerPage}&ciIdx=${ciIdx}")
 	}
-	//내글만보기
-	function myView_board(frm) {
-		frm.action = "${cp}/board/myViewBoard.do"
-		frm.setAttribute('method', 'get');
-		frm.submit();
+	function page(page) {
+		$("#commonDiv").load("${cp }/board/getBoardList.do?nowPage="+page+"&cntPerPage=${paging.cntPerPage}&ciIdx=${ciIdx}")	
 	}
+	
 	function selChange() {
 		var sel = document.getElementById('cntPerPage').value;
 		location.href = "${cp}/board/getBoardList.do?nowPage=${paging.nowPage}&cntPerPage="
@@ -66,14 +63,14 @@
 	<table class="table">
       <tr>
          <th class="text-center">글번호</th>
-         <th class="text-left">제목</th>
+         <th class="text-left title">제목</th>
          <th class="text-center">작성자</th>
          <th class="text-center">작성일</th>
          <th class="text-center">조회수</th>
-         <th class="text-center">추천수</th>
       </tr>
 	<c:if test="${not empty getBoardList}">
 		<c:forEach var="board" items="${getBoardList}">
+		
 		<tr style="cursor:pointer;" onclick="getBoardView(${board.bIdx})">
 			 <td class="text-center">${board.bIdx}</td>
 	         <td class="text-left">${board.bSubject}</td>
@@ -82,7 +79,6 @@
 	            ${fn:substring(board.bRegdate, 0, 10)}
 	         </td>
 	         <td class="text-center">${board.bViews}</td>
-	         <td class="text-center">${board.bHit}</td>
 		</tr>
 		</c:forEach>
 	</c:if>	
@@ -105,16 +101,16 @@
 		<b>${p}</b>
 		</c:when>
 		<c:when test="${p != paging.nowPage}">
-			<a href="/board/getBoardList.do?nowPage=${p}&cntPerPage=${paging.cntPerPage}">${p}</a>
+			<a href="#" onclick="page(${p})">${p}</a>
 		</c:when>
 		</c:choose>
 		</c:forEach>
 		<c:if test="${paging.endPage != paging.lastPage}">
-			<a href="/board/getBoardList.do?nowPage=${paging.endPage+1}&cntPerPage=${paging.cntPerPage}">&gt;</a>
+			<a href="#" onclick="nextPage()" >&gt;</a>
 		</c:if>
 	</div>
 	<div>
-		<p><button type="button" onclick="participate()"
+		<p><button type="button" id="participate3" onclick="participate()"
 		 style="width: 100px; color:white; background-color: #0a3a18; border-radius: 35px;">게시글등록</button>
 		<button type="button" onclick="myBoardList()"
 		style="width: 100px; color:white; background-color: #0a3a18; border-radius: 35px;">내 글 보기</button></p>

@@ -38,6 +38,17 @@ public class PagingVO {
 		setSearchCondition(searchCondition);
 		setSearchKeyword(searchKeyword);
 	}
+	
+	public PagingVO(int total, int nowPage, int cntPerPage, String sort) {
+		setNowPage(nowPage);
+		setCntPerPage(cntPerPage);
+		setTotal(total);
+		calcLastPage(getTotal(), getCntPerPage());
+		calcStartEndPage(getNowPage(), cntPage);
+		calcStartEnd(getNowPage(), getCntPerPage());
+		setSort(sort);
+	}
+	
 
 	public PagingVO(int total, int nowPage, int cntPerPage, String searchCondition, String searchKeyword, String sort) {
 		setNowPage(nowPage);

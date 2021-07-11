@@ -27,12 +27,31 @@
  		AND B_IDX = #{bIdx}
 	</select>
 	
-	
-	<select id="getCampaignBoardList" parameterType="boardVO" resultType="boardVO">
-		SELECT * FROM BOARD 
+	<select id="countCampaignBoard" resultType="int">
+		SELECT COUNT(*) FROM BOARD
 		WHERE CI_IDX = #{ciIdx}
-		ORDER BY B_IDX DESC
 	</select>
+	
+	<select id="countMyCampaignBoard" resultType="int">
+		SELECT COUNT(*) FROM BOARD
+		WHERE CI_IDX = #{ciIdx}
+		  AND U_IDX = #{uIdx} 
+	</select>
+	
+	<!-- 닉네임과 함께 특정 캠페인 리스트 호출 -->
+	<select id="getCampaignBoardList" resultType="boardVO">
+		 SELECT * FROM
+		( SELECT
+		ROWNUM RN, A.*  FROM
+		( SELECT B.*, U.U_NICKNAME 
+			FROM BOARD B, USERS U WHERE CI_IDX = #{sort} 
+			AND B.U_IDX = U.U_IDX  
+        ORDER BY B_IDX DESC) A
+		) WHERE RN BETWEEN #{start} AND #{end}
+
+	</select>
+	
+	
 	
  	<select id="getBoardList" parameterType="boardVO" resultType="boardVO">
 		SELECT * FROM BOARD 
