@@ -14,10 +14,8 @@ public class OrdersDAO {
 	private SqlSessionTemplate mybatis;
 
 	public List<OrdersVO> showOrderList(int sIdx){
-		System.out.println("sIdx는 "+sIdx);
-		List<OrdersVO> vo = mybatis.selectList("Orders.selectOrderList", sIdx); 
-		System.out.println("VO = "+vo);
-		return vo;
+		System.out.println("sIdx는 "+sIdx);		
+		return mybatis.selectList("Orders.selectOrderList", sIdx); 
 	}
 	
 	public int countOrders(int sIdx) {
@@ -59,5 +57,6 @@ public class OrdersDAO {
 	public int totalRevenue(int sIdx) {
 		return mybatis.selectOne("Orders.totalRevenue", sIdx);
 	}
+	
 	
 }

@@ -51,16 +51,16 @@
 			<nav class="sidebar sidebar-offcanvas" id="sidebar">
 				<ul class="nav">
 					<li class="nav-item nav-category"></li>
-					<li class="nav-item"><a class="nav-link" href="index.html">
+					<li class="nav-item"><a class="nav-link" href="/seller/sellerDashboard.do?sIdx=${seller.sIdx}">
 							<span class="menu-title">판매 Dashboard</span>
-					</a></li>
+					</a></li> 
 					<li class="nav-item"><a class="nav-link"
-						href="pages/forms/basic_elements.html"> <span
-							class="menu-title">판매물품 관리</span>
-					</a></li>
-					<li class="nav-item"><a class="nav-link"
-						href="pages/tables/basic-table.html"> <span class="menu-title">상품
+						href="/seller/submitproduct.do"> <span class="menu-title">상품
 								등록하기</span>
+					</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="/seller/manageMyProducts.do"> <span
+							class="menu-title">등록상품 조회</span>
 					</a></li>
 				</ul>
 			</nav>
@@ -70,70 +70,81 @@
 					<div class="col-md-12 grid-margin">
 						<div class="card">
 							<div class="card-body">
-								<div class="d-flex justify-content-between">
-									<h4 class="card-title mb-0">최근 주문내역</h4>
-									<a href="#"><small>Show All</small></a>
-								</div>
-								<div class="table-responsive">
-									<table class="table table-striped table-hover">
-										<thead>
-											<tr>
-												<th>주문번호</th>
-												<th>주문자명</th>
-												<th>제품명</th>
-												<th>수량</th>
-												<th>주문상태</th>
-												<th>주문날짜</th>
-												<th>주문금액</th>
-											</tr>
-										</thead>
-										<tbody>
-											<c:forEach var="list" items="${list }">
+								<form action="saveorderstatus.do" method="POST">
+									<div class="d-flex justify-content-between">
+										<h4 class="card-title mb-0">최근 주문내역</h4>
+										<small><input type="submit" value="변경사항 저장하기"></small>
+									</div>
+
+									<div class="table-responsive">
+										<table class="table table-striped table-hover">
+											<thead>
 												<tr>
-													<td>${list.oNumber }</td>
-													<td>${list.uName }</td>
-													<td>${list.pName}</td>
-													<td>${list.oCnt }</td>
-													<td>${list.oStatus }</td>
-													<td><fmt:parseDate pattern="yyyy-MM-dd"
-															value="${list.oDate}" /></td>
-													<td>${list.oTotprice}</td>
+													<th>주문번호</th>
+													<th>주문자명</th>
+													<th>제품명</th>
+													<th>수량</th>
+													<th>주문상태</th>
+													<th>주문날짜</th>
+													<th>주문금액</th>
+													<th>주문상태</th>
 												</tr>
-											</c:forEach>
-										</tbody>
-									</table>
-								</div>
+											</thead>
+											<tbody>
+												<c:forEach var="list" items="${list }">
+													<tr>
+														<td>${list.oNumber }</td>
+														<td>${list.uName }</td>
+														<td>${list.pName}</td>
+														<td>${list.oCnt }</td>
+														<td>${list.osName }</td>
+														<td><fmt:parseDate pattern="yyyy-MM-dd"
+																value="${list.oDate}" /></td>
+														<td>${list.totalwithfee}</td>														
+														<td>
+														<select class="form-select"
+															aria-label="Default select example">													
+														<option selected>주문상태</option>
+														<option value="0">결제완료</option>
+														<option value="1">배송준비</option>
+														<option value="2">배송중</option>
+														<option value="3">배송완료</option>
+														</select></td>
+													</tr>
+												</c:forEach>
+											</tbody>
+										</table>
+									</div>
+								</form>
 							</div>
 						</div>
 					</div>
-
 				</div>
 			</div>
-
-			<!-- content-wrapper ends -->
-
 		</div>
-		<!-- main-panel ends -->
-		<!-- page-body-wrapper ends -->
-		<!-- partial:partials/_footer.html -->
-		<footer class="footer">
-			<%@ include file="/layout/footer.jsp"%>
+		<!-- content-wrapper ends -->
 
-		</footer>
-		<!-- partial -->
+	</div>
+	<!-- main-panel ends -->
+	<!-- page-body-wrapper ends -->
+	<!-- partial:partials/_footer.html -->
+	<footer class="footer">
+		<%@ include file="/layout/footer.jsp"%>
 
-		<!-- container-scroller -->
-		<!-- plugins:js -->
-		<script
-			src="${cp}/resource/dashboard/vendors/js/vendor.bundle.base.js"></script>
-		<script
-			src="${cp}/resource/dashboard/vendors/js/vendor.bundle.addons.js"></script>
-		<!-- endinject -->
-		<!-- inject:js -->
-		<script src="${cp}/resource/dashboard/js/shared/off-canvas.js"></script>
-		<script src="${cp}/resource/dashboard/js/shared/misc.js"></script>
-		<!-- endinject -->
-		<script src="${cp}/resource/dashboard/js/demo_1/dashboardSeller.js"></script>
+	</footer>
+	<!-- partial -->
+
+	<!-- container-scroller -->
+	<!-- plugins:js -->
+	<script src="${cp}/resource/dashboard/vendors/js/vendor.bundle.base.js"></script>
+	<script
+		src="${cp}/resource/dashboard/vendors/js/vendor.bundle.addons.js"></script>
+	<!-- endinject -->
+	<!-- inject:js -->
+	<script src="${cp}/resource/dashboard/js/shared/off-canvas.js"></script>
+	<script src="${cp}/resource/dashboard/js/shared/misc.js"></script>
+	<!-- endinject -->
+	<script src="${cp}/resource/dashboard/js/demo_1/dashboardSeller.js"></script>
 </body>
 
 </html>

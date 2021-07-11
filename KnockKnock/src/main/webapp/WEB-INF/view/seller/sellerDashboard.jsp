@@ -51,16 +51,18 @@
 			<nav class="sidebar sidebar-offcanvas" id="sidebar">
 				<ul class="nav">
 					<li class="nav-item nav-category"></li>
-					<li class="nav-item"><a class="nav-link" href="index.html">
+					<li class="nav-item"><a class="nav-link" href="/seller/sellerDashboard.do?sIdx=${seller.sIdx}">
 							<span class="menu-title">판매 Dashboard</span>
 					</a></li>
+					
 					<li class="nav-item"><a class="nav-link"
-						href="pages/forms/basic_elements.html"> <span
-							class="menu-title">판매물품 관리</span>
-					</a></li>
-					<li class="nav-item"><a class="nav-link"
-						href="pages/tables/basic-table.html"> <span class="menu-title">상품
+						href="/seller/submitproduct.do"> <span class="menu-title">상품
 								등록하기</span>
+					</a></li>
+					
+					<li class="nav-item"><a class="nav-link"
+						href="/seller/manageMyProducts.do"> <span
+							class="menu-title">등록상품 조회</span>
 					</a></li>
 				</ul>
 			</nav>
@@ -276,7 +278,7 @@
 										<div class="card-body">
 											<div class="d-flex justify-content-between">
 												<h4 class="card-title mb-0">최근 주문내역</h4>
-												<a href="/seller/orderstatus.do"><small>주문상태 수정하기</small></a>
+												<a href="/seller/orderstatus.do?sIdx=${seller.sIdx}"><small>주문상태 수정하기</small></a>
 											</div>
 											<div class="table-responsive">
 												<table class="table table-striped table-hover">

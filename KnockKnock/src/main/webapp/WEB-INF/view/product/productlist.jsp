@@ -66,7 +66,7 @@
    <div class="breadcrumbs" style="background-color: rgb(10, 61, 14);">
       <div class="container">
          <h2>SHOP</h2>
-         <p>綠!Knock!과 함께하는 친환경 상품들을 만나보세요!</p>
+         <p>Knock!綠!과 함께하는 친환경 상품들을 만나보세요!</p>
       </div>
    </div>
    <!-- End Breadcrumbs -->

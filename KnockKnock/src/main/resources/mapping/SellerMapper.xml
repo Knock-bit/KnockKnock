@@ -20,4 +20,6 @@
 		INSERT INTO SELLER
 		VALUES(S_IDX_SEQ.NEXTVAL, #{sId}, #{sPwd}, #{sPhone}, #{sName}, #{sAddress}, #{sEmail}, 'N/A')		
 	</insert>
+	 
+	 
 </mapper>

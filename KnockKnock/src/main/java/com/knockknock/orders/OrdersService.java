@@ -24,4 +24,5 @@ public interface OrdersService {
 	public String sellerRegdate(int sIdx);
 
 	public int totalRevenue(int sIdx);
+
 }

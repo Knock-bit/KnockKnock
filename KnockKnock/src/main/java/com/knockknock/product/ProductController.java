@@ -7,10 +7,10 @@ import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -189,6 +189,17 @@ public class ProductController {
 		String a = jsonObject.toString();
 		System.out.println(a);
 		return a;
+	}
+	
+	@RequestMapping(value = "/seller/manageMyProducts.do", method = RequestMethod.GET)
+	public String myProducts(HttpSession session, ProductVO vo, Model model, int sIdx){
+		System.out.println("컨트롤러요");
+		System.out.println("상품조회시 사용 sIdx="+sIdx);
+		session.getAttribute("seller");
+		List<ProductVO> myproducts = productService.manageMyproducts(sIdx);
+		System.out.println("Myproduct = "+myproducts);
+		model.addAttribute("myproducts", myproducts);
+		return "/seller/product/productResult";
 	}
 
 }

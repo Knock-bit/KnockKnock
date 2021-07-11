@@ -26,5 +26,6 @@ public class SellerServiceImpl implements SellerService{
 	public SellerVO sellerLogin(SellerVO vo) {
 		return sellerDAO.sellerLogin(vo);
 	}
-	
+
+		
 }

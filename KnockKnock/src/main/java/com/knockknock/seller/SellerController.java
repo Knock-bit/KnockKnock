@@ -1,10 +1,13 @@
 package com.knockknock.seller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.knockknock.product.ProductVO;
 
 @Controller
 public class SellerController {
@@ -25,11 +30,7 @@ public class SellerController {
 	public String moveSellerPage() {
 		return "/seller/sellerLogin";
 	}
-
-	@GetMapping("/seller/orderstatus.do")
-	public String orderStatusChange() {
-		return "/seller/sellerorderstatus";
-	}
+	
 	// 사업자판매자 회원가입
 	@PostMapping("/user/sellerJoinConfirm.do")
 	public String sellerJoin(SellerVO seller) {
@@ -63,6 +64,12 @@ public class SellerController {
 		return seller;
 	}
 
+	// 상품등록
+	@GetMapping("/seller/submitproduct.do")
+	public String submitProduct() {
+		return "/seller/product/productForm";
+	} 
+	
 	// 판매자 로그아웃
 	@RequestMapping("/seller/sellerLogout.do")
 	public ModelAndView sellerLogout(HttpSession session) {

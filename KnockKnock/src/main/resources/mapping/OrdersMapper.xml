@@ -79,6 +79,12 @@
 	<select id="selectRegdate" parameterType="int" resultType="String">
 		SELECT S_REGDATE FROM SELLER WHERE S_IDX =#{sIdx}
 	</select>
+	<!-- 주문건 업데이트용 -->
+	<select id="getList" parameterType="int" resultType="ordersVO">
+		SELECT OS_IDX FROM ORDESR WHERE O_NUMBER=#{oNumber}
+	</select>	
+	
+	
 	
 	<!-- 주문(order테이블) 업데이트(결제완료 후) -->
 	<update id="orderInfo" parameterType="hashmap">

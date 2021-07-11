@@ -16,21 +16,28 @@
 
    <body>
 
-      <div class="wrapper">
-         <div class="inner">
-            <div id="campaignForm"">
-               <h1 text-align="center">상품 제출이 완료 되었습니다.</h1>
-               <h3>오늘도 아름다운 환경을 위해 KNOCK!KNOCK! 해주셔서 감사합니다.</h3>
-               <p>보내주신 제안서는 운영진의 검토 후 펀딩 진행여부를 이메일로 알려 드리도록 하겠습니다. 답변을 받기까지 통상 10-14일 정도 소요가 됩니다.</p>
-               
-               <button class="button">&nbsp;&nbsp;등록상품 확인
-                  <i class="zmdi zmdi-arrow-right"></i>
-               </button>
-               <button class="button" onclick="${cp }/productlist.do">&nbsp;&nbsp;knock! mall 메인 
-                  <i class="zmdi zmdi-arrow-right"></i>
-               </button>
-          </div>
+      <section id="courses" class="courses">
+         <div class="container" data-aos="fade-up">
+
+            <div class="row" data-aos="zoom-in" data-aos-delay="100">
+
+               <c:if test="${!empty myproducts }">
+                  <c:forEach var="myproducts" items="${myproducts }">
+ 						${myproducts.pcName } <br>
+ 						${myproducts.pName }<br>
+ 						${myproducts.pPrice}<br>
+ 						${myproducts.pDesc }<br>
+ 						${myproducts.pRegdate }<br>
+						${myproducts.pImg }<br>
+ 						${myproducts.pStock }<br><br>
+ 						
+                  </c:forEach>
+               </c:if>
+
+            </div>
+
          </div>
-      </div>
+      </section>
+
    </body> 
 </html>
