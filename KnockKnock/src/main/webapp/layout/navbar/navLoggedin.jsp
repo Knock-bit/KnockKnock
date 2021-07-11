@@ -43,7 +43,7 @@
               <li><a href="${cp}/myCampaignList.do">지난 캠페인</a></li>
               <li><a href="${cp}/myContactList.do">나의 문의내역</a></li>
               <li><a href="${cp}/myActive.do">나의 활동</a></li>
-              <li><a href="${cp}/moveCart.do">내 장바구니</a></li>
+              <li><a href="${cp}/orderHistory.do">내 주문내역</a></li>
               
               
               <li><a href="${cp }/user/logout.do">로그아웃</a></li>
