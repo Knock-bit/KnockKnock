@@ -14,23 +14,7 @@ public class ProductVO {
 	private int pTotalCnt;
 	private int pFee;
 	private String pImg;
-	
-	public int getpCount() {
-		return pCount;
-	}
-
-	public void setpCount(int pCount) {
-		this.pCount = pCount;
-	}
-
-	public String getCaRegdate() {
-		return caRegdate;
-	}
-
-	public void setCaRegdate(String caRegdate) {
-		this.caRegdate = caRegdate;
-	}
-
+	private String pcName;
 	private int pCount;
 	private String caRegdate;
 
@@ -39,7 +23,8 @@ public class ProductVO {
 	}
 
 	public ProductVO(int pIdx, int pcIdx, String pName, int pPrice, int pStock, String pDesc, String pRegdate,
-			int pViews, int sIdx, int pAble, int pTotalCnt, int pFee, String pImg) {
+			int pViews, int sIdx, int pAble, int pTotalCnt, int pFee, String pImg, String pcName, int pCount,
+			String caRegdate) {
 		super();
 		this.pIdx = pIdx;
 		this.pcIdx = pcIdx;
@@ -54,6 +39,25 @@ public class ProductVO {
 		this.pTotalCnt = pTotalCnt;
 		this.pFee = pFee;
 		this.pImg = pImg;
+		this.pcName = pcName;
+		this.pCount = pCount;
+		this.caRegdate = caRegdate;
+	}
+
+	public int getpCount() {
+		return pCount;
+	}
+
+	public void setpCount(int pCount) {
+		this.pCount = pCount;
+	}
+
+	public String getCaRegdate() {
+		return caRegdate;
+	}
+
+	public void setCaRegdate(String caRegdate) {
+		this.caRegdate = caRegdate;
 	}
 
 	public int getpIdx() {
@@ -160,11 +164,20 @@ public class ProductVO {
 		this.pImg = pImg;
 	}
 
+	public String getPcName() {
+		return pcName;
+	}
+
+	public void setPcName(String pcName) {
+		this.pcName = pcName;
+	}
+
 	@Override
 	public String toString() {
 		return "ProductVO [pIdx=" + pIdx + ", pcIdx=" + pcIdx + ", pName=" + pName + ", pPrice=" + pPrice + ", pStock="
 				+ pStock + ", pDesc=" + pDesc + ", pRegdate=" + pRegdate + ", pViews=" + pViews + ", sIdx=" + sIdx
-				+ ", pAble=" + pAble + ", pTotalCnt=" + pTotalCnt + ", pFee=" + pFee + ", pImg=" + pImg + "]";
+				+ ", pAble=" + pAble + ", pTotalCnt=" + pTotalCnt + ", pFee=" + pFee + ", pImg=" + pImg + ", pcName="
+				+ pcName + ", pCount=" + pCount + ", caRegdate=" + caRegdate + "]";
 	}
 
 }

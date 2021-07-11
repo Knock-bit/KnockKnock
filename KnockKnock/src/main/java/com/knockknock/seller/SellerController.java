@@ -1,10 +1,13 @@
 package com.knockknock.seller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,29 +16,27 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.knockknock.product.ProductVO;
+
 @Controller
 public class SellerController {
 	@Autowired
 	private SellerService sellerService;
 	SellerVO seller = new SellerVO();
 
-	public SellerController() {
-
-	}
+	public SellerController() {	}
 
 	@GetMapping("/user/sellerPage.do")
 	public String moveSellerPage() {
 		return "/seller/sellerLogin";
 	}
-
+	
 	// 사업자판매자 회원가입
-
 	@PostMapping("/user/sellerJoinConfirm.do")
 	public String sellerJoin(SellerVO seller) {
 		System.out.println("판매자 회원가입 vo = " + seller);
 		sellerService.sellerJoin(seller);
 		return "/user/joinConfirm";
-
 	}
 
 	// 개인판매자 회원가입 **return값 추후에 다시 바꿔야함 이메일인증하는걸로
@@ -44,7 +45,6 @@ public class SellerController {
 		System.out.println("판매자 회원가입 vo = " + seller);
 		sellerService.sellerJoin(seller);
 		return "/user/joinConfirm";
-
 	}
 
 	// 판매자로그인
@@ -64,6 +64,12 @@ public class SellerController {
 		return seller;
 	}
 
+	// 상품등록
+	@GetMapping("/seller/submitproduct.do")
+	public String submitProduct() {
+		return "/seller/product/productForm";
+	} 
+	
 	// 판매자 로그아웃
 	@RequestMapping("/seller/sellerLogout.do")
 	public ModelAndView sellerLogout(HttpSession session) {

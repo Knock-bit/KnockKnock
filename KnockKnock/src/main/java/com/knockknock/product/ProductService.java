@@ -14,4 +14,8 @@ public interface ProductService {
 
 	// 상품 등록
 	int insertProduct(ProductVO product);
+	
+	//판매자가 등록한 상품
+	public List<ProductVO> manageMyproducts(int sIdx);
+
 }

@@ -35,6 +35,10 @@ public class ProductDAO {
 		return mybatis.insert("Product.insertProduct", product);
 	}
 
+	public List<ProductVO> manageMyProducts(int sIdx) {
+		return mybatis.selectList("Product.manageMyproducts", sIdx);
+	}
+
 
 
 }

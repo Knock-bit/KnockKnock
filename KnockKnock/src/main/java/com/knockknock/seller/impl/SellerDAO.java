@@ -1,9 +1,12 @@
 package com.knockknock.seller.impl;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.knockknock.product.ProductVO;
 import com.knockknock.seller.SellerVO;
 
 @Repository
@@ -24,6 +27,9 @@ public class SellerDAO {
 		vo = mybatis.selectOne("seller.sellerLogin", vo);
 		System.out.println("판매자 로그인 vo : " + vo);
 		return vo;
+	}
+	public List<ProductVO> manageMyproducts(int sIdx) {
+		return mybatis.selectList("seller.manageMyproducts", sIdx);
 	}
 	
 }

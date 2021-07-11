@@ -6,11 +6,12 @@
 <mapper namespace="Orders">
  	 <!-- 판매자별 주문리스트 뽑기 -->
 	<select id="selectOrderList" parameterType="int" resultType="ordersVO">
-		SELECT O_NUMBER, U_NAME, P.P_NAME, O.O_CNT, O.O_STATUS,
-		O.O_TOTPRICE + O.O_FEE as TOTAL, O.O_DATE 
-		FROM ORDERS O, USERS U, PRODUCT P
-		WHERE O.S_IDX=#{sIdx} AND U.U_IDX = O.U_IDX
-		AND P.P_IDX=O.P_IDX ORDER BY O_DATE DESC
+		SELECT O_NUMBER, U_NAME, P.P_NAME, O.O_CNT, OS.OS_NAME,
+		(O.O_TOTPRICE+O.O_FEE)AS TOTALWITHFEE, O.O_DATE
+		FROM ORDERS O, USERS U, PRODUCT P, ORDERSTATUS OS
+		WHERE O.S_IDX=#{sIdx} AND U.U_IDX = O.U_IDX AND O.OS_IDX=OS.OS_IDX
+		AND P.P_IDX=O.P_IDX 
+		ORDER BY O_DATE DESC
 	</select>
 	<!-- 일주일간 일별 매출 -->
 	<select id="selectDailySales" parameterType="int" resultType="ordersVO">
@@ -78,6 +79,12 @@
 	<select id="selectRegdate" parameterType="int" resultType="String">
 		SELECT S_REGDATE FROM SELLER WHERE S_IDX =#{sIdx}
 	</select>
+	<!-- 주문건 업데이트용 -->
+	<select id="getList" parameterType="int" resultType="ordersVO">
+		SELECT OS_IDX FROM ORDESR WHERE O_NUMBER=#{oNumber}
+	</select>	
+	
+	
 	
 	<!-- 주문(order테이블) 업데이트(결제완료 후) -->
 	<update id="orderInfo" parameterType="hashmap">

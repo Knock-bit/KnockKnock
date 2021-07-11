@@ -42,8 +42,8 @@
 						<li><a
 							href="${cp }/seller/sellerDashboard.do?sIdx=${seller.sIdx}">판매자
 								페이지</a></li>
-						<li><a href="${cp }/productForm.do">상품등록</a></li>
-						<li><a href="#">등록상품조회</a></li>
+						<li><a href="${cp }/seller/submitproduct.do">상품등록</a></li>
+						<li><a href="${cp }/seller/manageMyProducts.do=${seller.sIdx}">등록상품조회</a></li>
 						<li><a href="${cp }/seller/sellerLogout.do">로그아웃</a></li>
 
 

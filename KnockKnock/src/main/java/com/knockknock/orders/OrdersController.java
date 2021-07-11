@@ -20,10 +20,9 @@ public class OrdersController {
 	//판매자별 주문리스트 뽑기
 	@GetMapping("/seller/sellerDashboard.do")
 	public String sellerDashboard(HttpSession session, SellerVO seller, Model model, int sIdx) {
-		System.out.println("DashBoard에 갈 select문 controller");
 		session.getAttribute("seller");
 		//주문내역
-		List<OrdersVO> list = ordersService.showOrderList(sIdx);		
+		List<OrdersVO> list = ordersService.showOrderList(sIdx);
 		//누적주문건수
 		int number = ordersService.countOrders(sIdx);
 		//주문건당 평균 결제금액
@@ -60,6 +59,9 @@ public class OrdersController {
 		
 		return "/seller/sellerDashboard";		
 	}
+
+
+	
 
 	
 
