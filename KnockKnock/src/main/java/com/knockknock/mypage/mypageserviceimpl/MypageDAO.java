@@ -121,5 +121,10 @@ public class MypageDAO {
 
 	 return list;
 	}
+	// 기간별 포인트 내역 조회
+	public List<PointVO> myPointPageCal(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return mybatis.selectList("UserVO.myPointPageCal", map);
+	}
 
 }

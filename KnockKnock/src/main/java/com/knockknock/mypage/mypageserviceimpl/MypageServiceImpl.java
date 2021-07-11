@@ -104,7 +104,13 @@ public class MypageServiceImpl implements MypageService {
 		
 		return mypageDAO.myPointList(vo);
 	}
-
+	// 기간별 포인트 내역 조회
+	@Override
+	public List<PointVO> myPointPageCal(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return mypageDAO.myPointPageCal(map);
+	}
+	
 	// 회원 탈퇴
 	@Override
 	public int deleteUsers(int uIdx) {
@@ -124,4 +130,6 @@ public class MypageServiceImpl implements MypageService {
 
 		return mypageDAO.myProposalList(map); 
 	}
+
+	
 }

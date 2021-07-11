@@ -160,10 +160,55 @@
 	}
 	/*포인트 사용내역*/
 	.day {
-		width : 90%;
+		width : 99%;
 		margin: 0 auto;
-		padding:6%;
+		padding: 5% 0 0 2%;
 	}
+/*조회하기*/
+.topsearch{
+	margin-bottom:10px;
+	
+}
+.allTimeSerch, .searchCal{
+	display:inline-block;
+}
+.allTimeSerch{
+	width:13%;
+	border : 0px;
+	background-color: white;
+	font-size:14px;
+	background-color:#f2f2f2;
+}
+.allTimeSerch:hover {
+	text-decoration: underline;
+	text-underline-position: under;
+	color:#ff4d4d;
+	
+}
+.searchCal{
+	width:85%;
+	text-align : right;
+}
+.searchCal input {
+	border : 0px;
+	border-bottom:1px solid gray;
+	width:30%;	
+}
+
+#canBtn{
+	border :0;
+	color:black;
+	font-size:13px;
+	font-wieght:bold;
+	padding:5px 8px;
+	border-radius: 5px;
+	width:10%;
+}
+#canBtn:hover {
+	background-color:#a6a6a6;
+	
+}
+
 	.menu {
 		width: 100%;
 		margin: 0 auto;
@@ -190,7 +235,7 @@
 		grid-template-columns: 25% 45% 25%; /*이용일자, 사용유형, 사용포인트, 취소여부, 취소일자*/
    		grid-auto-rows: minmax(50px, auto);
    		grid-gap:10px;
-   		margin-top:2%;
+   		margin-top:1%;
    		margin-left:2%;
    		border-bottom:1px solid gray;
    		background-color:white;
@@ -214,7 +259,6 @@
 		text-align:right;
 		padding:10%;
 	}
-	
 
 	/*emblem 영역*/ 
 	.emblemZone{

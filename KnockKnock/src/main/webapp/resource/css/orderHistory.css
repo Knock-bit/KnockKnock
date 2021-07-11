@@ -19,6 +19,11 @@ body{
 	padding-top:2%;
 	height:90%;
 }
+/*nav*/
+#myq:hover, #myf:hover{
+	font-weight:bold;
+	
+}
 /*조회하기*/
 .topsearch{
 	margin-bottom:10px;

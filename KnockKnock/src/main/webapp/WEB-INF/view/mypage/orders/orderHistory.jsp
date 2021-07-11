@@ -140,6 +140,7 @@
 				
 				
 			</c:forEach>
+			
 			<div class=pagingNum>
 					<div class="paginging">
 						<ol class="paging">
@@ -190,8 +191,8 @@ $(function(){
 	$("#cal1").datepicker();
 	$("#cal2").datepicker();
 	
-	/* $("#cal1").datepicker('setDate','today');
-	$("#cal2").datepicker('setDate','today'); */
+	$("#cal1").datepicker('setDate','today');
+	$("#cal2").datepicker('setDate','today'); 
 });
 $.datepicker.setDefaults({
     dateFormat: 'yy-mm-dd' // Input Display Format 변경

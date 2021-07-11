@@ -165,6 +165,15 @@
 	
 	</select>
 	
+	<!-- 나의 포인트 내역(기간별 조회) -->
+	<select id="myPointPageCal" parameterType="hashmap" resultType="pointVO">
+		SELECT * FROM POINT 
+		WHERE U_IDX = #{uIdx}
+		AND PO_DATE BETWEEN TO_DATE(#{cal1},'YYYY-MM-DD') 
+		AND TO_DATE(#{cal2}||'23:59:59', 'YYYY-MM-DD HH24:MI:SS')
+		ORDER BY PO_DATE DESC
+	</select>
+	
 	<!-- 상품 목록 가져오기(임시) -->
 	<select id="productList" resultType="productVO">
 		SELECT * FROM PRODUCT
