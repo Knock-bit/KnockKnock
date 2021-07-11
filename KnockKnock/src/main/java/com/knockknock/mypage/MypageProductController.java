@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import javax.servlet.http.HttpSession;
 
@@ -116,8 +117,17 @@ public class MypageProductController {
 		int rs = 0;
 		System.out.println(olist);
 		
+		// 난수 생성
+		Random rd = new Random();
+		int number = rd.nextInt(99999999);
+		String nb = String.format("%08d", number);
+		System.out.println("난수 : " + nb);
+		
+		
+		
 		int deleteResult = 0;
 		for (OrdersVO ovo : olist) {
+			 ovo.setoTempnum(nb);
 			 rs = mypageProductService.insertOrders(ovo);
 			 
 			 int pIdx = ovo.getpIdx();
@@ -131,6 +141,29 @@ public class MypageProductController {
 
 		return result;
 	}
+	@RequestMapping(value="/detailProductOrders.do", method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@ResponseBody
+	public String detailProductOrders(@RequestBody OrdersVO vo, HttpSession session ) {
+		System.out.println("상세보기에서 주문하기 바로 실행"); 
+		System.out.println("vo:" + vo);
+		
+		UserVO user = (UserVO) session.getAttribute("users");
+		vo.setuIdx(user.getuIdx());
+		
+		// 난수 생성
+		Random rd = new Random();
+		int number = rd.nextInt(99999999);
+		String nb = String.format("%08d", number);
+		System.out.println("난수 : " + nb);
+		
+		vo.setoTempnum(nb);
+		int rs = mypageProductService.insertOrders(vo);
+		
+		String result = String.valueOf(rs);
+		
+		return result;
+	}
+	
 	
 	// 주문서로 이동
 	@GetMapping("ordersList.do")
@@ -143,6 +176,24 @@ public class MypageProductController {
 		model.addAttribute("users", vo);
 		model.addAttribute("olist",olist);
 		return "/mypage/orders/ordersList";
+	}
+	
+	// 주문 취소
+	@RequestMapping(value="/deleteOrders.do", method=RequestMethod.POST, produces ="application/text;charset=utf-8")
+	@ResponseBody
+	public String deleteOrders(String otempnum, OrdersVO vo, HttpSession session) {
+		
+		UserVO user = (UserVO) session.getAttribute("users");
+		int uIdx = user.getuIdx();
+		
+		
+		vo.setoTempnum(otempnum);
+		vo.setuIdx(uIdx);
+		int deleteOrders = mypageProductService.deleteOrders(vo);
+		
+		String result = String.valueOf(deleteOrders);
+		
+		return result;
 	}
 	
 }

@@ -78,6 +78,7 @@
 				<a href="${cp }/run.jsp">HOME</a><i class="bi bi-chevron-compact-right">
 				</i><a href="${cp }/productlist.do?pcIdx=0"> SHOP</a> <i class="bi bi-chevron-compact-right">
 				</i> 
+				<span id="pcIdx" style="display:none;">${pvo.pcIdx }</span>
 				<a href="/productlist.do?pcIdx=${pvo.pcIdx }">
 					<c:if test="${pvo.pcIdx == 1}"> 식품</c:if>
 					<c:if test="${pvo.pcIdx == 2}"> 의류</c:if>
@@ -90,6 +91,7 @@
 				<p>추가사진?</p>
 			</div>
 			<div class="pname">
+				<span id="sIdx" style="display:none;">${pvo.sIdx }</span>
 				<!-- 상품 idx -->
 				<p id="pIdx" style="display:none;">${pvo.pIdx }</p>
 				<h2 style="margin:10px;"><span style="font-size:18px;">[knock]</span> ${pvo.pName }</h2>
@@ -129,7 +131,7 @@
 			</div>
 			<div class="pbtn">
 				
-				<input type="button" onclick="" value="구매하기" id="buying">
+				<input type="button" onclick="orders()" value="구매하기" id="buying">
 				<input type="button" onclick="addCart()" value="장바구니" id="addcart">
 				<div id="fullheartbox">
 				<i class="bi bi-suit-heart" id="emptyheart" ></i>
@@ -175,9 +177,45 @@ $(function(){
 	
 	
 });
+//주문하기 버튼
+function orders(){
+	var vo = {};
+	vo.pIdx = $("#pIdx").text();
+	vo.oCnt = $("#result").text();
+	vo.pPrice = $("#price").text();
+	vo.oFee = $("#pfee").text();
+	vo.oTotprice = $("#totprice").text();
+	vo.sIdx = $("#sIdx").text();
+	
+	var jsonData = JSON.stringify(vo);
+	console.log(jsonData);
+	var pcIdx = $("#pcIdx").val();
+	
+	$.ajax({
+		url : "/detailProductOrders.do",
+		data :JSON.stringify(vo),
+		type:"post",
+		dataType:"json",
+		contentType : "application/json;",
+		async:false,
+		success: function(data){
+			var moveOrders = confirm('주문페이지로 이동하시겠습니까?');
+			
+			if(moveOrders){
+				// 주문페이지로 이동
+				location.href="ordersList.do";
+			} else {
+				location.reload();
+			}
+			
+		},
+		error : function(data){
+			alert("에러");
+		}
+		
+	}); 
+	
+	}
 
-function numberWithCommas(x) {
-	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
 </script>
 </html>

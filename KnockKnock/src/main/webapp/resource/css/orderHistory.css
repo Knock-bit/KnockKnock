@@ -20,16 +20,45 @@ body{
 	height:90%;
 }
 /*조회하기*/
-.calText, .searchCal{
+.topsearch{
+	margin-bottom:10px;
+	
+}
+.allTimeSerch, .searchCal{
 	display:inline-block;
 }
-.calText{
+.allTimeSerch{
 	width:10%;
+	border : 0px;
+	background-color: white;
+}
+.allTimeSerch:hover {
+	text-decoration: underline;
+	text-underline-position: under;
+	color:#ff4d4d;
+	
 }
 .searchCal{
 	width:89%;
+	text-align : right;
 }
-
+.searchCal input {
+	border : 0px;
+	border-bottom:1px solid gray;
+	
+}
+#canBtn{
+	border :0;
+	color:black;
+	font-size:13px;
+	font-wieght:bold;
+	padding:5px 8px;
+	border-radius: 5px;
+}
+#canBtn:hover {
+	background-color:#a6a6a6;
+	
+}
 
 /*주문내역 그리드*/
 .ohm{

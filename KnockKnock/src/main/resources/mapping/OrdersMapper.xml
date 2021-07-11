@@ -192,4 +192,12 @@
 		
 	</select>
 	
+	<!-- 주문 취소 -->
+	<delete id="deleteOrders" parameterType="ordersVO">
+		DELETE FROM ORDERS 
+		WHERE U_IDX = #{uIdx} 
+		AND O_TEMPNUM = #{oTempnum}
+	
+	</delete>
+	
 </mapper>

@@ -42,16 +42,35 @@
    <%@ include file= "/layout/navbar/navLoggedin.jsp" %>
   <!-- ======= Header 끝  === -->
 <div class="main-content">
+<!-- nav -->
+		<nav class="navbar navbar-expand-lg navbar-light bg-light"
+			style="padding: 0 5% 0 5%;">
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active"><a class="nav-link" id="myq"
+						href="${cp }/productlist.do">더 구매하러 가기</a></li>
+					<li class="nav-item"><a class="nav-link" id="myf" href="${cp}/moveCart.do">장바 구니</a></li>
+					 
+				</li><!--
+				<li class="nav-item dropdown"><a class="nav-link" href="#">생활용품</a>
+				</li> -->
+				</ul>
 
+			</div>
+			<form action="" method="post">
+				<input type="search" placeholder="Search" aria-label="Search"><input
+					type="submit" value="검색">
+			</form>
+		</nav>
 	
 	<div class="orderHistoryMain">
 	<h3 style="margin-bottom:30px;">나의 주문 내역</h3>
-		<div>
-			<input type="button" value="전체 조회" onclick="location.href='orderHistory.do'";>
-			<p class="calText">기간별 조회</p>
+		<div class="topsearch">
+			<input type="button" class="allTimeSerch" value="전체 조회" onclick="location.href='orderHistory.do'";>
 			<div class="searchCal">
+				<span>기간 선택 <i class="bi bi-chevron-compact-right"></i></span>
 				<input type="text" name="cal1" id="cal1"> ~ <input type="text" name="cal2" id="cal2">
-				<input type="button" name="canBtn" id="canBtn" value="조회하기" onclick="goSearch()" >	
+				<input type="button" name="canBtn" id="canBtn" value="조회" onclick="goSearch()" >	
 			</div>		
 		</div>
 		<div class="orderhm">

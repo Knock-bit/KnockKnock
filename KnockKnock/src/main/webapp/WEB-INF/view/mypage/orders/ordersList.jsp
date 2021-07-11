@@ -51,6 +51,7 @@
 		<div class="ordersTop">
 			<div class="ct1">
 				<h2 style="color:#0e4b20; "> 주문하기 </h2>
+				
 			</div>
 			<div class="ct2">
 				<img src="/resource/img/upload/etc/shopping-cart.png"><span style="font-size:18px; color:#0e4b20; ">장바구니</span>
@@ -134,12 +135,12 @@
 			</div>
 			<div class="payment">
 				<div class="pm1">
-					<p><i class="bi bi-currency-exchange" style="margin:15px; width:10%;"></i>총 결제 금액 : </p>
-					<p class="payPrice"></p>원
+					<p><i class="bi bi-currency-exchange" style="margin:15px; width:10%;"></i>총 결제 금액  </p>
+					<span class="payPrice"></span><span>원</span>
 				</div>
 				<div class="pm2">
 					<input type="button" value="결제하기" id="payBtn" onclick="goPayment()">
-					<input type="button" value="주문취소" id="cancelBtn" onclick="goPayment()">
+					<input type="button" value="주문취소" id="cancelBtn" onclick="deleteOrders()">
 				</div>
 			</div>
 			<div class="infoOrdersProduct">
@@ -148,11 +149,13 @@
 				<c:if test="${!empty olist }">
 				<c:forEach var="item" items="${olist }">
 					<div class="onePlist">
+						<span id="otempnum" style="display:none;">${item.oTempnum }</span>
 						<div class="op1">
 							<p><img src="/resource/img/product/${item.pImg }" /></p>
 						</div>
 						<div class="op2">
 							<div class="op2grid">
+								<span id="otempnum" style="display:none;">${item.oTempnum }</span>
 								<span class="op2-1">상품명</span><span class="op3-1">  ${item.pName }</span><br>
 								<span class="op2-2">가격</span><span class="op3-2"> ${item.pPrice }원</span> <br>
 								<span class="op2-3">수량</span> <span class="op3-3">${item.oCnt }</span> <br>
@@ -207,6 +210,9 @@ function goPayment(){
 	} else if($("input[name=pm]:checked").val()=="samsung"){
 		payData = 5;
 	}
+	
+	// 주문번호
+	var otempnum = $("#otempnum").text();
 	// 결제자 정보 ( 데이터 넣을 때도 필요 )
 	var uName = $(".orderName").text();
 	var uPhone = $(".orderPhone").text();
@@ -238,8 +244,8 @@ function goPayment(){
 		var payView = confirm('결제하기 창으로 이동합니다.');
 		if(payView) {
 				// 결제
-		         //var price = $(".payPrice").text();
-				 var price = 1000;
+		         var price = $(".payPrice").text();
+				 //var price = 1000;
 		         var d = new Date();   //결제고유번호의 날짜를 위해 날짜생성
 		         //날짜 넣기 (+""+를 안하면 숫자가 합해지기에 공백 넣는다)
 		         var date = d.getFullYear()+""+(d.getMonth()+1)+""+d.getDate()+""+d.getHours()+""+d.getMinutes()+""+d.getSeconds();
@@ -274,7 +280,8 @@ function goPayment(){
 			               // 아작스 처리
 			               $.ajax({
 			            	  url : "orderInfo.do",
-			            	  data : {'payData':payData}, // 일단은 결제방식만 업데이트 (필요한 데이터)
+			            	  data : {'payData':payData,
+			            		  	  'otempnum':otempnum}, // 일단은 결제방식만 업데이트 (필요한 데이터)
 			            	  dataType : "text",
 			            	  type:"post",
 			            	  success : function(data){
@@ -319,6 +326,34 @@ function goPayment(){
 	}
 	
 	}
+}
+
+function deleteOrders(){
+	// 주문 취소 _ shop 메인으로 리턴
+	var otempnum = $("#otempnum").text();
+	console.log(otempnum);
+	var cf = confirm("주문 취소를 진행하시겠습니까?");
+	
+	if(cf){
+		$.ajax({
+			url : "deleteOrders.do",
+			data : {"otempnum":otempnum},
+			type : "post",
+			dataType : "text",
+			success : function(data){
+				alert("주문이 취소되었습니다.");
+				location.href="/productlist.do?pcIdx=0";
+				
+			},
+			error : function(){
+				alert("에러");
+				
+			}
+		});
+    } else {
+    	location.reload();
+    	
+    }
 }
 
 </script>

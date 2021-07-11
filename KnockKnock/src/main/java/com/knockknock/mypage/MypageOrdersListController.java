@@ -39,27 +39,23 @@ public class MypageOrdersListController {
 	// 주문서(DB에 데이터 저장) - ORDERS 테이블에
 	@RequestMapping(value="/orderInfo.do", method=RequestMethod.POST)
 	@ResponseBody
-	public String orderInfo(HttpSession session, String payData) {
+	public String orderInfo(HttpSession session, String payData, String otempnum) {
 		
 		UserVO vo = (UserVO) session.getAttribute("users");
 		int paIdx = Integer.parseInt(payData);
 		
-		// 난수 생성
-		Random rd = new Random();
-		int number = rd.nextInt(99999999);
-		String nb = String.format("%08d", number);
-		System.out.println("난수 : " + nb);
+		System.out.println("주문번호 " + otempnum);
 		
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("uIdx", vo.getuIdx());
 		map.put("paIdx", paIdx);
-		map.put("oTempnum", nb);
+		map.put("oTempnum", otempnum);
 		
 		
 		int result = ordersListService.orderInfo(map);
 		
-		int tempResult = ordersListService.tempOrder(nb); // 임시데이터
+		int tempResult = ordersListService.tempOrder(otempnum); // 임시데이터
 		System.out.println("데이터 성공 : " + tempResult);
 
 		String data = "";

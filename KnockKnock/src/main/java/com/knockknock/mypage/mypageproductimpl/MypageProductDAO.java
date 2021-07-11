@@ -90,6 +90,11 @@ public class MypageProductDAO {
 
 		return mybatis.selectList("UserVO.ordersList", vo);
 	}
+	// 주문 취소
+	public int deleteOrders(OrdersVO vo) {
+		System.out.println("주문취소 vo" + vo);
+		return mybatis.delete("Orders.deleteOrders", vo);
+	}
 	
 	
 
