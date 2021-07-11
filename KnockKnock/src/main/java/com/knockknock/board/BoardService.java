@@ -15,6 +15,8 @@ public interface BoardService {
 	public void updateViews(int bIdx);
 	public int countBoard();
 	public List<BoardVO> getBoardList(PagingVO pvo);
-	public List<BoardVO> getCampaignBoardList(int ciIdx);
+	public List<BoardVO> getCampaignBoardList(PagingVO pvo);
 	public List<BoardVO> getMyBoardList(CampaignUserVO campaignUser);
+	public int countCampaignBoard(int ciIdx);
+	public int countMyCampaignBoard(CampaignUserVO campaignUser);
 }

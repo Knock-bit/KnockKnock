@@ -61,12 +61,22 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List<BoardVO> getCampaignBoardList(int ciIdx) {
-		return boardDAO.getCampaignBoardList(ciIdx);
+	public List<BoardVO> getCampaignBoardList(PagingVO pvo) {
+		return boardDAO.getCampaignBoardList(pvo);
 	}
 
 	@Override
 	public List<BoardVO> getMyBoardList(CampaignUserVO cUser) {
 		return boardDAO.getMyBoardList(cUser);
+	}
+
+	@Override
+	public int countCampaignBoard(int ciIdx) {
+		return boardDAO.countCampaignBoard(ciIdx);
+	}
+
+	@Override
+	public int countMyCampaignBoard(CampaignUserVO campaignUser) {
+		return boardDAO.countMyCampaignBoard(campaignUser);
 	}
 }

@@ -5,7 +5,7 @@ import java.util.List;
 public interface CommentsService {
 
 	public List<CommentsVO> commentsList(int bIdx);
-	public void insertComments(CommentsVO vo);
+	public int insertComments(CommentsVO vo);
 	public int updateComments(CommentsVO vo);
-	public void deleteComments(int mIdx);
+	public int deleteComments(int mIdx);
 }

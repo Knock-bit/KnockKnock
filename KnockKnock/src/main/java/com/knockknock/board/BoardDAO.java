@@ -62,13 +62,21 @@ public class BoardDAO {
 	}
 
 
-	public List<BoardVO> getCampaignBoardList(int ciIdx) {
-		return mybatis.selectList("BoardDAO.getCampaignBoardList", ciIdx);
+	public List<BoardVO> getCampaignBoardList(PagingVO pvo) {
+		return mybatis.selectList("BoardDAO.getCampaignBoardList", pvo);
 	}
 
 
 	public List<BoardVO> getMyBoardList(CampaignUserVO cUser) {
 		return mybatis.selectList("BoardDAO.getMyBoardList", cUser);
+	}
+
+	public int countCampaignBoard(int ciIdx) {
+		return mybatis.selectOne("BoardDAO.countCampaignBoard", ciIdx);
+	}
+
+	public int countMyCampaignBoard(CampaignUserVO campaignUser) {
+		return mybatis.selectOne("BoardDAO.countMyCampaignBoard", campaignUser);
 	}
 
 }
