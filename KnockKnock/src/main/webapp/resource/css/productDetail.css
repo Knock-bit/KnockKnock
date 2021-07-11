@@ -1,0 +1,149 @@
+*{
+	font-family: 'Noto Sans KR', sans-serif;
+
+}
+
+.main-content{
+    flex: 1;
+    min-height:100%;
+    margin-top:130px;
+      
+  }
+.detailMain{
+	width:80%;
+	height:100%;
+	margin-top:100px;
+	margin: 0 auto;
+	
+}
+ .pgrid {
+ 	width:80%;
+ 	display : grid;
+ 	grid-template-columns: 55% 45%;
+	grid-template-rows: 0.3fr 0.7fr 0.3fr 1.2fr 0.8fr 0.8fr 1fr 1fr;
+	margin:0 auto;
+ }
+ .pnav{
+ 	padding:10px 0 0 10px;
+ 	margin-left:5%;
+ 	font-size:18px;
+ 	color:#999999;
+ }
+ .pnav a{
+ 	color:#999999;
+ }
+ .pnav a:hover {
+ 	color:black;
+ }
+ .pimg {
+ 	width:80%;
+ 	grid-column: auto;
+	grid-row: 2/8;
+	overflow: hidden;
+	align-items: center;
+	justify-content: center;
+	margin: 5%;
+ }
+ .pimg img {
+ 	object-fit: cover;
+	width: 100%;
+ 
+ }
+ .pname {
+ 	grid-column: 2/3;
+	grid-row: 2/3;
+	margin-top: 5%;
+ }
+ .pprice{
+ 	grid-column: 2/3;
+	grid-row: 3;
+	margin:10px;
+	height:80%;
+ }
+ .pcnt{
+ 	grid-column: 2/3;
+	grid-row: 6;
+	background-color: #e3f1e4;
+	padding: 3% 3% 0 3%;
+	
+ }
+ .pdesc{
+ 	grid-column: 2/3;
+	grid-row: 4;
+	margin:10px;
+	color:black;
+ }
+ .pfee {
+ 	grid-column: 2/3;
+	grid-row: 5;
+	margin:10px;
+ }
+ .pbtn {
+ 	grid-column: 2/3;
+	grid-row: 7;
+	margin-top:3%;
+ }
+ /*수량 버튼 */
+ #minus, #plus{
+ 	display:none;
+ }
+ #preminus, #nextplus{
+ 	cursor: pointer;
+ }
+ #result{
+ 	font-size:18px;
+ 	margin : 0 10px 0 10px;
+ }
+ #totprice{
+ 	font-size: 20px;
+ 	font-weight: 600;
+ }
+ /*구매하기, 장바구니 버튼*/
+ #buying, #addcart{
+ 	width:35%;
+ 	padding:2%;
+ 	margin-right:3%;
+ 	border-radius: 5px;
+ 	
+ }
+#buying{
+  	border : 1px solid rgb(10, 61, 14);
+  	background-color:rgb(10, 61, 14);
+  	color:white;
+  }
+#buying:hover {
+  	font-weight:bold;
+  }
+#addcart{
+	border : 1px solid #79d2a6;
+	background-color: white;
+	
+}
+#addcart:hover {
+	border : 1px solid rgb(10, 61, 14);
+	
+	
+}
+ /*찜하기*/
+ #fullheartbox{
+ 	display:inline-block;
+ 	width:15%;
+ 	margin:2%;
+ 	text-align: center;
+ }
+ #emptyheart{
+ 	margin:0 auto;
+ 	color:red;
+ 	font-size:25px;
+ }
+ 
+ #fullheart{
+ 	display:none;
+ 	margin:0 auto;
+ 	color:red;
+ 	font-size:25px;
+ }
+ 
+#emptyheart:hover,  #fullheart:hover {
+	cursor: pointer;  
+}
