@@ -16,6 +16,7 @@ public class OrdersDAO {
 	public List<OrdersVO> showOrderList(int sIdx){
 		System.out.println("sIdx는 "+sIdx);
 		List<OrdersVO> vo = mybatis.selectList("Orders.selectOrderList", sIdx); 
+		System.out.println("VO = "+vo);
 		return vo;
 	}
 	

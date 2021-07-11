@@ -4,7 +4,9 @@ public class OrdersVO {
 	private int oIdx;
 	private int pIdx;
 	private int oCnt;
-	private int oStatus;
+	private int osIdx;
+	private String osName;
+	private int totalwithfee;
 	private int pPrice;
 	private int oTotprice;
 	private String fCheck;
@@ -28,22 +30,23 @@ public class OrdersVO {
 	private String oTempnum;
 	private int r;
 	private String a;
-	private int rankcount;	
+	private int rankcount;
 	private String sRegdate;
-	
+
 	public OrdersVO() {
 		super();
 	}
 
-	public OrdersVO(int oIdx, int pIdx, int oCnt, int oStatus, int pPrice, int oTotprice, String fCheck, int oNumber,
-			int uIdx, int paIdx, String oDate, int sIdx, String uName, String pName, int oFee, int total,
+	public OrdersVO(int oIdx, int pIdx, int oCnt, int osIdx, String osName, int pPrice, int oTotprice, String fCheck,
+			int oNumber, int uIdx, int paIdx, String oDate, int sIdx, String uName, String pName, int oFee, int total,
 			String salesdate, String uImg, int countnum, int ordertimes, String sdate1, String sdate2, int c1, int c2,
 			String oTempnum, int r, String a, int rankcount, String sRegdate) {
 		super();
 		this.oIdx = oIdx;
 		this.pIdx = pIdx;
 		this.oCnt = oCnt;
-		this.oStatus = oStatus;
+		this.osIdx = osIdx;
+		this.osName = osName;
 		this.pPrice = pPrice;
 		this.oTotprice = oTotprice;
 		this.fCheck = fCheck;
@@ -95,12 +98,20 @@ public class OrdersVO {
 		this.oCnt = oCnt;
 	}
 
-	public int getoStatus() {
-		return oStatus;
+	public int getOsIdx() {
+		return osIdx;
 	}
 
-	public void setoStatus(int oStatus) {
-		this.oStatus = oStatus;
+	public void setOsIdx(int osIdx) {
+		this.osIdx = osIdx;
+	}
+
+	public String getOsName() {
+		return osName;
+	}
+
+	public void setOsName(String osName) {
+		this.osName = osName;
 	}
 
 	public int getpPrice() {
@@ -303,17 +314,23 @@ public class OrdersVO {
 		this.sRegdate = sRegdate;
 	}
 
+	public int getTotalwithfee() {
+		return totalwithfee;
+	}
+
+	public void setTotalwithfee(int totalwithfee) {
+		this.totalwithfee = totalwithfee;
+	}
+
 	@Override
 	public String toString() {
-		return "OrdersVO [oIdx=" + oIdx + ", pIdx=" + pIdx + ", oCnt=" + oCnt + ", oStatus=" + oStatus + ", pPrice="
-				+ pPrice + ", oTotprice=" + oTotprice + ", fCheck=" + fCheck + ", oNumber=" + oNumber + ", uIdx=" + uIdx
-				+ ", paIdx=" + paIdx + ", oDate=" + oDate + ", sIdx=" + sIdx + ", uName=" + uName + ", pName=" + pName
-				+ ", oFee=" + oFee + ", total=" + total + ", salesdate=" + salesdate + ", uImg=" + uImg + ", countnum="
-				+ countnum + ", ordertimes=" + ordertimes + ", sdate1=" + sdate1 + ", sdate2=" + sdate2 + ", c1=" + c1
-				+ ", c2=" + c2 + ", oTempnum=" + oTempnum + ", r=" + r + ", a=" + a + ", rankcount=" + rankcount
-				+ ", sRegdate=" + sRegdate + "]";
-	} 
-	
-	
+		return "OrdersVO [oIdx=" + oIdx + ", pIdx=" + pIdx + ", oCnt=" + oCnt + ", osIdx=" + osIdx + ", osName="
+				+ osName + ", totalwithfee=" + totalwithfee + ", pPrice=" + pPrice + ", oTotprice=" + oTotprice
+				+ ", fCheck=" + fCheck + ", oNumber=" + oNumber + ", uIdx=" + uIdx + ", paIdx=" + paIdx + ", oDate="
+				+ oDate + ", sIdx=" + sIdx + ", uName=" + uName + ", pName=" + pName + ", oFee=" + oFee + ", total="
+				+ total + ", salesdate=" + salesdate + ", uImg=" + uImg + ", countnum=" + countnum + ", ordertimes="
+				+ ordertimes + ", sdate1=" + sdate1 + ", sdate2=" + sdate2 + ", c1=" + c1 + ", c2=" + c2 + ", oTempnum="
+				+ oTempnum + ", r=" + r + ", a=" + a + ", rankcount=" + rankcount + ", sRegdate=" + sRegdate + "]";
+	}
 
 }

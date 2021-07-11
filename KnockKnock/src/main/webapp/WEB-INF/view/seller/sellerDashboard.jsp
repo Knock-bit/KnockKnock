@@ -276,7 +276,7 @@
 										<div class="card-body">
 											<div class="d-flex justify-content-between">
 												<h4 class="card-title mb-0">최근 주문내역</h4>
-												<a href="#"><small>Show All</small></a>
+												<a href="/seller/orderstatus.do"><small>주문상태 수정하기</small></a>
 											</div>
 											<div class="table-responsive">
 												<table class="table table-striped table-hover">
@@ -298,10 +298,10 @@
 																<td>${list.uName }</td>
 																<td>${list.pName}</td>
 																<td>${list.oCnt }</td>
-																<td>${list.oStatus }</td>
+																<td>${list.osName }</td>
 																<td><fmt:parseDate pattern="yyyy-MM-dd"
 																		value="${list.oDate}" /></td>
-																<td>${list.oTotprice}</td>
+																<td>${list.totalwithfee}</td>
 															</tr>
 														</c:forEach>
 													</tbody>
@@ -358,9 +358,7 @@
 		<!-- partial -->
 	</div>
 	<!-- main-panel ends -->
-	</div>
 	<!-- page-body-wrapper ends -->
-	</div>
 
 
 	<!-- container-scroller -->

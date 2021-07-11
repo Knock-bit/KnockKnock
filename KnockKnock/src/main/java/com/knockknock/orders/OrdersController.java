@@ -23,7 +23,8 @@ public class OrdersController {
 		System.out.println("DashBoard에 갈 select문 controller");
 		session.getAttribute("seller");
 		//주문내역
-		List<OrdersVO> list = ordersService.showOrderList(sIdx);		
+		List<OrdersVO> list = ordersService.showOrderList(sIdx);
+		System.out.println(list);
 		//누적주문건수
 		int number = ordersService.countOrders(sIdx);
 		//주문건당 평균 결제금액
