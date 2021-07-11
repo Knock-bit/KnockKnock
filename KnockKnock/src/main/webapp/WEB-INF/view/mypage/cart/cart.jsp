@@ -73,7 +73,7 @@
 				<img src="/resource/img/upload/etc/checked.png"><span style="font-size:18px;">결제</span>
 			</div>
 			<div class="ct3">
-				<i class="bi bi-trash"></i><input type="button" onclick="deleteCart()" value="장바구니 비우기">
+				<i class="bi bi-trash"></i><input type="button" onclick="deleteCart()" value="장바구니 비우기" id="deleteCart">
 			</div>
 			<p class="uIdx" style="display:none;">${users.uIdx }</p>
 		</div>
@@ -179,8 +179,11 @@
 </body>
 <script>
 $(function(){
-	
-	
+	// 장바구니가 비어있으면 장바구니 비우기 버튼 비활성화
+	var pIdx = $(".pIdx").length;
+	if(pIdx==0){
+		$("#deleteCart").prop("disabled",true);
+	}
 	
 	var totalPrice = 0; // 총 합계에 나타낼 금액
 	var totalPrice1 = 0; // 전체 체크때 사용할 총 합계금액(보관?용)

@@ -200,6 +200,33 @@ public class MypageController {
 		return "/mypage/mypageList/myPointPage";
 	}
 	
+	// 포인트내역 기간별 조회
+	@GetMapping("myPointPageCal.do")
+	public String myPointPageCal(UserVO vo, Model model, HttpSession session, String cal1, String cal2) {
+		
+		UserVO user = (UserVO) session.getAttribute("users");
+		user = mypageService.selectOneUser(user.getuIdx());
+		
+		// 해당 유저의 STATUS가 1인 엠블럼 이미지 가져오기
+		List<String> emImgList = mypageService.emblemList(user);
+
+		// 기간별 나의 포인트 내역 가져오기
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("uIdx", user.getuIdx());
+		map.put("cal1", cal1);
+		map.put("cal2", cal2);
+		
+		List<PointVO> pointList = mypageService.myPointPageCal(map);
+		System.out.println("pointList : " + pointList);
+		
+		
+		model.addAttribute("users",user);
+		model.addAttribute("pointList", pointList);
+		model.addAttribute("emImgList", emImgList);
+		
+		return "/mypage/mypageList/myPointPage";
+	}
+	
 	
 	// 현재 참여중인 캠페인으로 이동
 	@GetMapping("/myCampaignPage.do")

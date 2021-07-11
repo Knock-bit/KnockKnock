@@ -36,11 +36,14 @@ public interface MypageService {
 	List<BoardVO> myActive(UserVO vo);
 	// 나의 포인트 내역
 	List<PointVO> myPointList(UserVO vo);
+	//기간별 나의 포인트 내역
+	List<PointVO> myPointPageCal(Map<String, Object> map);
 	// 회원 탈퇴
 	int deleteUsers(int uIdx);
 	// 제안글 총 게시글 수
 	int myplistTot(UserVO vo);
 	// 나의 제안글 리스트
 	List<ProposalVO> myProposalList(Map<String, Integer> map);
+	
 
 }
