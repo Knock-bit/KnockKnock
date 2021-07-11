@@ -1,6 +1,7 @@
 package com.knockknock.board.comments;
 
 
+import java.sql.Date;
 import java.sql.Timestamp;
 
 public class CommentsVO {
@@ -8,17 +9,21 @@ public class CommentsVO {
 	private String cContent;
 	private int bIdx;
 	private int uIdx;
-	private Timestamp cRegdate;
+	private String cRegdate;
+//	private Timestamp cRegdate;
+	private String uNickname;
 	
 	public CommentsVO() {}
 
-	public CommentsVO(int mIdx, String cContent, int bIdx, int uIdx, Timestamp cRegdate) {
+	public CommentsVO(int mIdx, String cContent, int bIdx, int uIdx, String cRegdate, String uNickname) {
 		super();
 		this.mIdx = mIdx;
 		this.cContent = cContent;
 		this.bIdx = bIdx;
 		this.uIdx = uIdx;
 		this.cRegdate = cRegdate;
+		this.uNickname = uNickname;
+		
 	}
 
 	public int getmIdx() {
@@ -45,11 +50,27 @@ public class CommentsVO {
 	public void setuIdx(int uIdx) {
 		this.uIdx = uIdx;
 	}
-	public Timestamp getcRegdate() {
+	/*
+	 * public Timestamp getcRegdate() { return cRegdate; } public void
+	 * setcRegdate(Timestamp cRegdate) { this.cRegdate = cRegdate; }
+	 */
+	
+	
+	
+	public String getuNickname() {
+		return uNickname;
+	}
+
+	public String getcRegdate() {
 		return cRegdate;
 	}
-	public void setcRegdate(Timestamp cRegdate) {
+
+	public void setcRegdate(String cRegdate) {
 		this.cRegdate = cRegdate;
+	}
+
+	public void setuNickname(String uNickname) {
+		this.uNickname = uNickname;
 	}
 
 	@Override

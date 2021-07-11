@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <script>
 	var bIdx='${board.bIdx}'; 
 	 
@@ -18,18 +19,30 @@
 	            var a =''; 
 	            $.each(data, function(key, value){ 
 	                a += '<div class="areaComments" style="border-bottom:1px solid darkgray; margin-bottom: 15px;">';
-	                a += '<div class="infoComments'+value.mIdx+'">'+'댓글번호 : '+value.mIdx+' / 작성자 : '+value.uIdx;
+	                a += '<div class="infoComments'+value.mIdx+'">';
+	                a += '<div class="comments-pic"> <img src="/resource/img/profile/user_default.png"> </div>'+value.uNickname;
+	               /*  a += '<div class="infoComments'+value.mIdx+'">'+'댓글번호 : '+value.mIdx+' / 작성자 : '+value.uNickname; */
 	                a += '<c:if test="${users.uIdx} eq ' + value.uIdx +'">';
 	                a += '<a onclick="updateComments('+value.mIdx+',\''+value.cContent+'\');"> 수정 </a>';
 	                a += '<a onclick="deleteComments('+value.mIdx+',\''+value.mIdx+'\');"> 삭제 </a> </div>';
 	                a += '</c:if>';
-	                a += '<div class="commentsContent'+value.mIdx+'"> <p> 내용 : '+value.cContent +'</p>';
-	                a += '</div></div>';
+	                a += '<div class="commentsContent'+value.mIdx+'"> <p> '+value.cRegdate+'</p>';
+	                a += '<div class="commentsContent'+value.mIdx+'"> <p> '+value.cContent+'</p>';
+	                a += '</div></div></div></div>';
 	            });
 	            $(".commentsList").html(a);
 	        }
 	    });
 	}
+	
+
+	
+	
+	
+	
+	
+	
+	
  
 	//댓글 등록
 	function insertComments(insertData){

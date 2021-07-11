@@ -18,8 +18,16 @@
 	</delete>
 
 	<select id="commentsList" parameterType="int" resultType="comments">
-		SELECT * FROM COMMENTS WHERE B_IDX = #{bIdx}
-		ORDER BY M_IDX DESC
+		SELECT TO_CHAR(C.C_REGDATE,'YYYY-MM-DD') AS C_REGDATE,
+			    C.M_IDX, C.C_CONTENT, C.B_IDX, C.U_IDX,
+			    U.U_NICKNAME, U.U_IMGPATH
+			FROM COMMENTS C, USERS U
+			WHERE B_IDX = #{bIdx}
+			 AND C.U_IDX = U.U_IDX
+		<!-- SELECT C.*, U.U_NICKNAME, U.U_IMGPATH
+		  FROM COMMENTS C, USERS U
+		 WHERE B_IDX = #{bIdx}
+ 		   AND C.U_IDX = U.U_IDX -->
 	</select>
 	
 </mapper>

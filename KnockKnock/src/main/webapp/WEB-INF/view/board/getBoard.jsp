@@ -82,6 +82,23 @@
    .btn-style {
       width: 100px; color:white; background-color: #0a3a18; border-radius: 35px;
    }
+   
+    .comments-pic{
+    border-radius: 50%;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    border: solid 1px #eef0ef;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+    float: left;
+    }
+    
+    .comments-pic img{
+        width: 100%;
+    height: 100%;}
 </style>
 
 </head>
