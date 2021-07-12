@@ -209,6 +209,11 @@ public class AdminServiceImpl implements AdminService {
 		return adminDAO.getCommentList(vo);
 	}
 
+
+	@Override
+	public int insertCampaign(AdminCampaignVO vo) {
+		return adminDAO.insertCampaign(vo);
+	}
 	@Override
 	// 매일 오전 00시
 //	@Scheduled(cron="* * 00 * * *")
@@ -247,61 +252,61 @@ public class AdminServiceImpl implements AdminService {
 		}
 	}
 
-	@Override
-	// 매일 오전 00시
-	@Scheduled(cron="* * 00 * * *")
-	// 테스트를 위해서 5초마다 스케줄러 동작하도록 
-	@Scheduled(cron="5 * * * * *")
-	public void fundingStartEnd() {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-		List<AdminFundingVO> fundingList = adminDAO.getFundingList();
-		AdminFundingVO funding = new AdminFundingVO();
-		String now = dateFormat.format(new Date());
-		try {
-			Date currentDate = dateFormat.parse(now);
-			for (AdminFundingVO f : fundingList) {
-				String startDate = dateFormat.format(f.getCfStartdate());
-				String endDate = dateFormat.format(f.getCfEnddate());
-				Date startDate1 = dateFormat.parse(startDate);
-				Date endDate1 = dateFormat.parse(endDate);
-				funding.setCfIdx(f.getCfIdx()); // 인덱스 가져오기
-				funding.setCfCollected(f.getCfCollected()); // 여태까지 모인 포인트 가져오기
-				funding.setCfGoalpoint(f.getCfGoalpoint()); // 목표 포인트 가져오기
-				System.out.println("funding >> " + funding);
-				System.out.println(">>>>>>> startDate1" + startDate1.equals(currentDate));
-				// 캠페인 시작
-				if (startDate1.equals(currentDate)) {
-					System.out.println("날짜가 일치합니다. 펀딩 시작상태로 변경");
-					int result = adminDAO.updateFundingStatusStart(funding);
-					if (result == 1) {
-						System.out.println("펀딩 시작");
-					} else {
-						System.out.println("시작 실패");
+		@Override
+		// 매일 오전 00시
+		@Scheduled(cron="* * 00 * * *")
+		// 테스트를 위해서 5초마다 스케줄러 동작하도록 
+		@Scheduled(cron="5 * * * * *")
+		public void fundingStartEnd() {
+			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+			List<AdminFundingVO> fundingList = adminDAO.getFundingList();
+			AdminFundingVO funding = new AdminFundingVO();
+			String now = dateFormat.format(new Date());
+			try {
+				Date currentDate = dateFormat.parse(now);
+				for (AdminFundingVO f : fundingList) {
+					String startDate = dateFormat.format(f.getCfStartdate());
+					String endDate = dateFormat.format(f.getCfEnddate());
+					Date startDate1 = dateFormat.parse(startDate);
+					Date endDate1 = dateFormat.parse(endDate);
+					funding.setCfIdx(f.getCfIdx()); // 인덱스 가져오기
+					funding.setCfCollected(f.getCfCollected()); // 여태까지 모인 포인트 가져오기
+					funding.setCfGoalpoint(f.getCfGoalpoint()); // 목표 포인트 가져오기
+					System.out.println("funding >> " + funding);
+					System.out.println(">>>>>>> startDate1" + startDate1.equals(currentDate));
+					// 캠페인 시작
+					if (startDate1.equals(currentDate)) {
+						System.out.println("날짜가 일치합니다. 펀딩 시작상태로 변경");
+						int result = adminDAO.updateFundingStatusStart(funding);
+						if (result == 1) {
+							System.out.println("펀딩 시작");
+						} else {
+							System.out.println("시작 실패");
+						}
+					} else if (startDate1.before(currentDate) && endDate1.after(currentDate)
+							&& f.getCfCollected() >= f.getCfGoalpoint()) {
+						System.out.println("펀딩 성공 상태로 변경");
+						int result = adminDAO.updateFundingStatusSuccess(funding);
+						if (result == 1) {
+							System.out.println("모금 성공");
+						} else {
+							System.out.println("모금 실패");
+						}
 					}
-				} else if (startDate1.before(currentDate) && endDate1.after(currentDate)
-						&& f.getCfCollected() >= f.getCfGoalpoint()) {
-					System.out.println("펀딩 성공 상태로 변경");
-					int result = adminDAO.updateFundingStatusSuccess(funding);
-					if (result == 1) {
-						System.out.println("모금 성공");
-					} else {
-						System.out.println("모금 실패");
+	
+					else if (endDate1.equals(currentDate) || startDate1.before(currentDate)) {
+						System.out.println("종료 날짜가 일치합니다. 펀딩 종료상태로 변경");
+						int result = adminDAO.updateFundingStatusEnd(funding);
+						if (result == 1) {
+							System.out.println("펀딩 종료");
+						} else {
+							System.out.println("종료 실패");
+						}
 					}
 				}
-
-				else if (endDate1.equals(currentDate) || startDate1.before(currentDate)) {
-					System.out.println("종료 날짜가 일치합니다. 펀딩 종료상태로 변경");
-					int result = adminDAO.updateFundingStatusEnd(funding);
-					if (result == 1) {
-						System.out.println("펀딩 종료");
-					} else {
-						System.out.println("종료 실패");
-					}
-				}
+			} catch (ParseException e) {
+				e.printStackTrace();
 			}
-		} catch (ParseException e) {
-			e.printStackTrace();
+	
 		}
-
-	}
 }
