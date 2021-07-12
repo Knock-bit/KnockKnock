@@ -22,15 +22,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.knockknock.admin.funding.AdminCampaignCategoryVO;
+import com.knockknock.admin.funding.AdminFundingService;
+import com.knockknock.admin.funding.AdminFundingVO;
 import com.knockknock.orders.OrdersVO;
 import com.knockknock.seller.SellerVO;
 import com.knockknock.util.PagingVO;
 
 @Controller
-@SessionAttributes("contact")
+@SessionAttributes({ "contact", "funding" })
 public class AdminController {
 	@Autowired
 	private AdminService adminService;
+	@Autowired
+	private AdminFundingService adminFundingService;
 
 	public AdminController() {
 		System.out.println("==> AdminController() 객체 생성");
@@ -191,6 +196,27 @@ public class AdminController {
 //		return "/admin/funding/adminFunding";
 //	}
 
+	// 펀딩에서 캠페인 등록하기 전단계 -> 데이터 불러오기
+	@PostMapping("/adminCampaign.do")
+	public String createCampaign(@ModelAttribute("funding") AdminFundingVO vo, Model model) {
+		List<AdminKeywordVO> keyword = adminService.getKeywordAll();
+		List<AdminCampaignCategoryVO> campaignCategory = adminFundingService.getCategoryList();
+		model.addAttribute("keyword", keyword);
+		model.addAttribute("campaignCategory", campaignCategory);
+		model.addAttribute("funding", vo);
+		System.out.println(vo);
+		return "/admin/campaign/adminCreateCampaign";
+	}
+
+	@PostMapping("/insertCampaign.do")
+	public String insertCampaign(@ModelAttribute("funding") AdminFundingVO fvo, AdminCampaignVO vo) {
+		vo.setCfIdx(fvo.getCfIdx());
+		System.out.println("dfsfsdfsdfsdfs" + vo);
+		int result = adminService.insertCampaign(vo);
+		System.out.println("캠페인추가 : " + result);
+		return null;
+	}
+
 	// 캠페인 리스트 가져오기
 	@GetMapping("/adminCampaignList.do")
 	public String getCampaignList(PagingVO pvo, Model model,
@@ -262,5 +288,5 @@ public class AdminController {
 		adminService.updateCtResp(vo);
 		return "redirect:" + referer;
 	}
-	
+
 }

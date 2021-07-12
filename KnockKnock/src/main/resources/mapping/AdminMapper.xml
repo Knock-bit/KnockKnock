@@ -92,6 +92,15 @@
 		WHERE CI_IDX=#{ciIdx}
 	</select>
 
+	<insert id="insertCampaign" parameterType="AdminCampaignVO">
+		INSERT INTO CAMPAIGN (CI_IDX, CF_IDX, CI_TITLE, CI_CONTENT, CI_GOAL,
+		CI_FILE, CI_EMBLEM, U_IDX, CC_NAME, CI_ESTIMATEDPOINT, CI_STATUS,
+		C_KEYWORD1, C_KEYWORD2, C_KEYWORD3, CI_STARTDATE, CI_ENDDATE)
+		VALUES (CI_IDX_SEQ.nextval, #{cfIdx}, #{ciTitle} , #{ciContent}, #{ciGoal},
+		#{ciFile}, null, #{uIdx}, #{ccName}, #{ciEstimatedpoint},
+		#{ciStatus}, #{cKeyword1}, #{cKeyword2}, #{cKeyword3}, #{ciStartdate},
+		#{ciEnddate} )
+	</insert>
 
 	<!-- ======== proposal =========== -->
 	<select id="getProposal" parameterType="adminProposalVO"
@@ -133,67 +142,88 @@
 		UPDATE FUNDING SET
 		CF_STATUS = 1 WHERE CF_IDX=#{cfIdx}
 	</update>
-	
+
 	<!-- ======= 문의사항 하나 가져오기 ========= -->
-	 <select id="getContact" parameterType="adminContactVO" resultType="adminContactVO">
-	 SELECT * FROM CONTACT CT INNER JOIN USERS U on CT.U_IDX = U.U_IDX INNER JOIN CONTACT_CATEGORY CTC ON CT.CTC_IDX = CTC.CTC_IDX WHERE CT_IDX = #{ctIdx}
+	<select id="getContact" parameterType="adminContactVO"
+		resultType="adminContactVO">
+		SELECT * FROM CONTACT CT INNER JOIN USERS U on CT.U_IDX =
+		U.U_IDX INNER JOIN
+		CONTACT_CATEGORY CTC ON CT.CTC_IDX = CTC.CTC_IDX
+		WHERE CT_IDX =
+		#{ctIdx}
 	</select>
-	
+
 	<!-- 문의사항 댓글 추가하기 -->
 	<insert id="insertComment" parameterType="adminContactCommentVO">
-		INSERT INTO CONTACT_COMMENT (CM_IDX, CM_CONTENT, CT_IDX, U_IDX, CM_WRITEDATE) VALUES (CM_IDX_SEQ.nextval, #{cmContent}, #{ctIdx}, #{uIdx}, sysdate)
+		INSERT INTO
+		CONTACT_COMMENT (CM_IDX, CM_CONTENT, CT_IDX, U_IDX, CM_WRITEDATE)
+		VALUES (CM_IDX_SEQ.nextval, #{cmContent}, #{ctIdx}, #{uIdx}, sysdate)
 	</insert>
-	
+
 	<!-- 문의사항 답변 완료 후 상태 변경 -->
-	<update id ="updateCtResp" parameterType="adminContactVO">
-		UPDATE CONTACT SET CT_RESP = 
-		<if test= "ctResp == 1 ">
+	<update id="updateCtResp" parameterType="adminContactVO">
+		UPDATE CONTACT SET CT_RESP =
+		<if test="ctResp == 1 ">
 			0
 		</if>
-		<if test = "ctResp == 0">
+		<if test="ctResp == 0">
 			1
 		</if>
-		 WHERE CT_IDX = #{ctIdx}
+		WHERE CT_IDX = #{ctIdx}
 	</update>
-	
+
 	<!-- 댓글 가져오기 -->
-	<select id="getCommentList" parameterType="adminContactVO" resultType="adminContactCommentVO">
-		SELECT CM.CM_IDX, CM.CM_CONTENT, CM.CT_IDX, CM.U_IDX, CM.CM_WRITEDATE FROM CONTACT_COMMENT CM INNER JOIN CONTACT CT ON CM.CT_IDX = CT.CT_IDX WHERE CT.CT_IDX = #{ctIdx}
+	<select id="getCommentList" parameterType="adminContactVO"
+		resultType="adminContactCommentVO">
+		SELECT CM.CM_IDX, CM.CM_CONTENT, CM.CT_IDX, CM.U_IDX,
+		CM.CM_WRITEDATE FROM CONTACT_COMMENT CM INNER JOIN CONTACT CT ON
+		CM.CT_IDX = CT.CT_IDX WHERE CT.CT_IDX = #{ctIdx}
 	</select>
-	
+
 	<!-- ================ 스케쥴러 사용위한 펀딩 / 캠페인 리스트 ================ -->
-	<!-- 캠페인 리스트 가져오기  -->
-	<select id ="getCampaignList" resultType="adminCampaignVO">
-		SELECT * FROM CAMPAIGN WHERE CI_STATUS IN (1,0)
+	<!-- 캠페인 리스트 가져오기 -->
+	<select id="getCampaignList" resultType="adminCampaignVO">
+		SELECT * FROM CAMPAIGN
+		WHERE CI_STATUS IN (1,0)
 	</select>
-	
+
 	<!-- 캠페인 시작상태로 변경하기 -->
-	<update id ="updateCampaignStatus" parameterType="adminCampaignVO">
-		UPDATE CAMPAIGN SET CI_STATUS = 1 WHERE CI_IDX = #{ciIdx} AND CI_STATUS = 0
+	<update id="updateCampaignStatus"
+		parameterType="adminCampaignVO">
+		UPDATE CAMPAIGN SET CI_STATUS = 1 WHERE CI_IDX =
+		#{ciIdx} AND CI_STATUS = 0
 	</update>
-	
+
 	<!-- 캠페인 종료상태로 변경하기 -->
-	<update id ="updateCampaignStatusEnd" parameterType="adminCampaignVO">
-		UPDATE CAMPAIGN SET CI_STATUS = 2 WHERE CI_IDX = #{ciIdx} AND CI_STATUS IN (0,1)
+	<update id="updateCampaignStatusEnd"
+		parameterType="adminCampaignVO">
+		UPDATE CAMPAIGN SET CI_STATUS = 2 WHERE CI_IDX =
+		#{ciIdx} AND CI_STATUS IN (0,1)
 	</update>
-	
-	<!-- 펀딩 리스트 가져오기  -->
-	<select id ="getFundingList" resultType="adminFundingVO">
+
+	<!-- 펀딩 리스트 가져오기 -->
+	<select id="getFundingList" resultType="adminFundingVO">
 		SELECT * FROM FUNDING
 	</select>
-	
+
 	<!-- 펀딩 시작상태로 변경하기 -->
-	<update id ="updateFundingStatusStart" parameterType="adminFundingVO">
-		UPDATE FUNDING SET CF_STATUS = 1 WHERE CF_IDX = #{cfIdx} AND CF_STATUS = 0
+	<update id="updateFundingStatusStart"
+		parameterType="adminFundingVO">
+		UPDATE FUNDING SET CF_STATUS = 1 WHERE CF_IDX = #{cfIdx}
+		AND CF_STATUS = 0
 	</update>
-	
+
 	<!-- 펀딩 종료상태로 변경하기 -->
-	<update id ="updateFundingStatusEnd" parameterType="adminFundingVO">
-		UPDATE FUNDING SET CF_STATUS = 3 WHERE CF_IDX = #{cfIdx} AND CF_STATUS IN (0,1,2)
+	<update id="updateFundingStatusEnd"
+		parameterType="adminFundingVO">
+		UPDATE FUNDING SET CF_STATUS = 3 WHERE CF_IDX = #{cfIdx}
+		AND CF_STATUS IN (0,1,2)
 	</update>
-	
+
 	<!-- 펀딩 모금 완료 상태로 변경하기 -->
-	<update id ="updateFundingStatusSuccess" parameterType="adminFundingVO">
-		UPDATE FUNDING SET CF_STATUS = 2 WHERE CF_IDX = #{cfIdx} AND CF_STATUS IN (1)
+	<update id="updateFundingStatusSuccess"
+		parameterType="adminFundingVO">
+		UPDATE FUNDING SET CF_STATUS = 2 WHERE CF_IDX = #{cfIdx}
+		AND CF_STATUS IN (1)
 	</update>
 </mapper>

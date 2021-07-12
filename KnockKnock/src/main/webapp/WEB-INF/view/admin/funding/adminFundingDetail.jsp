@@ -147,115 +147,118 @@
 		<jsp:include page='${cp}/layout/admin/adminSideNav.jsp' flush='false' />
 		<div class="content-wrapper" style="background: white;">
 			<!-- 상단, 좌측 네비바 추가1 -->
-					<section>
-						<div class="detail-title">
+			<section>
+				<div class="detail-title">
 
-							<h1>${funding.cfTitle}</h1>
-							<div class="profile-contianer">
-								<div class=profile-pic>
-									<img src="/resource/img/profile/user_default.png">
-								</div>
-								${funding.hostNickname }
-							</div>
-							<div class="helper"></div>
+					<h1>${funding.cfTitle}</h1>
+					<div class="profile-contianer">
+						<div class=profile-pic>
+							<img src="/resource/img/profile/user_default.png">
 						</div>
-					</section>
+						${funding.hostNickname }
+					</div>
+					<div class="helper"></div>
+				</div>
+			</section>
+			<!-- 세션에 펀딩 정보 등록 -->
+			<c:set var="funding" value="${funding }" scope="session"/>
+			<!-- ======= Cource Details Section ======= -->
+			<section id="campaign-details" class="campaign-details">
+				<div class="container" data-aos="fade-up">
 
+					<div class="row">
+						<div class="col-lg-7">
+							<img src="${ funding.cfFile}" class="img-fluid" alt="">
+							<div>펀딩하기</div>
+							${funding.cfContent }
+						</div>
+						<div class="col-lg-5">
 
-				<!-- ======= Cource Details Section ======= -->
-				<section id="campaign-details" class="campaign-details">
-					<div class="container" data-aos="fade-up">
-
-						<div class="row">
-							<div class="col-lg-7">
-								<img src="${ funding.cfFile}" class="img-fluid" alt="">
-								<div>펀딩하기</div>
-								${funding.cfContent }
-							</div>
-							<div class="col-lg-5">
-
-								<div class="campaign-info align-items-center">
-									<div>
-										펀딩 진행도
-										<p class="funding-pg">
-											<progress value="${funding.cfCollected }"
-												max="${funding.cfGoalpoint }"></progress>
-										</p>
-										<fmt:formatNumber var="fundingProgress" type="percent"
-											value="${funding.cfCollected / funding.cfGoalpoint}"
-											pattern="0.0%" />
-										${fundingProgress } 달성
-									</div>
+							<div class="campaign-info align-items-center">
+								<div>
+									펀딩 진행도
+									<p class="funding-pg">
+										<progress value="${funding.cfCollected }"
+											max="${funding.cfGoalpoint }"></progress>
+									</p>
+									<fmt:formatNumber var="fundingProgress" type="percent"
+										value="${funding.cfCollected / funding.cfGoalpoint}"
+										pattern="0.0%" />
+									${fundingProgress } 달성
 								</div>
+							</div>
 
-								<div class="campaign-info align-items-center">
-									<div class="btn-wrap funding">
-										<c:if test="${empty fundingUser }">
-											<%-- <button id="funding"
+							<div class="campaign-info align-items-center">
+								<div class="btn-wrap funding">
+									<c:if test="${empty fundingUser }">
+										<%-- <button id="funding"
                         onclick="location.href='${cp}/campaign/funding/fund.do?uIdx=${users.uIdx }&cfIdx=${funding.cfIdx}'"
                         class="btn-funding"> 펀딩하기 </button> --%>
-											<!-- <button id="funding" onclick="do_funding()" class="btn-funding" > 펀딩하기 </button> -->
-											<button id="funding-btn" data-toggle="modal"
-												data-target="#fundingModal" class="btn-funding">
-												펀딩하기</button>
-										</c:if>
-										<c:if test="${!empty fundingUser }">
-											<button id="funding-btn2" data-toggle="modal"
-												data-target="#fundingModal2" class="btn-funding">
-												펀딩완료</button>
-										</c:if>
-									</div>
-								</div>
-
-								<div
-									class="campaign-info d-flex justify-content-between align-items-center">
-									<h5>펀딩 종료시간</h5>
-									<p>${funding.cfEnddate }</p>
-								</div>
-								<div
-									class="campaign-info d-flex justify-content-between align-items-center">
-									<h5>펀딩 목표 포인트</h5>
-									<p>${funding.cfGoalpoint }</p>
-								</div>
-								<div
-									class="campaign-info d-flex justify-content-between align-items-center">
-									<h5>카테고리</h5>
-									<p>${funding.ccName}</p>
-								</div>
-								<div
-									class="campaign-info d-flex justify-content-between align-items-center">
-									<p>#${funding.cfKeyword1 } #${funding.cfKeyword2 }
-										#${funding.cfKeyword3 }
+										<!-- <button id="funding" onclick="do_funding()" class="btn-funding" > 펀딩하기 </button> -->
+										<button id="funding-btn" data-toggle="modal"
+											data-target="#fundingModal" class="btn-funding">
+											펀딩하기</button>
+									</c:if>
+									<c:if test="${!empty fundingUser }">
+										<button id="funding-btn2" data-toggle="modal"
+											data-target="#fundingModal2" class="btn-funding">
+											펀딩완료</button>
+									</c:if>
 								</div>
 							</div>
+
+							<div
+								class="campaign-info d-flex justify-content-between align-items-center">
+								<h5>펀딩 종료시간</h5>
+								<p>${funding.cfEnddate }</p>
+							</div>
+							<div
+								class="campaign-info d-flex justify-content-between align-items-center">
+								<h5>펀딩 목표 포인트</h5>
+								<p>${funding.cfGoalpoint }</p>
+							</div>
+							<div
+								class="campaign-info d-flex justify-content-between align-items-center">
+								<h5>카테고리</h5>
+								<p>${funding.ccName}</p>
+							</div>
+							<div
+								class="campaign-info d-flex justify-content-between align-items-center">
+								<p>#${funding.cfKeyword1 } #${funding.cfKeyword2 }
+									#${funding.cfKeyword3 }
+							</div>
 						</div>
-
 					</div>
-				</section>
-			</div>
+
+				</div>
+			</section>
 		</div>
-		<!-- End Cource Details Section -->
+	</div>
+	<!-- End Cource Details Section -->
 
 
-		<div class="modal-footer">
-			<c:if test="${funding.cfStatus eq 0 }">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal"
-					id="fundingStartBtn">펀딩 진행하기</button>
-			</c:if>
+	<div class="modal-footer" style="margin-right: 330px">
+		<c:if test="${funding.cfStatus eq 0 }">
+			<button type="button" class="btn btn-secondary" data-dismiss="modal"
+				id="fundingStartBtn">펀딩 진행하기</button>
+		</c:if>
 
-			<c:if test="${funding.cfStatus eq 1 }">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">진행중인
-					펀딩입니다.</button>
-			</c:if>
-			<c:if test="${funding.cfStatus eq 2 }">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">펀딩에
-					성공한 캠페인</button>
-			</c:if>
-			<c:if test="${funding.cfStatus eq 3 }">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">펀딩
-					종료된 캠페인</button>
-			</c:if>
-		</div>
+		<c:if test="${funding.cfStatus eq 1 }">
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">진행중인
+				펀딩입니다.</button>
+		</c:if>
+		<c:if test="${funding.cfStatus eq 2 }">
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">펀딩에
+				성공한 캠페인</button>
+			<form action="/adminCampaign.do" method="post">
+				<input type="submit" value="펀딩 생성하기" />
+			</form>
+		</c:if>
+		<c:if test="${funding.cfStatus eq 3 }">
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">펀딩
+				종료된 캠페인</button>
+		</c:if>
+	</div>
 	</main>
 	<!-- End #main -->
 	<!-- ======= Footer ======= -->
