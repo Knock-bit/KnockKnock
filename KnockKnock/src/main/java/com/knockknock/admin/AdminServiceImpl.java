@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.knockknock.admin.funding.AdminCampaignCategoryVO;
 import com.knockknock.admin.funding.AdminFundingVO;
+import com.knockknock.campaign.campaign.CampaignService;
 import com.knockknock.user.UserVO;
 import com.knockknock.user.impl.UserPwdEmail;
 import com.knockknock.util.PagingVO;
@@ -22,6 +23,8 @@ public class AdminServiceImpl implements AdminService {
 	@Autowired
 	private AdminDAO adminDAO;
 	private AdminFundingVO f;
+	@Autowired
+	CampaignService campaignService;
 
 	public AdminServiceImpl() {
 		System.out.println(">> AdmainServiceImpl() 객체 생성");
@@ -244,6 +247,13 @@ public class AdminServiceImpl implements AdminService {
 				int result = adminDAO.updateCampaignStatusEnd(campaign);
 				if (result == 1) {
 					System.out.println("캠페인 종료");
+					System.out.println("포인트 분배 시작");
+					int ciIdx = campaign.getCiIdx();
+					// campaignService에서 가져온 부분들 adminDAO에서 메소드 만들어주는 게 좋음
+					campaignService.insertCampaignRank(ciIdx);
+					int distResult = campaignService.updateCampaignPoint(ciIdx);
+					System.out.println(">>> " + ciIdx + "번 캠페인 포인트 분배 완료");
+					
 				} else {
 					System.out.println("종료 실패");
 				}
@@ -291,6 +301,9 @@ public class AdminServiceImpl implements AdminService {
 							System.out.println("모금 성공");
 						} else {
 							System.out.println("모금 실패");
+							System.out.println(funding.getCfIdx()+"번 펀딩에 참여한 사람들에게 포인트를 반환합니다.");
+							adminDAO.updateFundingUsersReturnPoint(funding);
+							// adminDAO.insertFundingPointReturn(funding);
 						}
 					}
 	

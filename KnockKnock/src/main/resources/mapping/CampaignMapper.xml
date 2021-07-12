@@ -216,7 +216,8 @@
 	</select>
 	
 	
-	<select id="selectFundingUser" parameterType = "int" resultType ="FundingUserVO">
+	<select id="
+User" parameterType = "int" resultType ="FundingUserVO">
 		SELECT * FROM FUNDING_USER
 		WHERE CF_IDX = #{cfIdx}	
 		AND U_IDX = #{uIdx}
@@ -346,7 +347,19 @@
   	</insert>
 	
 	
-	
+	<select id="selectRecommendCampaign" parameterType="CampaignVO" resultType="CampaignVO">
+		SELECT * FROM CAMPAIGN
+			WHERE (CI_KEYWORD1 IN (SELECT CI_KEYWORD1 FROM CAMPAIGN WHERE CI_IDX = #{ciIdx})
+			OR CI_KEYWORD1 IN (SELECT CI_KEYWORD2 FROM CAMPAIGN WHERE CI_IDX = #{ciIdx})
+			OR CI_KEYWORD1 IN(SELECT CI_KEYWORD3 FROM CAMPAIGN WHERE CI_IDX = #{ciIdx})
+			OR CI_KEYWORD2 IN (SELECT CI_KEYWORD1 FROM CAMPAIGN WHERE CI_IDX = #{ciIdx})
+			OR CI_KEYWORD2 IN (SELECT CI_KEYWORD2 FROM CAMPAIGN WHERE CI_IDX = #{ciIdx})
+			OR CI_KEYWORD2 IN (SELECT CI_KEYWORD3 FROM CAMPAIGN WHERE CI_IDX = #{ciIdx})
+			OR CI_KEYWORD3 IN (SELECT CI_KEYWORD1 FROM CAMPAIGN WHERE CI_IDX = #{ciIdx})
+			OR CI_KEYWORD3 IN (SELECT CI_KEYWORD2 FROM CAMPAIGN WHERE CI_IDX = #{ciIdx})
+			OR CI_KEYWORD3 IN (SELECT CI_KEYWORD3 FROM CAMPAIGN WHERE CI_IDX = #{ciIdx}))
+			AND CI_IDX != #{ciIdx}
+	</select>
 	
 	
 	

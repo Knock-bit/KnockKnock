@@ -145,20 +145,20 @@
 	<div>
 		<input type="hidden" name="bIdx" value="${board.bIdx}">
 	 <div class="board-cont">
-         <div>
+         <div id="bSubject">
             <span>제목</span>
             <span>${board.bSubject}</span>
          </div>
-         <div>
+         <div id="bWriter">
             <span>작성자</span>
                <span> ${board.uNickname }
                 <input type="hidden" value="${users.uIdx }"></span>
            </div>
-         <div>
+         <div id="bContent">
             <span>내용</span>
             <span>${board.bContent}</span>
          </div>
-         <div>
+         <div id="bRegdate">
             <span>작성일</span>
             <span>${fn:substring(board.bRegdate, 0, 10)}</span>
          </div>

@@ -31,7 +31,6 @@ public class CampaignController {
 	
 	@GetMapping("/ing/list.do")
 	public String ingList(Model model) {
-		System.out.println("내프로젝트의 루트경로는?  " + System.getProperty("user.dir"));
 		int result = campaignService.updateExpiredCampaign();
 		System.out.println(">>>" + result + "개의 캠페인 만료처리");
 		if (result > 0) {
@@ -158,14 +157,11 @@ public class CampaignController {
 		
 		
 		CampaignVO campaign = campaignService.selectOneCampaign(campaignVO);
-		/*
-		 * List<CampaignUserVO> userList =
-		 * campaignService.selectAllCampaignUsers(ciIdx);
-		 */
-		/*
-		 * for(CampaignUserVO users : userList) { System.out.println("userNickName : " +
-		 * users.getNickname()); }
-		 */
+		List<CampaignVO> recommendList = campaignService.selectRecommendCampaign(campaign);
+		if(recommendList != null) {
+			model.addAttribute("recommendList",recommendList);			
+		}
+		
 		model.addAttribute("campaign", campaign);
 		/* model.addAttribute("userList", userList); */
 		return "/campaign/ing/detail";
