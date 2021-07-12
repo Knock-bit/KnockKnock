@@ -55,9 +55,13 @@
   	<c:when test="${users.uType eq 0 }">
    		<jsp:include page='/layout/navbar/navAdmin.jsp' flush='false'/>   	  	
   	</c:when>
+  	<c:when test="${!empty seller}">
+   		<jsp:include page='/layout/navbar/navSeller.jsp' flush='false'/>   	  	
+  	</c:when>
   	<c:otherwise>
 	   <jsp:include page='/layout/navbar/nav.jsp' flush='false'/>
   	</c:otherwise>
+  	
   	</c:choose>
   <!-- ======= Header 끝  === -->
 	<div class="content">
