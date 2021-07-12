@@ -24,7 +24,6 @@
 
 </head>
 <body>
-	<jsp:include page='/layout/navbar/navAdmin.jsp' flush='false' />
 	<!-- 상단, 좌측 네비바 추가1 -->
 	<nav
 		class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">

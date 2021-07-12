@@ -245,106 +245,111 @@
 
 
 
+
+	<!-- 상단, 좌측 네비바 추가1 -->
 	<nav
 		class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
 		<jsp:include page='/layout/navbar/navAdmin.jsp' flush='false' />
 	</nav>
-
-	<!-- ======= Breadcrumbs ======= -->
-
-	<section>
-		<div class="detail-title">
-			<h1>${campaign.ciTitle}</h1>
-			<div class="profile-contianer">
-				<div class=profile-pic>
-					<img src="/resource/img/profile/user_default.png">
-				</div>
-				${campaign.uNickname }
-			</div>
-			<div class="helper"></div>
-		</div>
-
-
-	</section>
 	<div class="container-fluid page-body-wrapper">
 		<jsp:include page='${cp}/layout/admin/adminSideNav.jsp' flush='false' />
 		<div class="content-wrapper" style="background: white;">
-			<!-- 상단, 좌측 네비바 추가1 -->
-			<!-- ======= Cource Details Section ======= -->
-			<section id="campaign-details" class="campaign-details">
-				<div class="container" data-aos="fade-up">
-					<%@ include file="/layout/navbar/campaign/navCampaignDetail.jsp"%>
-					<div class="row">
-						<div class="col-lg-8" id="commonDiv">
-							<!-- 썸네일 -->
-							<img src="${campaign.ciFile }" class="img-fluid" alt="">
-							<h2>${campaign.ciContent }</h2>
+			<jsp:include page='${cp}/layout/admin/adminSideNav.jsp' flush='false' />
+			<div class="content-wrapper" style="background: white;">
+				<!-- 상단, 좌측 네비바 추가1 -->
+				<!-- ======= Breadcrumbs ======= -->
+
+				<section>
+					<div class="detail-title">
+						<h1>${campaign.ciTitle}</h1>
+						<div class="profile-contianer">
+							<div class=profile-pic>
+								<img src="/resource/img/profile/user_default.png">
+							</div>
+							${campaign.uNickname }
 						</div>
+						<div class="helper"></div>
+					</div>
 
 
-						<div class="col-lg-4" style="padding-left: 0px;">
-							<center>
-								<div class="campaign-main-info">
-									<div class="campaign-left">
-										<h2>
-											<b>${end - now + 1}일</b> 남았어요
-										</h2>
-									</div>
-									<div class="campaign-point">
-										총 ${campaign.cTotpoint } 포인트가<br> 참여자들에게 나눠집니다.
-									</div>
-								</div>
-								<div class="campaign-info campaign-keyword">
-									<div>
-										<center># ${campaign.ciKeyword1 } #
-											${campaign.ciKeyword2 } # ${campaign.ciKeyword3 }
-									</div>
-								</div>
-								<div
-									class="campaign-info justify-content-between align-items-center">
+				</section>
+				<!-- ======= Cource Details Section ======= -->
+				<section id="campaign-details" class="campaign-details">
+					<div class="container" data-aos="fade-up">
+						<%@ include file="/layout/navbar/campaign/navCampaignDetail.jsp"%>
+						<div class="row">
+							<div class="col-lg-8" id="commonDiv">
+								<!-- 썸네일 -->
+								<img src="${campaign.ciFile }" class="img-fluid" alt="">
+								<h2>${campaign.ciContent }</h2>
+							</div>
 
-									<p>
-										<img class="ci-emblem" src="${campaign.ciEmblem }" width=70px;>
-									<div class="certification">
-										<span>인증방법</span><br> ${campaign.cGoal }
-										</p>
-									</div>
-									<div class="buttons">
-										<div class="btn-wrap funding">
-											<button onclick="sendLink();" id="share" class="btn-funding">
-												<i class="bi bi-share"></i>
-											</button>
-											<button onclick="participate()" id="participate"
-												class="btn-funding">참여하기</button>
+
+							<div class="col-lg-4" style="padding-left: 0px;">
+								<center>
+									<div class="campaign-main-info">
+										<div class="campaign-left">
+											<h2>
+												<b>${end - now + 1}일</b> 남았어요
+											</h2>
+										</div>
+										<div class="campaign-point">
+											총 ${campaign.cTotpoint } 포인트가<br> 참여자들에게 나눠집니다.
 										</div>
 									</div>
-								</div>
-								<div
-									class="campaign-info d-flex justify-content-between align-items-center">
-									<h5>참여중인 사람 목록</h5>
-									<p>
-										<!-- <div class=profile-container>
+									<div class="campaign-info campaign-keyword">
+										<div>
+											<center># ${campaign.ciKeyword1 } #
+												${campaign.ciKeyword2 } # ${campaign.ciKeyword3 }
+										</div>
+									</div>
+									<div
+										class="campaign-info justify-content-between align-items-center">
+
+										<p>
+											<img class="ci-emblem" src="${campaign.ciEmblem }"
+												width=70px;>
+										<div class="certification">
+											<span>인증방법</span><br> ${campaign.cGoal }
+											</p>
+										</div>
+										<div class="buttons">
+											<div class="btn-wrap funding">
+												<button onclick="sendLink();" id="share" class="btn-funding">
+													<i class="bi bi-share"></i>
+												</button>
+												<button onclick="participate()" id="participate"
+													class="btn-funding">참여하기</button>
+											</div>
+										</div>
+									</div>
+									<div
+										class="campaign-info d-flex justify-content-between align-items-center">
+										<h5>참여중인 사람 목록</h5>
+										<p>
+											<!-- <div class=profile-container>
               <div class=profile-pic-1>
               <img src="/resource/img/profile/user_default.png">
               </div>
               <div class=profile-pic-2>
               <img src="/resource/img/profile/user_default.png">
               </div></div> -->
-										<c:if test="${!empty userList }">
+											<c:if test="${!empty userList }">
               ${userList.size() }명 참여중<br>
-											<c:forEach var="user" items="${userList }">
+												<c:forEach var="user" items="${userList }">
 		              	${user.getNickname() }<br>
-											</c:forEach>
-										</c:if>
-										<c:if test="${empty userList }">
+												</c:forEach>
+											</c:if>
+											<c:if test="${empty userList }">
                먼저 참여해보세요!
               </c:if>
-									</p>
-								</div>
+										</p>
+									</div>
+							</div>
 						</div>
 					</div>
-				</div>
-			</section>
+				</section>
+			</div>
 		</div>
 	</div>
 	<div class="modal-footer">

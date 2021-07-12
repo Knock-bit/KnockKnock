@@ -138,29 +138,28 @@
 	<!-- hidden -->
 	<input type="hidden" id="cfIdx" value="${funding.cfIdx }">
 
+	<!-- 상단, 좌측 네비바 추가1 -->
 	<nav
 		class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
 		<jsp:include page='/layout/navbar/navAdmin.jsp' flush='false' />
 	</nav>
-	<main id="main">
+	<div class="container-fluid page-body-wrapper">
+		<jsp:include page='${cp}/layout/admin/adminSideNav.jsp' flush='false' />
+		<div class="content-wrapper" style="background: white;">
+			<!-- 상단, 좌측 네비바 추가1 -->
+					<section>
+						<div class="detail-title">
 
-		<!-- ======= Breadcrumbs ======= -->
-		<div class="container-fluid page-body-wrapper">
-			<jsp:include page='${cp}/layout/admin/adminSideNav.jsp' flush='false' />
-			<div class="content-wrapper" style="background: white;">
-				<section>
-					<div class="detail-title">
-
-						<h1>${funding.cfTitle}</h1>
-						<div class="profile-contianer">
-							<div class=profile-pic>
-								<img src="/resource/img/profile/user_default.png">
+							<h1>${funding.cfTitle}</h1>
+							<div class="profile-contianer">
+								<div class=profile-pic>
+									<img src="/resource/img/profile/user_default.png">
+								</div>
+								${funding.hostNickname }
 							</div>
-							${funding.hostNickname }
+							<div class="helper"></div>
 						</div>
-						<div class="helper"></div>
-					</div>
-				</section>
+					</section>
 
 
 				<!-- ======= Cource Details Section ======= -->
