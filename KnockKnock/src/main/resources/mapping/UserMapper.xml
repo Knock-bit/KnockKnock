@@ -222,7 +222,7 @@
 	<!-- 장바구니에서 주문하기로 데이터 입력 -->
 	<insert id="insertOrders" parameterType="ordersVO">
 			INSERT INTO ORDERS 
-				(O_IDX, P_IDX, O_CNT, O_STATUS, P_PRICE, 
+				(O_IDX, P_IDX, O_CNT, OS_IDX, P_PRICE, 
 				O_TOTPRICE, U_IDX, S_IDX , O_NUMBER, O_FEE, O_TEMPNUM )
 			VALUES (O_IDX_SEQ.nextval, #{pIdx}, #{oCnt}, 0, #{pPrice},
 				#{oTotprice}, #{uIdx}, #{sIdx}, O_NUMBER_SEQ.nextval, #{oFee}, #{oTempnum})
@@ -240,7 +240,7 @@
 					P.P_NAME, P.P_DESC,P.P_FEE, P.P_IMG, O.O_TEMPNUM
 			FROM ORDERS O, PRODUCT P
 			WHERE O.P_IDX = P.P_IDX
-			AND O_STATUS = 0
+			AND OS_IDX = 0
 			AND O.U_IDX=#{uIdx}
 	</select>
 	

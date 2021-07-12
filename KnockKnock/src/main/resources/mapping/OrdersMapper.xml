@@ -105,8 +105,8 @@
 	<!-- 주문(order테이블) 업데이트(결제완료 후) -->
 	<update id="orderInfo" parameterType="hashmap">
 		UPDATE ORDERS
-		SET O_STATUS = 1, F_CHECK = 1, PA_IDX = #{paIdx}, O_DATE = SYSDATE, O_TEMPNUM = #{oTempnum}
-		WHERE U_IDX = #{uIdx} AND O_STATUS = 0
+		SET OS_IDX = 1, F_CHECK = 1, PA_IDX = #{paIdx}, O_DATE = SYSDATE, O_TEMPNUM = #{oTempnum}
+		WHERE U_IDX = #{uIdx} AND OS_IDX = 0
 	</update>
 		
 	<!-- 임시 주문 데이터에 방금 결제한 주문정보 넣어놓기 -->
@@ -189,7 +189,7 @@
 	<!-- 주문내역 -->
 	<select id="orderHistoryList" parameterType="hashmap" resultType="ordersListVO">
 		SELECT  P.P_NAME, P.P_IMG, P.P_DESC, P.P_PRICE, P.P_FEE,
-				O.O_CNT, O.O_DATE, O_TEMPNUM, O.O_STATUS
+				O.O_CNT, O.O_DATE, O_TEMPNUM, O.OS_IDX
 		FROM PRODUCT P,
 		(SELECT ROWNUM RN, B.* FROM 
 		ORDERS B
@@ -202,7 +202,7 @@
 	<!-- 주문내역 기간별 조회 -->
 	<select id="orderHistorysearchList" parameterType="hashmap" resultType="ordersListVO">
 		SELECT ROWNUM RN,  P.P_NAME, P.P_IMG, P.P_DESC, P.P_PRICE, P.P_FEE,
-				O.O_CNT, O.O_DATE, O_TEMPNUM, O.O_STATUS
+				O.O_CNT, O.O_DATE, O_TEMPNUM, O.OS_IDX
 		FROM PRODUCT P,
 		(SELECT ROWNUM RN, B.* FROM 
 		ORDERS B
