@@ -14,9 +14,52 @@ public class OrdersDAO {
 	private SqlSessionTemplate mybatis;
 
 	public List<OrdersVO> showOrderList(int sIdx){
-		System.out.println("sIdx는 "+sIdx);
-		List<OrdersVO> vo = mybatis.selectList("Orders.selectOrderList", sIdx); 
-		System.out.println("vo는 "+vo);
-		return vo;
+		System.out.println("sIdx는 "+sIdx);		
+		return mybatis.selectList("Orders.selectOrderList", sIdx); 
 	}
+	
+	public int countOrders(int sIdx) {
+		return mybatis.selectOne("Orders.countOrders", sIdx);
+	}
+	
+	public int avgTot(int sIdx) {
+		return mybatis.selectOne("Orders.avgTot", sIdx);
+	}
+	
+	public List<OrdersVO> showDailySales(int sIdx){
+		return mybatis.selectList("Orders.selectDailySales", sIdx);
+	}
+	
+	public int selectDailyTot(int sIdx) {
+		return mybatis.selectOne("Orders.selectDailyTot", sIdx);
+	}
+
+	public List<OrdersVO> countGuest(int sIdx) {
+ 		return mybatis.selectList("Orders.countGuest",  sIdx);
+	}
+	
+	public List<OrdersVO> countWeeklySales(int sIdx){
+		return mybatis.selectList("Orders.countWeeklySales", sIdx);
+	}
+	
+	public List<OrdersVO> countWeeklySales2(int sIdx){
+		return mybatis.selectList("Orders.countWeeklySales2", sIdx);
+	}
+	
+	public List<OrdersVO> sellerRank(int sIdx) {
+		return mybatis.selectList("Orders.sellerRank", sIdx);
+	}
+
+	public String sellerRegdate(int sIdx) {
+		return mybatis.selectOne("Orders.selectRegdate", sIdx);
+	}
+
+	public int totalRevenue(int sIdx) {
+		return mybatis.selectOne("Orders.totalRevenue", sIdx);
+	}
+	
+	public List<OrdersVO> selectOrderAll(int sIdx) {
+		return mybatis.selectList("Orders.selectOrderAll", sIdx);
+	}
+	
 }

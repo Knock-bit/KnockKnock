@@ -46,8 +46,8 @@
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item active"><a class="nav-link" id="myq"
 						href="${cp }/productlist.do">더 구매하러 가기</a></li>
-					<li class="nav-item"><a class="nav-link" id="myf" href="ordersList.do">주문 내역</a></li>
-					 <li class="nav-item dropdown"><a class="nav-link" href="orderConfirm.do">주문 확인(임시)</a>
+					<li class="nav-item"><a class="nav-link" id="myf" href="orderHistory.do">주문 내역</a></li>
+					 
 				</li><!--
 				<li class="nav-item dropdown"><a class="nav-link" href="#">생활용품</a>
 				</li> -->
@@ -65,15 +65,15 @@
 		<div class="cartText">
 			<!-- 장바구니 text, 주문 진행 순서 명시, 상품 구매로 이동버튼, 내 주문내역 이동 버튼 -->
 			<div class="ct1">
-				<h4 style="margin:4%; text-align:center;">장바구니</h4>
+				<h1 style="margin:4%; text-align:center;">C A R T</h1>
 			</div>
 			<div class="ct2">
-				<img src="/resource/img/upload/etc/shopping-cart.png"><span>장바구니</span>
-				<img src="/resource/img/upload/etc/checklist.png"><span>주문목록</span>
-				<img src="/resource/img/upload/etc/checked.png"><span>결제</span>
+				<img src="/resource/img/upload/etc/shopping-cart.png"><span style="font-weight:bold; color:rgb(10, 61, 14);">장바구니</span>
+				<img src="/resource/img/upload/etc/checklist.png"><span style="font-size:18px;">주문목록</span>
+				<img src="/resource/img/upload/etc/checked.png"><span style="font-size:18px;">결제</span>
 			</div>
 			<div class="ct3">
-				<input type="button" onclick="deleteCart()" value="장바구니 비우기">
+				<i class="bi bi-trash"></i><input type="button" onclick="deleteCart()" value="장바구니 비우기" id="deleteCart">
 			</div>
 			<p class="uIdx" style="display:none;">${users.uIdx }</p>
 		</div>
@@ -118,14 +118,13 @@
 				</div>
 				<div class="cg3">
 					<!-- 상품명, 설명 -->
-					<div style="margin-bottom:10px;">
+					<div>
 						<span class="pIdx" style="display:none;">${cartItem.pIdx }</span>
 						<span style="font-weight:700; "><a href="productDetail.do?pIdx=${cartItem.pIdx}">[ ${cartItem.pName } ]</a></span><br>
-						${cartItem.pDesc }
+						<p style="font-size:12px;">${cartItem.pDesc }</p>
+						
 					</div>
-					<div>
-						<span class="deleteOne" style="font-size:10px;">삭제</span>
-					</div>
+					
 				</div>
 				<div class="cg4">
 					<!-- 수량 -->
@@ -136,7 +135,7 @@
 				</div>
 				<div class="cg5">
 					<!-- 상품 개당가격 -->
-					<p class="cg5price">${cartItem.pPrice }</p><span>원</span>&nbsp;&nbsp;
+					<p class="cg5price" style="margin:0;">${cartItem.pPrice }</p><span>원</span>&nbsp;&nbsp;
 				</div>
 				<div class="cg6">
 					<!-- 배송비 -->
@@ -144,13 +143,17 @@
 				</div>
 				<div class="cg7">
 					<!-- 전체 가격(수량 및 배송비 합쳐서) -->
-					<p class="cg6price">${(cartItem.pCount * cartItem.pPrice) + cartItem.pFee }</p>원&nbsp;&nbsp;
+					<p class="cg6price" style="margin:0;">${(cartItem.pCount * cartItem.pPrice) + cartItem.pFee }</p>원&nbsp;&nbsp;
+					<div class="cg6price2">
+						<span class="deleteOne" style="font-size:10px; text-align:right; margin-left:10px;">삭제</span>
+					</div>
 				</div>
+				
 			</div>
 			</c:forEach>	
 			</c:if>
 			<c:if test="${empty cartList }">
-				<div style="text-align:center;"> 상품이 존재하지 않습니다. </div>
+				<div style="text-align:center; margin:8% 0 10% 0;"> 상품이 존재하지 않습니다. </div>
 			
 			
 			</c:if>
@@ -158,7 +161,7 @@
 		<div class="totPrice">
 			<!-- 체크박스에 체크 된 상품의 가격만 가져오기(+배송비) -->
 			<div class="totp1">
-				<div>총 합계 :</div>&nbsp;&nbsp;&nbsp;<span id="price">0</span>&nbsp;&nbsp;&nbsp;원
+				<div>총 결제 금액 :</div>&nbsp;&nbsp;&nbsp;<span id="price">0</span>&nbsp;&nbsp;&nbsp;원
 			</div>
 			<div class="totp2">
 				<input type="button" value="주문하기" onclick="orders()">
@@ -176,8 +179,11 @@
 </body>
 <script>
 $(function(){
-	
-	
+	// 장바구니가 비어있으면 장바구니 비우기 버튼 비활성화
+	var pIdx = $(".pIdx").length;
+	if(pIdx==0){
+		$("#deleteCart").prop("disabled",true);
+	}
 	
 	var totalPrice = 0; // 총 합계에 나타낼 금액
 	var totalPrice1 = 0; // 전체 체크때 사용할 총 합계금액(보관?용)
@@ -238,12 +244,12 @@ $(function(){
 			// 총 합계
 			pPrice = parseInt($(this).closest('div').next().children().text());
 			// 상품당 가격 총 합계
-			pTotPrice = parseInt($(this).closest('div').nextAll().filter($(".cg7")).children().text());
+			pTotPrice = parseInt($(this).closest('div').nextAll().filter($(".cg7")).children('p').text());
 						
 			totalPrice += pPrice;
 			pTotPrice += pPrice;
 			
-			$(this).closest('div').nextAll().filter($(".cg7")).children().html(pTotPrice+"원");
+			$(this).closest('div').nextAll().filter($(".cg7")).children('p').html(pTotPrice);
 			$("#price").html(totalPrice);
 			
 			
@@ -258,12 +264,12 @@ $(function(){
 			// 총 합계
 			pPrice = parseInt($(this).closest('div').next().children().text());
 			// 상품당 가격 총 합계
-			pTotPrice = parseInt($(this).closest('div').nextAll().filter($(".cg7")).children().text());
+			pTotPrice = parseInt($(this).closest('div').nextAll().filter($(".cg7")).children('p').text());
 			
 			totalPrice -= pPrice;
 			pTotPrice -= pPrice;
 			
-			$(this).closest('div').nextAll().filter($(".cg7")).children().html(pTotPrice+"원");
+			$(this).closest('div').nextAll().filter($(".cg7")).children('p').html(pTotPrice);
 			$("#price").html(totalPrice);
 			
 			
@@ -286,6 +292,10 @@ function orders(){
 	var param = [];
 	
 	var length = $(".pIdx").length;
+	
+	if(length==0){
+		alert("주문가능한 상품이 존재하지 않습니다.");
+	} else {
 	
 	 var data = {};
 	for(var i=0; i<length; i++){
@@ -330,7 +340,7 @@ function orders(){
 		
 	}); 
 	
-	
+	}
 }
 
 </script>

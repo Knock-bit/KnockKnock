@@ -20,14 +20,14 @@
 	width:80%;
 	margin: 0 auto;
 	border : 1px solid gray;
-	box-shadow: 0 8px 11px 0 rgb(0 0 0 / 10%), 0 1px 1px 0 rgb(0 0 0 / 1%);
+	box-shadow:0 4px 10px 0 rgb(0 0 0 / 10%), 0 1px 1px 0 rgb(0 0 0 / 1%);
 }
 /*장바구니화면 윗단(텍스트부분)*/
 .cartText {
 	width:100%;
 	display:grid;
 	grid-template-columns: 50% 49%;
-	grid-template-rows: 10vh;
+	grid-template-rows: 15vh;
 	border : 1px solid gray;
 
 }
@@ -55,9 +55,15 @@
 	margin-bottom:5px;
 	background-color:white;
 	border : 0px;
+	
 }
 .ct3 input:hover {
 	text-decoration: underline;
+	font-size:16px;
+	font-weight:bold;
+	color:rgb(10, 61, 14);
+	text-underline-position: under;
+	
 	
 }
 /*장바구니에 담긴 상품 목록*/
@@ -68,13 +74,14 @@
 .cartGrid{
 	border : 1px solid gray;
 	display:grid;
-	grid-template-columns: 5% 10% 30% 10% 15% 10% 10%;
+	grid-template-columns: 5% 10% 30.5% 10% 15% 10% 14%;
 	grid-auto-rows:minmax(100px, auto);
 	grid-column-gap : 10px;
 	grid-row-gap : 10px;
 	border-collapse: collapse;
 	margin-bottom:5px;
 	margin-top:5px;
+	border-collapse: collapse;
 }
 /*장바구니 목록 상단바*/
 .topcartmenu{
@@ -82,15 +89,19 @@
 	grid-template-columns: 6.2% 10% 30% 10% 15% 10% 10%;
 	grid-auto-rows: 1fr;
 	grid-column-gap : 7px;
-	background-color:rgb(10, 61, 14);
-	color:white;
-	padding:5px;
+	background-color:#e3f1e4;
+	border-bottom:1px solid gray;
+	padding: 1%;
+	color:rgb(10, 61, 14);
 }
 .topcartmenu div{
 	text-align:center;
 }
+
 .tct1{
 	grid-column : 1/2;
+	
+
 }
 .tct1 input {
 	transform : scale(1.5);
@@ -118,7 +129,6 @@
 	display:flex;
 	align-items: center;
 	justify-content: center;
-	
 
 	
 }
@@ -158,6 +168,14 @@
 }
 .deleteOne:hover{
 	cursor: pointer;
+	text-decoration: underline;
+}
+.deleteOne{
+	
+	padding:5px;
+	color:#ff5050;
+	border-radius: 5px;
+	
 }
 .cg4 {
 	padding: 5%;
@@ -188,6 +206,7 @@
 	align-items: center;
 	justify-content: center;
 	grid-column : 5/6;
+	
 }
 .cg6 {
 	padding: 5%;
@@ -196,6 +215,9 @@
 	justify-content: center;
 	grid-column : 6/7;
 	
+}
+.cg6price{
+	font-weight:bold;
 }
 .cg7 {
 	padding: 5%;
@@ -211,7 +233,7 @@
 }
 .totp1{
 	width:60%;
-	margin-left:6%;
+	margin-left:5%;
 	padding:20px;
 }
 .totp2{
@@ -220,14 +242,20 @@
 	padding:20px;
 }
 .totp2 input{
-	border : 1px solid gray;
-	color:gray;
+	border : 1px solid rgb(10, 61, 14);
+	background-color:rgb(10, 61, 14);
+	color:white;
 	padding:10px;
 	width:60%;
 	border-radius:5px;
+	font-weight:bold;
+	box-shadow: 0 8px 11px 0 rgb(0 0 0 / 10%), 0 1px 1px 0 rgb(0 0 0 / 1%);
+}
+.totp2 input:hover {
+	opacity: 0.8;
 }
 #price{
-	font-size:20px;
+	font-size:30px;
 	font-weight:700;
 }
 /*체크박스*/

@@ -3,15 +3,23 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Product">
+	<!--  <select id="productList" resultType="productVO">
+		SELECT * FROM PRODUCT
+	</select>-->
 	
 	<!-- 상품 정보 불러오기-->
 	<select id="productDetail" parameterType="int" resultType="productVO">
 		SELECT * FROM PRODUCT WHERE P_IDX = #{pIdx}
 	</select>
 	
-	<!-- 식품 상품만 불러오기 -->
-	<select id="foodProductOnly" parameterType="int" resultType="productVO">
+	<!-- 카테고리별 상품만 불러오기 -->
+	<select id="selectCategory" parameterType="productVO" resultType="productVO">
+		<if test = "pcIdx != 0">
 		SELECT *FROM PRODUCT WHERE PC_IDX = #{pcIdx}
+		</if>
+		<if test = "pcIdx == 0">
+		SELECT *FROM PRODUCT
+		</if>
 	</select>
 	
 	<!-- 장바구니 상품 확인 -->
@@ -46,7 +54,11 @@
 			SYSDATE, 0, #{sIdx}, 1, 0, 3000, #{pImg})
 	
 	</insert>
-	
+	<select id="manageMyproducts" parameterType="int" resultType="productVO">
+		SELECT PC_NAME, P_NAME, P_PRICE, P_DESC, P_REGDATE, P_IMG, P_STOCK 
+		FROM PRODUCT P, PRODUCT_CATEGORY PC
+		WHERE S_IDX=#{sIdx};
+	</select>
 	
 	
 </mapper>

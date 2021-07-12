@@ -13,26 +13,30 @@ public class ProductDAO {
 
 	@Autowired
 	private SqlSessionTemplate mybatis;
-
+	
+	// SHOP 메인페이지 - 전체리스트 보기
 	public List<ProductVO> ProductList() {
-
+		System.out.println("DAO"+ mybatis.selectList("UserVO.productList"));
 		return mybatis.selectList("UserVO.productList");
 	}
 
-	
+	//카테고리별 상품 보기
+ 	public List<ProductVO> categoryProduct(ProductVO vo) {
+		System.out.println("DAO에서 받은 pcIdx = "+vo); 
+		return mybatis.selectList("Product.selectCategory", vo);
+	}
+		
 	// 상품 정보 가져오기(임시)
 	public ProductVO productDetail(int pIdx) {
-
 		return mybatis.selectOne("UserVO.productDetail", pIdx);
 	}
-	//식품만 가져오기
-	public List<ProductVO> foodProductOnly(int pcIdx) {
-		return mybatis.selectOne("Product.foodProductOnly", pcIdx);
-	}
-	
 	// 상품 등록
 	public int insertProduct(ProductVO product) {
 		return mybatis.insert("Product.insertProduct", product);
+	}
+
+	public List<ProductVO> manageMyProducts(int sIdx) {
+		return mybatis.selectList("Product.manageMyproducts", sIdx);
 	}
 
 

@@ -165,6 +165,15 @@
 	
 	</select>
 	
+	<!-- 나의 포인트 내역(기간별 조회) -->
+	<select id="myPointPageCal" parameterType="hashmap" resultType="pointVO">
+		SELECT * FROM POINT 
+		WHERE U_IDX = #{uIdx}
+		AND PO_DATE BETWEEN TO_DATE(#{cal1},'YYYY-MM-DD') 
+		AND TO_DATE(#{cal2}||'23:59:59', 'YYYY-MM-DD HH24:MI:SS')
+		ORDER BY PO_DATE DESC
+	</select>
+	
 	<!-- 상품 목록 가져오기(임시) -->
 	<select id="productList" resultType="productVO">
 		SELECT * FROM PRODUCT
@@ -214,9 +223,9 @@
 	<insert id="insertOrders" parameterType="ordersVO">
 			INSERT INTO ORDERS 
 				(O_IDX, P_IDX, O_CNT, O_STATUS, P_PRICE, 
-				O_TOTPRICE, U_IDX, S_IDX , O_NUMBER, O_FEE )
-			VALUES (O_IDX_SEQ.nextval, #{pIdx}, #{oCnt}, 0, #{pPrice}, 
-				#{oTotprice}, #{uIdx}, #{sIdx}, O_NUMBER_SEQ.nextval, #{oFee})
+				O_TOTPRICE, U_IDX, S_IDX , O_NUMBER, O_FEE, O_TEMPNUM )
+			VALUES (O_IDX_SEQ.nextval, #{pIdx}, #{oCnt}, 0, #{pPrice},
+				#{oTotprice}, #{uIdx}, #{sIdx}, O_NUMBER_SEQ.nextval, #{oFee}, #{oTempnum})
 	</insert>
 	
 	<!-- 주문된 상품 장바구니에서 삭제 -->
@@ -228,7 +237,7 @@
 	<!-- 주문서 가져오기(주문하기창) -->
 	<select id="ordersList" parameterType="UserVO" resultType="ordersListVO">
 			SELECT P.P_IDX, O.O_CNT, P.P_PRICE, O.O_TOTPRICE, P.S_IDX, 
-					P.P_NAME, P.P_DESC,P.P_FEE, P.P_IMG
+					P.P_NAME, P.P_DESC,P.P_FEE, P.P_IMG, O.O_TEMPNUM
 			FROM ORDERS O, PRODUCT P
 			WHERE O.P_IDX = P.P_IDX
 			AND O_STATUS = 0
@@ -252,6 +261,7 @@
 		WHERE RN BETWEEN #{start} AND #{end}
 	
 	</select> 
+	
 	
 
 

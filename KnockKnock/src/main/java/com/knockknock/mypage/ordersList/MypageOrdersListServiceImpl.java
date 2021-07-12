@@ -10,6 +10,7 @@ import com.knockknock.orders.OrdersListVO;
 import com.knockknock.orders.OrdersVO;
 import com.knockknock.orders.UserOrderVO;
 import com.knockknock.product.ProductVO;
+import com.knockknock.user.UserVO;
 
 @Service("mypageOrdersListService")
 public class MypageOrdersListServiceImpl implements MypageOrdersListService {
@@ -68,14 +69,32 @@ public class MypageOrdersListServiceImpl implements MypageOrdersListService {
 	}
 	// 주문내역
 	@Override
-	public List<OrdersListVO> orderHistoryList() {
+	public List<OrdersListVO> orderHistoryList(Map<String, Integer> map) {
 		
-		return ordersListDAO.orderHistoryList();
+		return ordersListDAO.orderHistoryList(map);
 	}
 	// 임시테이블 데이터 삭제 전 데이터 확인
 	@Override
 	public int deleteCheck() {
 		// TODO Auto-generated method stub
 		return ordersListDAO.deleteCheck();
+	}
+	// 주문내역 총 페이지 수
+	@Override
+	public int orderHistoryListCount(UserVO vo) {
+		// TODO Auto-generated method stub
+		return ordersListDAO.orderHistoryListCount(vo);
+	}
+	// 주문내역 기간별 조회
+	@Override
+	public List<OrdersListVO> orderHistorysearchList(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return ordersListDAO.orderHistorysearchList(map);
+	}
+	// 주문내역 기간별 총 페이지 수
+	@Override
+	public int orderHistoryListCountDay(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return ordersListDAO.orderHistoryListCountDay(map);
 	}
 }

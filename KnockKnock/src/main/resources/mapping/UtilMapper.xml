@@ -268,12 +268,57 @@
 				CI_STATUS
 			</if>
 		</if>
-		<if test ="sort == null">
+		<if test="sort == null">
 			CI_TITLE
 		</if>
 		) A
 		) WHERE ciRn
 		BETWEEN #{start} AND #{end}
 	</select>
+	
+	<!-- 제안서 카운트 -->
+	<select id="countContact" resultType="int">
+		SELECT COUNT(*) FROM
+		CONTACT
+	</select>
 
+	<!-- 페이징 처리후 제안서 리스트 가져오기 -->
+	<select id="getContactList" resultType="adminContactVO">
+		SELECT * FROM
+		( SELECT
+		ROWNUM ctRn, A.* FROM
+		( SELECT CT.*, U.U_NICKNAME, U_IMGPATH, CTC.CTC_NAME
+		FROM CONTACT CT
+		INNER JOIN USERS U ON CT.U_IDX = U.U_IDX
+		INNER JOIN CONTACT_CATEGORY CTC ON CT.CTC_IDX = CTC.CTC_IDX
+		<if test="searchCondition != null">
+			<if test="searchCondition == 'TITLE'.toString()">
+				WHERE CT_TITLE LIKE '%'||#{searchKeyword}||'%'
+			</if>
+			<if test="searchCondition == 'USER'.toString()">
+				WHERE U_NICKNAME LIKE '%'||#{searchKeyword}||'%'
+			</if>
+		</if>
+		ORDER BY
+		<if test="sort != null">
+			<if test="sort == '제목'.toString()">
+				CT_TITLE
+			</if>
+			<if test="sort == '작성일'.toString()">
+				CT_WRITEDATE DESC
+			</if>
+			<if test="sort == '작성자'.toString()">
+				U_NICKNAME
+			</if>
+			<if test="sort == '상태'.toString()">
+				CT_RESP
+			</if>
+		</if>
+		<if test="sort == null">
+			CT_WRITEDATE DESC
+		</if>
+		) A
+		) WHERE ctRn
+		BETWEEN #{start} AND #{end}
+	</select>
 </mapper>

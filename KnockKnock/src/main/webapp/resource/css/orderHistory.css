@@ -1,0 +1,254 @@
+*{
+	font-family: 'Noto Sans KR', sans-serif;
+
+}
+body{
+	height:100%;
+}
+.main-content{
+	width:100%;
+    flex: 1;
+    height:100%;
+    margin-top:100px;
+}
+
+.orderHistoryMain {
+	width: 80%;
+	margin: 0 auto;
+	text-align: center;
+	padding-top:2%;
+	height:90%;
+}
+/*nav*/
+#myq:hover, #myf:hover{
+	font-weight:bold;
+	
+}
+/*조회하기*/
+.topsearch{
+	margin-bottom:10px;
+	
+}
+.allTimeSerch, .searchCal{
+	display:inline-block;
+}
+.allTimeSerch{
+	width:10%;
+	border : 0px;
+	background-color: white;
+}
+.allTimeSerch:hover {
+	text-decoration: underline;
+	text-underline-position: under;
+	color:#ff4d4d;
+	
+}
+.searchCal{
+	width:89%;
+	text-align : right;
+}
+.searchCal input {
+	border : 0px;
+	border-bottom:1px solid gray;
+	
+}
+#canBtn{
+	border :0;
+	color:black;
+	font-size:13px;
+	font-wieght:bold;
+	padding:5px 8px;
+	border-radius: 5px;
+}
+#canBtn:hover {
+	background-color:#a6a6a6;
+	
+}
+
+/*주문내역 그리드*/
+.ohm{
+	border-top:2px solid gray;
+	border-bottom:2px solid gray;
+	display:grid;
+	grid-template-columns: repeat(8, 1fr);
+	grid-auto-rows: repeat(1, auto);
+	background-color:#e3f1e4;
+	margin-bottom:10px;
+	
+	
+}
+.ohm-1{
+	grid-column : 1/2;
+	grid-row : 1/2;
+	text-align:center;	
+	padding:5%;
+	margin:0;
+	border-left : 1px solid #f2f2f2;
+	border-right : 1px solid #f2f2f2;
+	
+}
+.ohm-2{
+	grid-column : 2/6;
+	grid-row : 1/2;
+	padding:2%;
+	margin:0;
+	border-left : 1px solid #f2f2f2;
+	border-right : 1px solid #f2f2f2;
+}
+.ohm-3{
+	grid-column : 6/8;
+	grid-row : 1/2;
+	padding:2%;
+	margin:0;
+	height:100%;s
+	border-left : 1px solid #f2f2f2;
+	border-right : 1px solid #f2f2f2;
+}
+.ohm-4{
+	grid-column : 8/9;
+	grid-row : 1/2;
+	padding:3%;
+	margin:0;
+	border-left : 1px solid #f2f2f2;
+	border-right : 1px solid #f2f2f2;
+}
+
+.ohmcontent{
+	width:100%;
+	gird-column : 1/7;
+	display:grid;
+	grid-template-columns: repeat(8, 1fr);
+	grid-auto-rows: minmax(10vh, 25vh);
+	border : 1px solid gray;
+}
+.ohm-1-1, .ohm-1-2, .ohm-1-3, .ohm-1-4 {
+	margin: 0;
+	border-left : 1px solid #f2f2f2;
+	border-right : 1px solid #f2f2f2;
+}
+.ohm-1-1{
+	grid-column : 1/2;
+	padding: 50% 20%;
+}
+.ohm-1-2{
+	grid-column : 2/6;
+	padding:5%;
+	font-size:13px;
+
+}
+.ohm1-1-1, .ohm1-1-2 {
+	float:left;
+}
+.ohm1-1-1 {
+	width:30%;
+	height:100%;
+}
+.ohm1-1-2{
+	width:65%;
+	padding-left:5%;
+	text-align:left;
+	height:100%;
+}
+.ohm1-1-2 p{
+	margin:0;
+}
+.ohmimg{
+	overflow: hidden;
+   	align-items: center;
+   	justify-content: center;
+   	width:100%;
+   	height:100%;
+
+}
+.ohmimg img {
+	object-fit:cover;
+   	width:100%;
+}
+.ohm-1-3{
+	grid-column : 6/8;
+	padding:5%;
+	text-align:left;
+	height:100%;
+	font-size:13px;
+}
+.ohm-1-3 p{
+	margin-bottom:5px;	
+}
+.totpp{
+	color:red;
+	padding:10px;
+	font-size:18px;
+}
+.ohm-1-4{
+	grid-column : 8/9;
+	height:100%;
+}
+.ohm-1-4-1{
+	height:50%;
+	padding-top:50%;
+	font-size:16px;
+	font-weight:700;
+	color:rgb(10, 61, 14);
+	
+}
+ /* 페이징 부분 스타일 */
+	li { 
+		list-style: none; 
+	}
+	.paging {
+
+		margin : 0 auto;
+		height:50px;
+		width:80%;
+		text-align:center;
+
+	}
+	.pagingNum {
+        width:100%;
+        height:50px;
+        text-align : center;
+        margin : 0 auto;
+        margin-top: 5%;
+    }
+    .paginging {
+    	width : 80%;
+    	margin:0 auto;
+    	text-align:center;
+    	height:50px;
+ 
+    }
+    #tb{
+    	margin: 0 auto;
+    
+    }
+
+	.paging li {
+		display:inline-block;
+		margin-right: 8px;
+	}
+	.paging li a {
+		text-decoration: none;
+		display: block;
+		padding: 3px 7px;
+		font-weight: bold;
+		color: black;
+	}
+	.paging .disable {
+		padding: 3px 7px;
+		color: silver;
+	}
+	.paging .now {
+		width:15px;
+		padding: 3px 3px;
+		color:#ff4d4d;
+		font-weight:700;
+		
+	}
+	.paging li a:hover {
+		text-decoration: underline;
+	}
+	ol {
+		margin: 0 auto;
+		width:30%;
+	}
+	

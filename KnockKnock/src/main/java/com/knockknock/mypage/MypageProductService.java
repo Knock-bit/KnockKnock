@@ -33,6 +33,9 @@ public interface MypageProductService {
 	
 	// 주문서 가져오기
 	List<OrdersVO> ordersList(UserVO vo);
+	
+	// 주문 취소
+	int deleteOrders(OrdersVO vo);
 
 	
 

@@ -30,7 +30,7 @@
 						<li><a href="${cp }/campaign/funding/list.do">캠페인 펀딩하기</a></li>
 						<li><a href="${cp }/campaign/proposal.do">캠페인 제안하기</a></li>
 					</ul></li>
-						<li><a href="${cp }/productlist.do">Shop</a></li>
+						<li><a href="${cp }/productlist.do?pcIdx=0">Shop</a></li>
 						<li><a href="${cp }/contact/contact.do">Contact</a></li>
 		
 						<li class="dropdown"><a href="#">
@@ -42,8 +42,8 @@
 						<li><a
 							href="${cp }/seller/sellerDashboard.do?sIdx=${seller.sIdx}">판매자
 								페이지</a></li>
-						<li><a href="${cp }/productForm.do">상품등록</a></li>
-						<li><a href="#">등록상품조회</a></li>
+						<li><a href="${cp }/seller/submitproduct.do">상품등록</a></li>
+						<li><a href="${cp }/seller/manageMyProducts.do=${seller.sIdx}">등록상품조회</a></li>
 						<li><a href="${cp }/seller/sellerLogout.do">로그아웃</a></li>
 
 

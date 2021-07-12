@@ -32,7 +32,7 @@
 
                 <div class="signup-form">
                     <form method="POST" class="register-form" id="register-form" action="sellerJoinConfirm.do">
-                        <h2>綠!Knock! 사업자 등록</h2>
+                        <h2>Knock!綠! 사업자 등록</h2>
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="id">판매자 계정 아이디 :</label>

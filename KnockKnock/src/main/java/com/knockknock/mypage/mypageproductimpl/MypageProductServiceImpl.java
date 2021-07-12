@@ -72,6 +72,12 @@ public class MypageProductServiceImpl implements MypageProductService {
 
 		return mypageProductDAO.ordersList(vo);
 	}
+	// 주문 취소
+	@Override
+	public int deleteOrders(OrdersVO vo) {
+
+		return mypageProductDAO.deleteOrders(vo);
+	}
 	
 	
 }

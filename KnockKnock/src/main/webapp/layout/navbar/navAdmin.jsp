@@ -29,7 +29,7 @@
           </li>
 
 
-          <li><a href="${cp }/productlist.do">Shop</a></li>
+          <li><a href="${cp }/productlist.do?pcIdx=0">Shop</a></li>
           <li><a href="${cp }/contact/contact.do">Contact</a></li>
 
           <li class="dropdown"><a href="#"><button type="button" class="btn btn-dark">관리자모드</button> <i
@@ -42,7 +42,7 @@
               <li><a href="${cp }/adminCampaignCategory.do">캠페인 카테고리 관리</a></li>
               <li><a href="${cp }/getFundingList.do">펀딩 목록 관리</a></li>
               <li><a href="${cp }/adminCampaignList.do">캠페인 목록 관리</a></li>
-              <li><a href="#">[coming soon]문의내역 확인</a></li>
+              <li><a href="${cp }/getContactList.do">문의내역 확인</a></li>
               <li><a href="${cp }/user/logout.do">로그아웃</a></li>
             </ul>
           </li>

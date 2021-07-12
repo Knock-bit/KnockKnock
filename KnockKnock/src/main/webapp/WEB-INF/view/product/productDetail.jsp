@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="cp" value ="${pageContext.request.contextPath }"/>
 <!DOCTYPE html>
 <html>
@@ -21,102 +22,35 @@
  
   <!-- Main CSS File -->
   <link href="${cp}/resource/css/main.css" rel="stylesheet">
+  <link
+	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap"
+	rel="stylesheet">
 
   <!-- Import BootStrap -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   
+  <!-- page css -->
+   <link href="${cp}/resource/css/productDetail.css" rel="stylesheet">
+   <script src="${cp}/resource/js/productDetail.js" type="text/javascript" charset="utf-8"></script> 
   <script>
+ $(function(){
  
-  // 구매 수량 선택
-  function count(type)  {
-	  // 결과를 표시할 element
-	  var result = document.getElementById('result');
-	  
-	  // 현재 화면에 표시된 값
-	  var number = result.innerText;
-	  var minus = document.getElementById('minus');
-
-	  // 더하기/빼기
-	  if(type === 'plus') {
-		  
-	    number = parseInt(number) + 1;
-	    
-	  }else if(type === 'minus')  {
-		  
-	    number = parseInt(number) - 1;
-	  }
-	  
-	  // 결과 출력
-	  result.innerText = number;
-	  console.log(result.innerText);
-	  
-	  // 현재 수량이 0이하이면 - 버튼 비활성화
-	  if(result.innerText <= 0){
-		  	
-	    	minus.disabled = 'disabled';
-	  } else if (result.innerText != 0){
-		  
-		  minus.disabled = false;
-		  
-	  } 
-	  
- 
-}
+	
+  $("#preminus").click(function(e){
+	
+	  e.preventDefault();
+		 count('minus');
+		
+	});
+  $("#nextplus").click(function(e){
+		e.preventDefault();
+		count('plus');
+	});
+  
+ }); 
   </script>
-  <style>
-  .main-content{
-        flex: 1;d
-        min-height:100vh;
-        margin-top:100px;
-        
-    }
-   .pgrid {
-   		width:80%;
-   		display : grid;
-   		grid-template-columns: 60% 40%;
-		grid-template-rows: repeat(7, 1fr) ;
-		margin:0 auto;
-   }
-   .pimg {
-   		    grid-column: auto;
-    grid-row: 1/7;
-    overflow: hidden;
-    align-items: center;
-    justify-content: center;
-    margin: 5%;
-   }
-   .pimg img {
-   		object-fit: cover;
-		width: 100%;
-   
-   }
-   .pname {
-   		grid-column: 2/3;
-		grid-row: 1/2;
-		margin-top: 2em;
-   }
-   .pprice{
-   		grid-column: 2/3;
-		grid-row: 3;
-   }
-   .pcnt{
-   		grid-column: 2/3;
-		grid-row: 5;
-   }
-   .pdesc{
-   		grid-column: 2/3;
-		grid-row: 2;
-   }
-   .pfee {
-   		grid-column: 2/3;
-		grid-row: 4;
-   }
-   .pbtn {
-   		grid-column: 2/3;
-		grid-row: 6;
-   }
-  </style>
+
 </head>
 <body>
   <!-- ======= Header ======= -->
@@ -136,44 +70,76 @@
   	</c:choose>
   <!-- ======= Header 끝  === -->
 <div class="main-content">
+	<div class="detailMain">
 
-	
-	
-	
-	<div class="pgrid">
-		<div class="pimg">
-			<img src="/resource/img/product/${pvo.pImg }">
-		
-		</div>
-		<div class="pname">
-			<!-- 상품 idx -->
-			<p id="pIdx" style="display:none;">${pvo.pIdx }</p>
-			<h2>${pvo.pName }</h2>
-		</div>
-		<div class="pdesc">
-			상품 설명 : ${pvo.pDesc }
-		</div>
-		<div class="pprice">
-			상품가격 : ${pvo.pPrice }원
+		<div class="pgrid">
+			<div class="pnav">
+				<!-- <button onclick="location.href='productList.do'">목록으로 이동</button> -->
+				<a href="${cp }/run.jsp">HOME</a><i class="bi bi-chevron-compact-right">
+				</i><a href="${cp }/productlist.do?pcIdx=0"> SHOP</a> <i class="bi bi-chevron-compact-right">
+				</i> 
+				<span id="pcIdx" style="display:none;">${pvo.pcIdx }</span>
+				<a href="/productlist.do?pcIdx=${pvo.pcIdx }">
+					<c:if test="${pvo.pcIdx == 1}"> 식품</c:if>
+					<c:if test="${pvo.pcIdx == 2}"> 의류</c:if>
+					<c:if test="${pvo.pcIdx == 3}"> 생활용품</c:if>
+				</a>
+			</div>
+			<div class="pimg">
+				
+				<img src="/resource/img/product/${pvo.pImg }">
+				<p>추가사진?</p>
+			</div>
+			<div class="pname">
+				<span id="sIdx" style="display:none;">${pvo.sIdx }</span>
+				<!-- 상품 idx -->
+				<p id="pIdx" style="display:none;">${pvo.pIdx }</p>
+				<h2 style="margin:10px;"><span style="font-size:18px;">[knock]</span> ${pvo.pName }</h2>
+			</div>
+			<div class="pprice">
+				<span id="price" style="display:none;">${pvo.pPrice }</span>
+				<fmt:formatNumber value="${pvo.pPrice }" var="price" pattern="#,###"/>
+				<span>${price }</span><span>&nbsp;원</span>
+				<hr>
+			</div>
 			
-		</div>
-		<div class="pfee">
-			배송비 : ${pvo.pFee }
-		</div>
-		<div class="pcnt">
-			<input type="button" id="minus" onclick="count('minus')" value="-" />
-			<span id="result">1</span>
-			<input type="button" id="plus" onclick="count('plus')" value="+" />
+			<div class="pdesc">
+				 ${pvo.pDesc }
+			</div>
 			
-			
-		</div>
-		<div class="pbtn">
-			<button onclick="location.href='productList.do'">목록으로 이동</button>
-			<button>주문하기</button>
-			<input type="button" onclick="addCart()" value="장바구니">
+			<div class="pfee">
+				<span style="color:rgb(10, 61, 14); font-weight:600;">배송비 :</span>
+				<span id="pfee" style="display:none;">${pvo.pFee }</span>
+				<fmt:formatNumber value="${pvo.pFee }" var="pfee" pattern="#,###"/>
+				<span>${pfee }</span><span>&nbsp;원</span><br>
+				<span style="font-size:13px; color:#8c8c8c;s">50,000원 이상 구매 시 무료 배송</span>
+			</div>
+			<div class="pcnt">
+				<span style="color:rgb(10, 61, 14); font-weight:600; margin-right:20px;">수량</span>
+				<i class="bi bi-caret-left-fill" id="preminus"></i>
+				<input type="button" id="minus" onclick="count('minus')" value="-" />
+				<span id="result">1</span>
+				<input type="button" id="plus" onclick="count('plus')" value="+" />
+				<i class="bi bi-caret-right-fill" id="nextplus"></i>
+				<hr>
+				<p style="text-align:right;" >
+					<span id="totprice"></span>
+					<span>원</span> 
+				</p>
+				
+				
+			</div>
+			<div class="pbtn">
+				
+				<input type="button" onclick="orders()" value="구매하기" id="buying">
+				<input type="button" onclick="addCart()" value="장바구니" id="addcart">
+				<div id="fullheartbox">
+				<i class="bi bi-suit-heart" id="emptyheart" ></i>
+				<i class="bi bi-suit-heart-fill" id="fullheart" ></i>
+				</div>
+			</div>
 		</div>
 	</div>
-	
 	<jsp:include page='/layout/navbar/product/navProduct.jsp' flush='false'/>   	
 	
 	
@@ -187,43 +153,69 @@
  <!-- End Footer -->
 </body>
 <script>
-function addCart(){
-	  var pIdx = $("#pIdx").text();
-	  var selectCnt = $("#result").text(); 
-	  console.log(pIdx+","+selectCnt);
-	  
-	  
-	  $.ajax({
-		 url : "addCart.do",
-		 data : {pIdx : pIdx, selectCnt:selectCnt},
-		 type : "post",
-		 dataType : "text",
-		 success : function(data){
-			 
-			 
-			 if(data==1) { // 장바구니로 이동
-				 // 동일한 상품 존재
-				 alert("장바구니에 동일한 상품이 존재합니다.");
-			 } else {
-				 var moveCart = confirm('장바구니에 상품을 담았습니다. 장바구니로 이동하시겠습니까?');
-				 
-				 if(moveCart){
-					 location.href="moveCart.do";
-				 } else {
-					 location.href="productDetail.do?pIdx="+pIdx; // 상품페이지 다시 리턴
-				 }
-				 
-			 }
-		 },
-		 error : function(data){
-			 alert("에러");
-		 }
-		  
-		  
-	  });
-	  
-}
-
+$(function(){
+	// 찜하기 버튼
+	$("#emptyheart").click(function(){
+		$(this).css("display","none");
+		$("#fullheart").css("display","block");
+	});
+	
+	$("#fullheart").click(function(){
+		$(this).css("display","none");
+		$("#emptyheart").css("display","block");
+	});
+	
+	// 초기 가격
+	var number = parseInt($("#result").text());
+	var price = parseInt($("#price").text());
+	var pfee = parseInt($("#pfee").text());
+	
+	
+	
+	$("#totprice").html((number*price)+pfee);
+	
+	
+	
+});
+//주문하기 버튼
+function orders(){
+	var vo = {};
+	vo.pIdx = $("#pIdx").text();
+	vo.oCnt = $("#result").text();
+	vo.pPrice = $("#price").text();
+	vo.oFee = $("#pfee").text();
+	vo.oTotprice = $("#totprice").text();
+	vo.sIdx = $("#sIdx").text();
+	
+	var jsonData = JSON.stringify(vo);
+	console.log(jsonData);
+	var pcIdx = $("#pcIdx").val();
+	
+	$.ajax({
+		url : "/detailProductOrders.do",
+		data :JSON.stringify(vo),
+		type:"post",
+		dataType:"json",
+		contentType : "application/json;",
+		async:false,
+		success: function(data){
+			var moveOrders = confirm('주문페이지로 이동하시겠습니까?');
+			
+			if(moveOrders){
+				// 주문페이지로 이동
+				location.href="ordersList.do";
+			} else {
+				location.reload();
+			}
+			
+		},
+		error : function(data){
+			alert("에러");
+		}
+		
+	}); 
+	
+	}
 
 </script>
 </html>

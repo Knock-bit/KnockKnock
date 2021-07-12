@@ -7,24 +7,31 @@ public class AdminContactVO {
 	private String ctTitle;
 	private String ctContent;
 	private int uIdx;
-	private Date ctWriteDate;
+	private Date ctWritedate;
 	private int ctResp;
 	private String ctcIdx;
 
+	private int ctRn; // rownum 처리
+	private String uNickname;
+	private String uImgpath;
+	private String ctcName;
+	private String uEmail;
+	
 	public AdminContactVO() {
 		super();
 	}
 
-	public AdminContactVO(int ctIdx, String ctTitle, String ctContent, int uIdx, Date ctWriteDate, int ctResp,
-			String ctcIdx) {
+	public AdminContactVO(int ctIdx, String ctTitle, String ctContent, int uIdx, Date ctWritedate, int ctResp,
+			String ctcIdx, int ctRn) {
 		super();
 		this.ctIdx = ctIdx;
 		this.ctTitle = ctTitle;
 		this.ctContent = ctContent;
 		this.uIdx = uIdx;
-		this.ctWriteDate = ctWriteDate;
+		this.ctWritedate = ctWritedate;
 		this.ctResp = ctResp;
 		this.ctcIdx = ctcIdx;
+		this.ctRn = ctRn;
 	}
 
 	public int getCtIdx() {
@@ -59,12 +66,12 @@ public class AdminContactVO {
 		this.uIdx = uIdx;
 	}
 
-	public Date getCtWriteDate() {
-		return ctWriteDate;
+	public Date getCtWritedate() {
+		return ctWritedate;
 	}
 
-	public void setCtWriteDate(Date ctWriteDate) {
-		this.ctWriteDate = ctWriteDate;
+	public void setCtWritedate(Date ctWritedate) {
+		this.ctWritedate = ctWritedate;
 	}
 
 	public int getCtResp() {
@@ -83,10 +90,55 @@ public class AdminContactVO {
 		this.ctcIdx = ctcIdx;
 	}
 
+	public int getCtRn() {
+		return ctRn;
+	}
+
+	public void setCtRn(int ctRn) {
+		this.ctRn = ctRn;
+	}
+
+	public String getuNickname() {
+		return uNickname;
+	}
+
+	public void setuNickname(String uNickname) {
+		this.uNickname = uNickname;
+	}
+
+	public String getuImgpath() {
+		return uImgpath;
+	}
+
+	public void setuImgpath(String uImgpath) {
+		this.uImgpath = uImgpath;
+	}
+
+	public String getCtcName() {
+		return ctcName;
+	}
+
+	public void setCtcName(String ctcName) {
+		this.ctcName = ctcName;
+	}
+
+	public String getuEmail() {
+		return uEmail;
+	}
+
+	public void setuEmail(String uEmail) {
+		this.uEmail = uEmail;
+	}
+
 	@Override
 	public String toString() {
 		return "AdminContactVO [ctIdx=" + ctIdx + ", ctTitle=" + ctTitle + ", ctContent=" + ctContent + ", uIdx=" + uIdx
-				+ ", ctWriteDate=" + ctWriteDate + ", ctResp=" + ctResp + ", ctcIdx=" + ctcIdx + "]";
+				+ ", ctWritedate=" + ctWritedate + ", ctResp=" + ctResp + ", ctcIdx=" + ctcIdx + ", ctRn=" + ctRn
+				+ ", uNickname=" + uNickname + ", uImgpath=" + uImgpath + ", ctcName=" + ctcName + ", uEmail=" + uEmail
+				+ "]";
 	}
+
+
+	
 
 }

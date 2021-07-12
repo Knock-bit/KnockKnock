@@ -84,7 +84,6 @@ public class UserController {
    @RequestMapping("/user/idCheck.do")
    @ResponseBody
    public int idCheck(String id) {
-      UserVO vo = new UserVO();
       int result;
       result = userService.idCheck(id);
       return result;
@@ -94,7 +93,6 @@ public class UserController {
    @RequestMapping("/user/emailCheck.do")
    @ResponseBody
    public int emailCheck(String email) {
-      UserVO vo = new UserVO();
       int result;
       result = userService.emailCheck(email);
       return result;
@@ -104,7 +102,6 @@ public class UserController {
    @RequestMapping("/user/nickCheck.do")
    @ResponseBody
    public int nickCheck(String nickname) {
-      UserVO vo = new UserVO();
       int result;
       result = userService.nickCheck(nickname);
       return result;
@@ -144,8 +141,7 @@ public class UserController {
    // 회원가입
    @PostMapping("/user/join.do")
    public String join(UserVO vo) throws Exception {
-      System.out.println("회원가입 controller join()");
-      System.out.println("vo: " + vo);
+      System.out.println("회원가입 Controller의 vo: " + vo);
       vo.setuApprkey(create_key());
       System.out.println("APPRKEY="+vo.getuApprkey());
       userService.join(vo);
@@ -236,9 +232,7 @@ public class UserController {
    @RequestMapping(value = "/user/findpwdClick.do", method = RequestMethod.POST)
    public void findPwPOST(@ModelAttribute UserVO userVO, HttpServletResponse resp) throws Exception{
       System.out.println("userVO = "+userVO);
-      userService.findPwd(resp, userVO);
-      
-       
+      userService.findPwd(resp, userVO);      
    }
 
 }

@@ -60,7 +60,7 @@
             <img src="${cp}/resource/img/user/seller.jpg" class="img-fluid" alt="">
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
-            <h3>환경을 위한 바른 소비를 돕는 綠!KNOCK!의 판매자</h3>
+            <h3>환경을 위한 바른 소비를 돕는 Knock!綠!의 판매자</h3>
             <ul>
               <li><i class="bi bi-check-circle"></i>친환경 인증제품을 판매하시나요?</li>
               <li><i class="bi bi-check-circle"></i>친환경 정책에 맞는 판매를 추구하시나요?</li>

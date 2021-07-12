@@ -9,7 +9,7 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo me-auto"><a href="${cp }/main.do"><img src="${cp }/resource/img/logo2.png" id=:logo></a></h1>
+      <h1 class="logo me-auto"><a href="${cp }/main.do"><img src="${cp }/resource/img/logo.png" id=:logo></a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -31,7 +31,7 @@
 
 
 
-          <li><a href="${cp }/productlist.do">Shop</a></li>
+          <li><a href="${cp }/productlist.do?pcIdx=0">Shop</a></li>
           <li><a href="${cp }/contact/contact.do">Contact</a></li>
 
           <li class="dropdown"><a href="#"><span class="get-started-btn">${users.uName }님</span> <i
@@ -43,7 +43,7 @@
               <li><a href="${cp}/myCampaignList.do">지난 캠페인</a></li>
               <li><a href="${cp}/myContactList.do">나의 문의내역</a></li>
               <li><a href="${cp}/myActive.do">나의 활동</a></li>
-              <li><a href="${cp}/moveCart.do">내 장바구니</a></li>
+              <li><a href="${cp}/orderHistory.do">내 주문내역</a></li>
               
               
               <li><a href="${cp }/user/logout.do">로그아웃</a></li>

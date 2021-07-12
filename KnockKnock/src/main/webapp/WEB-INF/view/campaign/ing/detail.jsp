@@ -384,7 +384,7 @@
                 <div class="row sticky-parent">
                   <div class="col-lg-8" id="commonDiv">
                     <img src="${campaign.ciFile }" class="img-fluid" alt="">
-                    <h2>${campaign.ciContent } </h3>
+                    <h2>${campaign.ciContent } </h2>
                       <p>
                         Qui et explicabo voluptatem et ab qui vero et voluptas. Sint voluptates temporibus quam autem.
                         Atque nostrum voluptatum laudantium a doloremque enim et ut dicta. Nostrum ducimus est iure

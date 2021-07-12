@@ -19,32 +19,27 @@ public class SellerController {
 	private SellerService sellerService;
 	SellerVO seller = new SellerVO();
 
-	public SellerController() {
-
-	}
+	public SellerController() {	}
 
 	@GetMapping("/user/sellerPage.do")
 	public String moveSellerPage() {
 		return "/seller/sellerLogin";
 	}
-
+	
 	// 사업자판매자 회원가입
-
 	@PostMapping("/user/sellerJoinConfirm.do")
 	public String sellerJoin(SellerVO seller) {
 		System.out.println("판매자 회원가입 vo = " + seller);
 		sellerService.sellerJoin(seller);
 		return "/user/joinConfirm";
-
 	}
 
-	// 개인판매자 회원가입 **return값 추후에 다시 바꿔야함 이메일인증하는걸로
+	// 개인판매자 회원가입
 	@PostMapping("/user/sellerJoinConfirm2.do")
 	public String sellerJoin2(SellerVO seller) {
 		System.out.println("판매자 회원가입 vo = " + seller);
 		sellerService.sellerJoin(seller);
 		return "/user/joinConfirm";
-
 	}
 
 	// 판매자로그인
@@ -64,6 +59,13 @@ public class SellerController {
 		return seller;
 	}
 
+	// 상품등록
+	@GetMapping("/productSummer.do")
+	public String submitProduct() {
+		//상품리스트로가기
+		return "/seller/product/productForm";
+	} 
+	
 	// 판매자 로그아웃
 	@RequestMapping("/seller/sellerLogout.do")
 	public ModelAndView sellerLogout(HttpSession session) {
