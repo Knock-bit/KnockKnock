@@ -17,6 +17,7 @@ public class ProductVO {
 	private String pcName;
 	private int pCount;
 	private String caRegdate;
+	
 
 	public ProductVO() {
 		super();

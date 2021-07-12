@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.knockknock.orders.OrdersVO;
 import com.knockknock.product.ProductVO;
 import com.knockknock.seller.SellerVO;
 
@@ -30,6 +31,13 @@ public class SellerDAO {
 	}
 	public List<ProductVO> manageMyproducts(int sIdx) {
 		return mybatis.selectList("seller.manageMyproducts", sIdx);
+	}
+	  
+	public int saveOrderStatus(OrdersVO vo) {
+		System.out.println("**DAO**"+vo);
+		int result = mybatis.update("seller.updateOrderStatus", vo);
+		System.out.println(result);
+		return result;
 	}
 	
 }

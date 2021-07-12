@@ -20,6 +20,11 @@
 		INSERT INTO SELLER
 		VALUES(S_IDX_SEQ.NEXTVAL, #{sId}, #{sPwd}, #{sPhone}, #{sName}, #{sAddress}, #{sEmail}, 'N/A')		
 	</insert>
-	 
+	
+	 <!-- 주문건 업데이트용 -->
+	<update id="updateOrderStatus" parameterType="ordersVO">
+	 	UPDATE ORDERS SET OS_IDX = #{osIdx} WHERE S_IDX=#{sIdx} AND O_NUMBER=#{oNumber}
+	</update>	
+	
 	 
 </mapper>
