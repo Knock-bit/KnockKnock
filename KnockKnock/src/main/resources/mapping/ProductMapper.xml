@@ -55,9 +55,9 @@
 	
 	</insert>
 	<select id="manageMyproducts" parameterType="int" resultType="productVO">
-		SELECT PC_NAME, P_NAME, P_PRICE, P_DESC, P_REGDATE, P_IMG, P_STOCK 
+		SELECT  PC_NAME, P_NAME, P_PRICE, P_DESC, P_REGDATE, P_IMG, P_STOCK, P_IDX
 		FROM PRODUCT P, PRODUCT_CATEGORY PC
-		WHERE S_IDX=#{sIdx};
+		WHERE S_IDX=#{sIdx} AND P.PC_IDX = PC.PC_IDX
 	</select>
 	
 	

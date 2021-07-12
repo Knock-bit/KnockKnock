@@ -23,9 +23,7 @@
             console.log('Family Name: ' + profile.getFamilyName());
             console.log("Image URL: " + profile.getImageUrl());
             console.log("Email: " + profile.getEmail());
-            alert("구글 아쟉스 시작");
-
-
+ 
        	var auth2 = gapi.auth2.getAuthInstance();
 
    		if(auth2.isSignedIn.get()){

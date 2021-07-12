@@ -115,22 +115,22 @@
 						<fmt:formatDate value="${oDate }" pattern="yyyy-MM-dd HH:mm:ss"/></p>	
 					</div>
 					<div class="ohm-1-4">
-					<c:if test="${item.oStatus == 0 }">
+					<c:if test="${item.osIdx == 0 }">
 						<p class="ohm-1-4-1">결제 대기 중</p>
 					</c:if>
-					<c:if test="${item.oStatus == 1 }">
+					<c:if test="${item.osIdx == 1 }">
 						<p class="ohm-1-4-1">결제 완료</p>
 					</c:if>
-					<c:if test="${item.oStatus == 2 }">
+					<c:if test="${item.osIdx == 2 }">
 						<p class="ohm-1-4-1">배송 준비 중</p>
 					</c:if>
-					<c:if test="${item.oStatus == 3 }">
+					<c:if test="${item.osIdx == 3 }">
 						<p class="ohm-1-4-1">배송 중 </p>
 					</c:if>
-					<c:if test="${item.oStatus == 4 }">
+					<c:if test="${item.osIdx == 4 }">
 						<p class="ohm-1-4-1">배송 완료</p>
 					</c:if>
-					<c:if test="${item.oStatus == 5 }">
+					<c:if test="${item.osIdx == 5 }">
 						<p class="ohm-1-4-1">환불 진행 중 </p>
 					</c:if>
 					<p style="font-size:13px; color:#8c8c8c;">[ 녹녹 택배 ]</p>

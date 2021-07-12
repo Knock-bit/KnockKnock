@@ -1,5 +1,7 @@
 package com.knockknock.seller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,19 +15,22 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.knockknock.orders.OrdersVO;
+
 @Controller
 public class SellerController {
 	@Autowired
 	private SellerService sellerService;
 	SellerVO seller = new SellerVO();
 
-	public SellerController() {	}
+	public SellerController() {
+	}
 
 	@GetMapping("/user/sellerPage.do")
 	public String moveSellerPage() {
 		return "/seller/sellerLogin";
 	}
-	
+
 	// 사업자판매자 회원가입
 	@PostMapping("/user/sellerJoinConfirm.do")
 	public String sellerJoin(SellerVO seller) {
@@ -59,13 +64,18 @@ public class SellerController {
 		return seller;
 	}
 
-	// 상품등록
-	@GetMapping("/productSummer.do")
-	public String submitProduct() {
-		//상품리스트로가기
-		return "/seller/product/productForm";
-	} 
-	
+	// 주문상태 변경사항 저장눌렀을 때
+	@RequestMapping(value="/seller/saveorderstatus.do", method=RequestMethod.POST, produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@ResponseBody
+	public int saveOrderStatus(@RequestBody List<OrdersVO> list, HttpSession session) {
+		int result = 0;
+		for (OrdersVO ovo : list) {
+			result = sellerService.saveOrderStatus(ovo);
+		}
+		
+		return result;
+	}
+
 	// 판매자 로그아웃
 	@RequestMapping("/seller/sellerLogout.do")
 	public ModelAndView sellerLogout(HttpSession session) {
