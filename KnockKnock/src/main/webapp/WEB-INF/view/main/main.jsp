@@ -186,31 +186,31 @@
 					<div>
 						<div class="member">
 							<img src="" class="img-fluid" alt="">
-							<div class="member-content">
+							<div class="col">
 								<h4>김동아</h4>
 								<span>Web Development</span>
 								<p>Knock!綠! 회원가입 및 로그인 개발</p>
 
 							</div>
-							<div class="member-content">
+							<div class="col">
 								<h4>김소해</h4>
 								<span>Web Development</span>
 								<p>Knock!綠! 캠페인 등록, 개시 개발</p>
 
 							</div>
-							<div class="member-content">
+							<div class="col">
 								<h4>설한정</h4>
 								<span>Web Development</span>
 								<p>Knock!綠! 홈페이지 관리자 기능 개발</p>
 
 							</div>
-							<div class="member-content">
+							<div class="col">
 								<h4>홍혜민</h4>
 								<span>Web Development</span>
 								<p>Knock!綠! 회원관리 수정 및 쇼핑몰 개발</p>
 
 							</div>
-							<div class="member-content">
+							<div class="col">
 								<h4>최기영</h4>
 								<span>Web Development</span>
 								<p>Knock!綠! 캠페인/쇼핑몰 후기, 커뮤니티 게시판 개발</p>
