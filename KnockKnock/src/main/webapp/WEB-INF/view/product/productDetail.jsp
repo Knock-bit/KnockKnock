@@ -210,7 +210,8 @@ function orders(){
 			
 		},
 		error : function(data){
-			alert("에러");
+			alert("상품 주문은 로그인 후에 가능합니다.");
+			location.href="/user/login.do";
 		}
 		
 	}); 
