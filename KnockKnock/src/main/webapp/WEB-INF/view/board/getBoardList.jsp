@@ -10,6 +10,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+
+.btn-campaign{
+width
+}
+
 	#container > div {
    display:flex;
    justify-content: space-between;
@@ -49,17 +54,7 @@
 </head>
 <body>
 <div id="container">
-	<h1>게시판 목록</h1>
-	 <div>
-		<select id="cntPerPage" name="sel" onchange="selChange()">
-			<option value="5"
-				<c:if test="${paging.cntPerPage == 5}">selected</c:if>>5개씩보기</option>
-					<option value="10"
-				<c:if test="${paging.cntPerPage == 10}">selected</c:if>>10개씩보기</option>
-					<option value="20"
-				<c:if test="${paging.cntPerPage == 20}">selected</c:if>>20개씩보기</option>
-		</select>
-	</div>
+
 	<table class="table">
       <tr>
          <th class="text-center">글번호</th>
@@ -110,10 +105,12 @@
 		</c:if>
 	</div>
 	<div>
-		<p><button type="button" id="participate3" onclick="participate()"
+		<p><button type="button" class="btn-campaign" id="participate3" onclick="participate()"
 		 style="width: 100px; color:white; background-color: #0a3a18; border-radius: 35px;">게시글등록</button>
+		<c:if test="${!empty users.uIdx}">
 		<button type="button" onclick="myBoardList()"
 		style="width: 100px; color:white; background-color: #0a3a18; border-radius: 35px;">내 글 보기</button></p>
+		</c:if>
 	</div>	
 	</form>
 </div>

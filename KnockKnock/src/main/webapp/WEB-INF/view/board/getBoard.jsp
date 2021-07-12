@@ -37,9 +37,7 @@
 				type: 'POST',
 				data : formData,
 				success: function(data){
-					alert("댓글 입력 성공");
 					commentsList();
-					alert("load!");
 				}, error: function(){
 					alert('실패');
 				}
@@ -49,6 +47,28 @@
 		})
 		
 	});
+	
+	  function delete_board(bIdx){
+		  swal({
+			  title: "게시글을 삭제하시겠습니까?",
+			  text: "삭제시 복구하실 수 없으며, 포인트를 받지 못할 수 있습니다.",
+			  icon: "warning",
+			  buttons: true,
+			  dangerMode: true,
+			})
+			.then((willDelete) => {
+			  if (willDelete) {
+			    swal("성공적으로 삭제하였습니다", {
+			      icon: "success",
+			    });
+  		$("#commonDiv").load("${cp}/board/deleteBoard.do?bIdx=" + bIdx + "&ciIdx=" + ciIdx);
+			  } else {
+			    swal("삭제하지 않았습니다");
+			  }
+			});
+		  
+		  
+     	  }
 	
 	function updateHit_board(bIdx){
 		$.ajax({
@@ -75,13 +95,28 @@
 </script>
 
 <style type="text/css">
+	.commentsList{
+	width:650px;}
+
    .board-cont > div {display: flex;}
    .board-cont > div span {flex: 1 1 85%;}
    .board-cont > div span:first-child {flex: 1 1 15%;}
    
    .btn-style {
-      width: 100px; color:white; background-color: #0a3a18; border-radius: 35px;
+     border: none; width: 100px; color:white; background-color: #0a3a18; border-radius: 35px;
+     padding:10px;
    }
+   
+   .areaComments {
+   border:1px solid #e2e2e2; border-radius:8px;margin-bottom: 15px; padding:15px;
+   }
+   
+   .regDate{
+   font-size: 0.8em;
+    color: grey;
+   }
+   
+   .nickname{font-weight: 700;}
    
     .comments-pic{
     border-radius: 50%;
@@ -90,10 +125,11 @@
     justify-content: center;
     border: solid 1px #eef0ef;
     display: inline-block;
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     vertical-align: middle;
     float: left;
+    margin-right:20px;
     }
     
     .comments-pic img{
@@ -105,7 +141,6 @@
 <body>
 
 <div id="container">
-	<h1>글상세보기</h1>
 	<hr>
 	<div>
 		<input type="hidden" name="bIdx" value="${board.bIdx}">
@@ -152,7 +187,6 @@
 		<hr>
 	</div>
 	</div>
-	<hr>
    <%-- 게시글 댓글 목록 --%>
    <div class="container">
       <div class="commentsList">
@@ -163,26 +197,28 @@
 	<%-- 게시글 댓글  --%>
 	<div class="container">
       <br><br>
-      <label for="cContent">댓글 달기</label>
       <form id="commentsInsertForm" action="${cp }/board/insertComments.do" method="POST">
-         <div class="input-group">
-            <span>댓글번호 : ${board.bIdx}</span> / 
-            <span>작성자 : ${users.uNickname }</span>
-            <br><br>
-            <textarea class="form-control" id="cContent" name="cContent" placeholder="내용을 입력해주세요" rows="3" cols="50" style="width:100%;"></textarea>
-            <br><br>
+         <div class="input-group" style="display:block; width:700px;">
+            <div class="input-comment">
+            <c:if test="${empty users}">
+            <textarea class="form-control" id="cContent" name="cContent" disabled placeholder="로그인 후 사용 가능합니다" rows="3" cols="50" style="width:650px;"></textarea>
+            </c:if>
+            <c:if test="${!empty users}">            
+            <textarea class="form-control" id="cContent" name="cContent" placeholder="내용을 입력해주세요" rows="3" cols="50" style="width:650px;"></textarea>
+            </c:if>
+            </div><br>
             <span class="input-group-btn">
             <input type="hidden" name="bIdx" value="${board.bIdx}">
             <input type="hidden" name="uIdx" value="${users.uIdx}">
             
                <button class="btn btn-default" type="button" id="commentsInsertBtn"
-               style="width: 100px; color:white; background-color: #0a3a18; border-radius: 35px;">등록</button>
+               style="width: 100px; color:white; background-color: #0a3a18; border-radius: 35px; margin-right:50px; float:right">등록</button>
             </span>
          </div>
       </form>
    </div>
-   <hr>
-   <hr>
+	<br>
+	<br>   
 </div>
 </body>
 </html>

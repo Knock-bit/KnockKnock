@@ -45,7 +45,8 @@
         <script type="text/JavaScript" src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 		<script src="${cp}/resource/js/jquery/jquery-3.6.0.min.js"></script>
-
+		<!-- SWEET ALERT -->
+		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
  	$(function(){
 		$("#input-btn").click(function(){
@@ -64,6 +65,9 @@
       console.log($('textarea[name="bContent"]').val(
             $('#summernote').summernote('code')));
    }
+ 	
+	
+		  
 </script>
 		
         <style>
@@ -96,27 +100,6 @@
             width: 100%;
             height: 100%;
           }
-          /* .img-box {
-   width:100%;
-    height:30vh;
-    overflow:hidden;
-}
-.img-box img {
-	width:100%; 
-	height:100%; 
-	object-fit:cover;
-	-webkit-filter: blur(20px); 
-	filter:blur(20px);
-	opacity: 70%;
-	position:relative;
-	z-index:-1;
-	}
- .detail-title {
- 	position:relative;
- 	top:50%;
- 	left:40%;
- 	width:500px;
-	}  */
           .campaign-main-info {
             display: inline-block;
             margin: 0 auto;
@@ -125,7 +108,7 @@
             margin-top: 100px;
             text-align: center;
           }
-           @media (min-width: 768px) {
+          @media (min-width: 768px) {
             .container {
               width: 750px;
             }
@@ -134,7 +117,7 @@
             .container {
               width: 1100px;
             }
-          } 
+          }
           .ci-emblem {
             float: left;
             margin-left: 0.3em;
@@ -214,10 +197,7 @@
       		$("#commonDiv").load("${cp}/board/getBoardList.do?ciIdx=${board.ciIdx}");
       		}
           
-      	  function delete_board(bIdx){
-    		alert("!! 정말 삭제하시겠습니까?");
-    		$("#commonDiv").load("${cp}/board/deleteBoard.do?bIdx=" + bIdx + "&ciIdx=" + ciIdx);
-       	  }
+      
           
       	  function modify(bIdx){
       		$("#commonDiv").load("${cp}/board/modifyBoard.do?bIdx=" + bIdx ); 
@@ -468,10 +448,11 @@
 
 
 
-					</div>
+
                 </div>
             </div>
 
+            </div>
           </section><!-- End Cource Details Section -->
 
                   <%-- <div class="campaign-info d-flex justify-content-between align-items-center">

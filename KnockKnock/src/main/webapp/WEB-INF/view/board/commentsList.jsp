@@ -20,12 +20,10 @@
 	            $.each(data, function(key, value){ 
 	                a += '<div class="areaComments" style="border-bottom:1px solid darkgray; margin-bottom: 15px;">';
 	                a += '<div class="infoComments'+value.mIdx+'">';
-	                a += '<div class="comments-pic"> <img src="/resource/img/profile/user_default.png"> </div>'+value.uNickname;
-	             /*    a += '<c:if test="${users.uIdx eq '+value.uIdx+'}">'; */
-	                a += '<a onclick="updateComments('+value.mIdx+',\''+value.cContent+'\');"> 수정 </a>';
-	                a += '<a onclick="deleteComments('+value.mIdx+',\''+value.mIdx+'\');"> 삭제 </a> </div>';
-	                /* a += '</c:if>'; */
-	                a += '<div class="commentsContent'+value.mIdx+'"> <p> '+value.cRegdate+'</p>';
+	                a += '<div class="comments-pic"> <img src="/resource/img/profile/user_default.png"> </div><span class="nickname"> '+value.uNickname+'</span>';
+	                a += '<a style="float:right" onclick="deleteComments('+value.mIdx+',\''+value.mIdx+'\');"> 삭제 </a> '; 
+	                a += '<a style="float:right" onclick="updateComments('+value.mIdx+',\''+value.cContent+'\');"> 수정&nbsp;</a></div>';
+	                a += '<div class="commentsContent'+value.mIdx+'"> <p> <span class="regDate">'+value.cRegdate+'</span></p>';
 	                a += '<div class="commentsContent'+value.mIdx+'"> <p> '+value.cContent+'</p>';
 	                a += '</div></div></div></div>';
 	            });

@@ -179,7 +179,6 @@
     border-radius: 5px;
     border: 1px solid #e3e3e3;
 }
-
 	.inner-nav{
 	margin-bottom:10px;}
 	
@@ -479,7 +478,6 @@
 		 $(document)
          .ready(
                function() {
-
                   var toolbar = [
                         // 글꼴 설정
                         [ 'fontname', [ 'fontname' ] ],
@@ -504,7 +502,6 @@
                         [
                               'view',
                               [ 'codeview', 'fullscreen', 'help' ] ] ];
-
                   // 툴바생략
                   var setting = {
                      height : 300,
@@ -527,7 +524,6 @@
                   };
                   $('#summernote').summernote(setting);
                });
-
    function uploadSummernoteImageFile(file, el) {
       data = new FormData();
       data.append("file", file);
