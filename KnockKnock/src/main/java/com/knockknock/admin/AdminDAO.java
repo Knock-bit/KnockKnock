@@ -179,4 +179,13 @@ public class AdminDAO {
 	public int insertCampaign(AdminCampaignVO vo) {
 		return mybatis.insert("AdminDAO.insertCampaign",vo);
 	}
+	// 펀딩 모금 실패에 따른 포인트 반환
+	public int updateFundingUsersReturnPoint(AdminFundingVO vo) {
+		return mybatis.update("AdminDAO.updateFundingUsersReturnPoint", vo);
+	}
+	
+	/* 포인트 반환내역 추가 
+	 * public int insertFundingPointReturn(AdminFundingVO vo) { return
+	 * mybatis.insert("AdminDAO.insertFundingPointReturn", vo); }
+	 */
 }

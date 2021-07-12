@@ -107,4 +107,9 @@ public class CampaignServiceimpl implements CampaignService {
 		return campaignDAO.insertCampaignUser(cUser);
 	}
 
+	@Override
+	public List<CampaignVO> selectRecommendCampaign(CampaignVO campaign) {
+		return campaignDAO.selectRecommendCampaign(campaign);
+	}
+
 }
