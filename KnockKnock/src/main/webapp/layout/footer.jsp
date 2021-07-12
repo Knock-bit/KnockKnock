@@ -15,9 +15,9 @@
         <div class="row">
 
           <div class="col-lg-3 col-md-6 footer-contact">
-            <h3>Mentor</h3>
+            <h3>Knock!綠!</h3>
             <p>
-              A108 Adam Street <br>
+              서울시 강남구 태헤란로 <br>
               New York, NY 535022<br>
               United States <br><br>
               <strong>Phone:</strong> +1 5589 55488 55<br>
