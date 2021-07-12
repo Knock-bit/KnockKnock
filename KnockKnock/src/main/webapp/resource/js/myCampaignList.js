@@ -21,12 +21,12 @@ $(function(){
 	  
 	  //1 사진
   
-	  $(".con1").html("<img src='/resource/img/upload/"+$('.onlyImg').eq(idx).html()+"'>"); // 사진
+	  $(".con1").html("<img src="+$('.onlyImg').eq(idx).html()+">"); // 사진
 	 
 	  $(".c2").html($(".imTitle").eq(idx).html()); //  타이틀
 	  $(".c3").html($(".imContent").eq(idx).html()); //  내용
 	  $(".c4").html($(".imGoal").eq(idx).html()); //  목표
 	  $(".c5").html($(".imEndDate").eq(idx).html()); //  마감일
-	  $(".ce").html("<img src='/resource/img/upload/"+$('.imEmblem').eq(idx).html()+"'>"); //  엠블럼
+	  $(".ce").html("<img src="+$('.imEmblem').eq(idx).html()+">"); //  엠블럼
   		$(".cp").html($(".imTotPoint").eq(idx).html()+'P'); // 총 포인트
  }
