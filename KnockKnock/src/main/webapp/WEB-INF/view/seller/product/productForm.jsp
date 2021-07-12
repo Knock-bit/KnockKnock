@@ -19,13 +19,15 @@
 	rel="stylesheet">
 
 <script>
-	function postForm() {
+	function postForm() { 
+		
 		$('textarea[name="pDesc"]').val($('#summernote').summernote('code'));
 		alert($('textarea[name="pDesc"]').val(
 				$('#summernote').summernote('code')));
 		console.log($('textarea[name="pDesc"]').val(
 				$('#summernote').summernote('code')));
 	}
+	
 </script>
 
 <style>
@@ -44,7 +46,7 @@
                     <form role="form" method="post" onsubmit="postForm()" 
                     action="${cp }/productSummer.do" class="register-form" id="register-form" enctype="multipart/form-data">
                         <h2>상품 등록</h2>
-                        <p>KNOCK! 샵에 등록할 상품을 등록해주세요.</p>
+                        <p>KNOCK!綠! 샵에 등록할 상품을 등록해주세요.</p>
      				 
                         <div class="form-row1">
                        		 <div class="form-group">
@@ -81,8 +83,8 @@
                             </div>
                         
                         <div class="form-submit">
-                            <input type="button" value="취소" onclick="href.location='/seller/sellerDashboard.do?sIdx=${seller.sIdx}'"/>
-                            <input type="submit" value="제출" class="submit" name="submit" id="submit"/>
+                            <input type="reset" value="취소" class="submit" name="reset" id="reset" onclick="href.location='/seller/sellerDashboard.do?sIdx=${seller.sIdx}'"/>
+                            <input type="submit" value="제출" class="submit" name="submit" id="submit" />
                         </div>
                     </form>
                 </div>

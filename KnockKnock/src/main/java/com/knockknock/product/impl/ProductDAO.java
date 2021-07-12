@@ -36,6 +36,7 @@ public class ProductDAO {
 	}
 
 	public List<ProductVO> manageMyProducts(int sIdx) {
+		System.out.println("managa DAO = "+sIdx);
 		return mybatis.selectList("Product.manageMyproducts", sIdx);
 	}
 

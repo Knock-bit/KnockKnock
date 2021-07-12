@@ -51,18 +51,19 @@
 			<nav class="sidebar sidebar-offcanvas" id="sidebar">
 				<ul class="nav">
 					<li class="nav-item nav-category"></li>
-					<li class="nav-item"><a class="nav-link" href="/seller/sellerDashboard.do?sIdx=${seller.sIdx}">
-							<span class="menu-title">판매 Dashboard</span>
-					</a></li>
-					
 					<li class="nav-item"><a class="nav-link"
-						href="/seller/submitproduct.do"> <span class="menu-title">상품
-								등록하기</span>
+						href="/seller/sellerDashboard.do?sIdx=${seller.sIdx}"> <span
+							class="menu-title">판매 Dashboard</span>
 					</a></li>
-					
+
 					<li class="nav-item"><a class="nav-link"
-						href="/seller/manageMyProducts.do"> <span
-							class="menu-title">등록상품 조회</span>
+						href="${cp }/seller/manageMyProducts.do?sIdx=${seller.sIdx}"> <span
+							class="menu-title">상품 등록하기</span>
+					</a></li>
+
+					<li class="nav-item"><a class="nav-link"
+						href="/seller/manageMyProducts.do?sIdx=${seller.sIdx}"> <span class="menu-title">등록상품
+								조회</span>
 					</a></li>
 				</ul>
 			</nav>
@@ -80,9 +81,10 @@
 												<div class="wrapper">
 													<h3 class="mb-0 font-weight-semibold"
 														style="text-align: center;">
-														<fmt:parseDate value="${regdate}" var="oDate" pattern ="yyyy-MM-dd"/>
-                  <fmt:formatDate value="${oDate }" pattern="yyyy-MM-dd"/>
-														</h3>
+														<fmt:parseDate value="${regdate}" var="oDate"
+															pattern="yyyy-MM-dd" />
+														<fmt:formatDate value="${oDate }" pattern="yyyy-MM-dd" />
+													</h3>
 													<h5 class="mb-0 font-weight-medium text-primary">판매자
 														등록일</h5>
 												</div>
@@ -97,7 +99,7 @@
 															style="text-align: center;">${rank.r }</h3>
 													</c:forEach>
 													<h5 class="mb-0 font-weight-medium text-primary">판매순위</h5>
-													
+
 												</div>
 
 											</div>
@@ -106,8 +108,8 @@
 											<div class="d-flex">
 												<div class="wrapper">
 													<h3 class="mb-0 font-weight-semibold"
-														style="text-align: center;">15,236</h3>
-													<h5 class="mb-0 font-weight-medium text-primary">리뷰별점평균</h5>											
+														style="text-align: center;">3.0</h3>
+													<h5 class="mb-0 font-weight-medium text-primary">리뷰별점평균</h5>
 												</div>
 
 											</div>
@@ -118,10 +120,10 @@
 													<h3 class="mb-0 font-weight-semibold"
 														style="text-align: center;">
 														<fmt:formatNumber value="${revenue }" pattern="#,###" />
-														
-														</h3>
-													<h5 class="mb-0 font-weight-medium text-primary">누적판매금액</h5> 
-													
+
+													</h3>
+													<h5 class="mb-0 font-weight-medium text-primary">누적판매금액</h5>
+
 												</div>
 
 											</div>
@@ -225,8 +227,8 @@
 													<h4 class="font-weight-semibold">${number}</h4>
 													<div class="progress progress-md">
 														<div class="progress-bar bg-danger" role="progressbar"
-															style="width: 78%" aria-valuenow="78" aria-valuemin="0"
-															aria-valuemax="78"></div>
+															style="width: ${number}%" aria-valuenow="${number}"
+															aria-valuemin="0" aria-valuemax="${number}"></div>
 													</div>
 												</div>
 
@@ -238,8 +240,8 @@
 													<h4 class="font-weight-semibold">0</h4>
 													<div class="progress progress-md">
 														<div class="progress-bar bg-success" role="progressbar"
-															style="width: 45%" aria-valuenow="45" aria-valuemin="0"
-															aria-valuemax="45"></div>
+															style="width: 0%" aria-valuenow="0" aria-valuemin="0"
+															aria-valuemax="0"></div>
 													</div>
 												</div>
 
@@ -278,7 +280,8 @@
 										<div class="card-body">
 											<div class="d-flex justify-content-between">
 												<h4 class="card-title mb-0">최근 주문내역</h4>
-												<a href="/seller/orderstatus.do?sIdx=${seller.sIdx}"><small>더보기 / 주문상태 수정하기</small></a>
+												<a href="/seller/orderstatus.do?sIdx=${seller.sIdx}"><small>더보기
+														/ 주문상태 수정하기</small></a>
 											</div>
 											<div class="table-responsive">
 												<table class="table table-striped table-hover">
@@ -301,9 +304,9 @@
 																<td>${list.pName}</td>
 																<td>${list.oCnt }</td>
 																<td>${list.osName }</td>
-																<td>
-																<fmt:parseDate value="${list.oDate}" var="oDate" pattern ="yyyy-MM-dd HH:mm:ss.S"/>
-                  <fmt:formatDate value="${oDate }" pattern="yyyy-MM-dd"/></td>
+																<td><fmt:parseDate value="${list.oDate}"
+																		var="oDate" pattern="yyyy-MM-dd HH:mm:ss.S" /> <fmt:formatDate
+																		value="${oDate }" pattern="yyyy-MM-dd" /></td>
 																<td>${list.totalwithfee}</td>
 															</tr>
 														</c:forEach>
@@ -320,7 +323,7 @@
 							<div class="card">
 								<div class="card-body">
 									<h4 class="card-title mb-0" style="font-weight: bolder;">가장
-										많이 구매한 고객</h4>
+										많이 구매한 고객 TOP5</h4>
 
 									<c:forEach var="orderGuests" items="${orderGuests }"
 										varStatus="status">
@@ -371,7 +374,7 @@
 	<script src="${cp}/resource/dashboard/js/shared/misc.js"></script>
 	<!-- endinject -->
 	<script src="${cp}/resource/dashboard/js/demo_1/dashboardSeller.js"></script>
- 
+
 </body>
 
 </html>
