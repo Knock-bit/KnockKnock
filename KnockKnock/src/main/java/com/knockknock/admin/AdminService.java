@@ -23,6 +23,7 @@ public interface AdminService {
 	public List<AdminKeywordVO> getKeywordAll();  // 모든 키워드 불러오기
 	public int countCampaignCategory();  // 캠페인 카테고리 count 가져오기
 	public List<AdminCampaignCategoryVO> getCampaignCategoryList(PagingVO pvo);  // 페이징처리 캠페인 카테고리 조회
+	public int insertCampaign(AdminCampaignVO vo); // 펀딩에서 캠페인 추가
 	public int insertCampaignCategory(AdminCampaignCategoryVO vo);	// 캠페인 카테고리 추가 
 	public int checkCampaignCategory(AdminCampaignCategoryVO vo);	// 캠페인 카테고리 중복 체
 	public int deleteCampaingCategory(List<String> content);	// 캠페인 카테고리 제거

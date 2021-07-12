@@ -175,4 +175,8 @@ public class AdminDAO {
 	public int updateFundingStatusSuccess(AdminFundingVO vo) {
 		return mybatis.update("AdminDAO.updateFundingStatusSuccess",vo);
 	}
+
+	public int insertCampaign(AdminCampaignVO vo) {
+		return mybatis.insert("AdminDAO.insertCampaign",vo);
+	}
 }

@@ -22,9 +22,9 @@
 
 <script>
 	function postForm(frm) {
-		$('textarea[name="cfContent"]')
+		$('textarea[name="ciContent"]')
 				.val($('#summernote').summernote('code'));
-		frm.action = "insertFunding.do";
+		frm.action = "insertCampaign.do";
 		frm.setAttribute('method', 'post');
 		frm.submit();
 	}
@@ -40,37 +40,35 @@
 		<div class="content-wrapper" style="background: white;">
 			<!-- 상단, 좌측 네비바 추가1 -->
 			<form>
+				<!-- 펀딩 번호 넘기기 -->
+				<input type="text" id="cfIdx" value="${funding.cfIdx }" style="display:none"/>
 				<!-- 제안서 데이터 썸머노트에 보내기 위한 input -->
-				<input type="text" id="propContent" value="${proposal.cpContent }"
-					style="display: none">
-				<!-- 제안서 번호 넘기기 -->
-				<input type="text" name="cpIdx" value="${proposal.cpIdx }"
+				<input type="text" id="propContent" value="${funding.cfContent }"
 					style="display: none">
 				<!-- 제안서 작성자 넘기기 -->
-				<input type="text" name="uIdx" value="${proposal.uIdx }"
+				<input type="text" name="uIdx" value="${funding.uIdx }"
 					style="display: none">
 				<!-- 파일경로 넘기기 -->
-				<input type="text" name="cfFile" value="${proposal.cpFile }"
+				<input type="text" name="ciFile" value="${funding.cfFile }"
 					style="display: none">
 				<!-- 펀딩 상태 넘기기 -->
-				<input type="text" name="cfStatus" value="0" style="display: none">
-				<label> Title <input type="text" name="cfTitle"
-					value="${proposal.cpTitle }">
+				<input type="text" name="ciStatus" value="0" style="display: none">
+				<label> Title <input type="text" name="ciTitle"
+					value="${funding.cfTitle }">
 				</label><br>
 				<!-- 썸머노트 에디터에 작성한 내용 저장시킬 textarea display:none -->
-				<textarea name="cfContent" style="display: none;"></textarea>
-				<label> 캠페인 목표 <input type="text" name="cfGoal"
-					value="${proposal.cpGoal }">
+				<textarea name="ciContent" style="display: none;"></textarea>
+				<label> 캠페인 목표 <input type="text" name="ciGoal"
+					value="${funding.cfGoal }">
 				</label>
 				<div id="summernote"></div>
-				<label> 시작일 <input type="date" name="cfStartdate">
-				</label> <br> <label> 종료일 <input type="date" name="cfEnddate">
-				</label> <br> <label> 목표 포인트 <input type="text"
-					name="cfGoalpoint" value="${proposal.cpGoalpoint }">
-				</label> <br>
+				<label>인증 시 지급 포인트</label> <input type="text" name="ciEstimatedpoint"/>
+				<label> 시작일 <input type="date" name="ciStartdate">
+				</label> <br> <label> 종료일 <input type="date" name="ciEnddate">
+				</label> <br> 
 				<h5 style="display: inline">키워드 선택</h5>
 				<c:forEach var="i" begin="1" end="3">
-					<select name="cfKeyword${i }">
+					<select name="cKeyword${i }">
 						<c:forEach var="keyword" items="${keyword }">
 							<option>${keyword.kContent }</option>
 						</c:forEach>
