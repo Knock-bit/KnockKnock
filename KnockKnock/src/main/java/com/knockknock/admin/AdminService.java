@@ -38,4 +38,8 @@ public interface AdminService {
 	public int insertComment(AdminContactCommentVO vo);
 	public int updateCtResp(AdminContactVO vo);
 	public List<AdminContactCommentVO> getCommentList(AdminContactVO vo);
+	
+	// ========= 스케쥴러 사용한 캠페인 시작 =============
+	public void campaignStartEnd();
+	public void fundingStartEnd();
 }
