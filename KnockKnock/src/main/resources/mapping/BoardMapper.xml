@@ -78,9 +78,10 @@
 	</select>
 	
 	<select id="getMyBoardList" parameterType="campaignVO" resultType="boardVO">
-		SELECT * FROM BOARD
-		WHERE U_IDX = #{uIdx}
-		 AND CI_IDX = #{ciIdx}
+		SELECT B.*, U.U_NICKNAME 
+		  FROM BOARD B, USERS U
+		 WHERE U_IDX = #{uIdx}
+		   AND CI_IDX = #{ciIdx}
 	</select>
 	
 	

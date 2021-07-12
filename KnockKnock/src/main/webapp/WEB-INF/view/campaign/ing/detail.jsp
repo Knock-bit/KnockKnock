@@ -125,7 +125,7 @@
             margin-top: 100px;
             text-align: center;
           }
-          @media (min-width: 768px) {
+           @media (min-width: 768px) {
             .container {
               width: 750px;
             }
@@ -134,7 +134,7 @@
             .container {
               width: 1100px;
             }
-          }
+          } 
           .ci-emblem {
             float: left;
             margin-left: 0.3em;
@@ -468,11 +468,10 @@
 
 
 
-
+					</div>
                 </div>
             </div>
 
-            </div>
           </section><!-- End Cource Details Section -->
 
                   <%-- <div class="campaign-info d-flex justify-content-between align-items-center">

@@ -85,17 +85,6 @@
 	height: 100%;
 }
 
-@media ( min-width : 768px) {
-	.container {
-		width: 750px;
-	}
-}
-
-@media ( min-width : 1100px) {
-	.container {
-		width: 1100px;
-	}
-}
 
 .close {
 	display: none;
@@ -187,6 +176,19 @@
 
 	#commonDiv{
 	padding-right:20px;}
+	
+	        @media (min-width: 768px) {
+            .container {
+              width: 750px;
+               margin: auto;
+            }
+          }
+          @media (min-width: 1100px) {
+            .container {
+              width: 1100px;
+               margin: auto;
+            }
+          } 
    
 </style>
 <script>
@@ -330,7 +332,6 @@
 		<!-- ======= Cource Details Section ======= -->
 		<section id="campaign-details" class="campaign-details">
 			<div class="container" data-aos="fade-up">
-
 				<div class="row">
 					<div class="col-lg-8">
 						<img src="${ funding.cfFile}" class="img-fluid" alt="">
@@ -447,7 +448,7 @@
 				</div>
 			</div>
 		</div>
-
+	
 	</main>
 	<!-- End #main -->
 	<!-- ======= Footer ======= -->

@@ -7,11 +7,11 @@
 <html>
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
- 	<link href="${cp}/resource/css/signup.css" rel="stylesheet">
    	<link href="${contextPath}/resource/css/proposal.css" rel="stylesheet">
 <link href="${cp}/resource/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
-	<link href="${cp}/resource/css/signup.css" rel="stylesheet">
+	<link href="${cp}/resource/css/main.css" rel="stylesheet">
+ 	<link href="${cp}/resource/css/signup.css" rel="stylesheet">
 <script src="${cp}/resource/js/jquery/jquery-3.6.0.min.js"></script>
 <!-- 서머노트 추가 -->
 <script src="${cp }/resource/summernote/lang/summernote-ko-KR.js"></script>
@@ -35,6 +35,21 @@
 }
 </style>
 <body>
+<!-- ======= Header ======= -->
+     <c:choose>
+     <c:when test="${!empty seller}">
+   		<jsp:include page='/layout/navbar/navSeller.jsp' flush='false'/>   	
+  	</c:when>
+  	<c:when test="${users.uType eq 1 }">
+   		<jsp:include page='/layout/navbar/navLoggedin.jsp' flush='false'/>   	
+  	</c:when>
+  	<c:when test="${users.uType eq 0 }">
+   		<jsp:include page='/layout/navbar/navAdmin.jsp' flush='false'/>   	  	
+  	</c:when>
+  	<c:otherwise>
+	   <jsp:include page='/layout/navbar/nav.jsp' flush='false'/>
+  	</c:otherwise>
+  	</c:choose>
 	     <div class="main">
         <div class="container">
             <div class="proposal-content">
