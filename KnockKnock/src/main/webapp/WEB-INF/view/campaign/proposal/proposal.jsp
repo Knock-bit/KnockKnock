@@ -96,6 +96,7 @@
                                 <input type="text" name="cpKeyword3" id="cpKeyword3" />
                             </div>
                         </div>
+			<input type="hidden" value="${users.uIdx }" name="uIdx">
 			<input type="submit" value="전송">
 			<div name="text"></div>
 		</form>
