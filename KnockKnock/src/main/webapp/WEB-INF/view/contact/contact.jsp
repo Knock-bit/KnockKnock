@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
- 
-  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-  <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-    <c:set var="cp" value="${pageContext.request.contextPath }" />
- 
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<c:set var="cp" value="${pageContext.request.contextPath }" />
+
 <!doctype html>
 <html lang="ko">
 
@@ -12,58 +12,79 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-   <!-- Google Fonts -->
-      <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-        rel="stylesheet">
+<!-- Google Fonts -->
+<link
+	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+	rel="stylesheet">
 
-      <!-- Vendor CSS Files -->
-      <link href="${cp}/resource/vendor/animate.css/animate.min.css" rel="stylesheet">
-      <link href="${cp}/resource/vendor/aos/aos.css" rel="stylesheet">
-      <link href="${cp}/resource/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-      <link href="${cp}/resource/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-      <link href="${cp}/resource/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-      <link href="${cp}/resource/vendor/remixicon/remixicon.css" rel="stylesheet">
-      <link href="${cp}/resource/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+<!-- Vendor CSS Files -->
+<link href="${cp}/resource/vendor/animate.css/animate.min.css"
+	rel="stylesheet">
+<link href="${cp}/resource/vendor/aos/aos.css" rel="stylesheet">
+<link href="${cp}/resource/vendor/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
+<link href="${cp}/resource/vendor/bootstrap-icons/bootstrap-icons.css"
+	rel="stylesheet">
+<link href="${cp}/resource/vendor/boxicons/css/boxicons.min.css"
+	rel="stylesheet">
+<link href="${cp}/resource/vendor/remixicon/remixicon.css"
+	rel="stylesheet">
+<link href="${cp}/resource/vendor/swiper/swiper-bundle.min.css"
+	rel="stylesheet">
 
- 	<link rel="stylesheet" href="${cp}/resource/fonts/icomoon/style.css">
-	
-	<link rel="stylesheet" href="${cp}/resource/css/owl.carousel.min.css">
-	 
-	
-	<!-- Style -->
-	<link href="${cp}/resource/css/manual.css" rel="stylesheet">
+<link rel="stylesheet" href="${cp}/resource/fonts/icomoon/style.css">
 
-      <!-- Main CSS File -->
-      <link href="${cp}/resource/css/main.css" rel="stylesheet">
-      <link href="${cp}/resource/css/nav1.css" rel="stylesheet">
-      <link href="${cp}/resource/css/contact.css" rel="stylesheet">
- 
-      <!-- Import BootStrap -->
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
- 
+<link rel="stylesheet" href="${cp}/resource/css/owl.carousel.min.css">
+
+
+<!-- Style -->
+<link href="${cp}/resource/css/manual.css" rel="stylesheet">
+
+<!-- Main CSS File -->
+<link href="${cp}/resource/css/main.css" rel="stylesheet">
+<link href="${cp}/resource/css/nav1.css" rel="stylesheet">
+<link href="${cp}/resource/css/contact.css" rel="stylesheet">
+
+<!-- Import BootStrap -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <title>문의하기</title>
+<script>
+	$(function() {
+		var uIdx = "${users.uIdx}";
+		if (uIdx == "") {
+			$("#submitbtn").on("click", function() {
+				alert("문의사항 작성은 회원만 가능합니다.");
+				location.href = "/user/login.do";
+			 });
+		} else {
+			$("#submitbtn").attr("onclick", "location.href='sendContact.do'");
+		}
+	});
+</script>
+
 </head>
 
 <body>
-<!-- ======= Header ======= -->
-      <c:choose>
-  	<c:when test="${users.uType eq 1 }">
-   		<jsp:include page='/layout/navbar/navLoggedin.jsp' flush='false'/>   	
-  	</c:when>
-  	<c:when test="${users.uType eq 0 }">
-   		<jsp:include page='/layout/navbar/navAdmin.jsp' flush='false'/>   	  	
-  	</c:when>
-  	<c:when test="${!empty seller}">
-   		<jsp:include page='/layout/navbar/navSeller.jsp' flush='false'/>   	  	
-  	</c:when>
-  	<c:otherwise>
-	   <jsp:include page='/layout/navbar/nav.jsp' flush='false'/>
-  	</c:otherwise>
-  	
-  	</c:choose>
-  <!-- ======= Header 끝  === -->
+	<!-- ======= Header ======= -->
+	<c:choose>
+		<c:when test="${users.uType eq 1 }">
+			<jsp:include page='/layout/navbar/navLoggedin.jsp' flush='false' />
+		</c:when>
+		<c:when test="${users.uType eq 0 }">
+			<jsp:include page='/layout/navbar/navAdmin.jsp' flush='false' />
+		</c:when>
+		<c:when test="${!empty seller}">
+			<jsp:include page='/layout/navbar/navSeller.jsp' flush='false' />
+		</c:when>
+		<c:otherwise>
+			<jsp:include page='/layout/navbar/nav.jsp' flush='false' />
+		</c:otherwise>
+
+	</c:choose>
+	<!-- ======= Header 끝  === -->
 	<div class="content">
 
 		<div class="container">
@@ -75,12 +96,12 @@
 								내 문의사항 <br>전송하기
 							</h2>
 							<form class="border-right pr-5 mb-5" method="post"
-								id="contactForm" name="contactForm" action="sendContact.do">
+								id="contactForm" name="contactForm"">
 								<div class="row">
 									<div class="col-md-6 form-group">
 										<input type="text" class="form-control" name="ctTitle"
 											id="title" placeholder="제목" maxlength="20">
-											<p style="display:none;" >${userVO.uIdx } </p>
+										<p style="display: none;">${userVO.uIdx }</p>
 									</div>
 									<div class="col-md-6 form-group">
 										<select name="ctcIdx" id="category">
@@ -100,9 +121,9 @@
 								</div>
 								<div class="row">
 									<div class="col-md-12">
-										<input type="submit" value="전송"
-											class="btn btn-success rounded-0 py-2 px-4"> <span
-											class="submitting"></span>
+										<input type="button" value="전송"
+											class="btn btn-success rounded-0 py-2 px-4" id="submitbtn"
+											onclick="submit()"> <span class="submitting"></span>
 									</div>
 								</div>
 							</form>
@@ -120,15 +141,15 @@
 	</div>
 </body>
 
-        <!-- Template Main JS File -->
-   <script src="${cp }/resource/js/jquery.min.js"></script>
-   <script src="${cp }/resource/js/popper.js"></script>
-   <script src="${cp }/resource/js/bootstrap.min.js"></script>
-   <script src="${cp }/resource/js/owl.carousel.min.js"></script>
-   <script src="${cp }/resource/js/main.js"></script>
+<!-- Template Main JS File -->
+<script src="${cp }/resource/js/jquery.min.js"></script>
+<script src="${cp }/resource/js/popper.js"></script>
+<script src="${cp }/resource/js/bootstrap.min.js"></script>
+<script src="${cp }/resource/js/owl.carousel.min.js"></script>
+<script src="${cp }/resource/js/main.js"></script>
 
-   <!-- ======= Footer ======= -->
-   <%@ include file= "/layout/footer.jsp" %>
- 
- <!-- End Footer -->
+<!-- ======= Footer ======= -->
+<%@ include file="/layout/footer.jsp"%>
+
+<!-- End Footer -->
 </html>

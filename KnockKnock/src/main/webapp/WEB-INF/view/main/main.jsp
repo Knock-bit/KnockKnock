@@ -60,7 +60,7 @@
     <div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
       <h1>Knock!綠!<br>Knock Environment, Knock your life.</h1>
       <h2>To make our planet greener.</h2>
-      <a href="courses.html" class="btn-get-started">Get Started</a>
+      <a href="${cp }/layout/about/whatisknock.jsp" class="btn-get-started">Knock!綠! 시작하기</a>
     </div>
   </section><!-- End Hero -->
 
@@ -72,20 +72,21 @@
 
         <div class="row">
           <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
-            <img src="${cp}/resource/img/about.jpg" class="img-fluid" alt="">
+            <img src="${cp}/resource/img/about/planet.jpg" class="img-fluid"
+            style="width:70%">
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
-            <h3>What is knock? ${user } </h3>
-            <p class="fst-italic">
-              회사소개란입니다.회사소개란입니다. 
+            <h1>Knock!綠!</h1>
+            <p class="fst-italic" style="font-size:20px;">
+               더 푸르고 깨끗한 지구를 위해 환경에 노크하다.
             </p>
             <ul>
-              <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-              <li><i class="bi bi-check-circle"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-              <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+              <li><i class="bi bi-check-circle"></i>아름답고 푸른 지구를 위한 캠페인 진행</li>
+              <li><i class="bi bi-check-circle"></i>지속가능한 소비를 위한 친환경 제품 쇼핑</li>
             </ul>
             <p>
-              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+				환경오염으로 아파하는 지구가 다시 푸른 지구가 될 수 있도록 함께 노력해가요.<br>
+				환경을 위한 올바른 인식과 생활습관을 가질 수 있도록 Knock!綠! 함께 하겠습니다.
             </p>
 
           </div>
