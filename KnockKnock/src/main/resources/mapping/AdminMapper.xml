@@ -160,5 +160,7 @@
 	<select id="getCommentList" parameterType="adminContactVO" resultType="adminContactCommentVO">
 		SELECT CM.CM_IDX, CM.CM_CONTENT, CM.CT_IDX, CM.U_IDX, CM.CM_WRITEDATE FROM CONTACT_COMMENT CM INNER JOIN CONTACT CT ON CM.CT_IDX = CT.CT_IDX WHERE CT.CT_IDX = #{ctIdx}
 	</select>
+	
+	<!-- ================ 대시보드 ================ -->
 </mapper
 >

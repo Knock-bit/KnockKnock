@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -20,6 +21,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.knockknock.orders.OrdersVO;
+import com.knockknock.seller.SellerVO;
 import com.knockknock.util.PagingVO;
 
 @Controller
@@ -97,8 +100,7 @@ public class AdminController {
 
 		return conditionMap;
 	}
-	
-	
+
 	// 문의사항 검색
 	@ModelAttribute("conditionMapContact")
 	public Map<String, String> SearchConditionMapContact() {
@@ -108,7 +110,6 @@ public class AdminController {
 
 		return conditionMap;
 	}
-
 
 	@GetMapping("/adminMain.do")
 	public String moveAdminMain() {
@@ -235,7 +236,7 @@ public class AdminController {
 		model.addAttribute("viewAll", adminService.getContactList(pvo));
 		return "/admin/contact/adminContactList";
 	}
-	
+
 	// 문의사항 상세보기
 	@GetMapping("/getContactDetail.do")
 	public String getContactDetail(AdminContactVO vo, Model model) {
@@ -248,10 +249,11 @@ public class AdminController {
 	}
 
 	@PostMapping("/insertContactComment.do")
-	public String insertContactComment(@ModelAttribute("contact") AdminContactVO vo, AdminContactCommentVO cmvo, HttpServletRequest request) throws Exception {
+	public String insertContactComment(@ModelAttribute("contact") AdminContactVO vo, AdminContactCommentVO cmvo,
+			HttpServletRequest request) throws Exception {
 		System.out.println(vo);
 		System.out.println(cmvo);
-		adminService.sendEmail(vo,cmvo.getCmContent());
+		adminService.sendEmail(vo, cmvo.getCmContent());
 		cmvo.setCtIdx(vo.getCtIdx());
 		cmvo.setuIdx(vo.getuIdx());
 		adminService.insertComment(cmvo);
@@ -259,5 +261,4 @@ public class AdminController {
 		adminService.updateCtResp(vo);
 		return "redirect:" + referer;
 	}
-	
 }
