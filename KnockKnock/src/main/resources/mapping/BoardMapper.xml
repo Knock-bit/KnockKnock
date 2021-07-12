@@ -84,5 +84,11 @@
 		   AND CI_IDX = #{ciIdx}
 	</select>
 	
+	<update id="updateEstimatedPoint" parameterType="int">
+		UPDATE CAMPAIGN
+		   SET CI_ESTIMATEDPOINT = CI_ESTIMATEDPOINT + 10
+		 WHERE CI_IDX = #{ciIdx} 
+	</update>
+	
 	
 </mapper>

@@ -50,13 +50,14 @@
 	   <jsp:include page='/layout/navbar/nav.jsp' flush='false'/>
   	</c:otherwise>
   	</c:choose>
+	     <div class="container">
 	     <div class="main">
-        <div class="container">
+        <div class="proposal-container" style="width:700px; margin:auto;">
             <div class="proposal-content">
 
                 <div class="proposal-form">
 		<form role="form" method="post" onsubmit="postForm()"
-			action="${cp }/proposalSummer.do">
+			action="${cp }/proposalSummer.do" enctype="multipart/form-data">
 			  <h2>캠페인 제안하기</h2>
                         <p>KNOCK!KNOCK!의 캠페인 아이디어는 모두에게 열려 있습니다.<br>다음 회차에 진행될 캠페인 아이디어를 제안해주세요.
             		   제안된 아이디어는 검토 후에 회원들의 펀딩 참여여부에 따라 다음회차 캠페인으로 선정됩니다.</p>
@@ -66,7 +67,7 @@
                                 <input type="text" name="cpTitle" id="name" required/>
                             </div>
                             <div class="form-group">
-                                <label for="cpGoal">캠페인 목표</label>
+                                <label for="cpGoal">캠페인 실천법</label>
                                 <input type="text" name="cpGoal" id="id" required/>
                             </div>
                              <div class="form-group" >
@@ -75,10 +76,16 @@
 								<div id="summernote"></div>
                             </div>
                         </div>
+                         <div class="form-row1">
+                           <div class="form-group">
+                                <label for="file">대표이미지</label>
+                                <input type="file" name="file">
+                            </div>
+                        </div>
                         <div class="form-row1">
                            <div class="form-group">
-                                <label for="cpTitle">목표포인트</label>
-                                <input type="number" name="cpGoalPoint" id="cpGoalPoint" min="2500" required/>
+                                <label for="cpGoalpoint">목표포인트</label>
+                                <input type="number" name="cpGoalpoint" id="cpGoalpoint" min="2500" required/>
                             </div>
                         </div>
 
@@ -103,7 +110,7 @@
 	</div>
 	</div>
 	</div>
-	</div>
+	</div></div>
 	
 	<script>
 		$(document)

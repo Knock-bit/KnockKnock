@@ -35,7 +35,7 @@ public class ProposalController {
 	}
 	
 	@PostMapping("/campaign/proposal/submit.do")
-	public String proposalSubmit (ProposalVO proposal, MultipartFile file) throws IllegalStateException, IOException {
+	public String proposalSubmit (ProposalVO proposal, @RequestParam("file") MultipartFile file) throws IllegalStateException, IOException {
 		System.out.println("Proposal Contoreller > submit.do 실행");
 		
 		if (file.isEmpty()) {
@@ -66,7 +66,7 @@ public class ProposalController {
 				count ++;
 			}
 			file.transferTo(new File(uploadPath + filePath));
-			proposal.setCpFile(filePath + fileName);
+			proposal.setCpFile(filePath);
 		}
 		
 		int result = proposalService.insertProposal(proposal);
@@ -76,8 +76,38 @@ public class ProposalController {
 	
 	
 	@PostMapping("/proposalSummer.do")
-	public String ttest(ProposalVO proposal) {
-		System.out.println(proposal);
+	public String ttest(ProposalVO proposal, MultipartFile file) throws IllegalStateException, IOException {
+		if (file.isEmpty()) {
+			
+		} else {
+			// 저장경로 지정
+			String fileName = file.getOriginalFilename();
+			String onlyFileName = fileName.substring(0, fileName.indexOf("."));
+			String extension = fileName.substring(fileName.indexOf("."));
+			String filePath = null;
+			int count = 0;
+			
+	 		// 중복 파일명 확인
+			while(true) {
+				if(count == 0) {
+					filePath = onlyFileName + extension;
+				} else { 
+					filePath = onlyFileName + "(" + count + ")" + extension;
+				}
+				System.out.println("파일 생성 ! ");
+				File checkFile = new File(uploadPath + filePath);
+				System.out.println("파일명 :" + filePath);
+				if(!checkFile.exists()) {
+					System.out.println("if문 안");
+					break;
+				}
+				System.out.println("if문 지나오나?");
+				count ++;
+			}
+			file.transferTo(new File(uploadPath + filePath));
+			proposal.setCpFile(filePath);
+		}
+		
 		int result = proposalService.insertProposal(proposal);
 		return "campaign/proposal/pResult";
 	}
