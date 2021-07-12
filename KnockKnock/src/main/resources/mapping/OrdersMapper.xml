@@ -4,8 +4,25 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- 참고파일 나중에 삭제 -->
 <mapper namespace="Orders">
- 	 <!-- 판매자별 주문리스트 뽑기 -->
+ 	 <!-- 판매자별 주문리스트 뽑기 (10개) -->
 	<select id="selectOrderList" parameterType="int" resultType="ordersVO">
+		SELECT B.* FROM
+		(SELECT ROWNUM RN, A.*FROM
+		(SELECT O_NUMBER, U_NAME, P.P_NAME, O.O_CNT, OS.OS_NAME,
+		(O.O_TOTPRICE+O.O_FEE)AS TOTALWITHFEE, O.O_DATE FROM ORDERS O, USERS U, PRODUCT P, ORDERSTATUS OS
+		WHERE O.S_IDX=#{sIdx} AND U.U_IDX = O.U_IDX AND O.OS_IDX=OS.OS_IDX
+		AND P.P_IDX = O.P_IDX
+		ORDER BY O.O_DATE DESC) A
+		) B 
+		WHERE  RN BETWEEN 1 AND 10 		
+		<!--  SELECT O_NUMBER, U_NAME, P.P_NAME, O.O_CNT, OS.OS_NAME,
+		(O.O_TOTPRICE+O.O_FEE)AS TOTALWITHFEE, O.O_DATE
+		FROM ORDERS O, USERS U, PRODUCT P, ORDERSTATUS OS
+		WHERE O.S_IDX=#{sIdx} AND U.U_IDX = O.U_IDX AND O.OS_IDX=OS.OS_IDX
+		AND P.P_IDX=O.P_IDX 
+		ORDER BY O_DATE DESC-->
+	</select>
+	<select id="selectOrderAll" parameterType="int" resultType="ordersVO">
 		SELECT O_NUMBER, U_NAME, P.P_NAME, O.O_CNT, OS.OS_NAME,
 		(O.O_TOTPRICE+O.O_FEE)AS TOTALWITHFEE, O.O_DATE
 		FROM ORDERS O, USERS U, PRODUCT P, ORDERSTATUS OS
@@ -83,7 +100,6 @@
 	<select id="getList" parameterType="int" resultType="ordersVO">
 		SELECT OS_IDX FROM ORDESR WHERE O_NUMBER=#{oNumber}
 	</select>	
-	
 	
 	
 	<!-- 주문(order테이블) 업데이트(결제완료 후) -->
@@ -203,8 +219,7 @@
 	<delete id="deleteOrders" parameterType="ordersVO">
 		DELETE FROM ORDERS 
 		WHERE U_IDX = #{uIdx} 
-		AND O_TEMPNUM = #{oTempnum}
-	
+		AND O_TEMPNUM = #{oTempnum}	
 	</delete>
 	
 </mapper>
