@@ -79,4 +79,8 @@ public class BoardDAO {
 		return mybatis.selectOne("BoardDAO.countMyCampaignBoard", campaignUser);
 	}
 
+	public int updateEstimatedPoint(int ciIdx) {
+		return mybatis.update("BoardDAO.updateEstimatedPoint", ciIdx);
+	}
+
 }

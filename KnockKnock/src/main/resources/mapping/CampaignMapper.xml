@@ -216,8 +216,7 @@
 	</select>
 	
 	
-	<select id="
-User" parameterType = "int" resultType ="FundingUserVO">
+	<select id="selectFundingUser" parameterType = "int" resultType ="FundingUserVO">
 		SELECT * FROM FUNDING_USER
 		WHERE CF_IDX = #{cfIdx}	
 		AND U_IDX = #{uIdx}

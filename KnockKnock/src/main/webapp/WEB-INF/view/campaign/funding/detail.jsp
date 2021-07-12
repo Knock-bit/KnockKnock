@@ -216,7 +216,8 @@
                   $("#funding-btn2").attr('data-target', '#fundingModal');
                   $("#modal-content2").html("<div class='modal-funding'>취소되었습니다.</div>");
                   $("#funding-progress").attr('value', '${funding.cfCollected-250}')
- 	              $("#progress-div").load(window.location.href + " #progress-div");
+                  $(".collected").html('${funding.cfCollected-250}');
+                  $("#campaign-point").load(window.location.href + " #campaign-point");
                   }
                 }, error: function () {
                   alert("실패");
@@ -254,7 +255,9 @@
               $("#funding-btn2").attr('data-target', '#fundingModal2');
               $("#modal-content").html("<div class='modal-funding'>참여해주셔서 감사합니다.</div>");
               $("#funding-progress").attr('value', '${funding.cfCollected+250}')
-              $("#progress-div").load(window.location.href + " #progress-div");
+              $(".collected").html('${funding.cfCollected+250}');
+              /* $("#progress-div").load(window.location.href + " #progress-div"); */
+              $("#campaign-point").load(window.location.href + " #campaign-point");
               }
             }, error: function () {
               alert("실패");
@@ -359,8 +362,8 @@
 									<b>${end - now + 1}일</b> 남았어요
 								</h2>
 							</div>
-							<div class="campaign-point"><center>
-								현재까지 ${funding.cfCollected } 포인트 모였어요<br></center>
+							<div class="campaign-point" id=""><center>
+								현재까지 <span class="collected">${funding.cfCollected }</span> 포인트 모였어요<br></center>
 								<p class="funding-pg">
 									<progress id="funding-progress" value="${funding.cfCollected }"
 										max="${funding.cfGoalpoint }"></progress>

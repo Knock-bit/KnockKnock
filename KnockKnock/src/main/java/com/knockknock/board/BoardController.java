@@ -302,7 +302,9 @@ public class BoardController {
 				campaignService.updateParticipatePoint(campaignUser);
 			}
 		}
-
+		
+		//공통 - estimatedPoint += 10
+		boardService.updateEstimatedPoint(ciIdx);
 		boardService.insertBoard(vo);
 		CampaignVO campaign = campaignService.selectOneCampaign(ciIdx);
 		model.addAttribute("ciIdx", ciIdx);
