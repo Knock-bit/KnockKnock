@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.knockknock.admin.funding.AdminCampaignCategoryVO;
+import com.knockknock.admin.funding.AdminFundingVO;
 import com.knockknock.util.PagingVO;
 
 @Repository
@@ -141,5 +142,37 @@ public class AdminDAO {
 
 	public List<AdminContactCommentVO> getCommentList(AdminContactVO vo) {
 		return mybatis.selectList("getCommentList",vo);
+	}
+	
+	// 페이징 처리 하지않고 캠페인 리스트 가져오기
+	public List<AdminCampaignVO> getCampaignList(){
+		return mybatis.selectList("AdminDAO.getCampaignList");
+	}
+	
+	// 캠페인 시작상태로 변경하기
+	public int updateCampaignStatus(AdminCampaignVO vo) {
+		return mybatis.update("AdminDAO.updateCampaignStatus", vo);
+	}
+	
+	// 캠페인 종료상태로 변경하기 
+	public int updateCampaignStatusEnd(AdminCampaignVO vo) {
+		return mybatis.update("AdminDAO.updateCampaignStatusEnd",vo);
+	}
+	
+	// 페이징 처리 하지 않고 펀딩 리스트 가져오기
+	public List<AdminFundingVO> getFundingList(){
+		return mybatis.selectList("AdminDAO.getFundingList");
+	}
+	// 펀딩 시작상태로 변경하기
+	public int updateFundingStatusStart(AdminFundingVO vo) {
+		return mybatis.update("AdminDAO.updateFundingStatusStart", vo);
+	}
+	// 펀딩 종료상태로 변경하기 
+	public int updateFundingStatusEnd(AdminFundingVO vo) {
+		return mybatis.update("AdminDAO.updateFundingStatusEnd",vo);
+	}
+	// 펀딩 완료상태로 변경하기
+	public int updateFundingStatusSuccess(AdminFundingVO vo) {
+		return mybatis.update("AdminDAO.updateFundingStatusSuccess",vo);
 	}
 }
