@@ -59,6 +59,18 @@ public class OrdersController {
 		
 		return "/seller/sellerDashboard";		
 	}
+	
+	@GetMapping("/seller/orderstatus.do")
+	public String changeOrderStatus(HttpSession session, SellerVO seller, Model model, int sIdx) {
+		session.getAttribute("seller");
+		
+		List<OrdersVO> list = ordersService.showOrderAll(sIdx);
+		
+		model.addAttribute("list", list);
+		
+		return "/seller/sellerorderstatus";
+	}
+
 
 
 	

@@ -36,6 +36,24 @@
 	rel="stylesheet">
 <link href="${cp}/resource/vendor/swiper/swiper-bundle.min.css"
 	rel="stylesheet">
+	<script
+  src="https://code.jquery.com/jquery-3.6.0.js"
+  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous"></script>
+<script>
+function orderstatus(){
+	
+	var idx = $(this).index();
+	console.log("idx = "+idx);
+		
+	
+	
+	var value =	$(".form-select option:selected").val();
+	console.log(value);
+	var oNumber = $(".oNumber").text();
+	console.log(oNumber);
+}
+</script>
 </head>
 
 <body style="height: 100%">
@@ -93,7 +111,7 @@
 											<tbody>
 												<c:forEach var="list" items="${list }">
 													<tr>
-														<td>${list.oNumber }</td>
+														<td class="oNumber">${list.oNumber }</td>
 														<td>${list.uName }</td>
 														<td>${list.pName}</td>
 														<td>${list.oCnt }</td>
@@ -102,8 +120,9 @@
 																value="${list.oDate}" /></td>
 														<td>${list.totalwithfee}</td>														
 														<td>
+														
 														<select class="form-select"
-															aria-label="Default select example">													
+															aria-label="Default select example" onchange="orderstatus()">													
 														<option selected>주문상태</option>
 														<option value="0">결제완료</option>
 														<option value="1">배송준비</option>

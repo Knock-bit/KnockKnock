@@ -79,9 +79,9 @@
 											<div class="d-flex">
 												<div class="wrapper">
 													<h3 class="mb-0 font-weight-semibold"
-														style="text-align: center;">${regdate }
-														
-														<fmt:parseDate value="${regdate }" pattern="yyyy-MM-dd" />
+														style="text-align: center;">
+														<fmt:parseDate value="${regdate}" var="oDate" pattern ="yyyy-MM-dd"/>
+                  <fmt:formatDate value="${oDate }" pattern="yyyy-MM-dd"/>
 														</h3>
 													<h5 class="mb-0 font-weight-medium text-primary">판매자
 														등록일</h5>
@@ -278,7 +278,7 @@
 										<div class="card-body">
 											<div class="d-flex justify-content-between">
 												<h4 class="card-title mb-0">최근 주문내역</h4>
-												<a href="/seller/orderstatus.do?sIdx=${seller.sIdx}"><small>주문상태 수정하기</small></a>
+												<a href="/seller/orderstatus.do?sIdx=${seller.sIdx}"><small>더보기 / 주문상태 수정하기</small></a>
 											</div>
 											<div class="table-responsive">
 												<table class="table table-striped table-hover">
@@ -301,8 +301,9 @@
 																<td>${list.pName}</td>
 																<td>${list.oCnt }</td>
 																<td>${list.osName }</td>
-																<td><fmt:parseDate pattern="yyyy-MM-dd"
-																		value="${list.oDate}" /></td>
+																<td>
+																<fmt:parseDate value="${list.oDate}" var="oDate" pattern ="yyyy-MM-dd HH:mm:ss.S"/>
+                  <fmt:formatDate value="${oDate }" pattern="yyyy-MM-dd"/></td>
 																<td>${list.totalwithfee}</td>
 															</tr>
 														</c:forEach>
@@ -332,15 +333,11 @@
 											<div class="wrapper ml-2">
 												<p class="mb-n1 font-weight-semibold">${orderGuests.uName }</p>
 												<small>누적 구매금액: </small>${orderGuests.ordertimes }
-
 											</div>
 											<small class="text-muted ml-auto">총 구매 횟수</small>&nbsp;${orderGuests.countnum }
 
 										</div>
 									</c:forEach>
-
-
-
 								</div>
 							</div>
 
@@ -374,9 +371,7 @@
 	<script src="${cp}/resource/dashboard/js/shared/misc.js"></script>
 	<!-- endinject -->
 	<script src="${cp}/resource/dashboard/js/demo_1/dashboardSeller.js"></script>
-
-
-
+ 
 </body>
 
 </html>

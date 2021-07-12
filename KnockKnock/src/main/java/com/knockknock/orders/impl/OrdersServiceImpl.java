@@ -69,5 +69,10 @@ public class OrdersServiceImpl implements OrdersService{
 		return ordersDAO.totalRevenue(sIdx);
 	}
 
+	@Override
+	public List<OrdersVO> showOrderAll(int sIdx) {
+		return ordersDAO.selectOrderAll(sIdx);
+	}
+
 
 }

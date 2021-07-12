@@ -58,5 +58,8 @@ public class OrdersDAO {
 		return mybatis.selectOne("Orders.totalRevenue", sIdx);
 	}
 	
+	public List<OrdersVO> selectOrderAll(int sIdx) {
+		return mybatis.selectList("Orders.selectOrderAll", sIdx);
+	}
 	
 }
