@@ -106,38 +106,24 @@ public class ProductController {
 	}
 	
 	@PostMapping("/productSummer.do")
-	public String insertProposal(ProductVO product, MultipartFile file) throws IllegalStateException, IOException {
+	public String insertProposal(ProductVO product) throws IllegalStateException, IOException {
 		System.out.println(product);
-if (file.isEmpty()) {
-			
-		} else {
-			// 저장경로 지정
-			String fileName = file.getOriginalFilename();
-			String onlyFileName = fileName.substring(0, fileName.indexOf("."));
-			String extension = fileName.substring(fileName.indexOf("."));
-			String filePath = null;
-			int count = 0;
-			
-	 		// 중복 파일명 확인
-			while(true) {
-				if(count == 0) {
-					filePath = onlyFileName + extension;
-				} else { 
-					filePath = onlyFileName + "(" + count + ")" + extension;
-				}
-				System.out.println("파일 생성 ! ");
-				File checkFile = new File(uploadPath + filePath);
-				System.out.println("파일명 :" + filePath);
-				if(!checkFile.exists()) {
-					System.out.println("if문 안");
-					break;
-				}
-				System.out.println("if문 지나오나?");
-				count ++;
-			}
-			file.transferTo(new File(uploadPath + filePath));
-			product.setpImg(filePath + fileName);
-		}
+		/*
+		 * if (file.isEmpty()) {
+		 * 
+		 * } else { // 저장경로 지정 String fileName = file.getOriginalFilename(); String
+		 * onlyFileName = fileName.substring(0, fileName.indexOf(".")); String extension
+		 * = fileName.substring(fileName.indexOf(".")); String filePath = null; int
+		 * count = 0;
+		 * 
+		 * // 중복 파일명 확인 while(true) { if(count == 0) { filePath = onlyFileName +
+		 * extension; } else { filePath = onlyFileName + "(" + count + ")" + extension;
+		 * } System.out.println("파일 생성 ! "); File checkFile = new File(uploadPath +
+		 * filePath); System.out.println("파일명 :" + filePath); if(!checkFile.exists()) {
+		 * System.out.println("if문 안"); break; } System.out.println("if문 지나오나?"); count
+		 * ++; } file.transferTo(new File(uploadPath + filePath));
+		 * product.setpImg(filePath + fileName); }
+		 */
 		System.out.println(product.getpImg());
 		int result = productService.insertProduct(product);
 		System.out.println(result + "건 등록. ");

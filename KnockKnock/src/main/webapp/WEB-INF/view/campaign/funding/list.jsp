@@ -8,7 +8,7 @@
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Mentor Bootstrap Template - Index</title>
+  <title>Funding</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -30,6 +30,7 @@
 
   <!-- Import BootStrap -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  
   <!-- Main CSS File -->
   <link href="${cp}/resource/css/main.css" rel="stylesheet">
   <link href="${cp}/resource/css/nav1.css" rel="stylesheet">
@@ -37,26 +38,29 @@
   
   <style>
   .carousel {
-  martin-top: 70px;}
+  margin-top: 72px;}
   .carousel-item active {
   display:flex;
   vertical-align: middle;
 }
-/* 
-  	@media (min-width: 768px) {
-  .container {
-    width: 750px;
-		  }
-		}
+ 
+ #commonDiv{
+ padding-top: 3.5em;
+ padding-bottom: 3.5em;;
+}
+        @media (min-width: 768px) {
+            .cam-container {
+              width: 750px;
+               margin: auto;
+            }
+          }
+          @media (min-width: 1100px) {
+            .cam-container {
+              width: 1100px;
+               margin: auto;
+            }
+          } 
 
-	@media (min-width: 1100px) {
-  .container {
-    width: 1080px;
-		  }
-		} */
-	.inner-nav{
-	margin-top:20px;
-	margin-bottom:20px;}
 	
 	.scale {
 	transform: scale(1);
@@ -79,7 +83,37 @@
 	}
 	.carousel{
 	margin-top:72px;}
+	
+
   </style>
+  <script>
+  function getInputValue(){
+		
+		var input = $("#inputValue").val();
+		$("#commonDiv").load("${cp}/campaign/search.do?input=" + input)
+		
+	}
+		
+	$(function(){
+		$("#getIng").click(function(){
+			$("#commonDiv").load("${cp}/campaign/getIngList.do");
+		});
+	
+		$("#getEnd").click(function(){
+			$("#commonDiv").load("${cp}/campaign/getEndList.do");
+		});
+		
+		$("#latest").click(function(){
+			$("#commonDiv").load("${cp}/campaign/getList.do?order=latest");
+		})
+		
+		$("#userCount").click(function(){
+			$("#commonDiv").load("${cp}/campaign/getList.do?order=userCount");
+		})
+		
+	});
+  
+  </script>
 </head>
 <body>
 
@@ -111,22 +145,20 @@
     <!-- ======= Breadcrumbs ======= -->
     
     <div class="container">
+    <div class="cam-container">
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img class="d-block w-100" src="/resource/img/campaign/tempMain.png" alt="First slide">
+      <img class="d-block w-100" src="/resource/img/campaign/fundingBanner1.png" alt="First slide">
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="/resource/img/campaign/recycle.png" alt="Second slide">
+      <img class="d-block w-100" src="/resource/img/campaign/fundingBanner2.png" alt="Second slide">
     </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="/resource/img/campaign/running.png" alt="Third slide">
-    </div>
+   
   </div>
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -136,30 +168,20 @@
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
+  </div>
 </div></div>
     
     
     
-    
-    <!-- 
-    <div class="container">
-    <div class="campaigncrumbs">
-      <div class="container">
-      <br>
-      <br>
-      <br>
-         <h2>funding campaign</h2>
-        <p>펀딩중인 캠페인 리스트</p>
-      </div></div>
-    </div>End Breadcrumbs -->
 
     <!-- ======= Campaign Section ======= -->
     <section id="campaigns" class="campaigns">
       <div class="container" data-aos="fade-up">
+      <div class="cam-container">
       <div class="inner-nav">
        <%@ include file= "/layout/navbar/campaign/navCampaign.jsp" %> 
 </div>
-        <div class="row" data-aos="zoom-in" data-aos-delay="100">
+        <div class="row" id="commonDiv" data-aos="zoom-in" data-aos-delay="100">
 		<c:if test="${!empty fundingList  }">
         <c:forEach var="funding" items="${fundingList }">
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch" >
@@ -192,8 +214,8 @@
 
 
         </div>
-
-      </div>
+</div></div>
+     
     </section><!-- End Courses Section -->
 
   </main><!-- End #main -->
@@ -214,8 +236,7 @@
 
   <!-- Template Main JS File -->
   <script src="${cp}/resource/js/main.js"></script>
-  
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 

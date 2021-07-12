@@ -8,7 +8,7 @@
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Mentor Bootstrap Template - Index</title>
+  <title>campaign</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -29,16 +29,15 @@
   <link href="${cp}/resource/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Import BootStrap -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+ 
   <!-- Main CSS File -->
   <link href="${cp}/resource/css/main.css" rel="stylesheet">
-   <link href="${cp}/resource/css/nav1.css" rel="stylesheet">
-   <link href="${cp}/resource/css/campaign/campaign.css" rel="stylesheet">
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<script>
-
-	function getInputValue(){
+  <link href="${cp}/resource/css/nav1.css" rel="stylesheet">
+  <link href="${cp}/resource/css/campaign/campaign.css" rel="stylesheet">
+   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script>
+  function getInputValue(){
 		
 		var input = $("#inputValue").val();
 		$("#commonDiv").load("${cp}/campaign/search.do?input=" + input)
@@ -63,16 +62,36 @@
 		})
 		
 	});
-	
-
-
-</script>
-<style>
-
-#commonDiv{
- padding-top: 60px;
+  
+  </script>
+  
+  <style>
+  .carousel {
+  margin-top: 72px;}
+  .carousel-item active {
+  display:flex;
+  vertical-align: middle;
 }
-.scale {
+ 
+ #commonDiv{
+ padding-top: 3.5em;
+ padding-bottom: 3.5em;;
+}
+        @media (min-width: 768px) {
+            .cam-container {
+              width: 750px;
+               margin: auto;
+            }
+          }
+          @media (min-width: 1100px) {
+            .cam-container {
+              width: 1100px;
+               margin: auto;
+            }
+          } 
+
+	
+	.scale {
 	transform: scale(1);
 	-webkit-transform: scale(1);
 	-moz-transform: scale(1);
@@ -91,22 +110,22 @@
 .img-campaign {
 	overflow: hidden;
 	}
-.none-deco {
-	text-decoration:none;}
+	.carousel{
+	margin-top:72px;}
+	
 
-</style>
+  </style>
   
 </head>
 <body>
 
 
 
-  
-
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
+     
           <c:choose>
   	<c:when test="${users.uType eq 1 }">
    		<jsp:include page='/layout/navbar/navLoggedin.jsp' flush='false'/>   	
@@ -118,7 +137,7 @@
 	   <jsp:include page='/layout/navbar/nav.jsp' flush='false'/>
   	</c:otherwise>
   	</c:choose>
-
+  	
 
     </div>
   </header><!-- End Header -->
@@ -128,39 +147,66 @@
     <!-- ======= Breadcrumbs ======= -->
     
     <div class="container">
-    <div class="campaigncrumbs">
-      <div class="container">
-        <!-- <h2>Knock, Campaign</h2>
-        <p>진행중인 캠페인 리스트 </p> -->
-      </div></div>
-    </div><!-- End Breadcrumbs -->
+    <div class="cam-container">
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="/resource/img/campaign/knockBanner1.png" alt="First slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="/resource/img/campaign/knockBanner2.png" alt="Second slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="/resource/img/campaign/knockBanner3.png" alt="Third slide">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+  </div>
+</div></div>
+    
+    
+    
+
     <!-- ======= Campaign Section ======= -->
     <section id="campaigns" class="campaigns">
-      <div class="container" data-aos="fade-up">
-		  <%@ include file= "/layout/navbar/campaign/navCampaign.jsp" %> 
-        <div class="row" id="commonDiv" data-aos="zoom-in" data-aos-delay="100" >
+      <div class="cam-container">
+      <div class="inner-nav">
+       <%@ include file= "/layout/navbar/campaign/navCampaign.jsp" %> 
+</div>
+        <div class="row" id="commonDiv" data-aos="zoom-in" data-aos-delay="100">
 		<c:if test="${!empty list  }">
         <c:forEach var="campaign" items="${list }">
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch" >
             <div class="campaign-item campaign-wrapper" >
             <div class="wrapper-item">
-              <div class= img-campaign>
-              <div class=scale><a href="${cp }/campaign/ing/detail.do?ciIdx=${campaign.ciIdx }">
-              <img src="${campaign.ciFile }" class="img-fluid" alt="..."></a></div></div>
+            <div class= img-campaign>
+              <div class=scale><a href="${cp }/campaign/ing/detail.do?ciIdx=${campaign.ciIdx }"><img src="${campaign.ciFile }" class="img-fluid" alt="..."></a></div></div>
               <div class="campaign-content">
                 <div class="d-flex justify-content-between align-items-center mb-3">
                   <h4>${campaign.ccName}</h4>
                 </div>
 
-                <h3><a class="none-deco" href="${cp }/campaign/ing/detail.do?ciIdx=${campaign.ciIdx }">${campaign.ciTitle } </a></h3>
-                <p><a class="none-deco" href="${cp }/campaign/ing/detail.do?ciIdx=${campaign.ciIdx }">${campaign.ciGoal }</a></p>
+                <h3><a href="${cp }/campaign/ing/detail.do?ciIdx=${campaign.ciIdx }">${campaign.ciTitle } </a></h3>
+                <p><a href="${cp }/campaign/ing/detail.do?ciIdx=${campaign.ciIdx }">${campaign.ciGoal }</a></p>
                 <div class="trainer d-flex justify-content-between align-items-center">
                   <div class="trainer-profile d-flex align-items-center">
                     <img src="assets/img/trainers/trainer-1.jpg" class="img-fluid" alt="">
                     <span>suggested by  ${campaign.hostNickname } </span>
                   </div>
                   <div class="trainer-rank d-flex align-items-center">
-                    <i class="bx bx-user"></i>&nbsp;<a class="none-deco" href="${cp }/campaign/ing/detail.do?ciIdx=${campaign.ciIdx }">${campaign.userCount }명 참가중</a>
+                    <i class="bx bx-user"></i><a href="${cp }/campaign/ing/detail.do?ciIdx=${campaign.ciIdx }">&nbsp;${campaign.userCount }명 참가중</a>
                     </div>
                   </div>
                 </div>
@@ -172,8 +218,8 @@
 
 
         </div>
-
-      </div>
+</div>
+     
     </section><!-- End Courses Section -->
 
   </main><!-- End #main -->
@@ -194,6 +240,11 @@
 
   <!-- Template Main JS File -->
   <script src="${cp}/resource/js/main.js"></script>
+  
+ 
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 
 </body>
 
