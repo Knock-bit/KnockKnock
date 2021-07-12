@@ -37,9 +37,9 @@
 	<!-- 회원가입 -->
 	<insert id="join" parameterType="UserVO">
 		INSERT INTO USERS(U_IDX, U_ID, U_NAME, U_PWD, U_NICKNAME,U_EMAIL, U_PHONE, U_BIRTH, U_TOT_POINT, U_TYPE,
-						U_ACTIVE, U_GENDER, U_ADDRESS, U_JOINDATE,  U_APPRSTATUS)
+						U_ACTIVE, U_GENDER, U_ADDRESS, U_JOINDATE,  U_APPRSTATUS, U_IMG, U_IMGPATH)
 		VALUES(U_IDX_SEQ.nextval, #{uId}, #{uName}, #{uPwd}, #{uNickname}, #{uEmail}, #{uPhone}, #{uBirth}, default, 1, 
-						default, #{uGender}, #{uAddress}, sysdate, 'FALSE')		
+						default, #{uGender}, #{uAddress}, sysdate, 'FALSE', 'people.jpeg', 'people.jpeg')		
 	</insert>
 	
 	<!-- 이메일 인증 -->
