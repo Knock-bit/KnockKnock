@@ -161,6 +161,39 @@
 		SELECT CM.CM_IDX, CM.CM_CONTENT, CM.CT_IDX, CM.U_IDX, CM.CM_WRITEDATE FROM CONTACT_COMMENT CM INNER JOIN CONTACT CT ON CM.CT_IDX = CT.CT_IDX WHERE CT.CT_IDX = #{ctIdx}
 	</select>
 	
-	<!-- ================ 대시보드 ================ -->
-</mapper
->
+	<!-- ================ 스케쥴러 사용위한 펀딩 / 캠페인 리스트 ================ -->
+	<!-- 캠페인 리스트 가져오기  -->
+	<select id ="getCampaignList" resultType="adminCampaignVO">
+		SELECT * FROM CAMPAIGN WHERE CI_STATUS IN (1,0)
+	</select>
+	
+	<!-- 캠페인 시작상태로 변경하기 -->
+	<update id ="updateCampaignStatus" parameterType="adminCampaignVO">
+		UPDATE CAMPAIGN SET CI_STATUS = 1 WHERE CI_IDX = #{ciIdx} AND CI_STATUS = 0
+	</update>
+	
+	<!-- 캠페인 종료상태로 변경하기 -->
+	<update id ="updateCampaignStatusEnd" parameterType="adminCampaignVO">
+		UPDATE CAMPAIGN SET CI_STATUS = 2 WHERE CI_IDX = #{ciIdx} AND CI_STATUS IN (0,1)
+	</update>
+	
+	<!-- 펀딩 리스트 가져오기  -->
+	<select id ="getFundingList" resultType="adminFundingVO">
+		SELECT * FROM FUNDING
+	</select>
+	
+	<!-- 펀딩 시작상태로 변경하기 -->
+	<update id ="updateFundingStatusStart" parameterType="adminFundingVO">
+		UPDATE FUNDING SET CF_STATUS = 1 WHERE CF_IDX = #{cfIdx} AND CF_STATUS = 0
+	</update>
+	
+	<!-- 펀딩 종료상태로 변경하기 -->
+	<update id ="updateFundingStatusEnd" parameterType="adminFundingVO">
+		UPDATE FUNDING SET CF_STATUS = 3 WHERE CF_IDX = #{cfIdx} AND CF_STATUS IN (0,1,2)
+	</update>
+	
+	<!-- 펀딩 모금 완료 상태로 변경하기 -->
+	<update id ="updateFundingStatusSuccess" parameterType="adminFundingVO">
+		UPDATE FUNDING SET CF_STATUS = 2 WHERE CF_IDX = #{cfIdx} AND CF_STATUS IN (1)
+	</update>
+</mapper>
