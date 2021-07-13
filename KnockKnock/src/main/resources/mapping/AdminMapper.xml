@@ -95,11 +95,11 @@
 	<insert id="insertCampaign" parameterType="AdminCampaignVO">
 		INSERT INTO CAMPAIGN (CI_IDX, CF_IDX, CI_TITLE, CI_CONTENT, CI_GOAL,
 		CI_FILE, CI_EMBLEM, U_IDX, CC_NAME, CI_ESTIMATEDPOINT, CI_STATUS,
-		C_KEYWORD1, C_KEYWORD2, C_KEYWORD3, CI_STARTDATE, CI_ENDDATE)
+		CI_KEYWORD1, CI_KEYWORD2, CI_KEYWORD3, CI_STARTDATE, CI_ENDDATE,C_TOTPOINT)
 		VALUES (CI_IDX_SEQ.nextval, #{cfIdx}, #{ciTitle} , #{ciContent}, #{ciGoal},
 		#{ciFile}, #{ciEmblem}, #{uIdx}, #{ccName}, #{ciEstimatedpoint},
-		#{ciStatus}, #{cKeyword1}, #{cKeyword2}, #{cKeyword3}, #{ciStartdate},
-		#{ciEnddate} )
+		#{ciStatus}, #{ciKeyword1}, #{ciKeyword2}, #{ciKeyword3}, #{ciStartdate},
+		#{ciEnddate}, #{cTotpoint})
 	</insert>
 
 	<!-- ======== proposal =========== -->

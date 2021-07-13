@@ -294,8 +294,8 @@
 								</div>
 								<div class="campaign-info campaign-keyword">
 									<div>
-										<center># ${campaign.cKeyword1 } #
-											${campaign.cKeyword2 } # ${campaign.cKeyword3 }
+										<center># ${campaign.ciKeyword1 } #
+											${campaign.ciKeyword2 } # ${campaign.ciKeyword3 }
 									</div>
 								</div>
 								<div
@@ -303,9 +303,9 @@
 
 									<p>
 										<img class="ci-emblem" src="/img/${campaign.ciEmblem }"
-											width=70px;>
+											width=70px; style="margin-left:130px">
 									<div class="certification">
-										<span>인증방법</span><br> ${campaign.cGoal }
+										<br> ${campaign.cGoal }
 										</p>
 									</div>
 									<div class="buttons">

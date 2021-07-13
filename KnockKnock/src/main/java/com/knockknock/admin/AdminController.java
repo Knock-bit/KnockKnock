@@ -205,6 +205,9 @@ public class AdminController {
 	// 펀딩에서 캠페인 등록하기 전단계 -> 데이터 불러오기
 	@PostMapping("/adminCampaign.do")
 	public String createCampaign(@ModelAttribute("funding") AdminFundingVO vo, Model model) {
+		String content = vo.getCfContent();
+		content = content.replace("\"", "'" );
+		vo.setCfContent(content);
 		List<AdminKeywordVO> keyword = adminService.getKeywordAll();
 		List<AdminCampaignCategoryVO> campaignCategory = adminFundingService.getCategoryList();
 		model.addAttribute("keyword", keyword);
@@ -271,12 +274,13 @@ public class AdminController {
 			}
 
 		}
-
+		int totPoint = fvo.getCfCollected() + vo.getCiEstimatedpoint();
+		vo.setcTotpoint(totPoint);
 		vo.setCfIdx(fvo.getCfIdx());
 		System.out.println("dfsfsdfsdfsdfs" + vo);
 		int result = adminService.insertCampaign(vo);
 		System.out.println("캠페인추가 : " + result);
-		return null;
+		return "redirect: /adminCampaignList.do";
 	}
 
 	// 캠페인 리스트 가져오기
