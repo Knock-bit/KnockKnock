@@ -71,7 +71,7 @@
           <div class="col-md-6 d-flex align-items-stretch">
             <div class="card">
               <div class="card-img">
-                <img src="${cp}/resource/img/about/savetheplanet.jpg" style="width:900px;">
+                <img src="${cp}/resource/img/about/earthcampaign.jpg" style="width:900px;">
               </div>
               <div class="card-body">
                 <h5 class="card-title"><a href="/user/tnc.do">일반회원 가입하기</a></h5>
