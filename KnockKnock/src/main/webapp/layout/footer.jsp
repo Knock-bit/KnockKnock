@@ -37,19 +37,17 @@
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Services</h4>
+            <h4>패밀리 사이트</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Alcohol Project</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#"></a>Bit Library</li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Apple Store</a></li>
             </ul>
           </div>
 
           <div class="col-lg-1 col-md-1 footer-newsletter">
              
-              <img src="${cp }/resource/img/logo2.png" style="width:700px;">
+              <img src="${cp }/resource/img/logo2.png" style="width:500px;">
              
           </div>
 

@@ -49,7 +49,7 @@ String cp = request.getContextPath();
 							<hr>
 							<div class="author">
 								<div class="avatar">
-									<br> <img src="${contact.uImgpath }">프로필 이미지
+									<br> <img src="/resource/img/upload/${contact.uImgpath }">
 									<h4 style="display: inline">${contact.uNickname }</h4>
 								</div>
 							</div>
