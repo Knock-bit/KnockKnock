@@ -337,6 +337,7 @@ public class AdminController {
 		return "/admin/contact/adminContactDetail";
 	}
 
+	// 문의사항 댓글
 	@PostMapping("/insertContactComment.do")
 	public String insertContactComment(@ModelAttribute("contact") AdminContactVO vo, AdminContactCommentVO cmvo,
 			HttpServletRequest request) throws Exception {
