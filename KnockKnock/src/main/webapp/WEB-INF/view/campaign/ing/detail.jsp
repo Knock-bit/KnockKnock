@@ -412,9 +412,6 @@
                     </div>
                   </div>
 
-
-
-
                 </div>
             </div>
         <div class="row">
@@ -435,10 +432,9 @@
                 <div class="trainer d-flex justify-content-between align-items-center">
                   <div class="trainer-profile d-flex align-items-center">
                     <img src="assets/img/trainers/trainer-1.jpg" class="img-fluid" alt="">
-                    <span>suggested by  ${recommend.hostNickname } </span>
                   </div>
                   <div class="trainer-rank d-flex align-items-center">
-                    <i class="bx bx-user"></i><a href="${cp }/campaign/ing/detail.do?ciIdx=${recommend.ciIdx }">&nbsp;${recommend.userCount }명 참가중</a>
+           
                     </div>
                   </div>
                 </div>

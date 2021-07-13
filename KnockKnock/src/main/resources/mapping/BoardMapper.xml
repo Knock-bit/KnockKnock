@@ -80,8 +80,8 @@
 	<select id="getMyBoardList" parameterType="campaignVO" resultType="boardVO">
 		SELECT B.*, U.U_NICKNAME 
 		  FROM BOARD B, USERS U
-		 WHERE U_IDX = #{uIdx}
-		   AND CI_IDX = #{ciIdx}
+		 WHERE B.U_IDX = #{uIdx}
+		   AND B.CI_IDX = #{ciIdx}
 	</select>
 	
 	<update id="updateEstimatedPoint" parameterType="int">

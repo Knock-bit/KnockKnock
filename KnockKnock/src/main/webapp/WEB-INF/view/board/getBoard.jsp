@@ -104,7 +104,7 @@
    
    .btn-style {
      border: none; width: 100px; color:white; background-color: #0a3a18; border-radius: 35px;
-     padding:10px;
+     padding:5px;
    }
    
    .areaComments {
@@ -165,7 +165,9 @@
           <div>
           	<span><i class="bi bi-eye"></i></span>
           	<span>${board.bViews }</span>
-            <span><i class="bi bi-heart"></i></span>
+            <div id="fullheartbox">
+				<i class="bi bi-suit-heart" id="emptyheart" ></i>
+				</div>
             <span  id="bHit">${board.bHit}</span>
          </div>
          <div>
