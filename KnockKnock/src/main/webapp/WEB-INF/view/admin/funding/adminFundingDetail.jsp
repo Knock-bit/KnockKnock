@@ -122,7 +122,6 @@
     				contentType: 'application/json; charset=utf-8',
     				success: function(result) {
     					alert("펀딩을 시작합니다.");
-    					alert(result);
     					location.reload();
     				},
     				error: function(){
