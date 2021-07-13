@@ -16,7 +16,11 @@
 <link href="${cp}/resource/summernote/summernote-lite.css"
 	rel="stylesheet">
 <style>
-
+  .btn-style {
+     border: none; width: 100px; color:white; background-color: #0a3a18; border-radius: 35px;
+     padding:5px; margin-left:5px;
+   }
+   
 </style>
 <script>
 	$(function(){
@@ -60,19 +64,14 @@
          action="${cp}/board/boardSummer.do" id="boardForm" >
 	<table>
 		<tr>
-			<th>제목</th>
+			
 			<td>
-				<input type="text" name="bSubject">
+				<input type="text" name="bSubject" style="margin-bottom:10px; width:100%">
 			</td>
 		</tr>
+		
 		<tr>
-			<th>작성자</th>
-			<td>
-				 ${users.uNickname }
-			</td>
-		</tr>
-		<tr>
-			<th>내용</th>
+			
 			<td>
 				<textarea name="bContent" style="display: none;"></textarea>
                         <div id="summernote"></div>
@@ -84,13 +83,13 @@
 			<input type="hidden" value="${users.uIdx }" name="uIdx">
 			<input type="hidden" value="${ciIdx }" name="ciIdx">
 			<input type="hidden" value="${cfIdx }" name="cfIdx">
-				<input type="button" id="input-btn" value="글 등록">
+				<input style="float:right" class="btn-style" type="button" id="input-btn" value="글 등록">
+	<p><button style="float:right" class="btn-style" onclick="list_board()">글 목록으로..</button></p>
 			</td>
 		</tr>
 	</table>
 	</form>
 	
-	<p><button onclick="list_board()">글 목록으로..</button></p>
 
 </div>
 <script>

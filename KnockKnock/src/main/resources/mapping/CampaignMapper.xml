@@ -319,7 +319,7 @@
 	
 	<update id="updateUserParticipate" parameterType="CampaignUserVO">
 		UPDATE USERS
-		   SET U_USED_POINT = U_USED_POINT + 300
+		   SET U_USED_POINT = U_USED_POINT + 50
 		 WHERE U_IDX = #{uIdx}
 	</update>
 	

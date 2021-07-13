@@ -11,9 +11,10 @@
 <title>Insert title here</title>
 <style>
 
-.btn-campaign{
-width
-}
+ .btn-campaign {
+     border: none; width: 100px; color:white; background-color: #0a3a18; border-radius: 35px;
+     padding:5px;
+   }
 
 	#container > div {
    display:flex;
@@ -104,11 +105,11 @@ width
 			<a href="#" onclick="nextPage()" >&gt;</a>
 		</c:if>
 	</div>
-	<div>
+	<div style="float:right;">
 		<p><button type="button" class="btn-campaign" id="participate3" onclick="participate()"
 		 style="width: 100px; color:white; background-color: #0a3a18; border-radius: 35px;">게시글등록</button>
 		<c:if test="${!empty users.uIdx}">
-		<button type="button" onclick="myBoardList()"
+		<button type="button" class="btn-campaign" onclick="myBoardList()"
 		style="width: 100px; color:white; background-color: #0a3a18; border-radius: 35px;">내 글 보기</button></p>
 		</c:if>
 	</div>	
