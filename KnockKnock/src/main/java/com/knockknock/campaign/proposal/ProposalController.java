@@ -107,7 +107,10 @@ public class ProposalController {
 			file.transferTo(new File(uploadPath + filePath));
 			proposal.setCpFile(filePath);
 		}
-		
+		String content = proposal.getCpContent();
+		content = content.replace("\"", "'" );
+		System.out.println(content);
+		proposal.setCpContent(content);
 		int result = proposalService.insertProposal(proposal);
 		return "campaign/proposal/pResult";
 	}
