@@ -74,13 +74,13 @@
 				<label>인증 시 지급 포인트</label> <input type="text" name="ciEstimatedpoint"/> <br>
 				<label>엠블럼 추가</label>
 	            <input id="fileBtn" type="file" name="file" onchange="readURL(this);" >
-	            <button type="button" id="btn-upload">엠블럼 이미지 업로드</button>
+	            <button type="button" id="btn-upload" style="margin-left:-150px">엠블럼 이미지 업로드</button><br>
 				<label> 시작일 <input type="date" name="ciStartdate">
 				</label> <br> <label> 종료일 <input type="date" name="ciEnddate">
 				</label> <br> 
 				<h5 style="display: inline">키워드 선택</h5>
 				<c:forEach var="i" begin="1" end="3">
-					<select name="cKeyword${i }">
+					<select name="ciKeyword${i }">
 						<c:forEach var="keyword" items="${keyword }">
 							<option>${keyword.kContent }</option>
 						</c:forEach>

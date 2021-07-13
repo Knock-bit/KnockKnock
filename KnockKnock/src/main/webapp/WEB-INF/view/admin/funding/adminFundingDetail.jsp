@@ -250,7 +250,7 @@
 			<button type="button" class="btn btn-secondary" data-dismiss="modal">펀딩에
 				성공한 캠페인</button>
 			<form action="/adminCampaign.do" method="post">
-				<input type="submit" value="펀딩 생성하기" />
+				<input type="submit" value="캠페인 생성하기" />
 			</form>
 		</c:if>
 		<c:if test="${funding.cfStatus eq 3 }">

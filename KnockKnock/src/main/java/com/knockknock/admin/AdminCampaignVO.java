@@ -19,9 +19,9 @@ public class AdminCampaignVO {
 	private int uIdx;
 	private String ccName;
 	private int cTotpoint;
-	private String cKeyword1;
-	private String cKeyword2;
-	private String cKeyword3;
+	private String ciKeyword1;
+	private String ciKeyword2;
+	private String ciKeyword3;
 	private int ciRn;
 	private String uNickname; // JOIN - 주최자 닉네임
 	private String ciGoal;
@@ -33,7 +33,7 @@ public class AdminCampaignVO {
 
 	public AdminCampaignVO(int ciIdx, int cfIdx, String ciTitle, String ciContent, String cGoal, Date ciStartdate,
 			Date ciEnddate, int ciBasepoint, int ciEstimatedpoint, int ciStatus, String ciFile, String ciEmblem,
-			int uIdx, String ccName, int cTotpoint, String cKeyword1, String cKeyword2, String cKeyword3, int ciRn,
+			int uIdx, String ccName, int cTotpoint, String ciKeyword1, String ciKeyword2, String ciKeyword3, int ciRn,
 			String uNickname, String ciGoal, String category, int userCount) {
 		super();
 		this.ciIdx = ciIdx;
@@ -51,9 +51,9 @@ public class AdminCampaignVO {
 		this.uIdx = uIdx;
 		this.ccName = ccName;
 		this.cTotpoint = cTotpoint;
-		this.cKeyword1 = cKeyword1;
-		this.cKeyword2 = cKeyword2;
-		this.cKeyword3 = cKeyword3;
+		this.ciKeyword1 = ciKeyword1;
+		this.ciKeyword2 = ciKeyword2;
+		this.ciKeyword3 = ciKeyword3;
 		this.ciRn = ciRn;
 		this.uNickname = uNickname;
 		this.ciGoal = ciGoal;
@@ -181,28 +181,28 @@ public class AdminCampaignVO {
 		this.cTotpoint = cTotpoint;
 	}
 
-	public String getcKeyword1() {
-		return cKeyword1;
+	public String getCiKeyword1() {
+		return ciKeyword1;
 	}
 
-	public void setcKeyword1(String cKeyword1) {
-		this.cKeyword1 = cKeyword1;
+	public void setCiKeyword1(String ciKeyword1) {
+		this.ciKeyword1 = ciKeyword1;
 	}
 
-	public String getcKeyword2() {
-		return cKeyword2;
+	public String getCiKeyword2() {
+		return ciKeyword2;
 	}
 
-	public void setcKeyword2(String cKeyword2) {
-		this.cKeyword2 = cKeyword2;
+	public void setCiKeyword2(String ciKeyword2) {
+		this.ciKeyword2 = ciKeyword2;
 	}
 
-	public String getcKeyword3() {
-		return cKeyword3;
+	public String getCiKeyword3() {
+		return ciKeyword3;
 	}
 
-	public void setcKeyword3(String cKeyword3) {
-		this.cKeyword3 = cKeyword3;
+	public void setCiKeyword3(String ciKeyword3) {
+		this.ciKeyword3 = ciKeyword3;
 	}
 
 	public int getCiRn() {
@@ -251,10 +251,12 @@ public class AdminCampaignVO {
 				+ ciContent + ", cGoal=" + cGoal + ", ciStartdate=" + ciStartdate + ", ciEnddate=" + ciEnddate
 				+ ", ciBasepoint=" + ciBasepoint + ", ciEstimatedpoint=" + ciEstimatedpoint + ", ciStatus=" + ciStatus
 				+ ", ciFile=" + ciFile + ", ciEmblem=" + ciEmblem + ", uIdx=" + uIdx + ", ccName=" + ccName
-				+ ", cTotpoint=" + cTotpoint + ", cKeyword1=" + cKeyword1 + ", cKeyword2=" + cKeyword2 + ", cKeyword3="
-				+ cKeyword3 + ", ciRn=" + ciRn + ", uNickname=" + uNickname + ", ciGoal=" + ciGoal + ", category="
-				+ category + ", userCount=" + userCount + "]";
+				+ ", cTotpoint=" + cTotpoint + ", ciKeyword1=" + ciKeyword1 + ", ciKeyword2=" + ciKeyword2
+				+ ", ciKeyword3=" + ciKeyword3 + ", ciRn=" + ciRn + ", uNickname=" + uNickname + ", ciGoal=" + ciGoal
+				+ ", category=" + category + ", userCount=" + userCount + "]";
 	}
+
+
 
 	
 
