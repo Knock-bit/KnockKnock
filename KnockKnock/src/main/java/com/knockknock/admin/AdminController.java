@@ -274,7 +274,7 @@ public class AdminController {
 			}
 
 		}
-		int totPoint = fvo.getCfCollected() + vo.getCiEstimatedpoint();
+		int totPoint = (int)(1.3* fvo.getCfCollected()) + vo.getCiEstimatedpoint();
 		vo.setcTotpoint(totPoint);
 		vo.setCfIdx(fvo.getCfIdx());
 		System.out.println("dfsfsdfsdfsdfs" + vo);
