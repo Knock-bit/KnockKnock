@@ -20,6 +20,7 @@
 
 	<!-- 진행중인 캠페인, 주최자 닉네임, 카테고리, 참여자수 불러오기 -->
 	<select id="selectAllCampaign" resultType="CampaignVO">
+		
 		 SELECT C.*, U.U_NICKNAME  AS 
  		 HOST_NICKNAME,        
 		 (SELECT COUNT(*) FROM CAMPAIGN_USER WHERE C.CI_IDX = CAMPAIGN_USER.ci_idx) USER_COUNT  
