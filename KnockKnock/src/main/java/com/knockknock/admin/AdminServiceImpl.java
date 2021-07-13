@@ -219,9 +219,9 @@ public class AdminServiceImpl implements AdminService {
 	}
 	@Override
 	// 매일 오전 00시
-//	@Scheduled(cron="* * 00 * * *")
+	@Scheduled(cron="* * 00 * * *")
 	// 테스트를 위해서 5초마다 스케줄러 동작하도록 
-	@Scheduled(cron="5 * * * * *")
+//	@Scheduled(cron="5 * * * * *")
 	public void campaignStartEnd() {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		List<AdminCampaignVO> campaignList = adminDAO.getCampaignList();
@@ -266,7 +266,7 @@ public class AdminServiceImpl implements AdminService {
 		// 매일 오전 00시
 		@Scheduled(cron="* * 00 * * *")
 		// 테스트를 위해서 5초마다 스케줄러 동작하도록 
-		@Scheduled(cron="5 * * * * *")
+//		@Scheduled(cron="5 * * * * *")
 		public void fundingStartEnd() {
 			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 			List<AdminFundingVO> fundingList = adminDAO.getFundingList();
