@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -241,12 +242,11 @@
 
 
 
-
-
 	<nav
 		class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
 		<jsp:include page='/layout/navbar/navAdmin.jsp' flush='false' />
 	</nav>
+
 
 	<div class="container-fluid page-body-wrapper">
 		<jsp:include page='${cp}/layout/admin/adminSideNav.jsp' flush='false' />
@@ -294,15 +294,16 @@
 								</div>
 								<div class="campaign-info campaign-keyword">
 									<div>
-										<center># ${campaign.ciKeyword1 } #
-											${campaign.ciKeyword2 } # ${campaign.ciKeyword3 }
+										<center># ${campaign.cKeyword1 } #
+											${campaign.cKeyword2 } # ${campaign.cKeyword3 }
 									</div>
 								</div>
 								<div
 									class="campaign-info justify-content-between align-items-center">
 
 									<p>
-										<img class="ci-emblem" src="${campaign.ciEmblem }" width=70px;>
+										<img class="ci-emblem" src="/img/${campaign.ciEmblem }"
+											width=70px;>
 									<div class="certification">
 										<span>인증방법</span><br> ${campaign.cGoal }
 										</p>

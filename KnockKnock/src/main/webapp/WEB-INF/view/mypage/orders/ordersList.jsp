@@ -311,7 +311,7 @@ function goPayment(){
 			               // 주문서? 창으로 이동하기
 			               
 			            }else{
-			            	alert("실패했어용~");
+			            	alert("결제가 실패했습니다.");
 			                //msg = '결제실패 , 에러내용 : ' + rsp.error_msg;
 			            }
 		         	});

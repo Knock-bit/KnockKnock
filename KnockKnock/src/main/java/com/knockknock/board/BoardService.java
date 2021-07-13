@@ -19,4 +19,5 @@ public interface BoardService {
 	public List<BoardVO> getMyBoardList(CampaignUserVO campaignUser);
 	public int countCampaignBoard(int ciIdx);
 	public int countMyCampaignBoard(CampaignUserVO campaignUser);
+	public int updateEstimatedPoint(int ciIdx);
 }

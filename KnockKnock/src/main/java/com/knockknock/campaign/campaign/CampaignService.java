@@ -37,4 +37,6 @@ public interface CampaignService {
 	public int updateParticipatePoint(CampaignUserVO cUser);
 	// 캠페인 유저에 등록
 	public int insertCampaignUser(CampaignUserVO cUser);
+	// 해쉬태그 사용, 비슷한 캠페인 목록 불러오기
+	public List<CampaignVO> selectRecommendCampaign(CampaignVO campaign);
 }

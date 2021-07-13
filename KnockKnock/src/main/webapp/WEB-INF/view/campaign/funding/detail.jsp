@@ -216,7 +216,8 @@
                   $("#funding-btn2").attr('data-target', '#fundingModal');
                   $("#modal-content2").html("<div class='modal-funding'>취소되었습니다.</div>");
                   $("#funding-progress").attr('value', '${funding.cfCollected-250}')
- 	              $("#progress-div").load(window.location.href + " #progress-div");
+                  $(".collected").html('${funding.cfCollected-250}');
+                  $("#campaign-point").load(window.location.href + " #campaign-point");
                   }
                 }, error: function () {
                   alert("실패");
@@ -254,7 +255,9 @@
               $("#funding-btn2").attr('data-target', '#fundingModal2');
               $("#modal-content").html("<div class='modal-funding'>참여해주셔서 감사합니다.</div>");
               $("#funding-progress").attr('value', '${funding.cfCollected+250}')
-              $("#progress-div").load(window.location.href + " #progress-div");
+              $(".collected").html('${funding.cfCollected+250}');
+              /* $("#progress-div").load(window.location.href + " #progress-div"); */
+              $("#campaign-point").load(window.location.href + " #campaign-point");
               }
             }, error: function () {
               alert("실패");
@@ -335,21 +338,8 @@
 				<div class="row">
 					<div class="col-lg-8">
 						<img src="${ funding.cfFile}" class="img-fluid" alt="">
-						<div>펀딩하기</div>
-						<h2>
-							Et enim incidunt fuga tempora
-							</h3>
-							<p>Qui et explicabo voluptatem et ab qui vero et voluptas.
-								Sint voluptates temporibus quam autem. Atque nostrum voluptatum
-								laudantium a doloremque enim et ut dicta. Nostrum ducimus est
-								iure minima totam doloribus nisi ullam deserunt. Corporis aut
-								officiis sit nihil est. Labore aut sapiente aperiam. Qui
-								voluptas qui vero ipsum ea voluptatem. Omnis et est. Voluptatem
-								officia voluptatem adipisci et iusto provident doloremque
-								consequatur. Quia et porro est. Et qui corrupti laudantium ipsa.
-								Eum quasi saepe aperiam qui delectus quaerat in. Vitae mollitia
-								ipsa quam. Ipsa aut qui numquam eum iste est dolorum. Rem
-								voluptas ut sit ut.</p>
+						<div>${funding.cfContent }</div>
+						
 					</div>
 					<div class="col-lg-4" style="padding-left:0px;">
 						<div class="campaign-main-info">
@@ -359,8 +349,8 @@
 									<b>${end - now + 1}일</b> 남았어요
 								</h2>
 							</div>
-							<div class="campaign-point"><center>
-								현재까지 ${funding.cfCollected } 포인트 모였어요<br></center>
+							<div class="campaign-point" id=""><center>
+								현재까지 <span class="collected">${funding.cfCollected }</span> 포인트 모였어요<br></center>
 								<p class="funding-pg">
 									<progress id="funding-progress" value="${funding.cfCollected }"
 										max="${funding.cfGoalpoint }"></progress>

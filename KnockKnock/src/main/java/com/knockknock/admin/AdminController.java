@@ -1,5 +1,10 @@
 package com.knockknock.admin;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.knockknock.admin.funding.AdminCampaignCategoryVO;
 import com.knockknock.admin.funding.AdminFundingService;
@@ -209,7 +215,63 @@ public class AdminController {
 	}
 
 	@PostMapping("/insertCampaign.do")
-	public String insertCampaign(@ModelAttribute("funding") AdminFundingVO fvo, AdminCampaignVO vo) {
+	public String insertCampaign(@ModelAttribute("funding") AdminFundingVO fvo, AdminCampaignVO vo,
+			MultipartFile file) {
+		if (!file.isEmpty()) {
+			// 저장경로
+			String savePath = "/Users/hanjeongseol/git/Knock/knock/upload/";
+			// 실제 파일명
+			String fileName = file.getOriginalFilename();
+			System.out.println("savepath : " + savePath);
+			System.out.println("filename : " + fileName);
+
+			// 업로드한 파일명을 마지막 . 기준으로 분리 ex) img.png -> img/ .png
+			// indexOf : .위치 추출 / subString : begin ~ end 까지 자르기
+			String onlyFileName = fileName.substring(0, fileName.indexOf(".")); // img자르기
+			String extention = fileName.substring(fileName.indexOf(".")); // .png 자르기
+			String filePath = null;
+			int count = 0;
+
+			// 중복 파일명 확인
+			while (true) {
+
+				if (count == 0) {
+					filePath = onlyFileName + extention;
+				} else {
+					filePath = onlyFileName + "(" + count + ")" + extention;
+
+				}
+				File checkFile = new File(savePath + filePath); // 경로 + 파일명
+				// 중복이 아닌 경우 break;
+				if (!checkFile.exists()) {
+					break;
+				}
+
+				count++;
+			}
+
+			vo.setCiEmblem(filePath);
+
+			// 파일 서버내 폴더로 복사
+			try {
+				// 스트림 생성
+				FileOutputStream fos = new FileOutputStream(savePath + filePath); // 경로 + 파일명
+				// 속도개선 보조 스트림
+				BufferedOutputStream bos = new BufferedOutputStream(fos);
+				// bos -> byte타입 변환
+				byte[] bytes = file.getBytes(); // try/catch 추가 설정
+				bos.write(bytes);
+				bos.close();
+				System.out.println("완료");
+
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+		}
+
 		vo.setCfIdx(fvo.getCfIdx());
 		System.out.println("dfsfsdfsdfsdfs" + vo);
 		int result = adminService.insertCampaign(vo);

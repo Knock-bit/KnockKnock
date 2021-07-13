@@ -26,8 +26,17 @@
 				.val($('#summernote').summernote('code'));
 		frm.action = "insertCampaign.do";
 		frm.setAttribute('method', 'post');
+		frm.encoding="multipart/form-data";
 		frm.submit();
 	}
+	  // 사진 업로드
+	  $("#btn-upload").click(function(e){
+	  		e.preventDefault();
+	  		$("#fileBtn").click();
+	  });
+	  
+	
+
 </script>
 <body>
 	<!-- 상단, 좌측 네비바 추가1 -->
@@ -62,7 +71,10 @@
 					value="${funding.cfGoal }">
 				</label>
 				<div id="summernote"></div>
-				<label>인증 시 지급 포인트</label> <input type="text" name="ciEstimatedpoint"/>
+				<label>인증 시 지급 포인트</label> <input type="text" name="ciEstimatedpoint"/> <br>
+				<label>엠블럼 추가</label>
+	            <input id="fileBtn" type="file" name="file" onchange="readURL(this);" >
+	            <button type="button" id="btn-upload">엠블럼 이미지 업로드</button>
 				<label> 시작일 <input type="date" name="ciStartdate">
 				</label> <br> <label> 종료일 <input type="date" name="ciEnddate">
 				</label> <br> 

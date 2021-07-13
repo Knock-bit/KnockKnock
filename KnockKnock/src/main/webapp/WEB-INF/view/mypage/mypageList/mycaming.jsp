@@ -124,7 +124,7 @@ function numberWithCommas(x) {
 											<div class="itemPhoto">
 												<p style="display: none;">${campaign.ciIdx }</p>
 												<p class="cphoto">
-													<img src="${campaign.ciFile}">
+													<a href="${cp }/campaign/ing/detail.do?ciIdx=${campaign.ciIdx }"><img src="${campaign.ciFile}"></a>
 												</p>
 												<br>
 											</div>

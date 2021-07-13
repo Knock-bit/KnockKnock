@@ -89,4 +89,8 @@ public class CampaignDAO {
 		mybatis.update("campaign.updateUserCampaignMinusPoint", cUser);
 		return mybatis.update("campaign.insertCampaignUser", cUser);
 	}
+
+	public List<CampaignVO> selectRecommendCampaign(CampaignVO campaign) {
+		return mybatis.selectList("campaign.selectRecommendCampaign", campaign);
+	}
 }

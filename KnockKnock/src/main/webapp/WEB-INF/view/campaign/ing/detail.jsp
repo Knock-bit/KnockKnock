@@ -364,44 +364,10 @@
                 <div class="row sticky-parent">
                   <div class="col-lg-8" id="commonDiv">
                     <img src="${campaign.ciFile }" class="img-fluid" alt="">
-                    <h2>${campaign.ciContent } </h2>
-                      <p>
-                        Qui et explicabo voluptatem et ab qui vero et voluptas. Sint voluptates temporibus quam autem.
-                        Atque nostrum voluptatum laudantium a doloremque enim et ut dicta. Nostrum ducimus est iure
-                        minima totam doloribus nisi ullam deserunt. Corporis aut officiis sit nihil est. Labore aut
-                        sapiente aperiam.
-                        Qui voluptas qui vero ipsum ea voluptatem. Omnis et est. Voluptatem officia voluptatem adipisci
-                        et iusto provident doloremque consequatur. Quia et porro est. Et qui corrupti laudantium ipsa.
-                        Eum quasi saepe aperiam qui delectus quaerat in. Vitae mollitia ipsa quam. Ipsa aut qui numquam
-                        eum iste est dolorum. Rem voluptas ut sit ut.
-
-                        내용
-                      </p>
-
-                      <p>
-                        Qui et explicabo voluptatem et ab qui vero et voluptas. Sint voluptates temporibus quam autem.
-                        Atque nostrum voluptatum laudantium a doloremque enim et ut dicta. Nostrum ducimus est iure
-                        minima totam doloribus nisi ullam deserunt. Corporis aut officiis sit nihil est. Labore aut
-                        sapiente aperiam.
-                        Qui voluptas qui vero ipsum ea voluptatem. Omnis et est. Voluptatem officia voluptatem adipisci
-                        et iusto provident doloremque consequatur. Quia et porro est. Et qui corrupti laudantium ipsa.
-                        Eum quasi saepe aperiam qui delectus quaerat in. Vitae mollitia ipsa quam. Ipsa aut qui numquam
-                        eum iste est dolorum. Rem voluptas ut sit ut.
-
-                        내용
-                      </p>
-                      <p>
-                        Qui et explicabo voluptatem et ab qui vero et voluptas. Sint voluptates temporibus quam autem.
-                        Atque nostrum voluptatum laudantium a doloremque enim et ut dicta. Nostrum ducimus est iure
-                        minima totam doloribus nisi ullam deserunt. Corporis aut officiis sit nihil est. Labore aut
-                        sapiente aperiam.
-                        Qui voluptas qui vero ipsum ea voluptatem. Omnis et est. Voluptatem officia voluptatem adipisci
-                        et iusto provident doloremque consequatur. Quia et porro est. Et qui corrupti laudantium ipsa.
-                        Eum quasi saepe aperiam qui delectus quaerat in. Vitae mollitia ipsa quam. Ipsa aut qui numquam
-                        eum iste est dolorum. Rem voluptas ut sit ut.
-
-                        내용
-                      </p>
+                    <p>${campaign.ciContent } </p>
+                     
+                      
+                      
                   </div>
 
 
@@ -451,8 +417,47 @@
 
                 </div>
             </div>
+        <div class="row">
+<c:if test="${!empty recommendList  }">
+            <h3> 이런 캠페인은 어때요? </h3>
+        <c:forEach var="recommend" items="${recommendList }" begin="1" end="3">
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" >
+            <div class="campaign-item campaign-wrapper" >
+            <div class="wrapper-item">
+            <div class= img-campaign>
+              <div class=scale><a href="${cp }/campaign/ing/detail.do?ciIdx=${recommend.ciIdx }"><img src="${recommend.ciFile }" class="img-fluid" alt="..."></a></div></div>
+              <div class="campaign-content">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                </div>
 
+                <h3><a href="${cp }/campaign/ing/detail.do?ciIdx=${recommend.ciIdx }">${recommend.ciTitle } </a></h3>
+                <p><a href="${cp }/campaign/ing/detail.do?ciIdx=${recommend.ciIdx }">${recommend.ciGoal }</a></p>
+                <div class="trainer d-flex justify-content-between align-items-center">
+                  <div class="trainer-profile d-flex align-items-center">
+                    <img src="assets/img/trainers/trainer-1.jpg" class="img-fluid" alt="">
+                    <span>suggested by  ${recommend.hostNickname } </span>
+                  </div>
+                  <div class="trainer-rank d-flex align-items-center">
+                    <i class="bx bx-user"></i><a href="${cp }/campaign/ing/detail.do?ciIdx=${recommend.ciIdx }">&nbsp;${recommend.userCount }명 참가중</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div> <!-- End Course Item-->
+          </c:forEach>
+        </c:if>
+            
+</div>
+            </div>
+            <div>
+
+
+
+
+
+</div>
+            
           </section><!-- End Cource Details Section -->
 
                   <%-- <div class="campaign-info d-flex justify-content-between align-items-center">

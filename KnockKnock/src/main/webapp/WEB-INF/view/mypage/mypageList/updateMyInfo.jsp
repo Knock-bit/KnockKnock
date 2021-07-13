@@ -226,8 +226,8 @@ function deleteBtn(){
 					</div>
 					
 					<div class="it10-2" style="display:inline-block; width:39%; ">
-						<input style="width:35%; font-size:11px; background-color:#6c9378; padding:5px;" class="btn-upload1" type="button" value="비밀번호 변경" onclick="updatePwd()">
-						<input style="width:35%; font-size:11px; background-color:#6c9378; padding:5px;" class="btn-upload1" type="button" value="회원탈퇴" onclick="deleteUser()">
+						<input style="width:35%; font-size:13px; background-color:#6c9378; padding:5px;" class="btn-upload1" type="button" value="비밀번호 변경" onclick="updatePwd()">
+						<input style="width:35%; font-size:13px; background-color:#6c9378; padding:5px;" class="btn-upload1" type="button" value="회원탈퇴" onclick="deleteUser()">
 					</div>
 				</div>
 			</div>

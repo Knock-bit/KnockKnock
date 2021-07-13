@@ -97,7 +97,7 @@
 		CI_FILE, CI_EMBLEM, U_IDX, CC_NAME, CI_ESTIMATEDPOINT, CI_STATUS,
 		C_KEYWORD1, C_KEYWORD2, C_KEYWORD3, CI_STARTDATE, CI_ENDDATE)
 		VALUES (CI_IDX_SEQ.nextval, #{cfIdx}, #{ciTitle} , #{ciContent}, #{ciGoal},
-		#{ciFile}, null, #{uIdx}, #{ccName}, #{ciEstimatedpoint},
+		#{ciFile}, #{ciEmblem}, #{uIdx}, #{ccName}, #{ciEstimatedpoint},
 		#{ciStatus}, #{cKeyword1}, #{cKeyword2}, #{cKeyword3}, #{ciStartdate},
 		#{ciEnddate} )
 	</insert>
@@ -226,4 +226,15 @@
 		UPDATE FUNDING SET CF_STATUS = 2 WHERE CF_IDX = #{cfIdx}
 		AND CF_STATUS IN (1)
 	</update>
+	
+	<update id="updateFundingUsersReturnPoint"
+		parameterType="adminFundingVO">
+		  UPDATE USERS
+		   SET U_USED_POINT = U_USED_POINT + 250
+          WHERE U_IDX IN 
+          (SELECT U_IDX FROM FUNDING_USER WHERE CF_IDX = #{cfIdx})
+		</update>
+		
+
+	
 </mapper>

@@ -55,7 +55,7 @@
 		<div class="endList">
 			<c:forEach var="endlist" items="${endlist }">
 				<div class="item">
-					<p class="itemImg" onclick="infoImg(this)"><img class="imim" src="/resource/img/upload/${endlist.ciFile}"></p>
+					<p class="itemImg" onclick="infoImg(this)"><img class="imim" src="${endlist.ciFile}"></p>
 					<p class="imTitle">${endlist.ciTitle }</p>
 					<div style="display:none;">
 						<p class="onlyImg">${endlist.ciFile}</p>

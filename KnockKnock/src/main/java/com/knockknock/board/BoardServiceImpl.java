@@ -79,4 +79,9 @@ public class BoardServiceImpl implements BoardService {
 	public int countMyCampaignBoard(CampaignUserVO campaignUser) {
 		return boardDAO.countMyCampaignBoard(campaignUser);
 	}
+
+	@Override
+	public int updateEstimatedPoint(int ciIdx) {
+		return boardDAO.updateEstimatedPoint(ciIdx);
+	}
 }
