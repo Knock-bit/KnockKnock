@@ -127,10 +127,16 @@
 				<h1>로그인</h1>
 				<div class="social-container">
 					<span>소셜계정 이용하기</span><br> 
-						<a href="/user/googleGo.do">구글</a>
+						<a href="/user/googleGo.do">
+						<img src="${cp}/resource/img/btn_google_signin_light_normal_web.png"
+						style="margin:auto 0px; width: 191px; height:46px;">
+						</a><br>
 						<a href="#" id="kakao"
-						class="social" onclick="kakaoLogin()">Kakao<i
-						class="fab fa-linkedin-in"></i></a>
+						class="social" onclick="kakaoLogin()">
+						<img src="${cp}/resource/img/kakao_login_medium_narrow.png"
+						style="margin:auto 0px; width: 191px; height:46px;">
+
+</a>
 				</div>
 				<input type="text" placeholder="아이디" name="uId" id="uId"
 					value="${user.uId}" }/> 
