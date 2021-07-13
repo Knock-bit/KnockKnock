@@ -111,7 +111,7 @@ public class ProductController {
    }
 
    @PostMapping("/productSummer.do")
-   public String insertProposal(ProductVO product, MultipartFile file) throws IllegalStateException, IOException {
+   public String insertProposal(ProductVO product, MultipartFile file, Model model) throws IllegalStateException, IOException {
       System.out.println(product);
       if (file.isEmpty()) {
 
@@ -141,12 +141,17 @@ public class ProductController {
             count++;
          }
          file.transferTo(new File(uploadPath + filePath));
-         product.setpImg(filePath + fileName);
+         product.setpImg(filePath);
       }
       System.out.println(product.getpImg());
       int result = productService.insertProduct(product);
       System.out.println(result + "건 등록. ");
-
+      
+      int sIdx = product.getsIdx();
+      List<ProductVO> myproducts = productService.manageMyproducts(sIdx);
+      System.out.println("Myproduct = "+myproducts);
+      model.addAttribute("myproducts", myproducts);
+      
       return "/seller/product/productResult";
    }
 
