@@ -49,15 +49,6 @@
               <span class="menu-title">문의내역</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="getSellerDashBoard.do">
-              
-              <span class="menu-title">판매자 대시보드</span>
-            </a>
-          </li>
-          
-          
-
 
         </ul>
       </nav>

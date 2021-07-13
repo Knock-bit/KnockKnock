@@ -44,7 +44,7 @@ function keywordAdd() {
 					location.reload();
 					
 				} else{
-					alert("이미 존재하는 키워드입니다.");
+					alert("이미 존재하는 카테고리입니다.");
 				}
 		
 			}
@@ -86,11 +86,11 @@ function keywordDel() {
 	            data: {chbox : list},
 	            success: function(result){
 	            	if(result != 0){
-						alert("선택한 키워드가 삭제되었습니다.");
+						alert("선택한 카테고리가 삭제되었습니다.");
 						location.reload();
 						
 					} else{
-						alert("키워드 삭제에 실패했습니다.");
+						alert("키워드 카테고리에 실패했습니다.");
 					}
 	            }
 	        });
