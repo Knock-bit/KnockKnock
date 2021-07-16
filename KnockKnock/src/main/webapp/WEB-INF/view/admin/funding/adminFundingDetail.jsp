@@ -167,7 +167,7 @@
 
 					<div class="row">
 						<div class="col-lg-7">
-							<img src="${ funding.cfFile}" class="img-fluid" alt="">
+							<img src="/img/${ funding.cfFile}" class="img-fluid" alt="">
 							<div>펀딩하기</div>
 							${funding.cfContent }
 						</div>

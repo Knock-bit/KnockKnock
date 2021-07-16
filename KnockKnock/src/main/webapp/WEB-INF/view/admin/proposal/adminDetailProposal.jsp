@@ -62,8 +62,8 @@ String cp = request.getContextPath();
 								<hr>
 								<div class="author">
 									<div class="avatar">
-										<br> <img src="/resource/img/upload/${proposal.uImgpath }">
-										<h4 style="display: inline">${proposal.uNickname }</h4>
+										<br> <img style="width:20%; border:2px solid gray; padding:3%;" src="/resource/img/upload/${proposal.uImgpath }">
+										<h4 style="display: inline; font-size:20px;">닉네임 : ${proposal.uNickname }</h4>
 									</div>
 								</div>
 								<div class="active">

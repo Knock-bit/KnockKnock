@@ -216,7 +216,7 @@
                   $("#funding-btn2").attr('data-target', '#fundingModal');
                   $("#modal-content2").html("<div class='modal-funding'>취소되었습니다.</div>");
                   $("#funding-progress").attr('value', '${funding.cfCollected-250}')
-                  $(".collected").html('${funding.cfCollected-250}');
+                  $(".collected").html('${funding.cfCollected}');
                   $("#campaign-point").load(window.location.href + " #campaign-point");
                   }
                 }, error: function () {
@@ -356,7 +356,7 @@
 										max="${funding.cfGoalpoint }"></progress>
 								</p><center>
 								<fmt:formatNumber var="fundingProgress" type="percent"
-									value="${cfCollected / funding.cfGoalpoint}" pattern="0.0%" />
+									value="${funding.cfCollected / funding.cfGoalpoint}" pattern="0.0%" />
 								<h2>${fundingProgress } 달성!</h2></center>
 							</div>
 						</div>

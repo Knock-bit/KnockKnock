@@ -60,10 +60,10 @@
 	<select id="countGuest" parameterType="int" resultType="ordersVO">
 		SELECT B.*FROM
 		(SELECT ROWNUM RN, A.*FROM(
-		SELECT U.U_NAME, COUNT(*) AS COUNTNUM, SUM(O_TOTPRICE) AS ORDERTIMES, U.U_IMGPATH
+		SELECT U.U_NAME, COUNT(*) AS COUNTNUM, SUM(O_TOTPRICE) AS ORDERTIMES, U.U_IMG
 		FROM ORDERS O, USERS U
 		WHERE O.U_IDX = U.U_IDX AND S_IDX=#{sIdx}
-		GROUP BY U.U_NAME, U.U_IMGPATH 
+		GROUP BY U.U_NAME, U.U_IMG
 		ORDER BY COUNT(*) DESC)A
 		)B
 		WHERE RN BETWEEN 1 AND 5
@@ -112,7 +112,7 @@
 	<!-- 임시 주문 데이터에 방금 결제한 주문정보 넣어놓기 -->
 	<insert id="tempOrder" parameterType="string">
 		INSERT INTO ORDERS_TEMP (OT_IDX, O_TEMPNUM)
-		VALUES (OT_NUM_SEQ.nextval, #{oTempnum})
+		VALUES (OT_IDX_SEQ.nextval, #{oTempnum})
 	
 	</insert>
 	<select id="oTempnum" resultType="string">
