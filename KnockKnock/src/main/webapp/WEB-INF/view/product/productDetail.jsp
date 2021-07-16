@@ -88,7 +88,6 @@
 			<div class="pimg">
 				
 				<img src="/resource/img/product/${pvo.pImg }">
-				<p>추가사진?</p>
 			</div>
 			<div class="pname">
 				<span id="sIdx" style="display:none;">${pvo.sIdx }</span>

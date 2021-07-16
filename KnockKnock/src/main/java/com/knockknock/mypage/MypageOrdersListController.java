@@ -153,7 +153,7 @@ public class MypageOrdersListController {
 		map.put("start", start);
 		map.put("end", end);
 		map.put("uIdx", uIdx);
-		
+		System.out.println("map:"+map);
 		List<OrdersListVO> ohList = ordersListService.orderHistoryList(map);
 		
 		 

@@ -43,14 +43,15 @@ String cp = request.getContextPath();
 							<hr>
 							<div class="show_content">
 								<div class="content_body">
-									<p style="font-size: 2em">${contact.ctContent }</p>
+									<p style="font-size: 2em; height:30vh;">${contact.ctContent }</p>
 								</div>
 							</div>
 							<hr>
 							<div class="author">
 								<div class="avatar">
-									<br> <img src="/resource/img/upload/${contact.uImgpath }">
-									<h4 style="display: inline">${contact.uNickname }</h4>
+									<br> <img style="width:10%;" src="/resource/img/upload/${contact.uImgpath }">
+									
+									<h4 style="display: inline; font-size:18px;">닉네임 : ${contact.uNickname }</span></h4>
 								</div>
 							</div>
 						</div>

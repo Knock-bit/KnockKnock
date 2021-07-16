@@ -104,7 +104,7 @@
 				</div>
 			</div>
 			<div class="of7">
-				<input type="button" value="주문내역" onclick="location.href='${cp }/orderHistory.do?searchDay=0'">
+				<input type="button" value="주문내역" onclick="location.href='${cp }/orderHistory.do'">
 			</div>
 		</div>
 	
