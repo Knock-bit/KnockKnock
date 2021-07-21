@@ -1,5 +1,6 @@
 package com.knockknock.campaign.campaign;
 
+import java.util.HashMap;
 import java.util.List;
 
 public interface CampaignService {
@@ -39,4 +40,6 @@ public interface CampaignService {
 	public int insertCampaignUser(CampaignUserVO cUser);
 	// 해쉬태그 사용, 비슷한 캠페인 목록 불러오기
 	public List<CampaignVO> selectRecommendCampaign(CampaignVO campaign);
+	// 조회기준 적용하여 캠페인 목록 불러오기
+	public List<CampaignVO> selectCampaignListOrderBy(HashMap<String, String> orderBy);
 }

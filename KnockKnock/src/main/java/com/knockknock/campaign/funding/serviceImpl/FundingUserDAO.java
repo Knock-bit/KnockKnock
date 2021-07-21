@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.knockknock.campaign.funding.FundingUserVO;
+import com.knockknock.campaign.funding.FundingVO;
 
 @Repository
 public class FundingUserDAO {
@@ -50,5 +51,9 @@ public class FundingUserDAO {
 
 	public int updateStartFunding() {
 		return mybatis.update("campaign.updateStartFunding");
+	}
+
+	public FundingVO selectOneFundingByIdx(int cfIdx) {
+		return mybatis.selectOne("campaign.selectOneFundingByIdx", cfIdx);
 	}
 }

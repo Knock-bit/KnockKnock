@@ -1,5 +1,6 @@
 package com.knockknock.campaign.funding;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -84,7 +85,7 @@ public class FundingController {
 	@RequestMapping(value = "campaign/funding/doAjaxFund.do", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseBody
 	public int doAjaxFund(FundingUserVO fundingUser) {
-		System.out.println(">>> 펀딩 vo : " + fundingUser);
+		System.out.println(">>> 펀딩User vo : " + fundingUser);
 		fundingUser.setCfPoint(cfPoint);
 		int cfIdx = fundingUser.getCfIdx();
 		System.out.println(fundingUser.getuIdx());
@@ -93,8 +94,7 @@ public class FundingController {
 		int result = fundingService.insertFundingUser(fundingUser);
 		int pointResult = fundingService.updateFundingPoint(fundingUser);
 		int userPointReuslt = fundingService.updateUserFundingPoint(fundingUser);
-		
-		System.out.println("result" + result);
+	    
 		return result;
 	}
 	
@@ -111,6 +111,8 @@ public class FundingController {
 		int pointResult = fundingService.updateFundingPointMinus(fundingUser);
 		int userPointReuslt = fundingService.updateUserFundingPointMinus(fundingUser);
 		System.out.println("result" + result);
+		FundingVO funding = fundingService.selectOneFundingByIdx(fundingUser.getCfIdx());
+	    
 		return result;
 	}
 

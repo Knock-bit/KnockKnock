@@ -57,6 +57,10 @@
 			$("#commonDiv").load("${cp}/campaign/getList.do?order=latest");
 		})
 		
+		$("#closest").click(function(){
+			$("#commonDiv").load("${cp}/campaign/getList.do?order=closest");
+		})
+		
 		$("#userCount").click(function(){
 			$("#commonDiv").load("${cp}/campaign/getList.do?order=userCount");
 		})
