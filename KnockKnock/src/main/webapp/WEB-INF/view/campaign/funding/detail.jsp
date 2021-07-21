@@ -206,19 +206,11 @@
                 data: { "cfIdx": cfIdx, "uIdx": uIdx },
                 contentType: "application/x-www-form-urlencoded; charset=utf-8",
                 dataType: "JSON",
-                success: function (data) {
-                  console.log(data);
-                  if(data == 1){
-                	  console.log("ok");
-                  $("#funding-btn").html('펀딩하기');
-                  $("#funding-btn2").html('펀딩하기');
-                  $("#funding-btn").attr('data-target', '#fundingModal');
-                  $("#funding-btn2").attr('data-target', '#fundingModal');
+                success: function (funding) {
+                	console.log(funding.cfIdx);
                   $("#modal-content2").html("<div class='modal-funding'>취소되었습니다.</div>");
-                  $("#funding-progress").attr('value', '${funding.cfCollected-250}')
-                  $(".collected").html('${funding.cfCollected}');
                   $("#campaign-point").load(window.location.href + " #campaign-point");
-                  }
+                  $("#fundingBtnWrap").load(window.location.href + " #fundingBtnWrap");
                 }, error: function () {
                   alert("실패");
                 }
@@ -245,20 +237,11 @@
             data: { "cfIdx": cfIdx, "uIdx": uIdx },
             contentType: "application/x-www-form-urlencoded; charset=utf-8",
             dataType: "JSON",
-            success: function (data) {
-              console.log(data);
-              if(data == 1){
-            	  console.log("ok");
-              $("#funding-btn").html('펀딩완료');
-              $("#funding-btn").attr('data-target', '#fundingModal2');
-              $("#funding-btn2").html('펀딩완료');
-              $("#funding-btn2").attr('data-target', '#fundingModal2');
-              $("#modal-content").html("<div class='modal-funding'>참여해주셔서 감사합니다.</div>");
-              $("#funding-progress").attr('value', '${funding.cfCollected+250}')
-              $(".collected").html('${funding.cfCollected+250}');
-              /* $("#progress-div").load(window.location.href + " #progress-div"); */
+            success: function (result) {
+              $("#modal-content").html("<div class='modal-funding'>참여해주셔서 감사합니다</div>");
               $("#campaign-point").load(window.location.href + " #campaign-point");
-              }
+              $("#fundingBtnWrap").load(window.location.href + " #fundingBtnWrap");
+              
             }, error: function () {
               alert("실패");
             }
@@ -349,7 +332,7 @@
 									<b>${end - now + 1}일</b> 남았어요
 								</h2>
 							</div>
-							<div class="campaign-point" id=""><center>
+							<div class="campaign-point" id="campaign-point"><center>
 								현재까지 <span class="collected">${funding.cfCollected }</span> 포인트 모였어요<br></center>
 								<p class="funding-pg">
 									<progress id="funding-progress" value="${funding.cfCollected }"
@@ -368,7 +351,7 @@
                     </div>
                   </div>
 						<div class="campaign-info align-items-center">
-							<div class="btn-wrap funding">
+							<div class="btn-wrap funding" id="fundingBtnWrap">
 							<button onclick="sendLink();" id="share" ><i class="bi bi-share"></i> </button>
 								<c:if test="${empty fundingUser }">
 									<%-- <button id="funding"

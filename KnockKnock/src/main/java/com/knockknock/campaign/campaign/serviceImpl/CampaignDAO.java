@@ -1,5 +1,6 @@
 package com.knockknock.campaign.campaign.serviceImpl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -92,5 +93,11 @@ public class CampaignDAO {
 
 	public List<CampaignVO> selectRecommendCampaign(CampaignVO campaign) {
 		return mybatis.selectList("campaign.selectRecommendCampaign", campaign);
+	}
+
+
+	public List<CampaignVO> selectCampaignListOrderBy(HashMap<String, String> orderBy) {
+		System.out.println("orderBy:" + orderBy);
+		return mybatis.selectList("campaign.selectCampaignListOrderBy", orderBy);
 	}
 }

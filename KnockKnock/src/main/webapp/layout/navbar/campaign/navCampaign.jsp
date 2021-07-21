@@ -32,7 +32,7 @@
             <ul>
                 <li><a  id="userCount"href="#">참가자수</a></li>
                 <li><a id="latest" href="#">최신순</a></li>
-                <li><a  id="" href="#">마감임박순</a></li>
+                <li><a  id="closest" href="#">마감임박순</a></li>
             </ul>
           </li>
           </ul>

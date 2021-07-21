@@ -1,5 +1,6 @@
 package com.knockknock.campaign.campaign.serviceImpl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -110,6 +111,12 @@ public class CampaignServiceimpl implements CampaignService {
 	@Override
 	public List<CampaignVO> selectRecommendCampaign(CampaignVO campaign) {
 		return campaignDAO.selectRecommendCampaign(campaign);
+	}
+
+
+	@Override
+	public List<CampaignVO> selectCampaignListOrderBy(HashMap<String, String> orderBy) {
+		return campaignDAO.selectCampaignListOrderBy(orderBy);
 	}
 
 }

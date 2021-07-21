@@ -1,7 +1,9 @@
 package com.knockknock.campaign.campaign;
 
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -67,14 +69,17 @@ public class CampaignController {
 	@GetMapping("/getList.do")
 	public String getList(Model model, HttpServletRequest request) {
 		String order = request.getParameter("order");
-		
+		System.out.println(order);
 		List<CampaignVO> campaignIngList = null;
-		
-		if (order.equals("latest")){
-			campaignIngList = campaignService.selectCampaignListLatest();			
-		} else if (order.equals("userCount")) {
-			campaignIngList = campaignService.selectCampaignListUserCount();
-		}
+		HashMap<String, String> orderBy = new HashMap<>();
+		orderBy.put("order", order);
+		campaignIngList = campaignService.selectCampaignListOrderBy(orderBy);
+		/*
+		 * if (order.equals("latest")){ campaignIngList =
+		 * campaignService.selectCampaignListLatest(); } else if
+		 * (order.equals("userCount")) { campaignIngList =
+		 * campaignService.selectCampaignListUserCount(); }
+		 */
 		System.out.println("campaignIngList 출력:" + campaignIngList);
 		if(campaignIngList !=null) {
 			model.addAttribute("list", campaignIngList);

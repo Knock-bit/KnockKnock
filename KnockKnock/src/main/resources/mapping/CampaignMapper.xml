@@ -34,6 +34,28 @@
 		AND C.CC_NAME = CC.CC_NAME -->
 	</select>
 	
+	
+	
+	
+	<select id="selectCampaignListOrderBy" resultType="CampaignVO">
+		SELECT C.*, U.U_NICKNAME AS HOST_NICKNAME,
+        (SELECT COUNT(*) FROM CAMPAIGN_USER WHERE C.CI_IDX = CAMPAIGN_USER.ci_idx) USER_COUNT
+		FROM USERS U, CAMPAIGN C
+		WHERE CI_STATUS = 1
+		AND U.U_IDX = C.U_IDX
+		<if test="order.equals('userCount')">
+			ORDER BY USER_COUNT DESC	
+		</if>
+		<if test="order.equals('latest')">
+			ORDER BY CI_STARTDATE DESC		
+		</if>
+		<if test="order.equals('closest')">
+			ORDER BY CI_ENDDATE DESC		
+		</if>
+		
+	</select>
+	
+	
 	<!-- 최신순 -->
 	<select id="selectCampaignListLatest" resultType="CampaignVO">
 		SELECT C.*, U.U_NICKNAME AS HOST_NICKNAME,
@@ -230,6 +252,15 @@
 		WHERE U.U_IDX = F.U_IDX
 		AND F.CF_IDX = #{cfIdx}
 	</select>
+	
+	<select id="selectOneFundingByIdx" parameterType="int" resultType="FundingVO">
+		SELECT F.*, U.U_NICKNAME AS HOST_NICKNAME
+		FROM USERS U, FUNDING F
+		WHERE U.U_IDX = F.U_IDX
+		AND F.CF_IDX = #{cfIdx}
+	</select>
+	
+	
 	<!-- 펀딩 상세보기 - 참여자 닉네임 불러오기 -->
 	<select id="selectAllFundingUsers" parameterType = "int" resultType ="FundingUserVO">
 		SELECT U_NICKNAME NICKNAME FROM USERS
