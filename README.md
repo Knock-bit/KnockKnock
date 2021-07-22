@@ -47,7 +47,7 @@ User<br/>| Campaign<br/>|Admin<br/>|Board<br/>|Mypage<br/>|
 ---
 `김동아` 👉🏻 <https://github.com/dkim9108>
 
-`김소해` 👉🏻 
+`김소해` 👉🏻 <https://github.com/dayook>
 
 `설한정` 👉🏻 <https://github.com/HanJeongSeol>
 
