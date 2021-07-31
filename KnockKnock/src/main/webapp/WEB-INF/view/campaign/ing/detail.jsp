@@ -262,6 +262,7 @@
            
 		
 	});
+          // 앱 키 입력
           Kakao.init('24f056f59d439e22eab3d1d0b80755f1');
           try {
             function sendLink() {
@@ -269,10 +270,11 @@
                 objectType: 'feed',
                 content: {
                   title: '${campaign.ciTitle}',
-                  description: '#케익 #녹차 #백범로 #학원 #비트캠프 #분위기',
+                  description: '#${campaign.ciKeyword1} #${campaign.ciKeyword2} #${campaign.ciKeyword3}',
                   imageUrl:
-                    '/resource/img/campaign/recycle.png',
+                    '${campaign.ciFile}',
                   link: {
+                	// 현재 페이지의 주소를 호출
                     mobileWebUrl: document.location.href,
                     webUrl: document.location.href,
                   },
@@ -285,13 +287,7 @@
                       webUrl: document.location.href,
                     },
                   },
-                  {
-                    title: '앱으로 보기',
-                    link: {
-                      mobileWebUrl: document.location.href,
-                      webUrl: document.location.href,
-                    },
-                  },
+                 
                 ],
               })
             }
